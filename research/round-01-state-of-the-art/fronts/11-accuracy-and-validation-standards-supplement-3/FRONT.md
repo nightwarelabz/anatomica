@@ -1,0 +1,80 @@
+### 11. Accuracy & Validation Standards [Supplement 3]
+
+*Premise: for a surgical system, an anatomical or procedural error is not a bug — it is training data for a future injury. This front states the standards the field itself uses, what the studies actually measured, and rules a small team can enforce.*
+
+#### 11.1 The Messick validity framework, as applied to simulators
+
+Modern practice uses **Messick's unified validity framework** — validity is not a property of the simulator but of the *interpretation of its scores*, argued from **five sources of evidence: (1) content, (2) response process, (3) internal structure, (4) relations to other variables, (5) consequences.** The older vocabulary is still what most surgical papers report, and maps onto it:
+
+| Classic term | What it actually measures (as published) | Typical study design |
+|---|---|---|
+| **Face validity** | Non-expert/expert opinion that it *looks/feels* realistic (questionnaire, often ≥8/10 or Likert) | Users rate realism of a UBE spine model: face/content medians ≥8/10 in a 2026 validity study |
+| **Content validity** | *Expert* judgement that the task covers the real procedure's steps/anatomy correctly; quantified with a **Content Validity Index (CVI)** | Subclavian CVC model: every item I-CVI = 1.00, scale CVI/Ave = 1.00 from an expert panel |
+| **Construct validity** | The simulator's scores **separate known groups** (expert vs novice) or track experience over time | Same CVC study: experts 100% vs novices 85.4% checklist, 5.3 vs 11.6 min, first-attempt success 70% vs 10%, complications 0% vs 30%. UBE study: experts TSCL 18.5 vs 11, GRS 30 vs 17, errors 1 vs 3 (all p<0.05), inter-rater ICC 0.93/0.87, Cronbach α ≥0.8 |
+| **Concurrent validity** | Scores correlate with an existing gold-standard assessment | New model vs OSATS/established simulator on the same subjects |
+| **Predictive validity** | Simulator scores predict **operating-room performance** — the only evidence that ultimately matters, and the rarest | A systematic review of partial-nephrectomy training models found **no RCTs and no discriminative or predictive validation at all** in that literature — a typical, damning baseline |
+
+Sources: https://www.oaepublish.com/articles/2574-1225.2023.50 ; https://pmc.ncbi.nlm.nih.gov/articles/PMC9621388/ ; https://link.springer.com/article/10.1186/s12909-026-09095-w
+
+**Rules that follow:** (i) never market a module as “validated” on face validity alone — most published simulators have only face+content, and saying so plainly is a differentiator; (ii) every scored module must ship its construct study (known-groups separation with effect sizes) or be labelled *unvalidated*; (iii) predictive claims require OR-correlated data you will not have at launch — the honest roadmap is construct → concurrent (vs OSATS/GOALS ratings of recorded real cases) → predictive with a partner institution.
+
+**Assessment instruments to adopt verbatim (they are the field's rulers):** **OSATS** global rating scale, **GOALS** for laparoscopy, **GEARS** for robotics, plus procedure-specific checklists derived from CTA (below). Proficiency = a benchmark score set from *expert* performance (e.g. expert mean − 2 SD, or the FLS model), trained-to, not time served. Transfer evidence for this design: Seymour RCT (29% faster, 9× less failure-to-progress, ~5–6× fewer gallbladder injuries/non-target burns in the OR) and Sroka FLS RCT (OR GOALS gain 6.1 trained-to-proficiency vs 1.8 control). https://pmc.ncbi.nlm.nih.gov/articles/PMC2917931/
+
+#### 11.2 Cognitive Task Analysis — the standard authoring method for procedure steps
+
+CTA exists because **experts omit 50–70% of what they actually do when they teach unaided** — automatised knowledge is invisible to its owner. The published method, repeatedly used for surgical procedures:
+
+1. **Semi-structured interviews / observation of multiple expert surgeons** (typically 3–5+ SMEs; e.g. robotic Roux-en-Y gastric bypass CTA used 4 experts with median 424 cases, plus 9 field observations, 8 videos, 6 literature sources).
+2. **Decomposition into phases → steps → microsteps, each with: decision points, sensory cues, common errors/pitfalls, and bailout strategies.** RYGB CTA output: 8 major steps, **83 subtasks, 75 potential errors, 60 technical tips, 15 decision points**, plus 9 cross-cutting cognitive behaviours. A lap-cholecystectomy CTA expanded an existing 19-step model to **97 microsteps** and added a missing “Step 0: planning”.
+3. **Consensus by modified Delphi** across the expert panel (iterated rounds until agreement) — this is what converts one surgeon's habits into a defensible standard.
+4. **Build the teaching/assessment artefact from the CTA**, then **validate it in an RCT**: the Imperial/UCL meniscus-repair CTA tool (3 expert knee surgeons, Delphi, **55 steps in 9 phases**, multimedia) was tested by randomising 18 novice residents (CTA tool vs equipment manual) and scoring blinded performance on phantom models with a validated global rating scale.
+
+Sources: https://www.medscape.com/medline/abstract/37702879 ; https://journals.sagepub.com/doi/10.1177/03635465211021652 ; CTA method overview: https://www.e-neurospine.org/journal/view.php?doi=10.14245%2Fns.2550060.030
+
+#### 11.3 How the leading procedure library is actually authored — Touch Surgery
+
+Touch Surgery's model, corroborated across its descriptions and validation literature: each procedure is **co-authored with named surgeons at named institutions** (content “developed in collaboration with leading surgeons and surgical institutions worldwide”), decomposed by **cognitive task simulation** into fundamental steps and decision points, rendered as 3D + video, shipped with background/indications/positioning/complications/references per procedure, and then **independently validated by outside groups** — 30+ peer-reviewed publications, with construct/face/content studies by four different teams across orthopaedics (London), plastics (Stanford), oro-maxillofacial (Mount Sinai) and general surgery (Heidelberg), showing significant known-groups separation in each specialty. Scale: ~150 procedures in early listings → **~400 procedures / 17 specialties by June 2025**; adoption in 100+ US residency programmes and endorsements (AO Foundation, RCS Edinburgh, BAPRAS, AASH) function as its public quality signal. **The lesson is process, not content: named expert authors + institutional review + published independent validation per specialty.** An open-source project can beat this on transparency: publish the CTA source documents and reviewer sign-offs in the repo, per procedure. https://en.wikipedia.org/wiki/Touch_Surgery ; https://www.westmidlandsdeanery.nhs.uk/postgraduate-schools/-surgery/learning-apps
+
+#### 11.4 Anatomical variation — the prevalence numbers a careful system must model
+
+“Normal anatomy” is a minority report in several systems. A simulator that ships one canonical body teaches a false certainty; the published prevalences below are the minimum variant set for hepatobiliary content (the best-quantified example) plus two cross-system warnings:
+
+| Variant | Published prevalence | Source |
+|---|---|---|
+| Classic hepatic arterial anatomy (Michels type I) | **Only 58–72%** of people (systematic review of 13,703 imaging + 1,333 surgical/cadaveric subjects) | https://journals.innovareacademics.in/index.php/ijcpr/article/download/60290/34499 |
+| **Replaced right hepatic artery from SMA** (Michels III) | **10–16%** (most frequent variant); single-centre cadaver series find aberrant RHA in 13.3–21.7% total (replaced 8.3–18.3%, accessory 3.4–5%) | review above; https://pubmed.ncbi.nlm.nih.gov/26788371/ |
+| Replaced left hepatic artery / accessory RHA / accessory LHA | 6–11% / 4–8% / 3–7% respectively | review above |
+| **Caterpillar hump / Moynihan's hump** (tortuous RHA in Calot's triangle) | **3–13.3%** across series (1,000-patient operative series: 3%; 60-cadaver series: 13.3%) — a wide range that itself must be reported as a range | https://pubmed.ncbi.nlm.nih.gov/26788371/ ; https://doaj.org/article/4e96c7ec43d84e0bae660129e624a6af |
+| Cystic artery pattern | Single 90%, branched 7%, absent 3%; position/length variants in ~15–20% (1,000-patient series) | https://doaj.org/article/4e96c7ec43d84e0bae660129e624a6af |
+| RHA course relative to ducts | Crosses common hepatic duct posteriorly ~72–87%, **anteriorly ~8%**; runs **outside** Calot's triangle in 5% | https://pubmed.ncbi.nlm.nih.gov/26788371/ |
+| **Non-recurrent laryngeal nerve** (right) | **0.57–0.78%** of right sides (meta-analyses of 14,820–38,568 sides) — rare, but injury risk **~3.8×** the normal RLN (pooled injury ~7%); predicted by aberrant right subclavian artery | https://link.springer.com/article/10.1007/s00423-026-04097-0 |
+| RLN vs inferior thyroid artery | Posterior ~52%, **anterior ~30%, interposed ~18%** — i.e., the “textbook” relation is barely a majority | same meta-analysis |
+| Complete circle of Willis | **Only ~20–25%** have the complete, symmetrical “textbook” ring | https://www.medboundtimes.com/medicine/common-anatomical-variations-every-doctor-should-know (secondary summary — verify against primary neuroanatomy literature before in-product use) |
+
+**Modelling rule implied by the numbers:** any structure with a variant prevalence ≥ ~1% *and* injury consequence must exist in the system as a selectable/randomised variant with its prevalence displayed; hepatobiliary content is not shippable with a single arterial pattern, full stop.
+
+#### 11.5 Documented harm / miseducation — the cautionary standard
+
+Be precise here: there is **no published case series of patients harmed by a named commercial simulator's wrong content** — that absence is itself a finding (and a reason the field relies on the mechanisms below). What *is* documented:
+
+1. **Misidentification is the dominant mechanism of real surgical harm, and it is perceptual, not knowledge-based.** In the classic analysis of laparoscopic bile-duct injury (Way et al., as carried through the BDI literature), **~97% of injuries stemmed from a visual perceptual illusion** — the surgeon *saw* the common duct as the cystic duct, with complete confidence — vs ~3% from technical skill/knowledge deficits. BDI rates in laparoscopic cholecystectomy run ~0.4–0.7% (vs 0.1–0.2% open), with life-altering sequelae (hepaticojejunostomy, stricture, secondary biliary cirrhosis, increased mortality). **Strasberg's Critical View of Safety (1995)** — clear the hepatocystic triangle, expose the cystic plate, confirm *only two structures* enter the gallbladder — is the engineered countermeasure, and any cholecystectomy module that does not teach and score CVS is below the standard of care for simulation. https://www.jsurgarchives.com/index.php/ijsa/article/download/127/152 ; https://www.surgeryopenaccessjournal.com/assets/articles_pdf/Implementation-of-Critical-View-of-Safety-During-Laparoscopic-Cholecystectomy-A-Prospective-Analysis-of-171-Patients.pdf
+2. **Negative training is a recognised failure mode in simulation generally** (named and analysed in aviation — Airbus Safety First, 2019, on an unrealistic “total pitot blocked” simulator scenario that taught responses that would be wrong in the real aircraft): training on behaviour the real system does not have *systematically teaches dangerous responses*, and stress makes trainees revert to the trained pattern. The surgical analogue — wrong tissue behaviour, wrong anatomy, missing variants — is the same hazard with a scalpel. https://100knots.com/expert_speak-unrealistic-simulator-scenarios-negative-training-7
+3. **Learners conform to wrong authority inside simulators.** In a high-fidelity simulation study, **38.1% of student dyads acted on a preceptor's equivocal/wrong suggestion**; in the cited predecessor work **>95% of learners reported at least one inaccurate vital sign** after hearing peers report it, despite being able to measure correctly themselves. A simulator's *own* content is the ultimate authority figure — errors in it will be absorbed, not questioned. https://pmc.ncbi.nlm.nih.gov/articles/PMC10750487/
+4. **Skills do not automatically transfer across anatomy** — novices trained on one arthroscopic joint showed *no* immediate transfer to another joint (performance reset to first-episode levels), so a narrow, single-anatomy curriculum overstates competence; and cadaver-based teaching carries its own documented negative-transfer risk when specimen anatomy is distorted. (Oxford arthroscopy RCT summary: https://www.ndorms.ox.ac.uk/publications/541575)
+5. **Generative-AI medical content raises the stakes:** peer-reviewed review evidence (2026) documents highly credible but inaccurate synthetic health content, hallucinated findings and poor calibration in AI-generated material — directly relevant if any case/anatomy text is LLM-drafted. AI-drafted content must pass the same dual-source + expert gates as human content, with provenance labelling. https://www.mdpi.com/2075-4418/16/21/3572
+
+#### 11.6 Concrete authoring rules a small team can enforce
+
+1. **Dual-source rule:** no anatomical fact, step, measurement, drug dose, or physiological value ships unless it appears in **two independent authoritative sources** (e.g. TA2/FMA + a named textbook/guideline; a primary paper + a systematic review). Both citations are stored *in the content file* (machine-readable provenance block), not in a wiki.
+2. **Named-expert review loop:** every procedure is authored by CTA (§11.2), reviewed by **≥2 practising surgeons in that specialty who did not author it**, via a recorded Delphi-style sign-off; reviewer names/credentials and review date ship in the module's credits — the Touch Surgery pattern, made public.
+3. **Variant modelling gate:** for each procedure, list every structure in the operative field with variant prevalence ≥1% and injury consequence (use §11.4-style tables, from systematic reviews where they exist). The module cannot pass review until each such variant is (a) modelled, or (b) explicitly listed in-module as “not modelled — prevalence X%”.
+4. **Prevalence honesty:** variant frequencies are displayed as **ranges with sources** (cf. Moynihan's hump 3–13.3%), never as a single invented-sounding point value; single-centre numbers are labelled as such.
+5. **Safety-step scoring:** procedure scoring must include the recognised safety behaviours (e.g. CVS attainment before any duct division in cholecystectomy; time-out/pause when anatomy is uncertain; bailout options — fundus-first, subtotal, senior help, cholangiography) and must **fail the attempt, not merely deduct points,** when a named critical structure is divided without identification.
+6. **Validity labelling:** each module displays its evidence level — *face / content / construct / concurrent / predictive / none yet* — with links to its studies. No module may claim “validated” without at least construct evidence (known-groups separation, reported with n and effect size).
+7. **Negative-training audit:** for every simulated behaviour (tissue stiffness, bleeding rate, drug response), record the real-world source and the known divergence; where the sim is known to diverge, the divergence is disclosed in the instructor view.
+8. **Versioning & errata as a safety feature:** content is versioned like code; corrections get a public errata log and push to all users (a wrong step that stays downloadable is a continuing harm). Include an in-app “report an error” channel routed to the expert reviewers, with a response SLA.
+9. **No unsourced numbers, no AI-only content:** quantitative values require a citation object; LLM-drafted text is quarantined until it passes rules 1–2, and is provenance-tagged permanently.
+10. **Scope disclaimer, enforced in UX:** the product is an education system, not a clinical device; synthetic imaging is watermarked “synthetic”; patient-specific use is out of scope until a regulatory pathway is deliberately entered (cf. Medivis/Living Heart, Front 10).
+
+---
+

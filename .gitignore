@@ -1,0 +1,8 @@
+work/
+
+# Adopted source binaries are not tracked in git (archives, meshes, GLBs).
+# Provenance for them lives in data/sources/*/SOURCE.md and ledger.json.
+data/sources/**/*.zip
+data/sources/**/*.obj
+data/sources/**/*.glb
+data/sources/bodyparts3d-4.0/extracted/

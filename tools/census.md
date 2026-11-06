@@ -1,0 +1,174 @@
+# Geometry coverage census (computed by tools/census.py)
+
+## BodyParts3D 4.0
+- ISA concepts listed: 2905
+- ISA mesh files (.obj): 2234
+- PART-OF mesh files (.obj): 1258
+- Concepts with >=1 mesh file: 2905
+- Concepts without a mesh file: 0
+- OBJ header license census (ISA): {"CC BY-SA 2.1 Japan": 2234}
+- Current DBCLS license page: CC BY 4.0 (DBCLS page archived as LICENSE-PAGE.html)
+- Per-system breakdown: NOT DERIVABLE from the release files (no system field); not estimated
+
+## Z-Anatomy GLB exports (reference only — NC-encumbered as distributed)
+- cardiovascular.glb: 676 named nodes
+- joints.glb: 349 named nodes
+- lymphatic.glb: 158 named nodes
+- muscular.glb: 669 named nodes
+- nervous.glb: 580 named nodes
+- skeletal.glb: 277 named nodes
+- visceral.glb: 118 named nodes
+
+## Skeletal coverage vs the verified 206-bone inventory
+- Target bones: 206
+- BodyParts3D name-matched: 61
+- BodyParts3D name-unmatched: 145
+- Z-Anatomy skeletal.glb name-matched: 11 of 277 named nodes
+- Method: normalized-name match (side/punctuation stripped). Name coverage only; geometric registration is separate pipeline work and is not claimed.
+
+### Unmatched bone names (BodyParts3D)
+- Ethmoid bone
+- Malleus (right)
+- Incus (right)
+- Stapes (right)
+- Malleus (left)
+- Incus (left)
+- Stapes (left)
+- Atlas (C1)
+- Axis (C2)
+- Cervical vertebra C3
+- Cervical vertebra C4
+- Cervical vertebra C5
+- Cervical vertebra C6
+- Cervical vertebra C7
+- Thoracic vertebra T1
+- Thoracic vertebra T2
+- Thoracic vertebra T3
+- Thoracic vertebra T4
+- Thoracic vertebra T5
+- Thoracic vertebra T6
+- Thoracic vertebra T7
+- Thoracic vertebra T8
+- Thoracic vertebra T9
+- Thoracic vertebra T10
+- Thoracic vertebra T11
+- Thoracic vertebra T12
+- Lumbar vertebra L1
+- Lumbar vertebra L2
+- Lumbar vertebra L3
+- Lumbar vertebra L4
+- Lumbar vertebra L5
+- Coccyx
+- Sternum
+- Rib 1 (right)
+- Rib 1 (left)
+- Rib 2 (right)
+- Rib 2 (left)
+- Rib 3 (right)
+- Rib 3 (left)
+- Rib 4 (right)
+- Rib 4 (left)
+- Rib 5 (right)
+- Rib 5 (left)
+- Rib 6 (right)
+- Rib 6 (left)
+- Rib 7 (right)
+- Rib 7 (left)
+- Rib 8 (right)
+- Rib 8 (left)
+- Rib 9 (right)
+- Rib 9 (left)
+- Rib 10 (right)
+- Rib 10 (left)
+- Rib 11 (right)
+- Rib 11 (left)
+- Rib 12 (right)
+- Rib 12 (left)
+- Triquetrum (right)
+- Metacarpal I (right)
+- Proximal phalanx I (right)
+- Distal phalanx I (right)
+- Metacarpal II (right)
+- Proximal phalanx II (right)
+- Middle phalanx II (right)
+- Distal phalanx II (right)
+- Metacarpal III (right)
+- Proximal phalanx III (right)
+- Middle phalanx III (right)
+- Distal phalanx III (right)
+- Metacarpal IV (right)
+- Proximal phalanx IV (right)
+- Middle phalanx IV (right)
+- Distal phalanx IV (right)
+- Metacarpal V (right)
+- Proximal phalanx V (right)
+- Middle phalanx V (right)
+- Distal phalanx V (right)
+- Triquetrum (left)
+- Metacarpal I (left)
+- Proximal phalanx I (left)
+- Distal phalanx I (left)
+- Metacarpal II (left)
+- Proximal phalanx II (left)
+- Middle phalanx II (left)
+- Distal phalanx II (left)
+- Metacarpal III (left)
+- Proximal phalanx III (left)
+- Middle phalanx III (left)
+- Distal phalanx III (left)
+- Metacarpal IV (left)
+- Proximal phalanx IV (left)
+- Middle phalanx IV (left)
+- Distal phalanx IV (left)
+- Metacarpal V (left)
+- Proximal phalanx V (left)
+- Middle phalanx V (left)
+- Distal phalanx V (left)
+- Navicular (right)
+- Cuboid (right)
+- Medial cuneiform (right)
+- Intermediate cuneiform (right)
+- Lateral cuneiform (right)
+- Metatarsal I (right)
+- Proximal phalanx I (foot) (right)
+- Distal phalanx I (foot) (right)
+- Metatarsal II (right)
+- Proximal phalanx II (foot) (right)
+- Middle phalanx II (foot) (right)
+- Distal phalanx II (foot) (right)
+- Metatarsal III (right)
+- Proximal phalanx III (foot) (right)
+- Middle phalanx III (foot) (right)
+- Distal phalanx III (foot) (right)
+- Metatarsal IV (right)
+- Proximal phalanx IV (foot) (right)
+- Middle phalanx IV (foot) (right)
+- Distal phalanx IV (foot) (right)
+- Metatarsal V (right)
+- Proximal phalanx V (foot) (right)
+- Middle phalanx V (foot) (right)
+- Distal phalanx V (foot) (right)
+- Navicular (left)
+- Cuboid (left)
+- Medial cuneiform (left)
+- Intermediate cuneiform (left)
+- Lateral cuneiform (left)
+- Metatarsal I (left)
+- Proximal phalanx I (foot) (left)
+- Distal phalanx I (foot) (left)
+- Metatarsal II (left)
+- Proximal phalanx II (foot) (left)
+- Middle phalanx II (foot) (left)
+- Distal phalanx II (foot) (left)
+- Metatarsal III (left)
+- Proximal phalanx III (foot) (left)
+- Middle phalanx III (foot) (left)
+- Distal phalanx III (foot) (left)
+- Metatarsal IV (left)
+- Proximal phalanx IV (foot) (left)
+- Middle phalanx IV (foot) (left)
+- Distal phalanx IV (foot) (left)
+- Metatarsal V (left)
+- Proximal phalanx V (foot) (left)
+- Middle phalanx V (foot) (left)
+- Distal phalanx V (foot) (left)

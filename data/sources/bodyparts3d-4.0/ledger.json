@@ -1,0 +1,150 @@
+{
+ "entries": [
+  {
+   "bytes": 14694,
+   "format": "html",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "LICENSE-PAGE.html",
+   "sha256": "6ac6aba890cc28083a9e6cbda7eaa44939fba8ecdfac7e76b17bb9e08e63a3de",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 19263,
+   "format": "html",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "README_e.html",
+   "sha256": "f9a90b4d945ad0fe50db45c712e931aa54e52667187b30d7085b6cc394f40107",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 738,
+   "format": "local",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "SHA256SUMS.local",
+   "sha256": "d2a7cbc83e85901d853bc1b952e85e544ecaf9dd2971b380bb2272f44f7ef8c0",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 142903898,
+   "format": "zip",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "isa_BP3D_4.0_obj_99.zip",
+   "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 1142159,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "isa_element_parts.txt",
+   "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 207664,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "isa_inclusion_relation_list.txt",
+   "sha256": "26e7d818e03a8c909fe09c561f38d0d513423c87681f9450a803bc38f5b07564",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 128086,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "isa_parts_list_e.txt",
+   "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 64888505,
+   "format": "zip",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "partof_BP3D_4.0_obj_99.zip",
+   "sha256": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 651179,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "partof_element_parts.txt",
+   "sha256": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 91241,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "partof_inclusion_relation_list.txt",
+   "sha256": "1b40738270931e3c1d955ce34e0fce0d8d10d8c5ad543463e40b4b4c0243007c",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 59351,
+   "format": "txt",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "partof_parts_list_e.txt",
+   "sha256": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 6310,
+   "format": "html",
+   "license": "CC BY 4.0 (current DBCLS license page, archived); mesh file headers state CC BY-SA 2.1 Japan \u2014 see SOURCE.md",
+   "license_evidence": "data/sources/bodyparts3d-4.0/LICENSE-PAGE.html",
+   "path": "release_4.0_e.html",
+   "sha256": "771bd30a47ab11396eb6333e73a946426093c57fa4d4a1db8f718910fea7d985",
+   "source": "BodyParts3D (DBCLS)",
+   "source_version": "4.0 (LATEST as of 2026-11-06)",
+   "stats": {},
+   "structure_id": null
+  }
+ ],
+ "generated": "2026-11-06T05:37:29.233528+00:00",
+ "root": "/home/hatch/workspace/anatomica-project/data/sources/bodyparts3d-4.0"
+}

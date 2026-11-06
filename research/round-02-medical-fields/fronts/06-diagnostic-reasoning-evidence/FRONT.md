@@ -1,0 +1,23 @@
+### 6. Diagnostic Reasoning Evidence
+
+**6.1 JAMA Rational Clinical Examination (RCE) series — JAMA / American Medical Association; book: JAMAevidence (McGraw Hill)**
+- Content: Systematic reviews, one clinical question per article ("Does this patient have…?"), reporting precision + **likelihood ratios for history/exam findings** — the quantitative spine of a reasoning workbench. Worked examples: *MI* — new ST elevation LR 5.7–53.9, new Q wave 5.3–24.8, pain radiating to both arms LR 7.1, S3 LR 3.2, hypotension LR 3.1; normal ECG LR 0.1–0.3, pleuritic pain LR 0.2, pain reproduced by palpation LR 0.2–0.4. *Heart failure / LV dysfunction* — S3 LR+ 11, pulmonary venous congestion on CXR LR+ 12, JVP LR+ 5.1, rales LR+ 2.8; abnormal ECG LR− 0.03. *Child abuse (2024–25 update)* — patterned bruising LR+ 2.0–66, buttock bruising 15–83, retinal haemorrhages LR+ 11.
+- 🔴 PAYWALLED — JAMA/JAMAevidence subscription. **LRs themselves are citable facts**; build the workbench's LR database from primary articles with citation per value, not by copying RCE tables wholesale.
+- URLs: https://jamanetwork.com/journals/jama/article-abstract/1107536 ; https://jamaevidence.mhmedical.com/content.aspx?bookid=845&sectionid=61357503
+
+**6.2 Sensitivity/specificity compendia**
+- No single open, curated sens/spec database exists. Practice: per-test values live in primary studies, Cochrane DTA reviews, and RCE articles. A simulator should store each value as {test, target condition, sens, spec, LR+, LR−, population, N, citation} — the structure matters more than any one compendium. (OpenFDA labels and ACR criteria supply test-context, not accuracy.)
+
+**6.3 Diagnostic error — *Improving Diagnosis in Health Care* (2015), National Academy of Medicine (Institute of Medicine), National Academies Press**
+- Headline findings: **Most people will experience ≥1 diagnostic error in their lifetime; ~5% of US adults seeking outpatient care experience one each year; diagnostic errors contribute to ~10% of patient deaths and 6–17% of hospital adverse events; they are the leading category of paid malpractice claims and ~2× as likely to involve death as other claims.** Causes are systems + cognition: poor collaboration/communication, work systems ill-designed for diagnosis, almost no feedback to clinicians on diagnostic accuracy, culture discouraging disclosure. 8 goals (teamwork, education, health IT, identify/learn from errors, work-system redesign, reporting/learning system, payment reform, research funding).
+- ✅ FREE — National Academies Press PDFs are free to download; cite freely.
+- URLs: https://www.eurekalert.org/news-releases/770275 ; https://www.healthitanswers.net/new-report-outlines-goals-and-recommendations-to-reduce-diagnostic-errors/
+
+**6.4 Cognitive bias & debiasing literature**
+- Canon: Croskerry (2003) catalogue of biases in emergency medicine; Graber et al. — ~75% of diagnostic errors have a cognitive component, faulty reasoning in ~70% of ED error analyses in debiasing reviews. Biases to simulate explicitly: **anchoring** (fixating on early features, insufficient adjustment), **premature closure** ("when the diagnosis is made, the thinking stops" — most frequent), **confirmation bias**, **availability**, **base-rate neglect**, search satisficing, framing/triage cueing. Debiasing with best (still modest) support: metacognition / structured reflection, **diagnostic time-out** ("What else could this be? Consider the opposite"), checklists / differential generators (e.g. VINDICATES), deliberate System-1→System-2 switching, feedback on outcomes. Honest evidence note for learners: awareness training alone shows weak transfer; forcing strategies + feedback outperform lectures on bias.
+- 🟡/✅ — key reviews are open in PMC.
+- URLs: https://pmc.ncbi.nlm.nih.gov/articles/PMC6001502/ ; https://www.dovepress.com/cognitive-bias-in-clinical-practice-nurturing-healthy-skepticism-among-peer-reviewed-fulltext-article-AMEP
+
+**6.5 Pretest probability & calibration**
+- Resources: RCE prior-probability ranges per presentation (e.g. dyspnoeic ED patient without obvious cause: ~50% probability of LV dysfunction, range 34–83%) + disease prevalence from GBD/WONDER (§7) supply priors; Fagan nomogram / odds form of Bayes (post-test odds = pre-test odds × LR) is the computable core. Calibration training evidence: outcome feedback with case volume improves calibration; confidence-accuracy dissociation is the target phenomenon — a workbench should score Brier/calibration, not just top-1 diagnosis. No single open calibration-training platform was verified; this is a build opportunity, not a buy.
+

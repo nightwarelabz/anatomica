@@ -1,0 +1,14 @@
+# Front 11 sources — read 2026-11-05 (index)
+- Messick in simulators: OAEPublish partial-nephrectomy review — definitions face/content/construct/concurrent/predictive; no predictive evidence in that field. https://www.oaepublish.com/articles/2574-1225.2023.50
+- PMC canine simulator paper — Messick modern 5 sources: content, response process, internal structure, relations to other variables, consequences. https://pmc.ncbi.nlm.nih.gov/articles/PMC9621388/
+- CTA meniscus RCT: 3 experts, modified Delphi, 55 steps/9 phases, novices randomised, blinded GRS. https://journals.sagepub.com/doi/10.1177/03635465211021652
+- CTA lap chole: 19 -> 97 microsteps, experts omit 50-70% when teaching unaided. Springer PDF via search.
+- CTA robotic RYGB: 83 subtasks, 75 errors, 60 tips, 15 decision points, 8 steps. Medscape abstract https://www.medscape.com/medline/abstract/37702879
+- Touch Surgery: ~400 procedures/17 specialties (Jun 2025), 30+ validation papers, construct/face/content by 4 groups. https://en.wikipedia.org/wiki/Touch_Surgery
+- RHA variation: Dandekar 2015, 60 cadavers — replaced RHA 18.3%, accessory 3.4%, caterpillar hump 13.3%, RHA outside Calot 5%. https://pubmed.ncbi.nlm.nih.gov/26788371/
+- Hepatic artery systematic review 2026: Michels I 58-72%, replaced RHA from SMA 10-16%, replaced LHA 6-11%, accessory RHA 4-8%. https://journals.innovareacademics.in/index.php/ijcpr/article/download/60290/34499
+- NRLN meta 2026: 0.78% right hemisomas, RLN posterior to ITA ~52%, anterior ~30%, interposed ~18%. https://link.springer.com/article/10.1007/s00423-026-04097-0 ; NRLN injury risk ratio 3.8x (Authorea preprint)
+- Bile duct injury: ~97% visual perceptual illusion / misperception, 3% technical (Way et al. lineage, cited in BDI reviews); CVS 3 criteria Strasberg 1995. https://www.jsurgarchives.com/index.php/ijsa/article/download/127/152
+- Transfer: Seymour 2002 RCT — VR group 29% faster, 9x less likely fail to progress, 5-6x less likely injure gallbladder/burn nontarget. Sroka 2010 FLS proficiency RCT — GOALS OR improvement 6.1 vs 1.8 control. https://pmc.ncbi.nlm.nih.gov/articles/PMC2917931/
+- Conformity harm: 38.1% of student dyads conformed to preceptor's equivocal suggestion in high-fidelity sim; >95% reported at least one inaccurate vital sign after hearing others. https://pmc.ncbi.nlm.nih.gov/articles/PMC10750487/
+- Negative training: Airbus Safety First 2019 unrealistic simulator scenario (pitot blocked) as canonical negative-training case (aviation, transferred concept). https://100knots.com/expert_speak-unrealistic-simulator-scenarios-negative-training-7

@@ -1,0 +1,28 @@
+### 8. Medical Education Science
+
+**8.1 USMLE Content Outline — FSMB + NBME (joint program)**
+- Content: The coverage map for "what a physician must know." Single outline across Steps, organised by system (Human Development; Immune; Blood/Lymphoreticular; Behavioural/Nervous; Skin/Musculoskeletal; Cardiovascular; Respiratory; GI; Renal; Pregnancy/Childbirth; Gender/Breast/Reproductive; Endocrine; Multisystem; Biostatistics/Epidemiology; Social Sciences) + Physician Tasks/Competencies outline. Weightings (secondary summaries of official specs): Step 1 — Pathology 45–55%, Physiology 30–40% by discipline (overlapping), Medical Knowledge/Foundational Science 60–70% of tasks; system weights e.g. Cardiovascular 7–11% (Step 1) / 6–12% (Step 2 CK). Formats: Step 1 280 items / 8 h (pass/fail since 2022), Step 2 CK up to 318 items / 9 h, Step 3 two days + computer-based case simulations. Outline © FSMB/NBME, published free as PDF.
+- ✅ FREE TO READ / USE AS MAP — cite as the coverage taxonomy; do not reproduce NBME items (none are public beyond sample items).
+- URL: https://sup1rpfvr1b9ro.vcksoqhao.top/sites/default/files/2022-01/USMLE_Content_Outline_0.pdf (mirror of official outline PDF, index — obtain the current outline from usmle.org for product use)
+
+**8.2 AAMC curriculum references**
+- AAMC publishes the Curriculum Inventory, Core Entrustable Professional Activities for Entering Residency (Core EPAs, 13 activities, free PDF), and MedEdPORTAL (peer-reviewed teaching resources, CC-licensed per item). Not separately fetched this round — treat Core EPAs as the undergraduate anchor for §8.5 and verify current AAMC page before citing edition/year.
+
+**8.3 Simulation-Based Mastery Learning — McGaghie, Wayne, Barsuk et al. (Northwestern)**
+- Evidence: McGaghie et al., *Acad Med* 2011 meta-analysis (1990–2010, 3,742 articles screened, 14 studies): SBME with deliberate practice vs traditional clinical education, **overall effect size 0.71 (95% CI 0.65–0.76, p<.001)** for skill acquisition. Cook et al. 2011 (609 studies, 35,226 trainees): large effects vs no intervention, small-moderate vs other instruction, moderate for patient outcomes. Mastery-learning exemplars: simulation-based mastery learning for central-line insertion cut ICU complications (Barsuk 2009); surgical RCT — mastery-trained residents did laparoscopic hernia repair in **34 vs 48 min** with fewer complications (Zendejas 2011, as summarised in Lecturio review). 2025 competency-based simulation meta-analysis (Vermylen/McGaghie et al.): competency-based > non-competency-based simulation, large effect for skills, small for behaviours/patient effects. Design rules to implement: minimum passing standard, deliberate practice with feedback, no advancement until mastery, uniform outcomes with variable time.
+- ✅ Key papers open in PMC.
+- URLs: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC3102783/ ; https://pubmed.ncbi.nlm.nih.gov/41217357/
+
+**8.4 OSCE / assessment standards**
+- Frame: Harden's OSCE (structured stations, standardised checklists/global ratings), Miller's pyramid (knows → knows how → shows how → does) as the assessment map, and programmatic assessment (many low-stakes observations aggregated). Scoring a surgical trainee should combine checklist completion, global rating (e.g. OSATS — Martin et al.), time/motion economy, and error counts — the same metrics OR Black Box / robotic kinematics research uses (§10). No single open OSCE standard document was retrieved; cite Harden/Miller/OSATS primary papers in product.
+
+**8.5 Competency frameworks — ACGME Milestones + EPAs (ten Cate)**
+- ACGME: 6 core competencies (Patient Care, Medical Knowledge, Practice-Based Learning & Improvement, Interpersonal & Communication Skills, Professionalism, Systems-Based Practice); specialty Milestones describe 4–5 developmental levels per subcompetency, reported semi-annually. EPAs (ten Cate 2005/2013): units of professional work that can be *entrusted* — observable, measurable, integrating multiple competencies; entrustment scaled in 5 supervision levels (observe → indirect supervision → unsupervised → supervise others). AAMC Core EPAs = the 13 EPAs expected on day 1 of residency. For simulator scoring: map every procedure/case to {Milestone subcompetencies + EPA + supervision level achieved} — that is the interoperable record residency programmes understand.
+- 🟡 Framework documents are free from ACGME/AAMC; Milestones text is ACGME copyright — implement structure, cite, don't republish verbatim guides wholesale.
+- URLs: https://www.ubiquitypress.com/chapters/123/files/4ad8b482-efc2-4e86-8f3b-168a3cf3646e.pdf (open-access EPA/Milestones chapter) ; https://www.codeihnrg.com.ar/pluginfile.php/77811/mod_folder/content/0/Nuts%20and%20Bolts%20of%20Entrustable%20Professional%20Activities.pdf?forcedownload=1 (ten Cate, JGME 2013)
+
+**8.6 Spaced repetition evidence**
+- Systematic review 2026 (Luu et al., *Cureus*; 314 records, 21 studies): most controlled studies show spaced retrieval improves exam performance/retention; observational Anki studies are mixed and at serious risk of bias (self-selection). Primary signals: above-average "mature card" (>21-day interval) users scored **71.5% vs 60.0%** on CBSE in a UNLV cohort (n=36, p=0.002 for mature cards); Gilbert et al. 2023 reported **+6.2 to +10.7 percentage points** on standardised exams for Anki users (secondary summary); Cepeda et al. 2006 distributed-practice meta-analysis is the general foundation. Anki itself is open-source (AGPL) — embed FSRS/SM-2 scheduling for the workbench's review queue.
+- ✅ Reviews open in PMC/PubMed.
+- URLs: https://pubmed.ncbi.nlm.nih.gov:443/42866698/ ; https://pmc.ncbi.nlm.nih.gov/articles/PMC12357012/
+

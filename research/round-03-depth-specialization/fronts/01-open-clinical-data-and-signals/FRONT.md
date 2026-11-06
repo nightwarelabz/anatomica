@@ -1,0 +1,32 @@
+### 1. Open Clinical Data & Signals
+
+**PhysioNet (Research Resource for Complex Physiologic Signals) — MIT Laboratory for Computational Physiology / NIH.**
+Content: Three access tiers govern everything: *Open Access* (anyone, minimal restrictions), *Restricted Access* (registered + Data Use Agreement), *Credentialed Access* (credentialing + human-subjects training + DUA). Open waveform holdings directly relevant to a monitoring engine include: MIT-BIH Arrhythmia and related BIDMC sets; Apnea-ECG; BIDMC PPG and Respiration Dataset; a large-scale 12-lead ECG database for arrhythmia study (>10,000 patients); BUT PPG (3,888 × 10-s smartphone PPG records with ECG); MIMIC-III Waveform Database — continuous ECG, PPG, ABP and other signals + periodic measurements from ~30,000 ICU patients (listed as Open Access on the database index — note the *clinical* MIMIC-III/IV databases are credentialed; do not conflate waveform vs clinical access on a given version; check the per-project licence page before use). Licences in use across PhysioNet include CC BY 4.0, Open Data Commons licences, and PhysioNet Restricted/Credentialed Health Data License 1.5.0 — licence is *per-project*, not site-wide.
+Openness: **BUILD for Open Access projects under their stated CC/ODC licence (attribute, cite DOI); CITE-ONLY / NO-SHIP for Restricted; CLOSED-TO-REDISTRIBUTION for Credentialed.** URL: https://physionet.org/about/database/ — *index*.
+
+**VitalDB (Vital Signs DataBase) — Seoul National University Hospital; Lee et al., *Scientific Data* 2022.**
+Content: 6,388 non-cardiac surgical cases; 486,451 waveform/numeric tracks; 196 intraoperative monitoring parameters + 73 perioperative clinical + 34 lab parameters; 12 waveform types incl. ECG (500 Hz via SNUADC analogue capture), invasive arterial pressure, plethysmogram/PPG, EEG-derived indices; the single best open source for an *anaesthesia/intraoperative* monitoring engine — arterial-line, ECG and PPG behaviour under real anaesthesia.
+Openness: **BUILD — CC BY 4.0, Open Access on PhysioNet, no DUA, no credentialing** (PhysioNet v1.0.0 statement). This is the flagship shippable training/validation set for the theatre/monitoring engine. URL: https://vitaldb.metrology-atlas.org/data-and-licence.html — *index*.
+
+**MIMIC-IV — MIT-LCP / Beth Israel Deaconess Medical Center (2008–2019, Boston).**
+Content: De-identified EHR for ICU/hospital care: demographics, labs, vitals/chart events, meds, procedures, respiratory support, diagnoses; companion projects MIMIC-IV-ECG, MIMIC-CXR, MIMIC-IV Waveform derivatives. Access steps: (1) become PhysioNet-credentialed (CITI “Data or Specimens Only Research” training), (2) sign the DUA, (3) download or cloud (BigQuery/GCS). Licence: PhysioNet Credentialed Health Data License 1.5.0 — no re-identification, no sharing access, research-only use, must contribute code from publications to an open repository. Derived files **cannot be redistributed** — anyone reproducing work must rebuild from their own credentialed access.
+Openness: **CLOSED-TO-REDISTRIBUTION; legitimate as a developer-side validation/tuning harness only.** Design rule: no MIMIC rows, waveforms or derived tables in the repo, installer, or “demo data.” Ship open/synthetic data; document MIMIC validation as a reproducible script a credentialed user runs locally. URLs: https://mimic.mit.edu/docs/gettingstarted/ ; https://physionet.org/content/mimiciv/view-license/0.3/ — *index*.
+
+**eICU Collaborative Research Database — Philips / MIT-LCP.**
+Content: Multi-centre US ICU data (208 hospitals) — the geographic-diversity complement to single-centre MIMIC. Access: PhysioNet-credentialed, same pattern as MIMIC; small demo subsets for MIMIC-III and eICU are available *without* credentialing.
+Openness: **Same as MIMIC — credentialed, no redistribution; demo subsets BUILD-able for tutorials if their licence is honoured.** Source (comparative access summary, *ricu* docs): https://cran.r-universe.dev/ricu/doc/manual.html — *index*.
+
+**AmsterdamUMCdb — Amsterdam UMC / Amsterdam Medical Data Science.**
+Content: First freely accessible EU ICU database; tens of thousands of admissions with demographics, vitals, labs, meds. Access: *not* PhysioNet-hosted — request via Amsterdam Medical Data Science, complete training (e.g. DSOR), receive a download token. Free but individually granted.
+Openness: **Credentialed-equivalent — validation-only, no redistribution.** Same source as above — *index*.
+
+**HiRID (High Time Resolution ICU Dataset) — Bern University Hospital.**
+Content: >33,000 admissions, high-temporal-resolution ICU time series — the best credentialed set for testing sampling/aliasing behaviour of a physiology engine. Access: PhysioNet-credentialed *plus* an additional access request to the data owners.
+Openness: **Credentialed, validation-only, no redistribution.** Same source as above — *index*.
+
+**TCIA — The Cancer Imaging Archive (NCI).**
+Content: Public DICOM imaging collections (CT/MR/PET + segmentations, pathology slides) with per-collection DOI citations that *must* be cited on use. Most collections: **CC BY 3.0 / CC BY 4.0**, free to browse/download/use for commercial, scientific and educational purposes, most with **no registration**. Exceptions: a small number of older CC BY-NC collections (NC = no commercial use; no longer offered for new submissions); Limited/Restricted collections (incl. brain/head-neck since 6 Jan 2022, because faces can be reconstructed) under TCIA Limited/Restricted or NCTN licences requiring an account + approved agreement; since April 2025, DUA-requiring datasets are hosted via NCI Cancer Research Data Commons / dbGaP. Universal duties: never attempt to identify/contact participants; never generate facial reconstructions that could identify.
+Openness: **BUILD for CC BY collections (attribute + cite dataset DOI + TCIA citation) — the imaging suite's shippable teaching library; EXCLUDE or gate CC BY-NC and Limited collections.** URL: https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/ — *index*.
+
+*What the engine may legitimately validate/train against:* train/ship on VitalDB + PhysioNet Open + TCIA CC BY; validate (off-line, credentialed developer, publish *metrics and code only*) against MIMIC-IV, eICU, HiRID, AmsterdamUMCdb. Any “trained on MIMIC” model weights are a grey zone — the DUA bars sharing the *data*; publish methods/metrics, seek MIT-LCP guidance before distributing weights derived from credentialed data.
+
