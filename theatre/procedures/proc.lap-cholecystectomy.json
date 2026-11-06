@@ -1886,6 +1886,7 @@
     "id": "variant.replaced-rha",
     "name": "Replaced right hepatic artery from the superior mesenteric artery (Michels type III)",
     "prevalence": "8.7-11.0% (Milestone 5 variant record, two cited sources)",
+    "required_additions": [],
     "source": "T12",
     "structure_additions": [
      "artery.replaced-rha"
@@ -1900,6 +1901,11 @@
     "id": "variant.double-cystic",
     "name": "Double cystic artery",
     "prevalence": "13% (95% CI 11-16%) (T11 meta-analysis). Not present in the Milestone 5 cardiovascular records — the cystic artery has no Body Model concept at all; this variant is therefore sourced at theatre level with the absence stated, exactly as the precision law requires.",
+    "required_additions": [
+     "m6.7",
+     "m6.8",
+     "m6.9"
+    ],
     "source": "T11",
     "structure_additions": [
      "artery.cystic-branch-2"

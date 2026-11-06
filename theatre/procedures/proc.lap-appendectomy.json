@@ -1,0 +1,1367 @@
+{
+ "procedure": {
+  "authority_basis": "Authored against the WSES Jerusalem guidelines 2020 update (T14), the SAGES systematic review and meta-analysis (T15), the consulted operative descriptions (T19), the stump-closure evidence (T17, T18) and the appendiceal-position series (T16) listed in theatre/parameters.json (sources T14-T20; T6-T10 are shared with the theatre's first procedure). The decomposition is this module's own, built to cognitive-task-analysis discipline (design/05): no published appendicectomy microstep list was copied, and the granularity follows the operative descriptions actually consulted.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.3 (intra-operative grading of the findings).",
+    "choices": [
+     {
+      "effect": "Continue laparoscopically on the uncomplicated pathway (no postoperative antibiotic course; T14).",
+      "id": "grade-uncomplicated",
+      "label": "Grade: uncomplicated appendicitis - proceed",
+      "scoring": "Neutral in itself; the attempt's required set follows the scenario's true severity, not the grade claimed here."
+     },
+     {
+      "effect": "Continue laparoscopically on the complicated pathway: suction of contamination and a postoperative antibiotic course become part of the graded performance (T14).",
+      "id": "grade-complicated",
+      "label": "Grade: gangrenous or perforated appendicitis - proceed",
+      "scoring": "Neutral in itself; as for grade-uncomplicated."
+     },
+     {
+      "effect": "Bailout: convert to open appendicectomy.",
+      "id": "convert-open",
+      "label": "Convert to open",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     },
+     {
+      "effect": "Bailout: stop and refer to a service with advanced laparoscopic expertise.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp1",
+    "question": "How do the operative findings grade - and do they permit proceeding laparoscopically?"
+   },
+   {
+    "anchor": "Anchored at microstep m3.3 (base-condition assessment) - the point at which identification is either achieved or declared unachievable.",
+    "choices": [
+     {
+      "effect": "Continue mobilization (the retrocecal pathway in reverse) until the convergence can be demonstrated.",
+      "id": "mobilize-further",
+      "label": "Mobilize further and re-expose the base",
+      "scoring": "Positive: persistence with exposure rather than division."
+     },
+     {
+      "effect": "Escalate to a more experienced operator before any division.",
+      "id": "call-senior",
+      "label": "Call for senior help",
+      "scoring": "Positive escalation."
+     },
+     {
+      "effect": "Bailout: convert; the open hand identifies the base by palpation.",
+      "id": "convert-open",
+      "label": "Convert to open",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "The scored-error choice: division without identification - the runner resolves it onto the cecum and fails the attempt.",
+      "id": "continue-dissection",
+      "label": "Divide where the appendix is presumed to be",
+      "scoring": "err.no-bailout, and the division itself fires err.divide-unidentified."
+     }
+    ],
+    "id": "dp2",
+    "question": "The appendiceal base cannot be positively identified. What now?"
+   },
+   {
+    "anchor": "At microstep m6.1 (closure selection), after crit3 has stated the base condition.",
+    "choices": [
+     {
+      "effect": "Simple ligation of the base - the WSES-recommended default (T14); equivalent outcomes to mechanical closure in the Cochrane review (T17).",
+      "id": "endoloop",
+      "label": "Endoloop ligation",
+      "scoring": "Guideline-concordant on a healthy or inflamed base. On a necrotic base the loop cannot seal non-viable tissue: err.closure-mismatch and a computed stump leak."
+     },
+     {
+      "effect": "Locking polymeric clips across the base - also WSES-recommended (T14).",
+      "id": "polymeric-clips",
+      "label": "Polymeric clips",
+      "scoring": "As for endoloop: concordant on viable tissue, mismatched on a necrotic base."
+     },
+     {
+      "effect": "Staple line fired through healthy tissue - the escalation T18 records for a compromised base, and T14's allowance for complicated cases.",
+      "id": "stapler",
+      "label": "Endoscopic stapler across the base / cecal cuff",
+      "scoring": "The scored-correct choice on a necrotic base; acceptable on any base (no clinical advantage over ligation on a healthy base - T14, T17 - and not penalised)."
+     },
+     {
+      "effect": "Bailout: if the base cannot be secured laparoscopically, convert.",
+      "id": "convert-open",
+      "label": "Convert to open to secure the base",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp3",
+    "question": "Which stump-closure method does the assessed base condition require?"
+   },
+   {
+    "anchor": "On recognition of the cecal injury computed by the misidentification resolution.",
+    "choices": [
+     {
+      "effect": "Convert, repair the cecal injury under direct vision, drain the field.",
+      "id": "convert-repair",
+      "label": "Convert to open and repair the cecum",
+      "scoring": "Guideline-concordant definitive plan (management plan point)."
+     },
+     {
+      "effect": "Resect/repair the injured cecal pole with the stapler laparoscopically, drain the field.",
+      "id": "stapler-repair",
+      "label": "Laparoscopic stapled cecal repair",
+      "scoring": "Guideline-concordant definitive plan (management plan point)."
+     },
+     {
+      "effect": "No repair: the faecal leak continues into the postoperative course.",
+      "id": "continue",
+      "label": "Continue the appendicectomy and observe",
+      "scoring": "Scores no plan point; named in the debrief delta."
+     }
+    ],
+    "id": "dp4",
+    "question": "A cecal injury is recognised. What is the definitive plan?"
+   },
+   {
+    "anchor": "Anchored at microstep m8.4 (the postoperative course step) - the debrief's postoperative-consequence point.",
+    "choices": [
+     {
+      "effect": "Re-operation: washout, repair or re-resection of the stump, drainage.",
+      "id": "return-theatre",
+      "label": "Return to theatre for washout and definitive control",
+      "scoring": "Definitive plan for a stump leak with peritonitis (management plan point)."
+     },
+     {
+      "effect": "Percutaneous drainage of a periappendiceal collection is an appropriate treatment in addition to antibiotics (T14, nonsurgical-treatment statement for complicated appendicitis).",
+      "id": "image-guided-drain",
+      "label": "Image-guided percutaneous drainage plus antibiotics",
+      "scoring": "Definitive plan for a contained collection (management plan point)."
+     },
+     {
+      "effect": "No source control.",
+      "id": "observe",
+      "label": "Observe on antibiotics alone",
+      "scoring": "Scores no plan point for a declared leak; named in the debrief delta."
+     }
+    ],
+    "id": "dp5",
+    "question": "Postoperative course: stump leak or intra-abdominal collection is declared. What is the plan?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's misidentification resolution: the divided 'appendix' is the cecum at its pole - a full-thickness cecal injury with faecal contamination. The attempt FAILS at the moment of division, regardless of all other scores (design/05 master rule, applied here as it is to the cholecystectomy's bile duct).",
+    "definition": "Dividing a critical structure (appendix, appendiceal artery) before the appendiceal base is positively identified and demonstrated (gate.base-id).",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T20"
+   },
+   {
+    "consequence": "A closure clip placed across the presumed base before identification resolves onto the cecal wall (clip-on-cecum): a mechanism injury state that becomes the cecal injury if division follows, or a recognised near miss if the clip is removed.",
+    "definition": "Applying a clip (including a closure clip) in the operative field before the base gate is demonstrated.",
+    "id": "err.clip-unidentified",
+    "severity": "critical",
+    "source": "T20"
+   },
+   {
+    "consequence": "Haemorrhage from the appendiceal artery, computed by the physiology engine from the verify-flagged theatre rate and the time to control.",
+    "definition": "Dividing the mesoappendix or the appendix while the appendiceal artery is uncontrolled.",
+    "id": "err.divide-unclipped-artery",
+    "severity": "major",
+    "source": "T19"
+   },
+   {
+    "consequence": "An open appendiceal stump: computed stump leak as a postoperative consequence in the debrief.",
+    "definition": "Dividing the appendix with no stump closure (endoloop, clips or stapler) applied.",
+    "id": "err.divide-unclosed-base",
+    "severity": "major",
+    "source": "T17"
+   },
+   {
+    "consequence": "The closure cannot seal non-viable tissue: computed stump leak, declared as a postoperative consequence in the debrief; management is scored at dp5.",
+    "definition": "Closing the base with a ligature or clips on a necrotic base (dp3 scored against crit3's assessment).",
+    "id": "err.closure-mismatch",
+    "severity": "major",
+    "source": "T18"
+   },
+   {
+    "consequence": "Thermal injury to the cecal wall (recorded complication; delayed perforation is its clinical presentation - stated structurally, no physiology representation in engine v0).",
+    "definition": "Applying energy to the appendix or cecum before the base is identified.",
+    "id": "err.energy-before-id",
+    "severity": "major",
+    "source": "T19"
+   },
+   {
+    "consequence": "Residual intra-abdominal contamination: computed postoperative intra-abdominal abscess as a debrief consequence; management scored at dp5.",
+    "definition": "Completing a perforated-appendicitis attempt without suctioning the contamination (microstep m7.2).",
+    "id": "err.contamination-uncontrolled",
+    "severity": "major",
+    "source": "T14"
+   },
+   {
+    "consequence": "Recorded judgment error; if division follows it resolves under err.divide-unidentified.",
+    "definition": "At dp2 the base was declared unidentifiable and dissection/division continued instead of altering strategy.",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T20"
+   },
+   {
+    "consequence": "Guideline-discordant: WSES recommends against drains following appendicectomy for complicated appendicitis in adults - no benefit in preventing intra-abdominal abscess, longer hospitalisation (T14); the SAGES meta-analysis found no adult outcome benefit and a doubled reoperation risk with drains in children (T15). A drain placed after repair of a cecal injury is not this error.",
+    "definition": "Placing an abdominal drain after appendicectomy where no injury repair requires one.",
+    "id": "err.unnecessary-drain",
+    "severity": "judgment",
+    "source": "T14"
+   },
+   {
+    "consequence": "Guideline-discordant: WSES recommends suction alone (strong recommendation, 1B) - irrigation has no advantage over suction alone (T14); the SAGES meta-analysis likewise found no significant outcome difference (T15). The rubric follows the guideline recommendation.",
+    "definition": "Performing peritoneal lavage/irrigation instead of suction alone in complicated appendicitis.",
+    "id": "err.unnecessary-lavage",
+    "severity": "judgment",
+    "source": "T14"
+   },
+   {
+    "consequence": "Guideline-discordant: WSES recommends against postoperative antibiotics in uncomplicated appendicitis (T14).",
+    "definition": "Prescribing a postoperative antibiotic course for uncomplicated appendicitis.",
+    "id": "err.unnecessary-antibiotics",
+    "severity": "judgment",
+    "source": "T14"
+   },
+   {
+    "consequence": "Process error; the single preoperative dose itself is T14's recommendation, the window is the theatre's shared prophylaxis parameter (T7).",
+    "definition": "Antibiotic prophylaxis given outside the theatre's prophylaxis window before incision.",
+    "id": "err.prophylaxis-window",
+    "severity": "process",
+    "source": "T7"
+   },
+   {
+    "consequence": "Process error (T6).",
+    "definition": "A WHO checklist phase (Sign In, Time Out, Sign Out) not performed.",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.appy.lap",
+  "name": "Laparoscopic appendicectomy",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, prophylaxis and checklist (Step 0)",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review imaging and laboratory results; confirm the diagnosis of acute appendicitis and the indication for appendicectomy",
+        "required": true,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "dig.cecum-appendix"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Confirm consent and operative plan, including anticipation of appendiceal position variants and the possibility of conversion",
+        "required": true,
+        "sources": [
+         "T19",
+         "T16"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Confirm team, resource tier and equipment plan for the case",
+        "note": "Resource tiers per design/05 (basic / limited / enhanced / maximal); the tier is recorded with the attempt, not scored in v1.",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Step 0: planning the procedure"
+     },
+     {
+      "id": "step.0.2",
+      "microsteps": [
+       {
+        "fulfills": "prophylaxis",
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Administer the single preoperative broad-spectrum antibiotic dose within the prophylaxis window before incision",
+        "note": "The dose is T14's recommendation; the 60-minute window is the theatre's shared prophylaxis parameter, cited there to T7. No agent is named: the consulted guideline text recommends a broad-spectrum dose without the module asserting a specific agent for appendicitis.",
+        "required": true,
+        "sources": [
+         "T14",
+         "T7"
+        ],
+        "targets": [],
+        "verb": "drug"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [],
+        "label": "Apply venous thromboembolism prophylaxis per protocol",
+        "note": "Process step as carried in the design/05 setup list; no agent or dose is asserted - none was consulted for this module.",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Position the patient supine with arms tucked; displays positioned for access to the right iliac fossa",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "position"
+       },
+       {
+        "id": "m0.7",
+        "instruments": [
+         "inst.laparoscope-30deg",
+         "inst.suction-irrigator",
+         "inst.hook-cautery"
+        ],
+        "label": "Equipment check: laparoscope and camera, insufflator, suction, energy source, endoloop/stapler availability",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Prophylaxis and preparation"
+     },
+     {
+      "id": "step.0.3",
+      "microsteps": [
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.8",
+        "instruments": [],
+        "label": "WHO Sign In completed before induction of anaesthesia",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "WHO Sign In"
+     },
+     {
+      "id": "step.0.4",
+      "microsteps": [
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Time Out completed before skin incision",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "WHO Time Out"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Access and port placement",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [],
+        "label": "Infraumbilical skin incision",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [
+         "inst.hasson-trocar",
+         "inst.trocar-10mm"
+        ],
+        "label": "Establish pneumoperitoneum and insert the 10-12 mm umbilical camera port by open cutdown; insufflation pressure at or below 15 mmHg",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "perform"
+       }
+      ],
+      "name": "Umbilical access"
+     },
+     {
+      "id": "step.1.2",
+      "microsteps": [
+       {
+        "id": "m1.3",
+        "instruments": [
+         "inst.trocar-5mm"
+        ],
+        "label": "Place the 5 mm suprapubic midline port under direct vision, taking care to avoid the bladder",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.4",
+        "instruments": [
+         "inst.trocar-5mm"
+        ],
+        "label": "Place the 5 mm left-lower-quadrant port under direct vision",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.5",
+        "instruments": [
+         "inst.trocar-10mm"
+        ],
+        "label": "Place an additional 12 mm port if stapler use is anticipated",
+        "required": false,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "perform"
+       }
+      ],
+      "name": "Working ports"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Exploration, grading and exposure",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Inspect the abdomen; confirm appendicitis as the etiology and exclude other pathology",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "dig.peritoneal-cavity"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m2.2",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Identify the cecum by its taeniae and paler colour against the small bowel; identify the terminal ileum",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.cecum",
+         "dig.ileum"
+        ],
+        "verb": "identify"
+       }
+      ],
+      "name": "Diagnostic laparoscopy"
+     },
+     {
+      "id": "step.2.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.3",
+        "instruments": [],
+        "label": "Grade the appendicitis intra-operatively (WSES grading) and state the severity the operation will be conducted for",
+        "required": true,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m2.4",
+        "instruments": [
+         "inst.suction-irrigator"
+        ],
+        "label": "Note any free fluid or pus and aspirate it for inspection; record its character (serous, purulent, faeculent)",
+        "required": true,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "dig.peritoneal-cavity"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Grading and findings"
+     },
+     {
+      "id": "step.2.3",
+      "microsteps": [
+       {
+        "id": "m2.5",
+        "instruments": [
+         "inst.grasper-bowel"
+        ],
+        "label": "Position the patient Trendelenburg with the right side up; retract small bowel out of the right iliac fossa",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "dig.ileum"
+        ],
+        "verb": "position"
+       }
+      ],
+      "name": "Exposure"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Mobilization and identification of the base",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m3.1",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Follow the taeniae coli along the cecum to their convergence at the cecal pole",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "landmark.taeniae-convergence",
+         "canal.cecum"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m3.2",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Demonstrate the appendix arising from the convergence, below the ileocaecal junction",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix",
+         "landmark.taeniae-convergence"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp2",
+        "demonstrates": "crit3",
+        "id": "m3.3",
+        "instruments": [],
+        "label": "Assess and state the condition of the appendiceal base: healthy, inflamed or necrotic",
+        "required": true,
+        "sources": [
+         "T14",
+         "T18"
+        ],
+        "targets": [
+         "canal.appendix",
+         "canal.cecum"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Identify the base"
+     },
+     {
+      "id": "step.3.2",
+      "microsteps": [
+       {
+        "demonstrates": "artcrit1",
+        "id": "m3.4",
+        "instruments": [],
+        "label": "Identify the appendiceal artery within the mesoappendix",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "artery.appendicular-artery",
+         "peritoneum.mesoappendix"
+        ],
+        "verb": "identify"
+       }
+      ],
+      "name": "Identify the appendiceal artery"
+     },
+     {
+      "id": "step.3.3",
+      "microsteps": [
+       {
+        "id": "m3.5",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Divide the lateral peritoneal reflection and mobilize the cecum (retrocecal configuration)",
+        "required": false,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.cecum",
+         "dig.peritoneum"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.6",
+        "instruments": [
+         "inst.grasper-bowel"
+        ],
+        "label": "Deliver the retrocecal appendix from behind the cecum into view (retrocecal configuration)",
+        "required": false,
+        "sources": [
+         "T19",
+         "T16"
+        ],
+        "targets": [
+         "canal.appendix",
+         "region.retrocecal-space"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m3.7",
+        "instruments": [
+         "inst.grasper-bowel"
+        ],
+        "label": "Deliver the pelvic appendix up out of the pelvis into view (pelvic configuration)",
+        "required": false,
+        "sources": [
+         "T19",
+         "T16"
+        ],
+        "targets": [
+         "canal.appendix",
+         "region.pelvis"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Variant mobilization"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "The base gate",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "id": "m4.1",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Second look: confirm the identified structure is the appendix at its base - not cecal wall - before proceeding",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix",
+         "canal.cecum"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Second-look confirmation"
+     },
+     {
+      "id": "step.4.2",
+      "microsteps": [
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m4.2",
+        "instruments": [],
+        "label": "Pre-division pause: the identified base, the artery plan and the closure plan are verbalised and confirmed with the team before any clip is applied",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Pre-division pause"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "Mesoappendix and appendiceal artery control",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [
+         "inst.maryland-dissector",
+         "inst.hook-cautery"
+        ],
+        "label": "Create the window in the mesoappendix at the appendiceal base, skeletonising it",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "peritoneum.mesoappendix"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "demonstrates": "artcrit2",
+        "id": "m5.2",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Clip the appendiceal artery",
+        "note": "One of T14's equivalent mesoappendix techniques (clips, endoloops, electrocoagulation, advanced energy: no outcome differences between them); clips are the modelled default.",
+        "required": true,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "artery.appendicular-artery"
+        ],
+        "verb": "clip"
+       },
+       {
+        "id": "m5.3",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Divide the mesoappendix",
+        "required": true,
+        "requires_controlled": [
+         "artery.appendicular-artery"
+        ],
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "peritoneum.mesoappendix"
+        ],
+        "verb": "divide"
+       }
+      ],
+      "name": "Control the mesoappendix"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Base closure and division",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "anchors_decision": "dp3",
+        "id": "m6.1",
+        "instruments": [],
+        "label": "Re-state the base condition and select the closure method against it",
+        "required": true,
+        "sources": [
+         "T14",
+         "T18"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [
+         "inst.endoloop"
+        ],
+        "label": "Apply endoloop ligation at the appendiceal base (simple ligation; no stump inversion)",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "close"
+       },
+       {
+        "id": "m6.3",
+        "instruments": [
+         "inst.endostapler"
+        ],
+        "label": "Fire the endoscopic stapler across the base, taking a cuff of healthy cecum if the base is compromised",
+        "required": false,
+        "sources": [
+         "T14",
+         "T18"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "close"
+       },
+       {
+        "id": "m6.4",
+        "instruments": [
+         "inst.polymeric-clip-applier"
+        ],
+        "label": "Apply polymeric clips across the appendiceal base",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "clip"
+       }
+      ],
+      "name": "Close the base"
+     },
+     {
+      "id": "step.6.2",
+      "microsteps": [
+       {
+        "id": "m6.5",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Divide the appendix immediately above the closure",
+        "required": true,
+        "requires_controlled": [
+         "artery.appendicular-artery"
+        ],
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.6",
+        "instruments": [],
+        "label": "Inspect the stump: closure seated on viable tissue, no leak, haemostasis at the mesoappendix stump",
+        "note": "Stump closure is the critical step of the operation in the Cochrane review's framing: effective closure prevents faecal leak into the abdominal cavity (T17).",
+        "required": true,
+        "sources": [
+         "T17"
+        ],
+        "targets": [
+         "canal.appendix",
+         "peritoneum.mesoappendix"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Divide the appendix"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Specimen, contamination control and inspection",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.retrieval-bag"
+        ],
+        "label": "Place the appendix in a specimen retrieval bag",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [
+         "inst.suction-irrigator"
+        ],
+        "label": "Suction all free fluid and contamination from the right iliac fossa, the paracolic gutter and the pelvis - suction alone, no lavage",
+        "note": "Optional in an uncomplicated field (nothing to suction); required in the perforated configuration, where T14's suction-alone recommendation applies.",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "dig.peritoneal-cavity"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m7.3",
+        "instruments": [
+         "inst.suction-irrigator"
+        ],
+        "label": "Perform peritoneal lavage / irrigation",
+        "note": "Modelled so the rubric can score it: performing lavage records err.unnecessary-lavage (T14 recommends suction alone; T15 finds no outcome difference).",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "dig.peritoneal-cavity"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Specimen and contamination"
+     },
+     {
+      "id": "step.7.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp4",
+        "id": "m7.4",
+        "instruments": [],
+        "label": "Inspect the stump, the cecum and the mesoappendix for integrity and haemostasis",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix",
+         "canal.cecum"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.5",
+        "instruments": [],
+        "label": "Place an abdominal drain",
+        "note": "Modelled so the rubric can score it: placing a drain records err.unnecessary-drain (T14, T15) unless a cecal injury has been repaired, where drainage of the repair is the plan, not the error.",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [
+         "dig.peritoneal-cavity"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Final inspection"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Extraction, closure and Sign Out",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [
+         "inst.retrieval-bag"
+        ],
+        "label": "Extract the bagged specimen via the umbilical port",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [
+         "canal.appendix"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m8.2",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the fascia at the 10-12 mm port sites",
+        "required": true,
+        "sources": [
+         "T19"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m8.3",
+        "instruments": [],
+        "label": "Close the skin",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "perform"
+       }
+      ],
+      "name": "Extraction and closure"
+     },
+     {
+      "id": "step.8.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp5",
+        "id": "m8.4",
+        "instruments": [],
+        "label": "Prescribe the postoperative antibiotic course for complicated appendicitis: continue broad-spectrum cover and stop within 3-5 days given adequate source control",
+        "note": "Required in the complicated configuration; performing it in an uncomplicated case records err.unnecessary-antibiotics (T14 recommends against postoperative antibiotics there).",
+        "required": false,
+        "sources": [
+         "T14"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.5",
+        "instruments": [],
+        "label": "WHO Sign Out completed before the patient leaves the operating room",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Postoperative course and Sign Out"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET — design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The three taeniae coli are followed along the cecum to their convergence at the cecal pole - the constant landmark of the appendiceal base, because the appendix's longitudinal muscle coat is the continuation of the taeniae (T19).",
+      "id": "crit1",
+      "name": "Taeniae traced to their convergence",
+      "source": "T19"
+     },
+     {
+      "definition": "The appendix itself is seen arising from the convergence point below the ileocaecal junction - the structure about to be closed and divided is the appendix, not cecal wall (T19).",
+      "id": "crit2",
+      "name": "Appendix seen arising from the convergence",
+      "source": "T19"
+     },
+     {
+      "definition": "The condition of the appendiceal base - healthy, inflamed, or necrotic - is assessed and stated, because the stump-closure method is chosen against it at dp3 (T14 recommends ligation/clips with endostaplers available for complicated cases at the surgeon's judgement; T18 records the practice of choosing the stapler when the base's condition requires sealing healthy tissue).",
+      "id": "crit3",
+      "name": "Base condition assessed",
+      "source": "T14"
+     }
+    ],
+    "enforcement": "The runner evaluates this gate at every clip, close and divide action on a critical structure. A divide action taken while the gate is unachieved does not divide the intended anatomy: it resolves through the misidentification model (err.divide-unidentified) onto the cecum and fails the attempt. Dependent steps (phases 5 and 6) are the gate's unlock set.",
+    "id": "gate.base-id",
+    "kind": "safety_gate",
+    "name": "Appendiceal base identification",
+    "source": "T19",
+    "statement": "The appendiceal base must be positively identified AND demonstrated (all three criteria, via the microsteps that demonstrate them) before any clip is applied in the operative field, any closure is placed, or the mesoappendix or appendix is divided.",
+    "unlocks": [
+     "step.5.1",
+     "step.6.1",
+     "step.6.2"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "The appendiceal artery is identified within the mesoappendix before any division (T19 structures list; the artery's Body Model status is stated in the register).",
+      "id": "artcrit1",
+      "name": "Appendiceal artery identified",
+      "source": "T19"
+     },
+     {
+      "definition": "The artery is occluded (clips, ligature or energy per T14's mesoappendix-technique statement) before the mesoappendix or appendix is divided.",
+      "id": "artcrit2",
+      "name": "Artery occluded before division",
+      "source": "T14"
+     }
+    ],
+    "enforcement": "Enforced as a computation rule rather than as scored gate points in v1 - a stated design choice mirroring the cholecystectomy model's treatment of its second checkpoint: dividing the mesoappendix or the appendix with the artery uncontrolled computes haemorrhage from the artery (err.divide-unclipped-artery) at the verify-flagged theatre rate. The scored gate is gate.base-id.",
+    "id": "gate.artery-control",
+    "kind": "safety_gate",
+    "name": "Appendiceal artery control",
+    "source": "T19",
+    "statement": "The appendiceal artery must be identified in the mesoappendix and occluded before the mesoappendix or the appendix is divided.",
+    "unlocks": [
+     "step.6.2"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "Before clipping, closing or transecting the appendix, the operator pauses and the team confirms the base has been positively identified. Carried over from the theatre's gate discipline (design/05, T20) and the WHO checklist culture (T6); no appendicitis guideline consulted states this pause - it is the module's own safety culture, labelled as such.",
+      "id": "pause1",
+      "name": "Momentary pause and team confirmation before clipping/closing/dividing",
+      "source": "T20"
+     }
+    ],
+    "enforcement": "Scored checkpoint (microstep m4.2), not a second blocking gate in v1: the blocking gate is the base identification itself. Omitting the pause forfeits the safety point and is named in the debrief analysis.",
+    "id": "gate.pre-division-pause",
+    "kind": "checkpoint",
+    "name": "Pre-division pause",
+    "source": "T20",
+    "statement": "Before clipping, closing or dividing, the operator pauses and the team confirms the base identification, the artery plan and the closure plan.",
+    "unlocks": []
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (variant, severity and closure configurations change the required set by the rules in variants[] and decision point dp3). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1), escalation appropriate to the event (1), definitive plan consistent with the guideline (1).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine run, never from the trace script: time-below-threshold component (3/2/1/0 by the rubric bands in theatre parameters), nadir MAP component (>= threshold 2; 55 to threshold 1; below 55 0), blood-loss component (bands in theatre parameters: 2/1/0).",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "One point each: WHO Sign In, WHO Time Out, WHO Sign Out, prophylaxis inside the cited window, Step 0 planning microsteps complete.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "One point per base-identification criterion demonstrated before the first clip or divide action (3), plus one for the pre-division pause performed before the first clip (1). Gate violations are additionally recorded as errors and, for division, fail the attempt - the points never offset the fail rule. The artery-control gate is enforced as a computation rule (haemorrhage), not as points - stated in its enforcement field.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "notes": "No composite score is computed: design/05 defines components, not a weighting, and inventing weights would violate the precision law. GOALS (T8) and OSATS (T9) are carried as rubric data for observed-performance rating in the shells; a headless scripted runner has no observed performance to rate, so both are reported as NOT POPULATED in v1 debriefs rather than estimated. Scores are formative only (validity label below) until construct evidence exists.",
+   "rubrics": {
+    "goals": {
+     "domains": [
+      "depth perception",
+      "bimanual dexterity",
+      "efficiency",
+      "tissue handling",
+      "autonomy"
+     ],
+     "scale": "5 domains x 1-5, anchors at 1, 3, 5; total 25",
+     "source": "T8",
+     "status": "rubric data; not populated by the headless runner"
+    },
+    "osats": {
+     "items": [
+      "respect for tissue",
+      "time and motion",
+      "instrument handling",
+      "knowledge of instruments",
+      "use of assistants",
+      "flow of operation",
+      "knowledge of specific procedure"
+     ],
+     "scale": "7 items x 1-5; total 35",
+     "source": "T9",
+     "status": "rubric data; not populated by the headless runner"
+    }
+   },
+   "verdict_rule": "FAIL if any critical-fail error fired (err.divide-unidentified); otherwise PASS. Bailout choices at decision points never cause a fail and score positively (design/05)."
+  },
+  "structures": [
+   {
+    "id": "dig.cecum-appendix",
+    "kind": "record",
+    "note": "Compound digestive clinical record 'Cecum and appendix' (Milestone 11): the consulted large-intestine source carries the appendix with the cecum, and the record's own TA2 note records that the pair has no single TA2 term (caecum 2970 and appendix vermiformis 2976 exist separately). Its geometry records are canal.appendix and canal.cecum. The record describes the cecum's structure and the ileocaecal valve; it does not describe the appendix itself - that absence is carried in the record and inherited here, not papered over.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "canal.appendix",
+    "kind": "record",
+    "note": "The appendix's own inventory/geometry record (appendix vermiformis), linked from dig.cecum-appendix. This is the structure the procedure divides.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "canal.cecum",
+    "kind": "record",
+    "note": "The cecum's inventory/geometry record. The cecum is the structure injured in this procedure's misidentification resolution: what is divided as 'appendix' before the base is identified is the cecal wall at its pole.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "dig.ileum",
+    "kind": "record",
+    "note": "Digestive clinical record for the ileum; the terminal ileum is the second landmark of the base gate (the appendiceal base lies below the ileocaecal junction).",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "dig.ascending-colon",
+    "kind": "record",
+    "note": "Digestive clinical record for the ascending colon, the cecum's superior continuation; the taeniae traced in microstep m3.1 run along it to their convergence.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "peritoneum.mesoappendix",
+    "kind": "record",
+    "note": "Inventory record for the mesoappendix, the peritoneal fold suspending the appendix and carrying the appendiceal artery (T19, T20).",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "artery.appendicular-artery",
+    "kind": "record",
+    "note": "The appendiceal (appendicular) artery EXISTS as an inventory record in the Milestone 5 cardiovascular inventory - unlike the cholecystectomy's cystic artery, which has no Body Model concept at all. It has NO clinical record in data/cardiovascular/cardiovascular.json (verified this milestone): the register resolves it to the inventory, and its operative anatomy here (a terminal ileocolic branch running in the mesoappendix) is sourced from the consulted operative descriptions (T19).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "dig.peritoneum",
+    "kind": "record",
+    "note": "Digestive clinical record for the peritoneum; the lateral peritoneal reflection divided in the retrocecal mobilization (m3.5) resolves here.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "dig.peritoneal-cavity",
+    "kind": "record",
+    "note": "Digestive clinical record for the peritoneal cavity - the space suctioned in the contamination-control microsteps and inspected at exploration.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "landmark.taeniae-convergence",
+    "kind": "absence",
+    "note": "The convergence of the three taeniae coli at the cecal pole is an operative landmark, not a Body Model record: the inventory carries the taeniae as three separate records (colon.taenia-libera, colon.taenia-mesocolica, colon.taenia-omentalis in data/digestive/digestive-inventory.json) and no record denotes their meeting point. The landmark is defined by the consulted operative descriptions (T19): the appendix's longitudinal muscle is the continuation of the three taeniae, so the appendix is located by seeking their convergence.",
+    "resolves_to": null
+   },
+   {
+    "id": "region.retrocecal-space",
+    "kind": "absence",
+    "note": "The potential space behind the cecum in which a retrocecal appendix lies (T16: the most common appendiceal position). A surgical field defined by the position literature and the operative descriptions (T19), not an organ; no Body Model record denotes it.",
+    "resolves_to": null
+   },
+   {
+    "id": "region.pelvis",
+    "kind": "absence",
+    "note": "The pelvic cavity into which a pelvic appendix descends (T16: 9.3% in the 377-cadaver series, 31.01% in Wakeley's series as reviewed there). A surgical field, not a Body Model record; the pelvic variant's delivery microstep targets it.",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance response processes (GOALS/OSATS rating) are future shell work."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "Microsteps m3.5 (mobilize the cecum) and m3.6 (deliver the retrocecal appendix into view) become required in this configuration.",
+     "The taeniae convergence cannot be confirmed while the appendix lies behind an unmobilized cecum: criterion crit1 demonstrated before m3.5 is deferred by the runner and registers only once the cecum is mobilized. Dividing before the gate resolves onto the cecum exactly as in the standard configuration - the variant's injury consequence is that the base is hidden, not that it moves."
+    ],
+    "id": "variant.retrocecal",
+    "name": "Retrocecal appendix",
+    "prevalence": "43.5% in a 377-cadaver dissection series (T16); 65.28% retrocecal/retrocolic in Wakeley's 10,000-case analysis as reviewed in the same paper - the most common appendiceal position in both series.",
+    "required_additions": [
+     "m3.5",
+     "m3.6"
+    ],
+    "source": "T16",
+    "structure_additions": [],
+    "trace": "theatre/traces/trace-07-appy-variant-retrocecal.json"
+   },
+   {
+    "gate_modifications": [
+     "Microstep m3.7 (deliver the pelvic appendix up out of the pelvis into view) becomes required in this configuration."
+    ],
+    "id": "variant.pelvic",
+    "name": "Pelvic appendix",
+    "prevalence": "9.3% in the 377-cadaver series (T16); 31.01% in Wakeley's 10,000-case analysis as reviewed there - prevalence is population-dependent across the consulted series.",
+    "required_additions": [
+     "m3.7"
+    ],
+    "source": "T16",
+    "structure_additions": [],
+    "trace": "theatre/traces/trace-10-appy-variant-pelvic.json"
+   }
+  ]
+ }
+}

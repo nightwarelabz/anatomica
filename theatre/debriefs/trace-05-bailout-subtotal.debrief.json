@@ -41,7 +41,8 @@
     "seconds_below_threshold": 0.0,
     "blood_loss_ml": 0.0,
     "blood_loss_crosscheck_ml": 0.0,
-    "infused_ml": 0.0
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
   },
   "management": null,
   "errors": [],
@@ -58,9 +59,9 @@
       "choice": "subtotal-fenestrating"
     }
   ],
-  "engine_trace_hash": "0x7fd02cf494c8f9e6",
-  "engine_beats": 5041,
-  "engine_conservation_error_ml": 1.7280399333685637e-10,
+  "engine_trace_hash": "0x1474386876c9eed2",
+  "engine_beats": 5015,
+  "engine_conservation_error_ml": 9.949872037395835e-9,
   "debrief": {
     "description": [
       "[t=0s] m0.4: Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)",

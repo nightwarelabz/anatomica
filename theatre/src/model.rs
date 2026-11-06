@@ -116,6 +116,15 @@ pub struct Microstep {
     pub anchors_decision: Option<String>,
     #[serde(default)]
     pub sources: Vec<String>,
+    /// Structures that must already be clipped/controlled before
+    /// this microstep's action is safe (Milestone 28: the
+    /// mesoappendix/appendix division microsteps require the
+    /// appendiceal artery controlled; the runner computes the
+    /// haemorrhage if they are not). Empty for every cholecystectomy
+    /// microstep — that procedure's equivalent rules predate the
+    /// field and live in its divide handler.
+    #[serde(default)]
+    pub requires_controlled: Vec<String>,
 }
 
 #[derive(Debug, Clone, Deserialize)]
@@ -124,6 +133,13 @@ pub struct VariantDef {
     pub name: String,
     #[serde(default)]
     pub structure_additions: Vec<String>,
+    /// Microsteps that become required in this variant's
+    /// configuration (Milestone 28: data-driven replacement for the
+    /// double-cystic special case previously hardcoded in the
+    /// runner — the cholecystectomy variant carries the same three
+    /// ids it always added).
+    #[serde(default)]
+    pub required_additions: Vec<String>,
 }
 
 impl Procedure {
@@ -218,10 +234,17 @@ impl Procedure {
             }
         }
         for dp in &self.decision_points {
-            let has_bailout = dp
-                .choices
-                .iter()
-                .any(|c| c.id.contains("subtotal") || c.id.contains("convert") || c.id.contains("abort"));
+            // Bailout tokens: subtotal/conversion/abortion are the
+            // intraoperative bailouts; "return-theatre" is the
+            // escalation choice of a postoperative-management
+            // decision point (Milestone 28, appendicectomy dp5) —
+            // it is that decision point's bailout.
+            let has_bailout = dp.choices.iter().any(|c| {
+                c.id.contains("subtotal")
+                    || c.id.contains("convert")
+                    || c.id.contains("abort")
+                    || c.id.contains("return-theatre")
+            });
             if !has_bailout {
                 problems.push(format!(
                     "decision point {} offers no bailout choice (design/05 requires one)",
@@ -346,6 +369,11 @@ pub struct TraceFile {
 pub struct Trace {
     pub id: String,
     pub name: String,
+    /// Which procedure this attempt runs against (procedure id).
+    /// Absent in the Milestone 17 traces: defaults to the
+    /// cholecystectomy, the only procedure that existed then.
+    #[serde(default)]
+    pub procedure: Option<String>,
     #[serde(default)]
     pub case: CaseSpec,
     pub expect_verdict: String,
@@ -358,6 +386,18 @@ pub struct CaseSpec {
     pub variant: Option<String>,
     #[serde(default)]
     pub note: Option<String>,
+    /// Scenario severity as authored in the case (Milestone 28:
+    /// appendicectomy "uncomplicated" | "gangrenous" |
+    /// "perforated"). The required set and the postoperative
+    /// complication rules key on the scenario truth, not on the
+    /// grade the trace's decisions claim.
+    #[serde(default)]
+    pub severity: Option<String>,
+    /// Condition of the appendiceal base in the scenario
+    /// (Milestone 28: "healthy" | "inflamed" | "necrotic"); the
+    /// stump-closure rules score the chosen method against it.
+    #[serde(default)]
+    pub base_condition: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize)]
@@ -379,6 +419,8 @@ pub struct Action {
     pub complication: Option<String>,
     #[serde(default)]
     pub volume_ml: Option<f64>,
+    #[serde(default)]
+    pub product: Option<String>,
     #[serde(default)]
     pub rate_ml_s: Option<f64>,
     #[serde(default)]

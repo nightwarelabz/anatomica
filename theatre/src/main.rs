@@ -16,12 +16,37 @@ fn root() -> PathBuf {
     PathBuf::from(env!("CARGO_MANIFEST_DIR"))
 }
 
-fn load_all() -> Result<(Procedure, TheatreParams, InstrumentsFile), String> {
+fn load_all() -> Result<(Vec<Procedure>, TheatreParams, InstrumentsFile), String> {
     let r = root();
-    let proc = Procedure::load(&r.join("procedures/proc.lap-cholecystectomy.json"))?;
+    // Every procedure file in procedures/ is loaded (Milestone 28:
+    // the theatre now carries two procedures; traces name theirs).
+    let dir = r.join("procedures");
+    let mut paths: Vec<PathBuf> = std::fs::read_dir(&dir)
+        .map_err(|e| format!("cannot list {}: {e}", dir.display()))?
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.extension().map(|x| x == "json").unwrap_or(false))
+        .collect();
+    paths.sort();
+    let mut procs = Vec::new();
+    for p in &paths {
+        procs.push(Procedure::load(p)?);
+    }
+    if procs.is_empty() {
+        return Err("no procedure files found".to_string());
+    }
     let tparams = TheatreParams::load(&r.join("parameters.json"))?;
     let instruments = InstrumentsFile::load(&r.join("instruments.json"))?;
-    Ok((proc, tparams, instruments))
+    Ok((procs, tparams, instruments))
+}
+
+/// The procedure a trace runs against: its named procedure, or the
+/// cholecystectomy for the Milestone 17 traces that predate the field.
+fn proc_for<'a>(procs: &'a [Procedure], trace: &Trace) -> Result<&'a Procedure, String> {
+    let want = trace.procedure.as_deref().unwrap_or("proc.chole.lap");
+    procs
+        .iter()
+        .find(|p| p.id == want)
+        .ok_or_else(|| format!("trace {} names unknown procedure {want}", trace.id))
 }
 
 fn print_debrief(d: &Debrief) {
@@ -133,13 +158,14 @@ fn print_debrief(d: &Debrief) {
 }
 
 fn run_one(
-    proc: &Procedure,
+    procs: &[Procedure],
     tparams: &TheatreParams,
     phys: &PhysParams,
     trace_path: &Path,
     out: Option<&Path>,
 ) -> Result<Debrief, String> {
     let trace = Trace::load(trace_path)?;
+    let proc = proc_for(procs, &trace)?;
     let d = run_attempt(proc, tparams, phys, &trace)?;
     print_debrief(&d);
     let expect_ok = d.verdict.to_lowercase() == trace.expect_verdict.to_lowercase();
@@ -163,37 +189,44 @@ fn main() {
     let args: Vec<String> = std::env::args().collect();
     let cmd = args.get(1).map(|s| s.as_str()).unwrap_or("");
     let result: Result<(), String> = (|| {
-        let (proc, tparams, instruments) = load_all()?;
+        let (procs, tparams, instruments) = load_all()?;
         match cmd {
             "validate" => {
-                let problems = proc.validate(&instruments.ids());
-                let (ph, st, mi, req) = proc.census();
-                println!(
-                    "procedure {} — {ph} phases, {st} steps, {mi} microsteps ({req} required in the standard configuration)",
-                    proc.id
-                );
-                println!(
-                    "structures {}, gates {}, decision points {}, errors {}, variants {}",
-                    proc.structures.len(),
-                    proc.safety_gates.len(),
-                    proc.decision_points.len(),
-                    proc.errors.len(),
-                    proc.variants.len()
-                );
+                let mut all_problems = 0;
+                for proc in &procs {
+                    let problems = proc.validate(&instruments.ids());
+                    let (ph, st, mi, req) = proc.census();
+                    println!(
+                        "procedure {} — {ph} phases, {st} steps, {mi} microsteps ({req} required in the standard configuration)",
+                        proc.id
+                    );
+                    println!(
+                        "structures {}, gates {}, decision points {}, errors {}, variants {}",
+                        proc.structures.len(),
+                        proc.safety_gates.len(),
+                        proc.decision_points.len(),
+                        proc.errors.len(),
+                        proc.variants.len()
+                    );
+                    if problems.is_empty() {
+                        println!("validation: PASS (no internal consistency problems)");
+                    } else {
+                        for p in &problems {
+                            println!("validation problem: {p}");
+                        }
+                        all_problems += problems.len();
+                    }
+                }
                 println!(
                     "theatre parameters: {} ({} verify-flagged)",
                     tparams.file.parameters.len(),
                     tparams.file.parameters.iter().filter(|p| p.status == "verify").count()
                 );
                 println!("instruments: {}", instruments.instruments.len());
-                if problems.is_empty() {
-                    println!("validation: PASS (no internal consistency problems)");
+                if all_problems == 0 {
                     Ok(())
                 } else {
-                    for p in &problems {
-                        println!("validation problem: {p}");
-                    }
-                    Err(format!("validation: FAIL ({} problems)", problems.len()))
+                    Err(format!("validation: FAIL ({all_problems} problems)"))
                 }
             }
             "run" => {
@@ -204,7 +237,7 @@ fn main() {
                     None
                 };
                 let phys = PhysParams::load()?;
-                run_one(&proc, &tparams, &phys, Path::new(trace_path), out.as_deref())?;
+                run_one(&procs, &tparams, &phys, Path::new(trace_path), out.as_deref())?;
                 Ok(())
             }
             "run-all" => {
@@ -230,7 +263,7 @@ fn main() {
                         "{}.debrief.json",
                         p.file_stem().unwrap().to_string_lossy()
                     ));
-                    if let Err(e) = run_one(&proc, &tparams, &phys, p, Some(&out)) {
+                    if let Err(e) = run_one(&procs, &tparams, &phys, p, Some(&out)) {
                         println!("RUN PROBLEM: {e}");
                         failures += 1;
                     }

@@ -1,0 +1,354 @@
+{
+  "trace_id": "trace-06-appy-clean",
+  "trace_name": "Appendicectomy: clean expert attempt, uncomplicated, endoloop",
+  "procedure_id": "proc.appy.lap",
+  "case_variant": null,
+  "verdict": "PASS",
+  "failed_at_s": null,
+  "fail_reason": null,
+  "validity_label": "formative-only",
+  "duration_s": 3660.0,
+  "checklist": {
+    "completed": 37,
+    "required": 37,
+    "pct": 100.0,
+    "missing": []
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 3,
+    "pause_before_first_clip": true,
+    "points": 4,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 5,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": true,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.9113712137776,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
+  },
+  "management": null,
+  "errors": [],
+  "complications": [],
+  "decisions": [
+    {
+      "t_s": 2220.0,
+      "id": "dp1",
+      "choice": "grade-uncomplicated"
+    },
+    {
+      "t_s": 3000.0,
+      "id": "dp3",
+      "choice": "endoloop"
+    }
+  ],
+  "engine_trace_hash": "0x7ea0196502b7e4e8",
+  "engine_beats": 3996,
+  "engine_conservation_error_ml": 2.3737811716273427e-9,
+  "debrief": {
+    "description": [
+      "[t=0s] m0.4: Administer the single preoperative broad-spectrum antibiotic dose within the prophylaxis window before incision",
+      "[t=60s] m0.1: Review imaging and laboratory results; confirm the diagnosis of acute appendicitis and the indication for appendicectomy",
+      "[t=120s] m0.2: Confirm consent and operative plan, including anticipation of appendiceal position variants and the possibility of conversion",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan for the case",
+      "[t=240s] m0.5: Apply venous thromboembolism prophylaxis per protocol",
+      "[t=300s] m0.6: Position the patient supine with arms tucked; displays positioned for access to the right iliac fossa",
+      "[t=360s] m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source, endoloop/stapler availability",
+      "[t=420s] m0.8: WHO Sign In completed before induction of anaesthesia",
+      "[t=1500s] m0.9: WHO Time Out completed before skin incision",
+      "[t=1800s] m1.1: Infraumbilical skin incision",
+      "[t=1860s] m1.2: Establish pneumoperitoneum and insert the 10-12 mm umbilical camera port by open cutdown; insufflation pressure at or below 15 mmHg",
+      "[t=1920s] m1.3: Place the 5 mm suprapubic midline port under direct vision, taking care to avoid the bladder",
+      "[t=1980s] m1.4: Place the 5 mm left-lower-quadrant port under direct vision",
+      "[t=2040s] m2.1: Inspect the abdomen; confirm appendicitis as the etiology and exclude other pathology",
+      "[t=2100s] m2.2: Identify the cecum by its taeniae and paler colour against the small bowel; identify the terminal ileum",
+      "[t=2160s] m2.3: Grade the appendicitis intra-operatively (WSES grading) and state the severity the operation will be conducted for",
+      "[t=2220s] dp1 -> grade-uncomplicated",
+      "[t=2280s] m2.4: Note any free fluid or pus and aspirate it for inspection; record its character (serous, purulent, faeculent)",
+      "[t=2340s] m2.5: Position the patient Trendelenburg with the right side up; retract small bowel out of the right iliac fossa",
+      "[t=2400s] m3.1: Follow the taeniae coli along the cecum to their convergence at the cecal pole",
+      "[t=2460s] m3.2: Demonstrate the appendix arising from the convergence, below the ileocaecal junction",
+      "[t=2520s] m3.3: Assess and state the condition of the appendiceal base: healthy, inflamed or necrotic",
+      "[t=2520s] Appendiceal base identification achieved: all three criteria demonstrated",
+      "[t=2580s] m3.4: Identify the appendiceal artery within the mesoappendix",
+      "[t=2580s] Appendiceal base identification achieved: all three criteria demonstrated",
+      "[t=2640s] m4.1: Second look: confirm the identified structure is the appendix at its base - not cecal wall - before proceeding",
+      "[t=2700s] m4.2: Pre-division pause: the identified base, the artery plan and the closure plan are verbalised and confirmed with the team before any clip is applied",
+      "[t=2760s] m5.1: Create the window in the mesoappendix at the appendiceal base, skeletonising it",
+      "[t=2820s] m5.2: Clip the appendiceal artery",
+      "[t=2820s] Appendiceal base identification achieved: all three criteria demonstrated",
+      "[t=2880s] m5.3: Divide the mesoappendix",
+      "[t=2940s] m6.1: Re-state the base condition and select the closure method against it",
+      "[t=3000s] dp3 -> endoloop",
+      "[t=3060s] m6.2: Apply endoloop ligation at the appendiceal base (simple ligation; no stump inversion)",
+      "[t=3120s] m6.5: Divide the appendix immediately above the closure",
+      "[t=3180s] m6.6: Inspect the stump: closure seated on viable tissue, no leak, haemostasis at the mesoappendix stump",
+      "[t=3240s] m7.1: Place the appendix in a specimen retrieval bag",
+      "[t=3300s] m7.4: Inspect the stump, the cecum and the mesoappendix for integrity and haemostasis",
+      "[t=3360s] m8.1: Extract the bagged specimen via the umbilical port",
+      "[t=3420s] m8.2: Close the fascia at the 10-12 mm port sites"
+    ],
+    "plus": [
+      "Appendiceal base positively identified and demonstrated before any clip or division — taeniae traced to their convergence, appendix seen arising from it, base condition stated (T19, T14).",
+      "Pre-division pause performed and the identification confirmed with the team before clipping (module safety culture, T20).",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [],
+    "directive": [
+      "Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it."
+    ],
+    "summary": [
+      "Verdict: PASS (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 100.0% (37/37), safety gate 4/4, process 5/5, physiology 7/7, management n/a (no complication)."
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 0.0,
+      "kind": "step",
+      "text": "m0.4: Administer the single preoperative broad-spectrum antibiotic dose within the prophylaxis window before incision"
+    },
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review imaging and laboratory results; confirm the diagnosis of acute appendicitis and the indication for appendicectomy"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and operative plan, including anticipation of appendiceal position variants and the possibility of conversion"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan for the case"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.5: Apply venous thromboembolism prophylaxis per protocol"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.6: Position the patient supine with arms tucked; displays positioned for access to the right iliac fossa"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source, endoloop/stapler availability"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.8: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed before skin incision"
+    },
+    {
+      "t_s": 1800.0,
+      "kind": "step",
+      "text": "m1.1: Infraumbilical skin incision"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "step",
+      "text": "m1.2: Establish pneumoperitoneum and insert the 10-12 mm umbilical camera port by open cutdown; insufflation pressure at or below 15 mmHg"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "step",
+      "text": "m1.3: Place the 5 mm suprapubic midline port under direct vision, taking care to avoid the bladder"
+    },
+    {
+      "t_s": 1980.0,
+      "kind": "step",
+      "text": "m1.4: Place the 5 mm left-lower-quadrant port under direct vision"
+    },
+    {
+      "t_s": 2040.0,
+      "kind": "step",
+      "text": "m2.1: Inspect the abdomen; confirm appendicitis as the etiology and exclude other pathology"
+    },
+    {
+      "t_s": 2100.0,
+      "kind": "step",
+      "text": "m2.2: Identify the cecum by its taeniae and paler colour against the small bowel; identify the terminal ileum"
+    },
+    {
+      "t_s": 2160.0,
+      "kind": "step",
+      "text": "m2.3: Grade the appendicitis intra-operatively (WSES grading) and state the severity the operation will be conducted for"
+    },
+    {
+      "t_s": 2220.0,
+      "kind": "decision",
+      "text": "dp1 -> grade-uncomplicated"
+    },
+    {
+      "t_s": 2280.0,
+      "kind": "step",
+      "text": "m2.4: Note any free fluid or pus and aspirate it for inspection; record its character (serous, purulent, faeculent)"
+    },
+    {
+      "t_s": 2340.0,
+      "kind": "step",
+      "text": "m2.5: Position the patient Trendelenburg with the right side up; retract small bowel out of the right iliac fossa"
+    },
+    {
+      "t_s": 2400.0,
+      "kind": "step",
+      "text": "m3.1: Follow the taeniae coli along the cecum to their convergence at the cecal pole"
+    },
+    {
+      "t_s": 2460.0,
+      "kind": "step",
+      "text": "m3.2: Demonstrate the appendix arising from the convergence, below the ileocaecal junction"
+    },
+    {
+      "t_s": 2520.0,
+      "kind": "step",
+      "text": "m3.3: Assess and state the condition of the appendiceal base: healthy, inflamed or necrotic"
+    },
+    {
+      "t_s": 2520.0,
+      "kind": "gate",
+      "text": "Appendiceal base identification achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 2580.0,
+      "kind": "step",
+      "text": "m3.4: Identify the appendiceal artery within the mesoappendix"
+    },
+    {
+      "t_s": 2580.0,
+      "kind": "gate",
+      "text": "Appendiceal base identification achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 2640.0,
+      "kind": "step",
+      "text": "m4.1: Second look: confirm the identified structure is the appendix at its base - not cecal wall - before proceeding"
+    },
+    {
+      "t_s": 2700.0,
+      "kind": "step",
+      "text": "m4.2: Pre-division pause: the identified base, the artery plan and the closure plan are verbalised and confirmed with the team before any clip is applied"
+    },
+    {
+      "t_s": 2760.0,
+      "kind": "step",
+      "text": "m5.1: Create the window in the mesoappendix at the appendiceal base, skeletonising it"
+    },
+    {
+      "t_s": 2820.0,
+      "kind": "step",
+      "text": "m5.2: Clip the appendiceal artery"
+    },
+    {
+      "t_s": 2820.0,
+      "kind": "gate",
+      "text": "Appendiceal base identification achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 2820.0,
+      "kind": "clip",
+      "text": "m5.2 clipped with the base positively identified"
+    },
+    {
+      "t_s": 2880.0,
+      "kind": "step",
+      "text": "m5.3: Divide the mesoappendix"
+    },
+    {
+      "t_s": 2940.0,
+      "kind": "step",
+      "text": "m6.1: Re-state the base condition and select the closure method against it"
+    },
+    {
+      "t_s": 3000.0,
+      "kind": "decision",
+      "text": "dp3 -> endoloop"
+    },
+    {
+      "t_s": 3000.0,
+      "kind": "config",
+      "text": "closure method endoloop becomes required for this attempt"
+    },
+    {
+      "t_s": 3060.0,
+      "kind": "step",
+      "text": "m6.2: Apply endoloop ligation at the appendiceal base (simple ligation; no stump inversion)"
+    },
+    {
+      "t_s": 3060.0,
+      "kind": "close",
+      "text": "appendiceal base closed (endoloop)"
+    },
+    {
+      "t_s": 3120.0,
+      "kind": "step",
+      "text": "m6.5: Divide the appendix immediately above the closure"
+    },
+    {
+      "t_s": 3120.0,
+      "kind": "divide",
+      "text": "m6.5 divided with the base positively identified"
+    },
+    {
+      "t_s": 3180.0,
+      "kind": "step",
+      "text": "m6.6: Inspect the stump: closure seated on viable tissue, no leak, haemostasis at the mesoappendix stump"
+    },
+    {
+      "t_s": 3240.0,
+      "kind": "step",
+      "text": "m7.1: Place the appendix in a specimen retrieval bag"
+    },
+    {
+      "t_s": 3300.0,
+      "kind": "step",
+      "text": "m7.4: Inspect the stump, the cecum and the mesoappendix for integrity and haemostasis"
+    },
+    {
+      "t_s": 3360.0,
+      "kind": "step",
+      "text": "m8.1: Extract the bagged specimen via the umbilical port"
+    },
+    {
+      "t_s": 3420.0,
+      "kind": "step",
+      "text": "m8.2: Close the fascia at the 10-12 mm port sites"
+    },
+    {
+      "t_s": 3480.0,
+      "kind": "step",
+      "text": "m8.3: Close the skin"
+    },
+    {
+      "t_s": 3540.0,
+      "kind": "step",
+      "text": "m8.5: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}

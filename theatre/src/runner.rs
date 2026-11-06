@@ -110,6 +110,11 @@ pub struct PhysiologyScore {
     pub blood_loss_ml: f64,
     pub blood_loss_crosscheck_ml: f64,
     pub infused_ml: f64,
+    /// Blood-product volume given (mL, Milestone 26 physiology):
+    /// transfuse actions naming a known product composition, routed
+    /// through the engine's product channel and reported separately
+    /// from crystalloid (infused_ml).
+    pub transfused_ml: f64,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -182,6 +187,20 @@ struct Attempt<'a> {
     /// blood loss — the same accounting the infused volume already
     /// gets. Zero with the v0 engine semantics.
     refill_at_start: f64,
+    /// Engine cumulative urine output and fluid intake at attempt
+    /// start (Milestone 25 physiology): the renal/intake boundary
+    /// fluxes run throughout the attempt, so the loss identity must
+    /// carry them too — intake is an inflow (added back like
+    /// refill), urine an outflow (subtracted), or a quiet attempt
+    /// would report the patient's net boundary flux as blood loss.
+    urine_at_start: f64,
+    intake_at_start: f64,
+    /// Engine cumulative product volume at attempt start (Milestone
+    /// 26 physiology): blood products given during the attempt are
+    /// an inflow like infused crystalloid, so the loss identity
+    /// adds them back through the engine's own product integral —
+    /// the Milestone 25 pattern, one channel further.
+    product_at_start: f64,
     // procedure state
     performed: HashMap<String, f64>,
     criteria: HashMap<String, f64>,
@@ -190,6 +209,18 @@ struct Attempt<'a> {
     divided: HashSet<String>,
     misclip_cbd: Option<f64>,
     required: HashSet<String>,
+    /// Milestone 28 (appendicectomy): scenario severity and base
+    /// condition from the trace's case spec — the stump-closure and
+    /// contamination rules key on them.
+    severity: Option<String>,
+    base_condition: Option<String>,
+    /// Appendicectomy: the closure method applied at the base
+    /// ("endoloop" | "stapler" | "polymeric-clips"), once applied.
+    closure_method: Option<String>,
+    /// Appendicectomy, retrocecal configuration: gate criteria
+    /// demonstrated before the cecum was mobilized, held until the
+    /// mobilization microstep registers them.
+    deferred_criteria: Vec<String>,
     // outcomes
     errors: Vec<ErrorEvent>,
     complications: Vec<Complication>,
@@ -211,6 +242,11 @@ struct Attempt<'a> {
     flow_sources: Vec<(String, f64)>, // (label, rate) — engine has ONE ext-flow channel; we net
     pending_infusion_stops: Vec<(u64, String)>,
     infused_ml: f64,
+    /// Blood-product volume given during the attempt (mL, Milestone
+    /// 26): the nominal volumes of transfuse actions routed through
+    /// the engine's product channel (the loss identity itself reads
+    /// the engine's product integral, not this tally).
+    transfused_ml: f64,
     log: Vec<LogLine>,
 }
 
@@ -231,17 +267,47 @@ impl<'a> Attempt<'a> {
         }
     }
 
-    fn cvs_at(&self, t_s: f64) -> bool {
-        ["crit1", "crit2", "crit3"]
+    /// The scored safety gate is the procedure's first safety_gate
+    /// (the Critical View of Safety; the appendiceal base
+    /// identification). Its criteria ids come from the procedure
+    /// file, not from a hardcoded list.
+    fn gate_criteria(&self) -> Vec<String> {
+        self.proc
+            .safety_gates
             .iter()
-            .all(|c| self.criteria.get(*c).map(|t| *t <= t_s).unwrap_or(false))
+            .find(|g| g.kind == "safety_gate")
+            .map(|g| g.criteria.iter().map(|c| c.id.clone()).collect())
+            .unwrap_or_default()
+    }
+
+    fn gate_at(&self, t_s: f64) -> bool {
+        let crit = self.gate_criteria();
+        !crit.is_empty()
+            && crit
+                .iter()
+                .all(|c| self.criteria.get(c).map(|t| *t <= t_s).unwrap_or(false))
     }
 
     fn crit_count_at(&self, t_s: f64) -> usize {
-        ["crit1", "crit2", "crit3"]
+        self.gate_criteria()
             .iter()
-            .filter(|c| self.criteria.get(**c).map(|t| *t <= t_s).unwrap_or(false))
+            .filter(|c| self.criteria.get(*c).map(|t| *t <= t_s).unwrap_or(false))
             .count()
+    }
+
+    fn log_gate_achieved(&mut self, t_s: f64) {
+        if let Some(g) = self.proc.safety_gates.iter().find(|g| g.kind == "safety_gate") {
+            let n = g.criteria.len();
+            let nword = if n == 3 { "three".to_string() } else { n.to_string() };
+            let name = g.name.clone();
+            self.log(t_s, "gate", format!("{name} achieved: all {nword} criteria demonstrated"));
+        }
+    }
+
+    /// Appendicectomy: the scenario's severity is a complicated
+    /// grade (gangrenous or perforated).
+    fn complicated(&self) -> bool {
+        matches!(self.severity.as_deref(), Some("gangrenous") | Some("perforated"))
     }
 
     // -- flow bookkeeping ---------------------------------------------------
@@ -366,7 +432,7 @@ impl<'a> Attempt<'a> {
                     self.prophylaxis_t = Some(t_s);
                 }
             }
-            Some("preclip-pause") => {
+            Some("preclip-pause") | Some("pre-division-pause") => {
                 if self.pause_t.is_none() {
                     self.pause_t = Some(t_s);
                 }
@@ -377,9 +443,35 @@ impl<'a> Attempt<'a> {
             _ => {}
         }
         if let Some(c) = &m.demonstrates {
-            self.criteria.insert(c.clone(), t_s);
-            if self.cvs_at(t_s) {
-                self.log(t_s, "gate", "Critical View of Safety achieved: all three criteria demonstrated".into());
+            // Milestone 28 (retrocecal appendicectomy): the taeniae
+            // convergence cannot be confirmed while the appendix
+            // lies behind an unmobilized cecum, so crit1 demonstrated
+            // before the cecum is mobilized (m3.5) is deferred and
+            // registers only once mobilization happens.
+            let defer = self.proc.id == "proc.appy.lap"
+                && c == "crit1"
+                && self.variant_active("variant.retrocecal")
+                && !self.performed.contains_key("m3.5");
+            if defer {
+                if !self.deferred_criteria.iter().any(|x| x == c) {
+                    self.deferred_criteria.push(c.clone());
+                }
+                self.log(t_s, "note", "criterion deferred: the taeniae convergence cannot be confirmed while the appendix lies behind the unmobilized cecum".into());
+            } else {
+                self.criteria.insert(c.clone(), t_s);
+                if self.gate_at(t_s) {
+                    self.log_gate_achieved(t_s);
+                }
+            }
+        }
+        if self.proc.id == "proc.appy.lap" && id == "m3.5" {
+            let deferred = std::mem::take(&mut self.deferred_criteria);
+            for c in deferred {
+                self.criteria.insert(c, t_s);
+                self.log(t_s, "note", "deferred base-identification criterion registers now that the cecum is mobilized".into());
+            }
+            if !self.criteria.is_empty() && self.gate_at(t_s) {
+                self.log_gate_achieved(t_s);
             }
         }
         if id == "m7.6" || id == "m6b.6" {
@@ -387,14 +479,43 @@ impl<'a> Attempt<'a> {
         }
 
         let target = m.targets.first().cloned().unwrap_or_default();
+        // The critical-structure set is per procedure: the
+        // cholecystectomy's lives in CRITICAL (Milestone 17); the
+        // appendicectomy's is the appendix and its artery.
+        let critical: &[&str] = if self.proc.id == "proc.appy.lap" {
+            &["canal.appendix", "artery.appendicular-artery"]
+        } else {
+            &CRITICAL
+        };
+        let appy = self.proc.id == "proc.appy.lap";
         match m.verb.as_str() {
-            "clip" if CRITICAL.contains(&target.as_str()) => {
-                self.on_clip(t_s, &m, &target);
+            "clip" if critical.contains(&target.as_str()) => {
+                if appy {
+                    self.on_clip_appy(t_s, &m, &target);
+                } else {
+                    self.on_clip(t_s, &m, &target);
+                }
             }
-            "divide" if CRITICAL.contains(&target.as_str()) => {
-                self.on_divide(t_s, &m, &target);
+            "divide" if critical.contains(&target.as_str()) => {
+                if appy {
+                    self.on_divide_appy(t_s, &m, &target);
+                } else {
+                    self.on_divide(t_s, &m, &target);
+                }
+            }
+            "close" if appy && target == "canal.appendix" => {
+                let method = match id {
+                    "m6.2" => "endoloop",
+                    "m6.3" => "stapler",
+                    _ => "closure",
+                };
+                self.closure_applied(t_s, method);
             }
             _ => {}
+        }
+
+        if appy {
+            self.appy_microstep_rules(t_s, &m);
         }
 
         // Liver-bed dissection with an uncontrolled second arterial
@@ -429,7 +550,7 @@ impl<'a> Attempt<'a> {
         if self.first_clipdiv_t.is_none() {
             self.first_clipdiv_t = Some(t_s);
         }
-        if !self.cvs_at(t_s) {
+        if !self.gate_at(t_s) {
             self.error(
                 t_s,
                 "err.clip-unidentified",
@@ -496,7 +617,7 @@ impl<'a> Attempt<'a> {
             return;
         }
 
-        if !self.cvs_at(t_s) {
+        if !self.gate_at(t_s) {
             // The master rule: dividing an unidentified critical
             // structure fails the attempt, whatever else is true.
             self.error(
@@ -587,6 +708,205 @@ impl<'a> Attempt<'a> {
         self.divided.insert(target.to_string());
         self.log(t_s, "divide", format!("{} divided with the Critical View demonstrated", m.id));
     }
+
+    // -- appendicectomy rules (Milestone 28) ------------------------------
+    //
+    // The parallel of the cholecystectomy handlers above, under the
+    // same master rule with the anatomy of this operation: what is
+    // divided as "appendix" before the base gate is the cecum.
+
+    /// A stump closure was applied; score the method against the
+    /// scenario's base condition (dp3's rule, from T14/T18).
+    fn closure_applied(&mut self, t_s: f64, method: &str) {
+        self.closure_method = Some(method.to_string());
+        self.log(t_s, "close", format!("appendiceal base closed ({method})"));
+        if method != "stapler" && self.base_condition.as_deref() == Some("necrotic") {
+            self.error(
+                t_s,
+                "err.closure-mismatch",
+                format!("{method} closure applied to a necrotic appendiceal base: the closure cannot seal non-viable tissue (the stapler, fired across healthy tissue, is the scored choice here - T18)"),
+            );
+            self.complications.push(Complication {
+                kind: "stump-leak".to_string(),
+                t_onset_s: t_s,
+                detail: "stump leak: the closure was placed on a necrotic base and cannot hold; the leak declares as a postoperative consequence (faecal contamination, peritonitis) rather than an intraoperative event - structural outcome; the physiology engine has no peritoneal compartment, so no volume effect is computed".into(),
+                resolved_structure: Some("canal.appendix".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "stump leak computed from the closure/base-condition mismatch (postoperative consequence)".into());
+        }
+    }
+
+    fn on_clip_appy(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        if !self.gate_at(t_s) {
+            self.error(
+                t_s,
+                "err.clip-unidentified",
+                format!(
+                    "clip applied to presumed {} before the appendiceal base was positively identified ({} of 3 criteria met)",
+                    target,
+                    self.crit_count_at(t_s)
+                ),
+            );
+            if target == "canal.appendix" && self.misclip_cbd.is_none() {
+                self.misclip_cbd = Some(t_s);
+                self.complications.push(Complication {
+                    kind: "clip-on-cecum".to_string(),
+                    t_onset_s: t_s,
+                    detail: "clip placed across the cecal wall at the unidentified appendiceal base".into(),
+                    resolved_structure: Some("canal.cecum".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "the clipped structure is the cecal wall at the unidentified base".into());
+            }
+        } else {
+            self.clipped.insert(target.to_string());
+            self.log(t_s, "clip", format!("{} clipped with the base positively identified", m.id));
+            if m.id == "m6.4" {
+                // Polymeric clips are a closure method, not just a clip.
+                self.closure_applied(t_s, "polymeric-clips");
+            }
+        }
+    }
+
+    fn on_divide_appy(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        if !self.gate_at(t_s) {
+            // The master rule, with this operation's anatomy.
+            self.error(
+                t_s,
+                "err.divide-unidentified",
+                format!(
+                    "{} divided before the appendiceal base was positively identified ({} of 3 criteria met)",
+                    target,
+                    self.crit_count_at(t_s)
+                ),
+            );
+            if target == "canal.appendix" {
+                self.complications.push(Complication {
+                    kind: "cecal-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the structure divided as the appendix is the cecum at its pole - the base was never identified, so the taeniae convergence was never demonstrated; full-thickness cecal injury with faecal contamination".into(),
+                    resolved_structure: Some("canal.cecum".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "cecal injury: the cecal wall was divided at the unidentified base".into());
+            } else {
+                let rate = self.params.get("bleed_rate_appendiceal_artery_ml_s");
+                self.start_bleed(
+                    t_s,
+                    target,
+                    rate,
+                    format!("unidentified vessel in the mesoappendix divided (rate {rate} mL/s - verify-flagged engineering parameter)"),
+                );
+            }
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                format!("an unidentified critical structure ({target}) was divided before the appendiceal base was positively identified (err.divide-unidentified)"),
+            );
+            return;
+        }
+
+        // Base identified: division resolves as intended, with the
+        // closure-state consequence computed.
+        if target == "canal.appendix" && self.closure_method.is_none() {
+            self.error(
+                t_s,
+                "err.divide-unclosed-base",
+                "appendix divided with no stump closure (endoloop, clips or stapler) applied".into(),
+            );
+            self.complications.push(Complication {
+                kind: "stump-leak".to_string(),
+                t_onset_s: t_s,
+                detail: "stump leak: the appendix was divided with its stump left open; the leak declares as a postoperative consequence (faecal contamination, peritonitis) - structural outcome; the physiology engine has no peritoneal compartment, so no volume effect is computed".into(),
+                resolved_structure: Some("canal.appendix".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "stump leak computed from division without closure (postoperative consequence)".into());
+        }
+        self.divided.insert(target.to_string());
+        self.log(t_s, "divide", format!("{} divided with the base positively identified", m.id));
+    }
+
+    /// Appendicectomy microstep rules that are not clip/divide
+    /// resolution: the requires_controlled haemorrhage and the
+    /// guideline-discordance errors (lavage, drain, antibiotics).
+    fn appy_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        // Dividing a structure whose feeding artery is uncontrolled
+        // computes haemorrhage from that artery — once, however many
+        // division microsteps follow.
+        if m.verb == "divide" {
+            for s in &m.requires_controlled {
+                let already = self.bleeds.iter().any(|b| &b.source == s);
+                // A division that resolved onto the cecum (base gate
+                // unachieved) is the cecal injury, not also an
+                // arterial bleed.
+                let resolved_elsewhere = m.targets.first().map(|t| t == "canal.appendix").unwrap_or(false)
+                    && !self.gate_at(t_s);
+                if !self.clipped.contains(s) && !already && !resolved_elsewhere {
+                    self.error(
+                        t_s,
+                        "err.divide-unclipped-artery",
+                        format!("{} divided while the appendiceal artery was uncontrolled (gate.artery-control)", m.id),
+                    );
+                    let rate = self.params.get("bleed_rate_appendiceal_artery_ml_s");
+                    self.start_bleed(
+                        t_s,
+                        s,
+                        rate,
+                        format!("haemorrhage from the uncontrolled appendiceal artery (rate {rate} mL/s - verify-flagged engineering parameter)"),
+                    );
+                }
+            }
+        }
+        match m.id.as_str() {
+            "m7.3" => {
+                self.error(
+                    t_s,
+                    "err.unnecessary-lavage",
+                    "peritoneal lavage performed; the guideline recommendation in complicated appendicitis is suction alone (T14), and the meta-analysis finds no outcome advantage for irrigation (T15)".into(),
+                );
+            }
+            "m7.5" => {
+                self.drain_placed = true;
+                if !self.complications.iter().any(|c| c.kind == "cecal-injury") {
+                    self.error(
+                        t_s,
+                        "err.unnecessary-drain",
+                        "abdominal drain placed after appendicectomy; WSES recommends against drains in adults - no benefit in preventing intra-abdominal abscess, longer hospitalisation (T14)".into(),
+                    );
+                }
+            }
+            "m8.4" => {
+                if !self.complicated() {
+                    self.error(
+                        t_s,
+                        "err.unnecessary-antibiotics",
+                        "postoperative antibiotic course prescribed for uncomplicated appendicitis; WSES recommends against postoperative antibiotics there (T14)".into(),
+                    );
+                }
+            }
+            _ => {}
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -608,9 +928,30 @@ pub fn run_attempt(
         .filter(|m| m.required)
         .map(|m| m.id.clone())
         .collect();
-    if trace.case.variant.as_deref() == Some("variant.double-cystic") {
-        for id in ["m6.7", "m6.8", "m6.9"] {
-            required.insert(id.to_string());
+    // Variant configurations add their microsteps from the variant
+    // definition's required_additions (data-driven since Milestone
+    // 28; the cholecystectomy's double-cystic variant carries the
+    // same three ids the Milestone 17 runner hardcoded).
+    if let Some(vid) = trace.case.variant.as_deref() {
+        if let Some(v) = proc.variants.iter().find(|v| v.id == vid) {
+            for id in &v.required_additions {
+                required.insert(id.clone());
+            }
+        }
+    }
+    // Appendicectomy severity configurations: a complicated grade
+    // requires the postoperative antibiotic course; a perforated
+    // appendix additionally requires suction of the contamination.
+    if proc.id == "proc.appy.lap" {
+        match trace.case.severity.as_deref() {
+            Some("gangrenous") => {
+                required.insert("m8.4".to_string());
+            }
+            Some("perforated") => {
+                required.insert("m7.2".to_string());
+                required.insert("m8.4".to_string());
+            }
+            _ => {}
         }
     }
 
@@ -636,6 +977,9 @@ pub fn run_attempt(
     // cannot measure blood loss — volumes() can.
     let volume_at_start: f64 = engine.volumes().iter().sum();
     let refill_at_start: f64 = engine.net_refill_ml();
+    let urine_at_start: f64 = engine.cumulative_urine_ml();
+    let intake_at_start: f64 = engine.cumulative_intake_ml();
+    let product_at_start: f64 = engine.cumulative_product_ml();
 
     let mut at = Attempt {
         proc,
@@ -644,6 +988,9 @@ pub fn run_attempt(
         beats_at_start,
         volume_at_start,
         refill_at_start,
+        urine_at_start,
+        intake_at_start,
+        product_at_start,
         performed: HashMap::new(),
         criteria: HashMap::new(),
         identified: HashSet::new(),
@@ -651,6 +998,10 @@ pub fn run_attempt(
         divided: HashSet::new(),
         misclip_cbd: None,
         required,
+        severity: trace.case.severity.clone(),
+        base_condition: trace.case.base_condition.clone(),
+        closure_method: None,
+        deferred_criteria: Vec::new(),
         errors: Vec::new(),
         complications: Vec::new(),
         decisions: Vec::new(),
@@ -668,6 +1019,7 @@ pub fn run_attempt(
         flow_sources: Vec::new(),
         pending_infusion_stops: Vec::new(),
         infused_ml: 0.0,
+        transfused_ml: 0.0,
         log: Vec::new(),
         variant: trace.case.variant.clone(),
     };
@@ -700,18 +1052,37 @@ fn apply_action(at: &mut Attempt, a: &Action) {
         }
         "drug" => {
             // The prophylaxis microstep, fulfilled by a drug action so
-            // its timing against incision can be evaluated.
-            at.do_microstep(t, "m0.4");
+            // its timing against incision can be evaluated. Resolved
+            // by its fulfills marker, not by id (Milestone 28: the two
+            // procedures' prophylaxis microsteps share the marker).
+            let id = at
+                .proc
+                .phases
+                .iter()
+                .flat_map(|p| p.steps.iter())
+                .flat_map(|s| s.microsteps.iter())
+                .find(|m| m.fulfills.as_deref() == Some("prophylaxis"))
+                .map(|m| m.id.clone());
+            if let Some(id) = id {
+                at.do_microstep(t, &id);
+            }
         }
         "checklist" => {
-            let id = match a.phase.as_deref() {
-                Some("who.sign-in") => "m0.8",
-                Some("who.time-out") => "m0.9",
-                Some("who.sign-out") => "m8.7",
-                _ => "",
-            };
-            if !id.is_empty() {
-                at.do_microstep(t, id);
+            // WHO phases resolve by their fulfills marker (Milestone
+            // 28 generalization; the cholecystectomy's m0.8/m0.9/m8.7
+            // are found by the same markers they always carried).
+            if let Some(phase) = &a.phase {
+                let id = at
+                    .proc
+                    .phases
+                    .iter()
+                    .flat_map(|p| p.steps.iter())
+                    .flat_map(|s| s.microsteps.iter())
+                    .find(|m| m.fulfills.as_deref() == Some(phase.as_str()))
+                    .map(|m| m.id.clone());
+                if let Some(id) = id {
+                    at.do_microstep(t, &id);
+                }
             }
         }
         "identify" => {
@@ -725,6 +1096,13 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                 at.decisions.push(DecisionMade { t_s: t, id: id.clone(), choice: choice.clone() });
                 at.log(t, "decision", format!("{id} -> {choice}"));
                 match (id.as_str(), choice.as_str()) {
+                    ("dp2", "continue-dissection") if at.proc.id == "proc.appy.lap" => {
+                        at.error(
+                            t,
+                            "err.no-bailout",
+                            "at dp2 the appendiceal base was declared unidentifiable and dissection continued instead of altering strategy (design/05)".into(),
+                        );
+                    }
                     ("dp2", "continue-dissection") => {
                         at.error(
                             t,
@@ -732,13 +1110,27 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                             "at dp2 the Critical View was declared unobtainable and dissection continued instead of altering strategy (guideline T3)".into(),
                         );
                     }
+                    ("dp3", c) if at.proc.id == "proc.appy.lap" => {
+                        // The closure decision makes the chosen closure
+                        // microstep required for this attempt.
+                        let mid = match c {
+                            "endoloop" => Some("m6.2"),
+                            "stapler" => Some("m6.3"),
+                            "polymeric-clips" => Some("m6.4"),
+                            _ => None,
+                        };
+                        if let Some(mid) = mid {
+                            at.required.insert(mid.to_string());
+                            at.log(t, "config", format!("closure method {c} becomes required for this attempt"));
+                        }
+                    }
                     ("dp2", "ioc") => {
                         for m in ["m5.1", "m5.2", "m5.3", "m5.4", "m5.5", "m5.6", "m5.7", "m5.8", "m5.9", "m5.10"] {
                             at.required.insert(m.to_string());
                         }
                         at.log(t, "config", "IOC group becomes required for this attempt".into());
                     }
-                    ("dp2", c) if c.starts_with("subtotal") || c == "convert-open" => {
+                    ("dp2", c) if at.proc.id == "proc.chole.lap" && (c.starts_with("subtotal") || c == "convert-open") => {
                         at.bailout_chosen = true;
                         // Unperformed requirements in phases 3-7 are
                         // replaced by the bailout branch set.
@@ -777,6 +1169,10 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                     if kind == "bile-duct-injury" && c.kind == "clip-on-common-bile-duct" {
                         c.recognised = true;
                     }
+                    // The appendicectomy's parallel chain (Milestone 28).
+                    if kind == "cecal-injury" && c.kind == "clip-on-cecum" {
+                        c.recognised = true;
+                    }
                 }
                 at.log(t, "recognise", format!("complication recognised: {kind}"));
             }
@@ -799,12 +1195,49 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                     at.recognised_kinds.insert("clip-on-common-bile-duct".to_string());
                     at.log(t, "control", "misplaced clip on the common bile duct recognised and removed — near miss, no division occurred".into());
                 }
+                if s == "canal.appendix" && at.proc.id == "proc.appy.lap" && at.misclip_cbd.is_some() {
+                    at.misclip_cbd = None;
+                    for c in at.complications.iter_mut() {
+                        if c.kind == "clip-on-cecum" {
+                            c.recognised = true;
+                            c.controlled_s = Some(t);
+                        }
+                    }
+                    at.recognised_kinds.insert("clip-on-cecum".to_string());
+                    at.log(t, "control", "misplaced clip on the cecal wall recognised and removed — near miss, no division occurred".into());
+                }
             }
         }
         "energy" => {
             if let Some(s) = &a.structure {
-                let duct = ["duct.cystic-duct", "duct.common-hepatic-duct", "duct.common-bile"].contains(&s.as_str());
-                if duct && !at.cvs_at(t) {
+                if at.proc.id == "proc.appy.lap" {
+                    // Appendicectomy: energy on the appendix or cecum
+                    // before the base is identified (Milestone 28).
+                    let bowel = ["canal.appendix", "canal.cecum"].contains(&s.as_str());
+                    if bowel && !at.gate_at(t) {
+                        at.error(
+                            t,
+                            "err.energy-before-id",
+                            format!("electrocautery applied to {s} before the appendiceal base was identified"),
+                        );
+                        if s == "canal.cecum" {
+                            at.complications.push(Complication {
+                                kind: "thermal-cecal-injury".to_string(),
+                                t_onset_s: t,
+                                detail: "thermal injury to the cecal wall from energy applied before the base was identified (its clinical presentation is delayed perforation - recorded structurally; no thermal model exists in the physiology engine)".into(),
+                                resolved_structure: Some(s.clone()),
+                                stewart_way_class: None,
+                                recognised: false,
+                                controlled_s: None,
+                                loss_ml: None,
+                            });
+                        }
+                    } else {
+                        at.log(t, "note", format!("energy applied to {s} with the base identified"));
+                    }
+                } else {
+                    let duct = ["duct.cystic-duct", "duct.common-hepatic-duct", "duct.common-bile"].contains(&s.as_str());
+                    if duct && !at.gate_at(t) {
                     at.error(
                         t,
                         "err.energy-before-id",
@@ -825,9 +1258,10 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                 } else {
                     at.log(t, "note", format!("energy applied to {s} with anatomy identified"));
                 }
+                }
             }
         }
-        "infuse" | "transfuse" => {
+        "infuse" => {
             let vol = a.volume_ml.unwrap_or(0.0);
             let rate = a.rate_ml_s.unwrap_or(16.67);
             let label = a.label.clone().unwrap_or_else(|| a.kind.clone());
@@ -839,6 +1273,73 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                 let stop_tick = at.engine.tick + dur_ticks;
                 at.pending_infusion_stops.push((stop_tick, flow_label));
                 at.log(t, "infuse", format!("{label}: {vol:.0} mL at {rate:.2} mL/s"));
+            }
+        }
+        "transfuse" => {
+            // Milestone 26: a transfuse naming a known product
+            // composition routes through the engine's product
+            // channel (red cells + protein at the product's own
+            // concentrations) and is tallied separately from
+            // crystalloid. Without a known product it routes as
+            // volume only through the event channel, as before
+            // Milestone 26, and the log says so — the fluid is
+            // accounted, its composition is not modelled.
+            let label = a.label.clone().unwrap_or_else(|| a.kind.clone());
+            let spec = a
+                .product
+                .as_deref()
+                .and_then(|k| at.engine.model.product_spec(k));
+            match spec {
+                Some((unit_vol, hct, prot)) => {
+                    let vol = a.volume_ml.unwrap_or(unit_vol);
+                    let rate = a.rate_ml_s.unwrap_or(16.67);
+                    if vol > 0.0 && rate > 0.0 {
+                        at.transfused_ml += vol;
+                        let tick = at.engine.tick;
+                        let key = a.product.clone().unwrap_or_default();
+                        at.engine.apply(
+                            tick,
+                            Event::SetProductFlow {
+                                rate_ml_s: rate,
+                                hematocrit: hct,
+                                protein_g_per_ml: prot,
+                                label: format!("theatre transfuse: {label}"),
+                            },
+                        );
+                        let dur_ticks = (vol / rate / TICK_SECONDS).round() as u64;
+                        at.engine.apply(
+                            tick + dur_ticks,
+                            Event::SetProductFlow {
+                                rate_ml_s: 0.0,
+                                hematocrit: hct,
+                                protein_g_per_ml: prot,
+                                label: format!("theatre transfuse ends: {label}"),
+                            },
+                        );
+                        at.log(
+                            t,
+                            "infuse",
+                            format!("{label}: {vol:.0} mL {key} at {rate:.2} mL/s (product channel)"),
+                        );
+                    }
+                }
+                None => {
+                    let vol = a.volume_ml.unwrap_or(0.0);
+                    let rate = a.rate_ml_s.unwrap_or(16.67);
+                    if vol > 0.0 && rate > 0.0 {
+                        at.infused_ml += vol;
+                        let flow_label = format!("infuse:{label}");
+                        at.start_flow(&flow_label, rate);
+                        let dur_ticks = (vol / rate / TICK_SECONDS).round() as u64;
+                        let stop_tick = at.engine.tick + dur_ticks;
+                        at.pending_infusion_stops.push((stop_tick, flow_label));
+                        at.log(
+                            t,
+                            "infuse",
+                            format!("{label}: {vol:.0} mL at {rate:.2} mL/s (no product composition named; volume only)"),
+                        );
+                    }
+                }
             }
         }
         "help" => {
@@ -887,9 +1388,25 @@ fn score(
     // it is added back exactly as infused volume is — the identity
     // then measures gross blood loss, and refill is reported by the
     // engine's own state, not hidden inside the loss figure.
+    // Milestone 25: the same accounting extends to the renal/intake
+    // boundary — intake during the attempt is an inflow (added
+    // back), urine an outflow (subtracted) — so the identity still
+    // measures gross blood loss alone now that the engine excretes.
+    // Milestone 26: the same accounting extends once more, to the
+    // product channel — blood products given during the attempt are
+    // an inflow measured by the engine's own product integral
+    // (added back), so the identity still measures gross blood
+    // loss alone now that the engine transfuses.
     let refill_during_attempt = at.engine.net_refill_ml() - at.refill_at_start;
+    let urine_during_attempt = at.engine.cumulative_urine_ml() - at.urine_at_start;
+    let intake_during_attempt = at.engine.cumulative_intake_ml() - at.intake_at_start;
+    let product_during_attempt = at.engine.cumulative_product_ml() - at.product_at_start;
     let loss_engine = {
-        let l = (at.volume_at_start + at.infused_ml + refill_during_attempt) - volume_end;
+        let l = (at.volume_at_start + at.infused_ml + product_during_attempt
+            + refill_during_attempt
+            + intake_during_attempt
+            - urine_during_attempt)
+            - volume_end;
         if l.abs() < 0.01 { 0.0 } else { l }
     };
 
@@ -902,11 +1419,17 @@ fn score(
     };
     if let (Some(p), Some(i)) = (at.prophylaxis_t, at.incision_t) {
         if !prophylaxis_in_window {
+            let drug_label = if proc.id == "proc.appy.lap" {
+                "antibiotic prophylaxis"
+            } else {
+                "cefazolin"
+            };
             at.errors.push(ErrorEvent {
                 t_s: p,
                 id: "err.prophylaxis-window".to_string(),
                 detail: format!(
-                    "cefazolin given {}; the cited window is within {:.0} min before incision (T7)",
+                    "{} given {}; the cited window is within {:.0} min before incision (T7)",
+                    drug_label,
                     if p >= i { "after incision".to_string() } else { format!("{:.0} min before incision", (i - p) / 60.0) },
                     window_min
                 ),
@@ -1036,7 +1559,34 @@ fn score(
         blood_loss_ml: loss_engine,
         blood_loss_crosscheck_ml: bleed_integral,
         infused_ml: at.infused_ml,
+        transfused_ml: at.transfused_ml,
     };
+
+    // Appendicectomy (Milestone 28): a perforated appendix completed
+    // without suctioning the contamination computes its postoperative
+    // consequence here, at scoring — residual contamination declares
+    // as an intra-abdominal abscess, the same "postoperative
+    // consequence in the debrief" treatment as the stump leak.
+    if proc.id == "proc.appy.lap"
+        && trace.case.severity.as_deref() == Some("perforated")
+        && !at.performed.contains_key("m7.2")
+    {
+        at.errors.push(ErrorEvent {
+            t_s: end_t,
+            id: "err.contamination-uncontrolled".to_string(),
+            detail: "perforated appendicitis completed without suctioning the contamination (m7.2 not performed); WSES recommends suction of intra-abdominal collections in complicated appendicitis (T14)".to_string(),
+        });
+        at.complications.push(Complication {
+            kind: "intra-abdominal-abscess".to_string(),
+            t_onset_s: end_t,
+            detail: "intra-abdominal abscess declared as a postoperative consequence of residual contamination (structural outcome; the physiology engine has no peritoneal compartment, so no volume effect is computed)".into(),
+            resolved_structure: None,
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+    }
 
     // Management score (only when a complication was computed).
     let management = if at.complications.is_empty() {
@@ -1057,9 +1607,21 @@ fn score(
         };
         let all_bleeds_controlled = at.bleeds.iter().all(|b| b.t_end.is_some());
         let has_bdi = at.complications.iter().any(|c| c.kind == "bile-duct-injury");
-        let control_pts = if all_bleeds_controlled && (!has_bdi || at.drain_placed) { 1 } else { 0 };
+        let has_cecal = at.complications.iter().any(|c| c.kind == "cecal-injury");
+        let has_leak = at.complications.iter().any(|c| c.kind == "stump-leak");
+        let has_abscess = at.complications.iter().any(|c| c.kind == "intra-abdominal-abscess");
+        let control_pts = if all_bleeds_controlled
+            && (!has_bdi || at.drain_placed)
+            && (!has_cecal || at.drain_placed)
+        {
+            1
+        } else {
+            0
+        };
         let escalation_pts = if !at.help_calls.is_empty()
-            || at.decisions.iter().any(|d| d.id == "dp3" || d.id == "dp4")
+            || at.decisions.iter().any(|d| {
+                d.id == "dp3" || d.id == "dp4" || (proc.id == "proc.appy.lap" && (d.id == "dp2" || d.id == "dp5"))
+            })
         {
             1
         } else {
@@ -1070,6 +1632,26 @@ fn score(
                 .decisions
                 .iter()
                 .any(|d| d.id == "dp4" && (d.choice == "drain-refer" || d.choice == "convert-repair"))
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_cecal {
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp4" && (d.choice == "convert-repair" || d.choice == "stapler-repair"))
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_leak || has_abscess {
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp5" && (d.choice == "return-theatre" || d.choice == "image-guided-drain"))
             {
                 1
             } else {
@@ -1096,7 +1678,11 @@ fn score(
     };
     let verdict = if at.failed.is_some() { "FAIL" } else { "PASS" }.to_string();
 
-    let debrief = build_pearls(&at, &checklist, &safety, &process, &physiology, &management, &verdict);
+    let debrief = if proc.id == "proc.appy.lap" {
+        build_pearls_appy(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else {
+        build_pearls(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    };
 
     Debrief {
         trace_id: trace.id.clone(),
@@ -1208,6 +1794,140 @@ fn build_pearls(
     }
     if at.errors.iter().any(|e| e.id == "err.uncontrolled-branch") {
         directive.push("A double cystic artery occurs in about 13% of patients (T11): before mobilising the gallbladder, confirm every arterial branch entering it is controlled.".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+/// PEARLS debrief for the appendicectomy (Milestone 28): same
+/// structure and state-derived discipline as build_pearls, with this
+/// procedure's gates, variants and guideline points.
+fn build_pearls_appy(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 {
+        plus.push("Appendiceal base positively identified and demonstrated before any clip or division — taeniae traced to their convergence, appendix seen arising from it, base condition stated (T19, T14).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-division pause performed and the identification confirmed with the team before clipping (module safety culture, T20).".to_string());
+    }
+    if at.performed.contains_key("m3.5") && at.variant_active("variant.retrocecal") {
+        plus.push("The retrocecal appendix — the most common position, 43.5% in the consulted cadaver series (T16) — was managed by mobilizing the cecum before identification, the adaptation the variant demands.".to_string());
+    }
+    if at.closure_method.as_deref() == Some("stapler") && at.base_condition.as_deref() == Some("necrotic") {
+        plus.push("The stapler was chosen because the base was necrotic — sealing healthy tissue rather than cinching a ligature on non-viable tissue (T18).".to_string());
+    }
+    if at.complications.iter().any(|c| c.kind == "cecal-injury" && c.recognised) {
+        plus.push("The cecal injury was recognised during the index operation and a definitive repair plan was made.".to_string());
+    }
+    if at.severity.as_deref() == Some("perforated")
+        && at.performed.contains_key("m7.2")
+        && !at.errors.iter().any(|e| e.id == "err.unnecessary-lavage")
+    {
+        plus.push("Contamination was managed by suction alone, as the guideline recommends (T14); no lavage was performed.".to_string());
+    }
+    if at.complicated()
+        && at.performed.contains_key("m7.2")
+        && !at.performed.contains_key("m7.5")
+    {
+        plus.push("No drain was placed: in adults, drains after appendicectomy do not prevent intra-abdominal abscess and prolong hospitalisation (T14).".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+    if physiology.blood_loss_ml > 0.5 && physiology.seconds_below_threshold == 0.0 {
+        plus.push("Haemorrhage was controlled without the mean arterial pressure ever falling below threshold.".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.divide-unidentified") {
+        directive.push("Never clip, close or divide at the appendiceal base until the base is positively identified: follow the taeniae coli to their convergence and see the appendix arise from it (T19). What is divided as 'appendix' before that demonstration is cecal wall.".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.closure-mismatch") {
+        directive.push("Match the closure to the base condition stated at the gate: a ligature or clips cannot seal a necrotic base — fire the stapler across healthy tissue, or convert (T14, T18).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.divide-unclipped-artery") {
+        directive.push("Control the appendiceal artery before dividing the mesoappendix: identify it in the fold and occlude it first (T19; mesoappendix technique per T14).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.contamination-uncontrolled") {
+        directive.push("In perforated appendicitis, suction every collection — right iliac fossa, paracolic gutter, pelvis — before closing: residual contamination declares itself as an abscess (T14).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unnecessary-drain") {
+        directive.push("Do not drain an appendicectomy in an adult without a repair to drain: drains do not prevent intra-abdominal abscess and are associated with longer hospitalisation (T14); the meta-analysis found no adult outcome benefit (T15).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unnecessary-lavage") {
+        directive.push("Suction alone for contamination: irrigation has no advantage over suction alone (T14, strong recommendation 1B; T15).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unnecessary-antibiotics") {
+        directive.push("Uncomplicated appendicitis needs the single preoperative dose and no postoperative course (T14).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-bailout") {
+        directive.push("When the base cannot be identified, alter the strategy: mobilize further, call for senior help, or convert — never divide on presumption (design/05).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.prophylaxis-window") {
+        directive.push("Prophylaxis timing is a system step, not a detail: the single broad-spectrum dose inside the window before incision (T14; window per T7).".to_string());
     }
     if directive.is_empty() {
         directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());

@@ -74,7 +74,8 @@
     "seconds_below_threshold": 0.0,
     "blood_loss_ml": 0.0,
     "blood_loss_crosscheck_ml": 0.0,
-    "infused_ml": 0.0
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
   },
   "management": {
     "points": 5,
@@ -140,9 +141,9 @@
       "choice": "drain-refer"
     }
   ],
-  "engine_trace_hash": "0x3044928598ddd5b8",
-  "engine_beats": 2729,
-  "engine_conservation_error_ml": 3.4924596548080444e-10,
+  "engine_trace_hash": "0xc713c9263481fa59",
+  "engine_beats": 2723,
+  "engine_conservation_error_ml": 1.623448042664677e-9,
   "debrief": {
     "description": [
       "[t=0s] m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy",
