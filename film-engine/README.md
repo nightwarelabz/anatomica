@@ -96,25 +96,38 @@ Run the stages in order:
    python3 compose_still.py --plates <plate_dir> --recipe surgery --out still.png
    ```
 
-5. **Acts** — the film is assembled per act from the production
-   plates: camera moves are eased crop windows over the 2560-wide
-   plates, the x-ray sweep is a wipe between skin and bone plates,
-   layer analysis crossfades the groups, the arterial pulse wave and
-   nerve signal pulses are masked travelling highlights on the vessel
-   and nerve plates, the heart beats by scaling the heart plate about
-   its centroid on the same ECG curve the HUD and the sound design
-   follow, and the drape plate is composited last in every frame.
+5. **Acts** — `film_engine.py` assembles the film per act from the
+   production plates: camera moves are eased crop windows over the
+   2560-wide plates, the x-ray sweep is a wipe between skin and bone
+   plates, layer analysis crossfades the groups, the arterial pulse
+   wave and nerve signal pulses are masked travelling highlights on
+   the vessel and nerve plates, the heart beats by scaling the heart
+   plate about its centroid on the same ECG curve the HUD and the
+   sound design follow, and the drape plate is composited last in
+   every frame. `film_engine.py` also owns the single physiology
+   script — the heart-rate timeline, beat onsets, ECG / respiration /
+   SpO2 / blood-pressure curves — that the picture, the HUD and the
+   sound all derive from, so the three cannot drift apart. Act IV
+   (the procedure itself, on the `surg` plates) is built by
+   `film_act4.py`, which imports the shared engine:
+
+   ```
+   python3 film_engine.py <act>     # acts 1, 2, 3, 5
+   python3 film_act4.py             # act 4
+   ```
+
    Acts are encoded at high bitrate (H.264, CRF ~15), verified from
    the encoded files (frame count, duration, boundary stills), then
    concatenated.
 
-6. **Sound** — a procedural soundscape built to the picture: a low
-   drone bed and room pressure as the constant, the monitor and
-   ventilator locked to the patient's scripted vitals, procedure
-   sounds (cautery, suction, instrument contacts) placed on their
-   action frames. Verification before the mux: band-energy profile,
-   spectrogram inspection, onset-sync audit against the action
-   frames, loudness / true-peak metering.
+6. **Sound** — `sound_design.py` builds the procedural soundscape to
+   the picture: a low drone bed and room pressure as the constant,
+   the monitor and ventilator locked to the patient's scripted
+   vitals, procedure sounds (cautery, suction, instrument contacts)
+   placed on their action frames. Verification before the mux
+   (`python3 sound_design.py --verify`): band-energy profile,
+   spectrogram inspection, onset-sync audit against the scripted
+   beats, loudness / true-peak metering.
 
 7. **Mux** — act video + verified sound, final verification from the
    encoded file.
