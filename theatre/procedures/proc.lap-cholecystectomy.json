@@ -1,0 +1,1911 @@
+{
+ "procedure": {
+  "authority_basis": "Authored against consulted operative descriptions and the safety literature listed in theatre/parameters.json (sources T1-T13). The step/microstep decomposition is this module's own, built to cognitive-task-analysis discipline (design/05): the published CTA of this procedure resolved 19 recalled steps into 97 microsteps (T5); the full published microstep list is not public, so this file authors an independent decomposition at the granularity the consulted operative sources support (census in MILESTONE-17.md). Nothing in this file is recalled unaided where a source could be consulted; anything not sourced is flagged in place.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.2 (assessment of the gallbladder and inflammation).",
+    "choices": [
+     {
+      "effect": "Continue with the laparoscopic procedure as modelled.",
+      "id": "proceed",
+      "label": "Proceed laparoscopically",
+      "scoring": "Neutral; correctness depends on findings, which the v1 scenario set does not grade."
+     },
+     {
+      "effect": "Bailout: convert to open cholecystectomy.",
+      "id": "convert-open",
+      "label": "Convert to open",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     },
+     {
+      "effect": "Bailout: stop, drain if indicated, refer to a hepatobiliary service.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the operative findings permit proceeding laparoscopically?"
+   },
+   {
+    "anchor": "Declared by the operator when the Critical View of Safety cannot be achieved (evaluated at phase 4).",
+    "choices": [
+     {
+      "effect": "Continue dissecting in the hepatocystic triangle.",
+      "id": "continue-dissection",
+      "label": "Continue dissection",
+      "scoring": "Scored error err.no-bailout: the multi-society guideline recommends altering the operative strategy, preferably to subtotal cholecystectomy, when the CVS cannot be obtained (T3)."
+     },
+     {
+      "effect": "Perform phase 5 (intraoperative cholangiogram) to delineate the anatomy; the IOC group becomes required for this attempt.",
+      "id": "ioc",
+      "label": "Intraoperative cholangiography",
+      "scoring": "Guideline-supported for uncertain anatomy (T3)."
+     },
+     {
+      "effect": "Bailout: subtotal cholecystectomy, fenestrating subtype (T4) — phase 6B replaces phases 5-7 requirements.",
+      "id": "subtotal-fenestrating",
+      "label": "Subtotal cholecystectomy, fenestrating",
+      "scoring": "Bailout-positive per design/05 and the preferred bailout in T3."
+     },
+     {
+      "effect": "Bailout: subtotal cholecystectomy, reconstituting subtype (T4) — phase 6B with the closure microstep variant noted there.",
+      "id": "subtotal-reconstituting",
+      "label": "Subtotal cholecystectomy, reconstituting",
+      "scoring": "Bailout-positive; the reconstituting subtype carries a reoperation caveat (stones can re-form in the closed remnant, T4), surfaced in the debrief."
+     },
+     {
+      "effect": "Bailout: convert to open cholecystectomy.",
+      "id": "convert-open",
+      "label": "Convert to open",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "Pause and obtain senior/hepatobiliary assistance before proceeding.",
+      "id": "call-senior",
+      "label": "Call for senior help",
+      "scoring": "Positive judgment action; the attempt may then proceed by any route."
+     }
+    ],
+    "id": "dp2",
+    "question": "The Critical View of Safety cannot be obtained. Which alternative strategy?"
+   },
+   {
+    "anchor": "Event-triggered: fires when a bleeding complication is computed.",
+    "choices": [
+     {
+      "effect": "Direct compression and suction; reassess.",
+      "id": "compress",
+      "label": "Compress and clear the field",
+      "scoring": "First-line; feeds the management score via time to control."
+     },
+     {
+      "effect": "Clip or otherwise definitively control the bleeding structure (runner action: control).",
+      "id": "clip-control",
+      "label": "Definitive control of the vessel",
+      "scoring": "Management-scored."
+     },
+     {
+      "effect": "Bailout: convert to open for vascular control.",
+      "id": "convert-open",
+      "label": "Convert to open",
+      "scoring": "Bailout-positive when bleeding is not controlled laparoscopically."
+     }
+    ],
+    "id": "dp3",
+    "question": "Bleeding is not yet controlled. Escalate how?"
+   },
+   {
+    "anchor": "Event-triggered: fires when a bile duct injury is recognised.",
+    "choices": [
+     {
+      "effect": "Stop, do not attempt repair beyond drainage, call/refer to an experienced hepatobiliary team.",
+      "id": "drain-refer",
+      "label": "Drain and refer to hepatobiliary team",
+      "scoring": "Guideline-preferred: referral of confirmed or suspected bile duct injury to an experienced hepatobiliary surgeon/team is a strong recommendation (T3)."
+     },
+     {
+      "effect": "Convert to open and repair in-house.",
+      "id": "convert-repair",
+      "label": "Convert and repair",
+      "scoring": "Scored against the same guideline: appropriate only with hepatobiliary expertise present; the v1 scenario set does not model that expertise, so this choice scores below drain-refer."
+     },
+     {
+      "effect": "Continue the cholecystectomy without addressing the injury.",
+      "id": "continue",
+      "label": "Continue regardless",
+      "scoring": "Severe judgment error."
+     }
+    ],
+    "id": "dp4",
+    "question": "A bile duct injury is recognised. What now?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's misidentification resolution: the divided duct is the common bile duct — a Stewart-Way class III bile duct injury (the dominant injury pattern, 61% of the Way series). The attempt FAILS at the moment of division, regardless of all other scores (design/05 master rule).",
+    "definition": "Dividing a critical structure (cystic duct, cystic artery) before the Critical View of Safety is achieved and the structure is identified.",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T1"
+   },
+   {
+    "consequence": "The clip is placed on the common bile duct (Stewart-Way class I mechanism state). If the structure is then divided, err.divide-unidentified fires (class III). If the misplacement is recognised and the clip removed before division, the event is recorded as a near miss: heavily scored, not an automatic fail.",
+    "definition": "Applying a clip to the presumed cystic duct before the Critical View of Safety is achieved.",
+    "id": "err.clip-unidentified",
+    "severity": "critical",
+    "source": "T1"
+   },
+   {
+    "consequence": "Arterial haemorrhage is computed by the physiology engine from the moment of division until control; blood loss and MAP response are engine outputs, not script values.",
+    "definition": "Dividing the cystic artery before clips have been applied to it.",
+    "id": "err.divide-unclipped-artery",
+    "severity": "major",
+    "source": "T13"
+   },
+   {
+    "consequence": "When the target is the common hepatic or common bile duct, a thermal (class II mechanism) bile duct injury is recorded as a complication — lateral damage that presents as leak or late stricture. Otherwise a scored major error without a computed injury.",
+    "definition": "Applying electrocautery directly to a bile duct structure before that structure has been identified (Critical View achieved). Dissection energy used on peritoneum and triangle tissue in the authored microsteps is normal technique and does not fire this error; the class II mechanism is energy delivered to the duct itself.",
+    "id": "err.energy-before-id",
+    "severity": "major",
+    "source": "T1"
+   },
+   {
+    "consequence": "A bile leak complication is recorded (structural outcome; the physiology engine v0 has no biliary compartment, so no volume or pressure effect is computed — stated plainly in the debrief).",
+    "definition": "Dividing the cystic duct before clips have been applied to it.",
+    "id": "err.divide-unclipped-duct",
+    "severity": "major",
+    "source": "T13"
+   },
+   {
+    "consequence": "Process error; reduces the process score. No infection outcome is simulated in v1.",
+    "definition": "Prophylactic cefazolin started after incision, or more than the cited window before it.",
+    "id": "err.prophylaxis-window",
+    "severity": "process",
+    "source": "T7"
+   },
+   {
+    "consequence": "Process error; reduces the process score.",
+    "definition": "A WHO checklist phase (Sign In, Time Out, Sign Out) not performed at its integration point.",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   },
+   {
+    "consequence": "Computed by the runner: the artery divided in the field is the replaced right hepatic artery — an unidentified critical structure divided. The attempt FAILS, and haemorrhage is computed at the replaced-artery rate until control.",
+    "definition": "In the replaced-right-hepatic-artery variant case, dividing the cystic artery without having first identified the variant vessel in the field.",
+    "id": "err.missed-variant",
+    "severity": "critical-fail",
+    "source": "T12"
+   },
+   {
+    "consequence": "Haemorrhage from the uncontrolled branch is computed by the physiology engine until the branch is clipped; scored major error, recoverable — the contrast case to err.missed-variant: an identified-anatomy completeness failure, not a misidentification.",
+    "definition": "In the double-cystic-artery variant case, beginning liver-bed dissection while a second arterial branch remains uncontrolled.",
+    "id": "err.uncontrolled-branch",
+    "severity": "major",
+    "source": "T11"
+   },
+   {
+    "consequence": "Judgment error in the analysis section of the debrief; the guideline alternative (subtotal cholecystectomy) is named.",
+    "definition": "At decision point dp2 (Critical View unobtainable), choosing to continue dissecting rather than altering strategy.",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T3"
+   }
+  ],
+  "id": "proc.chole.lap",
+  "name": "Laparoscopic cholecystectomy",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, prophylaxis and checklist (Step 0)",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review imaging and laboratory results; confirm the indication for cholecystectomy",
+        "required": true,
+        "sources": [
+         "T5"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "organ.liver"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Confirm consent and operative plan, including anticipation of biliary and arterial variants",
+        "required": true,
+        "sources": [
+         "T5",
+         "T12"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Confirm team, resource tier and equipment plan for the case",
+        "note": "Resource tiers per design/05 (basic / limited / enhanced / maximal); the tier is recorded with the attempt, not scored in v1.",
+        "required": true,
+        "sources": [
+         "T12"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Step 0: planning the procedure"
+     },
+     {
+      "id": "step.0.2",
+      "microsteps": [
+       {
+        "fulfills": "prophylaxis",
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)",
+        "required": true,
+        "sources": [
+         "T7"
+        ],
+        "targets": [],
+        "verb": "drug"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [],
+        "label": "Apply venous thromboembolism prophylaxis per protocol",
+        "note": "Process step as carried in the design/05 setup list; no agent or dose is asserted — none was consulted for this module.",
+        "required": true,
+        "sources": [
+         "T12"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Position the patient supine with arms tucked; displays positioned for the American configuration",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "position"
+       },
+       {
+        "id": "m0.7",
+        "instruments": [
+         "inst.laparoscope-30deg",
+         "inst.suction-irrigator",
+         "inst.hook-cautery"
+        ],
+        "label": "Equipment check: laparoscope and camera, insufflator, suction, energy source",
+        "required": true,
+        "sources": [
+         "T12"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Prophylaxis and preparation"
+     },
+     {
+      "id": "step.0.3",
+      "microsteps": [
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.8",
+        "instruments": [],
+        "label": "WHO Sign In completed before induction of anaesthesia",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "WHO Sign In"
+     },
+     {
+      "id": "step.0.4",
+      "microsteps": [
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Time Out completed before skin incision",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "WHO Time Out"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Access and port placement",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [],
+        "label": "Infraumbilical skin incision",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [],
+        "label": "Dissect subcutaneous tissue to the fascia",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "dissect"
+       },
+       {
+        "id": "m1.3",
+        "instruments": [],
+        "label": "Incise the fascia",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.4",
+        "instruments": [
+         "inst.hasson-trocar"
+        ],
+        "label": "Enter the peritoneum under direct vision (Hasson open technique)",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.5",
+        "instruments": [
+         "inst.hasson-trocar"
+        ],
+        "label": "Place and secure the Hasson cannula",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.6",
+        "instruments": [],
+        "label": "Insufflate CO2 to a pneumoperitoneum of 15 mmHg",
+        "note": "Pressure per parameters.json (insufflation_pressure_mmhg, cited T13).",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.7",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Insert the 30-degree laparoscope; confirm intraperitoneal position and survey the abdomen",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Umbilical access (open technique)"
+     },
+     {
+      "id": "step.1.2",
+      "microsteps": [
+       {
+        "id": "m1.8",
+        "instruments": [],
+        "label": "Select the epigastric port site, about 2 cm below the liver edge and right of the falciform ligament",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.liver"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m1.9",
+        "instruments": [
+         "inst.trocar-10mm"
+        ],
+        "label": "Insert the 10 mm epigastric port under vision",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.10",
+        "instruments": [
+         "inst.trocar-5mm"
+        ],
+        "label": "Insert the 5 mm mid-clavicular port under vision",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.11",
+        "instruments": [
+         "inst.trocar-5mm"
+        ],
+        "label": "Insert the 5 mm anterior-axillary port under vision",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.12",
+        "instruments": [],
+        "label": "Position in reverse Trendelenburg with left-side tilt",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "position"
+       },
+       {
+        "id": "m1.13",
+        "instruments": [],
+        "label": "Confirm all ports and instruments before proceeding",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Working ports under vision"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Exploration and exposure",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Systematic abdominal exploration",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.2",
+        "instruments": [],
+        "label": "Assess the gallbladder, inflammation severity and adhesions",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Exploration"
+     },
+     {
+      "id": "step.2.2",
+      "microsteps": [
+       {
+        "id": "m2.3",
+        "instruments": [
+         "inst.grasper-fundus"
+        ],
+        "label": "Grasp the fundus and retract cephalad over the liver dome",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "retract"
+       },
+       {
+        "id": "m2.4",
+        "instruments": [
+         "inst.grasper-infundibulum"
+        ],
+        "label": "Grasp the infundibulum (Hartmann's pouch) and retract caudolaterally to open the hepatocystic triangle",
+        "note": "Traction geometry is the substrate of the classic misidentification: it tents the common bile duct into line with the cystic duct (T1).",
+        "required": true,
+        "sources": [
+         "T13",
+         "T1"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "part.hartmann-pouch"
+        ],
+        "verb": "retract"
+       },
+       {
+        "id": "m2.5",
+        "instruments": [
+         "inst.hook-cautery",
+         "inst.maryland-dissector"
+        ],
+        "label": "Adhesiolysis where required to expose the gallbladder and triangle",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "dissect"
+       }
+      ],
+      "name": "Retraction"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Dissection of the hepatocystic triangle",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "id": "m3.1",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Incise the peritoneum over the infundibulum, anterior aspect",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m3.2",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Incise the peritoneum over the infundibulum, posterior aspect",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m3.3",
+        "instruments": [
+         "inst.maryland-dissector",
+         "inst.hook-cautery"
+        ],
+        "label": "Clear fat and fibrous tissue from the anterior hepatocystic triangle",
+        "required": true,
+        "sources": [
+         "T2",
+         "T13"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.4",
+        "instruments": [
+         "inst.maryland-dissector",
+         "inst.hook-cautery"
+        ],
+        "label": "Clear fat and fibrous tissue from the posterior hepatocystic triangle",
+        "required": true,
+        "sources": [
+         "T2",
+         "T13"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.5",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Expose the junction of the gallbladder neck and the cystic duct",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "duct.cystic-duct"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.6",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Trace the cystic duct continuously into the gallbladder neck",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "duct.cystic-duct",
+         "organ.gallbladder"
+        ],
+        "verb": "identify"
+       },
+       {
+        "id": "m3.7",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Expose the cystic artery within the hepatocystic triangle",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "artery.cystic"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.8",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Trace the cystic artery onto the gallbladder wall",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "artery.cystic",
+         "organ.gallbladder"
+        ],
+        "verb": "identify"
+       },
+       {
+        "id": "m3.9",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Create a window between the cystic duct and the cystic artery",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct",
+         "artery.cystic"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.10",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Create a window between the cystic artery and the liver edge",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "artery.cystic",
+         "organ.liver"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "demonstrates": "crit1",
+        "id": "m3.11",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Confirm the triangle is cleared: framed by the common hepatic duct medially and the liver edge above, traversed only by the cystic duct and cystic artery",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle",
+         "duct.common-hepatic-duct"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m3.12",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Survey the triangle and the duct course for additional or replaced vessels",
+        "note": "The variant checkpoint: a replaced right hepatic artery ascends posterolateral to the common bile duct and posterior to the portal vein (T12 variant record) and can cross this field.",
+        "required": true,
+        "sources": [
+         "T12"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle",
+         "artery.replaced-rha",
+         "vein.hepatic-portal-vein"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m3.13",
+        "instruments": [
+         "inst.suction-irrigator",
+         "inst.hook-cautery"
+        ],
+        "label": "Control minor ooze within the triangle",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "control"
+       },
+       {
+        "id": "m3.14",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Re-inspect the triangle from the posterior aspect with the angled scope",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m3.15",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Confirm no other tubular structure enters the operative field",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Dissect the hepatocystic triangle"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Critical View of Safety",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "id": "m4.1",
+        "instruments": [
+         "inst.hook-cautery",
+         "inst.maryland-dissector"
+        ],
+        "label": "Separate the lower third of the gallbladder from the liver bed",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "organ.liver"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m4.2",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Expose the cystic plate across the gallbladder-liver interface",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "region.cystic-plate"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Expose the cystic plate"
+     },
+     {
+      "id": "step.4.2",
+      "microsteps": [
+       {
+        "id": "m4.3",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Demonstrate the cystic duct entering the gallbladder",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "duct.cystic-duct",
+         "organ.gallbladder"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m4.4",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Demonstrate the cystic artery entering the gallbladder",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "artery.cystic",
+         "organ.gallbladder"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m4.5",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Confirm two and only two structures enter the gallbladder",
+        "required": true,
+        "sources": [
+         "T2"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Two-structure confirmation"
+     },
+     {
+      "id": "step.4.3",
+      "microsteps": [
+       {
+        "fulfills": "preclip-pause",
+        "id": "m4.6",
+        "instruments": [],
+        "label": "Pre-clip pause: the Critical View is verbalised and confirmed with the team before any clip is applied",
+        "required": true,
+        "sources": [
+         "T3"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Pre-clip pause"
+     }
+    ]
+   },
+   {
+    "group": "ioc",
+    "id": "phase.5",
+    "name": "Intraoperative cholangiogram (optional, decision-gated)",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Clip the cystic duct close to the gallbladder neck",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "clip"
+       },
+       {
+        "id": "m5.2",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Incise the cystic duct partway (ductotomy)",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m5.3",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Milk the duct contents toward the ductotomy",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m5.4",
+        "instruments": [
+         "inst.cholangiogram-catheter"
+        ],
+        "label": "Insert the cholangiogram catheter",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m5.5",
+        "instruments": [
+         "inst.cholangiogram-catheter"
+        ],
+        "label": "Secure the catheter",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m5.6",
+        "instruments": [
+         "inst.cholangiogram-catheter"
+        ],
+        "label": "Inject contrast under fluoroscopy",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "dig.biliary-tree"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m5.7",
+        "instruments": [],
+        "label": "Confirm the intrahepatic and extrahepatic ducts opacify and contrast flows freely into the duodenum",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "dig.biliary-tree"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m5.8",
+        "instruments": [],
+        "label": "Check the cholangiogram for filling defects and extravasation",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "dig.biliary-tree"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m5.9",
+        "instruments": [
+         "inst.cholangiogram-catheter"
+        ],
+        "label": "Remove the catheter",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m5.10",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Clip the cystic duct below the ductotomy",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "clip"
+       }
+      ],
+      "name": "Cholangiography"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Control and division",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "id": "m6.1",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Apply two clips to the cystic artery on the patient side",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "artery.cystic"
+        ],
+        "verb": "clip"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Apply a clip to the cystic artery on the gallbladder side",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "artery.cystic"
+        ],
+        "verb": "clip"
+       },
+       {
+        "critical": true,
+        "id": "m6.3",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Divide the cystic artery between clips",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "artery.cystic"
+        ],
+        "verb": "divide"
+       }
+      ],
+      "name": "Cystic artery"
+     },
+     {
+      "id": "step.6.2",
+      "microsteps": [
+       {
+        "id": "m6.4",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Apply two clips to the cystic duct on the patient side",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "clip"
+       },
+       {
+        "id": "m6.5",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Apply a clip to the cystic duct on the gallbladder side",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "clip"
+       },
+       {
+        "critical": true,
+        "id": "m6.6",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Divide the cystic duct between clips",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "divide"
+       }
+      ],
+      "name": "Cystic duct"
+     },
+     {
+      "group": "variant-double-cystic",
+      "id": "step.6.3",
+      "microsteps": [
+       {
+        "id": "m6.7",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Identify the second cystic artery branch entering the gallbladder",
+        "required": false,
+        "sources": [
+         "T11"
+        ],
+        "targets": [
+         "artery.cystic-branch-2"
+        ],
+        "verb": "identify"
+       },
+       {
+        "id": "m6.8",
+        "instruments": [
+         "inst.clip-applier"
+        ],
+        "label": "Clip the second cystic artery branch",
+        "required": false,
+        "sources": [
+         "T11"
+        ],
+        "targets": [
+         "artery.cystic-branch-2"
+        ],
+        "verb": "clip"
+       },
+       {
+        "critical": true,
+        "id": "m6.9",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Divide the second cystic artery branch between clips",
+        "required": false,
+        "sources": [
+         "T11"
+        ],
+        "targets": [
+         "artery.cystic-branch-2"
+        ],
+        "verb": "divide"
+       }
+      ],
+      "name": "Second cystic artery branch (variant configuration only)"
+     },
+     {
+      "group": "bailout",
+      "id": "step.6B",
+      "microsteps": [
+       {
+        "id": "m6b.1",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Open the gallbladder at the fundus and evacuate bile",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m6b.2",
+        "instruments": [
+         "inst.grasper-fundus",
+         "inst.suction-irrigator"
+        ],
+        "label": "Extract all stones from the gallbladder lumen",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m6b.3",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Excise the free peritonealised gallbladder wall, leaving the portion shielding the hepatocystic triangle in place",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "region.hepatocystic-triangle"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m6b.4",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the cystic duct orifice from inside the remnant (purse-string suture)",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "duct.cystic-duct"
+        ],
+        "verb": "close"
+       },
+       {
+        "id": "m6b.5",
+        "instruments": [],
+        "label": "Confirm the fenestrating configuration: remnant left open with no sealed lumen (for the reconstituting choice at dp2, the remnant is instead closed and the reformation caveat applies)",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m6b.6",
+        "instruments": [],
+        "label": "Place a drain to the gallbladder fossa",
+        "required": false,
+        "sources": [
+         "T4"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Subtotal cholecystectomy branch (bailout, replaces phases 5-7 when chosen at dp2)"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Liver bed, haemostasis and final inspection",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Dissect the gallbladder off the liver bed in the cystic plate plane",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder",
+         "organ.liver",
+         "region.cystic-plate"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Maintain haemostasis of the liver bed",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.liver"
+        ],
+        "verb": "control"
+       },
+       {
+        "id": "m7.3",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Inspect the liver bed for bleeding",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.liver"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.4",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Inspect the divided duct and artery and their clips; check for bile leak",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "duct.cystic-duct",
+         "artery.cystic"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.5",
+        "instruments": [
+         "inst.suction-irrigator"
+        ],
+        "label": "Irrigate and suction the operative field",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       }
+      ],
+      "name": "Liver bed dissection"
+     },
+     {
+      "id": "step.7.2",
+      "microsteps": [
+       {
+        "id": "m7.6",
+        "instruments": [],
+        "label": "Place a closed drain to the gallbladder fossa",
+        "required": false,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Drainage (contingency)"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Extraction, closure and Sign Out",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [
+         "inst.retrieval-bag"
+        ],
+        "label": "Place the gallbladder in a retrieval bag",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m8.2",
+        "instruments": [
+         "inst.retrieval-bag"
+        ],
+        "label": "Extract the bagged gallbladder via the umbilical port",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [
+         "organ.gallbladder"
+        ],
+        "verb": "extract"
+       },
+       {
+        "id": "m8.3",
+        "instruments": [],
+        "label": "Desufflate under vision and remove all ports",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m8.4",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the fascia at the umbilical 10 mm site",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "close"
+       },
+       {
+        "id": "m8.5",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the fascia at the epigastric 10 mm site",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "close"
+       },
+       {
+        "id": "m8.6",
+        "instruments": [],
+        "label": "Close the skin",
+        "required": true,
+        "sources": [
+         "T13"
+        ],
+        "targets": [],
+        "verb": "close"
+       }
+      ],
+      "name": "Extraction and closure"
+     },
+     {
+      "id": "step.8.2",
+      "microsteps": [
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.7",
+        "instruments": [],
+        "label": "WHO Sign Out completed before the patient leaves the operating room",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "WHO Sign Out"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET — design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The hepatocystic triangle is cleared of fat and fibrous tissue. The common bile duct and common hepatic duct do not have to be exposed.",
+      "id": "crit1",
+      "name": "Hepatocystic triangle cleared",
+      "source": "T2"
+     },
+     {
+      "definition": "The lower one-third of the gallbladder is separated from the liver to expose the cystic plate.",
+      "id": "crit2",
+      "name": "Cystic plate exposed",
+      "source": "T2"
+     },
+     {
+      "definition": "Two and only two structures are seen entering the gallbladder.",
+      "id": "crit3",
+      "name": "Two and only two structures",
+      "source": "T2"
+     }
+    ],
+    "enforcement": "The runner evaluates this gate at every clip and divide action on a critical structure. A divide action taken while the gate is unachieved does not clip the intended anatomy: it resolves through the misidentification model (err.divide-unidentified) and fails the attempt. Dependent steps (phases 5, 6 and 7) are the gate's unlock set.",
+    "id": "gate.cvs",
+    "kind": "safety_gate",
+    "name": "Critical View of Safety",
+    "source": "T2",
+    "statement": "The Critical View of Safety must be achieved AND demonstrated (all three criteria, via the microsteps that demonstrate them) before any clip is applied to, or any structure is divided in, the hepatocystic triangle.",
+    "unlocks": [
+     "step.5.1",
+     "step.6.1",
+     "step.6.2",
+     "step.7.1"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "Before clipping or transecting the cystic duct or artery, the operator pauses and the team confirms the Critical View of Safety has been achieved.",
+      "id": "pause1",
+      "name": "Momentary pause and team confirmation before clipping/transecting",
+      "source": "T3"
+     }
+    ],
+    "enforcement": "Scored checkpoint (microstep m4.6), not a second blocking gate in v1: the blocking gate is the Critical View itself. Omitting the pause forfeits the safety point and is named in the debrief analysis.",
+    "id": "gate.preclip-pause",
+    "kind": "checkpoint",
+    "name": "Pre-clip pause (culture of safety)",
+    "source": "T3"
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (variant and bailout configurations change the required set by the rules in variants[] and decision_points dp2). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1), escalation appropriate to the event (1), definitive plan consistent with the guideline (1).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine run, never from the trace script: time-below-threshold component (3/2/1/0 by the rubric bands in theatre parameters), nadir MAP component (>= threshold 2; 55 to threshold 1; below 55 0), blood-loss component (bands in theatre parameters: 2/1/0).",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "One point each: WHO Sign In, WHO Time Out, WHO Sign Out, prophylaxis inside the cited window, Step 0 planning microsteps complete.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "One point per Critical View criterion demonstrated before the first clip or divide action (3), plus one for the pre-clip pause performed before the first clip (1). Gate violations are additionally recorded as errors and, for division, fail the attempt — the points never offset the fail rule.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "notes": "No composite score is computed: design/05 defines components, not a weighting, and inventing weights would violate the precision law. GOALS (T8) and OSATS (T9) are carried as rubric data for observed-performance rating in the shells; a headless scripted runner has no observed performance to rate, so both are reported as NOT POPULATED in v1 debriefs rather than estimated. Scores are formative only (validity label below) until construct evidence exists.",
+   "rubrics": {
+    "goals": {
+     "domains": [
+      "depth perception",
+      "bimanual dexterity",
+      "efficiency",
+      "tissue handling",
+      "autonomy"
+     ],
+     "scale": "5 domains x 1-5, anchors at 1, 3, 5; total 25",
+     "source": "T8",
+     "status": "rubric data; not populated by the headless runner"
+    },
+    "osats": {
+     "items": [
+      "respect for tissue",
+      "time and motion",
+      "instrument handling",
+      "knowledge of instruments",
+      "use of assistants",
+      "flow of operation",
+      "knowledge of specific procedure"
+     ],
+     "scale": "7 items x 1-5; total 35",
+     "source": "T9",
+     "status": "rubric data; not populated by the headless runner"
+    }
+   },
+   "verdict_rule": "FAIL if any critical-fail error fired (err.divide-unidentified or err.missed-variant); otherwise PASS. Bailout choices at decision points never cause a fail and score positively (design/05)."
+  },
+  "structures": [
+   {
+    "id": "organ.gallbladder",
+    "kind": "record",
+    "note": "Digestive clinical record: parts (fundus, body, neck, Hartmann's pouch), capacity 30-50 mL, blood supply text naming the cystic artery as a branch of the right hepatic artery.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "organ.liver",
+    "kind": "record",
+    "note": "Digestive clinical record for the liver; the liver bed and cystic plate references resolve here and to region.cystic-plate.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "dig.biliary-tree",
+    "kind": "record",
+    "note": "Digestive clinical record carrying the biliary tree and the named absence of a common bile duct concept.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "gallbladder",
+    "kind": "record",
+    "note": "Digestive inventory record with the gallbladder geometry set.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "duct.cystic-duct",
+    "kind": "record",
+    "note": "Digestive inventory record (FJ3625) — the cystic duct as modelled geometry.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "duct.common-hepatic-duct",
+    "kind": "record",
+    "note": "Digestive inventory record; bounds the hepatocystic triangle medially.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "duct.left-hepatic-duct",
+    "kind": "record",
+    "note": "Digestive inventory record; upstream biliary anatomy referenced by the cholangiogram step.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "duct.right-hepatic-duct",
+    "kind": "record",
+    "note": "Digestive inventory record; upstream biliary anatomy referenced by the cholangiogram step.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "artery.hepatic-artery-proper",
+    "kind": "record",
+    "note": "Cardiovascular clinical record; the standard arterial axis from which the cystic artery typically arises (via the right hepatic artery).",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.common-hepatic-artery",
+    "kind": "record",
+    "note": "Cardiovascular clinical record.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.gastroduodenal-artery",
+    "kind": "record",
+    "note": "Cardiovascular clinical record; branch point of the hepatic artery proper.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.celiac-artery",
+    "kind": "record",
+    "note": "Cardiovascular clinical record; origin of the common hepatic artery.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.superior-mesenteric-artery",
+    "kind": "record",
+    "note": "Cardiovascular clinical record; the origin of the replaced right hepatic artery in variant 1.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.trunk-of-right-hepatic-artery",
+    "kind": "record",
+    "note": "Cardiovascular inventory record — the modelled right hepatic artery geometry (no separate clinical record exists under a plain right-hepatic id).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "vein.hepatic-portal-vein",
+    "kind": "record",
+    "note": "Cardiovascular clinical record; the replaced right hepatic artery ascends posterior to it (variant record).",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "variant.replaced-right-hepatic-artery-from-sma",
+    "kind": "record",
+    "note": "Cardiovascular variant record (Michels type III), prevalence 8.7-11.0% in the module's two cited sources. Basis of procedure variant 1.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "artery.cystic",
+    "kind": "absence",
+    "note": "The cystic artery has NO BodyParts3D concept and NO cardiovascular clinical record (probe-verified in Milestone 5). Its anatomy here is sourced from T11 (origin from the right hepatic artery in 89% of cases, CI 85-92; mean diameter 1.91 mm) and from the organ.gallbladder record's supply text. Every reference to it in this procedure resolves to this absence note, per the task rule.",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.cystic-branch-2",
+    "kind": "absence",
+    "note": "The second branch of a double cystic artery. No Body Model record exists for the cystic artery at all (see artery.cystic); the variant anatomy is sourced from T11 (double cystic artery 13%, CI 11-16%).",
+    "resolves_to": null
+   },
+   {
+    "id": "duct.common-bile",
+    "kind": "absence",
+    "note": "The common bile duct has NO BodyParts3D concept (Milestone 11): the biliary tree is otherwise modelled (cystic, common hepatic, left and right hepatic ducts), and the digestive record dig.biliary-tree carries the common bile duct as a named absence. It appears in this procedure only as the structure injured in the misidentification resolution — which is precisely the anatomy the Body Model most needs and does not yet have; the gap is stated, not papered over.",
+    "resolves_to": null
+   },
+   {
+    "id": "region.hepatocystic-triangle",
+    "kind": "absence",
+    "note": "A surgical field, not an organ: bounded by the cystic duct, the common hepatic duct and the inferior edge of the liver (T2). No Body Model record exists for surgical regions; references resolve to this definition.",
+    "resolves_to": null
+   },
+   {
+    "id": "region.cystic-plate",
+    "kind": "absence",
+    "note": "The connective-tissue plate of the gallbladder bed, continuous with the liver's fibrous capsule. No dedicated Body Model record; the underlying anatomy resolves to organ.liver and organ.gallbladder.",
+    "resolves_to": null
+   },
+   {
+    "id": "part.hartmann-pouch",
+    "kind": "absence",
+    "note": "The outpouching of the gallbladder neck. Carried as a named part inside the organ.gallbladder clinical record; no separate Body Model record exists.",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.replaced-rha",
+    "kind": "absence",
+    "note": "Procedure-local handle for the variant vessel in variant 1; resolves to the Body Model variant record variant.replaced-right-hepatic-artery-from-sma (systems/cardiovascular/variants.json). Listed as an absence-kind entry because the handle itself is not a record id; its resolution target is the variant record, checked by tools/theatre_check.py.",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance response processes (GOALS/OSATS rating) are future shell work."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "Microstep m3.12 (variant survey) is the discovery point; the runner requires an explicit identify action on artery.replaced-rha before any cystic artery division microstep in this configuration.",
+     "If the cystic artery is divided without that identification, the division resolves to the replaced right hepatic artery (err.missed-variant): attempt FAIL plus computed haemorrhage at the replaced-artery rate."
+    ],
+    "id": "variant.replaced-rha",
+    "name": "Replaced right hepatic artery from the superior mesenteric artery (Michels type III)",
+    "prevalence": "8.7-11.0% (Milestone 5 variant record, two cited sources)",
+    "source": "T12",
+    "structure_additions": [
+     "artery.replaced-rha"
+    ],
+    "trace": "theatre/traces/trace-03-variant-replaced-rha.json"
+   },
+   {
+    "gate_modifications": [
+     "Step 6.3 microsteps (identify, clip, divide the second branch) become required in this configuration.",
+     "Beginning liver-bed dissection (phase 7) with the second branch uncontrolled computes haemorrhage from that branch until it is clipped (err.uncontrolled-branch)."
+    ],
+    "id": "variant.double-cystic",
+    "name": "Double cystic artery",
+    "prevalence": "13% (95% CI 11-16%) (T11 meta-analysis). Not present in the Milestone 5 cardiovascular records — the cystic artery has no Body Model concept at all; this variant is therefore sourced at theatre level with the absence stated, exactly as the precision law requires.",
+    "source": "T11",
+    "structure_additions": [
+     "artery.cystic-branch-2"
+    ],
+    "trace": "theatre/traces/trace-04-variant-double-cystic.json"
+   }
+  ]
+ }
+}

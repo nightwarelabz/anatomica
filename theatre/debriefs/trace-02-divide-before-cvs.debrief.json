@@ -1,0 +1,423 @@
+{
+  "trace_id": "trace-02-divide-before-cvs",
+  "trace_name": "Division before the Critical View — bile duct injury",
+  "procedure_id": "proc.chole.lap",
+  "case_variant": null,
+  "verdict": "FAIL",
+  "failed_at_s": 1920.0,
+  "fail_reason": "an unidentified critical structure (duct.cystic-duct) was divided before the Critical View of Safety (err.divide-unidentified)",
+  "validity_label": "formative-only",
+  "duration_s": 2460.0,
+  "checklist": {
+    "completed": 32,
+    "required": 64,
+    "pct": 50.0,
+    "missing": [
+      "m0.9",
+      "m3.10",
+      "m3.11",
+      "m3.12",
+      "m3.14",
+      "m3.15",
+      "m3.2",
+      "m3.4",
+      "m3.6",
+      "m3.8",
+      "m3.9",
+      "m4.1",
+      "m4.2",
+      "m4.3",
+      "m4.4",
+      "m4.5",
+      "m4.6",
+      "m6.1",
+      "m6.2",
+      "m6.3",
+      "m6.5",
+      "m7.1",
+      "m7.2",
+      "m7.3",
+      "m7.4",
+      "m7.5",
+      "m8.1",
+      "m8.2",
+      "m8.3",
+      "m8.4",
+      "m8.5",
+      "m8.6"
+    ]
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 0,
+    "pause_before_first_clip": false,
+    "points": 0,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 3,
+    "max": 5,
+    "sign_in": true,
+    "time_out": false,
+    "sign_out": true,
+    "prophylaxis_in_window": false,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.91107480859729,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0
+  },
+  "management": {
+    "points": 5,
+    "max": 5,
+    "recognised": 2,
+    "control": 1,
+    "escalation": 1,
+    "plan": 1
+  },
+  "errors": [
+    {
+      "t_s": 1860.0,
+      "id": "err.clip-unidentified",
+      "detail": "clip applied to presumed duct.cystic-duct before the Critical View of Safety was demonstrated (0 of 3 criteria met)"
+    },
+    {
+      "t_s": 1920.0,
+      "id": "err.divide-unidentified",
+      "detail": "duct.cystic-duct divided before the Critical View of Safety was demonstrated (0 of 3 criteria met)"
+    },
+    {
+      "t_s": 660.0,
+      "id": "err.prophylaxis-window",
+      "detail": "cefazolin given after incision; the cited window is within 60 min before incision (T7)"
+    },
+    {
+      "t_s": 2460.0,
+      "id": "err.checklist-omission",
+      "detail": "WHO Time Out not performed (T6)"
+    }
+  ],
+  "complications": [
+    {
+      "kind": "clip-on-common-bile-duct",
+      "t_onset_s": 1860.0,
+      "detail": "clip placed on the common bile duct, which traction has tented into the cystic duct line (Stewart-Way class I mechanism)",
+      "resolved_structure": "duct.common-bile",
+      "stewart_way_class": "I (mechanism)",
+      "recognised": true,
+      "controlled_s": null,
+      "loss_ml": null
+    },
+    {
+      "kind": "bile-duct-injury",
+      "t_onset_s": 1920.0,
+      "detail": "the structure divided as the cystic duct is the common bile duct, tented into the line of the cystic duct by infundibular traction — the classic visual perceptual illusion (97% of injuries in the Way series are perceptual, 3% technical)",
+      "resolved_structure": "duct.common-bile",
+      "stewart_way_class": "III",
+      "recognised": true,
+      "controlled_s": null,
+      "loss_ml": null
+    }
+  ],
+  "decisions": [
+    {
+      "t_s": 1440.0,
+      "id": "dp1",
+      "choice": "proceed"
+    },
+    {
+      "t_s": 2220.0,
+      "id": "dp4",
+      "choice": "drain-refer"
+    }
+  ],
+  "engine_trace_hash": "0xd35f851ce4b24568",
+  "engine_beats": 2627,
+  "engine_conservation_error_ml": 1.9099388737231493e-11,
+  "debrief": {
+    "description": [
+      "[t=0s] m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy",
+      "[t=60s] m0.2: Confirm consent and operative plan, including anticipation of biliary and arterial variants",
+      "[t=120s] m0.3: Confirm team, resource tier and equipment plan for the case",
+      "[t=180s] m0.5: Apply venous thromboembolism prophylaxis per protocol",
+      "[t=240s] m0.6: Position the patient supine with arms tucked; displays positioned for the American configuration",
+      "[t=300s] m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source",
+      "[t=360s] m0.8: WHO Sign In completed before induction of anaesthesia",
+      "[t=600s] m1.1: Infraumbilical skin incision",
+      "[t=630s] m1.2: Dissect subcutaneous tissue to the fascia",
+      "[t=660s] m0.4: Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)",
+      "[t=690s] m1.3: Incise the fascia",
+      "[t=720s] m1.4: Enter the peritoneum under direct vision (Hasson open technique)",
+      "[t=780s] m1.5: Place and secure the Hasson cannula",
+      "[t=840s] m1.6: Insufflate CO2 to a pneumoperitoneum of 15 mmHg",
+      "[t=900s] m1.7: Insert the 30-degree laparoscope; confirm intraperitoneal position and survey the abdomen",
+      "[t=960s] m1.8: Select the epigastric port site, about 2 cm below the liver edge and right of the falciform ligament",
+      "[t=1020s] m1.9: Insert the 10 mm epigastric port under vision",
+      "[t=1080s] m1.10: Insert the 5 mm mid-clavicular port under vision",
+      "[t=1140s] m1.11: Insert the 5 mm anterior-axillary port under vision",
+      "[t=1200s] m1.12: Position in reverse Trendelenburg with left-side tilt",
+      "[t=1260s] m1.13: Confirm all ports and instruments before proceeding",
+      "[t=1320s] m2.1: Systematic abdominal exploration",
+      "[t=1380s] m2.2: Assess the gallbladder, inflammation severity and adhesions",
+      "[t=1440s] dp1 -> proceed",
+      "[t=1500s] m2.3: Grasp the fundus and retract cephalad over the liver dome",
+      "[t=1560s] m2.4: Grasp the infundibulum (Hartmann's pouch) and retract caudolaterally to open the hepatocystic triangle",
+      "[t=1620s] m3.1: Incise the peritoneum over the infundibulum, anterior aspect",
+      "[t=1680s] m3.3: Clear fat and fibrous tissue from the anterior hepatocystic triangle",
+      "[t=1740s] m3.5: Expose the junction of the gallbladder neck and the cystic duct",
+      "[t=1800s] m3.7: Expose the cystic artery within the hepatocystic triangle",
+      "[t=1860s] m6.4: Apply two clips to the cystic duct on the patient side",
+      "[t=1860s] err.clip-unidentified: clip applied to presumed duct.cystic-duct before the Critical View of Safety was demonstrated (0 of 3 criteria met)",
+      "[t=1860s] the clipped structure is the common bile duct (class I mechanism state)",
+      "[t=1920s] m6.6: Divide the cystic duct between clips",
+      "[t=1920s] err.divide-unidentified: duct.cystic-duct divided before the Critical View of Safety was demonstrated (0 of 3 criteria met)",
+      "[t=1920s] bile duct injury: common bile duct transected (Stewart-Way class III)",
+      "[t=1920s] an unidentified critical structure (duct.cystic-duct) was divided before the Critical View of Safety (err.divide-unidentified)",
+      "[t=2100s] complication recognised: bile-duct-injury",
+      "[t=2160s] help called: hepatobiliary team",
+      "[t=2220s] dp4 -> drain-refer"
+    ],
+    "plus": [
+      "The bile duct injury was recognised during the index operation; in the reference series only 25% were (T1)."
+    ],
+    "delta": [
+      "err.clip-unidentified — clip applied to presumed duct.cystic-duct before the Critical View of Safety was demonstrated (0 of 3 criteria met)",
+      "err.divide-unidentified — duct.cystic-duct divided before the Critical View of Safety was demonstrated (0 of 3 criteria met)",
+      "err.prophylaxis-window — cefazolin given after incision; the cited window is within 60 min before incision (T7)",
+      "err.checklist-omission — WHO Time Out not performed (T6)",
+      "required microsteps not performed: m0.9, m3.10, m3.11, m3.12, m3.14, m3.15, m3.2, m3.4, m3.6, m3.8, m3.9, m4.1, m4.2, m4.3, m4.4, m4.5, m4.6, m6.1, m6.2, m6.3, m6.5, m7.1, m7.2, m7.3, m7.4, m7.5, m8.1, m8.2, m8.3, m8.4, m8.5, m8.6"
+    ],
+    "directive": [
+      "Never clip or divide a tubular structure in the hepatocystic triangle until the Critical View is demonstrated — two and only two structures entering the gallbladder (T2). The dominant injury mechanism is perceptual, not technical (97% of the Way series, T1): the defence is the discipline of the view.",
+      "Confirmed or suspected bile duct injury is referred to an experienced hepatobiliary team — a strong guideline recommendation (T3). Do not attempt definitive repair without that expertise; drain, document, refer.",
+      "Prophylaxis timing is a system step, not a detail: cefazolin 2 g started within 60 minutes before incision (T7)."
+    ],
+    "summary": [
+      "Verdict: FAIL (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 50.0% (32/64), safety gate 0/4, process 3/5, physiology 7/7, management 5/5.",
+      "Attempt failed at t=1920s: an unidentified critical structure (duct.cystic-duct) was divided before the Critical View of Safety (err.divide-unidentified)",
+      "Next focus: err.clip-unidentified — clip applied to presumed duct.cystic-duct before the Critical View of Safety was demonstrated (0 of 3 criteria met)"
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 0.0,
+      "kind": "step",
+      "text": "m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy"
+    },
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and operative plan, including anticipation of biliary and arterial variants"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan for the case"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.5: Apply venous thromboembolism prophylaxis per protocol"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.6: Position the patient supine with arms tucked; displays positioned for the American configuration"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.8: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 600.0,
+      "kind": "step",
+      "text": "m1.1: Infraumbilical skin incision"
+    },
+    {
+      "t_s": 630.0,
+      "kind": "step",
+      "text": "m1.2: Dissect subcutaneous tissue to the fascia"
+    },
+    {
+      "t_s": 660.0,
+      "kind": "step",
+      "text": "m0.4: Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)"
+    },
+    {
+      "t_s": 690.0,
+      "kind": "step",
+      "text": "m1.3: Incise the fascia"
+    },
+    {
+      "t_s": 720.0,
+      "kind": "step",
+      "text": "m1.4: Enter the peritoneum under direct vision (Hasson open technique)"
+    },
+    {
+      "t_s": 780.0,
+      "kind": "step",
+      "text": "m1.5: Place and secure the Hasson cannula"
+    },
+    {
+      "t_s": 840.0,
+      "kind": "step",
+      "text": "m1.6: Insufflate CO2 to a pneumoperitoneum of 15 mmHg"
+    },
+    {
+      "t_s": 900.0,
+      "kind": "step",
+      "text": "m1.7: Insert the 30-degree laparoscope; confirm intraperitoneal position and survey the abdomen"
+    },
+    {
+      "t_s": 960.0,
+      "kind": "step",
+      "text": "m1.8: Select the epigastric port site, about 2 cm below the liver edge and right of the falciform ligament"
+    },
+    {
+      "t_s": 1020.0,
+      "kind": "step",
+      "text": "m1.9: Insert the 10 mm epigastric port under vision"
+    },
+    {
+      "t_s": 1080.0,
+      "kind": "step",
+      "text": "m1.10: Insert the 5 mm mid-clavicular port under vision"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "step",
+      "text": "m1.11: Insert the 5 mm anterior-axillary port under vision"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "step",
+      "text": "m1.12: Position in reverse Trendelenburg with left-side tilt"
+    },
+    {
+      "t_s": 1260.0,
+      "kind": "step",
+      "text": "m1.13: Confirm all ports and instruments before proceeding"
+    },
+    {
+      "t_s": 1320.0,
+      "kind": "step",
+      "text": "m2.1: Systematic abdominal exploration"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "step",
+      "text": "m2.2: Assess the gallbladder, inflammation severity and adhesions"
+    },
+    {
+      "t_s": 1440.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m2.3: Grasp the fundus and retract cephalad over the liver dome"
+    },
+    {
+      "t_s": 1560.0,
+      "kind": "step",
+      "text": "m2.4: Grasp the infundibulum (Hartmann's pouch) and retract caudolaterally to open the hepatocystic triangle"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "step",
+      "text": "m3.1: Incise the peritoneum over the infundibulum, anterior aspect"
+    },
+    {
+      "t_s": 1680.0,
+      "kind": "step",
+      "text": "m3.3: Clear fat and fibrous tissue from the anterior hepatocystic triangle"
+    },
+    {
+      "t_s": 1740.0,
+      "kind": "step",
+      "text": "m3.5: Expose the junction of the gallbladder neck and the cystic duct"
+    },
+    {
+      "t_s": 1800.0,
+      "kind": "step",
+      "text": "m3.7: Expose the cystic artery within the hepatocystic triangle"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "step",
+      "text": "m6.4: Apply two clips to the cystic duct on the patient side"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "error",
+      "text": "err.clip-unidentified: clip applied to presumed duct.cystic-duct before the Critical View of Safety was demonstrated (0 of 3 criteria met)"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "complication",
+      "text": "the clipped structure is the common bile duct (class I mechanism state)"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "step",
+      "text": "m6.6: Divide the cystic duct between clips"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "error",
+      "text": "err.divide-unidentified: duct.cystic-duct divided before the Critical View of Safety was demonstrated (0 of 3 criteria met)"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "complication",
+      "text": "bile duct injury: common bile duct transected (Stewart-Way class III)"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "fail",
+      "text": "an unidentified critical structure (duct.cystic-duct) was divided before the Critical View of Safety (err.divide-unidentified)"
+    },
+    {
+      "t_s": 2100.0,
+      "kind": "recognise",
+      "text": "complication recognised: bile-duct-injury"
+    },
+    {
+      "t_s": 2160.0,
+      "kind": "help",
+      "text": "help called: hepatobiliary team"
+    },
+    {
+      "t_s": 2220.0,
+      "kind": "decision",
+      "text": "dp4 -> drain-refer"
+    },
+    {
+      "t_s": 2280.0,
+      "kind": "step",
+      "text": "m7.6: Place a closed drain to the gallbladder fossa"
+    },
+    {
+      "t_s": 2340.0,
+      "kind": "step",
+      "text": "m8.7: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}

@@ -1,0 +1,503 @@
+{
+  "trace_id": "trace-04-variant-double-cystic",
+  "trace_name": "Variant run — double cystic artery, both branches controlled",
+  "procedure_id": "proc.chole.lap",
+  "case_variant": "variant.double-cystic",
+  "verdict": "PASS",
+  "failed_at_s": null,
+  "fail_reason": null,
+  "validity_label": "formative-only",
+  "duration_s": 5340.0,
+  "checklist": {
+    "completed": 67,
+    "required": 67,
+    "pct": 100.0,
+    "missing": []
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 3,
+    "pause_before_first_clip": true,
+    "points": 4,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 5,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": true,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.91107480859729,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0
+  },
+  "management": null,
+  "errors": [],
+  "complications": [],
+  "decisions": [
+    {
+      "t_s": 2640.0,
+      "id": "dp1",
+      "choice": "proceed"
+    }
+  ],
+  "engine_trace_hash": "0x79c89088088ec060",
+  "engine_beats": 5563,
+  "engine_conservation_error_ml": 1.6370904631912708e-10,
+  "debrief": {
+    "description": [
+      "[t=0s] m0.4: Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)",
+      "[t=60s] m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy",
+      "[t=120s] m0.2: Confirm consent and operative plan, including anticipation of biliary and arterial variants",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan for the case",
+      "[t=240s] m0.5: Apply venous thromboembolism prophylaxis per protocol",
+      "[t=300s] m0.6: Position the patient supine with arms tucked; displays positioned for the American configuration",
+      "[t=360s] m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source",
+      "[t=420s] m0.8: WHO Sign In completed before induction of anaesthesia",
+      "[t=1500s] m0.9: WHO Time Out completed before skin incision",
+      "[t=1800s] m1.1: Infraumbilical skin incision",
+      "[t=1830s] m1.2: Dissect subcutaneous tissue to the fascia",
+      "[t=1860s] m1.3: Incise the fascia",
+      "[t=1920s] m1.4: Enter the peritoneum under direct vision (Hasson open technique)",
+      "[t=1980s] m1.5: Place and secure the Hasson cannula",
+      "[t=2040s] m1.6: Insufflate CO2 to a pneumoperitoneum of 15 mmHg",
+      "[t=2100s] m1.7: Insert the 30-degree laparoscope; confirm intraperitoneal position and survey the abdomen",
+      "[t=2160s] m1.8: Select the epigastric port site, about 2 cm below the liver edge and right of the falciform ligament",
+      "[t=2220s] m1.9: Insert the 10 mm epigastric port under vision",
+      "[t=2280s] m1.10: Insert the 5 mm mid-clavicular port under vision",
+      "[t=2340s] m1.11: Insert the 5 mm anterior-axillary port under vision",
+      "[t=2400s] m1.12: Position in reverse Trendelenburg with left-side tilt",
+      "[t=2460s] m1.13: Confirm all ports and instruments before proceeding",
+      "[t=2520s] m2.1: Systematic abdominal exploration",
+      "[t=2580s] m2.2: Assess the gallbladder, inflammation severity and adhesions",
+      "[t=2640s] dp1 -> proceed",
+      "[t=2700s] m2.3: Grasp the fundus and retract cephalad over the liver dome",
+      "[t=2760s] m2.4: Grasp the infundibulum (Hartmann's pouch) and retract caudolaterally to open the hepatocystic triangle",
+      "[t=2820s] m3.1: Incise the peritoneum over the infundibulum, anterior aspect",
+      "[t=2880s] m3.2: Incise the peritoneum over the infundibulum, posterior aspect",
+      "[t=2940s] m3.3: Clear fat and fibrous tissue from the anterior hepatocystic triangle",
+      "[t=3000s] m3.4: Clear fat and fibrous tissue from the posterior hepatocystic triangle",
+      "[t=3060s] m3.5: Expose the junction of the gallbladder neck and the cystic duct",
+      "[t=3120s] m3.6: Trace the cystic duct continuously into the gallbladder neck",
+      "[t=3180s] m3.7: Expose the cystic artery within the hepatocystic triangle",
+      "[t=3240s] m3.8: Trace the cystic artery onto the gallbladder wall",
+      "[t=3300s] m3.9: Create a window between the cystic duct and the cystic artery",
+      "[t=3360s] m3.10: Create a window between the cystic artery and the liver edge",
+      "[t=3420s] m3.11: Confirm the triangle is cleared: framed by the common hepatic duct medially and the liver edge above, traversed only by the cystic duct and cystic artery",
+      "[t=3480s] m3.12: Survey the triangle and the duct course for additional or replaced vessels",
+      "[t=3540s] m3.14: Re-inspect the triangle from the posterior aspect with the angled scope"
+    ],
+    "plus": [
+      "Critical View of Safety achieved and demonstrated before any clip was applied — all three criteria (T2).",
+      "Pre-clip pause performed and the view confirmed with the team before clipping (T3).",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [],
+    "directive": [
+      "Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it."
+    ],
+    "summary": [
+      "Verdict: PASS (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 100.0% (67/67), safety gate 4/4, process 5/5, physiology 7/7, management n/a (no complication)."
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 0.0,
+      "kind": "step",
+      "text": "m0.4: Administer cefazolin 2 g IV within 60 minutes before incision (3 g if >=120 kg)"
+    },
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and operative plan, including anticipation of biliary and arterial variants"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan for the case"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.5: Apply venous thromboembolism prophylaxis per protocol"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.6: Position the patient supine with arms tucked; displays positioned for the American configuration"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.7: Equipment check: laparoscope and camera, insufflator, suction, energy source"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.8: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed before skin incision"
+    },
+    {
+      "t_s": 1800.0,
+      "kind": "step",
+      "text": "m1.1: Infraumbilical skin incision"
+    },
+    {
+      "t_s": 1830.0,
+      "kind": "step",
+      "text": "m1.2: Dissect subcutaneous tissue to the fascia"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "step",
+      "text": "m1.3: Incise the fascia"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "step",
+      "text": "m1.4: Enter the peritoneum under direct vision (Hasson open technique)"
+    },
+    {
+      "t_s": 1980.0,
+      "kind": "step",
+      "text": "m1.5: Place and secure the Hasson cannula"
+    },
+    {
+      "t_s": 2040.0,
+      "kind": "step",
+      "text": "m1.6: Insufflate CO2 to a pneumoperitoneum of 15 mmHg"
+    },
+    {
+      "t_s": 2100.0,
+      "kind": "step",
+      "text": "m1.7: Insert the 30-degree laparoscope; confirm intraperitoneal position and survey the abdomen"
+    },
+    {
+      "t_s": 2160.0,
+      "kind": "step",
+      "text": "m1.8: Select the epigastric port site, about 2 cm below the liver edge and right of the falciform ligament"
+    },
+    {
+      "t_s": 2220.0,
+      "kind": "step",
+      "text": "m1.9: Insert the 10 mm epigastric port under vision"
+    },
+    {
+      "t_s": 2280.0,
+      "kind": "step",
+      "text": "m1.10: Insert the 5 mm mid-clavicular port under vision"
+    },
+    {
+      "t_s": 2340.0,
+      "kind": "step",
+      "text": "m1.11: Insert the 5 mm anterior-axillary port under vision"
+    },
+    {
+      "t_s": 2400.0,
+      "kind": "step",
+      "text": "m1.12: Position in reverse Trendelenburg with left-side tilt"
+    },
+    {
+      "t_s": 2460.0,
+      "kind": "step",
+      "text": "m1.13: Confirm all ports and instruments before proceeding"
+    },
+    {
+      "t_s": 2520.0,
+      "kind": "step",
+      "text": "m2.1: Systematic abdominal exploration"
+    },
+    {
+      "t_s": 2580.0,
+      "kind": "step",
+      "text": "m2.2: Assess the gallbladder, inflammation severity and adhesions"
+    },
+    {
+      "t_s": 2640.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed"
+    },
+    {
+      "t_s": 2700.0,
+      "kind": "step",
+      "text": "m2.3: Grasp the fundus and retract cephalad over the liver dome"
+    },
+    {
+      "t_s": 2760.0,
+      "kind": "step",
+      "text": "m2.4: Grasp the infundibulum (Hartmann's pouch) and retract caudolaterally to open the hepatocystic triangle"
+    },
+    {
+      "t_s": 2820.0,
+      "kind": "step",
+      "text": "m3.1: Incise the peritoneum over the infundibulum, anterior aspect"
+    },
+    {
+      "t_s": 2880.0,
+      "kind": "step",
+      "text": "m3.2: Incise the peritoneum over the infundibulum, posterior aspect"
+    },
+    {
+      "t_s": 2940.0,
+      "kind": "step",
+      "text": "m3.3: Clear fat and fibrous tissue from the anterior hepatocystic triangle"
+    },
+    {
+      "t_s": 3000.0,
+      "kind": "step",
+      "text": "m3.4: Clear fat and fibrous tissue from the posterior hepatocystic triangle"
+    },
+    {
+      "t_s": 3060.0,
+      "kind": "step",
+      "text": "m3.5: Expose the junction of the gallbladder neck and the cystic duct"
+    },
+    {
+      "t_s": 3120.0,
+      "kind": "step",
+      "text": "m3.6: Trace the cystic duct continuously into the gallbladder neck"
+    },
+    {
+      "t_s": 3180.0,
+      "kind": "step",
+      "text": "m3.7: Expose the cystic artery within the hepatocystic triangle"
+    },
+    {
+      "t_s": 3240.0,
+      "kind": "step",
+      "text": "m3.8: Trace the cystic artery onto the gallbladder wall"
+    },
+    {
+      "t_s": 3300.0,
+      "kind": "step",
+      "text": "m3.9: Create a window between the cystic duct and the cystic artery"
+    },
+    {
+      "t_s": 3360.0,
+      "kind": "step",
+      "text": "m3.10: Create a window between the cystic artery and the liver edge"
+    },
+    {
+      "t_s": 3420.0,
+      "kind": "step",
+      "text": "m3.11: Confirm the triangle is cleared: framed by the common hepatic duct medially and the liver edge above, traversed only by the cystic duct and cystic artery"
+    },
+    {
+      "t_s": 3480.0,
+      "kind": "step",
+      "text": "m3.12: Survey the triangle and the duct course for additional or replaced vessels"
+    },
+    {
+      "t_s": 3540.0,
+      "kind": "step",
+      "text": "m3.14: Re-inspect the triangle from the posterior aspect with the angled scope"
+    },
+    {
+      "t_s": 3600.0,
+      "kind": "step",
+      "text": "m3.15: Confirm no other tubular structure enters the operative field"
+    },
+    {
+      "t_s": 3660.0,
+      "kind": "step",
+      "text": "m4.1: Separate the lower third of the gallbladder from the liver bed"
+    },
+    {
+      "t_s": 3720.0,
+      "kind": "step",
+      "text": "m4.2: Expose the cystic plate across the gallbladder-liver interface"
+    },
+    {
+      "t_s": 3780.0,
+      "kind": "step",
+      "text": "m4.3: Demonstrate the cystic duct entering the gallbladder"
+    },
+    {
+      "t_s": 3840.0,
+      "kind": "step",
+      "text": "m4.4: Demonstrate the cystic artery entering the gallbladder"
+    },
+    {
+      "t_s": 3900.0,
+      "kind": "step",
+      "text": "m4.5: Confirm two and only two structures enter the gallbladder"
+    },
+    {
+      "t_s": 3900.0,
+      "kind": "gate",
+      "text": "Critical View of Safety achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 3960.0,
+      "kind": "step",
+      "text": "m4.6: Pre-clip pause: the Critical View is verbalised and confirmed with the team before any clip is applied"
+    },
+    {
+      "t_s": 4020.0,
+      "kind": "step",
+      "text": "m6.1: Apply two clips to the cystic artery on the patient side"
+    },
+    {
+      "t_s": 4020.0,
+      "kind": "clip",
+      "text": "m6.1 clipped with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4080.0,
+      "kind": "step",
+      "text": "m6.2: Apply a clip to the cystic artery on the gallbladder side"
+    },
+    {
+      "t_s": 4080.0,
+      "kind": "clip",
+      "text": "m6.2 clipped with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4140.0,
+      "kind": "step",
+      "text": "m6.3: Divide the cystic artery between clips"
+    },
+    {
+      "t_s": 4140.0,
+      "kind": "divide",
+      "text": "m6.3 divided with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4200.0,
+      "kind": "step",
+      "text": "m6.7: Identify the second cystic artery branch entering the gallbladder"
+    },
+    {
+      "t_s": 4260.0,
+      "kind": "step",
+      "text": "m6.8: Clip the second cystic artery branch"
+    },
+    {
+      "t_s": 4260.0,
+      "kind": "clip",
+      "text": "m6.8 clipped with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4320.0,
+      "kind": "step",
+      "text": "m6.9: Divide the second cystic artery branch between clips"
+    },
+    {
+      "t_s": 4320.0,
+      "kind": "divide",
+      "text": "m6.9 divided with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4380.0,
+      "kind": "step",
+      "text": "m6.4: Apply two clips to the cystic duct on the patient side"
+    },
+    {
+      "t_s": 4380.0,
+      "kind": "clip",
+      "text": "m6.4 clipped with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4440.0,
+      "kind": "step",
+      "text": "m6.5: Apply a clip to the cystic duct on the gallbladder side"
+    },
+    {
+      "t_s": 4440.0,
+      "kind": "clip",
+      "text": "m6.5 clipped with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4500.0,
+      "kind": "step",
+      "text": "m6.6: Divide the cystic duct between clips"
+    },
+    {
+      "t_s": 4500.0,
+      "kind": "divide",
+      "text": "m6.6 divided with the Critical View demonstrated"
+    },
+    {
+      "t_s": 4560.0,
+      "kind": "step",
+      "text": "m7.1: Dissect the gallbladder off the liver bed in the cystic plate plane"
+    },
+    {
+      "t_s": 4620.0,
+      "kind": "step",
+      "text": "m7.2: Maintain haemostasis of the liver bed"
+    },
+    {
+      "t_s": 4680.0,
+      "kind": "step",
+      "text": "m7.3: Inspect the liver bed for bleeding"
+    },
+    {
+      "t_s": 4740.0,
+      "kind": "step",
+      "text": "m7.4: Inspect the divided duct and artery and their clips; check for bile leak"
+    },
+    {
+      "t_s": 4800.0,
+      "kind": "step",
+      "text": "m7.5: Irrigate and suction the operative field"
+    },
+    {
+      "t_s": 4860.0,
+      "kind": "step",
+      "text": "m8.1: Place the gallbladder in a retrieval bag"
+    },
+    {
+      "t_s": 4920.0,
+      "kind": "step",
+      "text": "m8.2: Extract the bagged gallbladder via the umbilical port"
+    },
+    {
+      "t_s": 4980.0,
+      "kind": "step",
+      "text": "m8.3: Desufflate under vision and remove all ports"
+    },
+    {
+      "t_s": 5040.0,
+      "kind": "step",
+      "text": "m8.4: Close the fascia at the umbilical 10 mm site"
+    },
+    {
+      "t_s": 5100.0,
+      "kind": "step",
+      "text": "m8.5: Close the fascia at the epigastric 10 mm site"
+    },
+    {
+      "t_s": 5160.0,
+      "kind": "step",
+      "text": "m8.6: Close the skin"
+    },
+    {
+      "t_s": 5220.0,
+      "kind": "step",
+      "text": "m8.7: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}

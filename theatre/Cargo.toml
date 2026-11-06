@@ -1,0 +1,18 @@
+[package]
+name = "anatomica-theatre"
+version = "0.1.0"
+edition = "2021"
+description = "ANATOMICA theatre — procedure model, safety-gate evaluation and scored attempt runner for the surgical simulator (Milestone 17 v1). Executes scripted attempt traces against authored procedures and the physiology engine; complications are computed from attempt state, never scripted."
+license = "AGPL-3.0-only"
+
+[[bin]]
+name = "anatomica-theatre"
+path = "src/main.rs"
+
+[dependencies]
+anatomica-physiology = { path = "../physiology" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+debug = false
