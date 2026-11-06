@@ -1,0 +1,8815 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled skeleton \u2014 Milestone 3",
+  "generated_by": "tools/assemble_skeleton.py",
+  "input": "data/skeletal/skeleton-geometry.json (Milestone 2)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty (sternum); byte-identical duplicates within a composition de-duplicated (hyoid)",
+  "flagged_unknowns": [
+   "Source z=0 sits ~70 mm above the lowest toe point (toe tip z=-70.48 mm); no landmark identified. Canonical y here is frame-converted only \u2014 ground placement (y=0 at sole) is NOT applied.",
+   "Source y=0 has no identified anatomical landmark; canonical z origin is therefore unregistered (posterior extreme +18.0 mm source = occiput).",
+   "Per-part pose registration (plantar-flexed feet, hanging arms) is not performed by this stage; boxes are in the source pose, frame-converted."
+  ],
+  "records_with_geometry": 199,
+  "records_without_geometry": [
+   "malleus_right",
+   "incus_right",
+   "stapes_right",
+   "malleus_left",
+   "incus_left",
+   "stapes_left",
+   "coccyx"
+  ],
+  "deduped_files": [
+   {
+    "record_id": "hyoid",
+    "kept": "FJ2772",
+    "dropped": "FJ3201"
+   }
+  ],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -32.3935,
+    -7.04799,
+    -1.8001000000000003
+   ],
+   "max": [
+    32.3914,
+    163.627,
+    23.604400000000002
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "frontal",
+   "fma_id": "FMA52734",
+   "concept_name": "frontal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3200",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3200.obj",
+     "vertices": 8472,
+     "faces": 14510
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 8472,
+    "faces": 14510
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 8472,
+     "faces": 14510
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 8472,
+     "faces": 14510
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.199210000000001,
+     152.08900000000003,
+     10.6639
+    ],
+    "max": [
+     6.33025,
+     162.99400000000003,
+     17.7385
+    ]
+   }
+  },
+  {
+   "record_id": "parietal_right",
+   "fma_id": "FMA52788",
+   "concept_name": "right parietal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3380",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3380.obj",
+     "vertices": 8028,
+     "faces": 13002
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 8028,
+    "faces": 13002
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 8028,
+     "faces": 13002
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 8028,
+     "faces": 13002
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.500244,
+     151.788,
+     -1.4831400000000001
+    ],
+    "max": [
+     7.618850000000001,
+     163.627,
+     12.7886
+    ]
+   }
+  },
+  {
+   "record_id": "temporal_right",
+   "fma_id": "FMA52738",
+   "concept_name": "right temporal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3386",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3386.obj",
+     "vertices": 3102,
+     "faces": 4928
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3102,
+    "faces": 4928
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3102,
+     "faces": 4928
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3102,
+     "faces": 4928
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.2695100000000001,
+     147.557,
+     3.5012600000000003
+    ],
+    "max": [
+     7.3989400000000005,
+     155.15300000000002,
+     13.3736
+    ]
+   }
+  },
+  {
+   "record_id": "parietal_left",
+   "fma_id": "FMA52789",
+   "concept_name": "left parietal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3274",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3274.obj",
+     "vertices": 8367,
+     "faces": 13210
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 8367,
+    "faces": 13210
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 8367,
+     "faces": 13210
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 8367,
+     "faces": 13210
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.48565,
+     151.78,
+     -1.49522
+    ],
+    "max": [
+     0.7867740000000001,
+     163.627,
+     13.168600000000001
+    ]
+   }
+  },
+  {
+   "record_id": "temporal_left",
+   "fma_id": "FMA52739",
+   "concept_name": "left temporal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3281",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3281.obj",
+     "vertices": 3013,
+     "faces": 4936
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3013,
+    "faces": 4936
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3013,
+     "faces": 4936
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3013,
+     "faces": 4936
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.25853,
+     147.548,
+     3.50704
+    ],
+    "max": [
+     -1.16242,
+     155.14600000000002,
+     13.356700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "occipital",
+   "fma_id": "FMA52735",
+   "concept_name": "occipital bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3309",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3309.obj",
+     "vertices": 6995,
+     "faces": 12450
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 6995,
+    "faces": 12450
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 6995,
+     "faces": 12450
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 6995,
+     "faces": 12450
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.070530000000001,
+     147.77700000000002,
+     -1.8001000000000003
+    ],
+    "max": [
+     6.1961200000000005,
+     158.45100000000002,
+     10.0959
+    ]
+   }
+  },
+  {
+   "record_id": "sphenoid",
+   "fma_id": "FMA52736",
+   "concept_name": "sphenoid bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3394",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3394.obj",
+     "vertices": 4957,
+     "faces": 8154
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4957,
+    "faces": 8154
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4957,
+     "faces": 8154
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4957,
+     "faces": 8154
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.50329,
+     147.89100000000002,
+     9.04127
+    ],
+    "max": [
+     5.63198,
+     154.846,
+     14.501900000000001
+    ]
+   }
+  },
+  {
+   "record_id": "ethmoid",
+   "fma_id": "FMA52740",
+   "concept_name": "ethmoid",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3199",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3199.obj",
+     "vertices": 12484,
+     "faces": 22276
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 12484,
+    "faces": 22276
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 12484,
+     "faces": 22276
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 12484,
+     "faces": 22276
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.02014,
+     149.728,
+     11.9816
+    ],
+    "max": [
+     2.1509899999999997,
+     153.234,
+     16.72
+    ]
+   }
+  },
+  {
+   "record_id": "maxilla_right",
+   "fma_id": "FMA53649",
+   "concept_name": "right maxilla",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3375",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3375.obj",
+     "vertices": 3513,
+     "faces": 5324
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3513,
+    "faces": 5324
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3513,
+     "faces": 5324
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3513,
+     "faces": 5324
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0251054,
+     146.399,
+     12.9374
+    ],
+    "max": [
+     4.76107,
+     153.335,
+     18.4029
+    ]
+   }
+  },
+  {
+   "record_id": "zygomatic_right",
+   "fma_id": "FMA52892",
+   "concept_name": "right zygomatic bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3392",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3392.obj",
+     "vertices": 934,
+     "faces": 1556
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 934,
+    "faces": 1556
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 934,
+     "faces": 1556
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 934,
+     "faces": 1556
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.3234600000000003,
+     148.06400000000002,
+     12.1774
+    ],
+    "max": [
+     6.45779,
+     153.66400000000002,
+     16.145300000000002
+    ]
+   }
+  },
+  {
+   "record_id": "nasal_right",
+   "fma_id": "FMA53647",
+   "concept_name": "right nasal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3378",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3378.obj",
+     "vertices": 265,
+     "faces": 416
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 265,
+    "faces": 416
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 265,
+     "faces": 416
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 265,
+     "faces": 416
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0741411,
+     150.11700000000002,
+     16.9585
+    ],
+    "max": [
+     0.914871,
+     153.31900000000002,
+     19.0833
+    ]
+   }
+  },
+  {
+   "record_id": "lacrimal_right",
+   "fma_id": "FMA53645",
+   "concept_name": "right lacrimal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3371",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3371.obj",
+     "vertices": 401,
+     "faces": 702
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 401,
+    "faces": 702
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 401,
+     "faces": 702
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 401,
+     "faces": 702
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.7486470000000001,
+     150.18800000000002,
+     15.094700000000001
+    ],
+    "max": [
+     1.80419,
+     152.73499999999999,
+     16.551
+    ]
+   }
+  },
+  {
+   "record_id": "palatine_right",
+   "fma_id": "FMA53655",
+   "concept_name": "right palatine bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3379",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3379.obj",
+     "vertices": 1132,
+     "faces": 1736
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1132,
+    "faces": 1736
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1736
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1736
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.0147221,
+     147.04500000000002,
+     10.3313
+    ],
+    "max": [
+     2.8810400000000005,
+     151.334,
+     14.990700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "concha_right",
+   "fma_id": "FMA54737",
+   "concept_name": "right inferior nasal concha",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3369",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3369.obj",
+     "vertices": 572,
+     "faces": 714
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 572,
+    "faces": 714
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 572,
+     "faces": 714
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 572,
+     "faces": 714
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.6688170000000001,
+     147.852,
+     12.996100000000002
+    ],
+    "max": [
+     1.65321,
+     149.848,
+     16.6327
+    ]
+   }
+  },
+  {
+   "record_id": "maxilla_left",
+   "fma_id": "FMA53650",
+   "concept_name": "left maxilla",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3269",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3269.obj",
+     "vertices": 3577,
+     "faces": 5198
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3577,
+    "faces": 5198
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3577,
+     "faces": 5198
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3577,
+     "faces": 5198
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.5795200000000005,
+     146.399,
+     12.6814
+    ],
+    "max": [
+     0.30679300000000004,
+     153.329,
+     18.288
+    ]
+   }
+  },
+  {
+   "record_id": "zygomatic_left",
+   "fma_id": "FMA52893",
+   "concept_name": "left zygomatic bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3287",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3287.obj",
+     "vertices": 929,
+     "faces": 1434
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 929,
+    "faces": 1434
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 929,
+     "faces": 1434
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 929,
+     "faces": 1434
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.32444,
+     148.06199999999998,
+     12.1743
+    ],
+    "max": [
+     -3.18933,
+     153.674,
+     16.1432
+    ]
+   }
+  },
+  {
+   "record_id": "nasal_left",
+   "fma_id": "FMA53648",
+   "concept_name": "left nasal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3272",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3272.obj",
+     "vertices": 263,
+     "faces": 438
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 263,
+    "faces": 438
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 263,
+     "faces": 438
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 263,
+     "faces": 438
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.7199930000000001,
+     150.185,
+     16.929
+    ],
+    "max": [
+     0.252242,
+     153.34900000000002,
+     18.946700000000003
+    ]
+   }
+  },
+  {
+   "record_id": "lacrimal_left",
+   "fma_id": "FMA53646",
+   "concept_name": "left lacrimal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3265",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3265.obj",
+     "vertices": 366,
+     "faces": 640
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 366,
+    "faces": 640
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 366,
+     "faces": 640
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 366,
+     "faces": 640
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.7931100000000002,
+     149.787,
+     15.076400000000001
+    ],
+    "max": [
+     -0.731944,
+     152.68800000000002,
+     16.473200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "palatine_left",
+   "fma_id": "FMA53656",
+   "concept_name": "left palatine bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3273",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3273.obj",
+     "vertices": 1164,
+     "faces": 1938
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1164,
+    "faces": 1938
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1164,
+     "faces": 1938
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1164,
+     "faces": 1938
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.7458400000000003,
+     147.01600000000002,
+     10.3322
+    ],
+    "max": [
+     0.15432400000000002,
+     151.34,
+     14.9962
+    ]
+   }
+  },
+  {
+   "record_id": "concha_left",
+   "fma_id": "FMA54738",
+   "concept_name": "left inferior nasal concha",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3263",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3263.obj",
+     "vertices": 482,
+     "faces": 738
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 482,
+    "faces": 738
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 482,
+     "faces": 738
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 482,
+     "faces": 738
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.59399,
+     148.26600000000002,
+     13.3951
+    ],
+    "max": [
+     -0.45912100000000006,
+     149.805,
+     16.948
+    ]
+   }
+  },
+  {
+   "record_id": "vomer",
+   "fma_id": "FMA9710",
+   "concept_name": "vomer",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3395",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3395.obj",
+     "vertices": 3660,
+     "faces": 7218
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3660,
+    "faces": 7218
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3660,
+     "faces": 7218
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3660,
+     "faces": 7218
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.48110400000000003,
+     147.459,
+     11.0747
+    ],
+    "max": [
+     0.611122,
+     151.811,
+     16.5807
+    ]
+   }
+  },
+  {
+   "record_id": "mandible",
+   "fma_id": "FMA52748",
+   "concept_name": "mandible",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3289",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3289.obj",
+     "vertices": 2845,
+     "faces": 5576
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2845,
+    "faces": 5576
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2845,
+     "faces": 5576
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2845,
+     "faces": 5576
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.25541,
+     142.163,
+     8.985370000000001
+    ],
+    "max": [
+     5.38459,
+     150.60999999999999,
+     17.3832
+    ]
+   }
+  },
+  {
+   "record_id": "hyoid",
+   "fma_id": "FMA52749",
+   "concept_name": "hyoid bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2772",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2772.obj",
+     "vertices": 687,
+     "faces": 1196
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 687,
+    "faces": 1196
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 2,
+     "vertices": 1374,
+     "faces": 2392
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 1374,
+     "faces": 2392
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.82825,
+     142.237,
+     9.44187
+    ],
+    "max": [
+     1.95242,
+     144.08599999999998,
+     12.9
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C1",
+   "fma_id": "FMA12519",
+   "concept_name": "atlas",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3176",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3176.obj",
+     "vertices": 1433,
+     "faces": 2094
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1433,
+    "faces": 2094
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1433,
+     "faces": 2094
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1433,
+     "faces": 2094
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.02307,
+     146.221,
+     4.0595799999999995
+    ],
+    "max": [
+     4.1364600000000005,
+     148.143,
+     8.76442
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C2",
+   "fma_id": "FMA12520",
+   "concept_name": "axis",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3177",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3177.obj",
+     "vertices": 1540,
+     "faces": 2288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1540,
+    "faces": 2288
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1540,
+     "faces": 2288
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1540,
+     "faces": 2288
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.4574200000000004,
+     143.317,
+     3.6670900000000004
+    ],
+    "max": [
+     2.5961600000000002,
+     147.835,
+     8.653910000000002
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C3",
+   "fma_id": "FMA12521",
+   "concept_name": "third cervical vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3161",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3161.obj",
+     "vertices": 1323,
+     "faces": 2030
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1323,
+    "faces": 2030
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1323,
+     "faces": 2030
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1323,
+     "faces": 2030
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.85393,
+     141.70000000000002,
+     3.81331
+    ],
+    "max": [
+     2.98428,
+     144.574,
+     8.78132
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C4",
+   "fma_id": "FMA12522",
+   "concept_name": "fourth cervical vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3164",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3164.obj",
+     "vertices": 1469,
+     "faces": 2410
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1469,
+    "faces": 2410
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1469,
+     "faces": 2410
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1469,
+     "faces": 2410
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.6377500000000005,
+     140.46,
+     4.0693600000000005
+    ],
+    "max": [
+     2.77534,
+     143.21400000000003,
+     8.91081
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C5",
+   "fma_id": "FMA12523",
+   "concept_name": "fifth cervical vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3167",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3167.obj",
+     "vertices": 1539,
+     "faces": 2196
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1539,
+    "faces": 2196
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1539,
+     "faces": 2196
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1539,
+     "faces": 2196
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.8333200000000005,
+     139.377,
+     3.6082500000000004
+    ],
+    "max": [
+     2.96978,
+     141.799,
+     9.07726
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C6",
+   "fma_id": "FMA12524",
+   "concept_name": "sixth cervical vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3170",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3170.obj",
+     "vertices": 1498,
+     "faces": 2374
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1498,
+    "faces": 2374
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1498,
+     "faces": 2374
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1498,
+     "faces": 2374
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.9947700000000004,
+     138.159,
+     2.91794
+    ],
+    "max": [
+     3.12652,
+     140.47400000000002,
+     9.167100000000001
+    ]
+   }
+  },
+  {
+   "record_id": "vert_C7",
+   "fma_id": "FMA12525",
+   "concept_name": "seventh cervical vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3172",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3172.obj",
+     "vertices": 1324,
+     "faces": 1820
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1324,
+    "faces": 1820
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1324,
+     "faces": 1820
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1324,
+     "faces": 1820
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.19316,
+     136.471,
+     2.12664
+    ],
+    "max": [
+     3.3229300000000004,
+     139.184,
+     9.00319
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T1",
+   "fma_id": "FMA9165",
+   "concept_name": "first thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3158",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3158.obj",
+     "vertices": 1078,
+     "faces": 1700
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1078,
+    "faces": 1700
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1078,
+     "faces": 1700
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1078,
+     "faces": 1700
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.5916200000000007,
+     134.722,
+     1.7086700000000001
+    ],
+    "max": [
+     3.7383000000000006,
+     137.69000000000003,
+     8.68719
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T2",
+   "fma_id": "FMA9187",
+   "concept_name": "second thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3160",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3160.obj",
+     "vertices": 1161,
+     "faces": 1938
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1161,
+    "faces": 1938
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1161,
+     "faces": 1938
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1161,
+     "faces": 1938
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.4578400000000005,
+     132.659,
+     1.21205
+    ],
+    "max": [
+     3.59221,
+     136.036,
+     8.26758
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T3",
+   "fma_id": "FMA9209",
+   "concept_name": "third thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3163",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3163.obj",
+     "vertices": 1175,
+     "faces": 2038
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1175,
+    "faces": 2038
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1175,
+     "faces": 2038
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1175,
+     "faces": 2038
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.1840900000000003,
+     130.223,
+     0.136011
+    ],
+    "max": [
+     3.29661,
+     134.185,
+     7.67363
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T4",
+   "fma_id": "FMA9248",
+   "concept_name": "fourth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3166",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3166.obj",
+     "vertices": 1210,
+     "faces": 2066
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1210,
+    "faces": 2066
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1210,
+     "faces": 2066
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1210,
+     "faces": 2066
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.4282,
+     127.774,
+     0.0197896
+    ],
+    "max": [
+     3.54617,
+     132.14100000000002,
+     6.96049
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T5",
+   "fma_id": "FMA9922",
+   "concept_name": "fifth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3169",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3169.obj",
+     "vertices": 1321,
+     "faces": 2280
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1321,
+    "faces": 2280
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1321,
+     "faces": 2280
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1321,
+     "faces": 2280
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.48897,
+     123.977,
+     -0.0018549900000000002
+    ],
+    "max": [
+     3.61515,
+     129.727,
+     6.6009
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T6",
+   "fma_id": "FMA9945",
+   "concept_name": "sixth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3171",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3171.obj",
+     "vertices": 1353,
+     "faces": 2248
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1353,
+    "faces": 2248
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1353,
+     "faces": 2248
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1353,
+     "faces": 2248
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.5033900000000004,
+     120.93800000000002,
+     0.11924300000000002
+    ],
+    "max": [
+     3.64227,
+     126.908,
+     6.52209
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T7",
+   "fma_id": "FMA9968",
+   "concept_name": "seventh thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3173",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3173.obj",
+     "vertices": 1478,
+     "faces": 2574
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1478,
+    "faces": 2574
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1478,
+     "faces": 2574
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1478,
+     "faces": 2574
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.63206,
+     117.93,
+     0.06714930000000001
+    ],
+    "max": [
+     3.7226300000000005,
+     124.18,
+     6.697920000000001
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T8",
+   "fma_id": "FMA9991",
+   "concept_name": "eighth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3174",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3174.obj",
+     "vertices": 1392,
+     "faces": 2424
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1392,
+    "faces": 2424
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1392,
+     "faces": 2424
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1392,
+     "faces": 2424
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2152700000000003,
+     115.375,
+     0.0931796
+    ],
+    "max": [
+     3.36594,
+     121.305,
+     7.202760000000001
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T9",
+   "fma_id": "FMA10014",
+   "concept_name": "ninth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3175",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3175.obj",
+     "vertices": 1443,
+     "faces": 2586
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1443,
+    "faces": 2586
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1443,
+     "faces": 2586
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1443,
+     "faces": 2586
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2998,
+     112.66300000000001,
+     0.6156060000000001
+    ],
+    "max": [
+     3.4394799999999996,
+     118.484,
+     7.76529
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T10",
+   "fma_id": "FMA10037",
+   "concept_name": "tenth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3154",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3154.obj",
+     "vertices": 1584,
+     "faces": 2790
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1584,
+    "faces": 2790
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1584,
+     "faces": 2790
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1584,
+     "faces": 2790
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.22452,
+     109.977,
+     0.78225
+    ],
+    "max": [
+     3.36568,
+     115.71300000000002,
+     8.40578
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T11",
+   "fma_id": "FMA10059",
+   "concept_name": "eleventh thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3155",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3155.obj",
+     "vertices": 1593,
+     "faces": 2674
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1593,
+    "faces": 2674
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1593,
+     "faces": 2674
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1593,
+     "faces": 2674
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.55593,
+     107.572,
+     1.30089
+    ],
+    "max": [
+     2.6761,
+     112.927,
+     9.25324
+    ]
+   }
+  },
+  {
+   "record_id": "vert_T12",
+   "fma_id": "FMA10081",
+   "concept_name": "twelfth thoracic vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3156",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3156.obj",
+     "vertices": 1593,
+     "faces": 2772
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1593,
+    "faces": 2772
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1593,
+     "faces": 2772
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1593,
+     "faces": 2772
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.10548,
+     104.99600000000001,
+     2.25609
+    ],
+    "max": [
+     2.2386399999999997,
+     110.15899999999999,
+     10.1385
+    ]
+   }
+  },
+  {
+   "record_id": "vert_L1",
+   "fma_id": "FMA13072",
+   "concept_name": "first lumbar vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3157",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3157.obj",
+     "vertices": 1682,
+     "faces": 2972
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1682,
+    "faces": 2972
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1682,
+     "faces": 2972
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1682,
+     "faces": 2972
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.4461399999999998,
+     101.52000000000001,
+     2.9222400000000004
+    ],
+    "max": [
+     3.57798,
+     107.19800000000001,
+     10.948
+    ]
+   }
+  },
+  {
+   "record_id": "vert_L2",
+   "fma_id": "FMA13073",
+   "concept_name": "second lumbar vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3159",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3159.obj",
+     "vertices": 1875,
+     "faces": 3214
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1875,
+    "faces": 3214
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1875,
+     "faces": 3214
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1875,
+     "faces": 3214
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.90608,
+     99.23160000000001,
+     3.4348799999999997
+    ],
+    "max": [
+     4.03509,
+     103.976,
+     11.472000000000001
+    ]
+   }
+  },
+  {
+   "record_id": "vert_L3",
+   "fma_id": "FMA13074",
+   "concept_name": "third lumbar vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3162",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3162.obj",
+     "vertices": 1849,
+     "faces": 3272
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1849,
+    "faces": 3272
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1849,
+     "faces": 3272
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1849,
+     "faces": 3272
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.8841,
+     96.7693,
+     2.9514
+    ],
+    "max": [
+     4.02029,
+     100.97300000000001,
+     11.5353
+    ]
+   }
+  },
+  {
+   "record_id": "vert_L4",
+   "fma_id": "FMA13075",
+   "concept_name": "fourth lumbar vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3165",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3165.obj",
+     "vertices": 1968,
+     "faces": 3512
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1968,
+    "faces": 3512
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1968,
+     "faces": 3512
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1968,
+     "faces": 3512
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.14154,
+     93.8664,
+     2.61562
+    ],
+    "max": [
+     4.276610000000001,
+     98.34020000000001,
+     11.040500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "vert_L5",
+   "fma_id": "FMA13076",
+   "concept_name": "fifth lumbar vertebra",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3168",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3168.obj",
+     "vertices": 2115,
+     "faces": 3892
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2115,
+    "faces": 3892
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2115,
+     "faces": 3892
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2115,
+     "faces": 3892
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.95736,
+     90.4595,
+     1.8245000000000002
+    ],
+    "max": [
+     5.1000700000000005,
+     95.4833,
+     9.90765
+    ]
+   }
+  },
+  {
+   "record_id": "sacrum",
+   "fma_id": "FMA16202",
+   "concept_name": "sacrum",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3393",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3393.obj",
+     "vertices": 5293,
+     "faces": 9922
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5293,
+    "faces": 9922
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 5293,
+     "faces": 9922
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5293,
+     "faces": 9922
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.82029,
+     78.28370000000001,
+     -0.7253750000000001
+    ],
+    "max": [
+     5.95912,
+     92.72000000000001,
+     8.13964
+    ]
+   }
+  },
+  {
+   "record_id": "sternum",
+   "fma_id": "FMA7485",
+   "concept_name": "sternum",
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ3153",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3153.obj",
+     "vertices": 495,
+     "faces": 922
+    },
+    {
+     "fj": "FJ3178",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3178.obj",
+     "vertices": 3691,
+     "faces": 4646
+    },
+    {
+     "fj": "FJ3290",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3290.obj",
+     "vertices": 1446,
+     "faces": 2546
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 5632,
+    "faces": 8114
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 5632,
+     "faces": 8114
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.7449700000000004,
+     116.402,
+     13.0801
+    ],
+    "max": [
+     2.7449700000000004,
+     132.525,
+     21.383200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib1_right",
+   "fma_id": "FMA7857",
+   "concept_name": "right first rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3334",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3334.obj",
+     "vertices": 1642,
+     "faces": 3276
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1642,
+    "faces": 3276
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1642,
+     "faces": 3276
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1642,
+     "faces": 3276
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.5110900000000003,
+     131.007,
+     6.441459999999999
+    ],
+    "max": [
+     6.9764100000000004,
+     137.048,
+     13.0424
+    ]
+   }
+  },
+  {
+   "record_id": "rib1_left",
+   "fma_id": "FMA7987",
+   "concept_name": "left first rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3228",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3228.obj",
+     "vertices": 1641,
+     "faces": 3276
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1641,
+    "faces": 3276
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1641,
+     "faces": 3276
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1641,
+     "faces": 3276
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.84546,
+     131.007,
+     6.441700000000001
+    ],
+    "max": [
+     -1.3800400000000002,
+     137.048,
+     13.042
+    ]
+   }
+  },
+  {
+   "record_id": "rib2_right",
+   "fma_id": "FMA7882",
+   "concept_name": "right second rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3336",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3336.obj",
+     "vertices": 2861,
+     "faces": 5594
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2861,
+    "faces": 5594
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2861,
+     "faces": 5594
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2861,
+     "faces": 5594
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.6049499999999999,
+     127.355,
+     5.065290000000001
+    ],
+    "max": [
+     9.69721,
+     135.903,
+     16.715700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib2_left",
+   "fma_id": "FMA8012",
+   "concept_name": "left second rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3229",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3229.obj",
+     "vertices": 2862,
+     "faces": 5594
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2862,
+    "faces": 5594
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2862,
+     "faces": 5594
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2862,
+     "faces": 5594
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.5661,
+     127.351,
+     5.06468
+    ],
+    "max": [
+     -1.47349,
+     135.903,
+     16.7127
+    ]
+   }
+  },
+  {
+   "record_id": "rib3_right",
+   "fma_id": "FMA7909",
+   "concept_name": "right third rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3338",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3338.obj",
+     "vertices": 3634,
+     "faces": 7254
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3634,
+    "faces": 7254
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3634,
+     "faces": 7254
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3634,
+     "faces": 7254
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.4024,
+     124.382,
+     3.6829
+    ],
+    "max": [
+     10.8947,
+     133.597,
+     17.9268
+    ]
+   }
+  },
+  {
+   "record_id": "rib3_left",
+   "fma_id": "FMA8039",
+   "concept_name": "left third rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3230",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3230.obj",
+     "vertices": 3637,
+     "faces": 7254
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3637,
+    "faces": 7254
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3637,
+     "faces": 7254
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3637,
+     "faces": 7254
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.763300000000001,
+     124.384,
+     3.6857900000000003
+    ],
+    "max": [
+     -1.27243,
+     133.598,
+     17.925700000000003
+    ]
+   }
+  },
+  {
+   "record_id": "rib4_right",
+   "fma_id": "FMA7957",
+   "concept_name": "right fourth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3340",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3340.obj",
+     "vertices": 4435,
+     "faces": 8832
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4435,
+    "faces": 8832
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4435,
+     "faces": 8832
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4435,
+     "faces": 8832
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.5011900000000002,
+     121.11,
+     2.3194500000000002
+    ],
+    "max": [
+     11.759300000000001,
+     131.535,
+     19.2192
+    ]
+   }
+  },
+  {
+   "record_id": "rib4_left",
+   "fma_id": "FMA8148",
+   "concept_name": "left fourth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3231",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3231.obj",
+     "vertices": 4445,
+     "faces": 8850
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4445,
+    "faces": 8850
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4445,
+     "faces": 8850
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4445,
+     "faces": 8850
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.628100000000002,
+     121.11,
+     2.3191900000000003
+    ],
+    "max": [
+     -1.29057,
+     131.535,
+     19.2195
+    ]
+   }
+  },
+  {
+   "record_id": "rib5_right",
+   "fma_id": "FMA8066",
+   "concept_name": "right fifth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3342",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3342.obj",
+     "vertices": 4910,
+     "faces": 9710
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4910,
+    "faces": 9710
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4910,
+     "faces": 9710
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4910,
+     "faces": 9710
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.53142,
+     117.21600000000001,
+     1.2727600000000001
+    ],
+    "max": [
+     12.7079,
+     129.132,
+     19.765100000000004
+    ]
+   }
+  },
+  {
+   "record_id": "rib5_left",
+   "fma_id": "FMA8093",
+   "concept_name": "left fifth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3232",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3232.obj",
+     "vertices": 4912,
+     "faces": 9710
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4912,
+    "faces": 9710
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4912,
+     "faces": 9710
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4912,
+     "faces": 9710
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.5768,
+     117.21700000000001,
+     1.27227
+    ],
+    "max": [
+     -1.4004500000000002,
+     129.132,
+     19.7688
+    ]
+   }
+  },
+  {
+   "record_id": "rib6_right",
+   "fma_id": "FMA8175",
+   "concept_name": "right sixth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3344",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3344.obj",
+     "vertices": 5168,
+     "faces": 10246
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5168,
+    "faces": 10246
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 5168,
+     "faces": 10246
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5168,
+     "faces": 10246
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.4837300000000002,
+     113.79100000000001,
+     0.36414100000000005
+    ],
+    "max": [
+     13.434899999999999,
+     126.57000000000001,
+     19.3505
+    ]
+   }
+  },
+  {
+   "record_id": "rib6_left",
+   "fma_id": "FMA8202",
+   "concept_name": "left sixth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3233",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3233.obj",
+     "vertices": 5172,
+     "faces": 10264
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5172,
+    "faces": 10264
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 5172,
+     "faces": 10264
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5172,
+     "faces": 10264
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.3054,
+     113.79000000000002,
+     0.36444000000000004
+    ],
+    "max": [
+     -1.2775400000000001,
+     126.68299999999999,
+     19.349500000000003
+    ]
+   }
+  },
+  {
+   "record_id": "rib7_right",
+   "fma_id": "FMA8229",
+   "concept_name": "right seventh rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3346",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3346.obj",
+     "vertices": 5058,
+     "faces": 10032
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5058,
+    "faces": 10032
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 5058,
+     "faces": 10032
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5058,
+     "faces": 10032
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.36897,
+     110.519,
+     0.448691
+    ],
+    "max": [
+     13.7085,
+     124.027,
+     18.020300000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib7_left",
+   "fma_id": "FMA8256",
+   "concept_name": "left seventh rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3234",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3234.obj",
+     "vertices": 5054,
+     "faces": 10032
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5054,
+    "faces": 10032
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 5054,
+     "faces": 10032
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5054,
+     "faces": 10032
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.5778,
+     110.519,
+     0.44979500000000006
+    ],
+    "max": [
+     -1.23825,
+     124.025,
+     18.0208
+    ]
+   }
+  },
+  {
+   "record_id": "rib8_right",
+   "fma_id": "FMA8283",
+   "concept_name": "right eighth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3347",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3347.obj",
+     "vertices": 4199,
+     "faces": 8336
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4199,
+    "faces": 8336
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4199,
+     "faces": 8336
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4199,
+     "faces": 8336
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.3676500000000003,
+     107.46600000000001,
+     0.45644900000000005
+    ],
+    "max": [
+     13.2968,
+     121.133,
+     16.2678
+    ]
+   }
+  },
+  {
+   "record_id": "rib8_left",
+   "fma_id": "FMA8310",
+   "concept_name": "left eighth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3235",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3235.obj",
+     "vertices": 4211,
+     "faces": 8336
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 4211,
+    "faces": 8336
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 4211,
+     "faces": 8336
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 4211,
+     "faces": 8336
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.163800000000002,
+     107.46500000000002,
+     0.456957
+    ],
+    "max": [
+     -1.2370400000000001,
+     121.132,
+     16.267500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib9_right",
+   "fma_id": "FMA8364",
+   "concept_name": "right ninth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3348",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3348.obj",
+     "vertices": 3808,
+     "faces": 7576
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3808,
+    "faces": 7576
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3808,
+     "faces": 7576
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3808,
+     "faces": 7576
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.58646,
+     105.009,
+     0.752907
+    ],
+    "max": [
+     12.909800000000002,
+     118.53699999999999,
+     13.563200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib9_left",
+   "fma_id": "FMA8391",
+   "concept_name": "left ninth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3236",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3236.obj",
+     "vertices": 3805,
+     "faces": 7576
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3805,
+    "faces": 7576
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3805,
+     "faces": 7576
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3805,
+     "faces": 7576
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.778300000000002,
+     105.009,
+     0.752766
+    ],
+    "max": [
+     -1.4558200000000001,
+     118.536,
+     13.560200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib10_right",
+   "fma_id": "FMA8445",
+   "concept_name": "right tenth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3330",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3330.obj",
+     "vertices": 3415,
+     "faces": 6820
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3415,
+    "faces": 6820
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3415,
+     "faces": 6820
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3415,
+     "faces": 6820
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.6872900000000002,
+     102.298,
+     1.1359299999999999
+    ],
+    "max": [
+     12.3648,
+     115.89800000000001,
+     11.7687
+    ]
+   }
+  },
+  {
+   "record_id": "rib10_left",
+   "fma_id": "FMA8472",
+   "concept_name": "left tenth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3225",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3225.obj",
+     "vertices": 3419,
+     "faces": 6826
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3419,
+    "faces": 6826
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 3419,
+     "faces": 6826
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3419,
+     "faces": 6826
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.234900000000001,
+     102.296,
+     1.13545
+    ],
+    "max": [
+     -1.5562300000000002,
+     115.899,
+     11.771500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "rib11_right",
+   "fma_id": "FMA8531",
+   "concept_name": "right eleventh rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3331",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3331.obj",
+     "vertices": 2437,
+     "faces": 4866
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2437,
+    "faces": 4866
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2437,
+     "faces": 4866
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2437,
+     "faces": 4866
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.75963,
+     100.808,
+     1.7962
+    ],
+    "max": [
+     11.1353,
+     112.173,
+     9.60183
+    ]
+   }
+  },
+  {
+   "record_id": "rib11_left",
+   "fma_id": "FMA8532",
+   "concept_name": "left eleventh rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3226",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3226.obj",
+     "vertices": 2435,
+     "faces": 4866
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2435,
+    "faces": 4866
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2435,
+     "faces": 4866
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2435,
+     "faces": 4866
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.005400000000002,
+     100.806,
+     1.7961400000000003
+    ],
+    "max": [
+     -1.6279000000000001,
+     112.174,
+     9.601170000000002
+    ]
+   }
+  },
+  {
+   "record_id": "rib12_right",
+   "fma_id": "FMA8533",
+   "concept_name": "right twelfth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3332",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3332.obj",
+     "vertices": 1412,
+     "faces": 2818
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1412,
+    "faces": 2818
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1412,
+     "faces": 2818
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1412,
+     "faces": 2818
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.82125,
+     101.13400000000001,
+     2.79922
+    ],
+    "max": [
+     8.653319999999999,
+     108.91700000000002,
+     6.609730000000001
+    ]
+   }
+  },
+  {
+   "record_id": "rib12_left",
+   "fma_id": "FMA8534",
+   "concept_name": "left twelfth rib",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3227",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3227.obj",
+     "vertices": 1411,
+     "faces": 2818
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1411,
+    "faces": 2818
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1411,
+     "faces": 2818
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1411,
+     "faces": 2818
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -8.522110000000001,
+     101.13300000000001,
+     2.8014900000000003
+    ],
+    "max": [
+     -1.68903,
+     108.91600000000001,
+     6.60698
+    ]
+   }
+  },
+  {
+   "record_id": "clavicle_right",
+   "fma_id": "FMA13322",
+   "concept_name": "right clavicle",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3362",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3362.obj",
+     "vertices": 583,
+     "faces": 1146
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 583,
+    "faces": 1146
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 583,
+     "faces": 1146
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 583,
+     "faces": 1146
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.966165,
+     130.862,
+     5.44125
+    ],
+    "max": [
+     14.5277,
+     135.544,
+     14.6948
+    ]
+   }
+  },
+  {
+   "record_id": "scapula_right",
+   "fma_id": "FMA13395",
+   "concept_name": "right scapula",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3384",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3384.obj",
+     "vertices": 13118,
+     "faces": 26172
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 13118,
+    "faces": 26172
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 13118,
+     "faces": 26172
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 13118,
+     "faces": 26172
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     5.705380000000001,
+     118.39600000000002,
+     -0.508275
+    ],
+    "max": [
+     16.6464,
+     134.986,
+     10.2856
+    ]
+   }
+  },
+  {
+   "record_id": "humerus_right",
+   "fma_id": "FMA23130",
+   "concept_name": "right humerus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3368",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3368.obj",
+     "vertices": 2233,
+     "faces": 3784
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2233,
+    "faces": 3784
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2233,
+     "faces": 3784
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2233,
+     "faces": 3784
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     14.009,
+     102.92000000000002,
+     5.10391
+    ],
+    "max": [
+     24.084100000000003,
+     133.654,
+     10.0219
+    ]
+   }
+  },
+  {
+   "record_id": "radius_right",
+   "fma_id": "FMA23464",
+   "concept_name": "right radius",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3349",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3349.obj",
+     "vertices": 388,
+     "faces": 672
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 388,
+    "faces": 672
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 388,
+     "faces": 672
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 388,
+     "faces": 672
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     21.9833,
+     80.58350000000002,
+     6.11026
+    ],
+    "max": [
+     27.953500000000005,
+     103.505,
+     12.690800000000001
+    ]
+   }
+  },
+  {
+   "record_id": "ulna_right",
+   "fma_id": "FMA23467",
+   "concept_name": "right ulna",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3391",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3391.obj",
+     "vertices": 500,
+     "faces": 834
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 500,
+    "faces": 834
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 500,
+     "faces": 834
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 500,
+     "faces": 834
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     19.688100000000002,
+     80.5173,
+     4.47992
+    ],
+    "max": [
+     24.7179,
+     105.245,
+     12.349400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "scaphoid_right",
+   "fma_id": "FMA24435",
+   "concept_name": "right scaphoid",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3383",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3383.obj",
+     "vertices": 195,
+     "faces": 322
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 195,
+    "faces": 322
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 195,
+     "faces": 322
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 195,
+     "faces": 322
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.9332,
+     79.6354,
+     11.1574
+    ],
+    "max": [
+     27.306,
+     81.179,
+     12.6663
+    ]
+   }
+  },
+  {
+   "record_id": "lunate_right",
+   "fma_id": "FMA24437",
+   "concept_name": "right lunate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3374",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3374.obj",
+     "vertices": 196,
+     "faces": 332
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 196,
+    "faces": 332
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 196,
+     "faces": 332
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 196,
+     "faces": 332
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     23.6202,
+     79.74610000000001,
+     11.063500000000001
+    ],
+    "max": [
+     25.2724,
+     80.98200000000001,
+     12.692400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "triquetrum_right",
+   "fma_id": "FMA24439",
+   "concept_name": "right triquetral",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3390",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3390.obj",
+     "vertices": 139,
+     "faces": 170
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 139,
+    "faces": 170
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 139,
+     "faces": 170
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 139,
+     "faces": 170
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     23.215700000000002,
+     78.8769,
+     11.4631
+    ],
+    "max": [
+     24.276600000000002,
+     80.25900000000001,
+     12.9736
+    ]
+   }
+  },
+  {
+   "record_id": "pisiform_right",
+   "fma_id": "FMA24441",
+   "concept_name": "right pisiform",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3382",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3382.obj",
+     "vertices": 110,
+     "faces": 190
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 110,
+    "faces": 190
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 110,
+     "faces": 190
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 110,
+     "faces": 190
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     23.1956,
+     78.9675,
+     12.7249
+    ],
+    "max": [
+     24.022000000000002,
+     80.13250000000001,
+     13.765799999999999
+    ]
+   }
+  },
+  {
+   "record_id": "trapezium_right",
+   "fma_id": "FMA24443",
+   "concept_name": "right trapezium",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3388",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3388.obj",
+     "vertices": 277,
+     "faces": 434
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 277,
+    "faces": 434
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 277,
+     "faces": 434
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 277,
+     "faces": 434
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     26.4938,
+     78.5805,
+     11.773000000000001
+    ],
+    "max": [
+     28.1722,
+     80.5733,
+     13.4576
+    ]
+   }
+  },
+  {
+   "record_id": "trapezoid_right",
+   "fma_id": "FMA23725",
+   "concept_name": "right trapezoid",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3389",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3389.obj",
+     "vertices": 271,
+     "faces": 360
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 271,
+    "faces": 360
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 271,
+     "faces": 360
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 271,
+     "faces": 360
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     26.214,
+     78.2865,
+     11.3527
+    ],
+    "max": [
+     27.326100000000004,
+     79.53110000000001,
+     12.8388
+    ]
+   }
+  },
+  {
+   "record_id": "capitate_right",
+   "fma_id": "FMA24446",
+   "concept_name": "right capitate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3361",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3361.obj",
+     "vertices": 256,
+     "faces": 428
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 256,
+    "faces": 428
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 256,
+     "faces": 428
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 256,
+     "faces": 428
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.840100000000003,
+     78.21910000000001,
+     11.053400000000002
+    ],
+    "max": [
+     26.448200000000003,
+     80.4597,
+     12.749200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "hamate_right",
+   "fma_id": "FMA24448",
+   "concept_name": "right hamate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3367",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3367.obj",
+     "vertices": 335,
+     "faces": 522
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 335,
+    "faces": 522
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 335,
+     "faces": 522
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 335,
+     "faces": 522
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     23.66,
+     78.1293,
+     11.140600000000001
+    ],
+    "max": [
+     25.192800000000002,
+     80.06530000000001,
+     13.393100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalI_right",
+   "fma_id": "FMA24464",
+   "concept_name": "right first metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3350",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3350.obj",
+     "vertices": 307,
+     "faces": 566
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 307,
+    "faces": 566
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 307,
+     "faces": 566
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 307,
+     "faces": 566
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     27.2236,
+     76.0281,
+     12.3627
+    ],
+    "max": [
+     30.957700000000003,
+     79.72380000000001,
+     15.386099999999999
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxI_prox_right",
+   "fma_id": "FMA24450",
+   "concept_name": "proximal phalanx of right thumb",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3327",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3327.obj",
+     "vertices": 197,
+     "faces": 318
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 197,
+    "faces": 318
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 197,
+     "faces": 318
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 197,
+     "faces": 318
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     29.864900000000002,
+     73.5607,
+     14.2653
+    ],
+    "max": [
+     31.880900000000004,
+     76.7198,
+     16.488300000000002
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxI_mid_right",
+   "fma_id": "FMA24459",
+   "concept_name": "distal phalanx of right thumb",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3198",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3198.obj",
+     "vertices": 187,
+     "faces": 240
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 187,
+    "faces": 240
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 240
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 240
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     31.0263,
+     71.9139,
+     15.7135
+    ],
+    "max": [
+     32.3914,
+     74.21660000000001,
+     17.335800000000003
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalII_right",
+   "fma_id": "FMA24466",
+   "concept_name": "right second metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3352",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3352.obj",
+     "vertices": 418,
+     "faces": 748
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 418,
+    "faces": 748
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 418,
+     "faces": 748
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 418,
+     "faces": 748
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     26.182000000000002,
+     71.8871,
+     11.7057
+    ],
+    "max": [
+     29.268700000000003,
+     78.68690000000001,
+     14.2787
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_prox_right",
+   "fma_id": "FMA24451",
+   "concept_name": "proximal phalanx of right index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3322",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3322.obj",
+     "vertices": 226,
+     "faces": 386
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 226,
+    "faces": 386
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 226,
+     "faces": 386
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 226,
+     "faces": 386
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     28.095200000000002,
+     68.5819,
+     13.4093
+    ],
+    "max": [
+     30.2765,
+     72.3197,
+     15.675800000000002
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_mid_right",
+   "fma_id": "FMA24455",
+   "concept_name": "middle phalanx of right index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3303",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3303.obj",
+     "vertices": 190,
+     "faces": 264
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 190,
+    "faces": 264
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 190,
+     "faces": 264
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 190,
+     "faces": 264
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     29.439999999999998,
+     67.1006,
+     15.1309
+    ],
+    "max": [
+     30.900000000000002,
+     69.1476,
+     17.2083
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_dist_right",
+   "fma_id": "FMA24460",
+   "concept_name": "distal phalanx of right index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3193",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3193.obj",
+     "vertices": 188,
+     "faces": 210
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 188,
+    "faces": 210
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 210
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 210
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     30.142500000000002,
+     66.1846,
+     16.9647
+    ],
+    "max": [
+     31.1368,
+     67.5689,
+     18.673
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalIII_right",
+   "fma_id": "FMA24468",
+   "concept_name": "right third metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3354",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3354.obj",
+     "vertices": 404,
+     "faces": 702
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 404,
+    "faces": 702
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 404,
+     "faces": 702
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 404,
+     "faces": 702
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     25.2486,
+     72.084,
+     11.2326
+    ],
+    "max": [
+     27.2346,
+     78.5262,
+     14.2733
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_prox_right",
+   "fma_id": "FMA24452",
+   "concept_name": "proximal phalanx of right middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3325",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3325.obj",
+     "vertices": 271,
+     "faces": 458
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 271,
+    "faces": 458
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 271,
+     "faces": 458
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 271,
+     "faces": 458
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     25.920800000000003,
+     68.4281,
+     13.5112
+    ],
+    "max": [
+     27.7414,
+     72.48610000000001,
+     16.4201
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_mid_right",
+   "fma_id": "FMA24456",
+   "concept_name": "middle phalanx of right middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3306",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3306.obj",
+     "vertices": 227,
+     "faces": 342
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 227,
+    "faces": 342
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 227,
+     "faces": 342
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 227,
+     "faces": 342
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     26.658800000000003,
+     66.2457,
+     15.779900000000001
+    ],
+    "max": [
+     28.020200000000003,
+     68.78070000000001,
+     18.0934
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_dist_right",
+   "fma_id": "FMA24461",
+   "concept_name": "distal phalanx of right middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3196",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3196.obj",
+     "vertices": 143,
+     "faces": 174
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 143,
+    "faces": 174
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 174
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 174
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     27.1365,
+     65.3067,
+     17.820500000000003
+    ],
+    "max": [
+     28.0912,
+     66.6531,
+     19.5428
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalIV_right",
+   "fma_id": "FMA24470",
+   "concept_name": "right fourth metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3356",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3356.obj",
+     "vertices": 340,
+     "faces": 536
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 340,
+    "faces": 536
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 340,
+     "faces": 536
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 340,
+     "faces": 536
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.1426,
+     72.5279,
+     11.591700000000001
+    ],
+    "max": [
+     25.374100000000002,
+     78.51580000000001,
+     14.1971
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_prox_right",
+   "fma_id": "FMA24453",
+   "concept_name": "proximal phalanx of right ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3326",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3326.obj",
+     "vertices": 209,
+     "faces": 376
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 209,
+    "faces": 376
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 209,
+     "faces": 376
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 209,
+     "faces": 376
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.0591,
+     68.9968,
+     13.5658
+    ],
+    "max": [
+     25.382400000000004,
+     72.89320000000001,
+     16.1977
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_mid_right",
+   "fma_id": "FMA24457",
+   "concept_name": "middle phalanx of right ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3292",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3292.obj",
+     "vertices": 219,
+     "faces": 316
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 219,
+    "faces": 316
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 219,
+     "faces": 316
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 219,
+     "faces": 316
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.276300000000003,
+     66.9704,
+     15.6536
+    ],
+    "max": [
+     25.4293,
+     69.36040000000001,
+     18.056700000000003
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_dist_right",
+   "fma_id": "FMA24462",
+   "concept_name": "distal phalanx of right ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3197",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3197.obj",
+     "vertices": 114,
+     "faces": 112
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 114,
+    "faces": 112
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 114,
+     "faces": 112
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 114,
+     "faces": 112
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     24.528100000000002,
+     66.4869,
+     17.8717
+    ],
+    "max": [
+     25.361400000000003,
+     67.4008,
+     19.438000000000002
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalV_right",
+   "fma_id": "FMA24472",
+   "concept_name": "right fifth metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3358",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3358.obj",
+     "vertices": 279,
+     "faces": 506
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 279,
+    "faces": 506
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 279,
+     "faces": 506
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 279,
+     "faces": 506
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     22.520200000000003,
+     73.2016,
+     12.0076
+    ],
+    "max": [
+     24.5314,
+     78.6919,
+     14.452000000000002
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_prox_right",
+   "fma_id": "FMA24454",
+   "concept_name": "proximal phalanx of right little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3323",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3323.obj",
+     "vertices": 187,
+     "faces": 314
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 187,
+    "faces": 314
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 314
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 314
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     22.2152,
+     70.3356,
+     13.872100000000001
+    ],
+    "max": [
+     23.632900000000003,
+     73.5956,
+     15.952300000000001
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_mid_right",
+   "fma_id": "FMA24458",
+   "concept_name": "middle phalanx of right little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3304",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3304.obj",
+     "vertices": 169,
+     "faces": 208
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 169,
+    "faces": 208
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 169,
+     "faces": 208
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 169,
+     "faces": 208
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     21.893500000000003,
+     68.757,
+     15.482300000000002
+    ],
+    "max": [
+     23.0545,
+     70.7155,
+     17.1439
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_dist_right",
+   "fma_id": "FMA24463",
+   "concept_name": "distal phalanx of right little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3194",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3194.obj",
+     "vertices": 140,
+     "faces": 188
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 140,
+    "faces": 188
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 140,
+     "faces": 188
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 140,
+     "faces": 188
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     21.8895,
+     67.67490000000001,
+     16.8171
+    ],
+    "max": [
+     22.7203,
+     68.9277,
+     18.1873
+    ]
+   }
+  },
+  {
+   "record_id": "clavicle_left",
+   "fma_id": "FMA13323",
+   "concept_name": "left clavicle",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3237",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3237.obj",
+     "vertices": 602,
+     "faces": 1176
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 602,
+    "faces": 1176
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 602,
+     "faces": 1176
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 602,
+     "faces": 1176
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -14.394200000000001,
+     130.853,
+     5.438750000000001
+    ],
+    "max": [
+     -0.837873,
+     135.518,
+     14.7078
+    ]
+   }
+  },
+  {
+   "record_id": "scapula_left",
+   "fma_id": "FMA13396",
+   "concept_name": "left scapula",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3279",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3279.obj",
+     "vertices": 14068,
+     "faces": 28106
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 14068,
+    "faces": 28106
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 14068,
+     "faces": 28106
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 14068,
+     "faces": 28106
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.6464,
+     118.39500000000001,
+     -0.50764
+    ],
+    "max": [
+     -5.70614,
+     134.986,
+     10.284500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "humerus_left",
+   "fma_id": "FMA23131",
+   "concept_name": "left humerus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3262",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3262.obj",
+     "vertices": 2073,
+     "faces": 3844
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2073,
+    "faces": 3844
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 2073,
+     "faces": 3844
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2073,
+     "faces": 3844
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -24.076,
+     102.921,
+     5.10559
+    ],
+    "max": [
+     -14.0073,
+     133.65200000000002,
+     10.0229
+    ]
+   }
+  },
+  {
+   "record_id": "radius_left",
+   "fma_id": "FMA23465",
+   "concept_name": "left radius",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3277",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3277.obj",
+     "vertices": 368,
+     "faces": 632
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 368,
+    "faces": 632
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 368,
+     "faces": 632
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 368,
+     "faces": 632
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -27.914299999999997,
+     80.61630000000001,
+     6.14693
+    ],
+    "max": [
+     -21.983600000000003,
+     103.501,
+     12.725200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "ulna_left",
+   "fma_id": "FMA23468",
+   "concept_name": "left ulna",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3286",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3286.obj",
+     "vertices": 496,
+     "faces": 824
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 496,
+    "faces": 824
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 496,
+     "faces": 824
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 496,
+     "faces": 824
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -24.712000000000003,
+     80.5016,
+     4.45523
+    ],
+    "max": [
+     -19.6892,
+     105.24700000000001,
+     12.3279
+    ]
+   }
+  },
+  {
+   "record_id": "scaphoid_left",
+   "fma_id": "FMA24436",
+   "concept_name": "left scaphoid",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3278",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3278.obj",
+     "vertices": 176,
+     "faces": 312
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 176,
+    "faces": 312
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 176,
+     "faces": 312
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 176,
+     "faces": 312
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -27.2977,
+     79.62200000000001,
+     11.152700000000001
+    ],
+    "max": [
+     -24.9452,
+     81.16820000000001,
+     12.644400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "lunate_left",
+   "fma_id": "FMA24438",
+   "concept_name": "left lunate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3268",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3268.obj",
+     "vertices": 187,
+     "faces": 314
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 187,
+    "faces": 314
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 314
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 187,
+     "faces": 314
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.288300000000003,
+     79.7222,
+     11.062800000000001
+    ],
+    "max": [
+     -23.6339,
+     80.98880000000001,
+     12.7131
+    ]
+   }
+  },
+  {
+   "record_id": "triquetrum_left",
+   "fma_id": "FMA24440",
+   "concept_name": "left triquetral",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3285",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3285.obj",
+     "vertices": 180,
+     "faces": 304
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 180,
+    "faces": 304
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 180,
+     "faces": 304
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 180,
+     "faces": 304
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -24.2731,
+     78.8949,
+     11.4425
+    ],
+    "max": [
+     -23.182100000000002,
+     80.25200000000001,
+     12.980699999999999
+    ]
+   }
+  },
+  {
+   "record_id": "pisiform_left",
+   "fma_id": "FMA24442",
+   "concept_name": "left pisiform",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3276",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3276.obj",
+     "vertices": 116,
+     "faces": 210
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 116,
+    "faces": 210
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 116,
+     "faces": 210
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 116,
+     "faces": 210
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -24.003,
+     78.97250000000001,
+     12.703100000000001
+    ],
+    "max": [
+     -23.1838,
+     80.1277,
+     13.7589
+    ]
+   }
+  },
+  {
+   "record_id": "trapezium_left",
+   "fma_id": "FMA24444",
+   "concept_name": "left trapezium",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3283",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3283.obj",
+     "vertices": 226,
+     "faces": 356
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 226,
+    "faces": 356
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 226,
+     "faces": 356
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 226,
+     "faces": 356
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -28.179500000000004,
+     78.5747,
+     11.771
+    ],
+    "max": [
+     -26.4781,
+     80.5793,
+     13.455400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "trapezoid_left",
+   "fma_id": "FMA24445",
+   "concept_name": "left trapezoid",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3284",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3284.obj",
+     "vertices": 279,
+     "faces": 398
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 279,
+    "faces": 398
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 279,
+     "faces": 398
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 279,
+     "faces": 398
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -27.3289,
+     78.2722,
+     11.3645
+    ],
+    "max": [
+     -26.2253,
+     79.527,
+     12.844999999999999
+    ]
+   }
+  },
+  {
+   "record_id": "capitate_left",
+   "fma_id": "FMA24447",
+   "concept_name": "left capitate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3257",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3257.obj",
+     "vertices": 237,
+     "faces": 402
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 237,
+    "faces": 402
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 237,
+     "faces": 402
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 237,
+     "faces": 402
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -26.428800000000003,
+     78.21640000000001,
+     11.0573
+    ],
+    "max": [
+     -24.861000000000004,
+     80.4588,
+     12.735100000000001
+    ]
+   }
+  },
+  {
+   "record_id": "hamate_left",
+   "fma_id": "FMA24449",
+   "concept_name": "left hamate",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3261",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3261.obj",
+     "vertices": 280,
+     "faces": 452
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 280,
+    "faces": 452
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 280,
+     "faces": 452
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 280,
+     "faces": 452
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.157,
+     78.1256,
+     11.132200000000001
+    ],
+    "max": [
+     -23.6597,
+     80.0631,
+     13.398200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalI_left",
+   "fma_id": "FMA24465",
+   "concept_name": "left first metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3240",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3240.obj",
+     "vertices": 304,
+     "faces": 578
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 304,
+    "faces": 578
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 304,
+     "faces": 578
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 304,
+     "faces": 578
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -30.962500000000002,
+     76.0295,
+     12.340600000000002
+    ],
+    "max": [
+     -27.235300000000002,
+     79.7407,
+     15.378200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxI_prox_left",
+   "fma_id": "FMA65470",
+   "concept_name": "proximal phalanx of left thumb",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3318",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3318.obj",
+     "vertices": 202,
+     "faces": 346
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 202,
+    "faces": 346
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 202,
+     "faces": 346
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 202,
+     "faces": 346
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -31.861900000000006,
+     73.55290000000001,
+     14.2629
+    ],
+    "max": [
+     -29.869400000000002,
+     76.7168,
+     16.4753
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxI_mid_left",
+   "fma_id": "FMA23951",
+   "concept_name": "distal phalanx of left thumb",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3188",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3188.obj",
+     "vertices": 189,
+     "faces": 270
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 189,
+    "faces": 270
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 189,
+     "faces": 270
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 189,
+     "faces": 270
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -32.3935,
+     71.9243,
+     15.724100000000002
+    ],
+    "max": [
+     -31.083800000000004,
+     74.2231,
+     17.3273
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalII_left",
+   "fma_id": "FMA24467",
+   "concept_name": "left second metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3243",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3243.obj",
+     "vertices": 420,
+     "faces": 774
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 420,
+    "faces": 774
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 420,
+     "faces": 774
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 420,
+     "faces": 774
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -29.261300000000002,
+     71.9042,
+     11.7117
+    ],
+    "max": [
+     -26.1841,
+     78.68690000000001,
+     14.2433
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_prox_left",
+   "fma_id": "FMA71915",
+   "concept_name": "proximal phalanx of left index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3313",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3313.obj",
+     "vertices": 222,
+     "faces": 392
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 222,
+    "faces": 392
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 222,
+     "faces": 392
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 222,
+     "faces": 392
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -30.281000000000002,
+     68.5721,
+     13.408900000000001
+    ],
+    "max": [
+     -28.081400000000002,
+     72.3356,
+     15.7057
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_mid_left",
+   "fma_id": "FMA23938",
+   "concept_name": "middle phalanx of left index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3296",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3296.obj",
+     "vertices": 188,
+     "faces": 306
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 188,
+    "faces": 306
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 306
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 306
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -30.9001,
+     67.09750000000001,
+     15.1256
+    ],
+    "max": [
+     -29.438900000000004,
+     69.1453,
+     17.2057
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxII_dist_left",
+   "fma_id": "FMA23953",
+   "concept_name": "distal phalanx of left index finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3183",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3183.obj",
+     "vertices": 204,
+     "faces": 328
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 204,
+    "faces": 328
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 204,
+     "faces": 328
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 204,
+     "faces": 328
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -31.125400000000003,
+     66.1851,
+     16.9614
+    ],
+    "max": [
+     -30.126100000000005,
+     67.5567,
+     18.671100000000003
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalIII_left",
+   "fma_id": "FMA24469",
+   "concept_name": "left third metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3246",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3246.obj",
+     "vertices": 392,
+     "faces": 708
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 392,
+    "faces": 708
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 392,
+     "faces": 708
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 392,
+     "faces": 708
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -27.2252,
+     72.06490000000001,
+     11.241
+    ],
+    "max": [
+     -25.236000000000004,
+     78.5025,
+     14.2813
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_prox_left",
+   "fma_id": "FMA71908",
+   "concept_name": "proximal phalanx of left middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3316",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3316.obj",
+     "vertices": 264,
+     "faces": 460
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 264,
+    "faces": 460
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 264,
+     "faces": 460
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 264,
+     "faces": 460
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -27.738,
+     68.4299,
+     13.519200000000001
+    ],
+    "max": [
+     -25.920100000000005,
+     72.4966,
+     16.4096
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_mid_left",
+   "fma_id": "FMA23940",
+   "concept_name": "middle phalanx of left middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3299",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3299.obj",
+     "vertices": 229,
+     "faces": 384
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 229,
+    "faces": 384
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 229,
+     "faces": 384
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 229,
+     "faces": 384
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -28.0205,
+     66.2409,
+     15.785800000000002
+    ],
+    "max": [
+     -26.6517,
+     68.7767,
+     18.087600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIII_dist_left",
+   "fma_id": "FMA23955",
+   "concept_name": "distal phalanx of left middle finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3186",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3186.obj",
+     "vertices": 173,
+     "faces": 266
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 173,
+    "faces": 266
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 173,
+     "faces": 266
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 173,
+     "faces": 266
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -28.0854,
+     65.3367,
+     17.808400000000002
+    ],
+    "max": [
+     -27.1361,
+     66.6371,
+     19.5089
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalIV_left",
+   "fma_id": "FMA24471",
+   "concept_name": "left fourth metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3249",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3249.obj",
+     "vertices": 316,
+     "faces": 528
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 316,
+    "faces": 528
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 316,
+     "faces": 528
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 316,
+     "faces": 528
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.3774,
+     72.5253,
+     11.5898
+    ],
+    "max": [
+     -24.1356,
+     78.5218,
+     14.1911
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_prox_left",
+   "fma_id": "FMA71916",
+   "concept_name": "proximal phalanx of left ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3317",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3317.obj",
+     "vertices": 205,
+     "faces": 376
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 205,
+    "faces": 376
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 205,
+     "faces": 376
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 205,
+     "faces": 376
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.3886,
+     69.0052,
+     13.570900000000002
+    ],
+    "max": [
+     -24.0492,
+     72.8958,
+     16.193
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_mid_left",
+   "fma_id": "FMA23942",
+   "concept_name": "middle phalanx of left ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3291",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3291.obj",
+     "vertices": 216,
+     "faces": 340
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 216,
+    "faces": 340
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 216,
+     "faces": 340
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 216,
+     "faces": 340
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.453200000000002,
+     66.9821,
+     15.679400000000001
+    ],
+    "max": [
+     -24.278200000000002,
+     69.3684,
+     18.0547
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxIV_dist_left",
+   "fma_id": "FMA23957",
+   "concept_name": "distal phalanx of left ring finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3187",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3187.obj",
+     "vertices": 140,
+     "faces": 196
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 140,
+    "faces": 196
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 140,
+     "faces": 196
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 140,
+     "faces": 196
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -25.3646,
+     66.4812,
+     17.875600000000002
+    ],
+    "max": [
+     -24.53,
+     67.3899,
+     19.436000000000003
+    ]
+   }
+  },
+  {
+   "record_id": "metacarpalV_left",
+   "fma_id": "FMA24473",
+   "concept_name": "left fifth metacarpal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3252",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3252.obj",
+     "vertices": 282,
+     "faces": 500
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 282,
+    "faces": 500
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 282,
+     "faces": 500
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 282,
+     "faces": 500
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -24.5394,
+     73.20309999999999,
+     12.022400000000001
+    ],
+    "max": [
+     -22.527,
+     78.67590000000001,
+     14.442
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_prox_left",
+   "fma_id": "FMA66791",
+   "concept_name": "proximal phalanx of left little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3314",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3314.obj",
+     "vertices": 164,
+     "faces": 274
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 164,
+    "faces": 274
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 164,
+     "faces": 274
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 164,
+     "faces": 274
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -23.629400000000004,
+     70.3385,
+     13.866800000000001
+    ],
+    "max": [
+     -22.222700000000003,
+     73.579,
+     15.946100000000001
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_mid_left",
+   "fma_id": "FMA23944",
+   "concept_name": "middle phalanx of left little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3297",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3297.obj",
+     "vertices": 192,
+     "faces": 254
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 192,
+    "faces": 254
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 192,
+     "faces": 254
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 192,
+     "faces": 254
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -23.0299,
+     68.7466,
+     15.491200000000001
+    ],
+    "max": [
+     -21.8921,
+     70.7061,
+     17.147900000000003
+    ]
+   }
+  },
+  {
+   "record_id": "phalanxV_dist_left",
+   "fma_id": "FMA23959",
+   "concept_name": "distal phalanx of left little finger",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3184",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3184.obj",
+     "vertices": 154,
+     "faces": 198
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 154,
+    "faces": 198
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 154,
+     "faces": 198
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 154,
+     "faces": 198
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -22.715500000000002,
+     67.6628,
+     16.842
+    ],
+    "max": [
+     -21.889400000000002,
+     68.9309,
+     18.2284
+    ]
+   }
+  },
+  {
+   "record_id": "hip_right",
+   "fma_id": "FMA16586",
+   "concept_name": "right hip bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3152",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3152.obj",
+     "vertices": 1282,
+     "faces": 2374
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1282,
+    "faces": 2374
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1282,
+     "faces": 2374
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1282,
+     "faces": 2374
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.27903,
+     75.2153,
+     0.11187800000000002
+    ],
+    "max": [
+     14.487200000000001,
+     95.7869,
+     13.901900000000001
+    ]
+   }
+  },
+  {
+   "record_id": "femur_right",
+   "fma_id": "FMA24474",
+   "concept_name": "right femur",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3365",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3365.obj",
+     "vertices": 1574,
+     "faces": 3102
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1574,
+    "faces": 3102
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1574,
+     "faces": 3102
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1574,
+     "faces": 3102
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.18943,
+     36.815,
+     4.95302
+    ],
+    "max": [
+     15.013399999999999,
+     83.4252,
+     11.2192
+    ]
+   }
+  },
+  {
+   "record_id": "patella_right",
+   "fma_id": "FMA24486",
+   "concept_name": "right patella",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3381",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3381.obj",
+     "vertices": 178,
+     "faces": 306
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 178,
+    "faces": 306
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 178,
+     "faces": 306
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 178,
+     "faces": 306
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     6.062080000000001,
+     36.1486,
+     10.099200000000002
+    ],
+    "max": [
+     10.2288,
+     40.0796,
+     12.2727
+    ]
+   }
+  },
+  {
+   "record_id": "tibia_right",
+   "fma_id": "FMA24477",
+   "concept_name": "right tibia",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3387",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3387.obj",
+     "vertices": 857,
+     "faces": 1664
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 857,
+    "faces": 1664
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 857,
+     "faces": 1664
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 857,
+     "faces": 1664
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.5216000000000003,
+     -0.603716,
+     5.20729
+    ],
+    "max": [
+     10.9353,
+     37.392,
+     11.4835
+    ]
+   }
+  },
+  {
+   "record_id": "fibula_right",
+   "fma_id": "FMA24480",
+   "concept_name": "right fibula",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3366",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3366.obj",
+     "vertices": 593,
+     "faces": 1142
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 593,
+    "faces": 1142
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 593,
+     "faces": 1142
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 593,
+     "faces": 1142
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     8.43445,
+     -2.5279900000000004,
+     4.84874
+    ],
+    "max": [
+     12.0165,
+     35.915,
+     7.816880000000001
+    ]
+   }
+  },
+  {
+   "record_id": "calcaneus_right",
+   "fma_id": "FMA24497",
+   "concept_name": "right calcaneus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3360",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3360.obj",
+     "vertices": 739,
+     "faces": 1262
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 739,
+    "faces": 1262
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 739,
+     "faces": 1262
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 739,
+     "faces": 1262
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     4.48758,
+     -6.849070000000001,
+     2.40051
+    ],
+    "max": [
+     10.078100000000001,
+     -1.91547,
+     9.41485
+    ]
+   }
+  },
+  {
+   "record_id": "talus_right",
+   "fma_id": "FMA24482",
+   "concept_name": "right talus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3385",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3385.obj",
+     "vertices": 812,
+     "faces": 1380
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 812,
+    "faces": 1380
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 812,
+     "faces": 1380
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 812,
+     "faces": 1380
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     4.9627300000000005,
+     -3.11561,
+     4.8754
+    ],
+    "max": [
+     9.011360000000002,
+     0.31109300000000006,
+     10.5569
+    ]
+   }
+  },
+  {
+   "record_id": "navicular_right",
+   "fma_id": "FMA24500",
+   "concept_name": "navicular bone of right foot",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3308",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3308.obj",
+     "vertices": 455,
+     "faces": 716
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 455,
+    "faces": 716
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 455,
+     "faces": 716
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 455,
+     "faces": 716
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     5.818960000000001,
+     -3.07763,
+     9.4329
+    ],
+    "max": [
+     9.675400000000002,
+     -0.61558,
+     12.0993
+    ]
+   }
+  },
+  {
+   "record_id": "cuboid_right",
+   "fma_id": "FMA24528",
+   "concept_name": "right cuboid bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3364",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3364.obj",
+     "vertices": 543,
+     "faces": 932
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 543,
+    "faces": 932
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 543,
+     "faces": 932
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 543,
+     "faces": 932
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     8.236650000000001,
+     -5.11216,
+     8.37327
+    ],
+    "max": [
+     11.5085,
+     -2.2088300000000003,
+     11.6768
+    ]
+   }
+  },
+  {
+   "record_id": "medial_cuneiform_right",
+   "fma_id": "FMA24521",
+   "concept_name": "right medial cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3377",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3377.obj",
+     "vertices": 615,
+     "faces": 952
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 615,
+    "faces": 952
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 615,
+     "faces": 952
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 615,
+     "faces": 952
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     6.600440000000001,
+     -4.5273200000000005,
+     11.1982
+    ],
+    "max": [
+     9.41276,
+     -1.42296,
+     14.0507
+    ]
+   }
+  },
+  {
+   "record_id": "intermediate_cuneiform_right",
+   "fma_id": "FMA24523",
+   "concept_name": "right intermediate cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3370",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3370.obj",
+     "vertices": 288,
+     "faces": 450
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 288,
+    "faces": 450
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 288,
+     "faces": 450
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 288,
+     "faces": 450
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     8.18595,
+     -3.44366,
+     10.9585
+    ],
+    "max": [
+     10.200700000000001,
+     -1.13854,
+     13.0534
+    ]
+   }
+  },
+  {
+   "record_id": "lateral_cuneiform_right",
+   "fma_id": "FMA24525",
+   "concept_name": "right lateral cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3373",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3373.obj",
+     "vertices": 395,
+     "faces": 626
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 395,
+    "faces": 626
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 395,
+     "faces": 626
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 395,
+     "faces": 626
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     8.71983,
+     -4.05644,
+     10.0838
+    ],
+    "max": [
+     11.287500000000001,
+     -1.48562,
+     12.523200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalI_right",
+   "fma_id": "FMA24507",
+   "concept_name": "right first metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3351",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3351.obj",
+     "vertices": 602,
+     "faces": 1122
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 602,
+    "faces": 1122
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 602,
+     "faces": 1122
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 602,
+     "faces": 1122
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     7.48137,
+     -6.532920000000001,
+     12.994399999999999
+    ],
+    "max": [
+     10.4365,
+     -2.2120200000000003,
+     19.2182
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxI_prox_right",
+   "fma_id": "FMA43253",
+   "concept_name": "proximal phalanx of right big toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3310",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3310.obj",
+     "vertices": 281,
+     "faces": 486
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 281,
+    "faces": 486
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 281,
+     "faces": 486
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 281,
+     "faces": 486
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     8.66596,
+     -6.863910000000001,
+     18.607
+    ],
+    "max": [
+     11.7196,
+     -5.1408700000000005,
+     21.9289
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxI_mid_right",
+   "fma_id": "FMA32650",
+   "concept_name": "distal phalanx of right big toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3192",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3192.obj",
+     "vertices": 289,
+     "faces": 440
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 289,
+    "faces": 440
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 289,
+     "faces": 440
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 289,
+     "faces": 440
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     10.2398,
+     -6.989790000000001,
+     21.078200000000002
+    ],
+    "max": [
+     12.5119,
+     -5.90054,
+     23.604400000000002
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalII_right",
+   "fma_id": "FMA24509",
+   "concept_name": "right second metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3353",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3353.obj",
+     "vertices": 515,
+     "faces": 752
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 515,
+    "faces": 752
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 515,
+     "faces": 752
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 515,
+     "faces": 752
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     9.06566,
+     -6.631780000000001,
+     12.2448
+    ],
+    "max": [
+     12.1273,
+     -1.83247,
+     18.7406
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_prox_right",
+   "fma_id": "FMA32634",
+   "concept_name": "proximal phalanx of right second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3319",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3319.obj",
+     "vertices": 236,
+     "faces": 414
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 236,
+    "faces": 414
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 236,
+     "faces": 414
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 236,
+     "faces": 414
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     11.1346,
+     -6.68736,
+     18.355500000000003
+    ],
+    "max": [
+     13.3565,
+     -5.45464,
+     21.168000000000003
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_mid_right",
+   "fma_id": "FMA32642",
+   "concept_name": "middle phalanx of right second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3300",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3300.obj",
+     "vertices": 192,
+     "faces": 264
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 192,
+    "faces": 264
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 192,
+     "faces": 264
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 192,
+     "faces": 264
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     12.5237,
+     -6.801030000000001,
+     20.7648
+    ],
+    "max": [
+     13.9355,
+     -5.940390000000001,
+     22.4688
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_dist_right",
+   "fma_id": "FMA32652",
+   "concept_name": "distal phalanx of right second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3189",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3189.obj",
+     "vertices": 170,
+     "faces": 200
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 170,
+    "faces": 200
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 170,
+     "faces": 200
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 170,
+     "faces": 200
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     13.234800000000002,
+     -7.02885,
+     22.101200000000002
+    ],
+    "max": [
+     14.334600000000002,
+     -6.305340000000001,
+     23.4096
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalIII_right",
+   "fma_id": "FMA24511",
+   "concept_name": "right third metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3355",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3355.obj",
+     "vertices": 423,
+     "faces": 700
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 423,
+    "faces": 700
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 423,
+     "faces": 700
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 423,
+     "faces": 700
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     9.83222,
+     -6.63774,
+     11.836100000000002
+    ],
+    "max": [
+     13.3596,
+     -2.36725,
+     18.0857
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_prox_right",
+   "fma_id": "FMA32636",
+   "concept_name": "proximal phalanx of right third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3320",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3320.obj",
+     "vertices": 276,
+     "faces": 422
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 276,
+    "faces": 422
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 276,
+     "faces": 422
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 276,
+     "faces": 422
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     12.5076,
+     -6.7645,
+     17.4436
+    ],
+    "max": [
+     14.5902,
+     -5.62044,
+     20.284100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_mid_right",
+   "fma_id": "FMA32644",
+   "concept_name": "middle phalanx of right third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3301",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3301.obj",
+     "vertices": 190,
+     "faces": 292
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 190,
+    "faces": 292
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 190,
+     "faces": 292
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 190,
+     "faces": 292
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     13.888900000000001,
+     -6.883110000000001,
+     19.8867
+    ],
+    "max": [
+     15.172600000000001,
+     -6.09144,
+     21.5745
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_dist_right",
+   "fma_id": "FMA32654",
+   "concept_name": "distal phalanx of right third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3190",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3190.obj",
+     "vertices": 162,
+     "faces": 260
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 162,
+    "faces": 260
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 162,
+     "faces": 260
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 162,
+     "faces": 260
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     14.5891,
+     -7.01976,
+     21.2259
+    ],
+    "max": [
+     15.4825,
+     -6.4386600000000005,
+     22.366600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalIV_right",
+   "fma_id": "FMA24513",
+   "concept_name": "right fourth metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3357",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3357.obj",
+     "vertices": 397,
+     "faces": 674
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 397,
+    "faces": 674
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 397,
+     "faces": 674
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 397,
+     "faces": 674
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     10.186700000000002,
+     -6.734390000000001,
+     10.697600000000001
+    ],
+    "max": [
+     14.267,
+     -3.19585,
+     16.9684
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_prox_right",
+   "fma_id": "FMA32638",
+   "concept_name": "proximal phalanx of right fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3321",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3321.obj",
+     "vertices": 254,
+     "faces": 438
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 254,
+    "faces": 438
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 254,
+     "faces": 438
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 254,
+     "faces": 438
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     13.433900000000001,
+     -6.9741,
+     16.4379
+    ],
+    "max": [
+     15.593000000000002,
+     -5.64986,
+     18.8428
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_mid_right",
+   "fma_id": "FMA32646",
+   "concept_name": "middle phalanx of right fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3302",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3302.obj",
+     "vertices": 220,
+     "faces": 350
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 220,
+    "faces": 350
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 220,
+     "faces": 350
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 220,
+     "faces": 350
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     14.9071,
+     -6.988880000000001,
+     18.5435
+    ],
+    "max": [
+     16.134200000000003,
+     -6.19355,
+     19.8806
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_dist_right",
+   "fma_id": "FMA32656",
+   "concept_name": "distal phalanx of right fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3191",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3191.obj",
+     "vertices": 144,
+     "faces": 244
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 144,
+    "faces": 244
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 144,
+     "faces": 244
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 144,
+     "faces": 244
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     15.533500000000002,
+     -7.039230000000001,
+     19.5368
+    ],
+    "max": [
+     16.4127,
+     -6.339600000000001,
+     20.6535
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalV_right",
+   "fma_id": "FMA24515",
+   "concept_name": "right fifth metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3359",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3359.obj",
+     "vertices": 436,
+     "faces": 794
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 436,
+    "faces": 794
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 436,
+     "faces": 794
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 436,
+     "faces": 794
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     10.645800000000001,
+     -6.98196,
+     8.93821
+    ],
+    "max": [
+     15.2331,
+     -3.98794,
+     15.507800000000001
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_prox_right",
+   "fma_id": "FMA32640",
+   "concept_name": "proximal phalanx of right little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3324",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3324.obj",
+     "vertices": 238,
+     "faces": 406
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 238,
+    "faces": 406
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 238,
+     "faces": 406
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 238,
+     "faces": 406
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     14.288499999999999,
+     -6.989319999999999,
+     14.871100000000002
+    ],
+    "max": [
+     16.4837,
+     -6.00473,
+     17.4084
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_mid_right",
+   "fma_id": "FMA230986",
+   "concept_name": "middle phalanx of right little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3305",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3305.obj",
+     "vertices": 102,
+     "faces": 136
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 102,
+    "faces": 136
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 102,
+     "faces": 136
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 102,
+     "faces": 136
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     15.808000000000002,
+     -7.009040000000001,
+     17.145
+    ],
+    "max": [
+     16.669,
+     -6.37391,
+     17.881800000000002
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_dist_right",
+   "fma_id": "FMA32658",
+   "concept_name": "distal phalanx of right little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3195",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3195.obj",
+     "vertices": 178,
+     "faces": 210
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 178,
+    "faces": 210
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 178,
+     "faces": 210
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 178,
+     "faces": 210
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     16.1169,
+     -7.035380000000001,
+     17.62
+    ],
+    "max": [
+     16.9327,
+     -6.514190000000001,
+     18.6579
+    ]
+   }
+  },
+  {
+   "record_id": "hip_left",
+   "fma_id": "FMA16587",
+   "concept_name": "left hip bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3288",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3288.obj",
+     "vertices": 1257,
+     "faces": 2332
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1257,
+    "faces": 2332
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1257,
+     "faces": 2332
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1257,
+     "faces": 2332
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -14.4754,
+     75.19510000000001,
+     0.131494
+    ],
+    "max": [
+     -0.27503099999999997,
+     95.80900000000001,
+     13.909500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "femur_left",
+   "fma_id": "FMA24475",
+   "concept_name": "left femur",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3259",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3259.obj",
+     "vertices": 1623,
+     "faces": 3204
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1623,
+    "faces": 3204
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 1623,
+     "faces": 3204
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1623,
+     "faces": 3204
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -15.0237,
+     36.8056,
+     4.94822
+    ],
+    "max": [
+     -3.1966200000000002,
+     83.4239,
+     11.2276
+    ]
+   }
+  },
+  {
+   "record_id": "patella_left",
+   "fma_id": "FMA24487",
+   "concept_name": "left patella",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3275",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3275.obj",
+     "vertices": 180,
+     "faces": 310
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 180,
+    "faces": 310
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 180,
+     "faces": 310
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 180,
+     "faces": 310
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.2224,
+     36.1497,
+     10.0901
+    ],
+    "max": [
+     -6.0592500000000005,
+     40.0763,
+     12.275100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tibia_left",
+   "fma_id": "FMA24478",
+   "concept_name": "left tibia",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3282",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3282.obj",
+     "vertices": 880,
+     "faces": 1692
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 880,
+    "faces": 1692
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 880,
+     "faces": 1692
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 880,
+     "faces": 1692
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.945500000000001,
+     -0.609533,
+     5.19821
+    ],
+    "max": [
+     -3.50342,
+     37.3862,
+     11.451500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "fibula_left",
+   "fma_id": "FMA24481",
+   "concept_name": "left fibula",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3260",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3260.obj",
+     "vertices": 577,
+     "faces": 1124
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 577,
+    "faces": 1124
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 577,
+     "faces": 1124
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 577,
+     "faces": 1124
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.010800000000001,
+     -2.51906,
+     4.853400000000001
+    ],
+    "max": [
+     -8.4529,
+     35.9131,
+     7.8119000000000005
+    ]
+   }
+  },
+  {
+   "record_id": "calcaneus_left",
+   "fma_id": "FMA24498",
+   "concept_name": "left calcaneus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3256",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3256.obj",
+     "vertices": 719,
+     "faces": 1288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 719,
+    "faces": 1288
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 719,
+     "faces": 1288
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 719,
+     "faces": 1288
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.0768,
+     -6.84172,
+     2.4206800000000004
+    ],
+    "max": [
+     -4.501,
+     -1.9071200000000001,
+     9.41418
+    ]
+   }
+  },
+  {
+   "record_id": "talus_left",
+   "fma_id": "FMA24483",
+   "concept_name": "left talus",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3280",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3280.obj",
+     "vertices": 776,
+     "faces": 1356
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 776,
+    "faces": 1356
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 776,
+     "faces": 1356
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 776,
+     "faces": 1356
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.01784,
+     -3.13056,
+     4.8814
+    ],
+    "max": [
+     -4.96354,
+     0.30981100000000006,
+     10.567700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "navicular_left",
+   "fma_id": "FMA24501",
+   "concept_name": "navicular bone of left foot",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3307",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3307.obj",
+     "vertices": 459,
+     "faces": 744
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 459,
+    "faces": 744
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 459,
+     "faces": 744
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 459,
+     "faces": 744
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.664380000000001,
+     -3.09742,
+     9.4276
+    ],
+    "max": [
+     -5.792960000000001,
+     -0.629711,
+     12.1097
+    ]
+   }
+  },
+  {
+   "record_id": "cuboid_left",
+   "fma_id": "FMA24529",
+   "concept_name": "left cuboid bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3258",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3258.obj",
+     "vertices": 494,
+     "faces": 886
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 494,
+    "faces": 886
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 494,
+     "faces": 886
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 494,
+     "faces": 886
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.5134,
+     -5.15223,
+     8.3163
+    ],
+    "max": [
+     -8.1965,
+     -2.1853000000000002,
+     11.668500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "medial_cuneiform_left",
+   "fma_id": "FMA24522",
+   "concept_name": "left medial cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3271",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3271.obj",
+     "vertices": 582,
+     "faces": 996
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 582,
+    "faces": 996
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 582,
+     "faces": 996
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 582,
+     "faces": 996
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.41094,
+     -4.51444,
+     11.206100000000001
+    ],
+    "max": [
+     -6.60426,
+     -1.41921,
+     14.051900000000002
+    ]
+   }
+  },
+  {
+   "record_id": "intermediate_cuneiform_left",
+   "fma_id": "FMA24524",
+   "concept_name": "left intermediate cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3264",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3264.obj",
+     "vertices": 305,
+     "faces": 466
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 305,
+    "faces": 466
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 305,
+     "faces": 466
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 305,
+     "faces": 466
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.195500000000001,
+     -3.4428800000000006,
+     10.9632
+    ],
+    "max": [
+     -8.20136,
+     -1.13104,
+     13.033000000000001
+    ]
+   }
+  },
+  {
+   "record_id": "lateral_cuneiform_left",
+   "fma_id": "FMA24526",
+   "concept_name": "left lateral cuneiform bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3267",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3267.obj",
+     "vertices": 405,
+     "faces": 680
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 405,
+    "faces": 680
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 405,
+     "faces": 680
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 405,
+     "faces": 680
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.2885,
+     -4.06271,
+     10.0898
+    ],
+    "max": [
+     -8.7226,
+     -1.48154,
+     12.514600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalI_left",
+   "fma_id": "FMA24508",
+   "concept_name": "left first metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3241",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3241.obj",
+     "vertices": 614,
+     "faces": 1172
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 614,
+    "faces": 1172
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 614,
+     "faces": 1172
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 614,
+     "faces": 1172
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.437800000000001,
+     -6.53757,
+     12.997100000000001
+    ],
+    "max": [
+     -7.483700000000001,
+     -2.21406,
+     19.224100000000004
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxI_prox_left",
+   "fma_id": "FMA43254",
+   "concept_name": "proximal phalanx of left big toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3329",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3329.obj",
+     "vertices": 318,
+     "faces": 516
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 318,
+    "faces": 516
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 318,
+     "faces": 516
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 318,
+     "faces": 516
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.7082,
+     -6.84152,
+     18.6036
+    ],
+    "max": [
+     -8.67033,
+     -5.15522,
+     21.9271
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxI_mid_left",
+   "fma_id": "FMA32651",
+   "concept_name": "distal phalanx of left big toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3182",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3182.obj",
+     "vertices": 256,
+     "faces": 378
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 256,
+    "faces": 378
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 256,
+     "faces": 378
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 256,
+     "faces": 378
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.505600000000001,
+     -7.00065,
+     21.0725
+    ],
+    "max": [
+     -10.2504,
+     -5.90411,
+     23.591900000000003
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalII_left",
+   "fma_id": "FMA24510",
+   "concept_name": "left second metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3244",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3244.obj",
+     "vertices": 487,
+     "faces": 774
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 487,
+    "faces": 774
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 487,
+     "faces": 774
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 487,
+     "faces": 774
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -12.1348,
+     -6.616370000000001,
+     12.2489
+    ],
+    "max": [
+     -9.05894,
+     -1.83069,
+     18.7371
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_prox_left",
+   "fma_id": "FMA32635",
+   "concept_name": "proximal phalanx of left second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3328",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3328.obj",
+     "vertices": 233,
+     "faces": 380
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 233,
+    "faces": 380
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 233,
+     "faces": 380
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 233,
+     "faces": 380
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.3493,
+     -6.684010000000001,
+     18.3485
+    ],
+    "max": [
+     -11.1449,
+     -5.447010000000001,
+     21.1624
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_mid_left",
+   "fma_id": "FMA32643",
+   "concept_name": "middle phalanx of left second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3293",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3293.obj",
+     "vertices": 197,
+     "faces": 324
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 197,
+    "faces": 324
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 197,
+     "faces": 324
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 197,
+     "faces": 324
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.921199999999999,
+     -6.79536,
+     20.7529
+    ],
+    "max": [
+     -12.5127,
+     -5.93413,
+     22.4629
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxII_dist_left",
+   "fma_id": "FMA32653",
+   "concept_name": "distal phalanx of left second toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3179",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3179.obj",
+     "vertices": 169,
+     "faces": 240
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 169,
+    "faces": 240
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 169,
+     "faces": 240
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 169,
+     "faces": 240
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -14.3397,
+     -7.02268,
+     22.0864
+    ],
+    "max": [
+     -13.2153,
+     -6.30226,
+     23.4017
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalIII_left",
+   "fma_id": "FMA24512",
+   "concept_name": "left third metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3247",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3247.obj",
+     "vertices": 429,
+     "faces": 742
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 429,
+    "faces": 742
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 429,
+     "faces": 742
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 429,
+     "faces": 742
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -13.361000000000002,
+     -6.650480000000001,
+     11.814100000000002
+    ],
+    "max": [
+     -9.831990000000001,
+     -2.36681,
+     18.0795
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_prox_left",
+   "fma_id": "FMA32637",
+   "concept_name": "proximal phalanx of left third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3311",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3311.obj",
+     "vertices": 248,
+     "faces": 408
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 248,
+    "faces": 408
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 248,
+     "faces": 408
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 248,
+     "faces": 408
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -14.5808,
+     -6.769830000000001,
+     17.4617
+    ],
+    "max": [
+     -12.513200000000001,
+     -5.591340000000001,
+     20.2834
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_mid_left",
+   "fma_id": "FMA32645",
+   "concept_name": "middle phalanx of left third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3294",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3294.obj",
+     "vertices": 185,
+     "faces": 294
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 185,
+    "faces": 294
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 185,
+     "faces": 294
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 185,
+     "faces": 294
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -15.1811,
+     -6.89836,
+     19.8911
+    ],
+    "max": [
+     -13.8915,
+     -6.11089,
+     21.5852
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIII_dist_left",
+   "fma_id": "FMA32655",
+   "concept_name": "distal phalanx of left third toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3180",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3180.obj",
+     "vertices": 188,
+     "faces": 336
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 188,
+    "faces": 336
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 336
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 188,
+     "faces": 336
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -15.484100000000002,
+     -7.026130000000001,
+     21.2314
+    ],
+    "max": [
+     -14.584200000000003,
+     -6.43681,
+     22.3651
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalIV_left",
+   "fma_id": "FMA24514",
+   "concept_name": "left fourth metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3250",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3250.obj",
+     "vertices": 437,
+     "faces": 772
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 437,
+    "faces": 772
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 437,
+     "faces": 772
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 437,
+     "faces": 772
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -14.263800000000002,
+     -6.739050000000001,
+     10.6966
+    ],
+    "max": [
+     -10.1773,
+     -3.20211,
+     16.942500000000003
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_prox_left",
+   "fma_id": "FMA32639",
+   "concept_name": "proximal phalanx of left fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3312",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3312.obj",
+     "vertices": 255,
+     "faces": 438
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 255,
+    "faces": 438
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 255,
+     "faces": 438
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 255,
+     "faces": 438
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -15.590000000000002,
+     -6.97053,
+     16.442800000000002
+    ],
+    "max": [
+     -13.430900000000001,
+     -5.65251,
+     18.8425
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_mid_left",
+   "fma_id": "FMA32647",
+   "concept_name": "middle phalanx of left fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3295",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3295.obj",
+     "vertices": 183,
+     "faces": 284
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 183,
+    "faces": 284
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 183,
+     "faces": 284
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 183,
+     "faces": 284
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.139,
+     -6.97919,
+     18.5433
+    ],
+    "max": [
+     -14.904400000000003,
+     -6.19695,
+     19.8779
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxIV_dist_left",
+   "fma_id": "FMA32657",
+   "concept_name": "distal phalanx of left fourth toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3181",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3181.obj",
+     "vertices": 146,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 146,
+    "faces": 226
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 146,
+     "faces": 226
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 146,
+     "faces": 226
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.4075,
+     -7.03093,
+     19.543100000000003
+    ],
+    "max": [
+     -15.5212,
+     -6.34546,
+     20.6553
+    ]
+   }
+  },
+  {
+   "record_id": "metatarsalV_left",
+   "fma_id": "FMA24516",
+   "concept_name": "left fifth metatarsal bone",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3253",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3253.obj",
+     "vertices": 447,
+     "faces": 864
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 447,
+    "faces": 864
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 447,
+     "faces": 864
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 447,
+     "faces": 864
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -15.2375,
+     -6.9814,
+     8.92924
+    ],
+    "max": [
+     -10.6437,
+     -3.9772700000000003,
+     15.508600000000001
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_prox_left",
+   "fma_id": "FMA32641",
+   "concept_name": "proximal phalanx of left little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3315",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3315.obj",
+     "vertices": 231,
+     "faces": 396
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 231,
+    "faces": 396
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 231,
+     "faces": 396
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 231,
+     "faces": 396
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.479,
+     -6.980920000000001,
+     14.877500000000001
+    ],
+    "max": [
+     -14.2938,
+     -5.99871,
+     17.4019
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_mid_left",
+   "fma_id": "FMA230988",
+   "concept_name": "middle phalanx of left little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3298",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3298.obj",
+     "vertices": 143,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 143,
+    "faces": 226
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 226
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 226
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.6674,
+     -7.0054300000000005,
+     17.1552
+    ],
+    "max": [
+     -15.81,
+     -6.377960000000001,
+     17.895400000000002
+    ]
+   }
+  },
+  {
+   "record_id": "toephalanxV_dist_left",
+   "fma_id": "FMA32659",
+   "concept_name": "distal phalanx of left little toe",
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3185",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3185.obj",
+     "vertices": 160,
+     "faces": 220
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 160,
+    "faces": 220
+   },
+   "m2_totals_carried": {
+    "isa": {
+     "files": 1,
+     "vertices": 160,
+     "faces": 220
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 160,
+     "faces": 220
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -16.9358,
+     -7.04799,
+     17.616
+    ],
+    "max": [
+     -16.1261,
+     -6.512900000000001,
+     18.6545
+    ]
+   }
+  }
+ ]
+}
