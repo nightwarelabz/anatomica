@@ -1,0 +1,1301 @@
+{
+ "meta": {
+  "title": "ANATOMICA respiratory system clinical records \u2014 Milestone 10",
+  "generated_by": "tools/build_resp_records.py",
+  "sourcing_rule": "every non-null clinical field cites a source consulted during the build session in the record's sources map; every null field carries an explicit verify entry; TA names were not given by the consulted sources and are null + flagged throughout",
+  "sources": {
+   "S1": "TeachMeAnatomy, 'The Lungs' (teachmeanatomy.info)",
+   "S2": "TeachMeAnatomy, 'The Tracheobronchial Tree' (teachmeanatomy.info)",
+   "S3": "TeachMeAnatomy, 'The Pleurae' (teachmeanatomy.info)",
+   "S4": "Wikipedia, 'Bronchopulmonary segment' (Jackson & Huber nomenclature)",
+   "S5": "TeachMeAnatomy, 'The Nasal Cavity' (teachmeanatomy.info)",
+   "S6": "TeachMeAnatomy, 'The Larynx' (teachmeanatomy.info)",
+   "S7": "TeachMeAnatomy, 'The Pharynx' (teachmeanatomy.info)",
+   "S8": "ETSU (Currie), 'The Lung Volumes and Capacities Page' (faculty.etsu.edu)",
+   "S9": "LibreTexts BIO 50 (Zingg), 'Functional Anatomy of the Respiratory Tract'",
+   "S10": "OpenStax, Anatomy and Physiology 2e, section 22.2 'The Lungs'",
+   "S11": "TeachMeAnatomy, 'Laryngeal Cartilages' (teachmeanatomy.info)"
+  },
+  "record_count": 37,
+  "tiers": {
+   "A": 37
+  },
+  "groups": {
+   "Airway pathway": 13,
+   "Bronchopulmonary segments": 18,
+   "Lungs": 2,
+   "Pleura": 1,
+   "Respiratory mechanics": 1,
+   "Upper airway": 2
+  },
+  "link_failures": []
+ },
+ "records": [
+  {
+   "id": "resp.nasal-cavity",
+   "name": "Nasal cavity",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S5"
+    ],
+    "structure": [
+     "S5"
+    ],
+    "function": [
+     "S5"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the nasal cavity as a space has no concept in the release; geometry links are the nose organ record and its named parts and cartilages",
+   "geometry_record_ids": [
+    "nose",
+    "nose.external-nose",
+    "nose.internal-nose",
+    "nose.left-lateral-nasal-cartilage",
+    "nose.left-major-alar-cartilage",
+    "nose.nasal-septum",
+    "nose.right-lateral-nasal-cartilage",
+    "nose.right-major-alar-cartilage",
+    "nose.septal-nasal-cartilage"
+   ],
+   "pathway_order": 1,
+   "zone": "conducting",
+   "extent": "The most superior part of the respiratory tract; extends from the vestibule of the nose to the nasopharynx",
+   "structure": "Three divisions: vestibule (around the anterior external opening), respiratory region (ciliated pseudostratified epithelium with mucus-secreting goblet cells) and olfactory region at the apex, lined by olfactory cells with olfactory receptors",
+   "function": "Warms and humidifies inspired air; removes and traps pathogens and particulate matter; sense of smell; drains and clears the paranasal sinuses and lacrimal ducts",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.nasopharynx",
+   "name": "Nasopharynx",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S7"
+    ],
+    "structure": [
+     "S7"
+    ],
+    "function": [
+     "S7"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 2,
+   "zone": "conducting",
+   "extent": "Between the base of the skull and the soft palate; continuous with the nasal cavity",
+   "structure": "Lined with respiratory epithelium (ciliated pseudostratified columnar epithelium with goblet cells); the posterosuperior wall contains the adenoid (pharyngeal) tonsils, which enlarge between 3-8 years of age and then regress",
+   "function": "Respiratory part of the pharynx: conditions inspired air and propagates it towards the larynx",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.oropharynx",
+   "name": "Oropharynx",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S7"
+    ],
+    "structure": [
+     "S7"
+    ],
+    "function": [
+     "S7"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 3,
+   "zone": "conducting",
+   "extent": "The middle part of the pharynx, between the soft palate and the superior border of the epiglottis",
+   "structure": "Contains the posterior one-third of the tongue, the lingual tonsils, the palatine tonsils (in the tonsillar fossa) and the superior constrictor muscle; with the palatine, adenoid and lingual tonsils it forms part of Waldeyer's ring",
+   "function": "A passageway shared by air and food; involved in the voluntary and involuntary phases of swallowing",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.laryngopharynx",
+   "name": "Laryngopharynx",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S7"
+    ],
+    "structure": [
+     "S7"
+    ],
+    "function": [
+     "S7",
+     "S9"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 4,
+   "zone": "conducting",
+   "extent": "The most distal part of the pharynx, between the superior border of the epiglottis and the inferior border of the cricoid cartilage (C6); continuous inferiorly with the oesophagus",
+   "structure": "Lies posterior to the larynx and communicates with it via the laryngeal inlet, lateral to which lie the piriform fossae; contains the middle and inferior pharyngeal constrictors",
+   "function": "Directs air into the larynx and swallowed material into the oesophagus",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.larynx",
+   "name": "Larynx",
+   "type": "organ",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "position": [
+     "S6"
+    ],
+    "functions": [
+     "S6"
+    ],
+    "cartilages": [
+     "S11"
+    ],
+    "cavity_divisions": [
+     "S6"
+    ],
+    "innervation": [
+     "S6"
+    ],
+    "blood_supply": [
+     "S6"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the larynx as an organ has no concept in the release; geometry links are its nine cartilages and its ligament/membrane records as released",
+   "geometry_record_ids": [
+    "larynx.cricoid-cartilage",
+    "larynx.epiglottis",
+    "larynx.hyo-epiglottic-ligament",
+    "larynx.left-arytenoid-cartilage",
+    "larynx.left-conus-elasticus",
+    "larynx.left-corniculate-cartilage",
+    "larynx.left-cuneiform-cartilage",
+    "larynx.left-lateral-thyrohyoid-ligament",
+    "larynx.left-thyrohyoid-membrane",
+    "larynx.left-vocal-ligament",
+    "larynx.median-cricothyroid-ligament",
+    "larynx.median-thyrohyoid-ligament",
+    "larynx.right-arytenoid-cartilage",
+    "larynx.right-conus-elasticus",
+    "larynx.right-corniculate-cartilage",
+    "larynx.right-cuneiform-cartilage",
+    "larynx.right-lateral-thyrohyoid-ligament",
+    "larynx.right-thyrohyoid-membrane",
+    "larynx.right-vocal-ligament",
+    "larynx.thyro-epiglottic-ligament",
+    "larynx.thyroid-cartilage"
+   ],
+   "position": "Anterior compartment of the neck, suspended from the hyoid bone, spanning C3 to C6; continuous inferiorly with the trachea and opening superiorly into the laryngeal part of the pharynx; oesophagus lies posteriorly",
+   "functions": "Phonation, the cough reflex, and protection of the lower respiratory tract",
+   "cartilages": "Nine cartilages forming the laryngeal skeleton: three unpaired (epiglottis, thyroid, cricoid) and three paired (arytenoid, corniculate, cuneiform)",
+   "cavity_divisions": "Supraglottis (inferior surface of epiglottis to the vestibular folds), glottis (the vocal cords and 1 cm below; the opening between the cords is the rima glottidis) and subglottis (to the inferior border of the cricoid cartilage); lined by pseudostratified ciliated columnar epithelium except the true vocal cords (stratified squamous)",
+   "innervation": "Via the vagus nerve: the recurrent laryngeal nerve gives sensory supply to the infraglottis and motor supply to all internal laryngeal muscles except the cricothyroid; the superior laryngeal nerve's internal branch is sensory to the supraglottis and its external branch is motor to the cricothyroid",
+   "blood_supply": "Superior laryngeal artery (branch of the superior thyroid artery, from the external carotid) and inferior laryngeal artery (branch of the inferior thyroid artery, from the thyrocervical trunk); the superior laryngeal vein drains via the superior thyroid vein to the internal jugular vein, the inferior via the inferior thyroid vein to the left brachiocephalic vein",
+   "pathway_order": 5,
+   "zone": "conducting",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.trachea",
+   "name": "Trachea",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2",
+     "S9"
+    ],
+    "function": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.trachea"
+   ],
+   "pathway_order": 6,
+   "zone": "conducting",
+   "extent": "Arises at the lower border of the cricoid cartilage in the neck as a continuation of the larynx; travels inferiorly into the superior mediastinum, anterior to the oesophagus, and bifurcates at the level of the sternal angle",
+   "structure": "Held open by C-shaped cartilage rings (16-20 rings of hyaline cartilage) whose free ends are supported by the trachealis muscle; lined by ciliated pseudostratified columnar epithelium with goblet cells, forming the mucociliary escalator; at the bifurcation the carina, a ridge of cartilage between the bronchial openings, is the most sensitive area for triggering the cough reflex",
+   "function": "Conducts air between the larynx and the main bronchi; the mucociliary escalator traps inhaled particles and pathogens and moves them up out of the airways",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.main-bronchi",
+   "name": "Main bronchi",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2"
+    ],
+    "function": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-main-bronchus",
+    "airway.right-main-bronchus-proper"
+   ],
+   "pathway_order": 7,
+   "zone": "conducting",
+   "extent": "From the tracheal bifurcation at the sternal angle, each bronchus enters the root of its lung through the hilum",
+   "structure": "The right main bronchus is wider, shorter and more vertical than the left (hence a higher incidence of foreign-body inhalation); the left main bronchus passes inferior to the arch of the aorta and anterior to the thoracic aorta and oesophagus; in the main bronchi, cartilage rings completely encircle the lumen",
+   "function": "Deliver air from the trachea to each lung; with branches of the pulmonary artery and veins, the main bronchi make up the roots of the lungs",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.lobar-bronchi",
+   "name": "Lobar bronchi",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2"
+    ],
+    "function": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the release contains no lobar bronchus concept: its bronchial tree jumps from the main bronchi to the segmental bronchial trees",
+   "geometry_record_ids": [],
+   "pathway_order": 8,
+   "zone": "conducting",
+   "extent": "Within the lungs, branching from the main bronchi and dividing into the segmental bronchi",
+   "structure": "Secondary bronchi; their cartilage is found only in crescent shapes (unlike the complete rings of the main bronchi)",
+   "function": "One lobar (secondary) bronchus supplies each lobe of the lung: three on the right, two on the left",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.segmental-bronchi",
+   "name": "Segmental bronchi",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2"
+    ],
+    "function": [
+     "S2",
+     "S1"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "geometry links are the release's 21 segmental bronchial tree records (16 lateralised instances and the un-sided lateral, medial, basal and two lingular trees)",
+   "geometry_record_ids": [
+    "airway.basal-segmental-bronchial-tree",
+    "airway.inferior-lingular-bronchial-tree",
+    "airway.lateral-segmental-bronchial-tree",
+    "airway.left-anterior-basal-segmental-bronchial-tree",
+    "airway.left-anterior-segmental-bronchial-tree",
+    "airway.left-apical-segmental-bronchial-tree",
+    "airway.left-lateral-basal-segmental-bronchial-tree",
+    "airway.left-medial-basal-segmental-bronchial-tree",
+    "airway.left-posterior-basal-segmental-bronchial-tree",
+    "airway.left-posterior-segmental-bronchial-tree",
+    "airway.left-superior-segmental-bronchial-tree",
+    "airway.medial-segmental-bronchial-tree",
+    "airway.right-anterior-basal-segmental-bronchial-tree",
+    "airway.right-anterior-segmental-bronchial-tree",
+    "airway.right-apical-segmental-bronchial-tree",
+    "airway.right-lateral-basal-segmental-bronchial-tree",
+    "airway.right-medial-basal-segmental-bronchial-tree",
+    "airway.right-posterior-basal-segmental-bronchial-tree",
+    "airway.right-posterior-segmental-bronchial-tree",
+    "airway.right-superior-segmental-bronchial-tree",
+    "airway.superior-lingular-bronchial-tree"
+   ],
+   "pathway_order": 9,
+   "zone": "conducting",
+   "extent": "Branch from the lobar bronchi within each lobe",
+   "structure": "Tertiary bronchi; cartilage only in crescent shapes",
+   "function": "Each segmental bronchus provides air to a bronchopulmonary segment \u2014 the functional units of the lungs",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.bronchioles",
+   "name": "Bronchioles",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2",
+     "S9"
+    ],
+    "function": [
+     "S2",
+     "S9"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 10,
+   "zone": "conducting",
+   "extent": "The segmental bronchi branch repeatedly into numerous smaller bronchioles, ending as terminal bronchioles",
+   "structure": "The smallest airways: no cartilage and no mucus-secreting goblet cells; club cells produce a surfactant lipoprotein that stops the small airway walls sticking together during expiration; bronchioles are less than 1 mm wide",
+   "function": "Conducting bronchioles transport air but are not involved in gas exchange; the terminal bronchioles are the last part of the conducting zone",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.respiratory-bronchioles",
+   "name": "Respiratory bronchioles",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2",
+     "S9"
+    ],
+    "structure": [
+     "S2",
+     "S9"
+    ],
+    "function": [
+     "S2",
+     "S9"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 11,
+   "zone": "respiratory",
+   "extent": "Branch from the terminal bronchioles; the first structures of the respiratory zone",
+   "structure": "Distinguishable by thin-walled alveoli extending as outpocketings from their lumens; simple cuboidal epithelium, thinner than the simple columnar epithelium of the terminal bronchioles",
+   "function": "The first airways at which gas exchange occurs, through their alveolar outpocketings",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.alveolar-ducts-and-sacs",
+   "name": "Alveolar ducts and sacs",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S9"
+    ],
+    "structure": [
+     "S9"
+    ],
+    "function": [
+     "S9"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 12,
+   "zone": "respiratory",
+   "extent": "Respiratory bronchioles branch into alveolar ducts, which open into clusters of alveolar sacs",
+   "structure": "Ducts opening into clustered sacs of alveoli",
+   "function": "Conduct air into the alveolar sacs, where oxygen and carbon dioxide are exchanged",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.alveoli",
+   "name": "Alveoli",
+   "type": "pathway",
+   "group": "Airway pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2",
+     "S9"
+    ],
+    "structure": [
+     "S2"
+    ],
+    "function": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [],
+   "pathway_order": 13,
+   "zone": "respiratory",
+   "extent": "At the ends of the respiratory zone throughout the lung parenchyma, extending from the lumens of the respiratory bronchioles and forming the alveolar sacs",
+   "structure": "Tiny air-filled pockets with thin walls of simple squamous epithelium; altogether around 300 million alveoli in the adult lungs",
+   "function": "The sites of gaseous exchange in the lungs, providing a large surface area for exchange",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.right-lung",
+   "name": "Right lung",
+   "type": "organ",
+   "group": "Lungs",
+   "ta_name": null,
+   "sources": {
+    "lobes": [
+     "S1"
+    ],
+    "fissures": [
+     "S1"
+    ],
+    "root_hilum": [
+     "S1"
+    ],
+    "relations": [
+     "S1"
+    ],
+    "blood_supply": [
+     "S1"
+    ],
+    "nerve_supply": [
+     "S1"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "lung.lower-lobe-of-right-lung",
+    "lung.middle-lobe-of-lung",
+    "lung.upper-lobe-of-right-lung",
+    "right-lung"
+   ],
+   "lobes": "Three lobes: superior, middle and inferior",
+   "fissures": "Two fissures: the oblique fissure, running from the inferior border superoposteriorly to the posterior border, separating the inferior lobe from the middle and superior lobes; and the horizontal fissure, running horizontally from the sternum at the level of the 4th rib to meet the oblique fissure",
+   "root_hilum": "Each lung root contains a bronchus, a pulmonary artery, two pulmonary veins, bronchial vessels, the pulmonary plexus of nerves and lymphatic vessels; all enter or leave the lung via the hilum, a wedge-shaped area on the mediastinal surface",
+   "relations": "Cone shaped, with apex projecting above the 1st rib into the floor of the neck and base sitting on the diaphragm (the diaphragmatic concavity is deeper on the right, due to the higher right dome over the liver); medial surface related to the oesophagus, heart, inferior vena cava, superior vena cava and azygos vein",
+   "blood_supply": "Deoxygenated blood by the pulmonary arteries; oxygenated blood leaves via the pulmonary veins (two per lung); an extra nutritive supply to the bronchi, lung roots, visceral pleura and lung tissue comes from the bronchial arteries (from the descending aorta); the right bronchial vein drains into the azygos vein",
+   "nerve_supply": "Derived from the pulmonary plexuses: parasympathetic fibres (vagus) stimulate secretion from the bronchial glands, contraction of bronchial smooth muscle and vasodilation of the pulmonary vessels; sympathetic fibres (sympathetic trunks) stimulate relaxation of bronchial smooth muscle and vasoconstriction of the pulmonary vessels; visceral afferent fibres conduct pain impulses to the sensory ganglion of the vagus nerve",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.left-lung",
+   "name": "Left lung",
+   "type": "organ",
+   "group": "Lungs",
+   "ta_name": null,
+   "sources": {
+    "lobes": [
+     "S1"
+    ],
+    "fissures": [
+     "S1"
+    ],
+    "root_hilum": [
+     "S1"
+    ],
+    "relations": [
+     "S1"
+    ],
+    "blood_supply": [
+     "S1"
+    ],
+    "nerve_supply": [
+     "S1"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "left-lung",
+    "lung.lower-lobe-of-left-lung",
+    "lung.upper-lobe-of-left-lung"
+   ],
+   "lobes": "Two lobes: superior and inferior",
+   "fissures": "One fissure: the oblique fissure, similar to that of the right lung, separating the superior and inferior lobes",
+   "root_hilum": "Each lung root contains a bronchus, a pulmonary artery, two pulmonary veins, bronchial vessels, the pulmonary plexus of nerves and lymphatic vessels; all enter or leave the lung via the hilum, a wedge-shaped area on the mediastinal surface",
+   "relations": "Slightly smaller than the right lung because of the heart; its anterior border is marked by the cardiac notch, a deep notch created by the apex of the heart; medial surface related to the heart, arch of aorta, thoracic aorta and oesophagus; base sits on the diaphragm",
+   "blood_supply": "Deoxygenated blood by the pulmonary arteries; oxygenated blood leaves via the pulmonary veins (two per lung); nutritive supply from the bronchial arteries (from the descending aorta); the left bronchial vein drains into the accessory hemiazygos vein",
+   "nerve_supply": "Derived from the pulmonary plexuses: parasympathetic fibres (vagus) stimulate secretion from the bronchial glands, contraction of bronchial smooth muscle and vasodilation of the pulmonary vessels; sympathetic fibres (sympathetic trunks) stimulate relaxation of bronchial smooth muscle and vasoconstriction of the pulmonary vessels; visceral afferent fibres conduct pain impulses to the sensory ganglion of the vagus nerve",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.nasal-cavity-organ",
+   "name": "Nasal cavity (structure)",
+   "type": "region",
+   "group": "Upper airway",
+   "ta_name": null,
+   "sources": {
+    "divisions": [
+     "S5"
+    ],
+    "functions": [
+     "S5"
+    ],
+    "conchae_meatuses": [
+     "S5"
+    ],
+    "openings": [
+     "S5"
+    ],
+    "blood_supply": [
+     "S5"
+    ],
+    "innervation": [
+     "S5"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "companion to the pathway record of the same name: the cavity's own sourced structure; the release carries no nasal cavity concept",
+   "geometry_record_ids": [
+    "nose",
+    "nose.external-nose",
+    "nose.internal-nose",
+    "nose.left-lateral-nasal-cartilage",
+    "nose.left-major-alar-cartilage",
+    "nose.nasal-septum",
+    "nose.right-lateral-nasal-cartilage",
+    "nose.right-major-alar-cartilage",
+    "nose.septal-nasal-cartilage"
+   ],
+   "divisions": "Vestibule, respiratory region and olfactory region",
+   "functions": "Warms and humidifies inspired air; removes and traps pathogens and particulate matter; sense of smell; drains and clears the paranasal sinuses and lacrimal ducts",
+   "conchae_meatuses": "Three conchae (inferior, middle, superior) project from the lateral walls, creating four pathways: the inferior meatus (below the inferior concha), middle meatus (between inferior and middle conchae), superior meatus (between middle and superior conchae) and the spheno-ethmoidal recess (above and behind the superior concha); the conchae increase surface area and make airflow slow and turbulent, so air spends longer in contact with the cavity walls",
+   "openings": "Frontal, maxillary and anterior ethmoidal sinuses open into the middle meatus at the semilunar hiatus; the middle ethmoidal sinuses empty onto the ethmoidal bulla; the posterior ethmoidal sinuses open at the level of the superior meatus; the sphenoid sinus drains onto the posterior roof; the nasolacrimal duct opens into the inferior meatus; the auditory (Eustachian) tube opens into the nasopharynx at the level of the inferior meatus",
+   "blood_supply": "From both carotids: internal carotid via the anterior and posterior ethmoidal arteries (branches of the ophthalmic artery, descending through the cribriform plate); external carotid via the sphenopalatine, greater palatine, superior labial and lateral nasal arteries; the branches anastomose, particularly in the anterior nose (Kiesselbach area); veins drain to the pterygoid plexus, facial vein or cavernous sinus",
+   "innervation": "Special sensory (smell) by the olfactory nerves, whose fibres pass through the cribriform plate from the olfactory bulb; general sensory supply to septum and lateral walls by the nasopalatine nerve (maxillary) and nasociliary nerve (ophthalmic); the skin of the external nose by the trigeminal nerve",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.pharynx",
+   "name": "Pharynx",
+   "type": "region",
+   "group": "Upper airway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S7"
+    ],
+    "parts": [
+     "S7"
+    ],
+    "muscles": [
+     "S7"
+    ],
+    "innervation": [
+     "S7"
+    ],
+    "blood_supply": [
+     "S7"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the pharynx has no concept in the release (only its subdivision classes, its raphe and its muscles); its muscle records live in the muscular module (superior/middle/inferior constrictors, stylopharyngeus, salpingopharyngeus, palatopharyngeus)",
+   "geometry_record_ids": [],
+   "extent": "A muscular tube connecting the oral and nasal cavities to the larynx and oesophagus; it begins at the base of the skull and ends at the inferior border of the cricoid cartilage (C6)",
+   "parts": "Three parts, superior to inferior: nasopharynx (base of skull to soft palate), oropharynx (soft palate to superior border of the epiglottis) and laryngopharynx (superior border of the epiglottis to the inferior border of the cricoid cartilage, C6)",
+   "muscles": "Two groups: circular muscles \u2014 the superior, middle and inferior pharyngeal constrictors, arranged like stacked glasses, contracting sequentially from superior to inferior to propel the bolus into the oesophagus (the inferior constrictor has thyropharyngeal and cricopharyngeal parts); longitudinal muscles \u2014 stylopharyngeus, palatopharyngeus and salpingopharyngeus, which shorten and widen the pharynx and elevate the larynx during swallowing",
+   "innervation": "Motor and sensory supply mainly via the pharyngeal plexus (pharyngeal branches of the glossopharyngeal and vagus nerves, branches of the external laryngeal nerve and sympathetic fibres from the superior cervical ganglion); all pharyngeal muscles are supplied by the vagus except the stylopharyngeus (glossopharyngeal); sensory supply is mainly glossopharyngeal, with the maxillary nerve to the anterior/superior nasopharynx",
+   "blood_supply": "Arterial supply from branches of the external carotid artery: the ascending pharyngeal artery and branches of the facial, lingual and maxillary arteries; venous drainage by the pharyngeal venous plexus into the internal jugular vein",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-apical",
+   "name": "Apical segment (S1)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-apical-segmental-bronchial-tree",
+    "segment.right-apical-bronchopulmonary-segment"
+   ],
+   "lobe": "Superior (upper) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-posterior",
+   "name": "Posterior segment (S2)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-posterior-segmental-bronchial-tree",
+    "segment.right-posterior-bronchopulmonary-segment"
+   ],
+   "lobe": "Superior (upper) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-anterior",
+   "name": "Anterior segment (S3)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-anterior-segmental-bronchial-tree",
+    "segment.right-anterior-bronchopulmonary-segment"
+   ],
+   "lobe": "Superior (upper) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-lateral",
+   "name": "Lateral segment (S4)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.lateral-segmental-bronchial-tree",
+    "segment.lateral-bronchopulmonary-segment"
+   ],
+   "lobe": "Middle lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-medial",
+   "name": "Medial segment (S5)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.medial-segmental-bronchial-tree",
+    "segment.medial-bronchopulmonary-segment"
+   ],
+   "lobe": "Middle lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-superior",
+   "name": "Superior segment (S6)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-superior-segmental-bronchial-tree",
+    "segment.right-superior-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-medial-basal",
+   "name": "Medial basal segment (S7)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-medial-basal-segmental-bronchial-tree",
+    "segment.right-medial-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-anterior-basal",
+   "name": "Anterior basal segment (S8)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-anterior-basal-segmental-bronchial-tree",
+    "segment.right-anterior-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-lateral-basal",
+   "name": "Lateral basal segment (S9)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-lateral-basal-segmental-bronchial-tree",
+    "segment.right-lateral-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.right-posterior-basal",
+   "name": "Posterior basal segment (S10)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.right-posterior-basal-segmental-bronchial-tree",
+    "segment.right-posterior-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the right lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-apicoposterior",
+   "name": "Apico-posterior segment (S1+2)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-apical-segmental-bronchial-tree",
+    "airway.left-posterior-segmental-bronchial-tree",
+    "segment.apicoposterior-bronchopulmonary-segment",
+    "segment.left-apical-bronchopulmonary-segment",
+    "segment.left-posterior-bronchopulmonary-segment"
+   ],
+   "lobe": "Superior (upper) lobe of the left lung",
+   "definition": "Merger of the apical and posterior segments. A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-anterior",
+   "name": "Anterior segment (S3)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-anterior-segmental-bronchial-tree",
+    "segment.left-anterior-bronchopulmonary-segment"
+   ],
+   "lobe": "Superior (upper) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-superior-lingular",
+   "name": "Superior lingular segment (S4)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.superior-lingular-bronchial-tree",
+    "segment.superior-lingular-bronchopulmonary-segment"
+   ],
+   "lobe": "Lingula of the superior (upper) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-inferior-lingular",
+   "name": "Inferior lingular segment (S5)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.inferior-lingular-bronchial-tree",
+    "segment.inferior-lingular-bronchopulmonary-segment"
+   ],
+   "lobe": "Lingula of the superior (upper) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-superior",
+   "name": "Superior segment (S6)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-superior-segmental-bronchial-tree",
+    "segment.left-superior-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-anteromedial-basal",
+   "name": "Anteromedial basal segment (S7+8)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-anterior-basal-segmental-bronchial-tree",
+    "airway.left-medial-basal-segmental-bronchial-tree",
+    "segment.left-anterior-basal-bronchopulmonary-segment",
+    "segment.left-medial-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the left lung",
+   "definition": "Merger of the anterior basal and medial basal segments. A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-lateral-basal",
+   "name": "Lateral basal segment (S9)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-lateral-basal-segmental-bronchial-tree",
+    "segment.left-lateral-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "segment.left-posterior-basal",
+   "name": "Posterior basal segment (S10)",
+   "type": "segment",
+   "group": "Bronchopulmonary segments",
+   "ta_name": null,
+   "sources": {
+    "lobe": [
+     "S4"
+    ],
+    "definition": [
+     "S4"
+    ],
+    "surgical_note": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "airway.left-posterior-basal-segmental-bronchial-tree",
+    "segment.left-posterior-basal-bronchopulmonary-segment"
+   ],
+   "lobe": "Inferior (lower) lobe of the left lung",
+   "definition": "A portion of lung supplied by a specific segmental bronchus and its vessels; the arteries branch from the pulmonary and bronchial arteries and run together through the centre of the segment, while veins and lymphatic vessels drain along the edges of the segment",
+   "surgical_note": "Separated from the other segments by layers of connective tissue into a discrete anatomical and functional unit, so a bronchopulmonary segment can be surgically removed without affecting the function of the others",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.pleura",
+   "name": "Pleurae and pleural cavities",
+   "type": "membrane",
+   "group": "Pleura",
+   "ta_name": null,
+   "sources": {
+    "layers": [
+     "S3"
+    ],
+    "parietal_parts": [
+     "S3"
+    ],
+    "cavity_and_fluid": [
+     "S3"
+    ],
+    "recesses": [
+     "S3"
+    ],
+    "innervation_supply": [
+     "S3"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "no pleura concept of any kind exists in the release; the only pleura-adjacent concepts are the two pulmopleural compartments, censused in the inventory as compartment concepts, not records",
+   "geometry_record_ids": [],
+   "layers": "Two pleurae, one associated with each lung; each is a serous membrane (a layer of simple squamous cells \u2014 mesothelium \u2014 on connective tissue) divided into the visceral pleura, which covers the lungs, and the parietal pleura, which covers the internal surface of the thoracic cavity; the two are continuous with each other at the hilum of the lung",
+   "parietal_parts": "The parietal pleura is subdivided by the surface it covers: mediastinal pleura (lateral aspect of the mediastinum), cervical pleura (the extension into the neck), costal pleura (inner aspect of the ribs, costal cartilages and intercostal muscles) and diaphragmatic pleura (superior surface of the diaphragm)",
+   "cavity_and_fluid": "The pleural cavity is a potential space between the visceral and parietal pleura containing a small volume of serous fluid; the fluid lubricates the pleural surfaces so they slide over each other, and its surface tension pulls the two layers together, ensuring the lung expands when the thorax expands",
+   "recesses": "Two recesses in each pleural cavity where opposing parietal surfaces touch and fluid can collect: the costodiaphragmatic recess (between the costal and diaphragmatic pleurae) and the costomediastinal recess (between the costal and mediastinal pleurae, behind the sternum)",
+   "innervation_supply": "The parietal pleura is sensitive to pressure, pain and temperature, producing well-localised pain; it is innervated by the phrenic and intercostal nerves and supplied by the intercostal arteries. The visceral pleura is not sensitive to pain, temperature or touch (its sensory fibres detect stretch only), receives autonomic innervation from the pulmonary plexus, and is supplied by the bronchial arteries",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "resp.mechanics",
+   "name": "Respiratory volumes and capacities",
+   "type": "values",
+   "group": "Respiratory mechanics",
+   "ta_name": null,
+   "sources": {
+    "values": [
+     "S8"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: spirometric values are measurements, not anatomical structures; no geometry is linked by design"
+   ],
+   "note": "all values are the consulted source's stated approximates, which the source itself notes will vary somewhat between sources; resting adult values. Related structure record: the diaphragm (muscular module, muscle.diaphragm), the dome-shaped muscle at the base of the lungs (S10)",
+   "geometry_record_ids": [],
+   "values": {
+    "tidal_volume_ml": 500,
+    "inspiratory_reserve_volume_ml": 3000,
+    "expiratory_reserve_volume_ml": 1300,
+    "residual_volume_ml": 1200,
+    "functional_residual_capacity_ml": 2500,
+    "vital_capacity_ml": 5000,
+    "total_lung_capacity_ml": 6000,
+    "minimal_volume_ml": 500,
+    "anatomical_dead_space_ml": 150,
+    "respiratory_rate_breaths_per_min": "12-15",
+    "minute_respiratory_volume_ml_per_min": "6000-7500",
+    "alveolar_ventilation_ml_per_min": 5250,
+    "fev1_percent_of_vital_capacity": "about 80"
+   },
+   "value_definitions": {
+    "tidal_volume_ml": "volume of air taken into the lungs in a resting breath",
+    "inspiratory_reserve_volume_ml": "reserve that can be inspired beyond a normal inspiration",
+    "expiratory_reserve_volume_ml": "difference between the lung volume at the end of normal and of maximal expiration",
+    "residual_volume_ml": "air left in the lungs at the end of maximal expiration, which cannot be voluntarily exhaled",
+    "functional_residual_capacity_ml": "air left at the end of normal resting expiration (ERV + RV)",
+    "vital_capacity_ml": "the total usable volume of the lungs under voluntary control",
+    "total_lung_capacity_ml": "residual volume + vital capacity",
+    "minimal_volume_ml": "volume below which the lungs will collapse",
+    "anatomical_dead_space_ml": "volume of the air-conducting pathways in which no gas exchange occurs (approximately 150 mL in the average adult)",
+    "respiratory_rate_breaths_per_min": "resting respiratory frequency",
+    "minute_respiratory_volume_ml_per_min": "air exchanged in one minute (rate x tidal volume); the source notes the average is closer to 6000",
+    "alveolar_ventilation_ml_per_min": "(tidal volume - anatomical dead space) x rate, as computed by the source at rest",
+    "fev1_percent_of_vital_capacity": "volume expired in the first second of a vital capacity determination (FEV1), as a percentage of VC"
+   },
+   "sourcing_tier": "A"
+  }
+ ]
+}
