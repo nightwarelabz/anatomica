@@ -1,5 +1,9 @@
 # ANATOMICA
 
+![The cardiovascular system — a still from ANATOMICA's surgical simulation film](assets/anatomica-hero.jpg)
+
+*The cardiovascular system — a still from ANATOMICA's surgical simulation film.*
+
 An open medical surgical and anatomy system: a 3D anatomical atlas, a physiology
 simulation engine, an imaging suite, a surgical procedure simulator, and a clinical
 case and hypothesis workbench — all reading one verified model of the human body.
@@ -33,9 +37,12 @@ carries no real patient data, and it is not for diagnosis or treatment of real p
 
 ## Status
 
-Milestone 1: design complete for all areas; the Phase-2 geometry foundation
-(adopted datasets, provenance ledger, coverage census) is implemented. See
-`MILESTONE-1.md`.
+Milestones 1–8 are complete and recorded in `MILESTONE-1.md` through
+`MILESTONE-8.md`: verified Body Model data modules for the skeletal, muscular,
+and cardiovascular systems (a nervous system module is in progress), the
+assembled real-geometry skeleton, web and native shells rendering that
+geometry, and a deterministic physiology engine whose resting cardiovascular
+outputs validate against published normal ranges.
 
 ## License
 
