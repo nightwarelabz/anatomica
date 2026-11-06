@@ -41,7 +41,11 @@ Outputs:
   data/imaging/<subject>/dicom/*.dcm        DICOM PS3.10 file set
   data/imaging/<subject>/series.json        derivation manifest
   data/imaging/<subject>/crosswalk.json     label->record accounting
-  web/data/imaging.json                     web-shell manifest
+  web/data/imaging.json                     web-shell manifest — combined
+                                            (Milestone 32): shared meta +
+                                            one block per derived subject;
+                                            deriving a subject merges its
+                                            block in, preserving the others
   web/data/imaging/<subject>/hu-XXXX.bin    int16 HU per slice
   web/data/imaging/<subject>/lbl-XXXX.bin   uint8 label index/slice
 
@@ -66,7 +70,25 @@ import numpy as np
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 TS_DIR = os.path.join(ROOT, "data", "sources", "totalsegmentator-1.0")
 SUBJECT = sys.argv[1] if len(sys.argv) > 1 else "s0778"
+# Milestone label for THIS derivation (argv 2). Defaults preserve the
+# Milestone 19 derivation of s0778 exactly; Milestone 32 derives the
+# second subject with "Milestone 32".
+MILESTONE = sys.argv[2] if len(sys.argv) > 2 else "Milestone 19"
+MTAG = "M" + MILESTONE.split()[-1]
 SUBJ_DIR = os.path.join(TS_DIR, "subset", "Totalsegmentator_dataset", SUBJECT)
+# Why this subject was chosen, recorded in its series.json. Subjects
+# are picked by the Milestone 19 rule — most non-empty label masks of
+# the locally held subjects (M19), then of the remaining ones (M32).
+SELECTION_REASONS = {
+    "s0778": ("most complete of the 10 locally held subjects: "
+              "98 of 104 label masks non-empty (next best 95); "
+              "thorax-abdomen-pelvis coverage, 646.5 mm z-extent"),
+    "s1090": ("second subject (Milestone 32), chosen by the Milestone 19 "
+              "rule applied to the nine remaining locally held subjects: "
+              "most non-empty label masks, 95 of 104 (next best remaining "
+              "subject s0480 with 71); thorax-abdomen-pelvis coverage, "
+              "658.5 mm z-extent. Full ranking table in MILESTONE-32.md"),
+}
 WATERMARK_VALUE = 3071  # 12-bit maximum; white under every shipped preset
 
 # 5x7 bitmap font (rows top->bottom, 5 bits each) for "SYNTHETIC".
@@ -255,7 +277,7 @@ def write_dicom(path, pixels_i16, meta, k):
     els.append(_el((0x0018, 0x0088), "DS", _ds(meta["spacing"][2])))
     els.append(_el((0x0020, 0x000D), "UI", _ui(meta["study_uid"])))
     els.append(_el((0x0020, 0x000E), "UI", _ui(meta["series_uid"])))
-    els.append(_el((0x0020, 0x0010), "SH", _txt("ANATOMICA-M19")))
+    els.append(_el((0x0020, 0x0010), "SH", _txt(meta["study_id"])))
     els.append(_el((0x0020, 0x0011), "IS", _is(1)))
     els.append(_el((0x0020, 0x0013), "IS", _is(k + 1)))
     ipp = [meta["ipp0"][0], meta["ipp0"][1], meta["ipp0"][2] + k * meta["spacing"][2]]
@@ -286,7 +308,7 @@ def write_dicom(path, pixels_i16, meta, k):
         _el((0x0002, 0x0003), "UI", _ui(sop_uid)),
         _el((0x0002, 0x0010), "UI", _ui("1.2.840.10008.1.2.1")),
         _el((0x0002, 0x0012), "UI", _ui(meta["impl_uid"])),
-        _el((0x0002, 0x0013), "SH", _txt("ANATOMICA_M19")),
+        _el((0x0002, 0x0013), "SH", _txt(meta["impl_name"])),
     ])
     group_len = struct.pack("<I", len(meta_els))
     with open(path, "wb") as f:
@@ -440,6 +462,7 @@ def main():
         "date": now.strftime("%Y%m%d"), "time": now.strftime("%H%M%S"),
         "study_uid": uid(), "series_uid": uid(), "for_uid": uid(),
         "instance_root": uid(), "impl_uid": uid(),
+        "study_id": "ANATOMICA-" + MTAG, "impl_name": "ANATOMICA_" + MTAG,
         "study_desc": "SYNTHETIC - educational model - ANATOMICA derived CT study",
         "series_desc": "SYNTHETIC - educational model - derived from TotalSegmentator " + SUBJECT,
         "patient_id": "ANATOMICA-SYNTH-" + SUBJECT[1:],
@@ -447,8 +470,8 @@ def main():
         "age": f"{int(subj_meta['age']):03d}Y",
         "spacing": spacing, "rows": ny, "cols": nx, "ipp0": ipp0,
         "iop": [1, 0, 0, 0, 1, 0],
-        "comment": ("SYNTHETIC - educational model. Derived by ANATOMICA Milestone 19 "
-                    "from TotalSegmentator dataset v1.0 subject " + SUBJECT +
+        "comment": ("SYNTHETIC - educational model. Derived by ANATOMICA " + MILESTONE +
+                    " from TotalSegmentator dataset v1.0 subject " + SUBJECT +
                     " (CC BY 4.0, Zenodo 6802614). Pixel values are the source "
                     "subject's CT intensities; identifiers are synthetic. "
                     "Not patient data of any ANATOMICA user; not for clinical use."),
@@ -477,7 +500,7 @@ def main():
 
     series = {
         "title": f"ANATOMICA Imaging v1 — synthetic derived CT series ({SUBJECT})",
-        "milestone": "Milestone 19",
+        "milestone": MILESTONE,
         "synthetic": True,
         "derived_at_utc": now.isoformat(),
         "derivation_tool": "tools/imaging_derive.py",
@@ -486,9 +509,11 @@ def main():
             "dataset": "TotalSegmentator dataset v1.0 (Zenodo 6802614), CC BY 4.0",
             "meta_csv_row": subj_meta,
             "intake": "Milestone 3 subset (CRC-verified at intake)",
-            "selection_reason": ("most complete of the 10 locally held subjects: "
-                                 "98 of 104 label masks non-empty (next best 95); "
-                                 "thorax-abdomen-pelvis coverage, 646.5 mm z-extent"),
+            "selection_reason": SELECTION_REASONS.get(
+                SUBJECT,
+                "selected by the Milestone 19 rule (most non-empty label "
+                "masks among the locally held subjects); see the deriving "
+                "milestone document for the ranking table"),
         },
         "provenance_note": ("The atlas Body Model is a DIFFERENT individual "
                             "(BodyParts3D subject). This series and the atlas share "
@@ -546,18 +571,21 @@ def main():
         "Stepwards, 'Fundamentals Of Computed Tomography Studies: Windowing' (stepwards.com/?page_id=21646) — soft tissue W350/L50, lung W1600/L-600, bone W2000/L500; consulted 2026-11-06",
         "FireVoxel documentation, 'Grayscale Window' (firevoxel.org/docs/html/userguide/grayscale.html) — lung L-600/W1600, bone L500/W2000, soft tissue L50 (W400 variant noted); consulted 2026-11-06",
     ]
-    web_manifest = {
+    hu_table_sources = [
+        "design/06-imaging.md per-structure ranges (water 0, air -1000, fat -120..-90, liver 40-60, cortical bone +500..+1900)",
+        "research/round-02-medical-fields/fronts/05-imaging-science §5.1 HU table (Wikipedia Hounsfield scale, cross-checked against radiology texts)",
+    ]
+    # Per-subject block of the web manifest. The label->record mapping
+    # fields inside "labels" are label-level (identical for every
+    # subject — the crosswalk is built once, above); presence, voxel
+    # counts, HU statistics and geometry are this subject's accounting.
+    subj_block = {
         "meta": {
-            "title": series["title"], "synthetic": True,
+            "title": series["title"],
             "banner": ("SYNTHETIC — educational model · derived from TotalSegmentator "
                        f"subject {SUBJECT} (CC BY 4.0) · not patient data"),
-            "subject": series["subject"], "provenance_note": series["provenance_note"],
+            "subject": series["subject"],
             "pixel_route": series["pixel_route"],
-            "presets": presets, "preset_sources": preset_sources,
-            "hu_table_sources": [
-                "design/06-imaging.md per-structure ranges (water 0, air -1000, fat -120..-90, liver 40-60, cortical bone +500..+1900)",
-                "research/round-02-medical-fields/fronts/05-imaging-science §5.1 HU table (Wikipedia Hounsfield scale, cross-checked against radiology texts)",
-            ],
         },
         "geometry": series["geometry"],
         "files": {"hu": f"imaging/{SUBJECT}/hu-{{slice:04d}}.bin",
@@ -570,8 +598,55 @@ def main():
                                       "voxels", "hu", "geometry_lps", "color_rgb")
                     if k in e} for e in crosswalk],
     }
-    with open(os.path.join(ROOT, "web", "data", "imaging.json"), "w") as f:
-        json.dump(web_manifest, f, indent=1, sort_keys=True)
+    # web/data/imaging.json is the COMBINED manifest (Milestone 32):
+    # shared meta (presets + their citations, HU table sources, the
+    # provenance note) plus one block per derived subject. Deriving a
+    # new subject merges its block in and preserves the others; a
+    # Milestone 19/31 flat single-subject manifest is folded in as
+    # that subject's block, its data copied verbatim (the earlier
+    # subject is NOT re-derived).
+    man_path = os.path.join(ROOT, "web", "data", "imaging.json")
+    combined = None
+    if os.path.exists(man_path):
+        prev = json.load(open(man_path))
+        if "subjects" in prev:
+            combined = prev
+        elif "labels" in prev:
+            old_id = prev["meta"]["subject"]["id"]
+            combined = {
+                "meta": {
+                    "title": "ANATOMICA Imaging — synthetic derived CT series",
+                    "synthetic": True,
+                    "provenance_note": prev["meta"]["provenance_note"],
+                    "presets": prev["meta"]["presets"],
+                    "preset_sources": prev["meta"]["preset_sources"],
+                    "hu_table_sources": prev["meta"]["hu_table_sources"],
+                },
+                "default_subject": old_id,
+                "subjects": {old_id: {
+                    "meta": {k: prev["meta"][k] for k in
+                             ("title", "banner", "subject", "pixel_route")},
+                    "geometry": prev["geometry"], "files": prev["files"],
+                    "crosswalk_totals": prev["crosswalk_totals"],
+                    "labels": prev["labels"],
+                }},
+            }
+    if combined is None:
+        combined = {
+            "meta": {
+                "title": "ANATOMICA Imaging — synthetic derived CT series",
+                "synthetic": True,
+                "provenance_note": series["provenance_note"],
+                "presets": presets, "preset_sources": preset_sources,
+                "hu_table_sources": hu_table_sources,
+            },
+            "default_subject": SUBJECT,
+            "subjects": {},
+        }
+    combined["subjects"][SUBJECT] = subj_block
+    combined["meta"]["manifest_milestone"] = MILESTONE
+    with open(man_path, "w") as f:
+        json.dump(combined, f, indent=1, sort_keys=True)
     print("manifests written")
 
 

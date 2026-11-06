@@ -1,11 +1,15 @@
 # data/imaging — derived synthetic imaging series
 
-Products of `tools/imaging_derive.py` (Milestone 19). Each subject
-folder holds a DICOM-structured series derived from one
-TotalSegmentator v1.0 subject held locally since the Milestone 3
-intake, plus the derivation manifest (`series.json`: provenance,
-geometry, per-instance SHA-256, watermark spec) and the label →
-Body Model record accounting (`crosswalk.json`).
+Products of `tools/imaging_derive.py` (Milestone 19; second subject
+Milestone 32). Each subject folder holds a DICOM-structured series
+derived from one TotalSegmentator v1.0 subject held locally since
+the Milestone 3 intake, plus the derivation manifest
+(`series.json`: provenance, geometry, per-instance SHA-256,
+watermark spec) and the label → Body Model record accounting
+(`crosswalk.json`). Subjects are derived in Milestone 19 rule order
+(most non-empty label masks first): s0778 (M19), s1090 (M32). The
+web shell's combined manifest `web/data/imaging.json` carries one
+block per derived subject under shared meta.
 
 - Source data: TotalSegmentator dataset v1.0 (Zenodo 6802614),
   **CC BY 4.0**. The dataset is a published research dataset; no
