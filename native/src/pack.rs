@@ -1,5 +1,7 @@
 //! ANW1 geometry pack reader — the same packs the web shell consumes
-//! (written by `tools/pack_web_geometry.py`, format ANW1 v2).
+//! (written by `tools/pack_geometry.py`, format ANW1 v2 — the format
+//! is unchanged from Milestone 6, whose packer packed two layers;
+//! the Milestone-16 packer packs all eleven).
 //!
 //! Layout (all little-endian):
 //!   header 128 B: magic 'ANW1', u32 version, u32 vertexCount,

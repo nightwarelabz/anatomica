@@ -1,0 +1,6591 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled digestive layer \u2014 Milestone 16",
+  "generated_by": "tools/assemble_systems.py",
+  "input": "data/digestive/digestive-geometry.json (Milestone 11)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty; byte-identical duplicates within a composition de-duplicated",
+  "partof_rollup_records": [
+   {
+    "record_id": "pancreas",
+    "partof_files_beyond_isa": 3
+   }
+  ],
+  "partof_rollup_note": "1 records list PART-OF files beyond their IS-A composition. In these modules the PART-OF lists of whole-concept records are descendant rollups (branches' meshes belonging to other records), not the record's own geometry; under the mesh-set rule they are not assembled into the record. (In the muscular module the PART-OF set was a subset of IS-A for every record \u2014 verified at Milestone 6; that property does not hold here and is not asserted.)",
+  "records_sourced_from_partof": 25,
+  "flagged_unknowns": [
+   "Register_sketch unknown 1: a single global frame for all concepts was assumed at Milestone 3 for soft tissues and measured coherent for the muscular layer at Milestone 6. This assembly applies the skeletal transform unchanged to every system; per-layer coherence against the skeletal envelope is measured by tools/assembly_check_all.py, not assumed here.",
+   "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
+   "Per-part pose registration is not performed; boxes are in the source pose."
+  ],
+  "records_with_geometry": 93,
+  "records_without_geometry": [],
+  "deduped_files": [
+   {
+    "record_id": "liver",
+    "kept": "FJ1916",
+    "dropped": "FJ2386"
+   },
+   {
+    "record_id": "liver.right-lobe-of-liver",
+    "kept": "FJ1916",
+    "dropped": "FJ2386"
+   }
+  ],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -11.7482,
+    75.73270000000001,
+    1.12808
+   ],
+   "max": [
+    12.6783,
+    150.60999999999999,
+    20.241300000000003
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "mouth",
+   "name": "mouth",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA49184"
+   ],
+   "concept_names": [
+    "mouth"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1252",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1252.obj",
+     "vertices": 1115,
+     "faces": 1848
+    },
+    {
+     "fj": "FJ1253",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1253.obj",
+     "vertices": 1029,
+     "faces": 1918
+    },
+    {
+     "fj": "FJ2741",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2741.obj",
+     "vertices": 6821,
+     "faces": 12318
+    },
+    {
+     "fj": "FJ2748",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2748.obj",
+     "vertices": 7523,
+     "faces": 13872
+    },
+    {
+     "fj": "FJ2753",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2753.obj",
+     "vertices": 6835,
+     "faces": 12312
+    },
+    {
+     "fj": "FJ2760",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2760.obj",
+     "vertices": 7464,
+     "faces": 13872
+    },
+    {
+     "fj": "FJ2761",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2761.obj",
+     "vertices": 276,
+     "faces": 524
+    },
+    {
+     "fj": "FJ2762",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2762.obj",
+     "vertices": 894,
+     "faces": 1632
+    },
+    {
+     "fj": "FJ2766",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2766.obj",
+     "vertices": 123,
+     "faces": 228
+    },
+    {
+     "fj": "FJ2768",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2768.obj",
+     "vertices": 122,
+     "faces": 228
+    },
+    {
+     "fj": "FJ3289",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3289.obj",
+     "vertices": 2845,
+     "faces": 5576
+    }
+   ],
+   "totals": {
+    "files": 11,
+    "vertices": 35047,
+    "faces": 64328
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 11,
+     "vertices": 35047,
+     "faces": 64328
+    },
+    "combined_files": 11
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.25541,
+     142.163,
+     8.81797
+    ],
+    "max": [
+     5.38459,
+     150.60999999999999,
+     18.1642
+    ]
+   }
+  },
+  {
+   "record_id": "tongue",
+   "name": "tongue",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA54640"
+   ],
+   "concept_names": [
+    "tongue"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2761",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2761.obj",
+     "vertices": 276,
+     "faces": 524
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 276,
+    "faces": 524
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 276,
+     "faces": 524
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 276,
+     "faces": 524
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.88003,
+     143.096,
+     11.0473
+    ],
+    "max": [
+     1.9970600000000003,
+     146.732,
+     16.9904
+    ]
+   }
+  },
+  {
+   "record_id": "esophagus",
+   "name": "esophagus",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7131"
+   ],
+   "concept_names": [
+    "esophagus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2563",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2563.obj",
+     "vertices": 323,
+     "faces": 578
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 323,
+    "faces": 578
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 323,
+     "faces": 578
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 323,
+     "faces": 578
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.36032,
+     111.599,
+     6.63873
+    ],
+    "max": [
+     0.881063,
+     139.03900000000002,
+     12.426400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "stomach",
+   "name": "stomach",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7148"
+   ],
+   "concept_names": [
+    "stomach"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2564",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2564.obj",
+     "vertices": 914,
+     "faces": 1810
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 914,
+    "faces": 1810
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 914,
+     "faces": 1810
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 914,
+     "faces": 1810
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.5524,
+     103.98800000000001,
+     8.14799
+    ],
+    "max": [
+     2.89516,
+     115.68900000000002,
+     19.437
+    ]
+   }
+  },
+  {
+   "record_id": "liver",
+   "name": "liver",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7197"
+   ],
+   "concept_names": [
+    "liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ1893",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1893.obj",
+     "vertices": 786,
+     "faces": 1354
+    },
+    {
+     "fj": "FJ1913",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1913.obj",
+     "vertices": 1910,
+     "faces": 3286
+    },
+    {
+     "fj": "FJ1914",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1914.obj",
+     "vertices": 180,
+     "faces": 316
+    },
+    {
+     "fj": "FJ1916",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1916.obj",
+     "vertices": 214,
+     "faces": 362
+    },
+    {
+     "fj": "FJ2404",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2404.obj",
+     "vertices": 4965,
+     "faces": 6706
+    },
+    {
+     "fj": "FJ2405",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2405.obj",
+     "vertices": 2605,
+     "faces": 3230
+    },
+    {
+     "fj": "FJ2409",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2409.obj",
+     "vertices": 5091,
+     "faces": 8534
+    },
+    {
+     "fj": "FJ2415",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2415.obj",
+     "vertices": 803,
+     "faces": 1386
+    },
+    {
+     "fj": "FJ2416",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2416.obj",
+     "vertices": 2510,
+     "faces": 3538
+    },
+    {
+     "fj": "FJ2816",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2816.obj",
+     "vertices": 2526,
+     "faces": 5020
+    },
+    {
+     "fj": "FJ2818",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2818.obj",
+     "vertices": 7482,
+     "faces": 14326
+    },
+    {
+     "fj": "FJ2819",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2819.obj",
+     "vertices": 5487,
+     "faces": 10326
+    },
+    {
+     "fj": "FJ2820",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2820.obj",
+     "vertices": 11418,
+     "faces": 17942
+    },
+    {
+     "fj": "FJ2821",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2821.obj",
+     "vertices": 6605,
+     "faces": 11442
+    },
+    {
+     "fj": "FJ2822",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2822.obj",
+     "vertices": 9988,
+     "faces": 19450
+    },
+    {
+     "fj": "FJ2823",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2823.obj",
+     "vertices": 10230,
+     "faces": 19156
+    },
+    {
+     "fj": "FJ2824",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2824.obj",
+     "vertices": 11459,
+     "faces": 21592
+    },
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3073",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3073.obj",
+     "vertices": 404,
+     "faces": 770
+    },
+    {
+     "fj": "FJ3074",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3074.obj",
+     "vertices": 1582,
+     "faces": 2832
+    },
+    {
+     "fj": "FJ3075",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3075.obj",
+     "vertices": 1244,
+     "faces": 1666
+    },
+    {
+     "fj": "FJ3076",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3076.obj",
+     "vertices": 459,
+     "faces": 892
+    },
+    {
+     "fj": "FJ3077",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3077.obj",
+     "vertices": 250,
+     "faces": 430
+    },
+    {
+     "fj": "FJ3081",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3081.obj",
+     "vertices": 181,
+     "faces": 358
+    },
+    {
+     "fj": "FJ3083",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3083.obj",
+     "vertices": 1409,
+     "faces": 2806
+    },
+    {
+     "fj": "FJ3086",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3086.obj",
+     "vertices": 502,
+     "faces": 990
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3091",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3091.obj",
+     "vertices": 341,
+     "faces": 598
+    },
+    {
+     "fj": "FJ3092",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3092.obj",
+     "vertices": 364,
+     "faces": 618
+    },
+    {
+     "fj": "FJ3093",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3093.obj",
+     "vertices": 460,
+     "faces": 658
+    },
+    {
+     "fj": "FJ3095",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3095.obj",
+     "vertices": 666,
+     "faces": 1328
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3102",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3102.obj",
+     "vertices": 367,
+     "faces": 730
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3106",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3106.obj",
+     "vertices": 425,
+     "faces": 754
+    },
+    {
+     "fj": "FJ3107",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3107.obj",
+     "vertices": 496,
+     "faces": 612
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3111",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3111.obj",
+     "vertices": 1100,
+     "faces": 2194
+    },
+    {
+     "fj": "FJ3112",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3112.obj",
+     "vertices": 554,
+     "faces": 1100
+    },
+    {
+     "fj": "FJ3113",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3113.obj",
+     "vertices": 1031,
+     "faces": 1712
+    },
+    {
+     "fj": "FJ3114",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3114.obj",
+     "vertices": 479,
+     "faces": 772
+    },
+    {
+     "fj": "FJ3115",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3115.obj",
+     "vertices": 1037,
+     "faces": 1616
+    },
+    {
+     "fj": "FJ3116",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3116.obj",
+     "vertices": 631,
+     "faces": 814
+    },
+    {
+     "fj": "FJ3117",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3117.obj",
+     "vertices": 223,
+     "faces": 442
+    },
+    {
+     "fj": "FJ3122",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3122.obj",
+     "vertices": 105,
+     "faces": 206
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    },
+    {
+     "fj": "FJ3124",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3124.obj",
+     "vertices": 319,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3125",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3125.obj",
+     "vertices": 1161,
+     "faces": 2284
+    },
+    {
+     "fj": "FJ3126",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3126.obj",
+     "vertices": 1217,
+     "faces": 2364
+    },
+    {
+     "fj": "FJ3127",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3127.obj",
+     "vertices": 662,
+     "faces": 1162
+    },
+    {
+     "fj": "FJ3128",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3128.obj",
+     "vertices": 838,
+     "faces": 1660
+    }
+   ],
+   "totals": {
+    "files": 59,
+    "vertices": 109516,
+    "faces": 191260
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 60,
+     "vertices": 109730,
+     "faces": 191622
+    },
+    "combined_files": 60
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.43668,
+     102.79400000000001,
+     4.33287
+    ],
+    "max": [
+     11.5064,
+     118.31400000000002,
+     20.241300000000003
+    ]
+   }
+  },
+  {
+   "record_id": "pancreas",
+   "name": "pancreas",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7198"
+   ],
+   "concept_names": [
+    "pancreas"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1895",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1895.obj",
+     "vertices": 2462,
+     "faces": 4890
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2462,
+    "faces": 4890
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2462,
+     "faces": 4890
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 12896,
+     "faces": 16962
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.267440000000001,
+     100.436,
+     9.541200000000002
+    ],
+    "max": [
+     4.7904800000000005,
+     107.81,
+     14.6379
+    ]
+   }
+  },
+  {
+   "record_id": "small-intestine",
+   "name": "small intestine",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7200"
+   ],
+   "concept_names": [
+    "small intestine"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2573",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2573.obj",
+     "vertices": 977,
+     "faces": 1860
+    },
+    {
+     "fj": "FJ2574",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2574.obj",
+     "vertices": 197,
+     "faces": 380
+    },
+    {
+     "fj": "FJ2575",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2575.obj",
+     "vertices": 144,
+     "faces": 276
+    },
+    {
+     "fj": "FJ2576",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2576.obj",
+     "vertices": 94,
+     "faces": 172
+    },
+    {
+     "fj": "FJ2577",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2577.obj",
+     "vertices": 174,
+     "faces": 314
+    },
+    {
+     "fj": "FJ2578",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2578.obj",
+     "vertices": 161,
+     "faces": 292
+    },
+    {
+     "fj": "FJ2579",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2579.obj",
+     "vertices": 150,
+     "faces": 280
+    },
+    {
+     "fj": "FJ2580",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2580.obj",
+     "vertices": 176,
+     "faces": 344
+    },
+    {
+     "fj": "FJ2581",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2581.obj",
+     "vertices": 118,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2582",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2582.obj",
+     "vertices": 114,
+     "faces": 212
+    },
+    {
+     "fj": "FJ2583",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2583.obj",
+     "vertices": 102,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2584",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2584.obj",
+     "vertices": 116,
+     "faces": 228
+    },
+    {
+     "fj": "FJ2585",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2585.obj",
+     "vertices": 158,
+     "faces": 288
+    },
+    {
+     "fj": "FJ2586",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2586.obj",
+     "vertices": 143,
+     "faces": 264
+    },
+    {
+     "fj": "FJ2587",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2587.obj",
+     "vertices": 117,
+     "faces": 228
+    },
+    {
+     "fj": "FJ2588",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2588.obj",
+     "vertices": 142,
+     "faces": 266
+    },
+    {
+     "fj": "FJ2589",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2589.obj",
+     "vertices": 168,
+     "faces": 326
+    },
+    {
+     "fj": "FJ2590",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2590.obj",
+     "vertices": 97,
+     "faces": 184
+    },
+    {
+     "fj": "FJ2591",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2591.obj",
+     "vertices": 118,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2592",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2592.obj",
+     "vertices": 129,
+     "faces": 236
+    },
+    {
+     "fj": "FJ2593",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2593.obj",
+     "vertices": 134,
+     "faces": 262
+    },
+    {
+     "fj": "FJ2594",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2594.obj",
+     "vertices": 113,
+     "faces": 220
+    },
+    {
+     "fj": "FJ2595",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2595.obj",
+     "vertices": 139,
+     "faces": 258
+    },
+    {
+     "fj": "FJ2596",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2596.obj",
+     "vertices": 135,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2597",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2597.obj",
+     "vertices": 106,
+     "faces": 202
+    },
+    {
+     "fj": "FJ2598",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2598.obj",
+     "vertices": 129,
+     "faces": 246
+    },
+    {
+     "fj": "FJ2599",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2599.obj",
+     "vertices": 156,
+     "faces": 288
+    },
+    {
+     "fj": "FJ2600",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2600.obj",
+     "vertices": 136,
+     "faces": 256
+    },
+    {
+     "fj": "FJ2601",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2601.obj",
+     "vertices": 125,
+     "faces": 208
+    },
+    {
+     "fj": "FJ2602",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2602.obj",
+     "vertices": 139,
+     "faces": 270
+    },
+    {
+     "fj": "FJ2603",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2603.obj",
+     "vertices": 154,
+     "faces": 294
+    },
+    {
+     "fj": "FJ2604",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2604.obj",
+     "vertices": 114,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2605",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2605.obj",
+     "vertices": 177,
+     "faces": 332
+    },
+    {
+     "fj": "FJ2606",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2606.obj",
+     "vertices": 207,
+     "faces": 320
+    },
+    {
+     "fj": "FJ2607",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2607.obj",
+     "vertices": 127,
+     "faces": 240
+    },
+    {
+     "fj": "FJ2608",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2608.obj",
+     "vertices": 133,
+     "faces": 262
+    },
+    {
+     "fj": "FJ2609",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2609.obj",
+     "vertices": 98,
+     "faces": 192
+    },
+    {
+     "fj": "FJ2610",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2610.obj",
+     "vertices": 156,
+     "faces": 296
+    },
+    {
+     "fj": "FJ2611",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2611.obj",
+     "vertices": 123,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2612",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2612.obj",
+     "vertices": 134,
+     "faces": 248
+    },
+    {
+     "fj": "FJ2613",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2613.obj",
+     "vertices": 91,
+     "faces": 176
+    },
+    {
+     "fj": "FJ2614",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2614.obj",
+     "vertices": 120,
+     "faces": 232
+    },
+    {
+     "fj": "FJ2615",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2615.obj",
+     "vertices": 147,
+     "faces": 264
+    },
+    {
+     "fj": "FJ2616",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2616.obj",
+     "vertices": 233,
+     "faces": 444
+    },
+    {
+     "fj": "FJ2617",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2617.obj",
+     "vertices": 135,
+     "faces": 234
+    },
+    {
+     "fj": "FJ2618",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2618.obj",
+     "vertices": 117,
+     "faces": 222
+    },
+    {
+     "fj": "FJ2619",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2619.obj",
+     "vertices": 142,
+     "faces": 260
+    },
+    {
+     "fj": "FJ2620",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2620.obj",
+     "vertices": 154,
+     "faces": 284
+    },
+    {
+     "fj": "FJ2621",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2621.obj",
+     "vertices": 278,
+     "faces": 500
+    },
+    {
+     "fj": "FJ2622",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2622.obj",
+     "vertices": 99,
+     "faces": 160
+    },
+    {
+     "fj": "FJ2623",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2623.obj",
+     "vertices": 206,
+     "faces": 386
+    },
+    {
+     "fj": "FJ2624",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2624.obj",
+     "vertices": 94,
+     "faces": 172
+    },
+    {
+     "fj": "FJ2625",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2625.obj",
+     "vertices": 79,
+     "faces": 152
+    },
+    {
+     "fj": "FJ2626",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2626.obj",
+     "vertices": 188,
+     "faces": 330
+    },
+    {
+     "fj": "FJ2627",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2627.obj",
+     "vertices": 99,
+     "faces": 190
+    },
+    {
+     "fj": "FJ2628",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2628.obj",
+     "vertices": 128,
+     "faces": 236
+    }
+   ],
+   "totals": {
+    "files": 56,
+    "vertices": 8640,
+    "faces": 16058
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 56,
+     "vertices": 8640,
+     "faces": 16058
+    },
+    "combined_files": 56
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.6621,
+     80.529,
+     10.3893
+    ],
+    "max": [
+     8.70539,
+     107.711,
+     18.3429
+    ]
+   }
+  },
+  {
+   "record_id": "large-intestine",
+   "name": "large intestine",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7201"
+   ],
+   "concept_names": [
+    "large intestine"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2566",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2566.obj",
+     "vertices": 1812,
+     "faces": 3310
+    },
+    {
+     "fj": "FJ2567",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2567.obj",
+     "vertices": 3039,
+     "faces": 5588
+    },
+    {
+     "fj": "FJ2568",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2568.obj",
+     "vertices": 15598,
+     "faces": 15244
+    },
+    {
+     "fj": "FJ2569",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2569.obj",
+     "vertices": 15282,
+     "faces": 13342
+    },
+    {
+     "fj": "FJ2570",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2570.obj",
+     "vertices": 12767,
+     "faces": 15922
+    },
+    {
+     "fj": "FJ2571",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2571.obj",
+     "vertices": 1121,
+     "faces": 2118
+    },
+    {
+     "fj": "FJ2572",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2572.obj",
+     "vertices": 1923,
+     "faces": 3472
+    },
+    {
+     "fj": "FJ2599",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2599.obj",
+     "vertices": 156,
+     "faces": 288
+    }
+   ],
+   "totals": {
+    "files": 8,
+    "vertices": 51698,
+    "faces": 59284
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 8,
+     "vertices": 51698,
+     "faces": 59284
+    },
+    "combined_files": 8
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.7482,
+     75.73270000000001,
+     1.12808
+    ],
+    "max": [
+     12.6783,
+     106.47300000000001,
+     19.6931
+    ]
+   }
+  },
+  {
+   "record_id": "gallbladder",
+   "name": "gallbladder",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7202"
+   ],
+   "concept_names": [
+    "gallbladder"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2817",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2817.obj",
+     "vertices": 1202,
+     "faces": 2396
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1202,
+    "faces": 2396
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1202,
+     "faces": 2396
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1202,
+     "faces": 2396
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.68404,
+     105.107,
+     13.015100000000002
+    ],
+    "max": [
+     6.32817,
+     109.14800000000001,
+     17.856
+    ]
+   }
+  },
+  {
+   "record_id": "liver.anterior-sector-of-left-liver",
+   "name": "anterior sector of left liver",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15750"
+   ],
+   "concept_names": [
+    "anterior sector of left liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2819",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2819.obj",
+     "vertices": 5487,
+     "faces": 10326
+    },
+    {
+     "fj": "FJ2820",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2820.obj",
+     "vertices": 11418,
+     "faces": 17942
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 16905,
+    "faces": 28268
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 16905,
+     "faces": 28268
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.34476,
+     106.081,
+     11.953800000000001
+    ],
+    "max": [
+     4.630870000000001,
+     117.937,
+     20.241300000000003
+    ]
+   }
+  },
+  {
+   "record_id": "liver.anterior-sector-of-right-liver",
+   "name": "anterior sector of right liver",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15748"
+   ],
+   "concept_names": [
+    "anterior sector of right liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2821",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2821.obj",
+     "vertices": 6605,
+     "faces": 11442
+    },
+    {
+     "fj": "FJ2823",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2823.obj",
+     "vertices": 10230,
+     "faces": 19156
+    },
+    {
+     "fj": "FJ2824",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2824.obj",
+     "vertices": 11459,
+     "faces": 21592
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 28294,
+    "faces": 52190
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 28294,
+     "faces": 52190
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.75186,
+     104.64200000000001,
+     4.33287
+    ],
+    "max": [
+     11.5064,
+     118.31400000000002,
+     19.873
+    ]
+   }
+  },
+  {
+   "record_id": "canal.appendix",
+   "name": "appendix",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14542"
+   ],
+   "concept_names": [
+    "appendix"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2565",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2565.obj",
+     "vertices": 244,
+     "faces": 442
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 244,
+    "faces": 442
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 244,
+     "faces": 442
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 244,
+     "faces": 442
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.88631,
+     86.5587,
+     8.17847
+    ],
+    "max": [
+     8.84236,
+     88.3656,
+     12.079
+    ]
+   }
+  },
+  {
+   "record_id": "canal.ascending-colon",
+   "name": "ascending colon",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14545"
+   ],
+   "concept_names": [
+    "ascending colon"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2566",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2566.obj",
+     "vertices": 1812,
+     "faces": 3310
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1812,
+    "faces": 3310
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1812,
+     "faces": 3310
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1812,
+     "faces": 3310
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     6.38983,
+     86.8352,
+     9.07304
+    ],
+    "max": [
+     12.6783,
+     105.40100000000001,
+     14.557
+    ]
+   }
+  },
+  {
+   "record_id": "biliary.biliary-tree",
+   "name": "biliary tree",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14665"
+   ],
+   "concept_names": [
+    "biliary tree"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3079",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3079.obj",
+     "vertices": 684,
+     "faces": 1364
+    },
+    {
+     "fj": "FJ3080",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3080.obj",
+     "vertices": 156,
+     "faces": 278
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 16,
+    "vertices": 7590,
+    "faces": 12074
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 16,
+     "vertices": 7590,
+     "faces": 12074
+    },
+    "combined_files": 16
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.76872,
+     101.95800000000001,
+     5.5416
+    ],
+    "max": [
+     9.18446,
+     116.248,
+     19.8243
+    ]
+   }
+  },
+  {
+   "record_id": "liver.caudate-lobe-of-liver",
+   "name": "caudate lobe of liver",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA13365"
+   ],
+   "concept_names": [
+    "caudate lobe of liver"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2816",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2816.obj",
+     "vertices": 2526,
+     "faces": 5020
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2526,
+    "faces": 5020
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2526,
+     "faces": 5020
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2526,
+     "faces": 5020
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.12576,
+     109.37400000000001,
+     10.452800000000002
+    ],
+    "max": [
+     3.3827,
+     116.855,
+     14.0356
+    ]
+   }
+  },
+  {
+   "record_id": "canal.cecum",
+   "name": "cecum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14541"
+   ],
+   "concept_names": [
+    "cecum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2599",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2599.obj",
+     "vertices": 156,
+     "faces": 288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 156,
+    "faces": 288
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 288
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     5.13778,
+     87.0103,
+     10.718200000000001
+    ],
+    "max": [
+     7.9844100000000005,
+     92.3257,
+     14.1283
+    ]
+   }
+  },
+  {
+   "record_id": "canal.descending-colon",
+   "name": "descending colon",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14547"
+   ],
+   "concept_names": [
+    "descending colon"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2567",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2567.obj",
+     "vertices": 3039,
+     "faces": 5588
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3039,
+    "faces": 5588
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3039,
+     "faces": 5588
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3039,
+     "faces": 5588
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.7482,
+     82.2321,
+     5.02812
+    ],
+    "max": [
+     1.79165,
+     106.131,
+     14.1825
+    ]
+   }
+  },
+  {
+   "record_id": "canal.duodenum",
+   "name": "duodenum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA7206"
+   ],
+   "concept_names": [
+    "duodenum"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2573",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2573.obj",
+     "vertices": 977,
+     "faces": 1860
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 977,
+    "faces": 1860
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 977,
+     "faces": 1860
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 977,
+     "faces": 1860
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2329500000000007,
+     98.5609,
+     10.3893
+    ],
+    "max": [
+     6.562430000000001,
+     107.711,
+     15.692400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "mouth.gingiva-of-lower-jaw",
+   "name": "gingiva of lower jaw",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA59764"
+   ],
+   "concept_names": [
+    "gingiva of lower jaw"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1253",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1253.obj",
+     "vertices": 1029,
+     "faces": 1918
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1029,
+    "faces": 1918
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1029,
+     "faces": 1918
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1029,
+     "faces": 1918
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6998300000000004,
+     143.413,
+     12.113500000000002
+    ],
+    "max": [
+     3.83298,
+     147.013,
+     17.46
+    ]
+   }
+  },
+  {
+   "record_id": "mouth.gingiva-of-upper-jaw",
+   "name": "gingiva of upper jaw",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA59763"
+   ],
+   "concept_names": [
+    "gingiva of upper jaw"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1252",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1252.obj",
+     "vertices": 1115,
+     "faces": 1848
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1115,
+    "faces": 1848
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1115,
+     "faces": 1848
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1115,
+     "faces": 1848
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.4102600000000005,
+     146.14200000000002,
+     12.7764
+    ],
+    "max": [
+     3.54293,
+     147.98,
+     18.1642
+    ]
+   }
+  },
+  {
+   "record_id": "biliary.hepatic-biliary-tree",
+   "name": "hepatic biliary tree",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA71891"
+   ],
+   "concept_names": [
+    "hepatic biliary tree"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3079",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3079.obj",
+     "vertices": 684,
+     "faces": 1364
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 15,
+    "vertices": 7434,
+    "faces": 11796
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 15,
+     "vertices": 7434,
+     "faces": 11796
+    },
+    "combined_files": 15
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.76872,
+     101.95800000000001,
+     5.5416
+    ],
+    "max": [
+     9.18446,
+     116.248,
+     19.8243
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-ii",
+   "name": "hepatovenous segment ii",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15739"
+   ],
+   "concept_names": [
+    "hepatovenous segment ii"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2818",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2818.obj",
+     "vertices": 7482,
+     "faces": 14326
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 7482,
+    "faces": 14326
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 7482,
+     "faces": 14326
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 7482,
+     "faces": 14326
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.43668,
+     111.96199999999999,
+     9.15573
+    ],
+    "max": [
+     -0.25250300000000003,
+     117.309,
+     20.0039
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-iii",
+   "name": "hepatovenous segment iii",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15741"
+   ],
+   "concept_names": [
+    "hepatovenous segment iii"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2819",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2819.obj",
+     "vertices": 5487,
+     "faces": 10326
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5487,
+    "faces": 10326
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5487,
+     "faces": 10326
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5487,
+     "faces": 10326
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.34476,
+     108.657,
+     11.953800000000001
+    ],
+    "max": [
+     0.159219,
+     115.31800000000001,
+     20.241300000000003
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-iv",
+   "name": "hepatovenous segment iv",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15742"
+   ],
+   "concept_names": [
+    "hepatovenous segment iv"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2820",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2820.obj",
+     "vertices": 11418,
+     "faces": 17942
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 11418,
+    "faces": 17942
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 11418,
+     "faces": 17942
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 11418,
+     "faces": 17942
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.1454900000000001,
+     106.081,
+     12.075400000000002
+    ],
+    "max": [
+     4.630870000000001,
+     117.937,
+     20.0539
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-v",
+   "name": "hepatovenous segment v",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15743"
+   ],
+   "concept_names": [
+    "hepatovenous segment v"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2821",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2821.obj",
+     "vertices": 6605,
+     "faces": 11442
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 6605,
+    "faces": 11442
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 6605,
+     "faces": 11442
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 6605,
+     "faces": 11442
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.63054,
+     104.64200000000001,
+     10.7889
+    ],
+    "max": [
+     10.4585,
+     111.609,
+     19.869
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-vi",
+   "name": "hepatovenous segment vi",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15744"
+   ],
+   "concept_names": [
+    "hepatovenous segment vi"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2822",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2822.obj",
+     "vertices": 9988,
+     "faces": 19450
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 9988,
+    "faces": 19450
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 9988,
+     "faces": 19450
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 9988,
+     "faces": 19450
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.14193,
+     102.796,
+     4.45192
+    ],
+    "max": [
+     11.457500000000001,
+     111.048,
+     16.4947
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-vii",
+   "name": "hepatovenous segment vii",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15745"
+   ],
+   "concept_names": [
+    "hepatovenous segment vii"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2409",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2409.obj",
+     "vertices": 5091,
+     "faces": 8534
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5091,
+    "faces": 8534
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5091,
+     "faces": 8534
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5091,
+     "faces": 8534
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.1094500000000003,
+     102.79400000000001,
+     4.4272100000000005
+    ],
+    "max": [
+     11.4768,
+     111.078,
+     16.5212
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-viii",
+   "name": "hepatovenous segment viii",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15746"
+   ],
+   "concept_names": [
+    "hepatovenous segment viii"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2823",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2823.obj",
+     "vertices": 10230,
+     "faces": 19156
+    },
+    {
+     "fj": "FJ2824",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2824.obj",
+     "vertices": 11459,
+     "faces": 21592
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 21689,
+    "faces": 40748
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 21689,
+     "faces": 40748
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 21689,
+     "faces": 40748
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.75186,
+     109.01500000000001,
+     4.33287
+    ],
+    "max": [
+     11.5064,
+     118.31400000000002,
+     19.873
+    ]
+   }
+  },
+  {
+   "record_id": "canal.ileocecal-junction",
+   "name": "ileocecal junction",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA11338"
+   ],
+   "concept_names": [
+    "ileocecal junction"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2599",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2599.obj",
+     "vertices": 156,
+     "faces": 288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 156,
+    "faces": 288
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 288
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 288
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     5.13778,
+     87.0103,
+     10.718200000000001
+    ],
+    "max": [
+     7.9844100000000005,
+     92.3257,
+     14.1283
+    ]
+   }
+  },
+  {
+   "record_id": "canal.ileum",
+   "name": "ileum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA7208"
+   ],
+   "concept_names": [
+    "ileum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2574",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2574.obj",
+     "vertices": 197,
+     "faces": 380
+    },
+    {
+     "fj": "FJ2575",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2575.obj",
+     "vertices": 144,
+     "faces": 276
+    },
+    {
+     "fj": "FJ2576",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2576.obj",
+     "vertices": 94,
+     "faces": 172
+    },
+    {
+     "fj": "FJ2577",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2577.obj",
+     "vertices": 174,
+     "faces": 314
+    },
+    {
+     "fj": "FJ2578",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2578.obj",
+     "vertices": 161,
+     "faces": 292
+    },
+    {
+     "fj": "FJ2579",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2579.obj",
+     "vertices": 150,
+     "faces": 280
+    },
+    {
+     "fj": "FJ2580",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2580.obj",
+     "vertices": 176,
+     "faces": 344
+    },
+    {
+     "fj": "FJ2581",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2581.obj",
+     "vertices": 118,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2582",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2582.obj",
+     "vertices": 114,
+     "faces": 212
+    },
+    {
+     "fj": "FJ2583",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2583.obj",
+     "vertices": 102,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2584",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2584.obj",
+     "vertices": 116,
+     "faces": 228
+    },
+    {
+     "fj": "FJ2585",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2585.obj",
+     "vertices": 158,
+     "faces": 288
+    },
+    {
+     "fj": "FJ2586",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2586.obj",
+     "vertices": 143,
+     "faces": 264
+    },
+    {
+     "fj": "FJ2587",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2587.obj",
+     "vertices": 117,
+     "faces": 228
+    },
+    {
+     "fj": "FJ2588",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2588.obj",
+     "vertices": 142,
+     "faces": 266
+    },
+    {
+     "fj": "FJ2589",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2589.obj",
+     "vertices": 168,
+     "faces": 326
+    },
+    {
+     "fj": "FJ2590",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2590.obj",
+     "vertices": 97,
+     "faces": 184
+    },
+    {
+     "fj": "FJ2591",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2591.obj",
+     "vertices": 118,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2592",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2592.obj",
+     "vertices": 129,
+     "faces": 236
+    },
+    {
+     "fj": "FJ2593",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2593.obj",
+     "vertices": 134,
+     "faces": 262
+    },
+    {
+     "fj": "FJ2594",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2594.obj",
+     "vertices": 113,
+     "faces": 220
+    },
+    {
+     "fj": "FJ2595",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2595.obj",
+     "vertices": 139,
+     "faces": 258
+    },
+    {
+     "fj": "FJ2596",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2596.obj",
+     "vertices": 135,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2597",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2597.obj",
+     "vertices": 106,
+     "faces": 202
+    },
+    {
+     "fj": "FJ2598",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2598.obj",
+     "vertices": 129,
+     "faces": 246
+    },
+    {
+     "fj": "FJ2599",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2599.obj",
+     "vertices": 156,
+     "faces": 288
+    },
+    {
+     "fj": "FJ2600",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2600.obj",
+     "vertices": 136,
+     "faces": 256
+    },
+    {
+     "fj": "FJ2601",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2601.obj",
+     "vertices": 125,
+     "faces": 208
+    },
+    {
+     "fj": "FJ2602",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2602.obj",
+     "vertices": 139,
+     "faces": 270
+    },
+    {
+     "fj": "FJ2603",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2603.obj",
+     "vertices": 154,
+     "faces": 294
+    },
+    {
+     "fj": "FJ2604",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2604.obj",
+     "vertices": 114,
+     "faces": 198
+    },
+    {
+     "fj": "FJ2605",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2605.obj",
+     "vertices": 177,
+     "faces": 332
+    }
+   ],
+   "totals": {
+    "files": 32,
+    "vertices": 4375,
+    "faces": 8172
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 32,
+     "vertices": 4375,
+     "faces": 8172
+    },
+    "combined_files": 32
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.1842,
+     80.529,
+     10.718200000000001
+    ],
+    "max": [
+     7.99084,
+     95.2636,
+     17.976499999999998
+    ]
+   }
+  },
+  {
+   "record_id": "biliary.intrahepatic-biliary-tree",
+   "name": "intrahepatic biliary tree",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA68016"
+   ],
+   "concept_names": [
+    "intrahepatic biliary tree"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 14,
+    "vertices": 6750,
+    "faces": 10432
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 14,
+     "vertices": 6750,
+     "faces": 10432
+    },
+    "combined_files": 14
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.76872,
+     106.87100000000001,
+     5.5416
+    ],
+    "max": [
+     9.18446,
+     116.248,
+     19.8243
+    ]
+   }
+  },
+  {
+   "record_id": "canal.jejunum",
+   "name": "jejunum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA7207"
+   ],
+   "concept_names": [
+    "jejunum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2606",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2606.obj",
+     "vertices": 207,
+     "faces": 320
+    },
+    {
+     "fj": "FJ2607",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2607.obj",
+     "vertices": 127,
+     "faces": 240
+    },
+    {
+     "fj": "FJ2608",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2608.obj",
+     "vertices": 133,
+     "faces": 262
+    },
+    {
+     "fj": "FJ2609",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2609.obj",
+     "vertices": 98,
+     "faces": 192
+    },
+    {
+     "fj": "FJ2610",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2610.obj",
+     "vertices": 156,
+     "faces": 296
+    },
+    {
+     "fj": "FJ2611",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2611.obj",
+     "vertices": 123,
+     "faces": 226
+    },
+    {
+     "fj": "FJ2612",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2612.obj",
+     "vertices": 134,
+     "faces": 248
+    },
+    {
+     "fj": "FJ2613",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2613.obj",
+     "vertices": 91,
+     "faces": 176
+    },
+    {
+     "fj": "FJ2614",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2614.obj",
+     "vertices": 120,
+     "faces": 232
+    },
+    {
+     "fj": "FJ2615",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2615.obj",
+     "vertices": 147,
+     "faces": 264
+    },
+    {
+     "fj": "FJ2616",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2616.obj",
+     "vertices": 233,
+     "faces": 444
+    },
+    {
+     "fj": "FJ2617",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2617.obj",
+     "vertices": 135,
+     "faces": 234
+    },
+    {
+     "fj": "FJ2618",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2618.obj",
+     "vertices": 117,
+     "faces": 222
+    },
+    {
+     "fj": "FJ2619",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2619.obj",
+     "vertices": 142,
+     "faces": 260
+    },
+    {
+     "fj": "FJ2620",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2620.obj",
+     "vertices": 154,
+     "faces": 284
+    },
+    {
+     "fj": "FJ2621",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2621.obj",
+     "vertices": 278,
+     "faces": 500
+    },
+    {
+     "fj": "FJ2622",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2622.obj",
+     "vertices": 99,
+     "faces": 160
+    },
+    {
+     "fj": "FJ2623",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2623.obj",
+     "vertices": 206,
+     "faces": 386
+    },
+    {
+     "fj": "FJ2624",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2624.obj",
+     "vertices": 94,
+     "faces": 172
+    },
+    {
+     "fj": "FJ2625",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2625.obj",
+     "vertices": 79,
+     "faces": 152
+    },
+    {
+     "fj": "FJ2626",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2626.obj",
+     "vertices": 188,
+     "faces": 330
+    },
+    {
+     "fj": "FJ2627",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2627.obj",
+     "vertices": 99,
+     "faces": 190
+    },
+    {
+     "fj": "FJ2628",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2628.obj",
+     "vertices": 128,
+     "faces": 236
+    }
+   ],
+   "totals": {
+    "files": 23,
+    "vertices": 3288,
+    "faces": 6026
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 23,
+     "vertices": 3288,
+     "faces": 6026
+    },
+    "combined_files": 23
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.6621,
+     90.92070000000001,
+     11.749
+    ],
+    "max": [
+     8.70539,
+     102.36500000000001,
+     18.3429
+    ]
+   }
+  },
+  {
+   "record_id": "liver.left-hemiliver",
+   "name": "left hemiliver",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15810"
+   ],
+   "concept_names": [
+    "left hemiliver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2818",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2818.obj",
+     "vertices": 7482,
+     "faces": 14326
+    },
+    {
+     "fj": "FJ2819",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2819.obj",
+     "vertices": 5487,
+     "faces": 10326
+    },
+    {
+     "fj": "FJ2820",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2820.obj",
+     "vertices": 11418,
+     "faces": 17942
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 24387,
+    "faces": 42594
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 24387,
+     "faces": 42594
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.43668,
+     106.081,
+     9.15573
+    ],
+    "max": [
+     4.630870000000001,
+     117.937,
+     20.241300000000003
+    ]
+   }
+  },
+  {
+   "record_id": "biliary.left-hepatic-biliary-tree",
+   "name": "left hepatic biliary tree",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA71858"
+   ],
+   "concept_names": [
+    "left hepatic biliary tree"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    }
+   ],
+   "totals": {
+    "files": 8,
+    "vertices": 3172,
+    "faces": 5118
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 8,
+     "vertices": 3172,
+     "faces": 5118
+    },
+    "combined_files": 8
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.76872,
+     109.929,
+     11.692100000000002
+    ],
+    "max": [
+     3.18292,
+     116.248,
+     19.8243
+    ]
+   }
+  },
+  {
+   "record_id": "liver.left-lobe-of-liver",
+   "name": "left lobe of liver",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA13363"
+   ],
+   "concept_names": [
+    "left lobe of liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1883",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1883.obj",
+     "vertices": 283,
+     "faces": 428
+    },
+    {
+     "fj": "FJ1893",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1893.obj",
+     "vertices": 786,
+     "faces": 1354
+    },
+    {
+     "fj": "FJ2404",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2404.obj",
+     "vertices": 4965,
+     "faces": 6706
+    },
+    {
+     "fj": "FJ2415",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2415.obj",
+     "vertices": 803,
+     "faces": 1386
+    },
+    {
+     "fj": "FJ2816",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2816.obj",
+     "vertices": 2526,
+     "faces": 5020
+    },
+    {
+     "fj": "FJ3077",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3077.obj",
+     "vertices": 250,
+     "faces": 430
+    },
+    {
+     "fj": "FJ3088",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3088.obj",
+     "vertices": 368,
+     "faces": 608
+    },
+    {
+     "fj": "FJ3089",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3089.obj",
+     "vertices": 443,
+     "faces": 664
+    },
+    {
+     "fj": "FJ3090",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3090.obj",
+     "vertices": 503,
+     "faces": 808
+    },
+    {
+     "fj": "FJ3091",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3091.obj",
+     "vertices": 341,
+     "faces": 598
+    },
+    {
+     "fj": "FJ3092",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3092.obj",
+     "vertices": 364,
+     "faces": 618
+    },
+    {
+     "fj": "FJ3093",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3093.obj",
+     "vertices": 460,
+     "faces": 658
+    },
+    {
+     "fj": "FJ3095",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3095.obj",
+     "vertices": 666,
+     "faces": 1328
+    },
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    },
+    {
+     "fj": "FJ3102",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3102.obj",
+     "vertices": 367,
+     "faces": 730
+    },
+    {
+     "fj": "FJ3103",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3103.obj",
+     "vertices": 432,
+     "faces": 698
+    },
+    {
+     "fj": "FJ3104",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3104.obj",
+     "vertices": 344,
+     "faces": 570
+    },
+    {
+     "fj": "FJ3105",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3105.obj",
+     "vertices": 371,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3106",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3106.obj",
+     "vertices": 425,
+     "faces": 754
+    },
+    {
+     "fj": "FJ3107",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3107.obj",
+     "vertices": 496,
+     "faces": 612
+    },
+    {
+     "fj": "FJ3124",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3124.obj",
+     "vertices": 319,
+     "faces": 494
+    },
+    {
+     "fj": "FJ3125",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3125.obj",
+     "vertices": 1161,
+     "faces": 2284
+    },
+    {
+     "fj": "FJ3126",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3126.obj",
+     "vertices": 1217,
+     "faces": 2364
+    },
+    {
+     "fj": "FJ3127",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3127.obj",
+     "vertices": 662,
+     "faces": 1162
+    },
+    {
+     "fj": "FJ3128",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3128.obj",
+     "vertices": 838,
+     "faces": 1660
+    }
+   ],
+   "totals": {
+    "files": 25,
+    "vertices": 19818,
+    "faces": 33276
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 25,
+     "vertices": 19818,
+     "faces": 33276
+    },
+    "combined_files": 25
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.76872,
+     107.429,
+     10.452800000000002
+    ],
+    "max": [
+     8.70472,
+     116.855,
+     19.9507
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.mesentery-of-small-intestine",
+   "name": "mesentery of small intestine",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14643"
+   ],
+   "concept_names": [
+    "mesentery of small intestine"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3396",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3396.obj",
+     "vertices": 56947,
+     "faces": 38274
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 56947,
+    "faces": 38274
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 56947,
+     "faces": 38274
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 56947,
+     "faces": 38274
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.2673,
+     81.9847,
+     12.0226
+    ],
+    "max": [
+     7.9907200000000005,
+     103.035,
+     16.89
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.mesoappendix",
+   "name": "mesoappendix",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA16549"
+   ],
+   "concept_names": [
+    "mesoappendix"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3397",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3397.obj",
+     "vertices": 812,
+     "faces": 1388
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 812,
+    "faces": 1388
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 812,
+     "faces": 1388
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 812,
+     "faces": 1388
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.9807,
+     87.02050000000001,
+     8.60791
+    ],
+    "max": [
+     8.31061,
+     91.5591,
+     12.600700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "duct.pancreatic-duct",
+   "name": "pancreatic duct",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA10419",
+    "FMA63103"
+   ],
+   "concept_names": [
+    "pancreatic duct",
+    "pancreatic duct tree"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1896",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1896.obj",
+     "vertices": 3941,
+     "faces": 3368
+    },
+    {
+     "fj": "FJ2630",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2630.obj",
+     "vertices": 4340,
+     "faces": 4432
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 8281,
+    "faces": 7800
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 8281,
+     "faces": 7800
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 8281,
+     "faces": 7800
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.14969,
+     102.01400000000001,
+     10.195500000000001
+    ],
+    "max": [
+     5.6706900000000005,
+     106.851,
+     13.846600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.peritoneal-sac",
+   "name": "peritoneal sac",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA9908"
+   ],
+   "concept_names": [
+    "peritoneal sac"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ3396",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3396.obj",
+     "vertices": 56947,
+     "faces": 38274
+    },
+    {
+     "fj": "FJ3397",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3397.obj",
+     "vertices": 812,
+     "faces": 1388
+    },
+    {
+     "fj": "FJ3398",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3398.obj",
+     "vertices": 1366,
+     "faces": 1484
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 59125,
+    "faces": 41146
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 59125,
+     "faces": 41146
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.2673,
+     81.9847,
+     5.05898
+    ],
+    "max": [
+     8.31061,
+     106.362,
+     18.182100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.peritoneum",
+   "name": "peritoneum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA9584"
+   ],
+   "concept_names": [
+    "peritoneum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ3396",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3396.obj",
+     "vertices": 56947,
+     "faces": 38274
+    },
+    {
+     "fj": "FJ3397",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3397.obj",
+     "vertices": 812,
+     "faces": 1388
+    },
+    {
+     "fj": "FJ3398",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3398.obj",
+     "vertices": 1366,
+     "faces": 1484
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 59125,
+    "faces": 41146
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 59125,
+     "faces": 41146
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.2673,
+     81.9847,
+     5.05898
+    ],
+    "max": [
+     8.31061,
+     106.362,
+     18.182100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "liver.posterior-sector-of-left-liver",
+   "name": "posterior sector of left liver",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15751"
+   ],
+   "concept_names": [
+    "posterior sector of left liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2818",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2818.obj",
+     "vertices": 7482,
+     "faces": 14326
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 7482,
+    "faces": 14326
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 7482,
+     "faces": 14326
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.43668,
+     111.96199999999999,
+     9.15573
+    ],
+    "max": [
+     -0.25250300000000003,
+     117.309,
+     20.0039
+    ]
+   }
+  },
+  {
+   "record_id": "liver.posterior-sector-of-right-liver",
+   "name": "posterior sector of right liver",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15749"
+   ],
+   "concept_names": [
+    "posterior sector of right liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2409",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2409.obj",
+     "vertices": 5091,
+     "faces": 8534
+    },
+    {
+     "fj": "FJ2822",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2822.obj",
+     "vertices": 9988,
+     "faces": 19450
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 15079,
+    "faces": 27984
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 15079,
+     "faces": 27984
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.1094500000000003,
+     102.79400000000001,
+     4.4272100000000005
+    ],
+    "max": [
+     11.4768,
+     111.078,
+     16.5212
+    ]
+   }
+  },
+  {
+   "record_id": "canal.rectum",
+   "name": "rectum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14544"
+   ],
+   "concept_names": [
+    "rectum"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2571",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2571.obj",
+     "vertices": 1121,
+     "faces": 2118
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1121,
+    "faces": 2118
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1121,
+     "faces": 2118
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1121,
+     "faces": 2118
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.54317,
+     75.73270000000001,
+     1.12808
+    ],
+    "max": [
+     2.62148,
+     87.39170000000001,
+     7.357880000000001
+    ]
+   }
+  },
+  {
+   "record_id": "liver.right-hemiliver",
+   "name": "right hemiliver",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15809"
+   ],
+   "concept_names": [
+    "right hemiliver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2409",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2409.obj",
+     "vertices": 5091,
+     "faces": 8534
+    },
+    {
+     "fj": "FJ2821",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2821.obj",
+     "vertices": 6605,
+     "faces": 11442
+    },
+    {
+     "fj": "FJ2822",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2822.obj",
+     "vertices": 9988,
+     "faces": 19450
+    },
+    {
+     "fj": "FJ2823",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2823.obj",
+     "vertices": 10230,
+     "faces": 19156
+    },
+    {
+     "fj": "FJ2824",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2824.obj",
+     "vertices": 11459,
+     "faces": 21592
+    }
+   ],
+   "totals": {
+    "files": 5,
+    "vertices": 43373,
+    "faces": 80174
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 5,
+     "vertices": 43373,
+     "faces": 80174
+    },
+    "combined_files": 5
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.75186,
+     102.79400000000001,
+     4.33287
+    ],
+    "max": [
+     11.5064,
+     118.31400000000002,
+     19.873
+    ]
+   }
+  },
+  {
+   "record_id": "biliary.right-hepatic-biliary-tree",
+   "name": "right hepatic biliary tree",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA71857"
+   ],
+   "concept_names": [
+    "right hepatic biliary tree"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 6,
+    "vertices": 3578,
+    "faces": 5314
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 6,
+     "vertices": 3578,
+     "faces": 5314
+    },
+    "combined_files": 6
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.17666,
+     106.87100000000001,
+     5.5416
+    ],
+    "max": [
+     9.18446,
+     115.235,
+     17.4632
+    ]
+   }
+  },
+  {
+   "record_id": "liver.right-lobe-of-liver",
+   "name": "right lobe of liver",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA13362"
+   ],
+   "concept_names": [
+    "right lobe of liver"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1916",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1916.obj",
+     "vertices": 214,
+     "faces": 362
+    },
+    {
+     "fj": "FJ2416",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2416.obj",
+     "vertices": 2510,
+     "faces": 3538
+    },
+    {
+     "fj": "FJ3071",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3071.obj",
+     "vertices": 395,
+     "faces": 686
+    },
+    {
+     "fj": "FJ3072",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3072.obj",
+     "vertices": 1265,
+     "faces": 1708
+    },
+    {
+     "fj": "FJ3075",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3075.obj",
+     "vertices": 1244,
+     "faces": 1666
+    },
+    {
+     "fj": "FJ3076",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3076.obj",
+     "vertices": 459,
+     "faces": 892
+    },
+    {
+     "fj": "FJ3083",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3083.obj",
+     "vertices": 1409,
+     "faces": 2806
+    },
+    {
+     "fj": "FJ3086",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3086.obj",
+     "vertices": 502,
+     "faces": 990
+    },
+    {
+     "fj": "FJ3108",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3108.obj",
+     "vertices": 503,
+     "faces": 870
+    },
+    {
+     "fj": "FJ3109",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3109.obj",
+     "vertices": 404,
+     "faces": 628
+    },
+    {
+     "fj": "FJ3110",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3110.obj",
+     "vertices": 896,
+     "faces": 1196
+    },
+    {
+     "fj": "FJ3114",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3114.obj",
+     "vertices": 479,
+     "faces": 772
+    },
+    {
+     "fj": "FJ3115",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3115.obj",
+     "vertices": 1037,
+     "faces": 1616
+    },
+    {
+     "fj": "FJ3116",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3116.obj",
+     "vertices": 631,
+     "faces": 814
+    },
+    {
+     "fj": "FJ3117",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3117.obj",
+     "vertices": 223,
+     "faces": 442
+    },
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 16,
+    "vertices": 12286,
+    "faces": 19212
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 17,
+     "vertices": 12500,
+     "faces": 19574
+    },
+    "combined_files": 17
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.3487,
+     106.87100000000001,
+     5.52834
+    ],
+    "max": [
+     10.8279,
+     117.224,
+     17.828500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "mouth.soft-palate",
+   "name": "soft palate",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA55021"
+   ],
+   "concept_names": [
+    "soft palate"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2741",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2741.obj",
+     "vertices": 6821,
+     "faces": 12318
+    },
+    {
+     "fj": "FJ2748",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2748.obj",
+     "vertices": 7523,
+     "faces": 13872
+    },
+    {
+     "fj": "FJ2753",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2753.obj",
+     "vertices": 6835,
+     "faces": 12312
+    },
+    {
+     "fj": "FJ2760",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2760.obj",
+     "vertices": 7464,
+     "faces": 13872
+    },
+    {
+     "fj": "FJ2762",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2762.obj",
+     "vertices": 894,
+     "faces": 1632
+    }
+   ],
+   "totals": {
+    "files": 5,
+    "vertices": 29537,
+    "faces": 54006
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 5,
+     "vertices": 29537,
+     "faces": 54006
+    },
+    "combined_files": 5
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.13553,
+     146.09900000000002,
+     8.81797
+    ],
+    "max": [
+     3.2665300000000004,
+     150.335,
+     12.049500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "colon.taenia-libera",
+   "name": "taenia libera",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15044"
+   ],
+   "concept_names": [
+    "taenia libera"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2568",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2568.obj",
+     "vertices": 15598,
+     "faces": 15244
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 15598,
+    "faces": 15244
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 15598,
+     "faces": 15244
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 15598,
+     "faces": 15244
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.860190000000001,
+     82.66000000000001,
+     6.0747
+    ],
+    "max": [
+     10.2497,
+     102.91,
+     17.6023
+    ]
+   }
+  },
+  {
+   "record_id": "colon.taenia-mesocolica",
+   "name": "taenia mesocolica",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15042"
+   ],
+   "concept_names": [
+    "taenia mesocolica"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2569",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2569.obj",
+     "vertices": 15282,
+     "faces": 13342
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 15282,
+    "faces": 13342
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 15282,
+     "faces": 13342
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 15282,
+     "faces": 13342
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -8.5963,
+     86.40820000000001,
+     6.386950000000001
+    ],
+    "max": [
+     8.38716,
+     105.107,
+     16.139
+    ]
+   }
+  },
+  {
+   "record_id": "colon.taenia-omentalis",
+   "name": "taenia omentalis",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA15043"
+   ],
+   "concept_names": [
+    "taenia omentalis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2570",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2570.obj",
+     "vertices": 12767,
+     "faces": 15922
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 12767,
+    "faces": 15922
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 12767,
+     "faces": 15922
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 12767,
+     "faces": 15922
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -11.672,
+     83.33840000000001,
+     5.09893
+    ],
+    "max": [
+     12.4642,
+     105.58699999999999,
+     19.5539
+    ]
+   }
+  },
+  {
+   "record_id": "canal.transverse-colon",
+   "name": "transverse colon",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14546"
+   ],
+   "concept_names": [
+    "transverse colon"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2572",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2572.obj",
+     "vertices": 1923,
+     "faces": 3472
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1923,
+    "faces": 3472
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1923,
+     "faces": 3472
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1923,
+     "faces": 3472
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.660960000000001,
+     99.3442,
+     10.6834
+    ],
+    "max": [
+     8.875060000000001,
+     106.47300000000001,
+     19.6931
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.transverse-mesocolon",
+   "name": "transverse mesocolon",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14647"
+   ],
+   "concept_names": [
+    "transverse mesocolon"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3398",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3398.obj",
+     "vertices": 1366,
+     "faces": 1484
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1366,
+    "faces": 1484
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1366,
+     "faces": 1484
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1366,
+     "faces": 1484
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.11461,
+     86.0872,
+     5.05898
+    ],
+    "max": [
+     8.190000000000001,
+     106.362,
+     18.182100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "mouth.uvula",
+   "name": "uvula",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA55022"
+   ],
+   "concept_names": [
+    "uvula"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2762",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2762.obj",
+     "vertices": 894,
+     "faces": 1632
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 894,
+    "faces": 1632
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 894,
+     "faces": 1632
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.1757,
+     146.85999999999999,
+     9.788240000000002
+    ],
+    "max": [
+     0.324152,
+     147.78900000000002,
+     10.239600000000001
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.visceral-peritoneum",
+   "name": "visceral peritoneum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA14703"
+   ],
+   "concept_names": [
+    "visceral peritoneum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ3396",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3396.obj",
+     "vertices": 56947,
+     "faces": 38274
+    },
+    {
+     "fj": "FJ3397",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3397.obj",
+     "vertices": 812,
+     "faces": 1388
+    },
+    {
+     "fj": "FJ3398",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3398.obj",
+     "vertices": 1366,
+     "faces": 1484
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 59125,
+    "faces": 41146
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 59125,
+     "faces": 41146
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.2673,
+     81.9847,
+     5.05898
+    ],
+    "max": [
+     8.31061,
+     106.362,
+     18.182100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "duct.common-hepatic-duct",
+   "name": "common hepatic duct",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA14668"
+   ],
+   "concept_names": [
+    "common hepatic duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3079",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3079.obj",
+     "vertices": 684,
+     "faces": 1364
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 684,
+    "faces": 1364
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 684,
+     "faces": 1364
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 684,
+     "faces": 1364
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.7863,
+     101.95800000000001,
+     10.703700000000001
+    ],
+    "max": [
+     4.368200000000001,
+     110.387,
+     14.450800000000001
+    ]
+   }
+  },
+  {
+   "record_id": "duct.cystic-duct",
+   "name": "cystic duct",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA14539"
+   ],
+   "concept_names": [
+    "cystic duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3080",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3080.obj",
+     "vertices": 156,
+     "faces": 278
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 156,
+    "faces": 278
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 278
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 278
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.0898,
+     107.91600000000001,
+     12.844100000000001
+    ],
+    "max": [
+     2.96802,
+     109.13499999999999,
+     13.7786
+    ]
+   }
+  },
+  {
+   "record_id": "liver-segment.hepatovenous-segment-ix",
+   "name": "hepatovenous segment ix",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15747"
+   ],
+   "concept_names": [
+    "hepatovenous segment ix"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1858",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1858.obj",
+     "vertices": 5687,
+     "faces": 9550
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5687,
+    "faces": 9550
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5687,
+     "faces": 9550
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.00957,
+     109.00999999999999,
+     4.3643
+    ],
+    "max": [
+     11.5111,
+     117.51500000000001,
+     15.2099
+    ]
+   }
+  },
+  {
+   "record_id": "duct.left-duct-of-caudate-lobe-of-liver",
+   "name": "left duct of caudate lobe of liver",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA76903"
+   ],
+   "concept_names": [
+    "left duct of caudate lobe of liver"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3094",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3094.obj",
+     "vertices": 281,
+     "faces": 428
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 281,
+    "faces": 428
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 281,
+     "faces": 428
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.143618,
+     110.798,
+     11.692
+    ],
+    "max": [
+     1.76389,
+     113.336,
+     15.4816
+    ]
+   }
+  },
+  {
+   "record_id": "duct.left-hepatic-duct",
+   "name": "left hepatic duct",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA14670"
+   ],
+   "concept_names": [
+    "left hepatic duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3096",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3096.obj",
+     "vertices": 428,
+     "faces": 848
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 428,
+    "faces": 848
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 428,
+     "faces": 848
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 428,
+     "faces": 848
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.7394470000000001,
+     109.929,
+     14.004100000000001
+    ],
+    "max": [
+     2.5772600000000003,
+     113.0,
+     15.7429
+    ]
+   }
+  },
+  {
+   "record_id": "peritoneum.mesentery-of-large-intestine",
+   "name": "mesentery of large intestine",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA14645"
+   ],
+   "concept_names": [
+    "mesentery of large intestine"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3397",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3397.obj",
+     "vertices": 812,
+     "faces": 1388
+    },
+    {
+     "fj": "FJ3398",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3398.obj",
+     "vertices": 1366,
+     "faces": 1484
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 2178,
+    "faces": 2872
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 2178,
+     "faces": 2872
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.11461,
+     86.0872,
+     5.05898
+    ],
+    "max": [
+     8.31061,
+     106.362,
+     18.182100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "duct.right-hepatic-duct",
+   "name": "right hepatic duct",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA14669"
+   ],
+   "concept_names": [
+    "right hepatic duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3123",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3123.obj",
+     "vertices": 115,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 115,
+    "faces": 226
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 115,
+     "faces": 226
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 115,
+     "faces": 226
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.17666,
+     109.935,
+     14.001100000000001
+    ],
+    "max": [
+     3.12841,
+     110.751,
+     14.747100000000001
+    ]
+   }
+  },
+  {
+   "record_id": "gland.left-sublingual-gland",
+   "name": "left sublingual gland",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA59805"
+   ],
+   "concept_names": [
+    "left sublingual gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2765",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2765.obj",
+     "vertices": 143,
+     "faces": 230
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 143,
+    "faces": 230
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 230
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.9881000000000002,
+     144.085,
+     14.0969
+    ],
+    "max": [
+     -0.7302230000000001,
+     145.398,
+     16.357200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "gland.left-submandibular-gland",
+   "name": "left submandibular gland",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA59803"
+   ],
+   "concept_names": [
+    "left submandibular gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2766",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2766.obj",
+     "vertices": 123,
+     "faces": 228
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 123,
+    "faces": 228
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 123,
+     "faces": 228
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 123,
+     "faces": 228
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.0266100000000002,
+     143.84400000000002,
+     11.8591
+    ],
+    "max": [
+     -1.43972,
+     146.08,
+     14.151900000000001
+    ]
+   }
+  },
+  {
+   "record_id": "gland.right-sublingual-gland",
+   "name": "right sublingual gland",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA59804"
+   ],
+   "concept_names": [
+    "right sublingual gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2767",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2767.obj",
+     "vertices": 143,
+     "faces": 244
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 143,
+    "faces": 244
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 143,
+     "faces": 244
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.85989,
+     144.082,
+     14.0946
+    ],
+    "max": [
+     2.1194900000000003,
+     145.404,
+     16.3618
+    ]
+   }
+  },
+  {
+   "record_id": "gland.right-submandibular-gland",
+   "name": "right submandibular gland",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA59802"
+   ],
+   "concept_names": [
+    "right submandibular gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ2768",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2768.obj",
+     "vertices": 122,
+     "faces": 228
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 122,
+    "faces": 228
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 122,
+     "faces": 228
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 122,
+     "faces": 228
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.56831,
+     143.84400000000002,
+     11.8612
+    ],
+    "max": [
+     3.15539,
+     146.083,
+     14.135
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-central-secondary-incisor-tooth",
+   "name": "left lower central secondary incisor tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA57143"
+   ],
+   "concept_names": [
+    "left lower central secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1258",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1258.obj",
+     "vertices": 461,
+     "faces": 918
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 461,
+    "faces": 918
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 461,
+     "faces": 918
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.539112,
+     142.808,
+     16.0269
+    ],
+    "max": [
+     0.04914450000000001,
+     145.355,
+     17.849
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-first-secondary-molar-tooth",
+   "name": "left lower first secondary molar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55704"
+   ],
+   "concept_names": [
+    "left lower first secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1254",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1254.obj",
+     "vertices": 885,
+     "faces": 1762
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 885,
+    "faces": 1762
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 885,
+     "faces": 1762
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.8755100000000002,
+     143.911,
+     13.897200000000002
+    ],
+    "max": [
+     -1.64209,
+     145.881,
+     15.407800000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-first-secondary-premolar-tooth",
+   "name": "left lower first secondary premolar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55693"
+   ],
+   "concept_names": [
+    "left lower first secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1255",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1255.obj",
+     "vertices": 592,
+     "faces": 1176
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 592,
+    "faces": 1176
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 592,
+     "faces": 1176
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.04983,
+     143.208,
+     15.337700000000002
+    ],
+    "max": [
+     -1.2587300000000001,
+     145.457,
+     16.75
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-lateral-secondary-incisor-tooth",
+   "name": "left lower lateral secondary incisor tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA57141"
+   ],
+   "concept_names": [
+    "left lower lateral secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1259",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1259.obj",
+     "vertices": 483,
+     "faces": 960
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 483,
+    "faces": 960
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 483,
+     "faces": 960
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.13867,
+     142.83800000000002,
+     16.0976
+    ],
+    "max": [
+     -0.35276,
+     145.352,
+     17.7803
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-second-secondary-molar-tooth",
+   "name": "left lower second secondary molar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55703"
+   ],
+   "concept_names": [
+    "left lower second secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1256",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1256.obj",
+     "vertices": 823,
+     "faces": 1616
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 823,
+    "faces": 1616
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 823,
+     "faces": 1616
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2158200000000003,
+     144.447,
+     12.634
+    ],
+    "max": [
+     -2.00593,
+     146.317,
+     14.284100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-second-secondary-premolar-tooth",
+   "name": "left lower second secondary premolar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55692"
+   ],
+   "concept_names": [
+    "left lower second secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1257",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1257.obj",
+     "vertices": 566,
+     "faces": 1122
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 566,
+    "faces": 1122
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 566,
+     "faces": 1122
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.3697500000000002,
+     143.246,
+     14.735800000000001
+    ],
+    "max": [
+     -1.55793,
+     145.584,
+     16.0656
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-lower-secondary-canine-tooth",
+   "name": "left lower secondary canine tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55687"
+   ],
+   "concept_names": [
+    "left lower secondary canine tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1260",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1260.obj",
+     "vertices": 592,
+     "faces": 1180
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 592,
+    "faces": 1180
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 592,
+     "faces": 1180
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.6304500000000002,
+     142.715,
+     15.826
+    ],
+    "max": [
+     -0.7689440000000001,
+     145.398,
+     17.3856
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-central-secondary-incisor-tooth",
+   "name": "left upper central secondary incisor tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55682"
+   ],
+   "concept_names": [
+    "left upper central secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1265",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1265.obj",
+     "vertices": 646,
+     "faces": 1288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 646,
+    "faces": 1288
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 646,
+     "faces": 1288
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.8366910000000001,
+     145.236,
+     17.047
+    ],
+    "max": [
+     0.0484291,
+     147.879,
+     18.3349
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-first-secondary-molar-tooth",
+   "name": "left upper first secondary molar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55699"
+   ],
+   "concept_names": [
+    "left upper first secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1261",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1261.obj",
+     "vertices": 1084,
+     "faces": 2156
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1084,
+    "faces": 2156
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1084,
+     "faces": 2156
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.98863,
+     145.787,
+     14.2646
+    ],
+    "max": [
+     -1.83116,
+     148.244,
+     15.418500000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-first-secondary-premolar-tooth",
+   "name": "left upper first secondary premolar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55690"
+   ],
+   "concept_names": [
+    "left upper first secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1262",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1262.obj",
+     "vertices": 818,
+     "faces": 1610
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 818,
+    "faces": 1610
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 818,
+     "faces": 1610
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.46329,
+     145.472,
+     15.949000000000002
+    ],
+    "max": [
+     -1.51614,
+     148.317,
+     16.7514
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-lateral-secondary-incisor-tooth",
+   "name": "left upper lateral secondary incisor tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55683"
+   ],
+   "concept_names": [
+    "left upper lateral secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1266",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1266.obj",
+     "vertices": 691,
+     "faces": 1378
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 691,
+    "faces": 1378
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 691,
+     "faces": 1378
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.55987,
+     145.167,
+     16.893700000000003
+    ],
+    "max": [
+     -0.598812,
+     148.06,
+     18.0611
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-second-secondary-molar-tooth",
+   "name": "left upper second secondary molar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55700"
+   ],
+   "concept_names": [
+    "left upper second secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1263",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1263.obj",
+     "vertices": 949,
+     "faces": 1848
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 949,
+    "faces": 1848
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 949,
+     "faces": 1848
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.9524500000000002,
+     146.14700000000002,
+     13.481100000000001
+    ],
+    "max": [
+     -1.76709,
+     148.413,
+     14.466999999999999
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-second-secondary-premolar-tooth",
+   "name": "left upper second secondary premolar tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55691"
+   ],
+   "concept_names": [
+    "left upper second secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1264",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1264.obj",
+     "vertices": 748,
+     "faces": 1466
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 748,
+    "faces": 1466
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 748,
+     "faces": 1466
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.76263,
+     145.585,
+     15.359200000000001
+    ],
+    "max": [
+     -1.83284,
+     148.179,
+     16.1168
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.left-upper-secondary-canine-tooth",
+   "name": "left upper secondary canine tooth",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55799"
+   ],
+   "concept_names": [
+    "left upper secondary canine tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1267",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1267.obj",
+     "vertices": 698,
+     "faces": 1392
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 698,
+    "faces": 1392
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 698,
+     "faces": 1392
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.14504,
+     145.31400000000002,
+     16.6625
+    ],
+    "max": [
+     -1.22039,
+     148.452,
+     17.593
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-central-secondary-incisor-tooth",
+   "name": "right lower central secondary incisor tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA57142"
+   ],
+   "concept_names": [
+    "right lower central secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1272",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1272.obj",
+     "vertices": 463,
+     "faces": 920
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 463,
+    "faces": 920
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 463,
+     "faces": 920
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0827842,
+     142.81,
+     16.0261
+    ],
+    "max": [
+     0.6702,
+     145.356,
+     17.849700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-first-secondary-molar-tooth",
+   "name": "right lower first secondary molar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55705"
+   ],
+   "concept_names": [
+    "right lower first secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1268",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1268.obj",
+     "vertices": 889,
+     "faces": 1762
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 889,
+    "faces": 1762
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 889,
+     "faces": 1762
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.77383,
+     143.911,
+     13.896500000000001
+    ],
+    "max": [
+     3.00544,
+     145.883,
+     15.4076
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-first-secondary-premolar-tooth",
+   "name": "right lower first secondary premolar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55694"
+   ],
+   "concept_names": [
+    "right lower first secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1269",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1269.obj",
+     "vertices": 592,
+     "faces": 1180
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 592,
+    "faces": 1180
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 592,
+     "faces": 1180
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.38348,
+     143.207,
+     15.337600000000002
+    ],
+    "max": [
+     2.17807,
+     145.459,
+     16.7523
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-lateral-secondary-incisor-tooth",
+   "name": "right lower lateral secondary incisor tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA57140"
+   ],
+   "concept_names": [
+    "right lower lateral secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1273",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1273.obj",
+     "vertices": 486,
+     "faces": 958
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 486,
+    "faces": 958
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 486,
+     "faces": 958
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.48444700000000007,
+     142.83800000000002,
+     16.097
+    ],
+    "max": [
+     1.2693400000000001,
+     145.352,
+     17.7832
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-second-secondary-molar-tooth",
+   "name": "right lower second secondary molar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55706"
+   ],
+   "concept_names": [
+    "right lower second secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1270",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1270.obj",
+     "vertices": 818,
+     "faces": 1620
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 818,
+    "faces": 1620
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 818,
+     "faces": 1620
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.13755,
+     144.449,
+     12.6341
+    ],
+    "max": [
+     3.34475,
+     146.317,
+     14.2863
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-second-secondary-premolar-tooth",
+   "name": "right lower second secondary premolar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55695"
+   ],
+   "concept_names": [
+    "right lower second secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1271",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1271.obj",
+     "vertices": 567,
+     "faces": 1124
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 567,
+    "faces": 1124
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 567,
+     "faces": 1124
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.6891200000000002,
+     143.246,
+     14.7326
+    ],
+    "max": [
+     2.50053,
+     145.582,
+     16.0651
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-lower-secondary-canine-tooth",
+   "name": "right lower secondary canine tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55686"
+   ],
+   "concept_names": [
+    "right lower secondary canine tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1274",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1274.obj",
+     "vertices": 591,
+     "faces": 1178
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 591,
+    "faces": 1178
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 591,
+     "faces": 1178
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.899553,
+     142.715,
+     15.825700000000001
+    ],
+    "max": [
+     1.76204,
+     145.398,
+     17.3857
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-central-secondary-incisor-tooth",
+   "name": "right upper central secondary incisor tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55681"
+   ],
+   "concept_names": [
+    "right upper central secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1279",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1279.obj",
+     "vertices": 647,
+     "faces": 1288
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 647,
+    "faces": 1288
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 647,
+     "faces": 1288
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0808877,
+     145.237,
+     17.046100000000003
+    ],
+    "max": [
+     0.967948,
+     147.876,
+     18.3332
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-first-secondary-molar-tooth",
+   "name": "right upper first secondary molar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55698"
+   ],
+   "concept_names": [
+    "right upper first secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1276",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1276.obj",
+     "vertices": 1099,
+     "faces": 2156
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1099,
+    "faces": 2156
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1099,
+     "faces": 2156
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.96288,
+     145.787,
+     14.2665
+    ],
+    "max": [
+     3.11896,
+     148.24200000000002,
+     15.4164
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-first-secondary-premolar-tooth",
+   "name": "right upper first secondary premolar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55689"
+   ],
+   "concept_names": [
+    "right upper first secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1277",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1277.obj",
+     "vertices": 816,
+     "faces": 1610
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 816,
+    "faces": 1610
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 816,
+     "faces": 1610
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.64381,
+     145.47400000000002,
+     15.949700000000002
+    ],
+    "max": [
+     2.59511,
+     148.318,
+     16.7534
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-lateral-secondary-incisor-tooth",
+   "name": "right upper lateral secondary incisor tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55680"
+   ],
+   "concept_names": [
+    "right upper lateral secondary incisor tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1280",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1280.obj",
+     "vertices": 686,
+     "faces": 1368
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 686,
+    "faces": 1368
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 686,
+     "faces": 1368
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.7301000000000001,
+     145.167,
+     16.8934
+    ],
+    "max": [
+     1.6875499999999999,
+     148.059,
+     18.025000000000002
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-second-secondary-molar-tooth",
+   "name": "right upper second secondary molar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55697"
+   ],
+   "concept_names": [
+    "right upper second secondary molar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1275",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1275.obj",
+     "vertices": 961,
+     "faces": 1850
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 961,
+    "faces": 1850
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 961,
+     "faces": 1850
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.8951000000000002,
+     146.14700000000002,
+     13.483699999999999
+    ],
+    "max": [
+     3.08611,
+     148.41400000000002,
+     14.4638
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-second-secondary-premolar-tooth",
+   "name": "right upper second secondary premolar tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55688"
+   ],
+   "concept_names": [
+    "right upper second secondary premolar tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1278",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1278.obj",
+     "vertices": 748,
+     "faces": 1466
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 748,
+    "faces": 1466
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 748,
+     "faces": 1466
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.9647500000000002,
+     145.584,
+     15.358500000000001
+    ],
+    "max": [
+     2.89407,
+     148.179,
+     16.116300000000003
+    ]
+   }
+  },
+  {
+   "record_id": "tooth.right-upper-secondary-canine-tooth",
+   "name": "right upper secondary canine tooth",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA55798"
+   ],
+   "concept_names": [
+    "right upper secondary canine tooth"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1281",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1281.obj",
+     "vertices": 698,
+     "faces": 1392
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 698,
+    "faces": 1392
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 698,
+     "faces": 1392
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.34958,
+     145.31300000000002,
+     16.6613
+    ],
+    "max": [
+     2.27535,
+     148.451,
+     17.5932
+    ]
+   }
+  }
+ ]
+}

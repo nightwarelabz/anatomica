@@ -11,7 +11,7 @@
 //!       display; on a headless machine use `verify`.
 
 use anatomica_native::camera::{project, OrbitCamera};
-use anatomica_native::model::{LayerKind, RecordRange, RecordsFile};
+use anatomica_native::model::{LayerInfo, RecordRange, RecordsFile};
 use anatomica_native::pack::Pack;
 use anatomica_native::render::{
     non_background_fraction, silhouette_bbox, Gpu, LayerGpu, Renderer, SceneState,
@@ -36,40 +36,54 @@ struct BodyData {
     #[allow(dead_code)] // kept loaded for the shells that grow on this
     manifest: model::Manifest,
     records: RecordsFile,
-    packs: HashMap<LayerKind, Pack>,
-    ranges: HashMap<LayerKind, Vec<RecordRange>>,
+    /// Layer descriptors in manifest order (all 11 systems).
+    infos: Vec<LayerInfo>,
+    ranges: HashMap<String, Vec<RecordRange>>,
 }
 
-/// Load manifest + records + packs and run the startup assertions.
-/// Returns Err only when a file cannot be read/parsed at all;
-/// assertion failures are reported in the returned lines and the
-/// caller decides (verify exits non-zero; view refuses to start).
+/// Load manifest + records + packs and run the startup assertions
+/// for every layer in the manifest. Returns Err only when a file
+/// cannot be read/parsed at all; assertion failures are reported in
+/// the returned lines and the caller decides (verify exits non-zero;
+/// view refuses to start).
 fn load_body(data_dir: &PathBuf) -> Result<(BodyData, Vec<(bool, String)>), String> {
     let manifest = model::load_manifest(&data_dir.join("manifest.json"))?;
     let records = model::load_records(&data_dir.join("records.json"))?;
-    let mut packs = HashMap::new();
+    let infos = LayerInfo::from_manifest(&manifest);
     let mut ranges = HashMap::new();
     let mut report = Vec::new();
-    for kind in LayerKind::ALL {
+    // Packs are decoded one at a time for the startup assertions and
+    // dropped — decoded packs are re-read on demand (GPU upload, CPU
+    // reference projections) so resident memory stays bounded.
+    for info in &infos {
         let layer = manifest
             .layers
-            .get(kind.manifest_key())
-            .ok_or_else(|| format!("manifest missing layer {}", kind.manifest_key()))?;
+            .get(&info.key)
+            .ok_or_else(|| format!("manifest missing layer {}", info.key))?;
         let pack = Pack::load(&data_dir.join(&layer.file))
             .map_err(|e| format!("load {}: {e}", layer.file))?;
-        report.extend(pack_manifest_report(kind, &pack, layer));
-        ranges.insert(kind, layer.ranges.clone());
-        packs.insert(kind, pack);
+        report.extend(pack_manifest_report(&info.key, &pack, layer));
+        ranges.insert(info.key.clone(), layer.ranges.clone());
     }
     Ok((
         BodyData {
             manifest,
             records,
-            packs,
+            infos,
             ranges,
         },
         report,
     ))
+}
+
+/// Re-load one layer's pack from disk (GPU upload / CPU reference).
+fn load_pack(data_dir: &PathBuf, body: &BodyData, key: &str) -> Result<Pack, String> {
+    let layer = body
+        .manifest
+        .layers
+        .get(key)
+        .ok_or_else(|| format!("manifest missing layer {key}"))?;
+    Pack::load(&data_dir.join(&layer.file)).map_err(|e| format!("load {}: {e}", layer.file))
 }
 
 fn print_report(report: &[(bool, String)]) -> bool {
@@ -174,16 +188,15 @@ fn verify(args: &[String]) -> ExitCode {
 
     let mut renderer = Renderer::new(gpu, wgpu::TextureFormat::Rgba8Unorm);
     let t0 = std::time::Instant::now();
-    let layers: Vec<LayerGpu> = LayerKind::ALL
-        .iter()
-        .map(|&kind| {
-            anatomica_native::render::upload_layer(
-                &renderer.gpu.device,
-                kind,
-                &body.packs[&kind],
-            )
-        })
-        .collect();
+    let mut layers: Vec<LayerGpu> = Vec::new();
+    for info in &body.infos {
+        let pack = load_pack(&data_dir, &body, &info.key).expect("pack reload for upload");
+        layers.push(anatomica_native::render::upload_layer(
+            &renderer.gpu.device,
+            info.clone(),
+            &pack,
+        ));
+    }
     println!(
         "GPU upload: {:.1} ms ({} layers)",
         t0.elapsed().as_secs_f64() * 1000.0,
@@ -191,14 +204,19 @@ fn verify(args: &[String]) -> ExitCode {
     );
 
     // Framing targets from records.json bboxes (canonical cm).
+    let all_keys: Vec<&str> = body.infos.iter().map(|i| i.key.as_str()).collect();
     let combined = body
         .records
-        .union_bbox(&[LayerKind::Skeleton, LayerKind::Muscle])
+        .union_bbox(&["skeletal", "muscular"])
         .expect("combined union bbox");
     let skel_union = body
         .records
-        .union_bbox(&[LayerKind::Skeleton])
+        .union_bbox(&["skeletal"])
         .expect("skeletal union bbox");
+    let all_union = body
+        .records
+        .union_bbox(&all_keys)
+        .expect("all-layers union bbox");
     let span = skel_union.span();
     println!(
         "skeletal union: min [{:.3}, {:.3}, {:.3}] max [{:.3}, {:.3}, {:.3}] span {:.3} x {:.3} x {:.3} cm",
@@ -206,7 +224,13 @@ fn verify(args: &[String]) -> ExitCode {
         skel_union.max[0], skel_union.max[1], skel_union.max[2],
         span[0], span[1], span[2]
     );
+    let aspan = all_union.span();
+    println!(
+        "all-layers union: span {:.3} x {:.3} x {:.3} cm (the integumentary shell is the outermost layer)",
+        aspan[0], aspan[1], aspan[2]
+    );
     let target = Vec3::from_array(combined.centre().map(|v| v as f32));
+    let target_all = Vec3::from_array(all_union.centre().map(|v| v as f32));
     let aspect = 1.0f32;
 
     let cam = |az: f32, pol: f32, radius: f32, tgt: Vec3| OrbitCamera {
@@ -218,38 +242,44 @@ fn verify(args: &[String]) -> ExitCode {
     let front = cam(0.0, std::f32::consts::FRAC_PI_2, 300.0, target);
     let side = cam(std::f32::consts::FRAC_PI_2, std::f32::consts::FRAC_PI_2, 300.0, target);
     let top = cam(0.0, 0.0, 300.0, target);
+    let front_all = cam(0.0, std::f32::consts::FRAC_PI_2, 310.0, target_all);
     let frontal = body.records.by_id("frontal").expect("frontal record");
     let frontal_centre = Vec3::from_array(frontal.bbox().unwrap().centre().map(|v| v as f32));
     let close = cam(0.35, 1.15, 42.0, frontal_centre);
 
-    let skel_only = SceneState {
-        show_muscles: false,
-        ..Default::default()
-    };
-    let femur_range = body.ranges[&LayerKind::Skeleton]
+    let skel_only = SceneState::only(&["skeletal"]);
+    let both_state = SceneState::only(&["skeletal", "muscular"]);
+    let all_state = SceneState::all(&body.infos);
+    let skin_state = SceneState::only(&["integumentary"]);
+    let mut focus_state = SceneState::all(&body.infos);
+    focus_state.focus = Some(["cardiovascular", "nervous"].iter().map(|s| s.to_string()).collect());
+    focus_state.dim = 0.78;
+    let cvn_only_state = SceneState::only(&["cardiovascular", "nervous"]);
+    let femur_range = body.ranges["skeletal"]
         .iter()
         .find(|r| r.record_id == "femur_right")
         .expect("femur_right range")
         .clone();
-    let selection_state = SceneState {
-        show_muscles: false,
-        selected: Some((LayerKind::Skeleton, femur_range.slot)),
-        ..Default::default()
-    };
+    let mut selection_state = SceneState::only(&["skeletal"]);
+    selection_state.selected = Some(("skeletal".to_string(), femur_range.slot));
 
     std::fs::create_dir_all(&out_dir).ok();
     println!("\n== frames ==");
     let mut hard_fail = false;
-    let both_state = SceneState::default();
-    let jobs: Vec<(&str, OrbitCamera, Option<Vec3>, &SceneState, bool)> = vec![
-        ("front_skeleton", front, None, &skel_only, true),
-        ("side_skeleton", side, None, &skel_only, true),
-        ("top_skeleton", top, Some(Vec3::new(0.0, 0.0, -1.0)), &skel_only, true),
-        ("close_skull", close, None, &skel_only, false),
-        ("front_combined", front, None, &both_state, false),
-        ("front_selection", front, None, &selection_state, false),
+    // (name, camera, up, state, silhouette-check layer keys)
+    let jobs: Vec<(&str, OrbitCamera, Option<Vec3>, SceneState, Option<Vec<&str>>)> = vec![
+        ("front_skeleton", front, None, skel_only.clone(), Some(vec!["skeletal"])),
+        ("side_skeleton", side, None, skel_only.clone(), Some(vec!["skeletal"])),
+        ("top_skeleton", top, Some(Vec3::new(0.0, 0.0, -1.0)), skel_only.clone(), Some(vec!["skeletal"])),
+        ("close_skull", close, None, skel_only.clone(), None),
+        ("front_combined", front, None, both_state.clone(), None),
+        ("front_selection", front, None, selection_state.clone(), None),
+        ("front_all_layers", front_all, None, all_state.clone(), Some(all_keys.clone())),
+        ("front_cv_nervous_focus", front_all, None, focus_state.clone(), None),
+        ("front_cv_nervous", front_all, None, cvn_only_state.clone(), None),
+        ("front_skin", front_all, None, skin_state.clone(), Some(vec!["integumentary"])),
     ];
-    for (name, camera, up, state, check) in &jobs {
+    for (name, camera, up, state, check_keys) in &jobs {
         let (mvp, mv) = match up {
             Some(u) => (
                 camera.mvp_with_up(aspect, *u),
@@ -272,10 +302,21 @@ fn verify(args: &[String]) -> ExitCode {
             frac,
             path.display()
         );
-        if *check {
+        if let Some(keys) = check_keys {
             let gpu_box = silhouette_bbox(&frame.rgba, size, size);
-            let vtx = cpu_projected_extent(&body.packs[&LayerKind::Skeleton], &mvp, size, size);
-            let ubox = cpu_box_extent(skel_union.min, skel_union.max, &mvp, size, size);
+            // CPU reference: project every vertex of every checked
+            // layer's pack (packs loaded one at a time).
+            let (mut mnx, mut mny) = (f32::INFINITY, f32::INFINITY);
+            let (mut mxx, mut mxy) = (f32::NEG_INFINITY, f32::NEG_INFINITY);
+            for key in keys {
+                let pack = load_pack(&data_dir, &body, key).expect("pack reload for CPU reference");
+                let e = cpu_projected_extent(&pack, &mvp, size, size);
+                mnx = mnx.min(e.0); mny = mny.min(e.1);
+                mxx = mxx.max(e.2); mxy = mxy.max(e.3);
+            }
+            let vtx = (mnx, mny, mxx, mxy);
+            let ub = body.records.union_bbox(keys).expect("union bbox for check");
+            let ubox = cpu_box_extent(ub.min, ub.max, &mvp, size, size);
             match gpu_box {
                 Some((gx0, gy0, gx1, gy1)) => {
                     let diffs = [
@@ -301,48 +342,53 @@ fn verify(args: &[String]) -> ExitCode {
         }
     }
 
-    println!("\n== picking (front view, both layers) ==");
+    println!("\n== picking ==");
     let mvp = front.mvp(aspect);
-    let state = SceneState::default();
+    let mvp_all = front_all.mvp(aspect);
     let probe = |renderer: &mut Renderer,
                  label: &str,
-                 centre: Vec3,
-                 expect_none: bool|
-     -> Option<(LayerKind, u32)> {
-        let (px, py) = project(&mvp, centre, size, size)
+                 mvp: &glam::Mat4,
+                 state: &SceneState,
+                 centre: Vec3|
+     -> Option<(String, u32)> {
+        let (px, py) = project(mvp, centre, size, size)
             .map(|(x, y)| (x as u32, y as u32))
             .unwrap_or((4, 4));
-        let hit = renderer.pick(&layers, &body.ranges, size, size, &mvp, &state, None, px, py);
-        match hit {
-            Some((kind, slot)) => {
-                let rec = body.records.by_slot(kind, slot);
+        let hit = renderer.pick(&layers, &body.ranges, size, size, mvp, state, None, px, py);
+        match &hit {
+            Some((key, slot)) => {
+                let rec = body.records.by_slot(key, *slot);
                 println!(
-                    "{label} @({px},{py}): {} slot {slot} — {}",
-                    kind.manifest_key(),
+                    "{label} @({px},{py}): {key} slot {slot} — {}",
                     rec.map(|r| r.name()).unwrap_or("<unresolved>")
                 );
             }
             None => println!("{label} @({px},{py}): no hit"),
         }
-        if expect_none && hit.is_some() {
-            println!("  [FAIL] expected no hit at background probe");
-        }
         hit
     };
-    let forehead = probe(&mut renderer, "forehead probe (frontal bbox centre)", frontal_centre, false);
+    // Skeletal + muscular visible (the Milestone-7 probe setup).
+    let forehead = probe(&mut renderer, "forehead probe, skeletal+muscular (frontal bbox centre)", &mvp, &both_state, frontal_centre);
     let femur = body.records.by_id("femur_right").unwrap();
     let femur_centre = Vec3::from_array(femur.bbox().unwrap().centre().map(|v| v as f32));
-    let _thigh = probe(&mut renderer, "thigh probe (femur_right bbox centre)", femur_centre, false);
-    let bg = renderer.pick(&layers, &body.ranges, size, size, &mvp, &state, None, 4, 4);
-    println!("corner probe @(4,4): {:?}", bg.map(|(k, s)| (k.manifest_key(), s)));
+    let _thigh = probe(&mut renderer, "thigh probe, skeletal+muscular (femur_right bbox centre)", &mvp, &both_state, femur_centre);
+    // All layers visible: the integumentary shell covers the forehead.
+    let _skin = probe(&mut renderer, "forehead probe, all layers", &mvp_all, &all_state, frontal_centre);
+    // Cardiovascular + nervous only: the heart's own centre.
+    let heart = body.records.by_id("heart").expect("heart record");
+    let heart_centre = Vec3::from_array(heart.bbox().unwrap().centre().map(|v| v as f32));
+    let cvn_state = SceneState::only(&["cardiovascular", "nervous"]);
+    let _heart = probe(&mut renderer, "heart probe, cardiovascular+nervous (heart bbox centre)", &mvp_all, &cvn_state, heart_centre);
+    let bg = renderer.pick(&layers, &body.ranges, size, size, &mvp, &both_state, None, 4, 4);
+    println!("corner probe @(4,4): {:?}", bg);
     if bg.is_some() {
         println!("  [FAIL] corner probe should be background");
         hard_fail = true;
     }
     // Self-consistency: re-render the id pass with only the picked
     // record's range; the same pixel must return the same id.
-    if let Some((kind, slot)) = forehead {
-        let range = body.ranges[&kind]
+    if let Some((key, slot)) = forehead {
+        let range = body.ranges[&key]
             .iter()
             .find(|r| r.slot == slot)
             .cloned()
@@ -356,27 +402,30 @@ fn verify(args: &[String]) -> ExitCode {
             size,
             size,
             &mvp,
-            &state,
-            Some((kind, &range)),
+            &both_state,
+            Some((key.as_str(), &range)),
             px,
             py,
         );
-        let pass = again == Some((kind, slot));
+        let pass = again == Some((key.clone(), slot));
         hard_fail |= !pass;
         println!(
-            "pick self-consistency ({} slot {slot}, range-restricted re-render): {:?} [{}]",
-            kind.manifest_key(),
-            again.map(|(k, s)| (k.manifest_key(), s)),
+            "pick self-consistency ({key} slot {slot}, range-restricted re-render): {:?} [{}]",
+            again,
             if pass { "PASS" } else { "FAIL" }
         );
-        if let Some(rec) = body.records.by_slot(kind, slot) {
+        if let Some(rec) = body.records.by_slot(&key, slot) {
             println!("\n-- record panel (picked) --");
-            print!("{}", model::panel_text(&body.records, rec));
+            print!("{}", model::panel_text(&body.records, &body.infos, rec));
         }
     }
     if let Some(rec) = body.records.by_id("femur_right") {
         println!("\n-- record panel (selection frame subject) --");
-        print!("{}", model::panel_text(&body.records, rec));
+        print!("{}", model::panel_text(&body.records, &body.infos, rec));
+    }
+    if let Some(rec) = body.records.by_id("heart") {
+        println!("\n-- record panel (heart) --");
+        print!("{}", model::panel_text(&body.records, &body.infos, rec));
     }
 
     println!(
@@ -402,9 +451,11 @@ fn main() -> ExitCode {
 
 // ---------------------------------------------------------------------------
 // Windowed viewer: same draw code, surface target. Mouse orbit /
-// wheel zoom / right-drag pan; S muscles... keys: S skeleton, M
-// muscles, W wireframe, R reset view; left click picks (panel text to
-// console, record highlighted). Not runnable on a headless machine.
+// wheel zoom / right-drag pan; keys: S skeletal, M muscular,
+// 1..9/0 toggle layers 1..10 in manifest order, I integumentary,
+// A all layers on, W wireframe, R reset view; left click picks
+// (panel text to console, record highlighted). Not runnable on a
+// headless machine.
 // ---------------------------------------------------------------------------
 
 #[cfg(not(target_arch = "wasm32"))]
@@ -432,12 +483,13 @@ fn view(args: &[String]) -> ExitCode {
     }
     let combined = body
         .records
-        .union_bbox(&[LayerKind::Skeleton, LayerKind::Muscle])
+        .union_bbox(&["skeletal", "muscular"])
         .expect("combined union bbox");
     let home_target = Vec3::from_array(combined.centre().map(|v| v as f32));
 
     struct App {
         body: BodyData,
+        data_dir: PathBuf,
         home_target: Vec3,
         cam: OrbitCamera,
         state: SceneState,
@@ -497,12 +549,16 @@ fn view(args: &[String]) -> ExitCode {
             };
             surface.configure(&gpu.device, &config);
             self.surface_format = format;
-            let layers: Vec<LayerGpu> = LayerKind::ALL
-                .iter()
-                .map(|&kind| {
-                    anatomica_native::render::upload_layer(&gpu.device, kind, &self.body.packs[&kind])
-                })
-                .collect();
+            let mut layers: Vec<LayerGpu> = Vec::new();
+            for info in &self.body.infos {
+                let pack = load_pack(&self.data_dir, &self.body, &info.key)
+                    .expect("pack reload for upload");
+                layers.push(anatomica_native::render::upload_layer(
+                    &gpu.device,
+                    info.clone(),
+                    &pack,
+                ));
+            }
             self.renderer = Some(Renderer::new(gpu, format));
             self.layers = layers;
             // Only the depth view of this target is used; its colour
@@ -615,8 +671,21 @@ fn view(args: &[String]) -> ExitCode {
                         match &key.logical_key {
                             Key::Named(NamedKey::Escape) => event_loop.exit(),
                             Key::Character(c) => match c.to_lowercase().as_str() {
-                                "s" => self.state.show_skeleton = !self.state.show_skeleton,
-                                "m" => self.state.show_muscles = !self.state.show_muscles,
+                                "s" => self.toggle_layer("skeletal"),
+                                "m" => self.toggle_layer("muscular"),
+                                "i" => self.toggle_layer("integumentary"),
+                                "a" => {
+                                    self.state.visible =
+                                        self.body.infos.iter().map(|l| l.key.clone()).collect();
+                                }
+                                "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "0" => {
+                                    let n: usize = c.parse().unwrap();
+                                    let idx = if n == 0 { 9 } else { n - 1 };
+                                    if let Some(info) = self.body.infos.get(idx) {
+                                        let key = info.key.clone();
+                                        self.toggle_layer(&key);
+                                    }
+                                }
                                 "w" => self.state.wireframe = !self.state.wireframe,
                                 "r" => {
                                     self.cam = OrbitCamera::new(self.home_target);
@@ -636,6 +705,12 @@ fn view(args: &[String]) -> ExitCode {
     }
 
     impl App {
+        fn toggle_layer(&mut self, key: &str) {
+            if !self.state.visible.remove(key) {
+                self.state.visible.insert(key.to_string());
+            }
+        }
+
         fn click_pick(&mut self) {
             let renderer = match &mut self.renderer {
                 Some(r) => r,
@@ -656,10 +731,10 @@ fn view(args: &[String]) -> ExitCode {
                 self.last.1 as u32,
             );
             match hit {
-                Some((kind, slot)) => {
-                    self.state.selected = Some((kind, slot));
-                    if let Some(rec) = self.body.records.by_slot(kind, slot) {
-                        print!("{}", model::panel_text(&self.body.records, rec));
+                Some((key, slot)) => {
+                    self.state.selected = Some((key.clone(), slot));
+                    if let Some(rec) = self.body.records.by_slot(&key, slot) {
+                        print!("{}", model::panel_text(&self.body.records, &self.body.infos, rec));
                     }
                 }
                 None => self.state.selected = None,
@@ -722,11 +797,13 @@ fn view(args: &[String]) -> ExitCode {
         }
     }
 
+    let initial_state = SceneState::all(&body.infos);
     let mut app = App {
         body,
+        data_dir,
         home_target,
         cam: OrbitCamera::new(home_target),
-        state: SceneState::default(),
+        state: initial_state,
         window: None,
         surface: None,
         surface_format: wgpu::TextureFormat::Rgba8Unorm,

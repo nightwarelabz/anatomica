@@ -1,90 +1,73 @@
-//! Manifest + records model: the JSON side of the web data pack
-//! (`web/data/manifest.json`, `web/data/records.json`), parsed with the
-//! same field names the web shell uses. The manifest's per-record
+//! Manifest + records model: the JSON side of the shell data pack
+//! (`web/data/manifest.json`, `web/data/records.json`), parsed with
+//! the same field names the web shell uses. The manifest's per-record
 //! ranges are the slot scheme shared by both shells: slot `n` of a
-//! layer is `ranges[n]`, and the pack's per-vertex recordIds are those
-//! slots — picking in either shell resolves through this table.
+//! layer is `ranges[n]`, and the pack's per-vertex recordIds are
+//! those slots — picking in either shell resolves through this table.
+//!
+//! Milestone 16: layers are the eleven Body Model systems. There is
+//! no hardcoded layer enum — the manifest is the source of truth for
+//! each layer's key, pick bit, label and colour (written there by
+//! tools/pack_geometry.py; the web shell's literals are asserted
+//! against it by tools/verify_web.js W1/W6).
 
 use serde::Deserialize;
 use serde_json::{Map, Value};
 use std::collections::BTreeMap;
 use std::path::Path;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub enum LayerKind {
-    Skeleton,
-    Muscle,
-}
-
-impl LayerKind {
-    pub const ALL: [LayerKind; 2] = [LayerKind::Skeleton, LayerKind::Muscle];
-
-    /// Key in manifest.json ("layers" map) and pack file stem.
-    pub fn manifest_key(&self) -> &'static str {
-        match self {
-            LayerKind::Skeleton => "skeleton",
-            LayerKind::Muscle => "muscles",
-        }
-    }
-
-    /// Value of the `layer` field in records.json.
-    pub fn records_layer(&self) -> &'static str {
-        match self {
-            LayerKind::Skeleton => "skeleton",
-            LayerKind::Muscle => "muscle",
-        }
-    }
-
-    /// Pick-id layer bit, identical to the web shell's LAYER_BIT.
-    pub fn pick_bit(&self) -> u32 {
-        match self {
-            LayerKind::Skeleton => 1,
-            LayerKind::Muscle => 2,
-        }
-    }
-
-    pub fn from_pick_bit(bit: u32) -> Option<LayerKind> {
-        match bit {
-            1 => Some(LayerKind::Skeleton),
-            2 => Some(LayerKind::Muscle),
-            _ => None,
-        }
-    }
-
-    pub fn label(&self) -> &'static str {
-        match self {
-            LayerKind::Skeleton => "Skeleton",
-            LayerKind::Muscle => "Muscles",
-        }
-    }
-
+/// One Body Model layer (system), as declared by the manifest.
+#[derive(Debug, Clone, PartialEq)]
+pub struct LayerInfo {
+    /// System key: manifest "layers" key, pack file stem, and the
+    /// `layer` field value in records.json — one name everywhere.
+    pub key: String,
+    pub label: String,
+    /// Pick-id layer bit (1..=11), identical to the web shell's
+    /// LAYER_BIT for this key.
+    pub pick_bit: u32,
     /// Base colour, identical to the web shell's LAYER_STYLE.
-    pub fn color(&self) -> [f32; 3] {
-        match self {
-            LayerKind::Skeleton => [0.78, 0.72, 0.60],
-            LayerKind::Muscle => [0.55, 0.22, 0.19],
-        }
+    pub color: [f32; 3],
+}
+
+impl LayerInfo {
+    pub fn from_manifest(manifest: &Manifest) -> Vec<LayerInfo> {
+        manifest
+            .layer_order
+            .iter()
+            .filter_map(|key| {
+                let l = manifest.layers.get(key)?;
+                Some(LayerInfo {
+                    key: key.clone(),
+                    label: l.label.clone(),
+                    pick_bit: l.pick_bit,
+                    color: l.color,
+                })
+            })
+            .collect()
+    }
+
+    pub fn by_key<'a>(layers: &'a [LayerInfo], key: &str) -> Option<&'a LayerInfo> {
+        layers.iter().find(|l| l.key == key)
+    }
+
+    pub fn by_pick_bit(layers: &[LayerInfo], bit: u32) -> Option<&LayerInfo> {
+        layers.iter().find(|l| l.pick_bit == bit)
     }
 }
 
-/// Encode/decode the pick id: `id = (layer_bit << 24) | slot` — the
-/// web shell's documented layout and slot scheme.
-///
-/// One deliberate deviation from the web shell's code, because the
-/// web code is buggy here (found by this milestone's roundtrip test,
-/// recorded in MILESTONE-7.md): the web fragment shader writes only
-/// the low three bytes of the id into RGB and fixes alpha at 1.0, so
-/// the layer bit (byte 3) never reaches the framebuffer; its decode
-/// computes `bit = id >>> 24` from a 24-bit reconstruction, which is
-/// always 0, and every pick resolves against the muscle layer. The
-/// native shell writes byte 3 into the alpha channel instead — alpha
-/// was the web's hit flag (0 = miss), and layer bits are 1/2, so
-/// alpha != 0 still means "hit" and now also carries the layer.
-pub fn encode_pick_id(kind: LayerKind, slot: u32) -> u32 {
-    (kind.pick_bit() << 24) | (slot & 0x00FF_FFFF)
+/// Encode/decode the pick id: `id = (layer_bit << 24) | slot`,
+/// byte 3 of the id riding in the framebuffer's alpha channel
+/// (alpha 0 = miss; 1..=11 = hit + layer). This is the codec the
+/// Milestone-7 roundtrip test specified and Milestone 7-FIX shipped
+/// in the web shell; both shells now implement exactly this, and the
+/// web side is regression-gated by tools/verify_web.js W6, which
+/// executes the shipped decoder over every slot of every layer.
+pub fn encode_pick_id(pick_bit: u32, slot: u32) -> u32 {
+    (pick_bit << 24) | (slot & 0x00FF_FFFF)
 }
 
-pub fn decode_pick_id(rgba: [u8; 4]) -> Option<(LayerKind, u32)> {
+pub fn decode_pick_id(rgba: [u8; 4], layers: &[LayerInfo]) -> Option<(String, u32)> {
     if rgba[3] == 0 {
         return None;
     }
@@ -92,12 +75,13 @@ pub fn decode_pick_id(rgba: [u8; 4]) -> Option<(LayerKind, u32)> {
         | ((rgba[1] as u32) << 8)
         | ((rgba[2] as u32) << 16)
         | ((rgba[3] as u32) << 24);
-    let kind = LayerKind::from_pick_bit(id >> 24)?;
-    Some((kind, id & 0x00FF_FFFF))
+    let info = LayerInfo::by_pick_bit(layers, id >> 24)?;
+    Some((info.key.clone(), id & 0x00FF_FFFF))
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Manifest {
+    pub layer_order: Vec<String>,
     pub layers: BTreeMap<String, ManifestLayer>,
 }
 
@@ -112,6 +96,9 @@ pub struct ManifestLayer {
     pub edge_indices: u32,
     pub records: u32,
     pub mesh_files: u32,
+    pub pick_bit: u32,
+    pub label: String,
+    pub color: [f32; 3],
     pub ranges: Vec<RecordRange>,
 }
 
@@ -124,6 +111,7 @@ pub struct RecordRange {
     pub index_start: u32,
     pub index_count: u32,
     pub mesh_files: u32,
+    pub cross_midline_fraction: Option<f64>,
 }
 
 #[derive(Debug, Deserialize, Clone, Copy)]
@@ -150,7 +138,7 @@ impl Bbox {
 }
 
 /// One entry of records.json — kept as raw JSON plus typed accessors,
-/// because bone and muscle records carry different field sets and the
+/// because the systems' records carry different field sets and the
 /// panel shows what is present (same rule as the web shell).
 #[derive(Debug, Clone)]
 pub struct Record {
@@ -167,12 +155,9 @@ impl Record {
     pub fn name(&self) -> &str {
         self.get_str("name").unwrap_or_else(|| self.id())
     }
-    pub fn layer(&self) -> Option<LayerKind> {
-        match self.get_str("layer") {
-            Some("skeleton") => Some(LayerKind::Skeleton),
-            Some("muscle") => Some(LayerKind::Muscle),
-            _ => None,
-        }
+    /// The record's layer key (a Body Model system), if it carries one.
+    pub fn layer(&self) -> Option<&str> {
+        self.get_str("layer")
     }
     pub fn slot(&self) -> Option<u32> {
         self.raw.get("slot").and_then(|v| v.as_u64()).map(|v| v as u32)
@@ -182,6 +167,17 @@ impl Record {
             .get("has_geometry")
             .and_then(|v| v.as_bool())
             .unwrap_or(false)
+    }
+    pub fn clinical_ids(&self) -> Vec<String> {
+        self.raw
+            .get("clinical_ids")
+            .and_then(|v| v.as_array())
+            .map(|a| {
+                a.iter()
+                    .filter_map(|v| v.as_str().map(|s| s.to_string()))
+                    .collect()
+            })
+            .unwrap_or_default()
     }
     pub fn bbox(&self) -> Option<Bbox> {
         let b = self.raw.get("bbox_canonical_cm")?;
@@ -199,26 +195,27 @@ pub struct RecordsFile {
 }
 
 impl RecordsFile {
-    /// Resolve (layer, slot) → record, the shared picking scheme.
-    pub fn by_slot(&self, kind: LayerKind, slot: u32) -> Option<&Record> {
+    /// Resolve (layer key, slot) → record, the shared picking scheme.
+    pub fn by_slot(&self, layer_key: &str, slot: u32) -> Option<&Record> {
         self.records
             .iter()
-            .find(|r| r.layer() == Some(kind) && r.slot() == Some(slot))
+            .find(|r| r.layer() == Some(layer_key) && r.slot() == Some(slot))
     }
 
     pub fn by_id(&self, id: &str) -> Option<&Record> {
         self.records.iter().find(|r| r.id() == id)
     }
 
-    /// Union of the bboxes of all records with geometry in `kinds`
+    /// Union of the bboxes of all records with geometry in `keys`
     /// (canonical cm) — the framing target both shells aim at.
-    pub fn union_bbox(&self, kinds: &[LayerKind]) -> Option<Bbox> {
+    pub fn union_bbox(&self, keys: &[&str]) -> Option<Bbox> {
         let mut mn = [f64::INFINITY; 3];
         let mut mx = [f64::NEG_INFINITY; 3];
         let mut any = false;
         for r in &self.records {
-            if !kinds.contains(&r.layer()?) {
-                continue;
+            match r.layer() {
+                Some(k) if keys.contains(&k) => {}
+                _ => continue,
             }
             if let Some(b) = r.bbox() {
                 any = true;
@@ -259,16 +256,40 @@ pub fn load_records(path: &Path) -> Result<RecordsFile, String> {
     Ok(RecordsFile { records, clinical })
 }
 
+/// Render a clinical field value of any authored shape (string,
+/// list of scalars, nested object) as one line of panel text.
+fn fmt_value(v: &Value) -> Option<String> {
+    match v {
+        Value::String(s) if !s.is_empty() => Some(s.clone()),
+        Value::Number(n) => Some(n.to_string()),
+        Value::Bool(b) => Some(b.to_string()),
+        Value::Array(a) => {
+            let parts: Vec<String> = a.iter().filter_map(fmt_value).collect();
+            if parts.is_empty() {
+                None
+            } else {
+                Some(parts.join("; "))
+            }
+        }
+        Value::Object(o) => Some(flatten_obj(o)),
+        _ => None,
+    }
+}
+
 /// Human-readable record panel text — the native shell's record-panel
 /// data hook (console here; the design's clinical UI layer later).
-/// Shows the fields the record actually carries, plus the linked
-/// Milestone-4 clinical record for muscles, verify flags in full.
-pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
+/// Shows the fields the record actually carries, plus its linked
+/// clinical records (all systems), verify flags in full.
+pub fn panel_text(records: &RecordsFile, layers: &[LayerInfo], rec: &Record) -> String {
     let mut s = String::new();
-    let layer = rec.layer().map(|k| k.label()).unwrap_or("?");
-    s.push_str(&format!("{} — {} [{}]\n", rec.name(), rec.id(), layer));
+    let layer_label = rec
+        .layer()
+        .and_then(|k| LayerInfo::by_key(layers, k))
+        .map(|l| l.label.as_str())
+        .unwrap_or("?");
+    s.push_str(&format!("{} — {} [{}]\n", rec.name(), rec.id(), layer_label));
     let fields: &[(&str, &str)] = match rec.layer() {
-        Some(LayerKind::Skeleton) => &[
+        Some("skeletal") => &[
             ("ta", "TA name"),
             ("division", "Division"),
             ("region", "Region"),
@@ -280,8 +301,9 @@ pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
         _ => &[
             ("side", "Side"),
             ("representation", "Representation"),
+            ("region", "Region"),
             ("region_group", "Region group"),
-            ("group_path", "Group path"),
+            ("subtree", "Subtree"),
         ],
     };
     for (key, label) in fields {
@@ -289,6 +311,12 @@ pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
             if !v.is_empty() {
                 s.push_str(&format!("  {label}: {v}\n"));
             }
+        }
+    }
+    if let Some(ids) = rec.raw.get("concept_ids").and_then(|v| v.as_array()) {
+        let names: Vec<&str> = ids.iter().filter_map(|v| v.as_str()).collect();
+        if !names.is_empty() {
+            s.push_str(&format!("  FMA concepts: {}\n", names.join(", ")));
         }
     }
     if let Some(arts) = rec.raw.get("articulations").and_then(|v| v.as_array()) {
@@ -333,18 +361,9 @@ pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
             ));
         }
     }
-    // Linked clinical record (muscles): Milestone-4 sourced fields.
-    let clinical_id = rec
-        .get_str("clinical_id")
-        .map(|s| s.to_string())
-        .or_else(|| {
-            if rec.layer() == Some(LayerKind::Muscle) && records.clinical.contains_key(rec.id()) {
-                Some(rec.id().to_string())
-            } else {
-                None
-            }
-        });
-    if let Some(cid) = clinical_id {
+    // Linked clinical records (every system): sourced fields shown
+    // in the shape they were authored; verify flags always in full.
+    for cid in rec.clinical_ids() {
         if let Some(c) = records.clinical.get(&cid) {
             s.push_str(&format!("  — clinical record {cid}"));
             if let Some(tier) = c.get("sourcing_tier").and_then(|v| v.as_str()) {
@@ -356,17 +375,15 @@ pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
                 ("insertion", "Insertion"),
                 ("innervation", "Innervation"),
                 ("arterial_supply", "Arterial supply"),
+                ("actions", "Actions"),
+                ("relations", "Relations"),
+                ("contents", "Contents"),
+                ("description", "Description"),
+                ("clinical_significance", "Clinical significance"),
+                ("prevalence", "Prevalence"),
             ] {
-                if let Some(v) = c.get(key).and_then(|v| v.as_str()) {
-                    if !v.is_empty() {
-                        s.push_str(&format!("    {label}: {v}\n"));
-                    }
-                }
-            }
-            if let Some(actions) = c.get("actions").and_then(|v| v.as_array()) {
-                let a: Vec<&str> = actions.iter().filter_map(|v| v.as_str()).collect();
-                if !a.is_empty() {
-                    s.push_str(&format!("    Actions: {}\n", a.join("; ")));
+                if let Some(v) = c.get(key).and_then(fmt_value) {
+                    s.push_str(&format!("    {label}: {v}\n"));
                 }
             }
             if let Some(verify) = c.get("verify").and_then(|v| v.as_array()) {
@@ -378,9 +395,9 @@ pub fn panel_text(records: &RecordsFile, rec: &Record) -> String {
                     }
                 }
             }
-            if let Some(note) = c.get("note").and_then(|v| v.as_str()) {
-                if !note.is_empty() {
-                    s.push_str(&format!("    Note: {note}\n"));
+            if let Some(note) = c.get("note") {
+                if let Some(t) = fmt_value(note) {
+                    s.push_str(&format!("    Note: {t}\n"));
                 }
             }
         }

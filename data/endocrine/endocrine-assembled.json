@@ -1,0 +1,189 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled endocrine layer \u2014 Milestone 16",
+  "generated_by": "tools/assemble_systems.py",
+  "input": "data/endocrine/endocrine-geometry.json (Milestone 13)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty; byte-identical duplicates within a composition de-duplicated",
+  "partof_rollup_records": [],
+  "partof_rollup_note": "0 records list PART-OF files beyond their IS-A composition. In these modules the PART-OF lists of whole-concept records are descendant rollups (branches' meshes belonging to other records), not the record's own geometry; under the mesh-set rule they are not assembled into the record. (In the muscular module the PART-OF set was a subset of IS-A for every record \u2014 verified at Milestone 6; that property does not hold here and is not asserted.)",
+  "records_sourced_from_partof": 0,
+  "flagged_unknowns": [
+   "Register_sketch unknown 1: a single global frame for all concepts was assumed at Milestone 3 for soft tissues and measured coherent for the muscular layer at Milestone 6. This assembly applies the skeletal transform unchanged to every system; per-layer coherence against the skeletal envelope is measured by tools/assembly_check_all.py, not assumed here.",
+   "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
+   "Per-part pose registration is not performed; boxes are in the source pose."
+  ],
+  "records_with_geometry": 3,
+  "records_without_geometry": [],
+  "deduped_files": [],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -7.5491600000000005,
+    104.552,
+    6.3135
+   ],
+   "max": [
+    6.25344,
+    153.554,
+    11.0563
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "adrenal-gland.left-adrenal-gland",
+   "name": "left adrenal gland",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15630"
+   ],
+   "concept_names": [
+    "left adrenal gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3129",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3129.obj",
+     "vertices": 2000,
+     "faces": 3996
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2000,
+    "faces": 3996
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2000,
+     "faces": 3996
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2000,
+     "faces": 3996
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.5491600000000005,
+     106.334,
+     6.3135
+    ],
+    "max": [
+     -2.7315000000000005,
+     110.822,
+     8.32855
+    ]
+   }
+  },
+  {
+   "record_id": "adrenal-gland.right-adrenal-gland",
+   "name": "right adrenal gland",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15629"
+   ],
+   "concept_names": [
+    "right adrenal gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3130",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3130.obj",
+     "vertices": 1149,
+     "faces": 2294
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1149,
+    "faces": 2294
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1149,
+     "faces": 2294
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1149,
+     "faces": 2294
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.06302,
+     104.552,
+     7.510550000000001
+    ],
+    "max": [
+     6.25344,
+     108.78,
+     10.234200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "pituitary-gland",
+   "name": "pituitary gland",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA13889"
+   ],
+   "concept_names": [
+    "pituitary gland"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1796",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1796.obj",
+     "vertices": 609,
+     "faces": 1164
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 609,
+    "faces": 1164
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 609,
+     "faces": 1164
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 609,
+     "faces": 1164
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.551969,
+     152.257,
+     10.110500000000002
+    ],
+    "max": [
+     0.6791100000000001,
+     153.554,
+     11.0563
+    ]
+   }
+  }
+ ]
+}

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ANATOMICA — Web Shell v2 (real geometry)</title>
+<title>ANATOMICA — Web Shell (Body Model v1, all systems)</title>
 <style>
   :root {
     --bg: #10141a; --panel: #171d26; --panel2: #1d2531; --line: #2b3646;
@@ -67,7 +67,7 @@
 <div id="app">
   <header>
     <span class="wordmark">ANATOMICA</span>
-    <span class="sub">web shell v2 — real assembled geometry (BodyParts3D 4.0, canonical frame, cm)</span>
+    <span class="sub">web shell — all 11 systems, real assembled geometry (BodyParts3D 4.0, canonical frame, cm)</span>
     <span class="spacer"></span>
     <label><input type="checkbox" id="optLabels"> labels</label>
     <label><input type="checkbox" id="optWire"> wireframe</label>
@@ -79,8 +79,7 @@
       <h3>Search</h3>
       <input type="search" id="search" placeholder="name, TA name, id…">
       <h3>Layers</h3>
-      <label class="chk"><input type="checkbox" id="laySkel" checked> Skeleton <span class="cnt" id="cntSkel"></span></label>
-      <label class="chk"><input type="checkbox" id="layMusc" checked> Muscles <span class="cnt" id="cntMusc"></span></label>
+      <div id="layerToggles"></div>
       <h3>Region filter</h3>
       <select id="regionSel"><option value="">All regions</option></select>
       <h3>Records</h3>

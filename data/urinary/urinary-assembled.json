@@ -1,0 +1,342 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled urinary layer \u2014 Milestone 16",
+  "generated_by": "tools/assemble_systems.py",
+  "input": "data/urinary/urinary-geometry.json (Milestone 12)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty; byte-identical duplicates within a composition de-duplicated",
+  "partof_rollup_records": [],
+  "partof_rollup_note": "0 records list PART-OF files beyond their IS-A composition. In these modules the PART-OF lists of whole-concept records are descendant rollups (branches' meshes belonging to other records), not the record's own geometry; under the mesh-set rule they are not assembled into the record. (In the muscular module the PART-OF set was a subset of IS-A for every record \u2014 verified at Milestone 6; that property does not hold here and is not asserted.)",
+  "records_sourced_from_partof": 0,
+  "flagged_unknowns": [
+   "Register_sketch unknown 1: a single global frame for all concepts was assumed at Milestone 3 for soft tissues and measured coherent for the muscular layer at Milestone 6. This assembly applies the skeletal transform unchanged to every system; per-layer coherence against the skeletal envelope is measured by tools/assembly_check_all.py, not assumed here.",
+   "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
+   "Per-part pose registration is not performed; boxes are in the source pose."
+  ],
+  "records_with_geometry": 6,
+  "records_without_geometry": [],
+  "deduped_files": [],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -9.0383,
+    70.8569,
+    5.6525300000000005
+   ],
+   "max": [
+    8.75754,
+    109.04400000000001,
+    18.4174
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "kidney.left-kidney",
+   "name": "left kidney",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7205"
+   ],
+   "concept_names": [
+    "left kidney"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3145",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3145.obj",
+     "vertices": 1497,
+     "faces": 2982
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1497,
+    "faces": 2982
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1497,
+     "faces": 2982
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1497,
+     "faces": 2982
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -9.0383,
+     98.44940000000001,
+     5.9591400000000005
+    ],
+    "max": [
+     -3.28399,
+     109.04400000000001,
+     10.018500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "ureter.left-ureter",
+   "name": "left ureter",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15572"
+   ],
+   "concept_names": [
+    "left ureter"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3144",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3144.obj",
+     "vertices": 1125,
+     "faces": 2062
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1125,
+    "faces": 2062
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1125,
+     "faces": 2062
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1125,
+     "faces": 2062
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -7.93766,
+     81.8039,
+     6.1611
+    ],
+    "max": [
+     -2.32688,
+     107.257,
+     11.975100000000001
+    ]
+   }
+  },
+  {
+   "record_id": "kidney.right-kidney",
+   "name": "right kidney",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7204"
+   ],
+   "concept_names": [
+    "right kidney"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3147",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3147.obj",
+     "vertices": 1163,
+     "faces": 2310
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1163,
+    "faces": 2310
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1163,
+     "faces": 2310
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1163,
+     "faces": 2310
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.0427600000000004,
+     96.6812,
+     6.470010000000001
+    ],
+    "max": [
+     8.75754,
+     107.12400000000001,
+     11.185500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "ureter.right-ureter",
+   "name": "right ureter",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15571"
+   ],
+   "concept_names": [
+    "right ureter"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3146",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3146.obj",
+     "vertices": 1132,
+     "faces": 1924
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1132,
+    "faces": 1924
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1924
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1924
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.9399290000000001,
+     81.1203,
+     6.034590000000001
+    ],
+    "max": [
+     7.27935,
+     105.7,
+     11.8969
+    ]
+   }
+  },
+  {
+   "record_id": "urethra",
+   "name": "urethra",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19667"
+   ],
+   "concept_names": [
+    "urethra"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3148",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3148.obj",
+     "vertices": 358,
+     "faces": 440
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 358,
+    "faces": 440
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 358,
+     "faces": 440
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 358,
+     "faces": 440
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.031363300000000004,
+     70.8569,
+     7.99527
+    ],
+    "max": [
+     0.160824,
+     79.2512,
+     18.4174
+    ]
+   }
+  },
+  {
+   "record_id": "urinary-bladder",
+   "name": "urinary bladder",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15900"
+   ],
+   "concept_names": [
+    "urinary bladder"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3149",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3149.obj",
+     "vertices": 127,
+     "faces": 226
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 127,
+    "faces": 226
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 127,
+     "faces": 226
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 127,
+     "faces": 226
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2623800000000003,
+     78.9732,
+     5.6525300000000005
+    ],
+    "max": [
+     3.41466,
+     82.9989,
+     12.824000000000002
+    ]
+   }
+  }
+ ]
+}

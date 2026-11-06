@@ -10,7 +10,7 @@ pub mod model;
 pub mod pack;
 pub mod render;
 
-use model::{LayerKind, ManifestLayer};
+use model::ManifestLayer;
 use pack::Pack;
 
 /// The startup handshake between a pack and the manifest that
@@ -19,11 +19,11 @@ use pack::Pack;
 /// (passed, message) line per comparison — the native shell refuses
 /// to render a pack that fails this (no silent misreads, design/08).
 pub fn pack_manifest_report(
-    kind: LayerKind,
+    key: &str,
     pack: &Pack,
     layer: &ManifestLayer,
 ) -> Vec<(bool, String)> {
-    let name = kind.manifest_key();
+    let name = key;
     let mut out: Vec<(bool, String)> = Vec::new();
     let mut cmp = |label: &str, got: u64, want: u64| {
         out.push((

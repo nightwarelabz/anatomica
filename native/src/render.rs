@@ -10,8 +10,9 @@
 //! read back; the windowed `view` mode reuses the same draw code with
 //! a surface target.
 
-use crate::model::{LayerKind, RecordRange};
+use crate::model::{LayerInfo, RecordRange};
 use crate::pack::Pack;
+use std::collections::BTreeSet;
 use bytemuck::{Pod, Zeroable};
 use glam::Mat4;
 use std::time::Instant;
@@ -212,9 +213,8 @@ fn vs_main(@location(0) p: vec3<f32>, @location(2) slot: u32) -> VsOut {
 fn fs_main(in: VsOut) -> @location(0) vec4<f32> {
   let id = (u.layer_bit << 24u) | in.slot;
   // Byte 3 of the id (the layer bit) rides in alpha: RGB only holds
-  // 24 bits. Alpha 0 = miss (the clear value); 1/2 = layer bit.
-  // See model::decode_pick_id for why the web shell's RGB-only
-  // write loses the layer.
+  // 24 bits. Alpha 0 = miss (the clear value); 1..11 = layer bit.
+  // The codec is shared with the web shell (model::decode_pick_id).
   return vec4<f32>(
     f32(id & 255u) / 255.0,
     f32((id >> 8u) & 255u) / 255.0,
@@ -224,7 +224,7 @@ fn fs_main(in: VsOut) -> @location(0) vec4<f32> {
 "#;
 
 pub struct LayerGpu {
-    pub kind: LayerKind,
+    pub info: LayerInfo,
     pub positions: wgpu::Buffer,
     pub normals: wgpu::Buffer,
     pub slots: wgpu::Buffer,
@@ -234,7 +234,7 @@ pub struct LayerGpu {
     pub edge_index_count: u32,
 }
 
-pub fn upload_layer(device: &wgpu::Device, kind: LayerKind, pack: &Pack) -> LayerGpu {
+pub fn upload_layer(device: &wgpu::Device, info: LayerInfo, pack: &Pack) -> LayerGpu {
     use wgpu::util::DeviceExt;
     let mk = |label: &str, bytes: &[u8], usage: wgpu::BufferUsages| {
         device.create_buffer_init(&wgpu::util::BufferInitDescriptor {
@@ -243,9 +243,9 @@ pub fn upload_layer(device: &wgpu::Device, kind: LayerKind, pack: &Pack) -> Laye
             usage,
         })
     };
-    let name = kind.manifest_key();
+    let name = info.key.clone();
     LayerGpu {
-        kind,
+        info,
         positions: mk(
             &format!("{name} positions"),
             bytemuck::cast_slice(&pack.positions),
@@ -276,37 +276,48 @@ pub fn upload_layer(device: &wgpu::Device, kind: LayerKind, pack: &Pack) -> Laye
     }
 }
 
-/// What to draw: layer visibility, selection, dimming, wireframe —
-/// the web shell's display state, minus hover.
-#[derive(Debug, Clone, Copy)]
+/// What to draw: layer visibility, selection, focus dimming,
+/// wireframe — the web shell's display state, minus hover.
+#[derive(Debug, Clone)]
 pub struct SceneState {
-    pub show_skeleton: bool,
-    pub show_muscles: bool,
-    pub selected: Option<(LayerKind, u32)>,
+    /// Layer keys currently drawn (and pickable).
+    pub visible: BTreeSet<String>,
+    pub selected: Option<(String, u32)>,
+    /// When set, visible layers outside the focus set are drawn
+    /// dimmed (selection machinery with a slot that matches nothing)
+    /// — the highlighted-systems view.
+    pub focus: Option<BTreeSet<String>>,
     /// Dim factor for non-selected records while a selection is
     /// active (web shell default when its dim option is on: 0.62).
     pub dim: f32,
     pub wireframe: bool,
 }
 
-impl Default for SceneState {
-    fn default() -> Self {
+impl SceneState {
+    /// All layers visible, nothing selected.
+    pub fn all(layers: &[LayerInfo]) -> SceneState {
         SceneState {
-            show_skeleton: true,
-            show_muscles: true,
+            visible: layers.iter().map(|l| l.key.clone()).collect(),
             selected: None,
+            focus: None,
             dim: 0.62,
             wireframe: false,
         }
     }
-}
 
-impl SceneState {
-    pub fn visible(&self, kind: LayerKind) -> bool {
-        match kind {
-            LayerKind::Skeleton => self.show_skeleton,
-            LayerKind::Muscle => self.show_muscles,
+    /// Only the named layers visible.
+    pub fn only(keys: &[&str]) -> SceneState {
+        SceneState {
+            visible: keys.iter().map(|s| s.to_string()).collect(),
+            selected: None,
+            focus: None,
+            dim: 0.62,
+            wireframe: false,
         }
+    }
+
+    pub fn visible(&self, info: &LayerInfo) -> bool {
+        self.visible.contains(&info.key)
     }
 }
 
@@ -575,17 +586,29 @@ impl Renderer {
     ) {
         self.shade_pool.reset();
         for layer in layers {
-            if !state.visible(layer.kind) {
+            if !state.visible(&layer.info) {
                 continue;
             }
-            let (sel_active, sel_slot) = match state.selected {
-                Some((kind, slot)) if kind == layer.kind => (1, slot),
-                _ => (0, 0),
+            // Focus dimming reuses the selection path: a layer
+            // outside the focus set is drawn with selection active
+            // on a slot that matches nothing, so every fragment dims.
+            let in_focus = state
+                .focus
+                .as_ref()
+                .map(|f| f.contains(&layer.info.key))
+                .unwrap_or(true);
+            let (sel_active, sel_slot) = if !in_focus {
+                (1, u32::MAX)
+            } else {
+                match &state.selected {
+                    Some((key, slot)) if *key == layer.info.key => (1, *slot),
+                    _ => (0, 0),
+                }
             };
             let uniforms = ShadeUniforms {
                 mvp: mvp.to_cols_array_2d(),
                 mv: mv.to_cols_array_2d(),
-                color: layer.kind.color(),
+                color: layer.info.color,
                 dim: if sel_active == 1 { state.dim } else { 0.0 },
                 sel_slot,
                 sel_active,
@@ -619,24 +642,24 @@ impl Renderer {
         &mut self,
         pass: &mut wgpu::RenderPass<'_>,
         layers: &[LayerGpu],
-        ranges: &std::collections::HashMap<LayerKind, Vec<RecordRange>>,
+        ranges: &std::collections::HashMap<String, Vec<RecordRange>>,
         mvp: &Mat4,
         state: &SceneState,
-        restrict: Option<(LayerKind, &RecordRange)>,
+        restrict: Option<(&str, &RecordRange)>,
     ) {
         self.pick_pool.reset();
         for layer in layers {
-            if !state.visible(layer.kind) {
+            if !state.visible(&layer.info) {
                 continue;
             }
-            if let Some((kind, _)) = restrict {
-                if kind != layer.kind {
+            if let Some((key, _)) = restrict {
+                if key != layer.info.key {
                     continue;
                 }
             }
             let uniforms = PickUniforms {
                 mvp: mvp.to_cols_array_2d(),
-                layer_bit: layer.kind.pick_bit(),
+                layer_bit: layer.info.pick_bit,
                 _pad: [0; 3],
             };
             let offset = self.pick_pool.write(&self.gpu.queue, &uniforms);
@@ -799,15 +822,15 @@ impl Renderer {
     pub fn pick(
         &mut self,
         layers: &[LayerGpu],
-        ranges: &std::collections::HashMap<LayerKind, Vec<RecordRange>>,
+        ranges: &std::collections::HashMap<String, Vec<RecordRange>>,
         width: u32,
         height: u32,
         mvp: &Mat4,
         state: &SceneState,
-        restrict: Option<(LayerKind, &RecordRange)>,
+        restrict: Option<(&str, &RecordRange)>,
         px: u32,
         py: u32,
-    ) -> Option<(LayerKind, u32)> {
+    ) -> Option<(String, u32)> {
         let target = make_target(
             &self.gpu.device,
             width,
@@ -847,7 +870,8 @@ impl Renderer {
         self.gpu.queue.submit([encoder.finish()]);
         self.gpu.wait();
         let px_bytes = read_pixel(&self.gpu, &target.color, px, py);
-        crate::model::decode_pick_id(px_bytes)
+        let infos: Vec<LayerInfo> = layers.iter().map(|l| l.info.clone()).collect();
+        crate::model::decode_pick_id(px_bytes, &infos)
     }
 }
 

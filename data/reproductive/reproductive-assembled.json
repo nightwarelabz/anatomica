@@ -1,0 +1,748 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled reproductive layer \u2014 Milestone 16",
+  "generated_by": "tools/assemble_systems.py",
+  "input": "data/reproductive/reproductive-geometry.json (Milestone 14)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty; byte-identical duplicates within a composition de-duplicated",
+  "partof_rollup_records": [],
+  "partof_rollup_note": "0 records list PART-OF files beyond their IS-A composition. In these modules the PART-OF lists of whole-concept records are descendant rollups (branches' meshes belonging to other records), not the record's own geometry; under the mesh-set rule they are not assembled into the record. (In the muscular module the PART-OF set was a subset of IS-A for every record \u2014 verified at Milestone 6; that property does not hold here and is not asserted.)",
+  "records_sourced_from_partof": 3,
+  "flagged_unknowns": [
+   "Register_sketch unknown 1: a single global frame for all concepts was assumed at Milestone 3 for soft tissues and measured coherent for the muscular layer at Milestone 6. This assembly applies the skeletal transform unchanged to every system; per-layer coherence against the skeletal envelope is measured by tools/assembly_check_all.py, not assumed here.",
+   "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
+   "Per-part pose registration is not performed; boxes are in the source pose."
+  ],
+  "records_with_geometry": 13,
+  "records_without_geometry": [],
+  "deduped_files": [],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -5.99573,
+    68.9753,
+    1.69086
+   ],
+   "max": [
+    6.1809,
+    82.89,
+    20.086100000000002
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "epididymis.left-epididymis",
+   "name": "left epididymis",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA18257"
+   ],
+   "concept_names": [
+    "left epididymis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3136",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3136.obj",
+     "vertices": 184,
+     "faces": 238
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 184,
+    "faces": 238
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 184,
+     "faces": 238
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.38831,
+     69.9268,
+     13.933000000000002
+    ],
+    "max": [
+     -1.29962,
+     72.4972,
+     15.958000000000002
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "seminal-vesicle.left-seminal-vesicle",
+   "name": "left seminal vesicle",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19388"
+   ],
+   "concept_names": [
+    "left seminal vesicle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3137",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3137.obj",
+     "vertices": 244,
+     "faces": 370
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 244,
+    "faces": 370
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 244,
+     "faces": 370
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.4014000000000006,
+     78.8843,
+     5.52228
+    ],
+    "max": [
+     -0.23584800000000003,
+     81.83170000000001,
+     7.49583
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "testis.left-testis",
+   "name": "left testis",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7212"
+   ],
+   "concept_names": [
+    "left testis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3138",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3138.obj",
+     "vertices": 107,
+     "faces": 210
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 107,
+    "faces": 210
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 107,
+     "faces": 210
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.7558100000000003,
+     68.9753,
+     14.1355
+    ],
+    "max": [
+     -0.749754,
+     71.8683,
+     16.3514
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "epididymis.right-epididymis",
+   "name": "right epididymis",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA18256"
+   ],
+   "concept_names": [
+    "right epididymis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3141",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3141.obj",
+     "vertices": 115,
+     "faces": 76
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 115,
+    "faces": 76
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 115,
+     "faces": 76
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.67162,
+     70.0684,
+     14.0176
+    ],
+    "max": [
+     2.60834,
+     72.48780000000001,
+     15.9387
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "seminal-vesicle.right-seminal-vesicle",
+   "name": "right seminal vesicle",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19387"
+   ],
+   "concept_names": [
+    "right seminal vesicle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3143",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3143.obj",
+     "vertices": 235,
+     "faces": 360
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 235,
+    "faces": 360
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 235,
+     "faces": 360
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.363146,
+     78.88810000000001,
+     5.4870600000000005
+    ],
+    "max": [
+     3.53238,
+     81.8284,
+     7.50521
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "testis.right-testis",
+   "name": "right testis",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7211"
+   ],
+   "concept_names": [
+    "right testis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3142",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3142.obj",
+     "vertices": 108,
+     "faces": 212
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 108,
+    "faces": 212
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 108,
+     "faces": 212
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.04597,
+     69.056,
+     14.119
+    ],
+    "max": [
+     3.0846,
+     71.89880000000001,
+     16.3355
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "prostate",
+   "name": "prostate",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA9600"
+   ],
+   "concept_names": [
+    "prostate"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3139",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3139.obj",
+     "vertices": 223,
+     "faces": 442
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 223,
+    "faces": 442
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 223,
+     "faces": 442
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 223,
+     "faces": 442
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.64578,
+     77.20830000000001,
+     6.450490000000001
+    ],
+    "max": [
+     1.78262,
+     79.2439,
+     9.646080000000001
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "corpus-cavernosum-of-penis",
+   "name": "corpus cavernosum of penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19618"
+   ],
+   "concept_names": [
+    "corpus cavernosum of penis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3132",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3132.obj",
+     "vertices": 830,
+     "faces": 1272
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 830,
+    "faces": 1272
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 830,
+     "faces": 1272
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.11028,
+     70.8396,
+     6.450320000000001
+    ],
+    "max": [
+     3.2107500000000004,
+     78.86760000000001,
+     19.561700000000002
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "corpus-spongiosum-of-penis",
+   "name": "corpus spongiosum of penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19617"
+   ],
+   "concept_names": [
+    "corpus spongiosum of penis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3133",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3133.obj",
+     "vertices": 296,
+     "faces": 576
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 296,
+    "faces": 576
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 296,
+     "faces": 576
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.997398,
+     70.8947,
+     7.50153
+    ],
+    "max": [
+     1.12803,
+     78.0231,
+     18.7136
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "glans-penis",
+   "name": "glans penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA18247"
+   ],
+   "concept_names": [
+    "glans penis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3134",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3134.obj",
+     "vertices": 942,
+     "faces": 1374
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 942,
+    "faces": 1374
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 942,
+     "faces": 1374
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.41674,
+     70.7639,
+     17.6125
+    ],
+    "max": [
+     1.55145,
+     73.8116,
+     20.086100000000002
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "mons-pubis",
+   "name": "mons pubis",
+   "side": "un-sided",
+   "representation": "organ",
+   "concept_ids": [
+    "FMA20218"
+   ],
+   "concept_names": [
+    "mons pubis"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ2815",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2815.obj",
+     "vertices": 5523,
+     "faces": 2960
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5523,
+    "faces": 2960
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5523,
+     "faces": 2960
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.99573,
+     76.5261,
+     14.984800000000002
+    ],
+    "max": [
+     6.1809,
+     82.89,
+     18.7252
+    ]
+   },
+   "sex_line": "female"
+  },
+  {
+   "record_id": "perineum",
+   "name": "perineum",
+   "side": "un-sided",
+   "representation": "organ",
+   "concept_ids": [
+    "FMA9579"
+   ],
+   "concept_names": [
+    "perineum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1450",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1450.obj",
+     "vertices": 250,
+     "faces": 368
+    },
+    {
+     "fj": "FJ1450M",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1450M.obj",
+     "vertices": 250,
+     "faces": 368
+    },
+    {
+     "fj": "FJ2543",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2543.obj",
+     "vertices": 240,
+     "faces": 364
+    },
+    {
+     "fj": "FJ2548",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2548.obj",
+     "vertices": 250,
+     "faces": 368
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 990,
+    "faces": 1468
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 990,
+     "faces": 1468
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.48441,
+     75.361,
+     1.69086
+    ],
+    "max": [
+     1.4787400000000002,
+     77.4906,
+     3.8724400000000005
+    ]
+   },
+   "sex_line": "shared"
+  },
+  {
+   "record_id": "perineum.anal-part-of-perineum",
+   "name": "anal part of perineum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA20347"
+   ],
+   "concept_names": [
+    "anal part of perineum"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1450",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1450.obj",
+     "vertices": 250,
+     "faces": 368
+    },
+    {
+     "fj": "FJ1450M",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1450M.obj",
+     "vertices": 250,
+     "faces": 368
+    },
+    {
+     "fj": "FJ2543",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2543.obj",
+     "vertices": 240,
+     "faces": 364
+    },
+    {
+     "fj": "FJ2548",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2548.obj",
+     "vertices": 250,
+     "faces": 368
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 990,
+    "faces": 1468
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 990,
+     "faces": 1468
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.48441,
+     75.361,
+     1.69086
+    ],
+    "max": [
+     1.4787400000000002,
+     77.4906,
+     3.8724400000000005
+    ]
+   },
+   "sex_line": "shared"
+  }
+ ]
+}

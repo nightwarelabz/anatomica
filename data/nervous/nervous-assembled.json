@@ -1,0 +1,7668 @@
+{
+ "meta": {
+  "title": "ANATOMICA assembled nervous layer \u2014 Milestone 16",
+  "generated_by": "tools/assemble_systems.py",
+  "input": "data/nervous/nervous-geometry.json (Milestone 9)",
+  "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior (Phase-1 convention)",
+  "transform": "app = (-bp_x, bp_z, -bp_y) * 0.1; signed permutation, determinant -1 vs canonical handedness",
+  "winding": "triangle winding flips under this transform; shells must flip index winding (or culling/normals) at import",
+  "mesh_set_rule": "IS-A composition primary; PART-OF only where IS-A is empty; byte-identical duplicates within a composition de-duplicated",
+  "partof_rollup_records": [
+   {
+    "record_id": "brain.hypothalamus",
+    "partof_files_beyond_isa": 2
+   },
+   {
+    "record_id": "brain.midbrain",
+    "partof_files_beyond_isa": 5
+   }
+  ],
+  "partof_rollup_note": "2 records list PART-OF files beyond their IS-A composition. In these modules the PART-OF lists of whole-concept records are descendant rollups (branches' meshes belonging to other records), not the record's own geometry; under the mesh-set rule they are not assembled into the record. (In the muscular module the PART-OF set was a subset of IS-A for every record \u2014 verified at Milestone 6; that property does not hold here and is not asserted.)",
+  "records_sourced_from_partof": 15,
+  "flagged_unknowns": [
+   "Register_sketch unknown 1: a single global frame for all concepts was assumed at Milestone 3 for soft tissues and measured coherent for the muscular layer at Milestone 6. This assembly applies the skeletal transform unchanged to every system; per-layer coherence against the skeletal envelope is measured by tools/assembly_check_all.py, not assumed here.",
+   "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
+   "Per-part pose registration is not performed; boxes are in the source pose."
+  ],
+  "records_with_geometry": 133,
+  "records_without_geometry": [],
+  "deduped_files": [],
+  "union_bbox_canonical_cm": {
+   "min": [
+    -6.889340000000001,
+    145.85999999999999,
+    -1.0329300000000001
+   ],
+   "max": [
+    6.99404,
+    163.04600000000002,
+    18.5476
+   ]
+  }
+ },
+ "records": [
+  {
+   "record_id": "nerve.left-anterior-ethmoidal-nerve",
+   "name": "left anterior ethmoidal nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52677"
+   ],
+   "concept_names": [
+    "left anterior ethmoidal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1283",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1283.obj",
+     "vertices": 169,
+     "faces": 290
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 169,
+    "faces": 290
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 169,
+     "faces": 290
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.5725600000000002,
+     152.71400000000003,
+     14.0064
+    ],
+    "max": [
+     -0.80001,
+     152.85999999999999,
+     14.445599999999999
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-anterior-ethmoidal-nerve",
+   "name": "right anterior ethmoidal nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52676"
+   ],
+   "concept_names": [
+    "right anterior ethmoidal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1333",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1333.obj",
+     "vertices": 154,
+     "faces": 236
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 154,
+    "faces": 236
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 154,
+     "faces": 236
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.9300440000000001,
+     152.71099999999998,
+     14.008000000000003
+    ],
+    "max": [
+     1.70401,
+     152.859,
+     14.4435
+    ]
+   }
+  },
+  {
+   "record_id": "ganglion.left-ciliary-ganglion",
+   "name": "left ciliary ganglion",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA53550"
+   ],
+   "concept_names": [
+    "left ciliary ganglion"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1288",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1288.obj",
+     "vertices": 94,
+     "faces": 180
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 94,
+    "faces": 180
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 94,
+     "faces": 180
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.57193,
+     152.395,
+     13.081000000000001
+    ],
+    "max": [
+     -2.24981,
+     152.651,
+     13.4028
+    ]
+   }
+  },
+  {
+   "record_id": "ganglion.right-ciliary-ganglion",
+   "name": "right ciliary ganglion",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA53549"
+   ],
+   "concept_names": [
+    "right ciliary ganglion"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1339",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1339.obj",
+     "vertices": 125,
+     "faces": 246
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 125,
+    "faces": 246
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 125,
+     "faces": 246
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.3795200000000003,
+     152.39600000000002,
+     13.079900000000002
+    ],
+    "max": [
+     2.7039100000000005,
+     152.653,
+     13.4058
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-frontal-nerve",
+   "name": "left frontal nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52640"
+   ],
+   "concept_names": [
+    "left frontal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1290",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1290.obj",
+     "vertices": 631,
+     "faces": 1258
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 631,
+    "faces": 1258
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 631,
+     "faces": 1258
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.45779,
+     152.846,
+     12.030500000000002
+    ],
+    "max": [
+     -1.9191,
+     154.029,
+     14.194900000000002
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-frontal-nerve",
+   "name": "right frontal nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52639"
+   ],
+   "concept_names": [
+    "right frontal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1341",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1341.obj",
+     "vertices": 631,
+     "faces": 1258
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 631,
+    "faces": 1258
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 631,
+     "faces": 1258
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.0503,
+     152.846,
+     12.0306
+    ],
+    "max": [
+     2.58873,
+     154.029,
+     14.195599999999999
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.inferior-branch-of-left-oculomotor-nerve",
+   "name": "inferior branch of left oculomotor nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52577"
+   ],
+   "concept_names": [
+    "inferior branch of left oculomotor nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1293",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1293.obj",
+     "vertices": 1286,
+     "faces": 1654
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1286,
+    "faces": 1654
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1286,
+     "faces": 1654
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.7741500000000006,
+     150.58,
+     11.4208
+    ],
+    "max": [
+     -1.316,
+     153.101,
+     15.0075
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.inferior-branch-of-right-oculomotor-nerve",
+   "name": "inferior branch of right oculomotor nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52576"
+   ],
+   "concept_names": [
+    "inferior branch of right oculomotor nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1344",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1344.obj",
+     "vertices": 1182,
+     "faces": 1570
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1182,
+    "faces": 1570
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1182,
+     "faces": 1570
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.4429600000000002,
+     150.579,
+     11.421100000000001
+    ],
+    "max": [
+     3.90562,
+     153.102,
+     15.007900000000001
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-infratrochlear-nerve",
+   "name": "left infratrochlear nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52699"
+   ],
+   "concept_names": [
+    "left infratrochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1296",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1296.obj",
+     "vertices": 138,
+     "faces": 250
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 138,
+    "faces": 250
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 138,
+     "faces": 250
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.05688,
+     152.07000000000002,
+     16.8384
+    ],
+    "max": [
+     -0.7021350000000001,
+     153.033,
+     17.3541
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-infratrochlear-nerve",
+   "name": "right infratrochlear nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52698"
+   ],
+   "concept_names": [
+    "right infratrochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1347",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1347.obj",
+     "vertices": 166,
+     "faces": 250
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 166,
+    "faces": 250
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 166,
+     "faces": 250
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.8312820000000001,
+     152.072,
+     16.8379
+    ],
+    "max": [
+     1.18853,
+     153.032,
+     17.355500000000003
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-lacrimal-nerve",
+   "name": "left lacrimal nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52630"
+   ],
+   "concept_names": [
+    "left lacrimal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1300",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1300.obj",
+     "vertices": 1014,
+     "faces": 1944
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1014,
+    "faces": 1944
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1014,
+     "faces": 1944
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.282330000000001,
+     152.696,
+     12.0507
+    ],
+    "max": [
+     -1.94801,
+     153.48,
+     15.597000000000001
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-lacrimal-nerve",
+   "name": "right lacrimal nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52629"
+   ],
+   "concept_names": [
+    "right lacrimal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1351",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1351.obj",
+     "vertices": 1039,
+     "faces": 1958
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1039,
+    "faces": 1958
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1039,
+     "faces": 1958
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.07903,
+     152.697,
+     12.0507
+    ],
+    "max": [
+     4.4130400000000005,
+     153.481,
+     15.5976
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-long-ciliary-nerve",
+   "name": "left long ciliary nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA82735"
+   ],
+   "concept_names": [
+    "left long ciliary nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1318",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1318.obj",
+     "vertices": 202,
+     "faces": 294
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 202,
+    "faces": 294
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 202,
+     "faces": 294
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.75347,
+     152.13,
+     13.175200000000002
+    ],
+    "max": [
+     -1.5603,
+     152.76600000000002,
+     14.752500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-long-ciliary-nerve",
+   "name": "right long ciliary nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA82734"
+   ],
+   "concept_names": [
+    "right long ciliary nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1369",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1369.obj",
+     "vertices": 211,
+     "faces": 332
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 211,
+    "faces": 332
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 211,
+     "faces": 332
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.6875499999999999,
+     152.129,
+     13.1766
+    ],
+    "max": [
+     2.8853100000000005,
+     152.76700000000002,
+     14.753100000000002
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-nasociliary-nerve",
+   "name": "left nasociliary nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52670"
+   ],
+   "concept_names": [
+    "left nasociliary nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1310",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1310.obj",
+     "vertices": 503,
+     "faces": 834
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 503,
+    "faces": 834
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 503,
+     "faces": 834
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.9425999999999999,
+     151.502,
+     11.070500000000001
+    ],
+    "max": [
+     -0.16304000000000002,
+     153.05100000000002,
+     18.5433
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-nasociliary-nerve",
+   "name": "right nasociliary nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52669"
+   ],
+   "concept_names": [
+    "right nasociliary nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1361",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1361.obj",
+     "vertices": 507,
+     "faces": 786
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 507,
+    "faces": 786
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 507,
+     "faces": 786
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.29294,
+     151.502,
+     11.0701
+    ],
+    "max": [
+     2.07466,
+     153.052,
+     18.5476
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-ophthalmic-nerve",
+   "name": "left ophthalmic nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52623"
+   ],
+   "concept_names": [
+    "left ophthalmic nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1312",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1312.obj",
+     "vertices": 890,
+     "faces": 1776
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 890,
+    "faces": 1776
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 890,
+     "faces": 1776
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.10625,
+     152.14200000000002,
+     9.44893
+    ],
+    "max": [
+     -1.64315,
+     152.999,
+     12.182200000000002
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-ophthalmic-nerve",
+   "name": "right ophthalmic nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52622"
+   ],
+   "concept_names": [
+    "right ophthalmic nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1363",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1363.obj",
+     "vertices": 890,
+     "faces": 1776
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 890,
+    "faces": 1776
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 890,
+     "faces": 1776
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.77427,
+     152.14200000000002,
+     9.449
+    ],
+    "max": [
+     2.23713,
+     152.99800000000002,
+     12.182400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.optic-chiasm",
+   "name": "optic chiasm",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62045"
+   ],
+   "concept_names": [
+    "optic chiasm"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1771",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1771.obj",
+     "vertices": 457,
+     "faces": 898
+    },
+    {
+     "fj": "FJ1818",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1818.obj",
+     "vertices": 452,
+     "faces": 890
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 909,
+    "faces": 1788
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 909,
+     "faces": 1788
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.664236,
+     153.591,
+     10.0112
+    ],
+    "max": [
+     0.7978580000000001,
+     154.401,
+     11.0431
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-optic-nerve",
+   "name": "left optic nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA50878"
+   ],
+   "concept_names": [
+    "left optic nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1313",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1313.obj",
+     "vertices": 1027,
+     "faces": 1860
+    },
+    {
+     "fj": "FJ1772",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1772.obj",
+     "vertices": 1251,
+     "faces": 2376
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 2278,
+    "faces": 4236
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 2278,
+     "faces": 4236
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.19976,
+     151.828,
+     10.214100000000002
+    ],
+    "max": [
+     0.000264154,
+     154.231,
+     15.1743
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-optic-nerve",
+   "name": "right optic nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA50875"
+   ],
+   "concept_names": [
+    "right optic nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1364",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1364.obj",
+     "vertices": 1041,
+     "faces": 1858
+    },
+    {
+     "fj": "FJ1819",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1819.obj",
+     "vertices": 1242,
+     "faces": 2378
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 2283,
+    "faces": 4236
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 2283,
+     "faces": 4236
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.128971,
+     151.829,
+     10.2147
+    ],
+    "max": [
+     3.3307400000000005,
+     154.231,
+     15.174600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-optic-tract",
+   "name": "left optic tract",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA67936"
+   ],
+   "concept_names": [
+    "left optic tract"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1773",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1773.obj",
+     "vertices": 1194,
+     "faces": 2336
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1194,
+    "faces": 2336
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1194,
+     "faces": 2336
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.4761500000000005,
+     153.60000000000002,
+     6.96134
+    ],
+    "max": [
+     0.00205644,
+     154.4,
+     10.7439
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-optic-tract",
+   "name": "right optic tract",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62382"
+   ],
+   "concept_names": [
+    "right optic tract"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1820",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1820.obj",
+     "vertices": 1195,
+     "faces": 2332
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1195,
+    "faces": 2332
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1195,
+     "faces": 2332
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.12707200000000002,
+     153.598,
+     6.96285
+    ],
+    "max": [
+     2.6071600000000004,
+     154.4,
+     10.7443
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-posterior-ethmoidal-nerve",
+   "name": "left posterior ethmoidal nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52716"
+   ],
+   "concept_names": [
+    "left posterior ethmoidal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1315",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1315.obj",
+     "vertices": 151,
+     "faces": 222
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 151,
+    "faces": 222
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 151,
+     "faces": 222
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.6076300000000001,
+     152.68699999999998,
+     13.2666
+    ],
+    "max": [
+     -0.8315450000000001,
+     152.872,
+     13.5253
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-posterior-ethmoidal-nerve",
+   "name": "right posterior ethmoidal nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52715"
+   ],
+   "concept_names": [
+    "right posterior ethmoidal nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1366",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1366.obj",
+     "vertices": 142,
+     "faces": 200
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 142,
+    "faces": 200
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 142,
+     "faces": 200
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.9612280000000001,
+     152.68699999999998,
+     13.265100000000002
+    ],
+    "max": [
+     1.7372699999999999,
+     152.872,
+     13.528
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.short-ciliary-nerve",
+   "name": "short ciliary nerve",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7041"
+   ],
+   "concept_names": [
+    "short ciliary nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1319",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1319.obj",
+     "vertices": 461,
+     "faces": 602
+    },
+    {
+     "fj": "FJ1370",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1370.obj",
+     "vertices": 476,
+     "faces": 638
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 937,
+    "faces": 1240
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 937,
+     "faces": 1240
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.22086,
+     152.159,
+     13.174900000000001
+    ],
+    "max": [
+     3.35066,
+     152.578,
+     14.706000000000001
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.superior-branch-of-left-oculomotor-nerve",
+   "name": "superior branch of left oculomotor nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52575"
+   ],
+   "concept_names": [
+    "superior branch of left oculomotor nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1321",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1321.obj",
+     "vertices": 611,
+     "faces": 810
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 611,
+    "faces": 810
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 611,
+     "faces": 810
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.83555,
+     152.56900000000002,
+     12.0291
+    ],
+    "max": [
+     -1.5942800000000001,
+     153.534,
+     14.638
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.superior-branch-of-right-oculomotor-nerve",
+   "name": "superior branch of right oculomotor nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52574"
+   ],
+   "concept_names": [
+    "superior branch of right oculomotor nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1372",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1372.obj",
+     "vertices": 593,
+     "faces": 848
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 593,
+    "faces": 848
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 593,
+     "faces": 848
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.72229,
+     152.568,
+     12.028500000000001
+    ],
+    "max": [
+     2.9670500000000004,
+     153.535,
+     14.6387
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-supra-orbital-nerve",
+   "name": "left supra-orbital nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52657"
+   ],
+   "concept_names": [
+    "left supra-orbital nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1325",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1325.obj",
+     "vertices": 1321,
+     "faces": 2598
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1321,
+    "faces": 2598
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1321,
+     "faces": 2598
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.97257,
+     153.89300000000003,
+     14.0588
+    ],
+    "max": [
+     -2.2602900000000004,
+     156.055,
+     17.5819
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-supra-orbital-nerve",
+   "name": "right supra-orbital nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52656"
+   ],
+   "concept_names": [
+    "right supra-orbital nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1376",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1376.obj",
+     "vertices": 1332,
+     "faces": 2598
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1332,
+    "faces": 2598
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1332,
+     "faces": 2598
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.39019,
+     153.89300000000003,
+     14.0588
+    ],
+    "max": [
+     3.10399,
+     156.055,
+     17.5822
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-supratrochlear-nerve",
+   "name": "left supratrochlear nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52644"
+   ],
+   "concept_names": [
+    "left supratrochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1326",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1326.obj",
+     "vertices": 1222,
+     "faces": 2358
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1222,
+    "faces": 2358
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1222,
+     "faces": 2358
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.4491700000000005,
+     153.106,
+     14.058600000000002
+    ],
+    "max": [
+     -0.130656,
+     155.121,
+     17.797700000000003
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-supratrochlear-nerve",
+   "name": "right supratrochlear nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA52643"
+   ],
+   "concept_names": [
+    "right supratrochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1377",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1377.obj",
+     "vertices": 1225,
+     "faces": 2358
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1225,
+    "faces": 2358
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1225,
+     "faces": 2358
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.261766,
+     153.105,
+     14.057400000000001
+    ],
+    "max": [
+     2.5800300000000003,
+     155.122,
+     17.797700000000003
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.left-trochlear-nerve",
+   "name": "left trochlear nerve",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA50882"
+   ],
+   "concept_names": [
+    "left trochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1330",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1330.obj",
+     "vertices": 1399,
+     "faces": 2720
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1399,
+    "faces": 2720
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1399,
+     "faces": 2720
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.9453700000000003,
+     152.21099999999998,
+     7.169320000000001
+    ],
+    "max": [
+     -1.03282,
+     153.393,
+     15.0837
+    ]
+   }
+  },
+  {
+   "record_id": "nerve.right-trochlear-nerve",
+   "name": "right trochlear nerve",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA50881"
+   ],
+   "concept_names": [
+    "right trochlear nerve"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1381",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1381.obj",
+     "vertices": 1405,
+     "faces": 2758
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1405,
+    "faces": 2758
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1405,
+     "faces": 2758
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.1631600000000002,
+     152.21099999999998,
+     7.168880000000001
+    ],
+    "max": [
+     2.0756900000000003,
+     153.394,
+     15.083600000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-amygdala",
+   "name": "left amygdala",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72833"
+   ],
+   "concept_names": [
+    "left amygdala"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1753",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1753.obj",
+     "vertices": 202,
+     "faces": 382
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 202,
+    "faces": 382
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 202,
+     "faces": 382
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.3385800000000003,
+     153.199,
+     8.92495
+    ],
+    "max": [
+     -1.6247900000000002,
+     154.479,
+     10.7591
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-amygdala",
+   "name": "right amygdala",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72832"
+   ],
+   "concept_names": [
+    "right amygdala"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1829",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1829.obj",
+     "vertices": 202,
+     "faces": 384
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 202,
+    "faces": 384
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 202,
+     "faces": 384
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.7582000000000002,
+     153.193,
+     8.91336
+    ],
+    "max": [
+     3.4627600000000003,
+     154.46900000000002,
+     10.7512
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-angular-gyrus",
+   "name": "left angular gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72670"
+   ],
+   "concept_names": [
+    "left angular gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1732",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1732.obj",
+     "vertices": 2048,
+     "faces": 3588
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2048,
+    "faces": 3588
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2048,
+     "faces": 3588
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2048,
+     "faces": 3588
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.46114,
+     153.929,
+     -0.104246
+    ],
+    "max": [
+     -2.19721,
+     160.26600000000002,
+     4.4554
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-angular-gyrus",
+   "name": "right angular gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72669"
+   ],
+   "concept_names": [
+    "right angular gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1733",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1733.obj",
+     "vertices": 2084,
+     "faces": 3554
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2084,
+    "faces": 3554
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2084,
+     "faces": 3554
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2084,
+     "faces": 3554
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.31652,
+     153.93900000000002,
+     -0.11586000000000002
+    ],
+    "max": [
+     6.59613,
+     160.27800000000002,
+     4.47505
+    ]
+   }
+  },
+  {
+   "record_id": "brain.anterior-commissure",
+   "name": "anterior commissure",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA61961"
+   ],
+   "concept_names": [
+    "anterior commissure"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1734",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1734.obj",
+     "vertices": 428,
+     "faces": 812
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 428,
+    "faces": 812
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 428,
+     "faces": 812
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.16198,
+     155.163,
+     10.0958
+    ],
+    "max": [
+     1.29177,
+     155.42100000000002,
+     10.561700000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.brachium-of-left-inferior-colliculus",
+   "name": "brachium of left inferior colliculus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73464"
+   ],
+   "concept_names": [
+    "brachium of left inferior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1761",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1761.obj",
+     "vertices": 156,
+     "faces": 308
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 156,
+    "faces": 308
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 156,
+     "faces": 308
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.41352,
+     153.21400000000003,
+     6.826840000000001
+    ],
+    "max": [
+     -0.238239,
+     154.323,
+     7.57301
+    ]
+   }
+  },
+  {
+   "record_id": "brain.brachium-of-right-inferior-colliculus",
+   "name": "brachium of right inferior colliculus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73463"
+   ],
+   "concept_names": [
+    "brachium of right inferior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1809",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1809.obj",
+     "vertices": 133,
+     "faces": 260
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 133,
+    "faces": 260
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 133,
+     "faces": 260
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.36628400000000005,
+     153.216,
+     6.82535
+    ],
+    "max": [
+     1.54428,
+     154.323,
+     7.579810000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.brachium-of-left-superior-colliculus",
+   "name": "brachium of left superior colliculus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73462"
+   ],
+   "concept_names": [
+    "brachium of left superior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1735",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1735.obj",
+     "vertices": 144,
+     "faces": 282
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 144,
+    "faces": 282
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 144,
+     "faces": 282
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.332827,
+     153.705,
+     6.77735
+    ],
+    "max": [
+     1.83783,
+     154.36300000000003,
+     7.44345
+    ]
+   }
+  },
+  {
+   "record_id": "brain.brachium-of-right-superior-colliculus",
+   "name": "brachium of right superior colliculus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73461"
+   ],
+   "concept_names": [
+    "brachium of right superior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1736",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1736.obj",
+     "vertices": 138,
+     "faces": 266
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 138,
+    "faces": 266
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 138,
+     "faces": 266
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.70168,
+     153.705,
+     6.784780000000001
+    ],
+    "max": [
+     -0.200987,
+     154.38,
+     7.44876
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-caudate-nucleus",
+   "name": "left caudate nucleus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72827"
+   ],
+   "concept_names": [
+    "left caudate nucleus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1754",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1754.obj",
+     "vertices": 1334,
+     "faces": 2544
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1334,
+    "faces": 2544
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1334,
+     "faces": 2544
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.36849,
+     154.026,
+     6.03566
+    ],
+    "max": [
+     -0.19033100000000003,
+     157.732,
+     12.3942
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-caudate-nucleus",
+   "name": "right caudate nucleus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72826"
+   ],
+   "concept_names": [
+    "right caudate nucleus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1802",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1802.obj",
+     "vertices": 1334,
+     "faces": 2570
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1334,
+    "faces": 2570
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1334,
+     "faces": 2570
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.32008200000000003,
+     154.02700000000002,
+     6.037100000000001
+    ],
+    "max": [
+     3.50094,
+     157.735,
+     12.3932
+    ]
+   }
+  },
+  {
+   "record_id": "brain.central-canal-of-spinal-cord",
+   "name": "central canal of spinal cord",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78497"
+   ],
+   "concept_names": [
+    "central canal of spinal cord"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1737",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1737.obj",
+     "vertices": 427,
+     "faces": 728
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 427,
+    "faces": 728
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 427,
+     "faces": 728
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 427,
+     "faces": 728
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.0456541,
+     145.85999999999999,
+     5.186540000000001
+    ],
+    "max": [
+     0.17627500000000002,
+     149.419,
+     6.49962
+    ]
+   }
+  },
+  {
+   "record_id": "brain.cerebellum",
+   "name": "cerebellum",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA67944"
+   ],
+   "concept_names": [
+    "cerebellum"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1781",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1781.obj",
+     "vertices": 12098,
+     "faces": 23818
+    },
+    {
+     "fj": "FJ1830",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1830.obj",
+     "vertices": 12226,
+     "faces": 23882
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 24324,
+    "faces": 47700
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 24324,
+     "faces": 47700
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 24324,
+     "faces": 47700
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -5.2609900000000005,
+     148.72400000000002,
+     1.2174300000000002
+    ],
+    "max": [
+     5.392990000000001,
+     154.05100000000002,
+     6.84661
+    ]
+   }
+  },
+  {
+   "record_id": "brain.cerebral-aqueduct",
+   "name": "cerebral aqueduct",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78467"
+   ],
+   "concept_names": [
+    "cerebral aqueduct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1738",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1738.obj",
+     "vertices": 310,
+     "faces": 518
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 310,
+    "faces": 518
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 310,
+     "faces": 518
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 310,
+     "faces": 518
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.10230800000000001,
+     152.874,
+     7.232940000000001
+    ],
+    "max": [
+     0.217433,
+     154.636,
+     7.883310000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.choroid-plexus-of-cerebral-hemisphere",
+   "name": "choroid plexus of cerebral hemisphere",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA61934"
+   ],
+   "concept_names": [
+    "choroid plexus of cerebral hemisphere"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1755",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1755.obj",
+     "vertices": 2913,
+     "faces": 4930
+    },
+    {
+     "fj": "FJ1803",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1803.obj",
+     "vertices": 3014,
+     "faces": 4942
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 5927,
+    "faces": 9872
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 5927,
+     "faces": 9872
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6727,
+     153.487,
+     5.62906
+    ],
+    "max": [
+     3.8009500000000003,
+     156.87900000000002,
+     9.9662
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-cingulate-gyrus",
+   "name": "left cingulate gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72718"
+   ],
+   "concept_names": [
+    "left cingulate gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1739",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1739.obj",
+     "vertices": 1365,
+     "faces": 2416
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1365,
+    "faces": 2416
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1365,
+     "faces": 2416
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1365,
+     "faces": 2416
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.83306,
+     153.058,
+     3.07274
+    ],
+    "max": [
+     -0.00412312,
+     159.723,
+     14.2072
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-cingulate-gyrus",
+   "name": "right cingulate gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72717"
+   ],
+   "concept_names": [
+    "right cingulate gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1740",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1740.obj",
+     "vertices": 1330,
+     "faces": 2346
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1330,
+    "faces": 2346
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1330,
+     "faces": 2346
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1330,
+     "faces": 2346
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.145084,
+     153.061,
+     3.0829000000000004
+    ],
+    "max": [
+     2.96157,
+     159.722,
+     14.2106
+    ]
+   }
+  },
+  {
+   "record_id": "brain.corpus-callosum",
+   "name": "corpus callosum",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA86464"
+   ],
+   "concept_names": [
+    "corpus callosum"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1742",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1742.obj",
+     "vertices": 16716,
+     "faces": 30232
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 16716,
+    "faces": 30232
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 16716,
+     "faces": 30232
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.5244700000000004,
+     154.44100000000003,
+     3.94334
+    ],
+    "max": [
+     2.6561500000000002,
+     158.32600000000002,
+     13.105600000000003
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-fornix-of-forebrain",
+   "name": "left fornix of forebrain",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72925"
+   ],
+   "concept_names": [
+    "left fornix of forebrain"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1756",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1756.obj",
+     "vertices": 3385,
+     "faces": 6764
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3385,
+    "faces": 6764
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3385,
+     "faces": 6764
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.08131,
+     153.53,
+     5.825970000000001
+    ],
+    "max": [
+     0.0657221,
+     156.74,
+     10.275
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-fornix-of-forebrain",
+   "name": "right fornix of forebrain",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72924"
+   ],
+   "concept_names": [
+    "right fornix of forebrain"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1804",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1804.obj",
+     "vertices": 3376,
+     "faces": 6748
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3376,
+    "faces": 6748
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3376,
+     "faces": 6748
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0659243,
+     153.529,
+     5.826280000000001
+    ],
+    "max": [
+     3.21224,
+     156.74,
+     10.2748
+    ]
+   }
+  },
+  {
+   "record_id": "brain.fourth-ventricle",
+   "name": "fourth ventricle",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78469"
+   ],
+   "concept_names": [
+    "fourth ventricle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1731",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1731.obj",
+     "vertices": 3567,
+     "faces": 6940
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3567,
+    "faces": 6940
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3567,
+     "faces": 6940
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3567,
+     "faces": 6940
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.3482,
+     149.111,
+     5.132020000000001
+    ],
+    "max": [
+     1.4790900000000002,
+     152.884,
+     7.47731
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-fusiform-gyrus",
+   "name": "left fusiform gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72690"
+   ],
+   "concept_names": [
+    "left fusiform gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1783",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1783.obj",
+     "vertices": 869,
+     "faces": 1550
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 869,
+    "faces": 1550
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 869,
+     "faces": 1550
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 869,
+     "faces": 1550
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.21819,
+     151.57500000000002,
+     4.96757
+    ],
+    "max": [
+     -1.05379,
+     154.22400000000002,
+     11.061300000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-fusiform-gyrus",
+   "name": "right fusiform gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72689"
+   ],
+   "concept_names": [
+    "right fusiform gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1784",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1784.obj",
+     "vertices": 909,
+     "faces": 1626
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 909,
+    "faces": 1626
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 909,
+     "faces": 1626
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 909,
+     "faces": 1626
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.1831500000000001,
+     151.561,
+     4.970020000000001
+    ],
+    "max": [
+     4.34271,
+     154.227,
+     11.0484
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-globus-pallidus",
+   "name": "left globus pallidus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72831"
+   ],
+   "concept_names": [
+    "left globus pallidus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1757",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1757.obj",
+     "vertices": 3542,
+     "faces": 7080
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3542,
+    "faces": 7080
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3542,
+     "faces": 7080
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.9021600000000003,
+     154.631,
+     8.02228
+    ],
+    "max": [
+     -1.2283300000000001,
+     156.361,
+     10.9502
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-globus-pallidus",
+   "name": "right globus pallidus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72830"
+   ],
+   "concept_names": [
+    "right globus pallidus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1805",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1805.obj",
+     "vertices": 2674,
+     "faces": 5344
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2674,
+    "faces": 5344
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2674,
+     "faces": 5344
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.3594,
+     154.631,
+     8.02248
+    ],
+    "max": [
+     3.0327400000000004,
+     156.361,
+     10.9496
+    ]
+   }
+  },
+  {
+   "record_id": "brain.habenula",
+   "name": "habenula",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62032"
+   ],
+   "concept_names": [
+    "habenula"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1743",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1743.obj",
+     "vertices": 283,
+     "faces": 384
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 283,
+    "faces": 384
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 283,
+     "faces": 384
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 283,
+     "faces": 384
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.31286200000000003,
+     154.47500000000002,
+     6.69468
+    ],
+    "max": [
+     0.44439399999999996,
+     154.889,
+     7.21112
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-hippocampus",
+   "name": "left hippocampus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72714"
+   ],
+   "concept_names": [
+    "left hippocampus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1759",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1759.obj",
+     "vertices": 492,
+     "faces": 980
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 492,
+    "faces": 980
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 492,
+     "faces": 980
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 492,
+     "faces": 980
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6601300000000005,
+     152.925,
+     5.944610000000001
+    ],
+    "max": [
+     -1.6636900000000001,
+     155.12400000000002,
+     10.2339
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-hippocampus",
+   "name": "right hippocampus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72713"
+   ],
+   "concept_names": [
+    "right hippocampus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1807",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1807.obj",
+     "vertices": 515,
+     "faces": 1020
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 515,
+    "faces": 1020
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 515,
+     "faces": 1020
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 515,
+     "faces": 1020
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.79088,
+     152.927,
+     5.95233
+    ],
+    "max": [
+     3.7906100000000005,
+     155.12400000000002,
+     10.2368
+    ]
+   }
+  },
+  {
+   "record_id": "brain.hypothalamus",
+   "name": "hypothalamus",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62008"
+   ],
+   "concept_names": [
+    "hypothalamus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1760",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1760.obj",
+     "vertices": 1183,
+     "faces": 2050
+    },
+    {
+     "fj": "FJ1808",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1808.obj",
+     "vertices": 1191,
+     "faces": 2028
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 2374,
+    "faces": 4078
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 2374,
+     "faces": 4078
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 3716,
+     "faces": 5684
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.695987,
+     153.223,
+     9.22362
+    ],
+    "max": [
+     0.8267680000000001,
+     155.21,
+     11.017700000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-inferior-colliculus",
+   "name": "left inferior colliculus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73435"
+   ],
+   "concept_names": [
+    "left inferior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1762",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1762.obj",
+     "vertices": 81,
+     "faces": 156
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 81,
+    "faces": 156
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 81,
+     "faces": 156
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 81,
+     "faces": 156
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.734689,
+     152.882,
+     6.74836
+    ],
+    "max": [
+     0.030206300000000005,
+     153.644,
+     7.52808
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-inferior-colliculus",
+   "name": "right inferior colliculus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73434"
+   ],
+   "concept_names": [
+    "right inferior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1810",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1810.obj",
+     "vertices": 104,
+     "faces": 204
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 104,
+    "faces": 204
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 104,
+     "faces": 204
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 104,
+     "faces": 204
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.09226590000000001,
+     152.886,
+     6.7535
+    ],
+    "max": [
+     0.871285,
+     153.65300000000002,
+     7.5341700000000005
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-inferior-frontal-gyrus",
+   "name": "left inferior frontal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72658"
+   ],
+   "concept_names": [
+    "left inferior frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1744",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1744.obj",
+     "vertices": 1927,
+     "faces": 3290
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1927,
+    "faces": 3290
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1927,
+     "faces": 3290
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1927,
+     "faces": 3290
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.09161,
+     154.69000000000003,
+     8.96785
+    ],
+    "max": [
+     -2.59424,
+     160.707,
+     15.2928
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-inferior-frontal-gyrus",
+   "name": "right inferior frontal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72657"
+   ],
+   "concept_names": [
+    "right inferior frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1745",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1745.obj",
+     "vertices": 1928,
+     "faces": 3292
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1928,
+    "faces": 3292
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1928,
+     "faces": 3292
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1928,
+     "faces": 3292
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.72581,
+     154.64800000000002,
+     8.98858
+    ],
+    "max": [
+     6.221170000000001,
+     160.70600000000002,
+     15.2971
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-inferior-temporal-gyrus",
+   "name": "left inferior temporal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72688"
+   ],
+   "concept_names": [
+    "left inferior temporal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1746",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1746.obj",
+     "vertices": 1573,
+     "faces": 2732
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1573,
+    "faces": 2732
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1573,
+     "faces": 2732
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1573,
+     "faces": 2732
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.06468,
+     151.35,
+     2.64603
+    ],
+    "max": [
+     -1.69989,
+     154.284,
+     12.220500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-inferior-temporal-gyrus",
+   "name": "right inferior temporal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72687"
+   ],
+   "concept_names": [
+    "right inferior temporal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1747",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1747.obj",
+     "vertices": 1610,
+     "faces": 2768
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1610,
+    "faces": 2768
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1610,
+     "faces": 2768
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1610,
+     "faces": 2768
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.80979,
+     151.355,
+     2.65085
+    ],
+    "max": [
+     6.11894,
+     154.282,
+     12.242700000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-insula",
+   "name": "left insula",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72978"
+   ],
+   "concept_names": [
+    "left insula"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1748",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1748.obj",
+     "vertices": 1250,
+     "faces": 2448
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1250,
+    "faces": 2448
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1250,
+     "faces": 2448
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1250,
+     "faces": 2448
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.42794,
+     154.553,
+     7.064170000000001
+    ],
+    "max": [
+     -2.50155,
+     158.01,
+     12.2271
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-insula",
+   "name": "right insula",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72977"
+   ],
+   "concept_names": [
+    "right insula"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1749",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1749.obj",
+     "vertices": 1261,
+     "faces": 2448
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1261,
+    "faces": 2448
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1261,
+     "faces": 2448
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1261,
+     "faces": 2448
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.6344600000000002,
+     154.558,
+     7.06754
+    ],
+    "max": [
+     4.55903,
+     158.006,
+     12.2423
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-internal-capsule",
+   "name": "left internal capsule",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72907"
+   ],
+   "concept_names": [
+    "left internal capsule"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1750",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1750.obj",
+     "vertices": 5375,
+     "faces": 10740
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5375,
+    "faces": 10740
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5375,
+     "faces": 10740
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5375,
+     "faces": 10740
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.97142,
+     154.386,
+     6.4511
+    ],
+    "max": [
+     -0.6816580000000001,
+     157.711,
+     11.868000000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-internal-capsule",
+   "name": "right internal capsule",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72906"
+   ],
+   "concept_names": [
+    "right internal capsule"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1751",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1751.obj",
+     "vertices": 5376,
+     "faces": 10742
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 5376,
+    "faces": 10742
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5376,
+     "faces": 10742
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5376,
+     "faces": 10742
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.8131080000000002,
+     154.385,
+     6.45003
+    ],
+    "max": [
+     3.10381,
+     157.711,
+     11.8695
+    ]
+   }
+  },
+  {
+   "record_id": "brain.lamina-terminalis",
+   "name": "lamina terminalis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA61975"
+   ],
+   "concept_names": [
+    "lamina terminalis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1764",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1764.obj",
+     "vertices": 246,
+     "faces": 286
+    },
+    {
+     "fj": "FJ1812",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1812.obj",
+     "vertices": 239,
+     "faces": 278
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 485,
+    "faces": 564
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 485,
+     "faces": 564
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.07492520000000001,
+     153.953,
+     10.2331
+    ],
+    "max": [
+     0.205909,
+     155.14200000000002,
+     10.964400000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-lateral-geniculate-body",
+   "name": "left lateral geniculate body",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73304"
+   ],
+   "concept_names": [
+    "left lateral geniculate body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1766",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1766.obj",
+     "vertices": 112,
+     "faces": 196
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 112,
+    "faces": 196
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 112,
+     "faces": 196
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.5199000000000003,
+     153.685,
+     7.02374
+    ],
+    "max": [
+     -1.67671,
+     154.37300000000002,
+     8.16524
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-lateral-geniculate-body",
+   "name": "right lateral geniculate body",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73303"
+   ],
+   "concept_names": [
+    "right lateral geniculate body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1813",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1813.obj",
+     "vertices": 305,
+     "faces": 604
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 305,
+    "faces": 604
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 305,
+     "faces": 604
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.6053899999999999,
+     153.69500000000002,
+     6.9040099999999995
+    ],
+    "max": [
+     2.45251,
+     154.337,
+     8.07699
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-lateral-ventricle",
+   "name": "left lateral ventricle",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78450"
+   ],
+   "concept_names": [
+    "left lateral ventricle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1767",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1767.obj",
+     "vertices": 8986,
+     "faces": 17968
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 8986,
+    "faces": 17968
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 8986,
+     "faces": 17968
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 8986,
+     "faces": 17968
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.8097499999999997,
+     153.031,
+     1.7609400000000002
+    ],
+    "max": [
+     0.0447205,
+     157.934,
+     12.694
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-lateral-ventricle",
+   "name": "right lateral ventricle",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78449"
+   ],
+   "concept_names": [
+    "right lateral ventricle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1814",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1814.obj",
+     "vertices": 9011,
+     "faces": 18016
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 9011,
+    "faces": 18016
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 9011,
+     "faces": 18016
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 9011,
+     "faces": 18016
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.08513480000000001,
+     153.031,
+     1.76072
+    ],
+    "max": [
+     3.94058,
+     157.934,
+     12.694
+    ]
+   }
+  },
+  {
+   "record_id": "brain.mammillary-body",
+   "name": "mammillary body",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA74877"
+   ],
+   "concept_names": [
+    "mammillary body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1768",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1768.obj",
+     "vertices": 104,
+     "faces": 204
+    },
+    {
+     "fj": "FJ1815",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1815.obj",
+     "vertices": 112,
+     "faces": 220
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 216,
+    "faces": 424
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 216,
+     "faces": 424
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.34166300000000005,
+     153.832,
+     9.16854
+    ],
+    "max": [
+     0.47289500000000007,
+     154.336,
+     9.62443
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-medial-geniculate-body",
+   "name": "left medial geniculate body",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73310"
+   ],
+   "concept_names": [
+    "left medial geniculate body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1816M",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1816M.obj",
+     "vertices": 101,
+     "faces": 198
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 101,
+    "faces": 198
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 101,
+     "faces": 198
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.83172,
+     153.59400000000002,
+     7.10444
+    ],
+    "max": [
+     -1.17989,
+     154.36,
+     7.811350000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-medial-geniculate-body",
+   "name": "right medial geniculate body",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73309"
+   ],
+   "concept_names": [
+    "right medial geniculate body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1816",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1816.obj",
+     "vertices": 101,
+     "faces": 198
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 101,
+    "faces": 198
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 101,
+     "faces": 198
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.1799,
+     153.59400000000002,
+     7.10444
+    ],
+    "max": [
+     1.83172,
+     154.36,
+     7.811350000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.medulla-oblongata",
+   "name": "medulla oblongata",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62004"
+   ],
+   "concept_names": [
+    "medulla oblongata"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1769",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1769.obj",
+     "vertices": 3196,
+     "faces": 6036
+    },
+    {
+     "fj": "FJ1831",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1831.obj",
+     "vertices": 3281,
+     "faces": 6060
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 6477,
+    "faces": 12096
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 6477,
+     "faces": 12096
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 6477,
+     "faces": 12096
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.2713100000000002,
+     146.45000000000002,
+     5.12391
+    ],
+    "max": [
+     1.4020400000000002,
+     150.578,
+     8.44395
+    ]
+   }
+  },
+  {
+   "record_id": "brain.midbrain",
+   "name": "midbrain",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA61993"
+   ],
+   "concept_names": [
+    "midbrain"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1770",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1770.obj",
+     "vertices": 4157,
+     "faces": 6468
+    },
+    {
+     "fj": "FJ1817",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1817.obj",
+     "vertices": 4050,
+     "faces": 6440
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 8207,
+    "faces": 12908
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 8207,
+     "faces": 12908
+    },
+    "partof": {
+     "files": 7,
+     "vertices": 8886,
+     "faces": 14142
+    },
+    "combined_files": 7
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -1.40111,
+     152.84900000000002,
+     6.6580900000000005
+    ],
+    "max": [
+     1.5322200000000001,
+     154.553,
+     9.595170000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-middle-frontal-gyrus",
+   "name": "left middle frontal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72656"
+   ],
+   "concept_names": [
+    "left middle frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1787",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1787.obj",
+     "vertices": 1973,
+     "faces": 3416
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1973,
+    "faces": 3416
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1973,
+     "faces": 3416
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1973,
+     "faces": 3416
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.914300000000001,
+     156.04200000000003,
+     7.41993
+    ],
+    "max": [
+     -1.4599900000000001,
+     162.23900000000003,
+     15.917200000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-middle-frontal-gyrus",
+   "name": "right middle frontal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72655"
+   ],
+   "concept_names": [
+    "right middle frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1788",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1788.obj",
+     "vertices": 1960,
+     "faces": 3326
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1960,
+    "faces": 3326
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1960,
+     "faces": 3326
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1960,
+     "faces": 3326
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.59333,
+     156.043,
+     7.383830000000001
+    ],
+    "max": [
+     5.05134,
+     162.23000000000002,
+     15.92
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-middle-temporal-gyrus",
+   "name": "left middle temporal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72686"
+   ],
+   "concept_names": [
+    "left middle temporal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1789",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1789.obj",
+     "vertices": 1528,
+     "faces": 2710
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1528,
+    "faces": 2710
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1528,
+     "faces": 2710
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1528,
+     "faces": 2710
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.889340000000001,
+     152.226,
+     1.39933
+    ],
+    "max": [
+     -3.3121000000000005,
+     155.585,
+     12.4954
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-middle-temporal-gyrus",
+   "name": "right middle temporal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72685"
+   ],
+   "concept_names": [
+    "right middle temporal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1790",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1790.obj",
+     "vertices": 1563,
+     "faces": 2754
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1563,
+    "faces": 2754
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1563,
+     "faces": 2754
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1563,
+     "faces": 2754
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     3.4391300000000005,
+     152.244,
+     1.42936
+    ],
+    "max": [
+     6.99404,
+     155.57000000000002,
+     12.4952
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-occipital-lobe",
+   "name": "left occipital lobe",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72976"
+   ],
+   "concept_names": [
+    "left occipital lobe"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1791",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1791.obj",
+     "vertices": 2538,
+     "faces": 4390
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2538,
+    "faces": 4390
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2538,
+     "faces": 4390
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2538,
+     "faces": 4390
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.3527000000000005,
+     151.778,
+     -1.0329300000000001
+    ],
+    "max": [
+     -0.011104700000000002,
+     157.15300000000002,
+     5.29323
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-occipital-lobe",
+   "name": "right occipital lobe",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72975"
+   ],
+   "concept_names": [
+    "right occipital lobe"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1792",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1792.obj",
+     "vertices": 2625,
+     "faces": 4564
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2625,
+    "faces": 4564
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2625,
+     "faces": 4564
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2625,
+     "faces": 4564
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.155616,
+     151.774,
+     -1.0261799999999999
+    ],
+    "max": [
+     4.4824399999999995,
+     157.156,
+     5.2951500000000005
+    ]
+   }
+  },
+  {
+   "record_id": "brain.orbital-gyrus",
+   "name": "orbital gyrus",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA256194"
+   ],
+   "concept_names": [
+    "orbital gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1793",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1793.obj",
+     "vertices": 1587,
+     "faces": 2750
+    },
+    {
+     "fj": "FJ1794",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1794.obj",
+     "vertices": 1568,
+     "faces": 2568
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 3155,
+    "faces": 5318
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 3155,
+     "faces": 5318
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -4.10849,
+     153.376,
+     9.80043
+    ],
+    "max": [
+     4.2314300000000005,
+     156.39300000000003,
+     16.5265
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-parahippocampal-gyrus",
+   "name": "left parahippocampal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72706"
+   ],
+   "concept_names": [
+    "left parahippocampal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1785",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1785.obj",
+     "vertices": 435,
+     "faces": 740
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 435,
+    "faces": 740
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 435,
+     "faces": 740
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 435,
+     "faces": 740
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.9918600000000004,
+     152.16400000000002,
+     5.128240000000001
+    ],
+    "max": [
+     -0.8932180000000001,
+     154.36900000000003,
+     10.0708
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-parahippocampal-gyrus",
+   "name": "right parahippocampal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72705"
+   ],
+   "concept_names": [
+    "right parahippocampal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1786",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1786.obj",
+     "vertices": 482,
+     "faces": 882
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 482,
+    "faces": 882
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 482,
+     "faces": 882
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 482,
+     "faces": 882
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.01802,
+     152.177,
+     5.12669
+    ],
+    "max": [
+     3.12721,
+     154.36900000000003,
+     10.0797
+    ]
+   }
+  },
+  {
+   "record_id": "brain.peduncle-of-midbrain",
+   "name": "peduncle of midbrain",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62394"
+   ],
+   "concept_names": [
+    "peduncle of midbrain"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1774",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1774.obj",
+     "vertices": 3375,
+     "faces": 5364
+    },
+    {
+     "fj": "FJ1821",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1821.obj",
+     "vertices": 3514,
+     "faces": 5374
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 6889,
+    "faces": 10738
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 6889,
+     "faces": 10738
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.06028,
+     152.904,
+     7.6306
+    ],
+    "max": [
+     2.19219,
+     154.579,
+     9.92735
+    ]
+   }
+  },
+  {
+   "record_id": "brain.pineal-body",
+   "name": "pineal body",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62033"
+   ],
+   "concept_names": [
+    "pineal body"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1795",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1795.obj",
+     "vertices": 292,
+     "faces": 580
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 292,
+    "faces": 580
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 292,
+     "faces": 580
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 292,
+     "faces": 580
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.261481,
+     154.01800000000003,
+     5.916720000000001
+    ],
+    "max": [
+     0.36507100000000003,
+     154.78900000000002,
+     7.05915
+    ]
+   }
+  },
+  {
+   "record_id": "brain.pons",
+   "name": "pons",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA67943"
+   ],
+   "concept_names": [
+    "pons"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1775",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1775.obj",
+     "vertices": 5764,
+     "faces": 10304
+    },
+    {
+     "fj": "FJ1822",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1822.obj",
+     "vertices": 6179,
+     "faces": 10346
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 11943,
+    "faces": 20650
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 11943,
+     "faces": 20650
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 11943,
+     "faces": 20650
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.04466,
+     150.207,
+     6.25806
+    ],
+    "max": [
+     2.17505,
+     153.06900000000002,
+     9.69866
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-postcentral-gyrus",
+   "name": "left postcentral gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72666"
+   ],
+   "concept_names": [
+    "left postcentral gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1797",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1797.obj",
+     "vertices": 2033,
+     "faces": 3604
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2033,
+    "faces": 3604
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2033,
+     "faces": 3604
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2033,
+     "faces": 3604
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.71837,
+     156.39000000000001,
+     2.4271000000000003
+    ],
+    "max": [
+     -0.0609649,
+     162.36800000000002,
+     8.791670000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-postcentral-gyrus",
+   "name": "right postcentral gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72665"
+   ],
+   "concept_names": [
+    "right postcentral gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1798",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1798.obj",
+     "vertices": 2045,
+     "faces": 3604
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2045,
+    "faces": 3604
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2045,
+     "faces": 3604
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2045,
+     "faces": 3604
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.17481000000000002,
+     156.41400000000002,
+     2.42573
+    ],
+    "max": [
+     6.8397499999999996,
+     162.36900000000003,
+     8.77679
+    ]
+   }
+  },
+  {
+   "record_id": "brain.posterior-commissure",
+   "name": "posterior commissure",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62072"
+   ],
+   "concept_names": [
+    "posterior commissure"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1799",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1799.obj",
+     "vertices": 419,
+     "faces": 834
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 419,
+    "faces": 834
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 419,
+     "faces": 834
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.6989700000000001,
+     154.347,
+     7.101800000000001
+    ],
+    "max": [
+     0.8425850000000001,
+     154.62,
+     7.61022
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-precentral-gyrus",
+   "name": "left precentral gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72662"
+   ],
+   "concept_names": [
+    "left precentral gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1800",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1800.obj",
+     "vertices": 2336,
+     "faces": 4042
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2336,
+    "faces": 4042
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2336,
+     "faces": 4042
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2336,
+     "faces": 4042
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.28854,
+     156.07000000000002,
+     3.92726
+    ],
+    "max": [
+     -0.0594719,
+     162.669,
+     10.4839
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-precentral-gyrus",
+   "name": "right precentral gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72661"
+   ],
+   "concept_names": [
+    "right precentral gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1801",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1801.obj",
+     "vertices": 2382,
+     "faces": 4042
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 2382,
+    "faces": 4042
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2382,
+     "faces": 4042
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2382,
+     "faces": 4042
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.16214900000000002,
+     156.055,
+     3.93459
+    ],
+    "max": [
+     6.415089999999999,
+     162.655,
+     10.465800000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-putamen",
+   "name": "left putamen",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72829"
+   ],
+   "concept_names": [
+    "left putamen"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1776",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1776.obj",
+     "vertices": 3642,
+     "faces": 7056
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3642,
+    "faces": 7056
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3642,
+     "faces": 7056
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.44445,
+     154.543,
+     7.55268
+    ],
+    "max": [
+     -1.6189,
+     157.154,
+     11.8368
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-putamen",
+   "name": "right putamen",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72828"
+   ],
+   "concept_names": [
+    "right putamen"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1823",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1823.obj",
+     "vertices": 3690,
+     "faces": 7064
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3690,
+    "faces": 7064
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3690,
+     "faces": 7064
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.74745,
+     154.543,
+     7.5527500000000005
+    ],
+    "max": [
+     3.57525,
+     157.154,
+     11.8366
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-stria-medullaris-of-thalamus",
+   "name": "left stria medullaris of thalamus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73414"
+   ],
+   "concept_names": [
+    "left stria medullaris of thalamus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1777",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1777.obj",
+     "vertices": 586,
+     "faces": 926
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 586,
+    "faces": 926
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 586,
+     "faces": 926
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.317828,
+     154.52300000000002,
+     6.68421
+    ],
+    "max": [
+     0.06647560000000001,
+     156.09000000000003,
+     10.3594
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-stria-medullaris-of-thalamus",
+   "name": "right stria medullaris of thalamus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73413"
+   ],
+   "concept_names": [
+    "right stria medullaris of thalamus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1824",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1824.obj",
+     "vertices": 539,
+     "faces": 848
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 539,
+    "faces": 848
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 539,
+     "faces": 848
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0669333,
+     154.526,
+     6.67927
+    ],
+    "max": [
+     0.446786,
+     156.085,
+     10.3583
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-stria-terminalis",
+   "name": "left stria terminalis",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72940"
+   ],
+   "concept_names": [
+    "left stria terminalis"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1778",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1778.obj",
+     "vertices": 545,
+     "faces": 690
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 545,
+    "faces": 690
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 545,
+     "faces": 690
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.7507,
+     153.708,
+     6.17037
+    ],
+    "max": [
+     -0.19926200000000002,
+     156.76600000000002,
+     10.5111
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-superior-colliculus",
+   "name": "left superior colliculus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73423"
+   ],
+   "concept_names": [
+    "left superior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1779",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1779.obj",
+     "vertices": 93,
+     "faces": 180
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 93,
+    "faces": 180
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 93,
+     "faces": 180
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 93,
+     "faces": 180
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.7200120000000001,
+     153.737,
+     6.82338
+    ],
+    "max": [
+     0.0557623,
+     154.337,
+     7.42727
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-superior-colliculus",
+   "name": "right superior colliculus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA73422"
+   ],
+   "concept_names": [
+    "right superior colliculus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1826",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1826.obj",
+     "vertices": 91,
+     "faces": 176
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 91,
+    "faces": 176
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 91,
+     "faces": 176
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 91,
+     "faces": 176
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.0815126,
+     153.734,
+     6.825900000000001
+    ],
+    "max": [
+     0.851769,
+     154.33100000000002,
+     7.4279399999999995
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-superior-frontal-gyrus",
+   "name": "left superior frontal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72654"
+   ],
+   "concept_names": [
+    "left superior frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1833",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1833.obj",
+     "vertices": 3625,
+     "faces": 6452
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3625,
+    "faces": 6452
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3625,
+     "faces": 6452
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3625,
+     "faces": 6452
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.1706800000000004,
+     155.21800000000002,
+     5.36994
+    ],
+    "max": [
+     -0.0190459,
+     163.04600000000002,
+     16.9677
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-superior-frontal-gyrus",
+   "name": "right superior frontal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72653"
+   ],
+   "concept_names": [
+    "right superior frontal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1834",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1834.obj",
+     "vertices": 3671,
+     "faces": 6450
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3671,
+    "faces": 6450
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3671,
+     "faces": 6450
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3671,
+     "faces": 6450
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.155451,
+     155.20100000000002,
+     5.370940000000001
+    ],
+    "max": [
+     3.31443,
+     163.04200000000003,
+     16.966900000000003
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-superior-parietal-lobule",
+   "name": "left superior parietal lobule",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72672"
+   ],
+   "concept_names": [
+    "left superior parietal lobule"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1835",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1835.obj",
+     "vertices": 3181,
+     "faces": 5364
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3181,
+    "faces": 5364
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3181,
+     "faces": 5364
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3181,
+     "faces": 5364
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6074800000000007,
+     154.961,
+     -0.630488
+    ],
+    "max": [
+     -0.018333,
+     161.711,
+     5.02444
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-superior-parietal-lobule",
+   "name": "right superior parietal lobule",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72671"
+   ],
+   "concept_names": [
+    "right superior parietal lobule"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1836",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1836.obj",
+     "vertices": 3241,
+     "faces": 5640
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 3241,
+    "faces": 5640
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 3241,
+     "faces": 5640
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 3241,
+     "faces": 5640
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.144547,
+     154.961,
+     -0.6457700000000001
+    ],
+    "max": [
+     3.7577100000000003,
+     161.708,
+     5.02329
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-supramarginal-gyrus",
+   "name": "left supramarginal gyrus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72668"
+   ],
+   "concept_names": [
+    "left supramarginal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1841",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1841.obj",
+     "vertices": 1323,
+     "faces": 2344
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1323,
+    "faces": 2344
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1323,
+     "faces": 2344
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1323,
+     "faces": 2344
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.87863,
+     156.12400000000002,
+     3.5459899999999998
+    ],
+    "max": [
+     -2.31495,
+     160.282,
+     7.31168
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-supramarginal-gyrus",
+   "name": "right supramarginal gyrus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA72667"
+   ],
+   "concept_names": [
+    "right supramarginal gyrus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1842",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1842.obj",
+     "vertices": 1368,
+     "faces": 2314
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1368,
+    "faces": 2314
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1368,
+     "faces": 2314
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1368,
+     "faces": 2314
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     2.43919,
+     156.137,
+     3.5427500000000003
+    ],
+    "max": [
+     6.9705200000000005,
+     160.245,
+     7.31259
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-thalamus",
+   "name": "left thalamus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA258716"
+   ],
+   "concept_names": [
+    "left thalamus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1782",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1782.obj",
+     "vertices": 853,
+     "faces": 1702
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 853,
+    "faces": 1702
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 853,
+     "faces": 1702
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.33736,
+     154.207,
+     6.180680000000001
+    ],
+    "max": [
+     0.00924688,
+     156.57500000000002,
+     9.839570000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-thalamus",
+   "name": "right thalamus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA258714"
+   ],
+   "concept_names": [
+    "right thalamus"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1827",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1827.obj",
+     "vertices": 381,
+     "faces": 758
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 381,
+    "faces": 758
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 381,
+     "faces": 758
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.124775,
+     154.21300000000002,
+     6.18705
+    ],
+    "max": [
+     2.46054,
+     156.572,
+     9.83669
+    ]
+   }
+  },
+  {
+   "record_id": "brain.third-ventricle",
+   "name": "third ventricle",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA78454"
+   ],
+   "concept_names": [
+    "third ventricle"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1730",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1730.obj",
+     "vertices": 1994,
+     "faces": 3870
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 1994,
+    "faces": 3870
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1994,
+     "faces": 3870
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1994,
+     "faces": 3870
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.320519,
+     153.758,
+     6.504989999999999
+    ],
+    "max": [
+     0.45601,
+     156.06900000000002,
+     10.515500000000001
+    ]
+   }
+  },
+  {
+   "record_id": "brain.tuber-cinereum",
+   "name": "tuber cinereum",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA62327"
+   ],
+   "concept_names": [
+    "tuber cinereum"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1780",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1780.obj",
+     "vertices": 627,
+     "faces": 804
+    },
+    {
+     "fj": "FJ1828",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1828.obj",
+     "vertices": 715,
+     "faces": 802
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 1342,
+    "faces": 1606
+   },
+   "source_totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 1342,
+     "faces": 1606
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 1342,
+     "faces": 1606
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.793961,
+     153.212,
+     9.41626
+    ],
+    "max": [
+     0.9249610000000001,
+     154.312,
+     10.374600000000001
+    ]
+   }
+  },
+  {
+   "record_id": "meninx.tentorium-cerebelli",
+   "name": "tentorium cerebelli",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA83966"
+   ],
+   "concept_names": [
+    "tentorium cerebelli"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ1843",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1843.obj",
+     "vertices": 11794,
+     "faces": 21924
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 11794,
+    "faces": 21924
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 11794,
+     "faces": 21924
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.233016,
+     150.75300000000001,
+     0.5820470000000001
+    ],
+    "max": [
+     6.33281,
+     154.16500000000002,
+     9.32923
+    ]
+   }
+  },
+  {
+   "record_id": "brain",
+   "name": "brain",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA50801"
+   ],
+   "concept_names": [
+    "brain"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1730",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1730.obj",
+     "vertices": 1994,
+     "faces": 3870
+    },
+    {
+     "fj": "FJ1731",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1731.obj",
+     "vertices": 3567,
+     "faces": 6940
+    },
+    {
+     "fj": "FJ1732",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1732.obj",
+     "vertices": 2048,
+     "faces": 3588
+    },
+    {
+     "fj": "FJ1733",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1733.obj",
+     "vertices": 2084,
+     "faces": 3554
+    },
+    {
+     "fj": "FJ1738",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1738.obj",
+     "vertices": 310,
+     "faces": 518
+    },
+    {
+     "fj": "FJ1739",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1739.obj",
+     "vertices": 1365,
+     "faces": 2416
+    },
+    {
+     "fj": "FJ1740",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1740.obj",
+     "vertices": 1330,
+     "faces": 2346
+    },
+    {
+     "fj": "FJ1743",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1743.obj",
+     "vertices": 283,
+     "faces": 384
+    },
+    {
+     "fj": "FJ1744",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1744.obj",
+     "vertices": 1927,
+     "faces": 3290
+    },
+    {
+     "fj": "FJ1745",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1745.obj",
+     "vertices": 1928,
+     "faces": 3292
+    },
+    {
+     "fj": "FJ1746",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1746.obj",
+     "vertices": 1573,
+     "faces": 2732
+    },
+    {
+     "fj": "FJ1747",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1747.obj",
+     "vertices": 1610,
+     "faces": 2768
+    },
+    {
+     "fj": "FJ1748",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1748.obj",
+     "vertices": 1250,
+     "faces": 2448
+    },
+    {
+     "fj": "FJ1749",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1749.obj",
+     "vertices": 1261,
+     "faces": 2448
+    },
+    {
+     "fj": "FJ1750",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1750.obj",
+     "vertices": 5375,
+     "faces": 10740
+    },
+    {
+     "fj": "FJ1751",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1751.obj",
+     "vertices": 5376,
+     "faces": 10742
+    },
+    {
+     "fj": "FJ1758",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1758.obj",
+     "vertices": 15286,
+     "faces": 25542
+    },
+    {
+     "fj": "FJ1759",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1759.obj",
+     "vertices": 492,
+     "faces": 980
+    },
+    {
+     "fj": "FJ1760",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1760.obj",
+     "vertices": 1183,
+     "faces": 2050
+    },
+    {
+     "fj": "FJ1762",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1762.obj",
+     "vertices": 81,
+     "faces": 156
+    },
+    {
+     "fj": "FJ1767",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1767.obj",
+     "vertices": 8986,
+     "faces": 17968
+    },
+    {
+     "fj": "FJ1769",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1769.obj",
+     "vertices": 3196,
+     "faces": 6036
+    },
+    {
+     "fj": "FJ1770",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1770.obj",
+     "vertices": 4157,
+     "faces": 6468
+    },
+    {
+     "fj": "FJ1775",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1775.obj",
+     "vertices": 5764,
+     "faces": 10304
+    },
+    {
+     "fj": "FJ1779",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1779.obj",
+     "vertices": 93,
+     "faces": 180
+    },
+    {
+     "fj": "FJ1780",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1780.obj",
+     "vertices": 627,
+     "faces": 804
+    },
+    {
+     "fj": "FJ1781",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1781.obj",
+     "vertices": 12098,
+     "faces": 23818
+    },
+    {
+     "fj": "FJ1783",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1783.obj",
+     "vertices": 869,
+     "faces": 1550
+    },
+    {
+     "fj": "FJ1784",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1784.obj",
+     "vertices": 909,
+     "faces": 1626
+    },
+    {
+     "fj": "FJ1785",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1785.obj",
+     "vertices": 435,
+     "faces": 740
+    },
+    {
+     "fj": "FJ1786",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1786.obj",
+     "vertices": 482,
+     "faces": 882
+    },
+    {
+     "fj": "FJ1787",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1787.obj",
+     "vertices": 1973,
+     "faces": 3416
+    },
+    {
+     "fj": "FJ1788",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1788.obj",
+     "vertices": 1960,
+     "faces": 3326
+    },
+    {
+     "fj": "FJ1789",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1789.obj",
+     "vertices": 1528,
+     "faces": 2710
+    },
+    {
+     "fj": "FJ1790",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1790.obj",
+     "vertices": 1563,
+     "faces": 2754
+    },
+    {
+     "fj": "FJ1791",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1791.obj",
+     "vertices": 2538,
+     "faces": 4390
+    },
+    {
+     "fj": "FJ1792",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1792.obj",
+     "vertices": 2625,
+     "faces": 4564
+    },
+    {
+     "fj": "FJ1795",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1795.obj",
+     "vertices": 292,
+     "faces": 580
+    },
+    {
+     "fj": "FJ1797",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1797.obj",
+     "vertices": 2033,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1798",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1798.obj",
+     "vertices": 2045,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1800",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1800.obj",
+     "vertices": 2336,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1801",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1801.obj",
+     "vertices": 2382,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1806",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1806.obj",
+     "vertices": 15757,
+     "faces": 26512
+    },
+    {
+     "fj": "FJ1807",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1807.obj",
+     "vertices": 515,
+     "faces": 1020
+    },
+    {
+     "fj": "FJ1808",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1808.obj",
+     "vertices": 1191,
+     "faces": 2028
+    },
+    {
+     "fj": "FJ1810",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1810.obj",
+     "vertices": 104,
+     "faces": 204
+    },
+    {
+     "fj": "FJ1814",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1814.obj",
+     "vertices": 9011,
+     "faces": 18016
+    },
+    {
+     "fj": "FJ1817",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1817.obj",
+     "vertices": 4050,
+     "faces": 6440
+    },
+    {
+     "fj": "FJ1822",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1822.obj",
+     "vertices": 6179,
+     "faces": 10346
+    },
+    {
+     "fj": "FJ1826",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1826.obj",
+     "vertices": 91,
+     "faces": 176
+    },
+    {
+     "fj": "FJ1828",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1828.obj",
+     "vertices": 715,
+     "faces": 802
+    },
+    {
+     "fj": "FJ1830",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1830.obj",
+     "vertices": 12226,
+     "faces": 23882
+    },
+    {
+     "fj": "FJ1831",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1831.obj",
+     "vertices": 3281,
+     "faces": 6060
+    },
+    {
+     "fj": "FJ1833",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1833.obj",
+     "vertices": 3625,
+     "faces": 6452
+    },
+    {
+     "fj": "FJ1834",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1834.obj",
+     "vertices": 3671,
+     "faces": 6450
+    },
+    {
+     "fj": "FJ1835",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1835.obj",
+     "vertices": 3181,
+     "faces": 5364
+    },
+    {
+     "fj": "FJ1836",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1836.obj",
+     "vertices": 3241,
+     "faces": 5640
+    },
+    {
+     "fj": "FJ1841",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1841.obj",
+     "vertices": 1323,
+     "faces": 2344
+    },
+    {
+     "fj": "FJ1842",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1842.obj",
+     "vertices": 1368,
+     "faces": 2314
+    }
+   ],
+   "totals": {
+    "files": 59,
+    "vertices": 178743,
+    "faces": 322262
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 59,
+     "vertices": 178743,
+     "faces": 322262
+    },
+    "combined_files": 59
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.889340000000001,
+     146.45000000000002,
+     -1.0329300000000001
+    ],
+    "max": [
+     6.99404,
+     163.04600000000002,
+     16.9677
+    ]
+   }
+  },
+  {
+   "record_id": "spinal-cord",
+   "name": "spinal cord",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA7647"
+   ],
+   "concept_names": [
+    "spinal cord"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1737",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1737.obj",
+     "vertices": 427,
+     "faces": 728
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 427,
+    "faces": 728
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 427,
+     "faces": 728
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -0.0456541,
+     145.85999999999999,
+     5.186540000000001
+    ],
+    "max": [
+     0.17627500000000002,
+     149.419,
+     6.49962
+    ]
+   }
+  },
+  {
+   "record_id": "brain.brainstem",
+   "name": "brainstem",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA79876"
+   ],
+   "concept_names": [
+    "brainstem"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1738",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1738.obj",
+     "vertices": 310,
+     "faces": 518
+    },
+    {
+     "fj": "FJ1762",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1762.obj",
+     "vertices": 81,
+     "faces": 156
+    },
+    {
+     "fj": "FJ1769",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1769.obj",
+     "vertices": 3196,
+     "faces": 6036
+    },
+    {
+     "fj": "FJ1770",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1770.obj",
+     "vertices": 4157,
+     "faces": 6468
+    },
+    {
+     "fj": "FJ1775",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1775.obj",
+     "vertices": 5764,
+     "faces": 10304
+    },
+    {
+     "fj": "FJ1779",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1779.obj",
+     "vertices": 93,
+     "faces": 180
+    },
+    {
+     "fj": "FJ1810",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1810.obj",
+     "vertices": 104,
+     "faces": 204
+    },
+    {
+     "fj": "FJ1817",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1817.obj",
+     "vertices": 4050,
+     "faces": 6440
+    },
+    {
+     "fj": "FJ1822",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1822.obj",
+     "vertices": 6179,
+     "faces": 10346
+    },
+    {
+     "fj": "FJ1826",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1826.obj",
+     "vertices": 91,
+     "faces": 176
+    },
+    {
+     "fj": "FJ1831",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1831.obj",
+     "vertices": 3281,
+     "faces": 6060
+    }
+   ],
+   "totals": {
+    "files": 11,
+    "vertices": 27306,
+    "faces": 46888
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 11,
+     "vertices": 27306,
+     "faces": 46888
+    },
+    "combined_files": 11
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -2.04466,
+     146.45000000000002,
+     5.12391
+    ],
+    "max": [
+     2.17505,
+     154.636,
+     9.69866
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-cerebral-hemisphere",
+   "name": "left cerebral hemisphere",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA61819"
+   ],
+   "concept_names": [
+    "left cerebral hemisphere"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1732",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1732.obj",
+     "vertices": 2048,
+     "faces": 3588
+    },
+    {
+     "fj": "FJ1739",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1739.obj",
+     "vertices": 1365,
+     "faces": 2416
+    },
+    {
+     "fj": "FJ1744",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1744.obj",
+     "vertices": 1927,
+     "faces": 3290
+    },
+    {
+     "fj": "FJ1746",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1746.obj",
+     "vertices": 1573,
+     "faces": 2732
+    },
+    {
+     "fj": "FJ1748",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1748.obj",
+     "vertices": 1250,
+     "faces": 2448
+    },
+    {
+     "fj": "FJ1750",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1750.obj",
+     "vertices": 5375,
+     "faces": 10740
+    },
+    {
+     "fj": "FJ1758",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1758.obj",
+     "vertices": 15286,
+     "faces": 25542
+    },
+    {
+     "fj": "FJ1759",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1759.obj",
+     "vertices": 492,
+     "faces": 980
+    },
+    {
+     "fj": "FJ1767",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1767.obj",
+     "vertices": 8986,
+     "faces": 17968
+    },
+    {
+     "fj": "FJ1783",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1783.obj",
+     "vertices": 869,
+     "faces": 1550
+    },
+    {
+     "fj": "FJ1785",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1785.obj",
+     "vertices": 435,
+     "faces": 740
+    },
+    {
+     "fj": "FJ1787",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1787.obj",
+     "vertices": 1973,
+     "faces": 3416
+    },
+    {
+     "fj": "FJ1789",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1789.obj",
+     "vertices": 1528,
+     "faces": 2710
+    },
+    {
+     "fj": "FJ1791",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1791.obj",
+     "vertices": 2538,
+     "faces": 4390
+    },
+    {
+     "fj": "FJ1797",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1797.obj",
+     "vertices": 2033,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1800",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1800.obj",
+     "vertices": 2336,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1833",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1833.obj",
+     "vertices": 3625,
+     "faces": 6452
+    },
+    {
+     "fj": "FJ1835",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1835.obj",
+     "vertices": 3181,
+     "faces": 5364
+    },
+    {
+     "fj": "FJ1841",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1841.obj",
+     "vertices": 1323,
+     "faces": 2344
+    }
+   ],
+   "totals": {
+    "files": 19,
+    "vertices": 58143,
+    "faces": 104316
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 19,
+     "vertices": 58143,
+     "faces": 104316
+    },
+    "combined_files": 19
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.889340000000001,
+     151.35,
+     -1.0329300000000001
+    ],
+    "max": [
+     0.0447205,
+     163.04600000000002,
+     16.9677
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-frontal-lobe",
+   "name": "left frontal lobe",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72970"
+   ],
+   "concept_names": [
+    "left frontal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1744",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1744.obj",
+     "vertices": 1927,
+     "faces": 3290
+    },
+    {
+     "fj": "FJ1787",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1787.obj",
+     "vertices": 1973,
+     "faces": 3416
+    },
+    {
+     "fj": "FJ1800",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1800.obj",
+     "vertices": 2336,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1833",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1833.obj",
+     "vertices": 3625,
+     "faces": 6452
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 9861,
+    "faces": 17200
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 9861,
+     "faces": 17200
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.28854,
+     154.69000000000003,
+     3.92726
+    ],
+    "max": [
+     -0.0190459,
+     163.04600000000002,
+     16.9677
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-hippocampal-formation",
+   "name": "left hippocampal formation",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA261141"
+   ],
+   "concept_names": [
+    "left hippocampal formation"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1759",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1759.obj",
+     "vertices": 492,
+     "faces": 980
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 492,
+    "faces": 980
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 492,
+     "faces": 980
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6601300000000005,
+     152.925,
+     5.944610000000001
+    ],
+    "max": [
+     -1.6636900000000001,
+     155.12400000000002,
+     10.2339
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-limbic-lobe",
+   "name": "left limbic lobe",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72981"
+   ],
+   "concept_names": [
+    "left limbic lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1739",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1739.obj",
+     "vertices": 1365,
+     "faces": 2416
+    },
+    {
+     "fj": "FJ1759",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1759.obj",
+     "vertices": 492,
+     "faces": 980
+    }
+   ],
+   "totals": {
+    "files": 2,
+    "vertices": 1857,
+    "faces": 3396
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 1857,
+     "faces": 3396
+    },
+    "combined_files": 2
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -3.6601300000000005,
+     152.925,
+     3.07274
+    ],
+    "max": [
+     -0.00412312,
+     159.723,
+     14.2072
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-parietal-lobe",
+   "name": "left parietal lobe",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72974"
+   ],
+   "concept_names": [
+    "left parietal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1732",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1732.obj",
+     "vertices": 2048,
+     "faces": 3588
+    },
+    {
+     "fj": "FJ1797",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1797.obj",
+     "vertices": 2033,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1835",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1835.obj",
+     "vertices": 3181,
+     "faces": 5364
+    },
+    {
+     "fj": "FJ1841",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1841.obj",
+     "vertices": 1323,
+     "faces": 2344
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 8585,
+    "faces": 14900
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 8585,
+     "faces": 14900
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.87863,
+     153.929,
+     -0.630488
+    ],
+    "max": [
+     -0.018333,
+     162.36800000000002,
+     8.791670000000002
+    ]
+   }
+  },
+  {
+   "record_id": "brain.left-temporal-lobe",
+   "name": "left temporal lobe",
+   "side": "left",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72972"
+   ],
+   "concept_names": [
+    "left temporal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1746",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1746.obj",
+     "vertices": 1573,
+     "faces": 2732
+    },
+    {
+     "fj": "FJ1783",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1783.obj",
+     "vertices": 869,
+     "faces": 1550
+    },
+    {
+     "fj": "FJ1785",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1785.obj",
+     "vertices": 435,
+     "faces": 740
+    },
+    {
+     "fj": "FJ1789",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1789.obj",
+     "vertices": 1528,
+     "faces": 2710
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 4405,
+    "faces": 7732
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 4405,
+     "faces": 7732
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -6.889340000000001,
+     151.35,
+     1.39933
+    ],
+    "max": [
+     -0.8932180000000001,
+     155.585,
+     12.4954
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-cerebral-hemisphere",
+   "name": "right cerebral hemisphere",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA67292"
+   ],
+   "concept_names": [
+    "right cerebral hemisphere"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1733",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1733.obj",
+     "vertices": 2084,
+     "faces": 3554
+    },
+    {
+     "fj": "FJ1740",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1740.obj",
+     "vertices": 1330,
+     "faces": 2346
+    },
+    {
+     "fj": "FJ1745",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1745.obj",
+     "vertices": 1928,
+     "faces": 3292
+    },
+    {
+     "fj": "FJ1747",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1747.obj",
+     "vertices": 1610,
+     "faces": 2768
+    },
+    {
+     "fj": "FJ1749",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1749.obj",
+     "vertices": 1261,
+     "faces": 2448
+    },
+    {
+     "fj": "FJ1751",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1751.obj",
+     "vertices": 5376,
+     "faces": 10742
+    },
+    {
+     "fj": "FJ1784",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1784.obj",
+     "vertices": 909,
+     "faces": 1626
+    },
+    {
+     "fj": "FJ1786",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1786.obj",
+     "vertices": 482,
+     "faces": 882
+    },
+    {
+     "fj": "FJ1788",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1788.obj",
+     "vertices": 1960,
+     "faces": 3326
+    },
+    {
+     "fj": "FJ1790",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1790.obj",
+     "vertices": 1563,
+     "faces": 2754
+    },
+    {
+     "fj": "FJ1792",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1792.obj",
+     "vertices": 2625,
+     "faces": 4564
+    },
+    {
+     "fj": "FJ1798",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1798.obj",
+     "vertices": 2045,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1801",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1801.obj",
+     "vertices": 2382,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1806",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1806.obj",
+     "vertices": 15757,
+     "faces": 26512
+    },
+    {
+     "fj": "FJ1807",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1807.obj",
+     "vertices": 515,
+     "faces": 1020
+    },
+    {
+     "fj": "FJ1814",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1814.obj",
+     "vertices": 9011,
+     "faces": 18016
+    },
+    {
+     "fj": "FJ1834",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1834.obj",
+     "vertices": 3671,
+     "faces": 6450
+    },
+    {
+     "fj": "FJ1836",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1836.obj",
+     "vertices": 3241,
+     "faces": 5640
+    },
+    {
+     "fj": "FJ1842",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1842.obj",
+     "vertices": 1368,
+     "faces": 2314
+    }
+   ],
+   "totals": {
+    "files": 19,
+    "vertices": 59118,
+    "faces": 105900
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 19,
+     "vertices": 59118,
+     "faces": 105900
+    },
+    "combined_files": 19
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.08513480000000001,
+     151.355,
+     -1.0261799999999999
+    ],
+    "max": [
+     6.99404,
+     163.04200000000003,
+     16.966900000000003
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-frontal-lobe",
+   "name": "right frontal lobe",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72969"
+   ],
+   "concept_names": [
+    "right frontal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1745",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1745.obj",
+     "vertices": 1928,
+     "faces": 3292
+    },
+    {
+     "fj": "FJ1788",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1788.obj",
+     "vertices": 1960,
+     "faces": 3326
+    },
+    {
+     "fj": "FJ1801",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1801.obj",
+     "vertices": 2382,
+     "faces": 4042
+    },
+    {
+     "fj": "FJ1834",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1834.obj",
+     "vertices": 3671,
+     "faces": 6450
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 9941,
+    "faces": 17110
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 9941,
+     "faces": 17110
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.155451,
+     154.64800000000002,
+     3.93459
+    ],
+    "max": [
+     6.415089999999999,
+     163.04200000000003,
+     16.966900000000003
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-hippocampal-formation",
+   "name": "right hippocampal formation",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA261139"
+   ],
+   "concept_names": [
+    "right hippocampal formation"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1807",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1807.obj",
+     "vertices": 515,
+     "faces": 1020
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 515,
+    "faces": 1020
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 515,
+     "faces": 1020
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.79088,
+     152.927,
+     5.95233
+    ],
+    "max": [
+     3.7906100000000005,
+     155.12400000000002,
+     10.2368
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-limbic-lobe",
+   "name": "right limbic lobe",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72980"
+   ],
+   "concept_names": [
+    "right limbic lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1740",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1740.obj",
+     "vertices": 1330,
+     "faces": 2346
+    },
+    {
+     "fj": "FJ1786",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1786.obj",
+     "vertices": 482,
+     "faces": 882
+    },
+    {
+     "fj": "FJ1807",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1807.obj",
+     "vertices": 515,
+     "faces": 1020
+    }
+   ],
+   "totals": {
+    "files": 3,
+    "vertices": 2327,
+    "faces": 4248
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 3,
+     "vertices": 2327,
+     "faces": 4248
+    },
+    "combined_files": 3
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.145084,
+     152.177,
+     3.0829000000000004
+    ],
+    "max": [
+     3.7906100000000005,
+     159.722,
+     14.2106
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-parietal-lobe",
+   "name": "right parietal lobe",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72973"
+   ],
+   "concept_names": [
+    "right parietal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1733",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1733.obj",
+     "vertices": 2084,
+     "faces": 3554
+    },
+    {
+     "fj": "FJ1798",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1798.obj",
+     "vertices": 2045,
+     "faces": 3604
+    },
+    {
+     "fj": "FJ1836",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1836.obj",
+     "vertices": 3241,
+     "faces": 5640
+    },
+    {
+     "fj": "FJ1842",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1842.obj",
+     "vertices": 1368,
+     "faces": 2314
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 8738,
+    "faces": 15112
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 8738,
+     "faces": 15112
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.144547,
+     153.93900000000002,
+     -0.6457700000000001
+    ],
+    "max": [
+     6.9705200000000005,
+     162.36900000000003,
+     8.77679
+    ]
+   }
+  },
+  {
+   "record_id": "brain.right-temporal-lobe",
+   "name": "right temporal lobe",
+   "side": "right",
+   "representation": "partof-concept",
+   "concept_ids": [
+    "FMA72971"
+   ],
+   "concept_names": [
+    "right temporal lobe"
+   ],
+   "source_tree": "partof",
+   "meshes": [
+    {
+     "fj": "FJ1747",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1747.obj",
+     "vertices": 1610,
+     "faces": 2768
+    },
+    {
+     "fj": "FJ1784",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1784.obj",
+     "vertices": 909,
+     "faces": 1626
+    },
+    {
+     "fj": "FJ1786",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1786.obj",
+     "vertices": 482,
+     "faces": 882
+    },
+    {
+     "fj": "FJ1790",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1790.obj",
+     "vertices": 1563,
+     "faces": 2754
+    }
+   ],
+   "totals": {
+    "files": 4,
+    "vertices": 4564,
+    "faces": 8030
+   },
+   "source_totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 4,
+     "vertices": 4564,
+     "faces": 8030
+    },
+    "combined_files": 4
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     1.01802,
+     151.355,
+     1.42936
+    ],
+    "max": [
+     6.99404,
+     155.57000000000002,
+     12.4952
+    ]
+   }
+  }
+ ]
+}
