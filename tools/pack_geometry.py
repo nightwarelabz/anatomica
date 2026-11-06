@@ -19,11 +19,13 @@ Outputs under web/data/:
                  conversion has determinant -1)
       edges:     uint32 x2 per unique undirected edge of the layer
       => one draw call per layer in the shells when unfiltered.
-  records.json — every record the shells list: all 1,552 Body Model
+  records.json — every record the shells list: all 1,838 Body Model
       inventory records (1,545 with geometry; the 7 geometry-less
-      bones listed and marked), the 70 clinical records that link no
-      inventory record (clinical-only, listed and marked), and the
-      8 cardiovascular variant records (listed and marked) — 1,630
+      bones and the 286 geometry-absent FMA concept records of the
+      nervous system listed and marked), the 70 clinical records
+      that link no inventory record (clinical-only, listed and
+      marked), and the 8 cardiovascular variant records (listed and
+      marked) — 1,916
       listed records, plus the full clinical map (361 clinical
       records + 8 variants) keyed by id.
   manifest.json — per-layer counts/sizes/ranges actually written,
@@ -540,6 +542,37 @@ def main():
                      "geometry_note": v.get("unmodeled_note") or
                      "anatomical variant — prevalence cited in the clinical record; "
                      "not separately modeled in geometry"}
+                records.append(e)
+                n_listed += 1
+        if key == "nervous":
+            # Milestone 33: FMA 5.1.0 concept records carry no
+            # geometry, so assembly skips them; list them here from
+            # the inventory, marked, mirroring the skeletal
+            # geometry-less pattern above.
+            listed_ids = {e["id"] for e in records
+                          if e.get("layer") == "nervous"}
+            nerv_inv = load_json("data/nervous/nervous-inventory.json")
+            for rec in nerv_inv["records"]:
+                if rec["record_id"] in listed_ids:
+                    continue
+                e = {"layer": key, "id": rec["record_id"],
+                     "name": rec["name"], "side": rec.get("side"),
+                     "representation": rec.get("representation"),
+                     "subtree": rec.get("subtree"),
+                     "group_path": rec.get("group_path"),
+                     "region": region_of(rec),
+                     "concept_ids": rec.get("concept_ids"),
+                     "concept_names": [rec["name"]],
+                     "record_kind": "inventory",
+                     "has_geometry": False,
+                     "slot": None, "bbox_canonical_cm": None,
+                     "cross_midline_fraction": None,
+                     "clinical_ids": [],
+                     "geometry_note": ("concept record from the "
+                         "Foundational Model of Anatomy (FMA) 5.1.0 "
+                         "(CC BY 4.0); the FMA carries no geometry "
+                         "and BodyParts3D 4.0 has no concept for "
+                         "this structure (Milestone 33)")}
                 records.append(e)
                 n_listed += 1
         counts[key] = n_listed

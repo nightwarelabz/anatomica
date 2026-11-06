@@ -1,0 +1,76 @@
+{
+ "entries": [
+  {
+   "bytes": 11378823,
+   "format": "zip",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "fma.zip",
+   "sha256": "80fd652c33850c7f52448e12793347544d32fa4f820facca3b39a67c7f99cf1a",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 18650,
+   "format": "text",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "LICENSE",
+   "sha256": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 1299,
+   "format": "md",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "README.md",
+   "sha256": "88b49b04bea3b4f4f9f41fff3fb63fb9861d615bac5a1ab63b731af0ffbb985a",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 6,
+   "format": "txt",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "Version.txt",
+   "sha256": "c0eacacd7e27bbf341d21e7e0e2997a363840a210d8e358d4babaebd765b5bfd",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 269,
+   "format": "txt",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "ChangeLog.txt",
+   "sha256": "f7b4e9e865ad7044564c36b56fd07d62acaab70807010e24acb2cce2ab7afac7",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 4275,
+   "format": "md",
+   "license": "CC BY 4.0 (full license text shipped inside the official UW release package; see SOURCE.md)",
+   "license_evidence": "data/sources/fma-5.1.0/LICENSE",
+   "path": "SOURCE.md",
+   "sha256": "4dc562fc0302dc07857748d2cd3c3d9ffddf8b3efaf30f6b46278cecfd0810ea",
+   "source": "Foundational Model of Anatomy (University of Washington)",
+   "source_version": "5.1.0",
+   "stats": {},
+   "structure_id": null
+  }
+ ]
+}

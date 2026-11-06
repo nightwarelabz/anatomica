@@ -141,8 +141,13 @@ recs = INV["records"]
 claimed = [c for r in recs for c in r["concept_ids"]]
 check(len(claimed) == len(set(claimed)),
       "P1 no concept claimed by two records", f"{len(claimed)} claims")
-check(all(c in universe for c in claimed),
-      "P2 every record concept is in the universe")
+check(all(c in universe for r in recs if r.get("source") != "fma-5.1.0"
+          for c in r["concept_ids"]),
+      "P2 every BP3D record concept is in the universe")
+# Milestone 33: FMA-extension records (source == "fma-5.1.0") key on
+# FMA 5.1.0 concepts outside the BP3D universe by design; they are
+# gated by tools/fma_nerve_check.py. P1 above still spans all
+# records, so no concept may be claimed twice across both sources.
 check(len({r['record_id'] for r in recs}) == len(recs)
       == INV["meta"]["record_count"],
       "P3 record ids unique and count matches meta",

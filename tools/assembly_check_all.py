@@ -78,7 +78,8 @@ CENSUS = {
     "skeletal": (206, 199, None),
     "muscular": (359, 359, 127),
     "cardiovascular": (646, 646, 69),
-    "nervous": (133, 133, 52),
+    "nervous": (419, 133, 52),  # Milestone 33: +286 FMA 5.1.0 concept
+    # records (geometry-absent); geometry and clinical counts unchanged
     "respiratory": (83, 83, 37),
     "digestive": (93, 93, 31),
     "urinary": (6, 6, 6),
