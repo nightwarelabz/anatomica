@@ -1,5 +1,5 @@
 {
-  "about": "Every value in this file was entered from a source actually consulted during the Milestone 8 build session (2026-11-06) and is cited per entry, or is explicitly status-flagged. Status meanings: 'cited' = value taken from the cited source; 'calibrated' = value chosen by the build within a cited published range, choice disclosed in the note and in MILESTONE-8.md; 'verify' = engineering placeholder with NO literature source — never to be read as a physiological value. Units are carried on every entry. Milestone 18 additions (sources S13-S16, the venomotor and transcapillary-refill parameters, the widened heart-rate multiplier bound, and the magnitude-gated perturbation expectations) were likewise entered from sources consulted during the Milestone 18 session (2026-11-06) and are cited per entry; amendments to Milestone 8 entries are appended to those entries' notes, never silently rewritten. Milestone 21 additions (the contractility/inotropy effector parameters, transcribed from the S13 supplement re-read during the Milestone 21 session, 2026-11-06) follow the same rule. Milestone 24 additions (sources S17-S22, the right-atrial-pressure validation range, the haemorrhage-course case, and an appended amendment on the haemorrhage_1500 heart-rate expectation) were likewise entered from sources consulted during the Milestone 24 session (2026-11-06); Milestone 24 adds NO model parameter — the Guyton quantities it reports are computed functions of the existing state.",
+  "about": "Every value in this file was entered from a source actually consulted during the Milestone 8 build session (2026-11-06) and is cited per entry, or is explicitly status-flagged. Status meanings: 'cited' = value taken from the cited source; 'calibrated' = value chosen by the build within a cited published range, choice disclosed in the note and in MILESTONE-8.md; 'verify' = engineering placeholder with NO literature source — never to be read as a physiological value. Units are carried on every entry. Milestone 18 additions (sources S13-S16, the venomotor and transcapillary-refill parameters, the widened heart-rate multiplier bound, and the magnitude-gated perturbation expectations) were likewise entered from sources consulted during the Milestone 18 session (2026-11-06) and are cited per entry; amendments to Milestone 8 entries are appended to those entries' notes, never silently rewritten. Milestone 21 additions (the contractility/inotropy effector parameters, transcribed from the S13 supplement re-read during the Milestone 21 session, 2026-11-06) follow the same rule. Milestone 24 additions (sources S17-S22, the right-atrial-pressure validation range, the haemorrhage-course case, and an appended amendment on the haemorrhage_1500 heart-rate expectation) were likewise entered from sources consulted during the Milestone 24 session (2026-11-06); Milestone 24 adds NO model parameter — the Guyton quantities it reports are computed functions of the existing state. Milestone 25 additions (sources S23-S28, the interstitial reservoir parameters, the lumped renal function curve parameters, the urine-output validation range, the bolus-retention course expectation, and appended amendments on refill_reserve_ml, refill_conductance_ml_s_mmhg, the course case and the refill observation) were likewise entered from sources consulted during the Milestone 25 session (2026-11-06) and are cited per entry.",
   "parameters": [
     {
       "cited_range": null,
@@ -481,7 +481,7 @@
         0.08
       ],
       "name": "refill_conductance_ml_s_mmhg",
-      "note": "Net transcapillary refill conductance in Q_refill = k * (Pcap_ref - Pcap_lp), the lumped Starling form: refill is driven by the fall of mean systemic capillary pressure below its own resting value. CALIBRATED within a band derived from consulted human data: S15's volunteer trajectory (~25% of a moderate loss restored in 30 min; up to 25-50% in the first hour) and S14's measured capability (net absorption up to 0.147 mL/min per 100 mL soft tissue under strong LBNP; authors' whole-body estimate up to ~600 mL in 10 min). Identification is trajectory-level: in this model the driving deficit measures only ~3.6 mmHg at the end of a 750 mL bleed (the lumped capillary segment's pressure is flow-dominated: ~63 mmHg at rest, ~59 mmHg at bleed end — both measured in the Milestone 18 build), so this conductance is a NET whole-body lumped coefficient against that lumped signal, NOT a single-capillary filtration coefficient. Across k in [0.008, 0.08] the 30-minute observation refill spans roughly 35-290 mL; the chosen 0.04 lands it at 194 mL = 25.9% of the 750 mL loss, on S15's cited ~25% point (sweeps in MILESTONE-18.md).",
+      "note": "Net transcapillary refill conductance in Q_refill = k * (Pcap_ref - Pcap_lp), the lumped Starling form: refill is driven by the fall of mean systemic capillary pressure below its own resting value. CALIBRATED within a band derived from consulted human data: S15's volunteer trajectory (~25% of a moderate loss restored in 30 min; up to 25-50% in the first hour) and S14's measured capability (net absorption up to 0.147 mL/min per 100 mL soft tissue under strong LBNP; authors' whole-body estimate up to ~600 mL in 10 min). Identification is trajectory-level: in this model the driving deficit measures only ~3.6 mmHg at the end of a 750 mL bleed (the lumped capillary segment's pressure is flow-dominated: ~63 mmHg at rest, ~59 mmHg at bleed end — both measured in the Milestone 18 build), so this conductance is a NET whole-body lumped coefficient against that lumped signal, NOT a single-capillary filtration coefficient. Across k in [0.008, 0.08] the 30-minute observation refill spans roughly 35-290 mL; the chosen 0.04 lands it at 194 mL = 25.9% of the 750 mL loss, on S15's cited ~25% point (sweeps in MILESTONE-18.md). MILESTONE 25 AMENDMENT: the driver gains the interstitial pressure feedback term — Q_refill = k * [ (Pcap_ref - Pcap_lp) - refill_ml / interstitial_compliance_ml_mmhg ] — now that the interstitium is a finite reservoir with a pressure (Milestone 25). The conductance k itself is unchanged and was NOT re-tuned to compensate: the feedback only brakes flows the Milestone 18 calibration produced, and the 30-minute observation remains inside its cited band under the braked dynamics (measured values in MILESTONE-25.md).",
       "source": "S14",
       "status": "calibrated",
       "unit": "mL/(s*mmHg)",
@@ -493,11 +493,86 @@
         1000.0
       ],
       "name": "refill_reserve_ml",
-      "note": "Total interstitial fluid recruitable by transcapillary refill in one episode (the refill state's upper bound; the interstitium itself is not a compartment in this engine). S15: refill 'can restore plasma volume by 500-1000 mL within 1-2 hours'. Upper end of the cited range taken; the choice is non-binding in every shipped scenario (largest modelled refill is ~200 mL in the 30-minute observation) and binds only in multi-hour or repeated-loss runs. The same bound caps net transcapillary escape in the infusion direction — a symmetric lumped bound, disclosed as a modelling bound rather than a measured interstitial capacity.",
+      "note": "Total interstitial fluid recruitable by transcapillary refill in one episode (the refill state's upper bound; the interstitium itself is not a compartment in this engine). S15: refill 'can restore plasma volume by 500-1000 mL within 1-2 hours'. Upper end of the cited range taken; the choice is non-binding in every shipped scenario (largest modelled refill is ~200 mL in the 30-minute observation) and binds only in multi-hour or repeated-loss runs. The same bound caps net transcapillary escape in the infusion direction — a symmetric lumped bound, disclosed as a modelling bound rather than a measured interstitial capacity. MILESTONE 25 AMENDMENT: this parameter is NO LONGER the refill flow's bound. Milestone 25 gives the interstitium a finite volume (interstitial_volume_ml) and a pressure (interstitial_compliance_ml_mmhg): the flow is now limited by the reservoir's physical floor (no refill once the interstitial volume would go negative) and braked continuously by the interstitial pressure feedback. The parameter is retained because S15's 500-1000 mL figure remains the cited envelope the 60-minute course refill trajectory is read against (the course's soft refill line), and the value still appears in that comparison; it no longer constrains any flow.",
       "source": "S15",
       "status": "calibrated",
       "unit": "mL",
       "value": 1000.0
+    },
+    {
+      "cited_range": [
+        10000.0,
+        12000.0
+      ],
+      "name": "interstitial_volume_ml",
+      "note": "Milestone 25: the finite capacity of the interstitial reservoir the transcapillary refill state draws on and the infusion escape drains into. The interstitial volume is tracked by identity, not integrated as a separate state: V_isf = interstitial_volume_ml - refill_ml at all times (the refill state IS the net transfer integral, as since Milestone 18). Value 11,000 mL inside the cited band: S25 gives the extracellular fluid as typically 15 L of which 12 L is interstitial fluid, and separately 'about 11 liters' of interstitial fluid on average; the classical 70-kg accounting in the same tradition (ECF ~14 L, plasma ~3 L) puts the interstitium near 10-11 L. Before Milestone 25 the interstitium had no volume in this engine at all — refill was bounded only by refill_reserve_ml.",
+      "source": "S25",
+      "status": "calibrated",
+      "unit": "mL",
+      "value": 11000.0
+    },
+    {
+      "cited_range": [
+        150.0,
+        550.0
+      ],
+      "name": "interstitial_compliance_ml_mmhg",
+      "note": "Milestone 25: the single lumped linear compliance of the interstitial reservoir, entering the Starling driver as a pressure feedback: Q_refill = k * [ (Pcap_ref - Pcap_lp) - refill_ml / C_isf ], i.e. the interstitial pressure deviation from its operating point is dP_isf = -refill_ml / C_isf (depleting the interstitium lowers its pressure and brakes further refill; filling it raises its pressure and brakes further escape). CALIBRATED inside a band derived from S26's fitted experimental pressure-volume relation: that fit's local slope at the operating point is ~30 mmHg per unit fractional volume change, falling to ~20 and rising to ~55 mmHg across the volume range the shipped scenarios visit (x = V/V0 in 0.92-1.05), which scaled to an 11,000 mL interstitium is roughly 200-550 mL/mmHg; the band's lower edge adds margin for deeper depletion. DISCLOSED SIMPLIFICATION: the source curve is strongly nonlinear (very steep in the negative-pressure region, then near-ballooning above zero pressure — the edema regime); a single slope cannot reproduce both regimes. The shipped scenarios move the interstitial volume by at most a few hundred mL (a few percent of V0), inside the region the band was derived from; sustained-edema behaviour is out of scope and would need the nonlinear curve. MILESTONE 25 SWEEP: C_isf in {200, 300, 400} mL/mmHg was exercised against the full gate set — 30-minute observation refill 158.9 / 167.6 / 172.2 mL (band 112.5-262.5), 60-minute course refill (untreated) 615.8 / 682.4 / 720.1 mL (soft envelope 500-1000), bolus retention at +60 min 0.54 / 0.49 / 0.46 (soft band 0.20-0.95), resting outputs identical at recorded precision — every hard gate and every soft line holds at all three cells and the surface is shallow and monotone. Shipped value 300: the middle of the fit-implied range over the visited volume band (the fit's slope implies ~235-370 mL/mmHg for x in 0.94-1.0); the choice within the sweep is a disclosed convention, not an identification.",
+      "source": "S26",
+      "status": "calibrated",
+      "unit": "mL/mmHg",
+      "value": 300.0
+    },
+    {
+      "cited_range": [
+        0.7,
+        1.4
+      ],
+      "name": "baseline_urine_output_ml_min",
+      "note": "Milestone 25: U0, the urine output of the lumped renal function curve at the model's operating point (the value the curve takes where arterial pressure equals the captured setpoint). 1.0 mL/min = 1,440 mL/day, inside S24's cited normal production of 1-2 litres of urine per day (0.69-1.39 mL/min); S24's worked table value is 0.9 mL/min (1,296 mL/day). This is a lumped Guyton-tradition renal function curve, NOT nephron modelling: the Body Model has no nephron either (Milestones 12/23: the urinary interior is absent from the source anatomies), and the engine represents the kidney only through this pressure-output relation.",
+      "source": "S24",
+      "status": "calibrated",
+      "unit": "mL/min",
+      "value": 1.0
+    },
+    {
+      "cited_range": [
+        0.7,
+        1.4
+      ],
+      "name": "fluid_intake_ml_min",
+      "note": "Milestone 25: constant lumped fluid intake (drinking + food water, entering the systemic venous compartment), set EQUAL to baseline_urine_output_ml_min by Guyton's equilibrium construction (S23): the equilibrium point of the renal-body fluid system is where the intake line intersects the renal output curve, so a model that sits at its operating point must take in what it excretes there. The source figure's own note applies: nonrenal losses are ignored in that construction, and they are ignored here too (no insensible-loss term). During the reflex-off settle, urine output is held exactly equal to intake so the settle is undisturbed; once the reflexes engage, the renal curve acts on the sensed MAP and the two fluxes separate.",
+      "source": "S23",
+      "status": "calibrated",
+      "unit": "mL/min",
+      "value": 1.0
+    },
+    {
+      "cited_range": null,
+      "name": "renal_pressure_zero_offset_mmhg",
+      "note": "Milestone 25: in S23's renal urinary output curve (Figure 19-1), urine output is essentially zero at an arterial pressure 50 mmHg below the normal pressure (zero at 50 mmHg, normal at 100 mmHg). CITED as the curve's zero anchor. The curve's SHAPE is applied relative to this model's captured operating point (the setpoint captured at reflex engagement) — the engine's standing self-referencing convention, used for the baroreflex setpoint since v0 and for the refill capillary reference since Milestone 18 — because the model's operating MAP (~73 mmHg, set by the lumped S1 vascular parameters) sits below the source's 100 mmHg normal; what is cited and carried is the shape (offsets and multiples), not the source's absolute pressure axis.",
+      "source": "S23",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 50.0
+    },
+    {
+      "cited_range": null,
+      "name": "renal_multiple_at_plus_50_mmhg",
+      "note": "Milestone 25: S23's Figure 19-3 analysis — at an arterial pressure 50 mmHg above the normal pressure (150 vs 100 mmHg), 'renal output of water and salt is about three times as great as the intake'. CITED as the curve's midpoint anchor: urine output = 3 x U0 at +50 mmHg relative to the operating point.",
+      "source": "S23",
+      "status": "cited",
+      "unit": "x baseline",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "renal_multiple_at_plus_100_mmhg",
+      "note": "Milestone 25: S23's Figure 19-1 text — at an arterial pressure 100 mmHg above the normal pressure (200 vs 100 mmHg), urine output rises 'to about six to eight times normal'. CITED as the curve's upper anchor at the band midpoint, 7 x U0; above +100 mmHg the curve continues at the [50, 100] segment's slope (0.08 x U0 per mmHg), disclosed as extrapolation beyond the cited anchors. The shipped curve is the chapter's ACUTE (isolated-kidney) shape; the chronic in-vivo curve is far steeper, partly through sympathetic and hormonal mechanisms this engine does not model (S23) — named in the Milestone 25 caveat ledger.",
+      "source": "S23",
+      "status": "cited",
+      "unit": "x baseline",
+      "value": 7.0
     },
     {
       "cited_range": null,
@@ -507,6 +582,467 @@
       "status": "verify",
       "unit": "relative (fraction)",
       "value": 0.01
+    },
+    {
+      "cited_range": null,
+      "name": "plasma_protein_concentration_g_ml",
+      "note": "Milestone 26: resting plasma total protein concentration, S29's table (albumin 4.5 + globulins 2.5 + fibrinogen 0.3 = 7.3 g/dL). Initialises the lumped plasma protein mass state over the derived resting plasma volume (total blood volume x (1 - hematocrit_resting)); thereafter the concentration is a derived quantity of the protein mass and plasma volume states.",
+      "source": "S29",
+      "status": "cited",
+      "unit": "g/mL",
+      "value": 0.073
+    },
+    {
+      "cited_range": null,
+      "name": "isf_protein_concentration_g_ml",
+      "note": "Milestone 26: resting interstitial fluid protein concentration, S29 (interstitial protein averages about 3 g/dL, giving the interstitial oncotic pressure of 8 mmHg). Initialises the lumped interstitial protein mass state over the interstitial reservoir volume (Milestone 25); thereafter derived.",
+      "source": "S29",
+      "status": "cited",
+      "unit": "g/mL",
+      "value": 0.03
+    },
+    {
+      "cited_range": [
+        0.4,
+        0.5
+      ],
+      "name": "hematocrit_resting",
+      "note": "Milestone 26: the model subject's resting hematocrit. S35's whole-blood unit band is 0.35-0.45 and S34's per-unit rule assumes the standard adult; 0.45 is taken inside the cited span. The red-cell volume state is initialised as this fraction of total blood volume. TRACKED-BUT-INERT, stated plainly: hematocrit feeds only the plasma-volume identity (V_plasma = V_blood - V_rbc) and the product/dilution bookkeeping. No viscosity coupling is modelled - no sourced lumped viscosity law was consulted, and inventing one is refused (see MILESTONE-26.md).",
+      "source": "S35",
+      "status": "calibrated",
+      "unit": "fraction (v/v)",
+      "value": 0.45
+    },
+    {
+      "cited_range": null,
+      "name": "starling_reflection_coefficient_protein",
+      "note": "Milestone 26: osmotic reflection coefficient for total plasma protein, S30 (about 0.9 in muscle microvessels; tissue span roughly 0.7-0.99 quoted there). Enters the Starling driver as sigma x (oncotic pressure difference) and the convective protein flux on the filtration limb as the sieving factor (1 - sigma). A lumped whole-body value, dominated by muscle/skin beds; the fenestrated and discontinuous beds (liver, gut) have far lower sigma and are not distinguished in a lumped state - disclosed in MILESTONE-26.md.",
+      "source": "S30",
+      "status": "cited",
+      "unit": "dimensionless",
+      "value": 0.9
+    },
+    {
+      "cited_range": null,
+      "name": "oncotic_albumin_coefficients",
+      "note": "Milestone 26: Nitta et al.'s albumin-fraction polynomial coefficients (linear, quadratic, cubic) of the corrected Landis-Pappenheimer relation, S33, concentrations in g/dL, result in mmHg.",
+      "source": "S33",
+      "status": "cited",
+      "unit": "mmHg, polynomial in g/dL",
+      "value": [
+        2.8,
+        0.18,
+        0.012
+      ]
+    },
+    {
+      "cited_range": null,
+      "name": "oncotic_globulin_coefficients",
+      "note": "Milestone 26: Nitta et al.'s non-albumin (globulin) fraction polynomial coefficients of the same relation, S33.",
+      "source": "S33",
+      "status": "cited",
+      "unit": "mmHg, polynomial in g/dL",
+      "value": [
+        0.9,
+        0.12,
+        0.004
+      ]
+    },
+    {
+      "cited_range": null,
+      "name": "plasma_albumin_fraction",
+      "note": "Milestone 26: albumin fraction of total plasma protein = 4.5 / 7.3 from S29's own table, held FIXED: the lumped states track total protein only, so the Nitta relation (S33) is applied at this resting composition in both pools. S33's exchange notes the albumin fraction is one source of the 10-15% inter-equation spread; the interstitial pool's true albumin fraction differs from plasma's and is not distinguished - disclosed in MILESTONE-26.md.",
+      "source": "S29",
+      "status": "cited",
+      "unit": "fraction",
+      "value": 0.61643836
+    },
+    {
+      "cited_range": [
+        0.0005787037,
+        0.0011574074
+      ],
+      "name": "lymph_protein_return_g_s",
+      "note": "Milestone 26: resting lymphatic protein return flux L0 = 70 g/day, calibrated inside S32's cited band (protein returned via lymph in one day = 25-50% of the circulating pool; this model's pool is about 201 g, so the band is 50-100 g/day = [5.79e-4, 1.157e-3] g/s; the 3 L/day lymph flow at interstitial concentration cross-checks at 60-90 g/day). In-model the return scales with the interstitial concentration ratio (ci/ci0) and the balancing transcapillary leak with the plasma concentration ratio (cp/cp0), so both fluxes follow dilution and concentration honestly and are exactly equal at the operating point.",
+      "source": "S32",
+      "status": "calibrated",
+      "unit": "g/s",
+      "value": 0.0008101852
+    },
+    {
+      "cited_range": null,
+      "name": "albumin_synthesis_g_s",
+      "note": "Milestone 26: albumin synthesis 10.5 g/day (S31) = 1.2153e-4 g/s, applied to the lumped total-protein plasma pool. Albumin is only about 60% of plasma protein mass, so applying the albumin rate to the total pool UNDERSTATES total-protein synthesis: oncotic recovery in-model is slower than a full total-protein synthesis would produce, never faster. A disclosed conservative choice - the alternative (scaling up by an assumed albumin share) would invent a number.",
+      "source": "S31",
+      "status": "cited",
+      "unit": "g/s",
+      "value": 0.0001215278
+    },
+    {
+      "cited_range": [
+        3e-07,
+        1.3e-06
+      ],
+      "name": "protein_catabolic_fraction_s",
+      "note": "Milestone 26: first-order fractional clearance of the plasma protein pool, DERIVED so that synthesis and catabolism cancel exactly at the resting operating point: kappa = synthesis rate (S31, 1.2153e-4 g/s) / resting circulating pool (200.75 g: S29 concentration over the derived 2,750 mL plasma volume) = 6.05e-7 /s. Quiet-at-rest by construction, the same equilibrium device as intake = U0 (Milestone 25). The cited band spans synthesis 9-14 g/day over pools of 150-250 g. S31's clearance split (renal ~6%, gastrointestinal ~10%, catabolic ~84%) is represented by this single lumped sink; the kidney's protein handling is NOT a urine-protein model and no protein appears in the urine state.",
+      "source": "S31",
+      "status": "calibrated",
+      "unit": "1/s",
+      "value": 6.0534e-07
+    },
+    {
+      "cited_range": null,
+      "name": "product_whole_blood_volume_ml",
+      "note": "Milestone 26: one unit of whole blood = 450 mL donor blood + 63 mL anticoagulant-preservative (S35). Scenario inputs are whole units; the course whole-blood arm gives 2 units = 1,026 mL, volume-matched by design to the 1,000 mL crystalloid bolus arm within the units' quantisation (disclosed in MILESTONE-26.md).",
+      "source": "S35",
+      "status": "cited",
+      "unit": "mL",
+      "value": 513.0
+    },
+    {
+      "cited_range": [
+        0.35,
+        0.45
+      ],
+      "name": "product_whole_blood_hematocrit",
+      "note": "Milestone 26: hematocrit of a whole-blood unit, S35's band 0.35-0.45; mid-band value taken.",
+      "source": "S35",
+      "status": "calibrated",
+      "unit": "fraction (v/v)",
+      "value": 0.4
+    },
+    {
+      "cited_range": [
+        0.036,
+        0.048
+      ],
+      "name": "product_whole_blood_protein_g_ml",
+      "note": "Milestone 26: DERIVED: the unit's plasma fraction at its hematocrit (1 - 0.40) x the plasma protein concentration (S29, 0.073 g/mL) = 0.0438 g/mL. The 63 mL of anticoagulant dilutes the unit by about 12% and that dilution is neglected, which slightly OVERSTATES the unit's protein - disclosed; the term is small against the course effects reported.",
+      "source": "S29",
+      "status": "calibrated",
+      "unit": "g/mL",
+      "value": 0.0438
+    },
+    {
+      "cited_range": [
+        250.0,
+        350.0
+      ],
+      "name": "product_prbc_volume_ml",
+      "note": "Milestone 26: one unit of packed red blood cells. S34's institutional table lists 350 mL; S35's component references give 250-320 mL; 300 mL sits inside both.",
+      "source": "S34",
+      "status": "calibrated",
+      "unit": "mL",
+      "value": 300.0
+    },
+    {
+      "cited_range": [
+        0.5,
+        0.7
+      ],
+      "name": "product_prbc_hematocrit",
+      "note": "Milestone 26: hematocrit of a packed red cell unit, S35's band 0.50-0.70 (additive-solution units 0.55-0.65); 0.60 taken.",
+      "source": "S35",
+      "status": "calibrated",
+      "unit": "fraction (v/v)",
+      "value": 0.6
+    },
+    {
+      "cited_range": [
+        0.015,
+        0.037
+      ],
+      "name": "product_prbc_protein_g_ml",
+      "note": "Milestone 26: DERIVED residual-plasma estimate: (1 - 0.60) x 0.073 g/mL (S29). Additive-solution units carry crystalloid in place of part of that residual plasma, so this overstates PRBC protein somewhat - disclosed. The term exists so the protein bookkeeping is complete for every product; PRBC is not administered for its protein in any scenario here.",
+      "source": "S29",
+      "status": "calibrated",
+      "unit": "g/mL",
+      "value": 0.0292
+    },
+    {
+      "cited_range": [
+        200.0,
+        250.0
+      ],
+      "name": "product_plasma_volume_ml",
+      "note": "Milestone 26: one unit of plasma (fresh frozen plasma class), S34's band 200-250 mL; mid-band value taken.",
+      "source": "S34",
+      "status": "calibrated",
+      "unit": "mL",
+      "value": 225.0
+    },
+    {
+      "cited_range": null,
+      "name": "product_plasma_hematocrit",
+      "note": "Milestone 26: plasma is an acellular component (S35) - it carries no red-cell volume.",
+      "source": "S35",
+      "status": "cited",
+      "unit": "fraction (v/v)",
+      "value": 0.0
+    },
+    {
+      "cited_range": null,
+      "name": "product_plasma_protein_g_ml",
+      "note": "Milestone 26: plasma product protein concentration = the plasma concentration (S29): FFP is separated plasma, so the donor plasma's protein concentration applies. Clotting-factor activity is not a state in this engine and is not claimed.",
+      "source": "S29",
+      "status": "cited",
+      "unit": "g/mL",
+      "value": 0.073
+    },
+    {
+      "cited_range": [
+        135.0,
+        145.0
+      ],
+      "name": "plasma_sodium_resting_mmol_l",
+      "note": "Milestone 30: the equilibrium-construction concentration of the extracellular sodium lump, in the Milestone 25 intake-construction pattern: the sodium state is INITIALISED at this concentration over the extracellular volume (plasma + interstitial), so the resting operating point sits on it by construction - disclosed, not derived. S48 gives plasma sodium 137-144 mmol/L; the S46 teaching corpus gives about 140-145; the calibrated band spans both consulted ranges. Every flux then moves the state off this value only as the cited physiology dictates.",
+      "source": "S48",
+      "status": "calibrated",
+      "unit": "mmol/L",
+      "value": 138.0
+    },
+    {
+      "cited_range": null,
+      "name": "osmolality_non_sodium_mosm_kg",
+      "note": "Milestone 30: the non-sodium terms of the calculated-osmolality formula (S47: 2[Na] + glucose/18 + BUN/2.8) at typical values - the consulted worked example (Na 140 mmol/L, glucose 90 mg/dL, BUN 14 mg/dL) gives 5 + 5 = 10 mOsm/kg and a total calculated osmolality of 290. Glucose and urea are not states in this engine; the term is carried as a constant and disclosed - the osmolality state's dynamics are sodium's. Resting calculated osmolality is therefore 2 x 138 + 10 = 286 mOsm/kg, inside the S47 band 275-295.",
+      "source": "S47",
+      "status": "cited",
+      "unit": "mOsm/kg",
+      "value": 10.0
+    },
+    {
+      "cited_range": [
+        25000.0,
+        28000.0
+      ],
+      "name": "icf_volume_ml",
+      "note": "Milestone 30: the intracellular water lump at rest. S46's consulted corpus puts intracellular water at about two thirds of total body water, 25-28 L at 70 kg; the upper end is taken so the model's summed body water (28,000 intracellular + 11,000 interstitial + 2,750 plasma = 41,750 mL) sits at the corpus's about-42 L total. The lump exchanges water with the interstitial compartment across the cell membrane on osmolality only; its solute content is fixed at the resting osmolality, so it is an osmotic buffer, not a sodium store - intracellular sodium/potassium exchange is not modelled (see MILESTONE-30.md).",
+      "source": "S46",
+      "status": "calibrated",
+      "unit": "mL",
+      "value": 28000.0
+    },
+    {
+      "cited_range": [
+        0.013,
+        0.054
+      ],
+      "name": "icf_exchange_conductance_ml_s_mosm",
+      "note": "Milestone 30: conductance of the intracellular-extracellular water exchange, per mOsm/kg of osmolality difference across the cell membrane. CALIBRATED construction, disclosed: the linearised equilibration time constant of the two-compartment system (28 L against 13.75 L) at this value is about 20 minutes; the cited band spans about 10-40 minutes. S36 establishes that body water distributes across the compartments on osmolality; no consulted source states a compartmental time constant directly - in vivo the appearance of an ingested load is absorption-limited (S40: water diuresis begins about 15 min after ingestion, maximum about 40 min). The span is an engineering bound around that physiology and is flagged as such.",
+      "source": "S36",
+      "status": "calibrated",
+      "unit": "mL/s per mOsm/kg",
+      "value": 0.027
+    },
+    {
+      "cited_range": null,
+      "name": "adh_osmotic_threshold_mosm_kg",
+      "note": "Milestone 30: threshold (x-intercept) of the plasma AVP-osmolality relation. S37 (primary human data, Robertson & Athar 1976): AVP = 0.35 x (osmolality - 281.0) in recumbent hydropenic subjects. S38's textbook threshold is 283 mOsm/kg and S36's about 280; the primary source's intercept is taken.",
+      "source": "S37",
+      "status": "cited",
+      "unit": "mOsm/kg",
+      "value": 281.0
+    },
+    {
+      "cited_range": null,
+      "name": "adh_osmotic_slope_pg_ml_per_mosm",
+      "note": "Milestone 30: slope of the AVP-osmolality relation, S37: 0.35 pg/mL per mOsm/kg (recumbent hydropenic adults); the same study's upright (0.31) and hypertonic-saline (0.32) slopes bracket it from below. At the constructed resting osmolality 286 the relation gives a resting AVP of 0.35 x 5 = 1.75 pg/mL.",
+      "source": "S37",
+      "status": "cited",
+      "unit": "pg/mL per mOsm/kg",
+      "value": 0.35
+    },
+    {
+      "cited_range": null,
+      "name": "adh_volume_threshold_fraction",
+      "note": "Milestone 30: the fall in intravascular volume / effective arterial pressure at which the non-osmotic (volume) stimulus to AVP secretion engages. S38: a decrease of 8 percent or more in intravascular volume or blood pressure triggers AVP release; S36 puts the required fall at 5-10 percent for effects comparable to osmotic stimuli (dual-sourced threshold). In this engine the sensed variable is the low-passed MAP deficit against the reflex set-point - the same sensed pressure the renal curve reads.",
+      "source": "S38",
+      "status": "cited",
+      "unit": "fraction",
+      "value": 0.08
+    },
+    {
+      "cited_range": null,
+      "name": "adh_volume_full_fraction",
+      "note": "Milestone 30: the pressure/volume deficit at which the non-osmotic AVP stimulus reaches its cited full scale: S38 - at a 25 percent decrease in intravascular volume, AVP levels reach 20-30 times normal (the vasoconstrictor range).",
+      "source": "S38",
+      "status": "cited",
+      "unit": "fraction",
+      "value": 0.25
+    },
+    {
+      "cited_range": [
+        35.0,
+        55.0
+      ],
+      "name": "adh_volume_max_pg_ml",
+      "note": "Milestone 30: full-scale non-osmotic AVP contribution. S38's 20-30x normal at a 25 percent deficit, applied to this model's resting AVP (1.75 pg/mL, derived from S37 at the constructed resting osmolality), gives 35-53 pg/mL; 50 is taken inside that band. The volume limb adds to the osmotic limb, as in the cited physiology. AVP's own vasoconstrictor (V1) action at these levels is NOT an effector in this engine - disclosed in MILESTONE-30.md.",
+      "source": "S38",
+      "status": "calibrated",
+      "unit": "pg/mL",
+      "value": 50.0
+    },
+    {
+      "cited_range": [
+        300.0,
+        1600.0
+      ],
+      "name": "adh_tau_seconds",
+      "note": "Milestone 30: lumped secretion-clearance time constant of the plasma AVP state. Dual-sourced span: S38 gives the plasma AVP half-life as 5-10 min; S36 gives 18 min. The value taken (1,080 s = 18 min) is the slow end, as a lumped approach constant for the secretion-plus-clearance limb; the cited band spans the two sources' half-lives converted to approach constants (about 5-26 min). The axis is fast next to aldosterone's hours - that ordering is the cited physiology, not a modelling choice.",
+      "source": "S38",
+      "status": "calibrated",
+      "unit": "s",
+      "value": 1080.0
+    },
+    {
+      "cited_range": null,
+      "name": "adh_uosm_min_mosm_kg",
+      "note": "Milestone 30: urine osmolality at maximal water diuresis (AVP absent), S39: the kidney can dilute urine to about 50 mOsm/kg in excess water.",
+      "source": "S39",
+      "status": "cited",
+      "unit": "mOsm/kg",
+      "value": 50.0
+    },
+    {
+      "cited_range": null,
+      "name": "adh_uosm_max_mosm_kg",
+      "note": "Milestone 30: urine osmolality at maximal antidiuresis, S39: 1,200-1,400 mOsm/kg in water deficit; the lower end is taken (the human concentrating ceiling in most consulted accounts).",
+      "source": "S39",
+      "status": "cited",
+      "unit": "mOsm/kg",
+      "value": 1200.0
+    },
+    {
+      "cited_range": [
+        1.0,
+        2.5
+      ],
+      "name": "adh_uosm_half_pg_ml",
+      "note": "Milestone 30: the AVP concentration at which the AVP-to-urine-osmolality response sits halfway between its cited floor (50, S39) and ceiling (1,200, S39). CALIBRATED to two cited anchors: S39's resting urine osmolarity of about 600 mOsm/kg at this model's resting AVP of 1.75 pg/mL (the response curve passes through 600 there at this value), and the cited near-maximal antidiuresis by 5-6 pg/mL (S38: maximal antidiuresis at about 5 pg/mL; S49: above 5-6 pg/mL urine osmolality is maximal) - at 5 pg/mL this curve reads about 1,065 mOsm/kg, 89 percent of ceiling. The response shape is a saturating Hill function with exponent 2; the exponent is an engineering choice, disclosed. This curve is what converts AVP into urine flow: flow = (the acute renal curve's pressure multiple) x (the urinary osmole excretion rate) / curve(AVP), so at the resting osmole rate the AVP term is exactly the ratio of the curve at the resting AVP to the curve at the current AVP, and the flow is exactly the baseline output at the operating point by construction. Formulating the flow on the osmole rate rather than on the baseline output alone is what keeps the urine-osmolality readout inside this curve's ceiling when the solute load itself moves (measured in MILESTONE-30.md).",
+      "source": "S49",
+      "status": "calibrated",
+      "unit": "pg/mL",
+      "value": 1.83
+    },
+    {
+      "cited_range": [
+        0.09,
+        0.181
+      ],
+      "name": "baseline_sodium_excretion_mmol_min",
+      "note": "Milestone 30: baseline renal sodium excretion at the resting operating point = 160 mmol/day. S45: on a normal diet sodium intake is 130-260 mmol/day (8-15 g NaCl), nearly completely absorbed, and at balance excretion matches intake; the population mean 24-h urinary sodium consulted alongside is 159 mmol/day. Sodium excretion is the output of the aldosterone-modulated CHRONIC renal curve (see renal_chronic_steepening and renal_curve_shift_per_aldosterone_mmhg); water excretion deliberately stays on the Milestone 25 acute curve.",
+      "source": "S45",
+      "status": "calibrated",
+      "unit": "mmol/min",
+      "value": 0.111
+    },
+    {
+      "cited_range": [
+        0.09,
+        0.181
+      ],
+      "name": "sodium_intake_mmol_min",
+      "note": "Milestone 30: baseline sodium intake, set EQUAL to baseline excretion by the equilibrium construction (the Milestone 25 fluid-intake pattern, disclosed): the resting sodium state is stationary because intake and excretion match at the operating point, not because either was derived. S45's normal-diet band applies. Scenario arms move this rate through the intake event; the theatre scenarios never do.",
+      "source": "S45",
+      "status": "calibrated",
+      "unit": "mmol/min",
+      "value": 0.111
+    },
+    {
+      "cited_range": [
+        0.15,
+        0.45
+      ],
+      "name": "urine_non_sodium_osmole_rate_mosm_min",
+      "note": "Milestone 30: DERIVED: the non-sodium urinary osmole excretion rate (urea-dominated), calibrated so the urine-osmolality readout reproduces S39's resting value: at the resting urine flow of 1.0 mL/min and resting sodium excretion of 0.111 mmol/min (2 x 0.111 = 0.222 mOsm/min of sodium salts), a resting urine osmolality of 600 mOsm/kg requires 0.600 - 0.222 = 0.378 mOsm/min of other osmoles; total solute excretion is then 0.600 mOsm/min = 864 mOsm/day. S39's mechanism - ADH changes water excretion at nearly constant solute excretion - is what makes the readout honest: the osmole rate is held constant and urine osmolality moves with the flow. The band spans plausible solute loads around the derivation.",
+      "source": "S39",
+      "status": "calibrated",
+      "unit": "mOsm/min",
+      "value": 0.378
+    },
+    {
+      "cited_range": [
+        130.0,
+        154.0
+      ],
+      "name": "crystalloid_sodium_mmol_l",
+      "note": "Milestone 30: sodium concentration carried by the event channel's inflow ('isotonic crystalloid'). S50's consulted compositions: lactated Ringer 130 mmol/L, balanced solutions of the Plasma-Lyte class 140, 0.9% NaCl 154. The channel is a generic isotonic crystalloid, so the plasma-matched balanced value 140 is taken. Blood lost through the same channel removes sodium at the stage plasma concentration over the plasma (non-red-cell) fraction; administered blood products return sodium at the resting plasma concentration over their plasma fraction. Both conventions are disclosed in MILESTONE-30.md.",
+      "source": "S50",
+      "status": "calibrated",
+      "unit": "mmol/L",
+      "value": 140.0
+    },
+    {
+      "cited_range": [
+        3600.0,
+        14400.0
+      ],
+      "name": "aldosterone_tau_seconds",
+      "note": "Milestone 30: time constant of the aldosterone EFFECT state - not the hormone's plasma half-life, which S42 puts at about 20 min. The effect is genomic (transport proteins must be synthesised), so the span is set by S41's human infusion data (latent period about 20-60 min before a demonstrable effect on sodium excretion; peak effect 2-4 h; action lasting about 6 h) and S42 (transport changes begin after about 45 min and peak hours later) - dual-sourced. The value taken (7,200 s = 2 h) is the peak-effect midpoint. This is the slowest limb in the engine by design: the cited physiology is slow, and the model shows that timescale rather than making aldosterone a fast effector.",
+      "source": "S41",
+      "status": "calibrated",
+      "unit": "s",
+      "value": 7200.0
+    },
+    {
+      "cited_range": null,
+      "name": "aldosterone_perfusion_gain",
+      "note": "Milestone 30: VERIFY-FLAGGED engineering gain, in the house pattern of the baroreflex gains: the aldosterone effect state's target rises by this factor times the fractional MAP deficit against the reflex set-point (renal perfusion pressure is the RAAS input - S43's mechanism; renin and angiotensin II are subsumed into this limb rather than carried as states, disclosed in MILESTONE-30.md). Chosen with the sodium gain so the scenario arms behave in the cited regimes (sodium balance regained under a 5x load at a small pressure rise, S44's soft line; strong retention in haemorrhage). Nothing gates on this value alone; it awaits expert review like the reflex gains.",
+      "source": "S43",
+      "status": "verify",
+      "unit": "1/fraction",
+      "value": 6.0
+    },
+    {
+      "cited_range": null,
+      "name": "aldosterone_sodium_gain",
+      "note": "Milestone 30: VERIFY-FLAGGED engineering gain: the aldosterone effect state's target falls by this factor times the fractional sodium-CONTENT excess over the resting content - the expansion limb of RAAS control (S43: suppression of the axis on high sodium intake is what makes pressure natriuresis effective at small pressure changes; S40: reduced salt intake raises aldosterone with slowly developing falls in sodium excretion). The input is the content error, not the concentration error, for a measured reason: water follows sodium, so under an isotonic load the plasma concentration error saturates below 1 percent while the content error reaches +21 percent - a concentration input cannot express the cited suppression (MILESTONE-30.md). The content error is the lump's expansion signal: the integrated renin pathway's inputs (renal perfusion, macula-densa delivery, atrial stretch) track the expanded state, not the clamped concentration. See aldosterone_perfusion_gain for the calibration disclosure.",
+      "source": "S43",
+      "status": "verify",
+      "unit": "1/fraction",
+      "value": 25.0
+    },
+    {
+      "cited_range": null,
+      "name": "aldosterone_target_floor",
+      "note": "Milestone 30: engineering floor on the normalised aldosterone effect state (1.0 at rest), in the house pattern of the reflex bounds: maximal suppression keeps a residual sodium-retaining tone. VERIFY-FLAGGED; exercised by the scenario arms, nothing gates on the bound alone.",
+      "source": "S43",
+      "status": "verify",
+      "unit": "ratio",
+      "value": 0.25
+    },
+    {
+      "cited_range": null,
+      "name": "aldosterone_target_ceiling",
+      "note": "Milestone 30: engineering ceiling on the normalised aldosterone effect state (1.0 at rest): caps the retaining state in deep volume deficit. VERIFY-FLAGGED; see aldosterone_target_floor.",
+      "source": "S43",
+      "status": "verify",
+      "unit": "ratio",
+      "value": 3.5
+    },
+    {
+      "cited_range": [
+        0.0,
+        25.0
+      ],
+      "name": "renal_curve_shift_per_aldosterone_mmhg",
+      "note": "Milestone 30: the aldosterone effect shifts the chronic pressure-natriuresis relation along the pressure axis by this many mmHg per unit of normalised aldosterone state - Guyton's formulation (S23: the hormonal state is among the determinants that shift the renal function curve; S43: suppression of the axis on high salt intake greatly amplifies the effectiveness of pressure natriuresis, and inappropriate activation forces pressure up to maintain sodium balance). CALIBRATED against the declared target - the 5x sodium-load arm regains sodium balance at a single-digit mmHg MAP rise, the regime S44 reports for intact-axis salt loading - and the calibration is a measurement, recorded here: at 12 mmHg per unit the arm ASYMPTOTES at 0.53 of balance (aldosterone state 0.48, MAP rise +2.2 mmHg at 24 h), because in this lump the Starling balance defends plasma volume and absorbs most of the pressure signal an expanded extracellular volume would otherwise send the kidney - the hormonal limb must therefore carry the natriuresis, which is S43's stated mechanism. At 25 the suppression carries it and balance closes at a small pressure rise (measured values in MILESTONE-30.md). The band runs from no shift to a shift comparable to the acute curve's own doubling offset (25 mmHg); the calibrated value sits at the band's top, disclosed.",
+      "source": "S23",
+      "status": "calibrated",
+      "unit": "mmHg per unit aldosterone state",
+      "value": 25.0
+    },
+    {
+      "cited_range": [
+        3.0,
+        8.0
+      ],
+      "name": "renal_chronic_steepening",
+      "note": "Milestone 30: the chronic renal curve for SODIUM reuses the Milestone 25 acute curve's shape with its pressure axis compressed by this factor. The compression is the cited physiology: S23 - the acute curve doubles output for about +25 mmHg, while chronically an increase in arterial pressure of only a few mmHg can double renal output, a steepening S23 attributes partly to the hormonal determinants (and S43 quantifies for the RAAS limb). Water excretion deliberately stays on the acute curve (the Milestone 25-validated behaviour); the asymmetry is named in MILESTONE-30.md - at sustained pressure elevation the model excretes sodium on the chronic relation but water on the acute one.",
+      "source": "S23",
+      "status": "calibrated",
+      "unit": "factor",
+      "value": 5.0
     }
   ],
   "perturbation_cases": [
@@ -609,7 +1145,7 @@
     },
     {
       "id": "hemorrhage_1500_course",
-      "description": "Milestone 24 long-horizon course of the 1,500 mL haemorrhage (NOT the standard case protocol): settle/baseline/engage exactly as the standard cases, bleed 1,500 mL over 60 s, then 60 minutes of course sampled at +1/+2/+5/+10/+20/+30/+60 min after the bleed ends, in two arms — untreated, and treated with the ATLS initial fluid bolus (1,000 mL crystalloid over 60 s beginning at the bleed end, S20; in-model the bolus is volume-identical to the infusion_1000 case's fluid and stays intravascular except for the lumped transcapillary escape — real crystalloid redistributes mostly interstitial within the hour, which this engine does not represent; disclosed in MILESTONE-24.md). Evaluated by the dedicated evaluator in cases.rs against the expectations below. Rationale: the standard protocol's post window (30-60 s after the bleed ends) samples the transient nadir of a 60-second bleed — before the cited venomotor time constant (60 s, S13) completes even one time constant — while the ATLS classes (S16) and the textbook haemorrhage course (S19) are stated on presentation timescales. This case tests the course, not the nadir.",
+      "description": "Milestone 24 long-horizon course of the 1,500 mL haemorrhage (NOT the standard case protocol): settle/baseline/engage exactly as the standard cases, bleed 1,500 mL over 60 s, then 60 minutes of course sampled at +1/+2/+5/+10/+20/+30/+60 min after the bleed ends, in two arms — untreated, and treated with the ATLS initial fluid bolus (1,000 mL crystalloid over 60 s beginning at the bleed end, S20; in-model the bolus is volume-identical to the infusion_1000 case's fluid and stays intravascular except for the lumped transcapillary escape — real crystalloid redistributes mostly interstitial within the hour, which this engine does not represent; disclosed in MILESTONE-24.md). MILESTONE 25 AMENDMENT: the two omissions that sentence records are now closed. The interstitium is a finite reservoir with a pressure (interstitial_volume_ml, interstitial_compliance_ml_mmhg), so the bolus redistributes on the Starling pathway's time course, and the lumped renal function curve (S23) with constant intake (S23/S24) runs in both arms, so volume is actually excreted over the course. The treated arm's retention of the bolus at +60 min is now measured against S27's post-distribution figure (bolus_retention_60min, soft line below), and both arms' urine output and interstitial volume are reported per sample. The pre-amendment comparison values stand in MILESTONE-24.md. Evaluated by the dedicated evaluator in cases.rs against the expectations below. Rationale: the standard protocol's post window (30-60 s after the bleed ends) samples the transient nadir of a 60-second bleed — before the cited venomotor time constant (60 s, S13) completes even one time constant — while the ATLS classes (S16) and the textbook haemorrhage course (S19) are stated on presentation timescales. This case tests the course, not the nadir.",
       "expectations": [
         {
           "direction": "rises",
@@ -638,7 +1174,7 @@
             1000.0
           ],
           "output": "net_refill_ml_at_60min_untreated",
-          "source": "S15: refill 'can restore plasma volume by 500-1000 mL within 1-2 hours'. SOFT LINE: S15's figure is stated for moderate loss; applying its envelope to a 1,500 mL loss at +60 min is an extrapolation, disclosed here and in MILESTONE-24.md. S19's independent statement (interstitial fluid replaces ~75% of the shed volume within an hour) would put the figure higher still; the model is read against the more conservative envelope and the comparison to both is reported.",
+          "source": "S15: refill 'can restore plasma volume by 500-1000 mL within 1-2 hours'. SOFT LINE: S15's figure is stated for moderate loss; applying its envelope to a 1,500 mL loss at +60 min is an extrapolation, disclosed here and in MILESTONE-24.md. S19's independent statement (interstitial fluid replaces ~75% of the shed volume within an hour) would put the figure higher still; the model is read against the more conservative envelope and the comparison to both is reported. MILESTONE 26 MEASUREMENT: with the oncotic term in the Starling driver, untreated refill at +60 min reads 436.6 mL — below this envelope, a disclosed soft miss. Mechanism: refill fluid carries the interstitial protein concentration (3 g/dL, S29), so sustained refill dilutes plasma protein (plasma oncotic pressure 27.0 -> 22.5 mmHg over the hour) and the oncotic term brakes the very flow it feeds — refill is self-limiting in a way the Milestone 24/25 pressure-deficit-only driver could not represent. The sweep in MILESTONE-26.md shows the reading is robust: 429-464 mL across the whole cited sigma span (S30) and at the conductance ceiling, and no in-band calibration reaches 500 mL without failing the gated 30-minute refill observation. The line stays SOFT, the band stays as written, and the miss is carried openly.",
           "soft": true
         },
         {
@@ -648,7 +1184,7 @@
             120.0
           ],
           "output": "hr_untreated_30min",
-          "source": "S16 ATLS Class II pulse band 100-120 /min. SOFT LINE, and an interpretation, stated openly: by +30 min the untreated model's own refill has replaced roughly 40% of the loss, so its effective remaining deficit is of Class II size (~900 mL); reading the +30 min heart rate against the Class II band tests whether the settled untreated picture is class-coherent. It is NOT a claim that a 1,500 mL patient presents as Class II — the nominal class is II/III boundary and the early course (see the +2/+5 min samples in MILESTONE-24.md) is read against Class III.",
+          "source": "S16 ATLS Class II pulse band 100-120 /min. SOFT LINE, and an interpretation, stated openly: by +30 min the untreated model's own refill has replaced roughly 40% of the loss, so its effective remaining deficit is of Class II size (~900 mL); reading the +30 min heart rate against the Class II band tests whether the settled untreated picture is class-coherent. It is NOT a claim that a 1,500 mL patient presents as Class II — the nominal class is II/III boundary and the early course (see the +2/+5 min samples in MILESTONE-24.md) is read against Class III. MILESTONE 26 MEASUREMENT: the +30 min heart rate reads 129.6 /min, above the Class II band — a disclosed soft miss, and a direct consequence of the oncotic refill brake recorded on the net_refill line: the effective remaining deficit at +30 min is larger than the Milestone 24/25 engines computed (untreated MAP at +30 min is 66.0 mmHg; Milestone 25 read 68.5), so the Class II effective-deficit reading no longer lands. The line stays SOFT and is read as written.",
           "soft": true
         },
         {
@@ -658,7 +1194,72 @@
             140.0
           ],
           "output": "hr_treated_10min",
-          "source": "S16 ATLS Class III pulse band 120-140 /min. SOFT LINE: a Class III patient whose bleeding is controlled and who has received the initial 1 L bolus (S20) but no blood products remains tachycardic in the source presentation. In-model the bolus cannot redistribute interstitially (no interstitial compartment; only the bounded lumped escape), so the model may over-relieve heart rate relative to the band; the reading and that mechanism are reported in MILESTONE-24.md either way.",
+          "source": "S16 ATLS Class III pulse band 120-140 /min. SOFT LINE: a Class III patient whose bleeding is controlled and who has received the initial 1 L bolus (S20) but no blood products remains tachycardic in the source presentation. In-model the bolus cannot redistribute interstitially (no interstitial compartment; only the bounded lumped escape), so the model may over-relieve heart rate relative to the band; the reading and that mechanism are reported in MILESTONE-24.md either way. MILESTONE 25 AMENDMENT: the named mechanism is retired — redistribution (finite interstitial reservoir) and renal excretion now act in the treated arm. The line stays SOFT and stays read as written; whether the treated heart rate enters the band under the corrected volume dynamics is measured and reported in MILESTONE-25.md, with no parameter tuned toward it.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.2,
+            0.95
+          ],
+          "output": "bolus_retention_60min",
+          "source": "S27 (Hahn 2024): 'Following distribution, an infusion is usually found to expand the plasma volume by roughly 20% of the infused volume', rising to ~50% during the infusion — volunteer data. The metric is the treated-minus-untreated blood-volume difference at +60 min as a fraction of the 1,000 mL bolus (the difference construction nets out the arms' shared haemorrhage, recruitment and intake; the arms' urine outputs differ slightly with their different pressures, a second-order term disclosed in MILESTONE-25.md). SOFT LINE: the band's floor is S27's normovolaemic post-distribution retention (0.20) — a hypovolaemic circulation retains MORE, not less (S28: elimination and distribution slow with blood loss), so the floor is conservative for this arm; the ceiling 0.95 is an engineering edge excluding the Milestone 24 artefact (retention ~1.0 because the bolus could not redistribute), not a cited bound. The comparison crosses conditions (volunteers vs a bled model patient), which is why the line is soft. MILESTONE 25 MEASUREMENT NOTE (correcting the ceiling's wording before first use): on THIS difference metric, the Milestone 24 engine's value — derived from MILESTONE-24.md's published refill figures through the volume identity — is 0.37, not ~1.0; the ~1.0 figure describes the bolus's own net Starling persistence in Milestone 24 (the treated arm's net refill stayed positive all hour, so none of the litre ever net-escaped). The ceiling's purpose stands as written: it excludes a treated arm whose blood-volume advantage approaches the whole bolus, which neither engine produces on the difference construction. MILESTONE 26 MEASUREMENT: retention reads 0.08, below the band — a disclosed soft miss. Mechanism: the bolus dilutes plasma oncotic pressure to 14.4 mmHg at +1 min (from 27.0), and through the Milestone 18 conductance the oncotic term drives net escape (net Starling flow -481.8 mL by +60 min); the treated arm's blood-volume advantage over the untreated arm is nearly gone by +60 min (4,024 vs 3,948 mL), though its MAP advantage at +10 min is +7.5 mmHg. Two cautions ride with the number: S27's 0.20 floor is a plasma-expansion fraction in volunteers, while this difference metric additionally nets the untreated arm's own 436.6 mL of refill; and the reading is the most conductance-sensitive output in the Milestone 26 sweep (0.43 at the conductance floor — which fails the gated refill observation — 0.05 at its ceiling; 0.07-0.11 across the sigma span at the shipped conductance). The band stays as written; the miss and its sensitivities are reported in MILESTONE-26.md.",
+          "soft": true
+        },
+        {
+          "direction": "rises",
+          "output": "wb_map_advantage_10min",
+          "source": "Milestone 26: S2 ('as blood volume increases, pressure and flow increase') applied comparatively, as for treated_map_advantage_10min: at +10 min the whole-blood arm (2 units, S35 composition) must sit above the untreated arm's MAP. Mechanism-level expectation, hard gate."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.7,
+            1.05
+          ],
+          "output": "wb_retention_60min",
+          "source": "Milestone 26: retention of the whole-blood input at +60 min on the same difference construction as bolus_retention_60min (arm blood-volume advantage over untreated, divided by the 1,026 mL input). Red cells do not cross the capillary wall and plasma protein crosses only at the transcapillary escape the model carries, so retention should sit near 1, against S27's crystalloid post-distribution figure of about 0.20 on the same construction. SOFT LINE: no consulted source states a whole-blood 60-minute retention figure on this metric; the band is an engineering expectation around near-complete retention, disclosed as such. MILESTONE 26 MEASUREMENT: reads 0.66, just below the band's 0.70 floor — a disclosed soft miss on a band that was an engineering expectation, not a cited figure. The mechanism is the metric, not the product: the difference construction nets the untreated arm's own 436.6 mL refill recovery, while the whole-blood arm's own blood volume is flat across the hour (4,610 mL at +2 min, 4,629 mL at +60 min) — the product itself persists essentially completely, as the mechanism states. The components arm reads 0.67 on the same construction, inside its band. The band stays as written.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.65,
+            1.05
+          ],
+          "output": "comp_retention_60min",
+          "source": "Milestone 26: retention of the components input (2 units PRBC + 2 units plasma = 1,050 mL, S34/S35 compositions) at +60 min on the same difference construction. Same mechanism and same SOFT status as wb_retention_60min.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.3,
+            0.5
+          ],
+          "output": "wb_hematocrit_60min",
+          "source": "Milestone 26: the tracked hematocrit in the whole-blood arm at +60 min. Cross-read against S34's rule (one unit raises hematocrit about 3 points in a non-bleeding 70 kg adult at volume equilibrium): the in-course condition differs (post-haemorrhage, refilled, excreting), so the band is a plausibility span around the resting value after 2 units, and the line is SOFT.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            18.0,
+            30.0
+          ],
+          "output": "wb_plasma_oncotic_60min",
+          "source": "Milestone 26: plasma oncotic pressure in the whole-blood arm at +60 min. Whole blood returns protein at the plasma concentration in its plasma fraction, so after the bleed's protein loss the arm should sit below but near S29's resting 28 mmHg; band from that value and the loss arithmetic, disclosed. SOFT (single-model expectation).",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            10.0,
+            24.0
+          ],
+          "output": "treated_plasma_oncotic_60min",
+          "source": "Milestone 26: plasma oncotic pressure in the crystalloid arm at +60 min - the dilution endpoint. The arm lost the 1,500 mL bleed's plasma protein and received 1,000 mL of protein-free volume, so its oncotic pressure must sit well below S29's resting 28 mmHg; band from the loss/dilution arithmetic, disclosed. SOFT (single-model expectation).",
           "soft": true
         }
       ]
@@ -674,7 +1275,159 @@
             262.5
           ],
           "output": "net_refill_ml_at_30min",
-          "source": "S15: human volunteer studies — 'about 25% of the lost volume is compensated by fluid recruitment within 30 minutes' after moderate blood loss. 25% of 750 mL = 187.5 mL. The gated band is 15-35% (112.5-262.5 mL): the cited point is S15's; the +/-10-percentage-point width is an engineering tolerance chosen by this project (same disclosure class as the steady-state drift tolerance), NOT a range stated in the source. S14's caution applies: refill after true, necessarily slow blood loss is slower than under rapidly instituted LBNP. The model has no renal excretion, so its refill state is gross interstitial-to-plasma transfer; the cited volunteer figure is net plasma-volume compensation — over 30 minutes the difference is second-order and is disclosed in MILESTONE-18.md."
+          "source": "S15: human volunteer studies — 'about 25% of the lost volume is compensated by fluid recruitment within 30 minutes' after moderate blood loss. 25% of 750 mL = 187.5 mL. The gated band is 15-35% (112.5-262.5 mL): the cited point is S15's; the +/-10-percentage-point width is an engineering tolerance chosen by this project (same disclosure class as the steady-state drift tolerance), NOT a range stated in the source. S14's caution applies: refill after true, necessarily slow blood loss is slower than under rapidly instituted LBNP. The model has no renal excretion, so its refill state is gross interstitial-to-plasma transfer; the cited volunteer figure is net plasma-volume compensation — over 30 minutes the difference is second-order and is disclosed in MILESTONE-18.md. MILESTONE 25 AMENDMENT: renal excretion now exists (the lumped renal function curve, S23), so the refill state remains gross transfer by definition while the PLASMA-side compensation is net of urine; over this 30-minute post-haemorrhage window urine output runs far below baseline (the sensed pressure sits near the curve's zero anchor), so the gross/net difference stays second-order and the gated band is unchanged. The observation now also runs against the interstitial pressure feedback; measured values in MILESTONE-25.md."
+        }
+      ]
+    },
+    {
+      "id": "water_load_1000",
+      "description": "Milestone 30 hormonal arm A (NOT the standard case protocol): settle and baseline exactly as the standard cases, baroreflex engaged; at the moment the reflex engages, 1,000 mL of water is added through the dedicated solute-free water channel over 60 s (an intravenous pure-water load; the crystalloid event channel carries sodium at 140 mmol/L and cannot express it - the channel distinction is measured and recorded in MILESTONE-30.md; the oral route's absorption lag is not modelled), then 4 hours of undisturbed simulated time. A paired no-load control run on the identical protocol supplies the excess-urine difference. Evaluated by the dedicated hormonal evaluator in cases.rs; the standard window evaluator does not apply to this case.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            265.0,
+            285.5
+          ],
+          "output": "plasma_osmolality_nadir",
+          "source": "Milestone 30: the osmolality nadir after the load must fall below the constructed resting 286 mOsm/kg (the fall is the mechanism the axis senses) and stay in the physiological band's lower region; the depth depends on the intracellular buffer and the renal response rates, both calibrated constructions. MILESTONE 30 MEASUREMENT: the mark-sampled nadir is 267.6 mOsm/kg AT THE LOAD'S END - the lumped extracellular pool takes the full 1 L dilution before the intracellular buffer equilibrates (by +15 min, with the buffer shared, osmolality reads 273.5, and the whole-body dilution figure is about 279). The band's floor is set below that named lump transient; the post-equilibration values sit inside the physiological band's lower region as the line intends. SOFT (single-model expectation; measured values in MILESTONE-30.md).",
+          "soft": true
+        },
+        {
+          "direction": "falls",
+          "output": "adh_at_45min",
+          "source": "S37: AVP follows plasma osmolality along the cited regression - a fall in osmolality must suppress AVP. Evaluated as resting AVP against AVP at +45 min after the load. Directional hard gate."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            3.0,
+            12.0
+          ],
+          "output": "urine_flow_peak_ratio",
+          "source": "S39: after ingesting 1 L of water, urine volume rises to about six times normal within 45 minutes. The model's peak interval urine flow over its resting flow is read against a band around that figure. The band is deliberately asymmetric because the protocols differ: S39's load is ORAL (its 45-minute rise includes gastric absorption), while this arm is intravenous and the lumped extracellular pool takes the full dilution at once, so the model's peak runs higher; the ceiling 12 is the AVP-urine-osmolality response curve's own floor ratio at the resting AVP (600/50) - no model carrying these cited anchors can exceed it. MILESTONE 30 MEASUREMENT: peak interval ratio 9.35x (45-60 min interval; instantaneous peak 10.1x at +45 min), inside the band. GATED magnitude line on a cited point, tolerance construction disclosed."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            50.0,
+            250.0
+          ],
+          "output": "urine_osmolality_at_peak_flow",
+          "source": "S39: in the same account urine osmolarity falls from 600 to about 100 mOsm/kg as the diuresis peaks. The band [50, 250] runs from S39's dilution floor to a disclosed tolerance above its 100 point. GATED magnitude line."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            400.0,
+            1100.0
+          ],
+          "output": "excess_urine_4h_ml",
+          "source": "Milestone 30: cumulative urine at +4 h in the load run minus the paired control run. Most of a 1 L water load should be excreted within hours once AVP is suppressed (S39's account); the band is this project's disclosed expectation, not a cited figure. SOFT (measured values in MILESTONE-30.md).",
+          "soft": true
+        }
+      ]
+    },
+    {
+      "id": "water_deprivation_12h",
+      "description": "Milestone 30 hormonal arm A2 (NOT the standard case protocol): settle and baseline exactly as the standard cases, baroreflex engaged; at engagement, intake (water and sodium together) is set to zero through the intake event, then 12 hours of undisturbed simulated time. The engine carries NO insensible losses, so urine is the only water exit - the arm's osmotic excursion is bounded by that absence, disclosed in MILESTONE-30.md. Evaluated by the dedicated hormonal evaluator in cases.rs.",
+      "expectations": [
+        {
+          "direction": "rises",
+          "output": "adh_late",
+          "source": "S37 + S38: rising osmolality (and any pressure deficit) must raise AVP. Evaluated as resting AVP against the hour-12 value. Directional hard gate."
+        },
+        {
+          "direction": "falls",
+          "output": "urine_flow_late",
+          "source": "S39: in water deficit, AVP-driven antidiuresis reduces urine volume toward the obligatory minimum set by the solute load. Evaluated as resting flow against the final-hour mean flow. SOFT LINE, and its softness is a measurement record: under the aldosterone limb's first formulation (sodium-CONCENTRATION error signal) the model's final-hour flow read 1.02 mL/min against the resting 1.00 - a soft miss, because sodium excretion stayed up and the solute load floored the flow. With the limb sensing the sodium-CONTENT error (the expansion signal; see aldosterone_sodium_gain), deprivation raises the aldosterone state (to about 2.4x by 12 h), sodium excretion is retained away, the solute load falls, and the flow falls with it: final measurement 0.51 mL/min, a pass. The line stays SOFT because the arm remains bounded by a named absence: the cited physiology describes a body whose water exits include insensible losses (of order 0.5-1 L/day of nearly pure water) and this engine has none, so the arm's osmotic excursion (+1.9 mOsm/kg in 12 h) understates a real deprivation even though every direction is now correct. The missing insensible-loss term is named in MILESTONE-30.md's caveat ledger.",
+          "soft": true
+        },
+        {
+          "direction": "rises",
+          "output": "urine_osmolality_late",
+          "source": "S39: the same antidiuresis concentrates the urine toward the 1,200 mOsm/kg ceiling. Evaluated as resting urine osmolality against the hour-12 readout. Directional hard gate."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            282.0,
+            300.0
+          ],
+          "output": "plasma_osmolality_late",
+          "source": "Milestone 30 sanity line: with urine as the only exit and AVP concentrating it, 12 h without intake should raise osmolality modestly, not catastrophically; the absent insensible loss (of order 0.5-1 L/day in life) caps the rise in-model. SOFT (single-model expectation; measured values in MILESTONE-30.md).",
+          "soft": true
+        }
+      ]
+    },
+    {
+      "id": "sodium_load_5x",
+      "description": "Milestone 30 hormonal arm B (NOT the standard case protocol): settle and baseline exactly as the standard cases, baroreflex engaged; at engagement, sodium intake is raised fivefold through the intake event (0.555 mmol/min = 800 mmol/day) with water intake raised threefold in parallel (3.0 mL/min), then 24 hours of undisturbed simulated time. This is the RAAS/aldosterone regime: suppression of the axis must restore sodium balance on the slow (hours) timescale at a small pressure cost. The parallel water rise follows the cited protocol (S44's salt-loading experiments raised salt and water intake together, water freely available) and is measured, not cosmetic: with water intake held at baseline, the same 5x load drives the model onto a hypernatraemic branch ([Na+] 147 mmol/L, osmolality 304 mOsm/kg, ADH 8.0 pg/mL, balance ratio 0.66 at 24 h) because the engine has no thirst - the fixed-water run is the thirst caveat demonstrated, recorded in MILESTONE-30.md. The 24 h horizon is likewise measured: at 12 h the arm had reached only about 60 percent of sodium balance (the coupled water/sodium re-equilibration is slower than the aldosterone limb itself). Evaluated by the dedicated hormonal evaluator in cases.rs.",
+      "expectations": [
+        {
+          "direction": "falls",
+          "output": "aldosterone_late",
+          "source": "S43 + S40: raised sodium intake suppresses the renin-angiotensin-aldosterone axis (and reduced intake raises it, S40). Evaluated as the resting aldosterone state (1.0) against the hour-24 value. Directional hard gate."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.8,
+            1.25
+          ],
+          "output": "urine_sodium_balance_late",
+          "source": "S45's balance principle (at the new steady state, excretion matches intake) reached through S43's mechanism (axis suppression amplifies pressure natriuresis). Evaluated as the ratio of the final-hour mean sodium excretion to the raised intake; the band is an engineering tolerance around 1.0, disclosed. GATED magnitude line."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.0,
+            15.0
+          ],
+          "output": "map_rise_late",
+          "source": "S44: sustained about-sixfold salt and water intake in dogs raised MAP only about 6 mmHg with the axis intact. Cross-species, and this arm raises sodium without extra water - the band [0, 15] mmHg is a soft plausibility line around that regime, not a cited human range. SOFT.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            10.0,
+            640.0
+          ],
+          "output": "sodium_retained_mmol",
+          "source": "Milestone 30: cumulative sodium retained at 24 h (sodium state above its engagement value). It must be positive (part of the load is retained while the new balance establishes) and cannot exceed the 640 mmol delivered above baseline intake over the arm. SOFT bookkeeping line.",
+          "soft": true
+        }
+      ]
+    },
+    {
+      "id": "hemorrhage_1500_course_long",
+      "description": "Milestone 30 hormonal arm C: the standard -1,500 mL course protocol (Milestones 24-26) extended to 12 hours, untreated and 1 L crystalloid arms only, marks at 1, 2, 5, 10, 20, 30, 60 min and 2, 4, 6, 9, 12 h after the bleed ends. The question is what the hormonal axes add on the 6-24 h horizon beyond the first hour the earlier milestones measured. Evaluated by the dedicated hormonal evaluator in cases.rs; the 60-minute course expectations in hemorrhage_1500_course are evaluated separately and unchanged.",
+      "expectations": [
+        {
+          "direction": "rises",
+          "output": "untreated_adh_60min",
+          "source": "S38: a 1,500 mL loss is a 27 percent blood-volume deficit - past the cited 25 percent point at which AVP reaches 20-30x normal. Evaluated as resting AVP against the untreated arm's AVP at +60 min. Directional hard gate."
+        },
+        {
+          "direction": "rises",
+          "output": "untreated_aldo_6h",
+          "source": "S43's mechanism (renal perfusion deficit drives the axis) on S41's timescale (effect peaking at 2-4 h): the aldosterone state at +6 h must stand above its resting 1.0. Directional hard gate."
+        },
+        {
+          "direction": "falls",
+          "output": "untreated_urine_sodium_6h",
+          "source": "Sodium retention under a raised aldosterone state: the untreated arm's sodium excretion rate at +6 h must run below the resting baseline excretion. Evaluated comparatively (baseline excretion against the +6 h interval rate). Directional hard gate."
+        },
+        {
+          "direction": "rises",
+          "output": "untreated_map_recovery_long",
+          "source": "Milestone 30: with AVP antidiuresis and aldosterone-driven sodium retention engaged, the untreated arm's slow recovery (Milestone 24: refill-driven over the first hour) should continue, not reverse, out to 12 h. Evaluated as untreated MAP at +60 min against +12 h. Directional hard gate; the magnitude is reported, not gated."
+        },
+        {
+          "direction": "rises",
+          "output": "treated_map_advantage_6h",
+          "source": "Milestone 26's comparative construction extended to the hormonal horizon: at +6 h the crystalloid arm must sit above the untreated arm's MAP (S2's volume-pressure relation applied comparatively). Directional hard gate."
         }
       ]
     }
@@ -812,6 +1565,174 @@
       "citation": "Greenway CV. 'Capacitance effects and blood reservoir function in the splanchnic vascular bed during non-hypotensive haemorrhage and blood volume expansion in anaesthetized cats.' Journal of Physiology 1974;237:279-294.",
       "locator": "With haemorrhages of 15% of blood volume, the liver contributed 21%, the gastro-intestinal tract 22% and the spleen 19% of the volume removed — a total splanchnic contribution of 62%; during infusions the splanchnic bed pooled 66% of the volume infused. 'It is concluded that the splanchnic bed mobilizes or pools up to 65% of the volume of blood removed from or infused into the cats' — the capacitance compensation this engine lumps into its single systemic venous compartment and venomotor state is, in the experimental record, predominantly splanchnic.",
       "accessed": "2026-11-06, abstract read in full in-session via PMC (PMC1350884)"
+    },
+    {
+      "id": "S23",
+      "citation": "Guyton AC, Hall JE. Textbook of Medical Physiology — Chapter 19, 'Role of the Kidneys in Long-Term Control of Arterial Pressure and in Hypertension: The Integrated System for Arterial Pressure Regulation' (the renal-body fluid system).",
+      "locator": "Figure 19-1 (renal urinary output curve, perfused isolated kidney): urine output 'is essentially zero at an arterial pressure of 50 mm Hg, rises to normal at 100 mm Hg, and then to about six to eight times normal at an arterial pressure of 200 mm Hg'; 'an increase in arterial pressure in the human of only a few millimeters of mercury can double renal output of water' (pressure diuresis) and of salt (pressure natriuresis). Figure 19-3 analysis: 'at an arterial pressure of 150 mm Hg, renal output of water and salt is about three times as great as the intake'; the equilibrium point — where the renal output curve intersects the salt-and-water intake line — is the only point at which arterial pressure can remain stable; the two determinants of the long-term pressure level are (1) the pressure shift of the renal output curve and (2) the level of water and salt intake. The chronic (in-vivo, long-term) renal output curve is far steeper than the acute curve of Figure 19-1 — 'this great steepness ... means almost infinite gain' — and is steepened partly by mechanisms beyond the direct pressure effect (sympathetic and hormonal axes). Figure 19-2: transfusion of ~400 mL of blood into a dog (arterial pressure +115 mm Hg) raised urine output up to 12-fold and restored pressure to normal within about 1 hour.",
+      "accessed": "2026-11-06, chapter read in full (text, figures and captions) in-session via an indexed textbook reproduction"
+    },
+    {
+      "id": "S24",
+      "citation": "OpenStax, Anatomy and Physiology 2e, section 25.5, 'Physiology of Urine Formation' (Rice University; CC BY 4.0).",
+      "locator": "'Ninety-nine percent of this filtrate is returned to the circulation by reabsorption so that only about 1-2 liters of urine are produced per day.' Table 25.4 (Calculating Urine Formation per Day): GFR 110 mL/min x 0.8 percent not reabsorbed = 0.9 mL urine/min, x 60 x 24 = 1296 mL/day urine. The 1-2 L/day band is 0.69-1.39 mL/min.",
+      "accessed": "2026-11-06, section read in full in-session (OpenStax A&P 2e, Pressbooks edition)"
+    },
+    {
+      "id": "S25",
+      "citation": "Boundless Anatomy and Physiology (Lumen Learning), section 25.2B, 'Fluid Compartments' (LibreTexts).",
+      "locator": "'The volume of ECF is typically 15L (of which 12L is interstitial fluid and 3L is plasma).' Separately: 'On average, a person has about 11 liters ... of interstitial fluid'. Both figures are carried: the interstitial reservoir is parameterised at 11,000 mL inside a cited band of 10,000-12,000 mL spanning this source's two figures and the classical 70-kg ECF accounting (ECF ~14 L, plasma ~3 L).",
+      "accessed": "2026-11-06, section read in full in-session"
+    },
+    {
+      "id": "S26",
+      "citation": "Himeno Y, Ikebuchi M, et al. 'Mechanisms underlying the volume regulation of interstitial fluid by capillaries: a simulation study.' Integrative Medicine Research 2016;5(2) (PMC5381436).",
+      "locator": "Resting interstitial fluid pressure Pisf0 = -3 mmHg (their Tables 1-2, from Guyton's measurements). Their Model 2 implements the experimental (Guyton) interstitial pressure-volume relation as a fitted function of the fractional volume x = Visf/Visf0 (their eq. 9'): the curve is steep in the negative-pressure region and flattens as volume rises. Local slope of the fit at the operating point: d(Pisf)/dx approximately 30 mmHg per unit fractional change (about 20-55 mmHg across x = 0.92-1.0), which scaled to an 11,000 mL interstitium is a whole-body interstitial compliance of roughly 200-370 mL/mmHg. This engine takes a BAND from that fit ([150, 550] mL/mmHg, covering the refill-visited range of the curve) and calibrates a single lumped slope inside it; the source's per-tissue-unit relation is used only through this local-slope scale, and the curve's nonlinearity is NOT reproduced (see the parameter's note).",
+      "accessed": "2026-11-06, paper read in full in-session via PMC (methods, fitted relations and Tables 1-2)"
+    },
+    {
+      "id": "S27",
+      "citation": "Hahn RG. 'Crystalloid fluid management From basic physiology to clinical application.' Frontiers in Physiology 2024;15:1439035 (open access).",
+      "locator": "'Following distribution, an infusion is usually found to expand the plasma volume by roughly 20% of the infused volume (Moore et al., 1966; Jacob et al., 2012), which increases to approximately 50% for the duration of the infusion.' Infusions of 250-500 mL expand only the central (plasma) space; 500-1000 mL extends into a rapidly exchanging interstitial space; infusions exceeding 1 L at a high rate recruit a remote, slowly equilibrating interstitial space after 700-800 mL has accumulated in the fast space. Volume-kinetic data from 326 volunteer and patient experiments.",
+      "accessed": "2026-11-06, paper read in full in-session via Frontiers (open access)"
+    },
+    {
+      "id": "S28",
+      "citation": "Hahn RG. 'Crystalloid fluids.' In: Hahn RG (ed.), Clinical Fluid Therapy in the Perioperative Setting, Cambridge University Press (chapter consulted via an indexed reproduction, status recorded).",
+      "locator": "'Distribution from the plasma to the interstitial fluid space requires 25-30 minutes for completion; hence, infused fluid that raises the CO and MAP remains in the plasma during this period' — distribution half-life approximately 8 min. Recalculated population kinetics (10 healthy volunteers, 2 L infusions over 30 min, haemoglobin-dilution method): elimination half-life approximately 60 min for Ringer's solutions and approximately 130 min for isotonic saline. Elimination half-life is prolonged by anaesthesia, pre-operative stress, dehydration and blood loss.",
+      "accessed": "2026-11-06, chapter read in-session via an indexed reproduction (Anesthesia Key)"
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Guyton AC, Hall JE. Textbook of Medical Physiology, Chapter 16: The Microcirculation and the Lymphatic System (chapter consulted via a lecture-slide reproduction, status recorded here as for S19/S23/S28).",
+      "id": "S29",
+      "locator": "Plasma proteins total 7.3 g/dL (albumin 4.5, globulins 2.5, fibrinogen 0.3 g/dL). Plasma colloid osmotic (oncotic) pressure 28.0 mmHg (albumin 21.8, globulins 6.0, fibrinogen 0.2 mmHg). Interstitial fluid protein averages about 3 g/dL and interstitial oncotic pressure is 8 mmHg. Net filtration across all capillaries is about 2 mL/min for the whole body, of which about 90% is reabsorbed and about 10% returns to the blood through the lymphatics."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Scallan J, Huxley VH, Korthuis RJ (and Deranged Physiology, 'Starling forces and fluid exchange in the microcirculation', consulted in-session).",
+      "id": "S30",
+      "locator": "The osmotic reflection coefficient for total plasma protein is about 0.9 in muscle microvessels (the value Deranged Physiology carries for total protein; Taylor et al.'s limb measurements span roughly 0.7-0.99 across tissues, quoted there). sigma = 0.9 is taken as the lumped, muscle-dominated whole-body value."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Levitt DG, Levitt MD. 'Human serum albumin: synthesis, catabolism and distribution.' International Journal of General Medicine 2016;9:229-255 (PMC4956071).",
+      "id": "S31",
+      "locator": "Albumin synthesis is about 10.5 g/day in the healthy adult, balanced at steady state by renal (about 6%), gastrointestinal (about 10%) and catabolic (about 84%) clearances (abstract and synthesis sections, read in-session). Corroborating in-session figures for daily albumin synthesis span 9-14 g/day."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Barrett KE et al. Ganong's Review of Medical Physiology, 23rd edition, Chapter 32 (consulted via an in-session reproduction, status recorded).",
+      "id": "S32",
+      "locator": "'The amount of protein returned [to the blood via the lymph] in 1 d is equal to 25-50% of the total circulating plasma protein.' With this model's resting circulating pool (7.3 g/dL over a derived 2,750 mL plasma volume = about 201 g), the cited band is 50-100 g/day; the standard lymph flow of about 3 L/day at the interstitial protein concentration (S29, 30 g/L) cross-checks at 60-90 g/day, inside the same band."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Ahlqvist J; Staub NC (reply). 'Plasma protein osmotic pressure equations for humans.' Journal of Applied Physiology 2003;94:1288-1289 (letters; full text read in-session).",
+      "id": "S33",
+      "locator": "Nitta et al.'s corrected Landis-Pappenheimer equation for plasma colloid osmotic pressure, concentrations in g/dL: pi[mmHg] = alb/C x (2.8 C + 0.18 C^2 + 0.012 C^3) + (C - alb)/C x (0.9 C + 0.12 C^2 + 0.004 C^3), where C is total protein and alb the albumin concentration. The exchange records that equation-to-equation spread is of order 10-15%, partly through the albumin fraction. Evaluated at this model's cited points the equation gives 27.0 mmHg at 7.3 g/dL (albumin fraction 4.5/7.3) against S29's 28.0, and 7.9 mmHg at 3.0 g/dL against S29's 8 - the relation is used as cited, and the small anchor offsets are carried openly (see MILESTONE-26.md)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Bloodworks Northwest. 'Rates, Volumes & Duration for Routine Transfusions' (institutional transfusion-medicine table, read in-session).",
+      "id": "S34",
+      "locator": "Red blood cells: estimated volume 350 mL per unit; one unit increases hematocrit by approximately 3% or hemoglobin by 1 g/dL in a non-bleeding 70 kg adult. Plasma: 200-250 mL per unit."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Blood component preparation specifications: transfusion-medicine teaching sources consulted in-session (Harmening DM, Modern Blood Banking and Transfusion Practices, 6th ed., as reproduced in-session; Wikipedia, 'Packed red blood cells', read in-session).",
+      "id": "S35",
+      "locator": "Whole blood: one unit is 450 mL of donor blood plus 63 mL of anticoagulant-preservative (513 mL), hematocrit 0.35-0.45. Packed red blood cells: hematocrit 0.50-0.70 (Wikipedia; 0.55-0.65 for additive-solution units, 0.55-0.75 without), unit volume 250-320 mL (Wikipedia). Fresh frozen plasma is an acellular component (no red cells), 200-250 mL per unit."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Boron WF, Boulpaep EL. Medical Physiology, 3rd ed. - chapter 'Control of Water Content (Extracellular Osmolality)' (textbook chapter read in-session via the doctorlib reproduction; carrier status recorded here).",
+      "id": "S36",
+      "locator": "Plasma osmolality in healthy individuals is about 290 mOsm/kg; a rise as small as 1 percent is detectable and raises AVP; the threshold for AVP release is about 280 mOsm/kg and an increase of about 25 mOsm/kg raises AVP to levels producing maximal antidiuresis. AVP half-life 18 min. A fall of 5-10 percent in effective circulating volume is required before AVP release comparable to osmotic stimuli; the volume state also modifies the osmotic relation's slope and threshold. Ingested water distributes across the intracellular and extracellular compartments on osmolality."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Robertson GL, Athar S. The interaction of blood osmolality and blood volume in the regulation of plasma vasopressin in man. J Clin Endocrinol Metab. 1976;42(4):613-620 (primary human study; abstract read in-session via PubMed, PMID 1262438).",
+      "id": "S37",
+      "locator": "In recumbent hydropenic subjects plasma AVP was a linear function of plasma osmolality: AVP = 0.35 x (osmolality - 281.0), r = 0.93; upright: AVP = 0.31 x (osmolality - 277.8); during hypertonic saline infusion: AVP = 0.32 x (osmolality - 282). Blood volume modulates the set-point modestly (the relation's intercept/slope shift with posture and volume state)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Kliegman RM et al. (Rudolph's Pediatrics lineage). 'Primary Disturbances in Water Homeostasis' (textbook chapter read in-session via AccessPediatrics / McGraw Hill; carrier status recorded here).",
+      "id": "S38",
+      "locator": "Total blood osmolality normally 280-290 mOsm/kg; osmotic threshold of AVP secretion 283 mOsm/kg, above which AVP rises proportionally to a maximum of about 20 pg/mL at 320 mOsm/kg. A decrease of 8 percent or more in intravascular volume or blood pressure triggers AVP release; at a 25 percent decrease AVP reaches 20-30 times normal (constricting arterioles in that range). Maximal antidiuresis is achieved at an AVP of about 5 pg/mL. AVP plasma half-life 5-10 min."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Guyton AC, Hall JE. Textbook of Medical Physiology - ch. 28, 'Regulation of Extracellular Fluid Osmolarity and Sodium Concentration' (full chapter read in-session via the doctorlib reproduction; carrier status recorded here).",
+      "id": "S39",
+      "locator": "Urine osmolality spans about 50 mOsm/kg (excess water) to 1,200-1,400 (water deficit). After ingesting 1 L of water, urine volume rises to about six times normal within 45 minutes and urine osmolarity falls from 600 to about 100 mOsm/kg, while total solute excretion remains relatively constant - ADH changes water excretion, not solute excretion. The kidney can excrete up to about 20 L/day of dilute urine."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Barrett KE et al. Ganong's Review of Medical Physiology, 23rd ed. - renal physiology chapters (textbook read in-session via a full-text reproduction; carrier status recorded here).",
+      "id": "S40",
+      "locator": "Mineralocorticoid action has a latent period of 10-30 min before effects on sodium reabsorption manifest, because the action is mediated by protein synthesis. Reduced salt intake raises plasma aldosterone and produces marked but slowly developing decreases in sodium excretion. Water diuresis begins about 15 min after water ingestion and is maximal at about 40 min. Table 38-9: filtered sodium load about 18,125 microEq/min against about 125 microEq/min excreted."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Sonnenblick EH, Cannon PJ, Laragh JH. The nature of the action of intravenous aldosterone: evidence for a latent period and for an effect on urinary sodium excretion. J Clin Invest. 1961 (primary human study; full text read in-session via PMC).",
+      "id": "S41",
+      "locator": "Intravenous aldosterone in man: a latent period of about 20-60 min intervenes before a demonstrable effect on urinary sodium excretion appears (unlike the plasma half-life of 5-15 min); peak effect on urinary sodium at 2-4 h; the action lasted about 6 h."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Guyton AC, Hall JE. Textbook of Medical Physiology - ch. 77, 'Adrenocortical Hormones' (indexed textbook reproduction consulted in-session; carrier status recorded here - the chapter's mechanism statements were read in the consulted reproduction, not the publisher's edition).",
+      "id": "S42",
+      "locator": "Aldosterone plasma half-life about 20 min; because increased transport requires synthesis of new proteins (including Na+-K+ ATPase), physiological transport changes begin after about 45 min and peak hours later."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Hall JE, Guyton AC, Mizelle HL. Pressure natriuresis and the renal medullary blood flow. / Renal function curve work: Acta Physiol Scand Suppl. 1990;591:48-62 (abstract read in-session via PubMed, PMID 2220409).",
+      "id": "S43",
+      "locator": "Suppression of angiotensin II formation on high sodium intake greatly amplifies the effectiveness of the basic pressure natriuresis mechanism, preventing large increases in body fluid volume and blood pressure; inappropriate RAS activation forces arterial pressure up to maintain sodium balance. (Cited here for the RAAS-pressure-natriuresis mechanism: the axis shifts the pressure at which sodium balance is achieved.)"
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Guyton AC, Hall JE. Textbook of Medical Physiology - ch. 19, 'Dominant Role of the Kidney in Long-Term Regulation of Arterial Pressure' (chapter content consulted in-session via a study reproduction of the chapter; weakest carrier in this set - flagged here and in MILESTONE-30.md).",
+      "id": "S44",
+      "locator": "Sustained increases in salt and water intake of about sixfold in dogs raised mean arterial pressure only about 6 mmHg when the renin-angiotensin system was functioning normally; the long-term maintenance mechanism begins after a few hours and is aided by decreased renin and aldosterone. Used only as a soft, cross-species magnitude reference for the sodium-load arm."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Mayo Clinic Laboratories. 'Sodium, 24 Hour, Urine' - test catalog entry (read in-session); population mean cross-checked against a consulted summary of McCarron et al. 2013 (24-h urinary sodium across 129 surveys).",
+      "id": "S45",
+      "locator": "On a normal diet sodium intake is 8-15 g NaCl/day (130-260 mmol), nearly completely absorbed; the body requires 1-2 mmol/day and the kidneys excrete the excess, so at balance 24-h urinary excretion matches intake. Reference values (24-h excretion, age 18+): 22-328 mmol/24 h. Consulted population summary: mean 24-h urinary sodium about 159 mmol/day."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Body-fluid compartment teaching corpus consulted in-session (undergraduate medical physiology textbook chapters and structured teaching modules on body fluid compartments; carriers recorded here).",
+      "id": "S46",
+      "locator": "Total body water about 60 percent of body weight (about 42 L at 70 kg); intracellular fluid about two thirds of total body water (about 28 L in the MC3CB textbook chapter; 'more than 25 L' in the Osmosis module); extracellular fluid about one third (about 14 L: plasma about 3-3.5 L, interstitial about 10.5-11 L). Extracellular sodium concentration about 140-145 mmol/L in the corpus's tables."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Serum/plasma osmolality reference corpus consulted in-session (StatPearls, 'Physiology, Plasma Osmolality and Oncotic Pressure' - identified in consulted results; the calculated-osmolality formula of Dorwart & Chalmers 1975 as reproduced in the consulted references, with worked examples; NCBI Bookshelf NBK560685 'Introduction to Renal and Acid-Base Physiology' consulted for normal-value tables).",
+      "id": "S47",
+      "locator": "Calculated osmolality = 2[Na+] + glucose/18 + BUN/2.8 (concentrations mmol/L, mg/dL, mg/dL); normal calculated serum osmolality about 275-295 mOsm/kg. Worked example consulted: Na 140, glucose 90, BUN 14 gives 280 + 5 + 5 = 290 mOsm/kg. NBK560685's normal-values table lists osmolality 280-290 mOsm/kg."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "WikiLectures (Charles University). 'Sodium in urine' (read in-session).",
+      "id": "S48",
+      "locator": "Plasma sodium concentration 137-144 mmol/L. Total 24-h urinary sodium waste 120-240 mmol/24 h; daily sodium intake roughly 100-260 mmol. Spot urine sodium normally about 40-220 mmol/L (context-dependent)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Brenner & Rector, The Kidney - vasopressin physiology (Robertson laboratory data; consulted in-session via AccessScience and chapter reproductions; carrier status recorded here).",
+      "id": "S49",
+      "locator": "The physiological plasma AVP span of about 0.5-5 pg/mL covers the full urine-osmolality range from maximally dilute to maximally concentrated; above about 5-6 pg/mL urine osmolality is maximal (inner-medullary concentration achieved). Osmotic threshold for AVP release averages about 280 mOsm/kg."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Crystalloid composition corpus consulted in-session (StatPearls, 'Crystalloid Solutions in Intravenous Fluid Therapy', updated 2025-09-28, read in-session; NICE guideline CG174 composition table; wikidoc 'Intravenous fluid' composition table).",
+      "id": "S50",
+      "locator": "Sodium content: 0.9% NaCl 154 mmol/L (osmolarity 308); lactated Ringer 130 mmol/L (273); Plasma-Lyte 140 mmol/L (294); normal plasma sodium 135-145 mmol/L, plasma osmolarity 275-295 mOsm/L. Dual-sourced across the three consulted tables."
     }
   ],
   "validation_ranges": [
@@ -931,6 +1852,78 @@
       "output": "pcwp_proxy_mean_pv_pressure",
       "source": "S4",
       "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 1.4,
+      "low": 0.7,
+      "note": "Milestone 25: equilibrium urine output over the resting post-engagement window (the lumped renal function curve evaluated at the sensed MAP, relative to the captured operating point). S24: 1-2 litres of urine per day = 0.69-1.39 mL/min, worked value 0.9 mL/min (1296 mL/day); gate uses the rounded band [0.7, 1.4]. The long-horizon (60 min) equilibrium is gated separately in main.rs against the same band.",
+      "output": "urine_output",
+      "source": "S24",
+      "unit": "mL/min"
+    },
+    {
+      "gated": true,
+      "high": 0.5,
+      "low": 0.4,
+      "note": "Milestone 26: resting hematocrit of the model subject, gated at the operating point. The parameter is calibrated inside S35's cited whole-blood band (0.35-0.45) extended by the standard adult span the sources assume (S34's rule is stated for the standard adult); the tracked state must sit at its calibrated value at rest.",
+      "output": "hematocrit",
+      "source": "S35",
+      "unit": "fraction (v/v)"
+    },
+    {
+      "gated": true,
+      "high": 30.0,
+      "low": 21.0,
+      "note": "Milestone 26: resting plasma colloid osmotic pressure. S29's cited value is 28.0 mmHg; the Nitta relation (S33) evaluated at the cited concentration gives about 27.0 mmHg. The band spans the 10-15% inter-equation spread S33's exchange records, around both consulted values.",
+      "output": "plasma_oncotic_pressure",
+      "source": "S29",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 11.0,
+      "low": 5.0,
+      "note": "Milestone 26: resting interstitial oncotic pressure. S29's cited value is 8 mmHg at about 3 g/dL interstitial protein; the Nitta relation (S33) at that concentration gives about 7.9 mmHg. Band as for the plasma line.",
+      "output": "isf_oncotic_pressure",
+      "source": "S29",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 295.0,
+      "low": 275.0,
+      "note": "Milestone 30: resting calculated plasma osmolality. S47: normal about 275-295 mOsm/kg (the consulted worked example gives 290 at sodium 140). The model's resting value is 286 mOsm/kg by the disclosed equilibrium construction (2 x 138 + 10).",
+      "output": "plasma_osmolality",
+      "source": "S47",
+      "unit": "mOsm/kg"
+    },
+    {
+      "gated": true,
+      "high": 145.0,
+      "low": 135.0,
+      "note": "Milestone 30: resting plasma sodium concentration of the extracellular lump. S48: 137-144 mmol/L; S50's plasma row: 135-145. The band spans both consulted ranges; the constructed resting value is 138 mmol/L (see plasma_sodium_resting_mmol_l).",
+      "output": "plasma_sodium",
+      "source": "S48",
+      "unit": "mmol/L"
+    },
+    {
+      "gated": true,
+      "high": 900.0,
+      "low": 300.0,
+      "note": "Milestone 30: resting urine osmolality readout (total urinary osmole rate over urine flow). S39's resting value is about 600 mOsm/kg (its water-load account starts from 600). SOFT CONSTRUCTION, disclosed in the Milestone 8 pattern: no consulted source states a resting RANGE, so the band is the cited point with a +/-300 engineering tolerance; the physiological span is 50-1,200 (S39) and ad-libitum resting values vary with intake. Gated as a construction line: a miss would indict the osmole bookkeeping, not a cited range.",
+      "output": "urine_osmolality",
+      "source": "S39",
+      "unit": "mOsm/kg"
+    },
+    {
+      "gated": true,
+      "high": 5.0,
+      "low": 0.5,
+      "note": "Milestone 30: resting plasma AVP (ADH). S49: the physiological span about 0.5-5 pg/mL covers the full urine-osmolality range from maximally dilute to maximally concentrated. The model's resting value 1.75 pg/mL is derived from S37's regression at the constructed resting osmolality (0.35 x (286 - 281)).",
+      "output": "plasma_adh",
+      "source": "S49",
+      "unit": "pg/mL"
     }
   ]
 }
