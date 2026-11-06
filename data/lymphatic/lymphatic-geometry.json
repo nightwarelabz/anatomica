@@ -1,0 +1,330 @@
+{
+ "meta": {
+  "title": "ANATOMICA lymphatic system geometry resolution \u2014 Milestone 13",
+  "generated_by": "tools/lymph_map.py",
+  "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
+  "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
+  "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
+  "coverage": {
+   "records": 4,
+   "records_with_meshes": 4,
+   "records_without_meshes": 0
+  }
+ },
+ "records": [
+  {
+   "record_id": "spleen",
+   "name": "spleen",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7196"
+   ],
+   "concept_names": [
+    "spleen"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2561",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2561.obj",
+     "vertices": 689,
+     "faces": 1330,
+     "bbox": {
+      "min": [
+       55.6341,
+       -141.262,
+       1051.61
+      ],
+      "max": [
+       113.868,
+       -46.1961,
+       1121.84
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 689,
+     "faces": 1330
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     55.6341,
+     -141.262,
+     1051.61
+    ],
+    "max": [
+     113.868,
+     -46.1961,
+     1121.84
+    ]
+   },
+   "bbox_partof": null
+  },
+  {
+   "record_id": "thymus",
+   "name": "thymus",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "concept_ids": [
+    "FMA9607"
+   ],
+   "concept_names": [
+    "thymus"
+   ],
+   "isa_meshes": [],
+   "partof_meshes": [
+    {
+     "fj": "FJ3150",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3150.obj",
+     "vertices": 606,
+     "faces": 1050,
+     "bbox": {
+      "min": [
+       -3.50991,
+       -159.289,
+       1257.55
+      ],
+      "max": [
+       21.8142,
+       -119.742,
+       1316.68
+      ]
+     }
+    },
+    {
+     "fj": "FJ3151",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3151.obj",
+     "vertices": 599,
+     "faces": 1030,
+     "bbox": {
+      "min": [
+       -24.7545,
+       -144.267,
+       1261.16
+      ],
+      "max": [
+       2.41891,
+       -122.13,
+       1329.75
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 2,
+     "vertices": 1205,
+     "faces": 2080
+    },
+    "combined_files": 2
+   },
+   "bbox_isa": null,
+   "bbox_partof": {
+    "min": [
+     -24.7545,
+     -159.289,
+     1257.55
+    ],
+    "max": [
+     21.8142,
+     -119.742,
+     1329.75
+    ]
+   }
+  },
+  {
+   "record_id": "thymus-lobe.left-lobe-of-thymus",
+   "name": "left lobe of thymus",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA71195"
+   ],
+   "concept_names": [
+    "left lobe of thymus"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3150",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3150.obj",
+     "vertices": 606,
+     "faces": 1050,
+     "bbox": {
+      "min": [
+       -3.50991,
+       -159.289,
+       1257.55
+      ],
+      "max": [
+       21.8142,
+       -119.742,
+       1316.68
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3150",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3150.obj",
+     "vertices": 606,
+     "faces": 1050,
+     "bbox": {
+      "min": [
+       -3.50991,
+       -159.289,
+       1257.55
+      ],
+      "max": [
+       21.8142,
+       -119.742,
+       1316.68
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 606,
+     "faces": 1050
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 606,
+     "faces": 1050
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -3.50991,
+     -159.289,
+     1257.55
+    ],
+    "max": [
+     21.8142,
+     -119.742,
+     1316.68
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -3.50991,
+     -159.289,
+     1257.55
+    ],
+    "max": [
+     21.8142,
+     -119.742,
+     1316.68
+    ]
+   }
+  },
+  {
+   "record_id": "thymus-lobe.right-lobe-of-thymus",
+   "name": "right lobe of thymus",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA71194"
+   ],
+   "concept_names": [
+    "right lobe of thymus"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3151",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3151.obj",
+     "vertices": 599,
+     "faces": 1030,
+     "bbox": {
+      "min": [
+       -24.7545,
+       -144.267,
+       1261.16
+      ],
+      "max": [
+       2.41891,
+       -122.13,
+       1329.75
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3151",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3151.obj",
+     "vertices": 599,
+     "faces": 1030,
+     "bbox": {
+      "min": [
+       -24.7545,
+       -144.267,
+       1261.16
+      ],
+      "max": [
+       2.41891,
+       -122.13,
+       1329.75
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 599,
+     "faces": 1030
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 599,
+     "faces": 1030
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -24.7545,
+     -144.267,
+     1261.16
+    ],
+    "max": [
+     2.41891,
+     -122.13,
+     1329.75
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -24.7545,
+     -144.267,
+     1261.16
+    ],
+    "max": [
+     2.41891,
+     -122.13,
+     1329.75
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,283 @@
+{
+ "meta": {
+  "title": "ANATOMICA endocrine system geometry resolution \u2014 Milestone 13",
+  "generated_by": "tools/endo_map.py",
+  "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
+  "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
+  "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
+  "coverage": {
+   "records": 3,
+   "records_with_meshes": 3,
+   "records_without_meshes": 0
+  }
+ },
+ "records": [
+  {
+   "record_id": "adrenal-gland.left-adrenal-gland",
+   "name": "left adrenal gland",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15630"
+   ],
+   "concept_names": [
+    "left adrenal gland"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3129",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3129.obj",
+     "vertices": 2000,
+     "faces": 3996,
+     "bbox": {
+      "min": [
+       27.315,
+       -83.2855,
+       1063.34
+      ],
+      "max": [
+       75.4916,
+       -63.135,
+       1108.22
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3129",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3129.obj",
+     "vertices": 2000,
+     "faces": 3996,
+     "bbox": {
+      "min": [
+       27.315,
+       -83.2855,
+       1063.34
+      ],
+      "max": [
+       75.4916,
+       -63.135,
+       1108.22
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 2000,
+     "faces": 3996
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 2000,
+     "faces": 3996
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     27.315,
+     -83.2855,
+     1063.34
+    ],
+    "max": [
+     75.4916,
+     -63.135,
+     1108.22
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     27.315,
+     -83.2855,
+     1063.34
+    ],
+    "max": [
+     75.4916,
+     -63.135,
+     1108.22
+    ]
+   }
+  },
+  {
+   "record_id": "adrenal-gland.right-adrenal-gland",
+   "name": "right adrenal gland",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15629"
+   ],
+   "concept_names": [
+    "right adrenal gland"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3130",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3130.obj",
+     "vertices": 1149,
+     "faces": 2294,
+     "bbox": {
+      "min": [
+       -62.5344,
+       -102.342,
+       1045.52
+      ],
+      "max": [
+       -30.6302,
+       -75.1055,
+       1087.8
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3130",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3130.obj",
+     "vertices": 1149,
+     "faces": 2294,
+     "bbox": {
+      "min": [
+       -62.5344,
+       -102.342,
+       1045.52
+      ],
+      "max": [
+       -30.6302,
+       -75.1055,
+       1087.8
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1149,
+     "faces": 2294
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1149,
+     "faces": 2294
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -62.5344,
+     -102.342,
+     1045.52
+    ],
+    "max": [
+     -30.6302,
+     -75.1055,
+     1087.8
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -62.5344,
+     -102.342,
+     1045.52
+    ],
+    "max": [
+     -30.6302,
+     -75.1055,
+     1087.8
+    ]
+   }
+  },
+  {
+   "record_id": "pituitary-gland",
+   "name": "pituitary gland",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA13889"
+   ],
+   "concept_names": [
+    "pituitary gland"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ1796",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ1796.obj",
+     "vertices": 609,
+     "faces": 1164,
+     "bbox": {
+      "min": [
+       -6.7911,
+       -110.563,
+       1522.57
+      ],
+      "max": [
+       5.51969,
+       -101.105,
+       1535.54
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ1796",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ1796.obj",
+     "vertices": 609,
+     "faces": 1164,
+     "bbox": {
+      "min": [
+       -6.7911,
+       -110.563,
+       1522.57
+      ],
+      "max": [
+       5.51969,
+       -101.105,
+       1535.54
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 609,
+     "faces": 1164
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 609,
+     "faces": 1164
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -6.7911,
+     -110.563,
+     1522.57
+    ],
+    "max": [
+     5.51969,
+     -101.105,
+     1535.54
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -6.7911,
+     -110.563,
+     1522.57
+    ],
+    "max": [
+     5.51969,
+     -101.105,
+     1535.54
+    ]
+   }
+  }
+ ]
+}

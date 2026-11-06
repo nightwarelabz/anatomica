@@ -1,0 +1,981 @@
+{
+ "meta": {
+  "title": "ANATOMICA lymphatic system inventory \u2014 Milestone 13",
+  "generated_by": "tools/lymph_map.py",
+  "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
+  "counting_convention": "One record for the spleen, keyed on its IS-A concept \u2014 the only table that carries it. One record for the thymus as an organ, keyed on its PART-OF concept (the Milestone 9 partof-organ pattern). One record per lateralised thymus lobe, keyed on its instance concept with the side-stripped class concept carried as class_concept_id (the Milestone 12 instance pattern). There is no lymphatic system root in the release to census as a grouping class: the string 'lymph' occurs in no concept name in either table.",
+  "concept_universe": {
+   "total": 5,
+   "isa_total": 4,
+   "partof_total": 3,
+   "in_both_tables": 2,
+   "isa_sets": {
+    "spleen-isa": 1,
+    "thymus-lobe-isa": 3
+   },
+   "partof_sets": {
+    "thymus-partof": 3
+   },
+   "cross_references": {},
+   "dispositions": {
+    "class-carried": 1,
+    "record": 4
+   },
+   "disposition_concepts": {
+    "class-carried": [
+     "FMA71193"
+    ],
+    "record": [
+     "FMA71194",
+     "FMA71195",
+     "FMA7196",
+     "FMA9607"
+    ]
+   },
+   "sweep_rejected_names": [
+    "splenic artery",
+    "splenic vein",
+    "subdivision of splenic artery",
+    "tributary of splenic vein"
+   ]
+  },
+  "record_count": 4,
+  "record_representations": {
+   "whole-concept": 3,
+   "partof-organ": 1
+  },
+  "records_by_subtree": {
+   "spleen-isa": 1,
+   "thymus-partof": 1,
+   "thymus-lobe-isa": 2
+  },
+  "instance_records": [
+   "left lobe of thymus",
+   "right lobe of thymus"
+  ],
+  "totalsegmentator_overlap": {
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), exactly one is lymphatic: spleen, present in all 1,204 subjects. TS v1 has no thymus label and no node, vessel, trunk or duct label, so it adds no coverage the release lacks.",
+   "labels": [
+    {
+     "label": "spleen",
+     "inventory_record_ids": [
+      "spleen"
+     ],
+     "note": ""
+    }
+   ],
+   "labels_without_records": []
+  },
+  "absences": {
+   "note": "probe-based gap analysis: each probe name was counted over all six BP3D 4.0 release tables. Zero hits = the name does not occur in the release.",
+   "absent": [
+    "lymph",
+    "lymphatic system",
+    "lymph node",
+    "lymphatic vessel",
+    "lymphatic trunk",
+    "lymphatic duct",
+    "thoracic duct",
+    "right lymphatic duct",
+    "cisterna chyli",
+    "lymphatic capillary",
+    "lymph vessel",
+    "lymphoid",
+    "lymphatic follicle",
+    "aggregated lymphatic follicle",
+    "solitary lymphatic follicle",
+    "superficial lymphatic",
+    "deep lymphatic",
+    "cervical lymph node",
+    "axillary lymph node",
+    "inguinal lymph node",
+    "mesenteric lymph node",
+    "bronchopulmonary lymph node",
+    "pancreaticosplenic",
+    "coeliac lymph node",
+    "lumbar lymph node",
+    "tonsil",
+    "palatine tonsil",
+    "pharyngeal tonsil",
+    "lingual tonsil",
+    "adenoid",
+    "peyer",
+    "mucosa-associated lymphoid tissue",
+    "marrow",
+    "bone marrow",
+    "red bone marrow",
+    "yellow bone marrow",
+    "splenic pulp",
+    "red pulp",
+    "white pulp",
+    "splenic hilum",
+    "trabecula of spleen",
+    "lobule of thymus",
+    "cortex of thymus",
+    "medulla of thymus"
+   ],
+   "present": [
+    "spleen",
+    "thymus",
+    "lobe of thymus",
+    "right lobe of thymus",
+    "left lobe of thymus",
+    "splenic artery",
+    "splenic vein",
+    "appendix"
+   ],
+   "detail": [
+    {
+     "probe": "lymph",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic system",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic vessel",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic trunk",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic duct",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "thoracic duct",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "right lymphatic duct",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "cisterna chyli",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic capillary",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymph vessel",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphoid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lymphatic follicle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "aggregated lymphatic follicle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "solitary lymphatic follicle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "superficial lymphatic",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "deep lymphatic",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "cervical lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "axillary lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "inguinal lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "mesenteric lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "bronchopulmonary lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pancreaticosplenic",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "coeliac lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lumbar lymph node",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "tonsil",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "palatine tonsil",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pharyngeal tonsil",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lingual tonsil",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adenoid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "peyer",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "mucosa-associated lymphoid tissue",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "marrow",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "bone marrow",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "red bone marrow",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "yellow bone marrow",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "splenic pulp",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "red pulp",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "white pulp",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "splenic hilum",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "trabecula of spleen",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lobule of thymus",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "cortex of thymus",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "medulla of thymus",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "spleen",
+     "total_hits": 3,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "thymus",
+     "total_hits": 24,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 3,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 4,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 5
+     }
+    },
+    {
+     "probe": "lobe of thymus",
+     "total_hits": 18,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    },
+    {
+     "probe": "right lobe of thymus",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "left lobe of thymus",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "splenic artery",
+     "total_hits": 21,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 2,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 9,
+      "partof_element_parts.txt": 4,
+      "isa_inclusion_relation_list.txt": 4,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "splenic vein",
+     "total_hits": 15,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 2,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 8,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "appendix",
+     "total_hits": 12,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 2,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 2,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 2,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    }
+   ]
+  }
+ },
+ "concepts": [
+  {
+   "fma_id": "FMA71193",
+   "name": "lobe of thymus",
+   "representation_id": "BP8667",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "thymus-lobe-isa",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA45728",
+   "parent_name": "anatomical lobe",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA71194",
+   "name": "right lobe of thymus",
+   "representation_id": "BP9220",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "thymus-lobe-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "thymus-lobe.right-lobe-of-thymus",
+   "parent_id": "FMA71193",
+   "parent_name": "lobe of thymus",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA71195",
+   "name": "left lobe of thymus",
+   "representation_id": "BP8666",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "thymus-lobe-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "thymus-lobe.left-lobe-of-thymus",
+   "parent_id": "FMA71193",
+   "parent_name": "lobe of thymus",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA7196",
+   "name": "spleen",
+   "representation_id": "BP8804",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "spleen-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "spleen",
+   "parent_id": "FMA55663",
+   "parent_name": "corticomedullary organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA9607",
+   "name": "thymus",
+   "representation_id": "BP9902",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "thymus-partof",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "thymus",
+   "parent_id": "FMA79276",
+   "parent_name": "content of anterior mediastinum",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 2
+  }
+ ],
+ "records": [
+  {
+   "record_id": "spleen",
+   "name": "spleen",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA7196",
+   "concept_ids": [
+    "FMA7196"
+   ],
+   "subtree": "spleen-isa",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "organ",
+    "solid organ",
+    "parenchymatous organ",
+    "corticomedullary organ"
+   ],
+   "note": "the release carries the spleen in IS-A only, as a leaf under the generic class 'corticomedullary organ'; it occurs nowhere in the PART-OF table, and no part of it (pulp, hilum, trabecula) exists as a concept (probe-verified)"
+  },
+  {
+   "record_id": "thymus",
+   "name": "thymus",
+   "side": "un-sided",
+   "representation": "partof-organ",
+   "class_concept_id": null,
+   "concept_ids": [
+    "FMA9607"
+   ],
+   "subtree": "thymus-partof",
+   "group_path": [
+    "human body",
+    "body proper",
+    "body compartment",
+    "compartment of thorax",
+    "mediastinum",
+    "content of mediastinum",
+    "content of inferior mediastinum",
+    "content of anterior mediastinum"
+   ],
+   "note": "the release carries the thymus as an organ in PART-OF only, filed under 'content of anterior mediastinum'; the IS-A table carries no thymus organ concept, only the lobe line below"
+  },
+  {
+   "record_id": "thymus-lobe.left-lobe-of-thymus",
+   "name": "left lobe of thymus",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA71193",
+   "concept_ids": [
+    "FMA71195"
+   ],
+   "subtree": "thymus-lobe-isa",
+   "group_path": [
+    "human body",
+    "body proper",
+    "body compartment",
+    "compartment of thorax",
+    "mediastinum",
+    "content of mediastinum",
+    "content of inferior mediastinum",
+    "content of anterior mediastinum",
+    "thymus"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 12 pattern). The instance is a part of the thymus in PART-OF and an instance of the lobe class in IS-A"
+  },
+  {
+   "record_id": "thymus-lobe.right-lobe-of-thymus",
+   "name": "right lobe of thymus",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA71193",
+   "concept_ids": [
+    "FMA71194"
+   ],
+   "subtree": "thymus-lobe-isa",
+   "group_path": [
+    "human body",
+    "body proper",
+    "body compartment",
+    "compartment of thorax",
+    "mediastinum",
+    "content of mediastinum",
+    "content of inferior mediastinum",
+    "content of anterior mediastinum",
+    "thymus"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 12 pattern). The instance is a part of the thymus in PART-OF and an instance of the lobe class in IS-A"
+  }
+ ]
+}

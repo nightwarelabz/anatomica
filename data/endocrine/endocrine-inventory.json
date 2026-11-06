@@ -1,0 +1,1086 @@
+{
+ "meta": {
+  "title": "ANATOMICA endocrine system inventory \u2014 Milestone 13",
+  "generated_by": "tools/endo_map.py",
+  "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
+  "counting_convention": "One record for the pituitary gland, keyed on its both-table concept; one record per adrenal gland instance, keyed on its instance concept with the side-stripped class concept carried as class_concept_id. The endocrine system root is a grouping class, censused but not a record. The pineal body (nervous module's record), the pancreas (digestive module's record) and the testis line (reproductive module, queued) are cross-references, censused but never records here. The thyroid and parathyroid glands and the pancreatic islets have no concept in the release at all and so have no inventory row; they exist only as sourced clinical records with the absence recorded (the Milestone 9 pattern).",
+  "concept_universe": {
+   "total": 10,
+   "isa_total": 9,
+   "partof_total": 6,
+   "in_both_tables": 5,
+   "isa_sets": {
+    "pituitary-isa": 1,
+    "adrenal-gland-isa": 3,
+    "pineal-nervous-xref-isa": 1,
+    "pancreas-digestive-xref": 1,
+    "testis-reproductive-xref-isa": 3
+   },
+   "partof_sets": {
+    "endocrine-system-partof": 4,
+    "pineal-nervous-xref-partof": 1,
+    "pancreas-digestive-xref-partof": 1
+   },
+   "cross_references": {
+    "reproductive": 3,
+    "nervous": 1,
+    "digestive": 1
+   },
+   "dispositions": {
+    "record": 3,
+    "cross-reference:reproductive": 3,
+    "grouping-class": 1,
+    "class-carried": 1,
+    "cross-reference:nervous": 1,
+    "cross-reference:digestive": 1
+   },
+   "disposition_concepts": {
+    "class-carried": [
+     "FMA9604"
+    ],
+    "cross-reference:digestive": [
+     "FMA7198"
+    ],
+    "cross-reference:nervous": [
+     "FMA62033"
+    ],
+    "cross-reference:reproductive": [
+     "FMA7210",
+     "FMA7211",
+     "FMA7212"
+    ],
+    "grouping-class": [
+     "FMA9668"
+    ],
+    "record": [
+     "FMA13889",
+     "FMA15629",
+     "FMA15630"
+    ]
+   },
+   "sweep_rejected_names": [
+    "cricothyroid ligament",
+    "inferior suprarenal artery",
+    "inferior thyroid artery",
+    "lacrimal gland",
+    "left inferior suprarenal artery",
+    "left inferior thyroid artery",
+    "left lacrimal gland",
+    "left middle suprarenal artery",
+    "left sternothyroid",
+    "left sublingual gland",
+    "left submandibular gland",
+    "left suprarenal vein",
+    "major salivary gland",
+    "median cricothyroid ligament",
+    "middle suprarenal artery",
+    "oblique part of cricothyroid",
+    "oblique part of left cricothyroid",
+    "oblique part of right cricothyroid",
+    "organ component gland",
+    "right inferior suprarenal artery",
+    "right inferior thyroid artery",
+    "right lacrimal gland",
+    "right middle suprarenal artery",
+    "right sternothyroid",
+    "right sublingual gland",
+    "right submandibular gland",
+    "right suprarenal vein",
+    "salivary gland",
+    "sternothyroid",
+    "straight part of cricothyroid",
+    "straight part of left cricothyroid",
+    "straight part of right cricothyroid",
+    "sublingual gland",
+    "submandibular gland",
+    "suprarenal vein",
+    "thyroid cartilage",
+    "zone of cricothyroid"
+   ]
+  },
+  "record_count": 3,
+  "record_representations": {
+   "whole-concept": 3
+  },
+  "records_by_subtree": {
+   "adrenal-gland-isa": 2,
+   "pituitary-isa": 1
+  },
+  "instance_records": [
+   "left adrenal gland",
+   "right adrenal gland"
+  ],
+  "organ_records": [
+   "pituitary gland"
+  ],
+  "totalsegmentator_overlap": {
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), exactly two are endocrine: adrenal_gland_right and adrenal_gland_left, each present in all 1,204 subjects. TS v1 has no pituitary, pineal, thyroid or parathyroid label; the pancreas label maps to the digestive module's record, cross-referenced here.",
+   "labels": [
+    {
+     "label": "adrenal_gland_right",
+     "inventory_record_ids": [
+      "adrenal-gland.right-adrenal-gland"
+     ],
+     "note": ""
+    },
+    {
+     "label": "adrenal_gland_left",
+     "inventory_record_ids": [
+      "adrenal-gland.left-adrenal-gland"
+     ],
+     "note": ""
+    }
+   ],
+   "labels_without_records": []
+  },
+  "absences": {
+   "note": "probe-based gap analysis: each probe name was counted over all six BP3D 4.0 release tables. Zero hits = the name does not occur in the release.",
+   "absent": [
+    "thyroid gland",
+    "lobe of thyroid gland",
+    "isthmus of thyroid gland",
+    "thyroid follicle",
+    "parafollicular",
+    "pyramidal lobe",
+    "parathyroid",
+    "parathyroid gland",
+    "superior parathyroid",
+    "inferior parathyroid",
+    "chief cell",
+    "pancreatic islet",
+    "islet",
+    "langerhans",
+    "endocrine pancreas",
+    "adenohypophysis",
+    "neurohypophysis",
+    "anterior lobe of pituitary gland",
+    "posterior lobe of pituitary gland",
+    "pars distalis",
+    "pars nervosa",
+    "pars intermedia",
+    "infundibulum",
+    "adrenal cortex",
+    "adrenal medulla",
+    "cortex of adrenal gland",
+    "medulla of adrenal gland",
+    "zona glomerulosa",
+    "zona fasciculata",
+    "zona reticularis",
+    "suprarenal gland",
+    "chromaffin",
+    "endocrine gland",
+    "ovary",
+    "ovarian",
+    "ovarian follicle",
+    "corpus luteum",
+    "seminiferous",
+    "leydig",
+    "pinealocyte",
+    "pineal gland"
+   ],
+   "present": [
+    "endocrine system",
+    "pituitary gland",
+    "pineal body",
+    "adrenal gland",
+    "right adrenal gland",
+    "left adrenal gland",
+    "pancreas",
+    "testis",
+    "right testis",
+    "left testis",
+    "hypothalamus"
+   ],
+   "detail": [
+    {
+     "probe": "thyroid gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "lobe of thyroid gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "isthmus of thyroid gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "thyroid follicle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "parafollicular",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pyramidal lobe",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "parathyroid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "parathyroid gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "superior parathyroid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "inferior parathyroid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "chief cell",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pancreatic islet",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "islet",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "langerhans",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "endocrine pancreas",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adenohypophysis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "neurohypophysis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "anterior lobe of pituitary gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "posterior lobe of pituitary gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pars distalis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pars nervosa",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pars intermedia",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "infundibulum",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adrenal cortex",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adrenal medulla",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "cortex of adrenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "medulla of adrenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona glomerulosa",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona fasciculata",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona reticularis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "suprarenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "chromaffin",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "endocrine gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "endocrine system",
+     "total_hits": 12,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 7,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 4
+     }
+    },
+    {
+     "probe": "ovary",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "ovarian",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "ovarian follicle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "corpus luteum",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "seminiferous",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "leydig",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pinealocyte",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pineal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pituitary gland",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "pineal body",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "adrenal gland",
+     "total_hits": 18,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    },
+    {
+     "probe": "right adrenal gland",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "left adrenal gland",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "pancreas",
+     "total_hits": 17,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 2,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 2,
+      "partof_element_parts.txt": 5,
+      "isa_inclusion_relation_list.txt": 2,
+      "partof_inclusion_relation_list.txt": 4
+     }
+    },
+    {
+     "probe": "testis",
+     "total_hits": 12,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "right testis",
+     "total_hits": 3,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "left testis",
+     "total_hits": 3,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "hypothalamus",
+     "total_hits": 16,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 2,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 4,
+      "isa_inclusion_relation_list.txt": 3,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    }
+   ]
+  }
+ },
+ "concepts": [
+  {
+   "fma_id": "FMA13889",
+   "name": "pituitary gland",
+   "representation_id": "BP4630",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "pituitary-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "pituitary-gland",
+   "parent_id": "FMA55662",
+   "parent_name": "lobular organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15629",
+   "name": "right adrenal gland",
+   "representation_id": "BP9132",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "adrenal-gland.right-adrenal-gland",
+   "parent_id": "FMA9604",
+   "parent_name": "adrenal gland",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15630",
+   "name": "left adrenal gland",
+   "representation_id": "BP9014",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "adrenal-gland.left-adrenal-gland",
+   "parent_id": "FMA9604",
+   "parent_name": "adrenal gland",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA62033",
+   "name": "pineal body",
+   "representation_id": "BP5525",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "pineal-nervous-xref-isa",
+   "cross_reference": "nervous",
+   "disposition": "cross-reference:nervous",
+   "record_id": null,
+   "parent_id": "FMA84081",
+   "parent_name": "circumventricular organ of neuraxis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA7198",
+   "name": "pancreas",
+   "representation_id": "BP4631",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "pancreas-digestive-xref",
+   "cross_reference": "digestive",
+   "disposition": "cross-reference:digestive",
+   "record_id": null,
+   "parent_id": "FMA55662",
+   "parent_name": "lobular organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 4
+  },
+  {
+   "fma_id": "FMA7210",
+   "name": "testis",
+   "representation_id": "BP8579",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-reproductive-xref-isa",
+   "cross_reference": "reproductive",
+   "disposition": "cross-reference:reproductive",
+   "record_id": null,
+   "parent_id": "FMA55662",
+   "parent_name": "lobular organ",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7211",
+   "name": "right testis",
+   "representation_id": "BP9204",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-reproductive-xref-isa",
+   "cross_reference": "reproductive",
+   "disposition": "cross-reference:reproductive",
+   "record_id": null,
+   "parent_id": "FMA7210",
+   "parent_name": "testis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7212",
+   "name": "left testis",
+   "representation_id": "BP8578",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-reproductive-xref-isa",
+   "cross_reference": "reproductive",
+   "disposition": "cross-reference:reproductive",
+   "record_id": null,
+   "parent_id": "FMA7210",
+   "parent_name": "testis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA9604",
+   "name": "adrenal gland",
+   "representation_id": "BP9015",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-isa",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA55663",
+   "parent_name": "corticomedullary organ",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA9668",
+   "name": "endocrine system",
+   "representation_id": "BP9654",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "endocrine-system-partof",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA20394",
+   "parent_name": "human body",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 7
+  }
+ ],
+ "records": [
+  {
+   "record_id": "adrenal-gland.left-adrenal-gland",
+   "name": "left adrenal gland",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA9604",
+   "concept_ids": [
+    "FMA15630"
+   ],
+   "subtree": "adrenal-gland-isa",
+   "group_path": [
+    "human body",
+    "endocrine system"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id. The instance is a direct member of the endocrine system in PART-OF and an instance of the adrenal class in IS-A; Milestone 12 censused this concept as an endocrine cross-reference, and this record closes that boundary"
+  },
+  {
+   "record_id": "adrenal-gland.right-adrenal-gland",
+   "name": "right adrenal gland",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA9604",
+   "concept_ids": [
+    "FMA15629"
+   ],
+   "subtree": "adrenal-gland-isa",
+   "group_path": [
+    "human body",
+    "endocrine system"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id. The instance is a direct member of the endocrine system in PART-OF and an instance of the adrenal class in IS-A; Milestone 12 censused this concept as an endocrine cross-reference, and this record closes that boundary"
+  },
+  {
+   "record_id": "pituitary-gland",
+   "name": "pituitary gland",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA13889",
+   "concept_ids": [
+    "FMA13889"
+   ],
+   "subtree": "pituitary-isa",
+   "group_path": [
+    "human body",
+    "endocrine system"
+   ],
+   "note": "the gland is a leaf in both tables: no adenohypophysis, neurohypophysis or other part exists as a concept (probe-verified); its two-part structure is carried as sourced text in the clinical tranche"
+  }
+ ]
+}
