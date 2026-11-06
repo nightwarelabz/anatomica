@@ -71,12 +71,23 @@
     border-bottom: 1px solid var(--line); }
   #imgStage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   #imgCanvas { max-width: 100%; max-height: 100%; image-rendering: pixelated; cursor: crosshair; background: #000; }
+  #mprGrid { width: 100%; height: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 8px; }
+  #mprGrid[hidden] { display: none; }
+  .pane { display: flex; flex-direction: column; min-height: 0; min-width: 0; gap: 4px; }
+  .pane .ph { font-size: 12px; color: var(--dim); display: flex; gap: 8px; align-items: baseline; white-space: nowrap; }
+  .pane .ph b { color: var(--text); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
+  .pane .ph .pv { font-variant-numeric: tabular-nums; }
+  .pane .cvw { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .pane canvas { image-rendering: pixelated; cursor: crosshair; background: #000; display: block; }
+  .pane input[type="range"] { width: 100%; accent-color: var(--accent); }
   #imgBar { display: flex; align-items: center; gap: 10px; padding: 6px 10px; flex-wrap: wrap;
     background: var(--panel); border-top: 1px solid var(--line); font-size: 12px; color: var(--dim); }
   #imgBar input[type="range"] { accent-color: var(--accent); }
   #imgSlice { flex: 1; min-width: 120px; }
   #imgBar .val { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
   #imgBar button.preset.on { border-color: var(--accent); color: var(--accent); }
+  #imgSubjects { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0; }
+  #imgSubjects button.on { border-color: var(--accent); color: var(--accent); }
   .series { border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; margin: 6px 0; }
   .series .sm { color: var(--dim); font-size: 11px; }
   .lrow { display: flex; gap: 6px; align-items: baseline; padding: 3px 6px; border-radius: 4px; cursor: pointer; }
@@ -115,6 +126,7 @@
       </div>
       <div id="leftImg" hidden>
         <h3>Study — synthetic derived CT</h3>
+        <div id="imgSubjects"></div>
         <div id="imgSeries"></div>
         <h3>Window / level</h3>
         <div id="imgPresets"></div>
@@ -128,7 +140,7 @@
         <label class="chk"><input type="checkbox" id="imgOverlay" checked> show overlay</label>
         <label>Opacity <span class="val" id="imgAlphaVal"></span><br>
           <input type="range" id="imgAlpha" min="0.05" max="1" step="0.05" value="0.5" style="width:100%"></label>
-        <p style="color:var(--dim);font-size:12px">Click a legend row to isolate a label; click again to release. Click a voxel in the slice to identify it.</p>
+        <p style="color:var(--dim);font-size:12px">Click a legend row to isolate a label; click again to release. Click a voxel in the slice to identify it. <b>MPR planes</b> reslices the same volume in-browser — coronal and sagittal planes alongside axial, crosshair-linked from one shared voxel; MPR is display-only: no MPR files are written and nothing is resampled.</p>
         <h3>Labels in this volume</h3>
         <div id="imgLegend"></div>
       </div>
@@ -139,11 +151,30 @@
       <div id="status">loading…</div>
       <div id="imgwrap" hidden>
         <div id="imgBanner"></div>
-        <div id="imgStage"><canvas id="imgCanvas" width="262" height="262"></canvas></div>
+        <div id="imgStage"><canvas id="imgCanvas" width="262" height="262"></canvas>
+        <div id="mprGrid" hidden>
+          <div class="pane">
+            <div class="ph"><b>Axial</b><span class="pv" id="pvAxial"></span></div>
+            <div class="cvw"><canvas id="imgAx" width="262" height="262"></canvas></div>
+            <input type="range" id="mprAx" min="0" max="430" step="1" value="0">
+          </div>
+          <div class="pane">
+            <div class="ph"><b>Coronal</b><span class="pv" id="pvCoronal"></span></div>
+            <div class="cvw"><canvas id="imgCor" width="262" height="431"></canvas></div>
+            <input type="range" id="mprCor" min="0" max="261" step="1" value="0">
+          </div>
+          <div class="pane">
+            <div class="ph"><b>Sagittal</b><span class="pv" id="pvSagittal"></span></div>
+            <div class="cvw"><canvas id="imgSag" width="262" height="431"></canvas></div>
+            <input type="range" id="mprSag" min="0" max="261" step="1" value="0">
+          </div>
+        </div>
+        </div>
         <div id="imgBar">
           <button id="imgPrev">◀ slice</button>
           <input type="range" id="imgSlice" min="0" max="430" step="1" value="0">
           <button id="imgNext">slice ▶</button>
+          <button id="imgMprBtn" class="preset">MPR planes</button>
           <span class="val" id="imgSliceVal"></span>
           <span class="val" id="imgHover"></span>
         </div>
