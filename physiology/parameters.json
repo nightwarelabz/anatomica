@@ -1,0 +1,668 @@
+{
+  "about": "Every value in this file was entered from a source actually consulted during the Milestone 8 build session (2026-11-06) and is cited per entry, or is explicitly status-flagged. Status meanings: 'cited' = value taken from the cited source; 'calibrated' = value chosen by the build within a cited published range, choice disclosed in the note and in MILESTONE-8.md; 'verify' = engineering placeholder with NO literature source \u2014 never to be read as a physiological value. Units are carried on every entry.",
+  "parameters": [
+    {
+      "cited_range": null,
+      "name": "tick_seconds",
+      "note": "Interface/event timestep per design/04 (Pulse's published step). The integrator substeps inside each tick (see substep_seconds).",
+      "source": "S10",
+      "status": "cited",
+      "unit": "s",
+      "value": 0.02
+    },
+    {
+      "cited_range": null,
+      "name": "substep_seconds",
+      "note": "Numerical integration substep (40 per tick), RK4. Engineering choice for stability against the stiffest model time constants (arterial compliance x arterial resistance ~17 ms); not a physiological value. VERIFY-flagged as an unsourced numerical parameter.",
+      "source": null,
+      "status": "verify",
+      "unit": "s",
+      "value": 0.0005
+    },
+    {
+      "cited_range": [
+        60.0,
+        100.0
+      ],
+      "name": "heart_rate_baseline_bpm",
+      "note": "S1 protocol: 'in all simulations the heart rate was set at 60 beats per minute' with a 1 s cycle. The resting normal range 60-100 bpm is S11; 60 sits at its lower bound.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "beats/min",
+      "value": 60.0
+    },
+    {
+      "cited_range": null,
+      "name": "ventricular_systole_seconds_at_1s_cycle",
+      "note": "S1: ventricular activation v(t) = sin^2(pi * tR / tv) for tR in [0, tv], tv = 0.45 s 'defining duration of ventricular systole including periods of isovolumic contraction and relaxation', at a 1 s cycle.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "s",
+      "value": 0.45
+    },
+    {
+      "cited_range": null,
+      "name": "systole_duration_hr_exponent",
+      "note": "tv scaling when the baroreflex changes heart rate: tv = 0.45 * sqrt(cycle_seconds / 1 s). S1 fixes HR at 60 bpm and gives no scaling law; this square-root scaling is an engineering placeholder. VERIFY before any use where systole duration at non-60 bpm rates matters.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": 0.5
+    },
+    {
+      "cited_range": [
+        4900.0,
+        5570.0
+      ],
+      "name": "total_blood_volume_ml",
+      "note": "Cited range: 4,900 mL = 70 mL/kg x 70 kg (S8) to 5,570 mL = the S1 model baseline. CALIBRATED VALUE 5,000 mL \u2014 S8 textbook value for the 70-kg reference adult (about 5 L). Calibration sweep (MILESTONE-8.md section 3): at 5,570 mL every pressure output overshoots its published range in this reduced compartment set (v0 omits S1 atrial chambers and pericardium, whose compliance holds volume at low pressure in S1 model); at 4,900 mL MAP and CO undershoot. 5,000 mL is the value at which the resting case meets every gated published range.",
+      "source": "S1",
+      "status": "calibrated",
+      "unit": "mL",
+      "value": 5000.0
+    },
+    {
+      "cited_range": [
+        1052.0,
+        1062.0
+      ],
+      "name": "blood_density_kg_m3",
+      "note": "Used only in the Bernoulli valve law. S9 physiological range 1052-1062; S12 reports literature values 1043-1060. 1060 lies in both consulted ranges.",
+      "source": "S9",
+      "status": "cited",
+      "unit": "kg/m^3",
+      "value": 1060.0
+    },
+    {
+      "cited_range": null,
+      "name": "valve_area_av_cm2",
+      "note": "Effective orifice area, atrioventricular valves (mitral, tricuspid): 'effective orifice areas for atrioventricular valves were set to 7 cm2' (S1).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "cm^2",
+      "value": 7.0
+    },
+    {
+      "cited_range": null,
+      "name": "valve_area_semilunar_cm2",
+      "note": "Effective orifice area, aortic and pulmonary valves: 'aortic and pulmonary valve areas were set to 5 cm2' (S1). S1 also sets valve length L = 1 cm for the inertance term; inertance is omitted in v0 (documented simplification), so L is recorded here as cited-but-unused.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "cm^2",
+      "value": 5.0
+    },
+    {
+      "cited_range": null,
+      "name": "valve_regularization_r",
+      "note": "Small linear term added to the Bernoulli valve law (deltaP = B*Q^2 + r*Q) purely to keep dQ/d(deltaP) finite at valve opening. Numerical regularization, NOT a physiological valve resistance. VERIFY-flagged.",
+      "source": null,
+      "status": "verify",
+      "unit": "mmHg*s/mL",
+      "value": 0.002
+    },
+    {
+      "cited_range": null,
+      "name": "c_systemic_arteries",
+      "note": "S1 Supplemental Table 1, systemic arteries Csa.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 0.28
+    },
+    {
+      "cited_range": null,
+      "name": "vu_systemic_arteries",
+      "note": "S1 Table 1, Vusa.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 200.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_systemic_arteries",
+      "note": "S1 Table 1, Rsa (arterial segment outflow resistance). Inertance Lsa 2.2e-4 mmHg*s^2/mL cited in S1 but omitted in v0 (documented simplification).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.06
+    },
+    {
+      "cited_range": null,
+      "name": "c_systemic_capillaries",
+      "note": "S1 Table 1, Csc.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 3.72
+    },
+    {
+      "cited_range": null,
+      "name": "vu_systemic_capillaries",
+      "note": "S1 Table 1, Vusc.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 611.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_systemic_capillaries",
+      "note": "S1 Table 1, Rsc. This is the systemic peripheral (arteriolar/capillary) resistance \u2014 the segment the v0 baroreflex multiplier acts on. Total systemic resistance Rsa+Rsc+Rsv = 1.005 mmHg*s/mL.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.926
+    },
+    {
+      "cited_range": null,
+      "name": "c_systemic_veins",
+      "note": "S1 Table 1, Csv.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 114.0
+    },
+    {
+      "cited_range": null,
+      "name": "vu_systemic_veins",
+      "note": "S1 Table 1, Vusv.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 2747.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_systemic_veins",
+      "note": "S1 Table 1, Rsv \u2014 venous outflow resistance, in series with the tricuspid valve in v0 (S1 routes systemic veins to the right atrium through this segment).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.019
+    },
+    {
+      "cited_range": null,
+      "name": "c_pulmonary_arteries",
+      "note": "S1 Table 1, Cpa.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 0.76
+    },
+    {
+      "cited_range": null,
+      "name": "vu_pulmonary_arteries",
+      "note": "S1 Table 1, Vupa.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 60.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_pulmonary_arteries",
+      "note": "S1 Table 1, pulmonary arteries resistance cell (the supplement's text extraction labels this cell 'Rpv', colliding with the pulmonary-vein resistance name; the value sits in the pulmonary-arteries row and is used as the pulmonary arterial segment resistance). Naming ambiguity in the source extraction is disclosed here rather than silently resolved.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.023
+    },
+    {
+      "cited_range": null,
+      "name": "c_pulmonary_capillaries",
+      "note": "S1 Table 1, Cpc.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 5.8
+    },
+    {
+      "cited_range": null,
+      "name": "vu_pulmonary_capillaries",
+      "note": "S1 Table 1, Vupc.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 63.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_pulmonary_capillaries",
+      "note": "S1 Table 1, Rpc.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.089
+    },
+    {
+      "cited_range": null,
+      "name": "c_pulmonary_veins",
+      "note": "S1 Table 1, Cpv.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL/mmHg",
+      "value": 25.37
+    },
+    {
+      "cited_range": null,
+      "name": "vu_pulmonary_veins",
+      "note": "S1 Table 1, Vupv.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 120.0
+    },
+    {
+      "cited_range": null,
+      "name": "r_pulmonary_veins",
+      "note": "S1 Table 1, pulmonary veins resistance \u2014 in series with the mitral valve in v0.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg*s/mL",
+      "value": 0.006
+    },
+    {
+      "cited_range": null,
+      "name": "lv_diastolic_a",
+      "note": "S1 Supplemental Table 2, left ventricle A in Pd = A*(exp(K*(V-Vu)) - 1).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 2.5
+    },
+    {
+      "cited_range": null,
+      "name": "lv_diastolic_k",
+      "note": "S1 Table 2, left ventricle K.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "1/mL",
+      "value": 0.014
+    },
+    {
+      "cited_range": null,
+      "name": "lv_diastolic_vu",
+      "note": "S1 Table 2, left ventricle diastolic unstressed volume Vu.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 30.0
+    },
+    {
+      "cited_range": null,
+      "name": "lv_emax",
+      "note": "S1 Table 2, left ventricle maximal elastance E.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg/mL",
+      "value": 2.8
+    },
+    {
+      "cited_range": null,
+      "name": "lv_vd",
+      "note": "S1 Table 2, left ventricle dead volume Vd in Ps = E*(V - Vd)*(1 - KR*Q)*v(t).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 20.0
+    },
+    {
+      "cited_range": null,
+      "name": "lv_kr",
+      "note": "S1 Table 2, KR (ventricular systolic resistance coefficient), left ventricle value 3.75e-4. The table's KR row carries two values; Eq. 5 applies KR to ventricles only, and the two values are assigned to the RV and LV columns (see rv_kr note).",
+      "source": "S1",
+      "status": "cited",
+      "unit": "s/mL",
+      "value": 0.000375
+    },
+    {
+      "cited_range": null,
+      "name": "rv_diastolic_a",
+      "note": "S1 Table 2, right ventricle A.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 2.0
+    },
+    {
+      "cited_range": null,
+      "name": "rv_diastolic_k",
+      "note": "S1 Table 2, right ventricle K.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "1/mL",
+      "value": 0.011
+    },
+    {
+      "cited_range": null,
+      "name": "rv_diastolic_vu",
+      "note": "S1 Table 2, right ventricle diastolic unstressed volume Vu.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 30.0
+    },
+    {
+      "cited_range": null,
+      "name": "rv_emax",
+      "note": "S1 Table 2, right ventricle maximal elastance E.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mmHg/mL",
+      "value": 0.8
+    },
+    {
+      "cited_range": null,
+      "name": "rv_vd",
+      "note": "S1 Table 2, right ventricle dead volume Vd.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "mL",
+      "value": 20.0
+    },
+    {
+      "cited_range": null,
+      "name": "rv_kr",
+      "note": "S1 Table 2, KR right ventricle value 1.4e-4. Assignment caveat: the supplement's extracted KR row lists two values (1.4e-4, 3.75e-4) without surviving column alignment; because S1 Eq. 5 defines KR only for ventricles, they are assigned to RV and LV respectively (smaller value to the lower-pressure RV). This assignment is an interpretation of the source layout and is disclosed as such.",
+      "source": "S1",
+      "status": "cited",
+      "unit": "s/mL",
+      "value": 0.00014
+    },
+    {
+      "cited_range": null,
+      "name": "reflex_tau_seconds",
+      "note": "Baroreflex sensing lag: first-order low-pass time constant on measured MAP. Engineering placeholder, no literature source consulted. VERIFY.",
+      "source": null,
+      "status": "verify",
+      "unit": "s",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "reflex_gain_hr",
+      "note": "Baroreflex heart-rate gain: hr_multiplier = clamp(1 + gain * (setpoint - MAP_lp)/setpoint). Engineering placeholder chosen for bounded, non-oscillatory response; NOT a measured physiological gain. VERIFY before any interpretive use.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": 4.0
+    },
+    {
+      "cited_range": null,
+      "name": "reflex_gain_resistance",
+      "note": "Baroreflex peripheral-resistance gain on r_systemic_capillaries, same error signal as reflex_gain_hr. Engineering placeholder. VERIFY.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "reflex_hr_mult_bounds",
+      "note": "Saturation bounds for the heart-rate multiplier. Engineering placeholder. VERIFY.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": [
+        0.7,
+        1.9
+      ]
+    },
+    {
+      "cited_range": null,
+      "name": "reflex_r_mult_bounds",
+      "note": "Saturation bounds for the resistance multiplier. Engineering placeholder. VERIFY.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": [
+        0.75,
+        1.8
+      ]
+    },
+    {
+      "cited_range": null,
+      "name": "steady_state_drift_tolerance",
+      "note": "Harness criterion: |second-half mean - first-half mean| / mean < 1% for MAP and CO across the measurement window counts as 'holding steady state'. An engineering acceptance threshold for the design/04 'holds published normal ranges indefinitely' gate, not a physiological value. VERIFY-flagged as a chosen criterion.",
+      "source": null,
+      "status": "verify",
+      "unit": "relative (fraction)",
+      "value": 0.01
+    }
+  ],
+  "perturbation_cases": [
+    {
+      "description": "Acute hemorrhage of 750 mL, removed from the systemic venous compartment at a constant 12.5 mL/s over 60 s (lumped removal site = the venous reservoir; documented simplification). 750 mL is the ATLS Class I/II boundary for a 70-kg adult (S6, S7) and is 15.3% of the 4,900 mL weight-based blood volume (S8) \u2014 inside the 10-20% band within which S2 notes a person may remain asymptomatic, so expectations are directional only.",
+      "expectations": [
+        {
+          "direction": "falls",
+          "output": "mean_arterial_pressure",
+          "source": "S2 ('as blood volume decreases, pressure and flow decrease'); S6/S7 (Class II: blood pressure normal-to-decreased, so a fall or near-hold is ATLS-consistent; the harness requires a fall because the model's reflex is deliberately partial \u2014 see MILESTONE-8.md)"
+        },
+        {
+          "direction": "rises",
+          "output": "heart_rate",
+          "source": "S6 (Class II pulse >100 vs Class I <100); S7 (Class II 100-120). Direction only \u2014 ATLS magnitudes are contested (S7/Mutschler caveat)."
+        },
+        {
+          "direction": "narrows",
+          "output": "pulse_pressure",
+          "source": "S6/S7 (Class II: pulse pressure decreased); S2 (narrow pulse pressure may be seen in significant blood loss)."
+        },
+        {
+          "direction": "falls",
+          "output": "cardiac_output",
+          "source": "S2 ('as blood volume decreases, pressure and flow decrease' \u2014 flow = cardiac output in the systemic circuit)."
+        }
+      ],
+      "id": "hemorrhage_750"
+    },
+    {
+      "description": "Volume infusion of 1,000 mL into the systemic venous compartment at a constant 16.667 mL/s over 60 s (crystalloid/blood analogue at the lumped level; no oncotic or hematocrit modelling in v0).",
+      "expectations": [
+        {
+          "direction": "rises",
+          "output": "mean_arterial_pressure",
+          "source": "S2 ('as blood volume increases, pressure and flow increase')."
+        },
+        {
+          "direction": "rises",
+          "output": "central_venous_pressure",
+          "source": "S2 blood-volume relation applied to the venous compartment (volume added directly to it); direction is also the lumped Frank-Starling preload mechanism's input."
+        },
+        {
+          "direction": "rises",
+          "output": "cardiac_output",
+          "source": "S2 ('as blood volume increases, pressure and flow increase')."
+        }
+      ],
+      "id": "infusion_1000"
+    }
+  ],
+  "schema": "anatomica-physiology-parameters/v0",
+  "sources": [
+    {
+      "accessed": "2026-11-06, publisher supplement PDF, full text read in-session",
+      "citation": "Model of systemic and pulmonary circulation with left ventricular assist device / V-A ECMO support \u2014 Supplemental Tables 1-2 and heart-model description. The International Journal of Artificial Organs 2022;45(10). DOI 10.1177/03913988221115444 (supplement).",
+      "id": "S1",
+      "locator": "Supplemental Table 1 (vascular compliances, unstressed volumes, resistances, inertances); Supplemental Table 2 (chamber diastolic A/K/Vu, systolic resistance coefficient KR, maximal elastance E, dead volume Vd); 'Heart model' and 'Simulations' text (sin^2 activation, tv = 0.45 s, ta = 0.35 s, cycle 1 s, HR set at 60 bpm, valve orifice areas AV 7 cm^2 / semilunar 5 cm^2, valve length 1 cm, baseline total blood volume 5570 mL, steady state assessed after 200 s)."
+    },
+    {
+      "accessed": "2026-11-06, openstax.org page read in full in-session",
+      "citation": "OpenStax, Anatomy and Physiology, section 20.2 'Blood Flow, Blood Pressure, and Resistance' (openly licensed textbook).",
+      "id": "S2",
+      "locator": "Systolic typically around 120 mmHg, diastolic usually about 80 mmHg; MAP approximated as diastolic + (systolic-diastolic)/3, worked example 93.33 mmHg; 'Normally, the MAP falls within the range of 70-110 mmHg'; resting pulse pressure 30-40 mmHg; pulse pressure should be at least 25 percent of the systolic pressure, low/narrow pulse pressure may be seen in significant blood loss; 'as blood volume decreases, pressure and flow decrease. As blood volume increases, pressure and flow increase'; regulatory mechanisms maintain blood pressure so effectively that an individual may be asymptomatic until 10-20 percent of blood volume is lost."
+    },
+    {
+      "accessed": "2026-11-06, appendix page read in-session via publisher text reproduction",
+      "citation": "Hemodynamic normal ranges table, Appendix 4 of Clinical Application of Mechanical Ventilation (Cengage Learning, 2014), adapted from Des Jardins, Cardiopulmonary Anatomy and Physiology: Essentials for Respiratory Care, 5th ed.",
+      "id": "S3",
+      "locator": "CVP 1-7 mmHg; RAP 1-7 mmHg; mean PAP 15 mmHg; PCWP 8-12 mmHg; CO 4-8 L/min; RA 1-7 / RV systolic 15-25 / RV diastolic 1-7 / PA systolic 15-25 / PA diastolic 6-12 / PCW 8-12 mmHg."
+    },
+    {
+      "accessed": "2026-11-06, guide pages read in-session via document reproduction",
+      "citation": "Quick Guide to Cardiopulmonary Care, 2nd edition (Edwards Lifesciences) \u2014 normal insertion pressures table for pulmonary artery (Swan-Ganz) catheters.",
+      "id": "S4",
+      "locator": "Right atrial / central venous pressure 2-6 mmHg (mean 4); right ventricular systolic 15-25, diastolic 0-8 mmHg; pulmonary artery systolic 15-25, diastolic 8-15, mean 10-20 mmHg; pulmonary artery occlusion pressure (PAOP) mean 6-12 mmHg."
+    },
+    {
+      "accessed": "2026-11-06, NCBI Bookshelf article surfaced and read in-session",
+      "citation": "StatPearls, 'High-Output Cardiac Failure' (NCBI Bookshelf NBK513337).",
+      "id": "S5",
+      "locator": "'a high cardiac output state is defined as a resting cardiac output greater than 8 L/min or a cardiac index of greater than 4.0/min/m2' \u2014 corroborates 8 L/min as the upper bound of normal resting cardiac output."
+    },
+    {
+      "accessed": "2026-11-06, journal table read in-session",
+      "citation": "Rossaint et al., 'Management of bleeding following major trauma: an updated European guideline', Critical Care \u2014 Table 2, haemorrhage severity according to the ACS/ATLS classification, reprinted with permission of the American College of Surgeons.",
+      "id": "S6",
+      "locator": "70-kg adult: Class I blood loss <750 mL, pulse <100, blood pressure normal, pulse pressure normal; Class II 750-1,500 mL, pulse >100, blood pressure normal, pulse pressure decreased; Class III 1,500-2,000 mL, pulse >120, blood pressure decreased, pulse pressure decreased; Class IV >2,000 mL, pulse >140, blood pressure decreased, pulse pressure decreased."
+    },
+    {
+      "accessed": "2026-11-06, commentary read in-session",
+      "citation": "Luginbuhl, 'Detection of haemorrhagic shock: Are vital signs obsolete?' (commentary, University of Bern repository), reproducing the ATLS Student Course Manual 9th-edition classification table and citing Mutschler et al., 'A critical reappraisal of the ATLS classification of hypovolaemic shock', Resuscitation 2013;84:309-313.",
+      "id": "S7",
+      "locator": "ATLS 9th ed. table: Class I up to 750 mL (up to 15% blood volume), pulse <100, SBP normal, pulse pressure normal or increased; Class II 750-1500 mL (15-30%), pulse 100-120, SBP normal, pulse pressure decreased. Validity caveat as cited there: in the Trauma Audit and Research Network evaluation, heart rate rose and SBP fell across classes but the median heart rate in Class IV patients was substantially lower than the 140/min postulated by ATLS \u2014 the classification's vital-sign responses are contested, so ATLS is used here for direction only, never for target magnitudes."
+    },
+    {
+      "accessed": "2026-11-06, chapter read in-session",
+      "citation": "Anesthesia textbook chapter 'The cardiovascular system and the ECG' (aneskey.com reproduction), Table 12.1 'Circulating blood volume in relation to age'.",
+      "id": "S8",
+      "locator": "'The normal circulating blood volume is variable, but in a 70 kg adult it is about 5 L (equivalent to about 70 mL/kg body weight)'; adult blood volume 70 mL/kg."
+    },
+    {
+      "accessed": "2026-11-06, protocol read in-session",
+      "citation": "Department of Medical Biophysics, JFMED Comenius University (Martin) \u2014 laboratory protocol B1, measurement of blood density by the copper-sulphate method.",
+      "id": "S9",
+      "locator": "'The physiological value is 1052 to 1062 kg/m3' for whole-blood density."
+    },
+    {
+      "accessed": "project in-tree document, read at build start",
+      "citation": "ANATOMICA design/04-physiology-engine.md (project governing document) and ANATOMICA-MASTER-PLAN.md section 4.",
+      "id": "S10",
+      "locator": "Fixed timestep 20 ms (Pulse's published step); steady-state gate: 'CO 4-8 L/min, MAP 70-95 mmHg' (values per ANATOMICA research round 2 with sources); heart chambers as time-varying elastance; lumped circuit-analog compartments after the Pulse Physiology Engine's published architecture."
+    },
+    {
+      "accessed": "2026-11-06, reproduction read in-session",
+      "citation": "OpenStax, Anatomy and Physiology, section 19.4 'Cardiac Physiology' \u2014 normal values as stated in the OpenStax text: stroke volume range 55-100 mL, resting heart rate range 60-100 bpm (average approximately 75), mean resting cardiac output 5.25 L/min with range 4.0-8.0 L/min.",
+      "id": "S11",
+      "locator": "Consulted 2026-11-06 via an open study-guide reproduction of the OpenStax A&P II text (the values are OpenStax's; the access route is recorded here for provenance honesty). Corroboration consulted in the same session: textbook chapter 'Cardiac Output Measurement' (Thoracic Key reproduction) states normal adult SV 60-130 mL/beat and resting CO average approximately 5 L/min, reference range 4-8 L/min \u2014 the SV ranges of the two consulted sources differ (55-100 vs 60-130); the validation gate uses the narrower OpenStax range and the discrepancy is disclosed."
+    },
+    {
+      "accessed": "2026-11-06, article read in-session",
+      "citation": "'Blood Density Is Nearly Equal to Water Density: A Validation Study of the Gravimetric Method of Measuring Intraoperative Blood Loss', PMC4590883 (open access).",
+      "id": "S12",
+      "locator": "'existing data are conflicting and demonstrate blood density ranges between 1043 and 1060 kg/m3 (1.043-1.060 g/mL)'."
+    }
+  ],
+  "validation_ranges": [
+    {
+      "gated": true,
+      "high": 100.0,
+      "low": 60.0,
+      "note": "Resting heart rate range (OpenStax 19.4). The model's baseline rate is set to 60 (S1 protocol).",
+      "output": "heart_rate",
+      "source": "S11",
+      "unit": "beats/min"
+    },
+    {
+      "gated": true,
+      "high": 120.0,
+      "low": 90.0,
+      "note": "Gate constructed from consulted statements: S2 gives systolic 'typically around 120 mmHg' as the normal adult value; the lower bound 90 mmHg is the conventional hypotension threshold \u2014 flagged: the 90 bound was not itself read in a consulted source this session, so this line is a SOFT gate (reported, and a failure is disclosed, but it does not by itself fail the build). See MILESTONE-8.md.",
+      "output": "systolic_bp",
+      "source": "S2",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 80.0,
+      "low": 60.0,
+      "note": "Same construction as systolic_bp: S2 diastolic 'usually about 80 mmHg'; 60 mmHg lower bound not read in a consulted source this session \u2014 SOFT gate, disclosed.",
+      "output": "diastolic_bp",
+      "source": "S2",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 95.0,
+      "low": 70.0,
+      "note": "ANATOMICA design/04 steady-state gate (values per research round 2). The published range consulted directly this session is wider: S2 states MAP normally falls within 70-110 mmHg. The engine reports the true time-mean of arterial pressure, not the S2 cuff approximation diastolic + pulse/3.",
+      "output": "mean_arterial_pressure",
+      "source": "S10",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": null,
+      "low": 0.25,
+      "note": "S2 stated criterion: 'a pulse pressure should be at least 25 percent of the systolic pressure'. Reference only (not gated): S2 gives resting pulse pressure typically 30-40 mmHg.",
+      "output": "pulse_pressure_fraction",
+      "source": "S2",
+      "unit": "fraction of systolic"
+    },
+    {
+      "gated": true,
+      "high": 8.0,
+      "low": 4.0,
+      "note": "Design/04 gate; corroborated by S3 (CO 4-8 L/min), S11 (range 4.0-8.0 L/min), and S5 (resting CO above 8 L/min defines a high-output state).",
+      "output": "cardiac_output",
+      "source": "S10",
+      "unit": "L/min"
+    },
+    {
+      "gated": true,
+      "high": 100.0,
+      "low": 55.0,
+      "note": "OpenStax 19.4 range. A second consulted source gives 60-130 mL/beat (see S11 entry) \u2014 discrepancy disclosed; gate uses the narrower range.",
+      "output": "stroke_volume_lv",
+      "source": "S11",
+      "unit": "mL/beat"
+    },
+    {
+      "gated": true,
+      "high": 6.0,
+      "low": 2.0,
+      "note": "Mean systemic venous compartment pressure, the lumped analogue of CVP/right atrial pressure. S4: 2-6 mmHg (mean 4). S3 gives 1-7 mmHg \u2014 gate uses S4; both consulted ranges disclosed.",
+      "output": "central_venous_pressure",
+      "source": "S4",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 25.0,
+      "low": 15.0,
+      "note": "Pulmonary artery systolic pressure. S4: 15-25; S3 concurs (15-25).",
+      "output": "pa_systolic",
+      "source": "S4",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 15.0,
+      "low": 8.0,
+      "note": "Pulmonary artery diastolic pressure. S4: 8-15; S3 gives 6-12 \u2014 gate uses S4; discrepancy disclosed.",
+      "output": "pa_diastolic",
+      "source": "S4",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 20.0,
+      "low": 10.0,
+      "note": "Mean pulmonary artery pressure. S4: 10-20; S3 lists a typical mean of 15 mmHg.",
+      "output": "pa_mean",
+      "source": "S4",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 12.0,
+      "low": 6.0,
+      "note": "Mean pulmonary venous compartment pressure, reported as the lumped analogue of left atrial pressure / pulmonary artery occlusion (wedge) pressure \u2014 it is NOT a wedge measurement; the compartment drains directly to the LV through the mitral valve in v0 (no left atrium). S4 PAOP mean 6-12; S3 PCWP 8-12.",
+      "output": "pcwp_proxy_mean_pv_pressure",
+      "source": "S4",
+      "unit": "mmHg"
+    }
+  ]
+}

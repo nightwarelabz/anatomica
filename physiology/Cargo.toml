@@ -1,0 +1,17 @@
+[package]
+name = "anatomica-physiology"
+version = "0.1.0"
+edition = "2021"
+description = "ANATOMICA physiology engine — deterministic lumped-parameter cardiovascular core (Milestone 8 v0). Pulse-architecture circuit model per design/04; validated against published normal ranges before any pathology is trusted."
+license = "AGPL-3.0-only"
+
+[[bin]]
+name = "anatomica-physiology"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+debug = false
