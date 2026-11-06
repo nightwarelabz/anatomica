@@ -1,0 +1,495 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "classification": {
+    "basis": "Complete transection of a main duct (operative history C16; corroborated by ERCP cut-off and MRCP) places the injury in Strasberg type E. The MRCP stump measurement is 25 mm below an intact confluence; C14 Table 2: stump > 2 cm from the confluence = Bismuth I = Strasberg E1. Every other rule is excluded by a named absent finding (no minor-duct leak, no aberrant-duct occlusion/transection/involvement, no lateral injury, confluence intact, stump >= 20 mm), each of which the checker re-evaluates from the findings.",
+    "bismuth": "I",
+    "block": "strasberg_bismuth",
+    "strasberg": "E1",
+    "stump_mm": 25
+   },
+   "criteria_final": {
+    "strasberg_bismuth": {
+     "inputs": {
+      "aberrant_duct_also_involved": false,
+      "aberrant_duct_occluded": false,
+      "aberrant_duct_transected_leaking": false,
+      "confluence_destroyed": false,
+      "lateral_main_duct_injury": false,
+      "leak_from_minor_duct": false,
+      "main_duct_transection": true,
+      "stump_ge_1mm": true,
+      "stump_ge_20mm": true,
+      "stump_lt_20mm": false
+     },
+     "result": {
+      "bismuth": "I",
+      "label": "Strasberg E1 / Bismuth I \u2014 transected main bile duct, stump > 2 cm from the confluence (C14 Table 2)",
+      "strasberg": "E1"
+     },
+     "rule_index": 8,
+     "status": "classified"
+    },
+    "tg18_cholangitis": {
+     "groups": {
+      "A": false,
+      "B": true,
+      "C": true
+     },
+     "status": "not suspected"
+    }
+   },
+   "hypothesis": "hyp.bile-duct-injury-major",
+   "mondo": null
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.retained-cbd-stone",
+    "learner_probability": 0.25,
+    "ruled_out_at_stage": 4,
+    "stage": 4,
+    "workbench_probability": 0.019463646614698245
+   }
+  ],
+  "attempt_id": "attempt.case-post-op-002.model-learner",
+  "case_id": "case.post-op-jaundice.002",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "settles guideline item(s): tg18_cholangitis.A1",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.cbc",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): tg18_cholangitis.A1",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.crp",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): tg18_cholangitis.B1, tg18_cholangitis.B2",
+    "classification": "criteria-completing",
+    "cost_units": 3,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.lft-panel",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): tg18_cholangitis.C1i",
+    "classification": "criteria-completing",
+    "cost_units": 4,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.ultrasound",
+    "time_min": 30
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 8,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.ercp",
+    "time_min": 60
+   },
+   {
+    "basis": "hyp.retained-cbd-stone crosses the rule-out line (0.2000 -> 0.0195)",
+    "classification": "discriminating",
+    "cost_units": 6,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.mrcp",
+    "time_min": 45
+   }
+  ],
+  "pearls": {
+   "analysis": "Three teaching points, each tied to a scored component. (1) The operative history is evidence \u2014 the loudest in the case. 'The injury was recognised and drained' was the learner's reason for discounting it; but drain-and-refer (trace-02, dp4) is a temporising pathway, not a repair: the transected duct was still transected on day 4. The consider-the-opposite prompt (design/07): 'if this is the injury I already know about, what would the stone story have to explain away?' \u2014 the clips, the cut-off, and the recognised class III mechanism, at minimum. (2) Sequence the anatomy before the therapy: C14 makes MRCP the gold standard for morphological evaluation and classification of a bile duct injury, and states ERCP's limits in exactly this anatomy \u2014 it cannot opacity ducts upstream of a complete obstruction and cannot bridge a transection. Ordered at stage 2 as treatment for an unproven stone, the ERCP is scored non-contributory: it changed no board, no criterion, and no classification input that the record did not already establish, at an invasive procedure's risk. (3) Criteria discipline held where it mattered: TG18 cholangitis reads B and C satisfied but A unmet (afebrile, WBC 8.9, CRP 8) at every stage \u2014 not suspected, mechanically \u2014 while remaining the case's live risk, which is why the disposition arms surveillance and names the drainage route (PTBD, for complete obstruction) that fever would trigger.",
+   "description": "Stage by stage: the workbench leads with the bile duct injury from stage 1 (0.35, its declared prior \u2014 the operative history is stage-1 evidence, not backstory) and never gives up the lead. The learner leads with the stone (0.40), raises it on the cholestatic panel (0.45) as if cholestasis discriminated between obstruction causes \u2014 it does not; it is shared by all of them \u2014 and orders ERCP at stage 2 as therapy, before any cross-sectional anatomy exists. The ERCP returns a cut-off at surgical clips, a clear distal duct, and nothing to treat; the learner still holds the stone at 0.30 ('above the clips, where ERCP cannot see'). Only the stage-4 MRCP closes it: no stone in any duct, and the workbench's one quantified update (LR- 0.0794, C15) carries the stone to 0.0195, across the rule-out line. The learner commits to the injury (0.60) \u2014 but still parks 0.25 on the stone, which is the attempt's anchoring event. Learner Brier: 0.7550 -> 0.7118 -> 0.4148 -> 0.2306. The workbench Brier is flat at 0.5150 until the MRCP (0.4053): this case carries exactly one likelihood ratio, and the rest of its reasoning honestly runs through the criteria and classification blocks rather than through invented numbers.",
+   "reactions": "The attempt reaches the right diagnosis, the right classification, and the right disposition \u2014 and its opening panel (inflammatory markers, cholestasis panel, ultrasound) is exactly the panel C14 prescribes. Between those bookends it commits the error this case was built to expose: it falls for the treatable diagnosis. A retained stone is the cause of postoperative jaundice that ERCP can fix, so the stone is what the learner goes looking for \u2014 past an operative history that already contains the answer.",
+   "summary": "Diagnosis: major bile duct injury \u2014 complete transection of the common bile duct at the index operation (Theatre trace-02), classified by the case's own block from the staged findings as Strasberg E1 / Bismuth I (stump 25 mm below an intact confluence). Disposition as committed: hepatobiliary-centre care, no endoscopic therapy for a transection, Roux-en-Y hepaticojejunostomy after a minimum of 3 weeks (C14 statement 7.4 \u2014 the 72 h to 3 week band), cholangitis surveillance meanwhile. Calibration note: a calibration curve is a property of a case SERIES (design/07); the series now has two cases and eight staged learner Brier scores (case 1: 0.4550 -> 0.0276; this case: 0.7550 -> 0.2306 \u2014 the gap between those endpoints is, in large part, the price of the anchor), and claims nothing more."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "strasberg_bismuth": {
+      "inputs": {
+       "aberrant_duct_also_involved": "unknown",
+       "aberrant_duct_occluded": "unknown",
+       "aberrant_duct_transected_leaking": "unknown",
+       "confluence_destroyed": "unknown",
+       "lateral_main_duct_injury": "unknown",
+       "leak_from_minor_duct": "unknown",
+       "main_duct_transection": true,
+       "stump_ge_1mm": "unknown",
+       "stump_ge_20mm": "unknown",
+       "stump_lt_20mm": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": false,
+       "B": false,
+       "C": false
+      },
+      "status": "not suspected"
+     }
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.1,
+     "hyp.bile-duct-injury-major": 0.25,
+     "hyp.hepatocellular-injury": 0.05,
+     "hyp.minor-bile-leak": 0.1,
+     "hyp.other-unspecified": 0.1,
+     "hyp.retained-cbd-stone": 0.4
+    },
+    "learner_brier": 0.755,
+    "learner_probability_on_truth": 0.25,
+    "learner_rank_of_truth": 2,
+    "learner_top": "hyp.retained-cbd-stone",
+    "stage": 1,
+    "strasberg_bismuth": {
+     "inputs": {
+      "aberrant_duct_also_involved": "unknown",
+      "aberrant_duct_occluded": "unknown",
+      "aberrant_duct_transected_leaking": "unknown",
+      "confluence_destroyed": "unknown",
+      "lateral_main_duct_injury": "unknown",
+      "leak_from_minor_duct": "unknown",
+      "main_duct_transection": true,
+      "stump_ge_1mm": "unknown",
+      "stump_ge_20mm": "unknown",
+      "stump_lt_20mm": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+    },
+    "tg18_cholangitis": [
+     {
+      "A": false,
+      "B": false,
+      "C": false
+     },
+     "not suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.1,
+     "hyp.bile-duct-injury-major": 0.35,
+     "hyp.hepatocellular-injury": 0.1,
+     "hyp.minor-bile-leak": 0.15,
+     "hyp.other-unspecified": 0.1,
+     "hyp.retained-cbd-stone": 0.2
+    },
+    "workbench_brier": 0.515,
+    "workbench_probability_on_truth": 0.35,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.bile-duct-injury-major"
+   },
+   {
+    "criteria": {
+     "strasberg_bismuth": {
+      "inputs": {
+       "aberrant_duct_also_involved": "unknown",
+       "aberrant_duct_occluded": "unknown",
+       "aberrant_duct_transected_leaking": "unknown",
+       "confluence_destroyed": "unknown",
+       "lateral_main_duct_injury": "unknown",
+       "leak_from_minor_duct": "unknown",
+       "main_duct_transection": true,
+       "stump_ge_1mm": "unknown",
+       "stump_ge_20mm": "unknown",
+       "stump_lt_20mm": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": false,
+       "B": true,
+       "C": true
+      },
+      "status": "not suspected"
+     }
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.08,
+     "hyp.bile-duct-injury-major": 0.3,
+     "hyp.hepatocellular-injury": 0.02,
+     "hyp.minor-bile-leak": 0.05,
+     "hyp.other-unspecified": 0.1,
+     "hyp.retained-cbd-stone": 0.45
+    },
+    "learner_brier": 0.7118,
+    "learner_probability_on_truth": 0.3,
+    "learner_rank_of_truth": 2,
+    "learner_top": "hyp.retained-cbd-stone",
+    "stage": 2,
+    "strasberg_bismuth": {
+     "inputs": {
+      "aberrant_duct_also_involved": "unknown",
+      "aberrant_duct_occluded": "unknown",
+      "aberrant_duct_transected_leaking": "unknown",
+      "confluence_destroyed": "unknown",
+      "lateral_main_duct_injury": "unknown",
+      "leak_from_minor_duct": "unknown",
+      "main_duct_transection": true,
+      "stump_ge_1mm": "unknown",
+      "stump_ge_20mm": "unknown",
+      "stump_lt_20mm": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+    },
+    "tg18_cholangitis": [
+     {
+      "A": false,
+      "B": true,
+      "C": true
+     },
+     "not suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.1,
+     "hyp.bile-duct-injury-major": 0.35,
+     "hyp.hepatocellular-injury": 0.1,
+     "hyp.minor-bile-leak": 0.15,
+     "hyp.other-unspecified": 0.1,
+     "hyp.retained-cbd-stone": 0.2
+    },
+    "workbench_brier": 0.515,
+    "workbench_probability_on_truth": 0.35,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.bile-duct-injury-major"
+   },
+   {
+    "criteria": {
+     "strasberg_bismuth": {
+      "inputs": {
+       "aberrant_duct_also_involved": "unknown",
+       "aberrant_duct_occluded": "unknown",
+       "aberrant_duct_transected_leaking": "unknown",
+       "confluence_destroyed": "unknown",
+       "lateral_main_duct_injury": "unknown",
+       "leak_from_minor_duct": "unknown",
+       "main_duct_transection": true,
+       "stump_ge_1mm": "unknown",
+       "stump_ge_20mm": "unknown",
+       "stump_lt_20mm": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": false,
+       "B": true,
+       "C": true
+      },
+      "status": "not suspected"
+     }
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.05,
+     "hyp.bile-duct-injury-major": 0.45,
+     "hyp.hepatocellular-injury": 0.02,
+     "hyp.minor-bile-leak": 0.05,
+     "hyp.other-unspecified": 0.13,
+     "hyp.retained-cbd-stone": 0.3
+    },
+    "learner_brier": 0.4148,
+    "learner_probability_on_truth": 0.45,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.bile-duct-injury-major",
+    "stage": 3,
+    "strasberg_bismuth": {
+     "inputs": {
+      "aberrant_duct_also_involved": "unknown",
+      "aberrant_duct_occluded": "unknown",
+      "aberrant_duct_transected_leaking": "unknown",
+      "confluence_destroyed": "unknown",
+      "lateral_main_duct_injury": "unknown",
+      "leak_from_minor_duct": "unknown",
+      "main_duct_transection": true,
+      "stump_ge_1mm": "unknown",
+      "stump_ge_20mm": "unknown",
+      "stump_lt_20mm": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed"
+    },
+    "tg18_cholangitis": [
+     {
+      "A": false,
+      "B": true,
+      "C": true
+     },
+     "not suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.1,
+     "hyp.bile-duct-injury-major": 0.35,
+     "hyp.hepatocellular-injury": 0.1,
+     "hyp.minor-bile-leak": 0.15,
+     "hyp.other-unspecified": 0.1,
+     "hyp.retained-cbd-stone": 0.2
+    },
+    "workbench_brier": 0.515,
+    "workbench_probability_on_truth": 0.35,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.bile-duct-injury-major"
+   },
+   {
+    "criteria": {
+     "strasberg_bismuth": {
+      "inputs": {
+       "aberrant_duct_also_involved": false,
+       "aberrant_duct_occluded": false,
+       "aberrant_duct_transected_leaking": false,
+       "confluence_destroyed": false,
+       "lateral_main_duct_injury": false,
+       "leak_from_minor_duct": false,
+       "main_duct_transection": true,
+       "stump_ge_1mm": true,
+       "stump_ge_20mm": true,
+       "stump_lt_20mm": false
+      },
+      "result": {
+       "bismuth": "I",
+       "label": "Strasberg E1 / Bismuth I \u2014 transected main bile duct, stump > 2 cm from the confluence (C14 Table 2)",
+       "strasberg": "E1"
+      },
+      "rule_index": 8,
+      "status": "classified"
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": false,
+       "B": true,
+       "C": true
+      },
+      "status": "not suspected"
+     }
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.02,
+     "hyp.bile-duct-injury-major": 0.6,
+     "hyp.hepatocellular-injury": 0.02,
+     "hyp.minor-bile-leak": 0.03,
+     "hyp.other-unspecified": 0.08,
+     "hyp.retained-cbd-stone": 0.25
+    },
+    "learner_brier": 0.2306,
+    "learner_probability_on_truth": 0.6,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.bile-duct-injury-major",
+    "stage": 4,
+    "strasberg_bismuth": {
+     "inputs": {
+      "aberrant_duct_also_involved": false,
+      "aberrant_duct_occluded": false,
+      "aberrant_duct_transected_leaking": false,
+      "confluence_destroyed": false,
+      "lateral_main_duct_injury": false,
+      "leak_from_minor_duct": false,
+      "main_duct_transection": true,
+      "stump_ge_1mm": true,
+      "stump_ge_20mm": true,
+      "stump_lt_20mm": false
+     },
+     "result": {
+      "bismuth": "I",
+      "label": "Strasberg E1 / Bismuth I \u2014 transected main bile duct, stump > 2 cm from the confluence (C14 Table 2)",
+      "strasberg": "E1"
+     },
+     "rule_index": 8,
+     "status": "classified"
+    },
+    "tg18_cholangitis": [
+     {
+      "A": false,
+      "B": true,
+      "C": true
+     },
+     "not suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.1226,
+     "hyp.bile-duct-injury-major": 0.429,
+     "hyp.hepatocellular-injury": 0.1226,
+     "hyp.minor-bile-leak": 0.1839,
+     "hyp.other-unspecified": 0.1226,
+     "hyp.retained-cbd-stone": 0.0195
+    },
+    "workbench_brier": 0.4053,
+    "workbench_probability_on_truth": 0.429,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.bile-duct-injury-major"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 25,
+   "total_time_min": 225
+  },
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestones 17 and 20 recorded it; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.retained-cbd-stone": 4
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.755,
+    "2": 0.7118,
+    "3": 0.4148,
+    "4": 0.2306
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.25,
+    "2": 0.3,
+    "3": 0.45,
+    "4": 0.6
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 4,
+    "discriminating": 1,
+    "non-contributory": 1,
+    "safety-net": 0
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.515,
+    "2": 0.515,
+    "3": 0.515,
+    "4": 0.4053
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights. Calibration proper needs a case series; two cases yield two sets of staged scores, and the debrief says so."
+  }
+ }
+}

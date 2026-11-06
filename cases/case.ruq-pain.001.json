@@ -189,6 +189,7 @@
    },
    "tg18_evaluation": {
     "combination_rule": "Suspected = >= 1 item in A and >= 1 item in B; definite = suspected + >= 1 item in C (C1).",
+    "default_status": "not suspected",
     "definite_from_stage": 3,
     "groups": [
      {
@@ -289,7 +290,24 @@
      "3": "definite (A + B + C)",
      "4": "definite (A + B + C)"
     },
-    "status_note": "The mechanical reading is the one recorded: C1's group B needs only one item, and the stage-1 fever (B1) satisfies it, so the criteria call this 'suspected' from the first stage. What changes across stages is not the label but the support \u2014 stage 2 adds two more group B items from the laboratory, and stage 3 adds group C. The checker evaluates the groups mechanically stage by stage and reproduces exactly these statuses."
+    "status_note": "The mechanical reading is the one recorded: C1's group B needs only one item, and the stage-1 fever (B1) satisfies it, so the criteria call this 'suspected' from the first stage. What changes across stages is not the label but the support \u2014 stage 2 adds two more group B items from the laboratory, and stage 3 adds group C. The checker evaluates the groups mechanically stage by stage and reproduces exactly these statuses.",
+    "status_rules": [
+     {
+      "require": {
+       "A": true,
+       "B": true,
+       "C": true
+      },
+      "status": "definite"
+     },
+     {
+      "require": {
+       "A": true,
+       "B": true
+      },
+      "status": "suspected"
+     }
+    ]
    }
   },
   "available_tests": [
@@ -456,6 +474,164 @@
      "f.us-marked-local-inflammation",
      "f.us-positive"
     ]
+   }
+  ],
+  "criteria_blocks": [
+   {
+    "default_status": "not suspected",
+    "groups": [
+     {
+      "group": "A",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.fever",
+          "is": "present"
+         },
+         {
+          "lab_id": "lab.wbc",
+          "test": "value_gt",
+          "threshold": 10.0,
+          "threshold_note": "C2 A-2 quantification: WBC > 10,000/microL (= 10.0 x10^9/L)"
+         },
+         {
+          "lab_id": "lab.crp",
+          "test": "value_gte",
+          "threshold": 10,
+          "threshold_note": "C2 A-2 quantification: CRP >= 1 mg/dL = 10 mg/L"
+         }
+        ],
+        "id": "A1",
+        "label": "Fever and/or shaking chills, or laboratory evidence of inflammatory response (WBC < 4,000 or > 10,000/microL; CRP >= 1 mg/dL)"
+       }
+      ],
+      "label": "Systemic inflammation"
+     },
+     {
+      "group": "B",
+      "items": [
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.bilirubin-total",
+          "test": "value_gte",
+          "threshold": 2.0,
+          "threshold_source": "C2"
+         }
+        ],
+        "id": "B1",
+        "label": "Jaundice (total bilirubin >= 2 mg/dL)"
+       },
+       {
+        "evidence": [
+         {
+          "factor": 1.5,
+          "lab_id": "lab.alp",
+          "test": "value_gt_uln_multiple"
+         },
+         {
+          "factor": 1.5,
+          "lab_id": "lab.alt",
+          "test": "value_gt_uln_multiple"
+         },
+         {
+          "factor": 1.5,
+          "lab_id": "lab.ast",
+          "test": "value_gt_uln_multiple"
+         }
+        ],
+        "id": "B2",
+        "label": "Abnormal liver function tests (ALP, GGT, AST, ALT > 1.5x ULN)"
+       }
+      ],
+      "label": "Cholestasis"
+     },
+     {
+      "group": "C",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.us-no-biliary-dilatation",
+          "is": "absent",
+          "note": "satisfied only if the no-dilatation finding were absent, i.e. dilatation present; in this case the finding is present, so the item is unsatisfied"
+         }
+        ],
+        "id": "C1i",
+        "label": "Biliary dilatation, or evidence of an etiology in the duct"
+       }
+      ],
+      "label": "Imaging"
+     }
+    ],
+    "id": "tg18_cholangitis",
+    "kind": "grouped",
+    "label": "TG18 acute cholangitis criteria",
+    "source": "C2",
+    "status_rules": [
+     {
+      "require": {
+       "A": true,
+       "B": true,
+       "C": true
+      },
+      "status": "definite"
+     },
+     {
+      "require": {
+       "A": true
+      },
+      "require_any": {
+       "B": true,
+       "C": true
+      },
+      "status": "suspected"
+     }
+    ],
+    "system": "Tokyo Guidelines 2018 diagnostic criteria for acute cholangitis"
+   },
+   {
+    "id": "atlanta",
+    "items": [
+     {
+      "evidence": [
+       {
+        "basis": "Adjudicated in the case file: this case's pain is right-upper-quadrant with right scapular radiation, not the Atlanta description (C5). Recorded as a constant atom so the judgement is data, visible and checkable, not buried in runner code.",
+        "constant": false
+       }
+      ],
+      "id": "pain_consistent",
+      "label": "Abdominal pain consistent with acute pancreatitis (acute onset, persistent, severe, epigastric, often radiating to the back)"
+     },
+     {
+      "evidence": [
+       {
+        "factor": 3,
+        "lab_id": "lab.lipase",
+        "test": "value_gte_uln_multiple"
+       }
+      ],
+      "id": "lipase_3x_uln",
+      "label": "Serum lipase (or amylase) >= 3x the upper limit of normal"
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.us-pancreas-unremarkable",
+        "is": "absent",
+        "note": "satisfied only if the unremarkable-pancreas finding were absent; it is present, so the item is unsatisfied"
+       }
+      ],
+      "id": "imaging",
+      "label": "Characteristic findings of acute pancreatitis on cross-sectional imaging"
+     }
+    ],
+    "k": 2,
+    "kind": "k_of_n",
+    "label": "Revised Atlanta diagnostic items for acute pancreatitis",
+    "source": "C5",
+    "system": "Revised Atlanta classification (2012)"
    }
   ],
   "findings": [
@@ -1653,16 +1829,16 @@
     "cardiac_output_l_min": 4.21,
     "cvp_mmhg": 4.38,
     "diastolic_bp_mmhg": 62.7,
-    "heart_rate_per_min": 63.2,
+    "heart_rate_per_min": 63.3,
     "map_mmhg": 73.1,
     "stroke_volume_lv_ml": 66.6,
-    "systolic_bp_mmhg": 97.8
+    "systolic_bp_mmhg": 97.7
    },
    "command": "cd physiology && cargo run --release -- run resting",
    "gap_statement": "Design/07 specifies that the patient IS an engine state and that presented values are computed from the ground-truth perturbation. That specification is met here only at the baseline: the Milestone 8/18 engine models cardiovascular compensation (baroreflex, venomotor recruitment, transcapillary refill) and has NO inflammatory, febrile, or biliary perturbation \u2014 there is no engine state for acute cholecystitis, and this case does not pretend otherwise. The presentation's fever (38.4 C) and tachycardia (104/min) are authored case data, flagged as such on their findings; the engine's temperature variable does not exist and its heart rate at rest is 63.2/min, not 104. A biliary/inflammatory perturbation for the engine is named future work (Milestones 17/18 both record the missing biliary compartment).",
    "role": "pre-morbid baseline",
-   "trace_hash": "0x67102f7c27db053d",
-   "verification": "Re-run in this build session; the trace hash and every recorded output match Milestone 18's dossier exactly (C13). The checker re-runs the command and compares."
+   "trace_hash": "0xacbf44852f6a0382",
+   "verification": "Re-run in this build session; the trace hash and every recorded output match Milestone 18's dossier exactly (C13). The checker re-runs the command and compares. MILESTONE 21 RE-RECORDING: the engine gained the baroreflex contractility effector (Milestone 21), whose state is folded into the trace hash, so the resting hash changed (0x67102f7c27db053d -> 0xacbf44852f6a0382) and the recorded baseline was re-measured under the new engine in the Milestone 21 session: heart rate 63.2 -> 63.3 /min and systolic BP 97.8 -> 97.7 mmHg are the only outputs that moved (both remain mid-range in their cited normals); MAP, cardiac output, stroke volume, CVP and diastolic BP are unchanged at the recorded precision. The gap statement above is unaffected (still no inflammatory/febrile/biliary engine state; its 'heart rate at rest is 63.2/min' now reads 63.3/min at the same precision class)."
   },
   "presentation_stages": [
    {

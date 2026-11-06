@@ -1,6 +1,33 @@
 {
  "debrief": {
   "adjudicated_diagnosis": {
+   "criteria_final": {
+    "atlanta": {
+     "diagnosable": false,
+     "items": {
+      "imaging": false,
+      "lipase_3x_uln": false,
+      "pain_consistent": false
+     },
+     "items_met": 0
+    },
+    "tg18_cholangitis": {
+     "groups": {
+      "A": true,
+      "B": false,
+      "C": false
+     },
+     "status": "not suspected"
+    },
+    "tg18_cholecystitis": {
+     "groups": {
+      "A": true,
+      "B": true,
+      "C": true
+     },
+     "status": "definite"
+    }
+   },
    "hypothesis": "hyp.acute-cholecystitis",
    "mondo": "MONDO:0043994",
    "severity_items_grade_ii": {
@@ -31,10 +58,10 @@
   ],
   "attempt_id": "attempt.case-ruq-pain-001.model-learner",
   "case_id": "case.ruq-pain.001",
-  "generated_by": "tools/case_run.py (Milestone 20)",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
   "orders": [
    {
-    "basis": "settles guideline item(s): tg18c.B3",
+    "basis": "settles guideline item(s): tg18_cholecystitis.B3",
     "classification": "criteria-completing",
     "cost_units": 2,
     "placed_at_stage": 1,
@@ -43,7 +70,7 @@
     "time_min": 30
    },
    {
-    "basis": "settles guideline item(s): tg18c.B2",
+    "basis": "settles guideline item(s): tg18_cholecystitis.B2",
     "classification": "criteria-completing",
     "cost_units": 2,
     "placed_at_stage": 1,
@@ -52,7 +79,7 @@
     "time_min": 30
    },
    {
-    "basis": "settles guideline item(s): tg18chol.B1, tg18chol.B2",
+    "basis": "settles guideline item(s): tg18_cholangitis.B1, tg18_cholangitis.B2",
     "classification": "criteria-completing",
     "cost_units": 3,
     "placed_at_stage": 1,
@@ -121,6 +148,33 @@
      "lipase_3x_uln": false,
      "pain_consistent": false
     },
+    "criteria": {
+     "atlanta": {
+      "diagnosable": false,
+      "items": {
+       "imaging": false,
+       "lipase_3x_uln": false,
+       "pain_consistent": false
+      },
+      "items_met": 0
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": true,
+       "B": false,
+       "C": false
+      },
+      "status": "not suspected"
+     },
+     "tg18_cholecystitis": {
+      "groups": {
+       "A": true,
+       "B": true,
+       "C": false
+      },
+      "status": "suspected"
+     }
+    },
     "learner_board": {
      "hyp.acute-cholangitis": 0.2,
      "hyp.acute-cholecystitis": 0.4,
@@ -172,6 +226,33 @@
      "items_met": 0,
      "lipase_3x_uln": false,
      "pain_consistent": false
+    },
+    "criteria": {
+     "atlanta": {
+      "diagnosable": false,
+      "items": {
+       "imaging": false,
+       "lipase_3x_uln": false,
+       "pain_consistent": false
+      },
+      "items_met": 0
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": true,
+       "B": false,
+       "C": false
+      },
+      "status": "not suspected"
+     },
+     "tg18_cholecystitis": {
+      "groups": {
+       "A": true,
+       "B": true,
+       "C": false
+      },
+      "status": "suspected"
+     }
     },
     "learner_board": {
      "hyp.acute-cholangitis": 0.25,
@@ -225,6 +306,33 @@
      "lipase_3x_uln": false,
      "pain_consistent": false
     },
+    "criteria": {
+     "atlanta": {
+      "diagnosable": false,
+      "items": {
+       "imaging": false,
+       "lipase_3x_uln": false,
+       "pain_consistent": false
+      },
+      "items_met": 0
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": true,
+       "B": false,
+       "C": false
+      },
+      "status": "not suspected"
+     },
+     "tg18_cholecystitis": {
+      "groups": {
+       "A": true,
+       "B": true,
+       "C": true
+      },
+      "status": "definite"
+     }
+    },
     "learner_board": {
      "hyp.acute-cholangitis": 0.15,
      "hyp.acute-cholecystitis": 0.7,
@@ -276,6 +384,33 @@
      "items_met": 0,
      "lipase_3x_uln": false,
      "pain_consistent": false
+    },
+    "criteria": {
+     "atlanta": {
+      "diagnosable": false,
+      "items": {
+       "imaging": false,
+       "lipase_3x_uln": false,
+       "pain_consistent": false
+      },
+      "items_met": 0
+     },
+     "tg18_cholangitis": {
+      "groups": {
+       "A": true,
+       "B": false,
+       "C": false
+      },
+      "status": "not suspected"
+     },
+     "tg18_cholecystitis": {
+      "groups": {
+       "A": true,
+       "B": true,
+       "C": true
+      },
+      "status": "definite"
+     }
     },
     "learner_board": {
      "hyp.acute-cholangitis": 0.05,
