@@ -1,0 +1,1707 @@
+{
+ "case": {
+  "adjudication": {
+   "decided_by": "Case-author adjudication against the cited criteria (C1), recorded here in full so any reviewer can re-derive it. This is not an external adjudication: the design/07 review gate (>= 2 named independent reviewers) is UNMET for this case, as the review block states.",
+   "diagnosis_hypothesis": "hyp.acute-cholecystitis",
+   "diagnosis_label": "Acute calculous cholecystitis",
+   "evidence_chain": [
+    {
+     "criterion": "C1 group A (local signs of inflammation)",
+     "finding_id": "f.murphy-positive",
+     "role": "Murphy's sign present"
+    },
+    {
+     "criterion": "C1 group A (local signs of inflammation)",
+     "finding_id": "f.ruq-tenderness",
+     "role": "RUQ pain and tenderness present"
+    },
+    {
+     "criterion": "C1 group B (systemic signs of inflammation)",
+     "finding_id": "f.fever",
+     "role": "Fever 38.4 C"
+    },
+    {
+     "criterion": "C1 group B (systemic signs of inflammation)",
+     "finding_id": "f.wbc-elevated",
+     "role": "Elevated WBC count (14.2 x10^9/L, C7)"
+    },
+    {
+     "criterion": "C1 group B (systemic signs of inflammation)",
+     "finding_id": "f.crp-elevated",
+     "role": "Elevated CRP (86 mg/L)"
+    },
+    {
+     "criterion": "C1 group C (imaging findings characteristic of acute cholecystitis)",
+     "finding_id": "f.us-positive",
+     "role": "Ultrasound composite: stones, wall thickening, pericholecystic fluid, sonographic Murphy"
+    }
+   ],
+   "excluded": [
+    {
+     "basis": "TG18 cholangitis criteria (C2): group A met, but group B unmet (no jaundice \u2014 f.no-jaundice; total bilirubin 0.9 mg/dL, below the >= 2 mg/dL threshold; ALP and transaminases within reference, not > 1.5x ULN) and group C unmet (no biliary dilatation \u2014 f.us-no-biliary-dilatation; the stones shown are in the gallbladder, not the duct). Suspected cholangitis requires A plus one item in B or C, so the criteria cannot be met on this evidence. Charcot's triad is in any case insensitive (26.4% in the derivation cohort, C2), so its partial presence (fever + pain, no jaundice) never carried the weight the model learner gave it.",
+     "hypothesis": "hyp.acute-cholangitis"
+    },
+    {
+     "basis": "Revised Atlanta criteria (C5): 0 of 3 \u2014 the pain is right-upper-quadrant with scapular radiation, not the Atlanta description (epigastric, radiating to the back); lipase 92 U/L is within reference and far below 3x ULN (480 U/L); the pancreas was unremarkable on ultrasound. Two of three are required.",
+     "hypothesis": "hyp.acute-pancreatitis"
+    },
+    {
+     "basis": "Excluded clinically, not by the numeric rule (its workbench posterior ends at 0.0201, just above the 0.02 rule-out line): pain is RUQ-localised with a positive Murphy sign rather than epigastric/ulcer-pattern; no peritonism (f.no-peritonism) argues against perforation; and a complete alternative explanation is imaged (f.us-positive). Residual uncertainty is recorded honestly: no erect chest imaging was obtained, so free air was never directly excluded.",
+     "hypothesis": "hyp.peptic-ulcer-disease"
+    },
+    {
+     "basis": "Excluded clinically: no cough, dyspnoea or focal chest signs (f.chest-clear), and a complete alternative explanation is imaged. No chest imaging was obtained; the exclusion is clinical and is recorded as such.",
+     "hypothesis": "hyp.pneumonia"
+    },
+    {
+     "basis": "Excluded by the safety-net pair: ECG without ischaemic changes (f.ecg-nonischemic) and high-sensitivity troponin below the assay's 99th-percentile upper reference limit (f.troponin-negative).",
+     "hypothesis": "hyp.myocardial-infarction"
+    }
+   ],
+   "mondo": "MONDO:0043994",
+   "note": "The workbench's evidence-updated board agrees with the adjudication at every stage (the adjudicated diagnosis is the workbench's top-ranked hypothesis from stage 1 onward), but the adjudication rests on the criteria evaluation, not on the board \u2014 the board is a teaching instrument (see the lr_combination_rule in cases/parameters.json).",
+   "severity_grade": {
+    "grade": "I",
+    "grade_source": "C1",
+    "items_grade_ii": [
+     {
+      "evidence": [
+       {
+        "lab_id": "lab.wbc",
+        "test": "value_gt",
+        "threshold": 18000,
+        "threshold_note": "WBC > 18,000/mm3 (C1 Grade II). The case value is 14,200/mm3.",
+        "threshold_source": "C1"
+       }
+      ],
+      "id": "g2.wbc-gt-18000",
+      "label": "Elevated WBC count > 18,000/mm3",
+      "satisfied": false
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.no-ruq-mass",
+        "is": "present"
+       }
+      ],
+      "id": "g2.palpable-mass",
+      "label": "Palpable tender mass in the right upper quadrant",
+      "satisfied": false
+     },
+     {
+      "evidence": [
+       {
+        "case_field": "symptom_duration_hours",
+        "test": "value_gt",
+        "threshold": 72,
+        "threshold_source": "C1"
+       }
+      ],
+      "id": "g2.duration-gt-72h",
+      "label": "Duration of complaints > 72 h",
+      "satisfied": false
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.us-marked-local-inflammation",
+        "is": "present"
+       }
+      ],
+      "id": "g2.marked-local-inflammation",
+      "label": "Marked local inflammation (gangrenous or emphysematous cholecystitis, pericholecystic or hepatic abscess, biliary peritonitis)",
+      "satisfied": false
+     }
+    ],
+    "items_grade_iii": [
+     {
+      "evidence": [
+       {
+        "finding_id": "f.vasopressor-requirement",
+        "is": "present"
+       }
+      ],
+      "id": "g3.cardiovascular",
+      "label": "Cardiovascular dysfunction (hypotension requiring dopamine >= 5 microg/kg/min or any norepinephrine)",
+      "satisfied": false
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.decreased-consciousness",
+        "is": "present"
+       }
+      ],
+      "id": "g3.neurological",
+      "label": "Neurological dysfunction (decreased level of consciousness)",
+      "satisfied": false
+     },
+     {
+      "evidence": [
+       {
+        "assessable": false,
+        "reason": "No arterial blood gas among the case's data; PaO2/FiO2 was not measured. The patient is not hypoxic on room air (case data: SpO2 99%), but the ratio itself is unmeasured and the item is recorded as not assessed rather than assumed negative."
+       }
+      ],
+      "id": "g3.respiratory",
+      "label": "Respiratory dysfunction (PaO2/FiO2 < 300)",
+      "satisfied": "not-assessed"
+     },
+     {
+      "evidence": [
+       {
+        "assessable": false,
+        "reason": "No creatinine or urine-output measurement among the case's labs. Recorded as not assessed rather than assumed negative."
+       }
+      ],
+      "id": "g3.renal",
+      "label": "Renal dysfunction (oliguria; creatinine > 2.0 mg/dL)",
+      "satisfied": "not-assessed"
+     },
+     {
+      "evidence": [
+       {
+        "assessable": false,
+        "reason": "No PT-INR among the case's labs. Recorded as not assessed rather than assumed negative."
+       }
+      ],
+      "id": "g3.hepatic",
+      "label": "Hepatic dysfunction (PT-INR > 1.5)",
+      "satisfied": "not-assessed"
+     },
+     {
+      "evidence": [
+       {
+        "lab_id": "lab.platelets",
+        "test": "value_lt",
+        "threshold": 100,
+        "threshold_note": "Platelet count < 100,000/mm3 (C1 Grade III). The case value is 262 x10^9/L = 262,000/mm3.",
+        "threshold_source": "C1"
+       }
+      ],
+      "id": "g3.hematological",
+      "label": "Haematological dysfunction (platelet count < 100,000/mm3)",
+      "satisfied": false
+     }
+    ],
+    "rule": "Grade III if any Grade III item is satisfied; else Grade II if any Grade II item is satisfied; else Grade I (C1). Items recorded not-assessed do not satisfy their grade; the grade is stated with those three items open, and the case says so."
+   },
+   "tg18_evaluation": {
+    "combination_rule": "Suspected = >= 1 item in A and >= 1 item in B; definite = suspected + >= 1 item in C (C1).",
+    "definite_from_stage": 3,
+    "groups": [
+     {
+      "group": "A",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.murphy-positive",
+          "is": "present"
+         }
+        ],
+        "id": "A1",
+        "label": "Murphy's sign",
+        "satisfied": true
+       },
+       {
+        "evidence": [
+         {
+          "finding_id": "f.ruq-tenderness",
+          "is": "present"
+         },
+         {
+          "finding_id": "f.ruq-pain",
+          "is": "present"
+         }
+        ],
+        "id": "A2",
+        "label": "RUQ mass / pain / tenderness",
+        "satisfied": true
+       }
+      ],
+      "label": "Local signs of inflammation",
+      "satisfied": true
+     },
+     {
+      "group": "B",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.fever",
+          "is": "present"
+         }
+        ],
+        "id": "B1",
+        "label": "Fever",
+        "satisfied": true
+       },
+       {
+        "evidence": [
+         {
+          "finding_id": "f.crp-elevated",
+          "is": "present"
+         }
+        ],
+        "id": "B2",
+        "label": "Elevated CRP",
+        "satisfied": true
+       },
+       {
+        "evidence": [
+         {
+          "finding_id": "f.wbc-elevated",
+          "is": "present"
+         }
+        ],
+        "id": "B3",
+        "label": "Elevated WBC count",
+        "satisfied": true
+       }
+      ],
+      "label": "Systemic signs of inflammation",
+      "satisfied": true
+     },
+     {
+      "group": "C",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.us-positive",
+          "is": "present"
+         }
+        ],
+        "id": "C1i",
+        "label": "Imaging findings characteristic of acute cholecystitis",
+        "satisfied": true
+       }
+      ],
+      "label": "Imaging findings",
+      "satisfied": true
+     }
+    ],
+    "status_by_stage": {
+     "1": "suspected (A + B, on presentation findings: Murphy's sign and RUQ tenderness for A, fever for B)",
+     "2": "suspected (A + B, now laboratory-supported: WBC and CRP elevated)",
+     "3": "definite (A + B + C)",
+     "4": "definite (A + B + C)"
+    },
+    "status_note": "The mechanical reading is the one recorded: C1's group B needs only one item, and the stage-1 fever (B1) satisfies it, so the criteria call this 'suspected' from the first stage. What changes across stages is not the label but the support \u2014 stage 2 adds two more group B items from the laboratory, and stage 3 adds group C. The checker evaluates the groups mechanically stage by stage and reproduces exactly these statuses."
+   }
+  },
+  "available_tests": [
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.cbc",
+    "kind": "laboratory",
+    "name": "Complete blood count",
+    "note": "Turnaround and cost are case-author accounting placeholders (see parameters note on resource accounting). Yields WBC and platelet count.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.wbc",
+     "lab.platelets",
+     "f.wbc-elevated"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.crp",
+    "kind": "laboratory",
+    "name": "C-reactive protein",
+    "note": "Yields the CRP result.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.crp",
+     "f.crp-elevated"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 3
+    },
+    "id": "test.lft-panel",
+    "kind": "laboratory",
+    "name": "Liver function panel (bilirubin, ALP, ALT, AST)",
+    "note": "The cholestasis discriminator: this panel is what settles TG18 cholangitis group B (C2).",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.bilirubin-total",
+     "lab.alp",
+     "lab.alt",
+     "lab.ast",
+     "f.bilirubin-not-elevated",
+     "f.alp-not-elevated",
+     "f.transaminases-not-elevated"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.lipase",
+    "kind": "laboratory",
+    "name": "Serum lipase",
+    "note": "The pancreatitis discriminator (C5, C6).",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.lipase",
+     "f.lipase-below-3x-uln"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.amylase",
+    "kind": "laboratory",
+    "name": "Serum amylase",
+    "note": "Available because real test menus offer it; C6's Choosing Wisely item says not to order it when lipase is available. Ordering it is the worked attempt's one non-contributory order, kept deliberately as teaching content.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.amylase",
+     "f.amylase-normal"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 1
+    },
+    "id": "test.ecg",
+    "kind": "bedside",
+    "name": "12-lead ECG",
+    "note": "Safety-net pair with troponin against the must-not-miss cardiac hypothesis.",
+    "safety_net_for": "hyp.myocardial-infarction",
+    "time_min": {
+     "status": "verify",
+     "value": 10
+    },
+    "yields": [
+     "f.ecg-nonischemic"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 3
+    },
+    "id": "test.troponin",
+    "kind": "laboratory",
+    "name": "High-sensitivity cardiac troponin",
+    "note": "Safety-net pair with ECG. The case records the result as below the assay's 99th-percentile upper reference limit without asserting a numeric range (assays differ).",
+    "safety_net_for": "hyp.myocardial-infarction",
+    "time_min": {
+     "status": "verify",
+     "value": 60
+    },
+    "yields": [
+     "f.troponin-negative"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 5
+    },
+    "id": "test.ruq-ultrasound",
+    "kind": "imaging",
+    "name": "Right upper quadrant ultrasound",
+    "note": "The TG18 group C test and the highest-yield discriminator in the case (C4). Its composite result \u2014 not any single sign \u2014 is what C4's sensitivity/specificity describe.",
+    "time_min": {
+     "status": "verify",
+     "value": 45
+    },
+    "yields": [
+     "f.us-stones",
+     "f.us-wall-thickening",
+     "f.us-pericholecystic-fluid",
+     "f.us-sonographic-murphy",
+     "f.us-no-biliary-dilatation",
+     "f.us-pancreas-unremarkable",
+     "f.us-marked-local-inflammation",
+     "f.us-positive"
+    ]
+   }
+  ],
+  "findings": [
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group A item A2 (C1)"
+    ],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.ruq-pain",
+    "kind": "history",
+    "lr": null,
+    "lr_note": "No likelihood ratio for pain character is used. C3 quantifies specific findings, not the presenting complaint itself.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Right upper quadrant pain, onset about one hour after a fatty meal, now present for 8 hours, constant, radiating to the right scapular region. One similar, milder, self-limited episode three months ago (case history)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [
+     "HP:0002013",
+     "HP:0002018"
+    ],
+    "id": "f.pain-then-emesis",
+    "kind": "history",
+    "lr": {
+     "for_hypothesis": "hyp.acute-cholecystitis",
+     "lr_plus": 2.5,
+     "note": "95% CI 2.1-3.0 in C3, from a single included study \u2014 flagged single-study. Applied once, at stage 1.",
+     "source": "C3",
+     "status": "cited"
+    },
+    "source": [
+     "case-data",
+     "C3"
+    ],
+    "stage": 1,
+    "text": "The pain was followed by nausea and two episodes of vomiting (pain first, then emesis \u2014 the sequence C3's likelihood ratio describes)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "TG18 cholecystitis group B item B1 (C1)",
+     "TG18 cholangitis group A (C2)"
+    ],
+    "hpo": [
+     "HP:0001945"
+    ],
+    "id": "f.fever",
+    "kind": "vital",
+    "lr": null,
+    "lr_note": "Fever enters through the criteria blocks, not the LR board: C3 found no usable standalone LR for it, and none is invented.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Temperature 38.4 C at presentation."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.tachycardia",
+    "kind": "vital",
+    "lr": null,
+    "lr_note": "A case datum, not an engine output: the physiology engine has no febrile or inflammatory state (see physiology_link), so this heart rate is authored case data and is never presented as simulated. The engine baseline for contrast is HR 63.2/min (C13).",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Heart rate 104/min at presentation (case data; blood pressure 128/78 mmHg, respiratory rate 16/min, SpO2 99% on room air \u2014 all case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group A item A2 (C1)"
+    ],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.ruq-tenderness",
+    "kind": "exam",
+    "lr": null,
+    "lr_note": "C3 gives a negative LR (0.4, 95% CI 0.2-1.1) for the ABSENCE of RUQ tenderness; tenderness is present here, and no positive LR for its presence is taken from C3, so the finding is unquantified on the board. It acts through criteria group A.",
+    "source": [
+     "case-data",
+     "C3"
+    ],
+    "stage": 1,
+    "text": "Right upper quadrant tenderness on palpation, with mild involuntary guarding localised to the RUQ."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group A item A1 (C1)"
+    ],
+    "hpo": [],
+    "id": "f.murphy-positive",
+    "kind": "exam",
+    "lr": {
+     "for_hypothesis": "hyp.acute-cholecystitis",
+     "lr_plus": 2.8,
+     "note": "95% CI 0.8-8.6 in C3 \u2014 the interval includes 1.0; the sign is suggestive, not decisive, and C3's headline conclusion (no single finding rules cholecystitis in or out) is part of this finding's record.",
+     "source": "C3",
+     "status": "cited"
+    },
+    "source": [
+     "case-data",
+     "C3"
+    ],
+    "stage": 1,
+    "text": "Murphy's sign positive: inspiratory arrest on palpation of the right upper quadrant."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "TG18 cholecystitis Grade II item: palpable tender RUQ mass (C1) \u2014 satisfied_by absence"
+    ],
+    "hpo": [],
+    "id": "f.no-ruq-mass",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "No palpable right upper quadrant mass."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B (C2) \u2014 jaundice absent argues against"
+    ],
+    "hpo": [
+     "HP:0000952"
+    ],
+    "hpo_status": "absent",
+    "id": "f.no-jaundice",
+    "kind": "exam",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "No jaundice: sclerae anicteric, no icterus of the skin. Recorded as the explicit absence of HP:0000952 (Jaundice)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "lung.lower-lobe-of-right-lung"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.chest-clear",
+    "kind": "exam",
+    "lr": null,
+    "lr_note": "The discriminator against hyp.pneumonia is clinical, not quantified: no LR for a clear chest examination was consulted in-session, so none is used. The adjudication records the pneumonia exclusion as clinical, with no chest imaging obtained.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "No cough, no dyspnoea, no pleuritic pain; chest clear to auscultation bilaterally, including the right base."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "stomach"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "canal.duodenum"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.no-peritonism",
+    "kind": "exam",
+    "lr": null,
+    "lr_note": "The discriminator against perforated peptic ulcer is clinical, not quantified. No erect chest imaging was obtained, so free air was never directly excluded \u2014 the adjudication states this residual gap.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Abdomen soft outside the right upper quadrant; no board-like rigidity, no generalised peritonism; bowel sounds present."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group B item B3 (C1)",
+     "TG18 cholangitis group A-2 (C2)"
+    ],
+    "hpo": [
+     "HP:0001974"
+    ],
+    "id": "f.wbc-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.wbc",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C7"
+    ],
+    "stage": 2,
+    "text": "White cell count elevated at 14.2 x10^9/L (reference 4.5-11.0, C7)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "TG18 cholecystitis group B item B2 (C1)",
+     "TG18 cholangitis group A-2 (C2)"
+    ],
+    "hpo": [],
+    "id": "f.crp-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.crp",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C2"
+    ],
+    "stage": 2,
+    "text": "C-reactive protein elevated at 86 mg/L (inflammatory-response threshold 10 mg/L per C2's A-2 quantification)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B-1 (C2) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.bilirubin-not-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.bilirubin-total",
+    "lr": null,
+    "lr_note": "Acts by leaving TG18 cholangitis group B unmet (C2 requires bilirubin >= 2 mg/dL for B-1). Unquantified on the LR board.",
+    "source": [
+     "case-data",
+     "C2",
+     "C8"
+    ],
+    "stage": 2,
+    "text": "Total bilirubin 0.9 mg/dL \u2014 within reference (0.1-1.2, C8) and below the TG18 cholangitis cholestasis threshold of 2 mg/dL (C2)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B-2 (C2) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.alp-not-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.alp",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C2",
+     "C8"
+    ],
+    "stage": 2,
+    "text": "Alkaline phosphatase 118 U/L \u2014 within reference (40-129, C8) and not above 1.5x the upper limit of normal (193.5 U/L) as C2's B-2 requires."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B-2 (C2) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.transaminases-not-elevated",
+    "kind": "lab-result",
+    "lab_ids": [
+     "lab.alt",
+     "lab.ast"
+    ],
+    "lr": null,
+    "source": [
+     "case-data",
+     "C2",
+     "C8"
+    ],
+    "stage": 2,
+    "text": "ALT 34 U/L (reference 4-36, C8) and AST 29 U/L (reference 8-33, C8) \u2014 neither above 1.5x its upper limit of normal (54 and 49.5 U/L), so C2's B-2 is unmet on the transaminases as well."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "pancreas"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.pancreas"
+     }
+    ],
+    "criteria_roles": [
+     "Revised Atlanta item 2 (C5) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.lipase-below-3x-uln",
+    "kind": "lab-result",
+    "lab_id": "lab.lipase",
+    "lr": {
+     "for_hypothesis": "hyp.acute-pancreatitis",
+     "lr_minus": 0.03,
+     "note": "C6's table: the test 'lipase > 3x ULN' has LR- 0.03, so a result at or below 3x ULN multiplies pancreatitis odds by 0.03. This result (92 U/L, within the 0-160 reference, C9) is far below 3x ULN (480 U/L). This single update is what carries pancreatitis across the workbench rule-out line at stage 2.",
+     "source": "C6",
+     "status": "cited"
+    },
+    "source": [
+     "case-data",
+     "C5",
+     "C6",
+     "C9"
+    ],
+    "stage": 2,
+    "text": "Serum lipase 92 U/L \u2014 within the reference range (0-160, C9) and far below three times the upper limit of normal (480 U/L) that the revised Atlanta criteria require (C5)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.ecg-nonischemic",
+    "kind": "test-result",
+    "lr": null,
+    "lr_note": "Safety-net result against the must-not-miss cardiac hypothesis. No LR was consulted for ECG findings in this presentation, so the exclusion of hyp.myocardial-infarction is recorded as criteria/clinical (negative ECG plus negative troponin), not as a board update.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 2,
+    "text": "12-lead ECG: sinus tachycardia at 104/min, no ST-segment or T-wave changes of ischaemia (case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "heart"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.troponin-negative",
+    "kind": "test-result",
+    "lr": null,
+    "lr_note": "Reported against the assay's own 99th-percentile upper reference limit; no numeric range is asserted because high-sensitivity troponin ranges are assay-specific and no assay's range was consulted in-session (verify flag on the value itself).",
+    "source": [
+     "case-data"
+    ],
+    "stage": 2,
+    "text": "High-sensitivity cardiac troponin below the assay's 99th-percentile upper reference limit (case data; assay-specific numeric range not asserted \u2014 see verify list)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.amylase-normal",
+    "kind": "lab-result",
+    "lab_id": "lab.amylase",
+    "lr": null,
+    "lr_note": "The result of the attempt's non-contributory order. C6 (Choosing Wisely): do not test for amylase in suspected acute pancreatitis when lipase is available.",
+    "source": [
+     "case-data",
+     "C6"
+    ],
+    "stage": 2,
+    "text": "Serum amylase reported within the performing laboratory's range (case data; no reference range for amylase was consulted in-session \u2014 the value carries a verify flag and plays no part in any criterion or board update)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group C component (C1)"
+    ],
+    "hpo": [],
+    "id": "f.us-stones",
+    "kind": "imaging",
+    "lr": null,
+    "lr_note": "Component of the composite ultrasound result f.us-positive; C4's characteristics describe the composite examination, so no separate LR is taken for stones alone.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: multiple gallstones in the gallbladder, largest 11 mm (case imaging report)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group C component (C1)"
+    ],
+    "hpo": [],
+    "id": "f.us-wall-thickening",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: gallbladder wall measured at 6 mm and reported as thickened in the case's authored report (case data; no external wall-thickness cut-off is asserted \u2014 the report's own characterisation is the case datum)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group C component (C1)"
+    ],
+    "hpo": [],
+    "id": "f.us-pericholecystic-fluid",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: a small amount of pericholecystic fluid (case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group C component (C1)"
+    ],
+    "hpo": [],
+    "id": "f.us-sonographic-murphy",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: sonographic Murphy sign positive \u2014 maximal tenderness over the sonographically localised gallbladder (case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis group C (C1) \u2014 composite satisfied"
+    ],
+    "hpo": [],
+    "id": "f.us-positive",
+    "kind": "imaging",
+    "lr": {
+     "computed_from": "C4 sensitivity 0.81, specificity 0.83: LR+ = 0.81 / (1 - 0.83) = 4.7647",
+     "for_hypothesis": "hyp.acute-cholecystitis",
+     "lr_plus": 4.7647,
+     "source": "C4",
+     "status": "computed"
+    },
+    "source": [
+     "case-data",
+     "C4"
+    ],
+    "stage": 3,
+    "text": "Ultrasound composite result: POSITIVE for acute cholecystitis \u2014 stones, wall thickening, pericholecystic fluid and a positive sonographic Murphy sign in combination. This composite, not any single sign, is the result C4's sensitivity (81%) and specificity (83%) describe."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "vein.hepatic-portal-vein"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group C (C2) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.us-no-biliary-dilatation",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C2"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: common bile duct 5 mm, not dilated; no intrahepatic duct dilatation; no ductal stone seen. The stones imaged are in the gallbladder, not the duct \u2014 TG18 cholangitis group C (biliary dilatation, or evidence of an etiology in the duct) is unmet (C2)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "pancreas"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.pancreas"
+     }
+    ],
+    "criteria_roles": [
+     "Revised Atlanta item 3 (C5) \u2014 not met"
+    ],
+    "hpo": [],
+    "id": "f.us-pancreas-unremarkable",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C5"
+    ],
+    "stage": 3,
+    "text": "Ultrasound: pancreas visualised and unremarkable, no peripancreatic fluid (case data) \u2014 no characteristic imaging finding of pancreatitis."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholecystitis Grade II item: marked local inflammation (C1) \u2014 absent"
+    ],
+    "hpo": [],
+    "id": "f.us-marked-local-inflammation",
+    "kind": "imaging",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C1"
+    ],
+    "stage": 3,
+    "text": "ABSENT finding, recorded explicitly for the severity evaluation: the ultrasound shows no gangrenous or emphysematous change, no pericholecystic or hepatic abscess, and there is no biliary peritonitis (case data)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "TG18 cholecystitis Grade III item: cardiovascular dysfunction (C1) \u2014 absent"
+    ],
+    "hpo": [],
+    "id": "f.vasopressor-requirement",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C1"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly for the severity evaluation: no hypotension and no vasopressor requirement at any stage (case data; presentation BP 128/78 mmHg)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "TG18 cholecystitis Grade III item: neurological dysfunction (C1) \u2014 absent"
+    ],
+    "hpo": [],
+    "id": "f.decreased-consciousness",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C1"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly for the severity evaluation: the patient is alert and oriented throughout (case data)."
+   }
+  ],
+  "ground_truth": {
+   "diagnosis": "Acute calculous cholecystitis, TG18 Grade I (adjudication block carries the full derivation)",
+   "engine_state": "physiology resting case = the patient's pre-morbid baseline only; no engine perturbation for cholecystitis exists (see physiology_link)",
+   "hpo": [
+    "HP:0002027",
+    "HP:0001945",
+    "HP:0002018",
+    "HP:0002013",
+    "HP:0001974"
+   ],
+   "hpo_absent": [
+    {
+     "hpo": "HP:0000952",
+     "label": "Jaundice",
+     "note": "Explicitly absent (f.no-jaundice) \u2014 a discriminating absence against cholangitis, recorded as data, not silence."
+    }
+   ],
+   "mondo": "MONDO:0043994",
+   "mondo_label": "acute cholecystitis"
+  },
+  "hypotheses": [
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.gallbladder"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_block": {
+     "combination": "suspected: >=1 of A and >=1 of B; definite: + >=1 of C",
+     "severity": "TG18 Grades I-III (C1), evaluated in the adjudication block",
+     "source": "C1",
+     "system": "Tokyo Guidelines 2018 diagnostic criteria for acute cholecystitis"
+    },
+    "defining_features": "Acute inflammation of the gallbladder (Mondo description, C10), in this case calculous: a stone obstructing the cystic duct with gallbladder wall inflammation. TG18 (C1) defines the diagnosis operationally: local signs (Murphy's sign; RUQ mass/pain/tenderness) + systemic signs (fever; elevated CRP; elevated WBC) + characteristic imaging.",
+    "discriminating_findings": [
+     {
+      "direction": "supports",
+      "finding_id": "f.murphy-positive",
+      "note": "LR+ 2.8 (C3, CI includes 1.0)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.pain-then-emesis",
+      "note": "LR+ 2.5 (C3, single study)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.us-positive",
+      "note": "LR+ 4.7647 computed from C4"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.fever",
+      "note": "criteria route (C1 group B)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.wbc-elevated",
+      "note": "criteria route (C1 group B)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.crp-elevated",
+      "note": "criteria route (C1 group B)"
+     }
+    ],
+    "id": "hyp.acute-cholecystitis",
+    "mondo": "MONDO:0043994",
+    "name": "Acute cholecystitis",
+    "prior": {
+     "note": "Declared point inside the consulted range [0.13, 0.34] for the proportion of RUQ-pain presenters with acute cholecystitis (C12: 18% in a >2,800-encounter ED review; 13-34% across published series). The point is the case author's choice within the range, disclosed as such.",
+     "range": [
+      0.13,
+      0.34
+     ],
+     "source": "C12",
+     "status": "calibrated",
+     "value": 0.25
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "vein.hepatic-portal-vein"
+     }
+    ],
+    "criteria_block": {
+     "combination": "suspected: >=1 of A and >=1 of (B or C); definite: A + B + C",
+     "source": "C2",
+     "system": "Tokyo Guidelines 2018 diagnostic criteria for acute cholangitis"
+    },
+    "defining_features": "Acute infection of the biliary tree (Mondo: 'cholangitis that is both sudden in onset and of a relatively short duration', C10), typically driven by ductal obstruction. TG18 (C2) operationalises it: systemic inflammation + cholestasis (jaundice with bilirubin >= 2 mg/dL, or liver enzymes > 1.5x ULN) + imaging (biliary dilatation or a ductal etiology).",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.no-jaundice",
+      "note": "cholestasis absent clinically"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.bilirubin-not-elevated",
+      "note": "C2 group B-1 unmet"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.alp-not-elevated",
+      "note": "C2 group B-2 unmet"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.transaminases-not-elevated",
+      "note": "C2 group B-2 unmet"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-no-biliary-dilatation",
+      "note": "C2 group C unmet"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.fever",
+      "note": "C2 group A \u2014 the overlap that makes this the case's anchoring trap: fever plus RUQ pain is two-thirds of Charcot's triad, whose sensitivity is only 26.4% (C2)"
+     }
+    ],
+    "id": "hyp.acute-cholangitis",
+    "mondo": "MONDO:0001930",
+    "name": "Acute cholangitis",
+    "prior": {
+     "note": "Case-author prior. No consulted source gives a base rate for cholangitis among RUQ-pain presenters; flagged, never presented as epidemiology (design/07: priors are declared as ranges with sources \u2014 where no source exists, the flag is the honest substitute).",
+     "status": "verify",
+     "value": 0.1
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "pancreas"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.pancreas"
+     }
+    ],
+    "criteria_block": {
+     "combination": "diagnosis requires 2 of the 3 items",
+     "source": "C5",
+     "system": "Revised Atlanta classification diagnostic criteria for acute pancreatitis"
+    },
+    "defining_features": "An acute inflammatory process of the pancreatic parenchyma (C10; HPO class HP:0001735). The revised Atlanta classification (C5) requires two of: characteristic pain (epigastric, often radiating to the back), lipase/amylase >= 3x ULN, characteristic imaging.",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.lipase-below-3x-uln",
+      "note": "LR- 0.03 for the >3x ULN test (C6); Atlanta item 2 unmet"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-pancreas-unremarkable",
+      "note": "Atlanta item 3 unmet"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.ruq-pain",
+      "note": "pain is RUQ with scapular radiation, not the Atlanta description \u2014 Atlanta item 1 unmet"
+     }
+    ],
+    "id": "hyp.acute-pancreatitis",
+    "mondo": "MONDO:0006515",
+    "name": "Acute pancreatitis",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.acute-cholangitis prior note).",
+     "status": "verify",
+     "value": 0.12
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "stomach"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "canal.duodenum"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "organ.stomach"
+     }
+    ],
+    "criteria_block": null,
+    "criteria_note": "No criteria system for peptic ulcer disease was consulted in-session; the hypothesis is discriminated by findings and by the imaged alternative, and its perforation form (MONDO:0004260) by the absence of peritonism. Recorded as a gap, not filled from recall.",
+    "defining_features": "Ulceration of the gastric or duodenal mucosa from acid/pepsin injury (Mondo description, C10). Its catastrophic form, perforation (MONDO:0004260), presents with peritonism. Included because epigastric/RUQ pain with vomiting is its home territory and it is the worked attempt's initial co-leader.",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.no-peritonism",
+      "note": "argues against perforation"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.murphy-positive",
+      "note": "localises to the gallbladder rather than the ulcer bed"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-positive",
+      "note": "a complete alternative explanation is imaged"
+     }
+    ],
+    "id": "hyp.peptic-ulcer-disease",
+    "mondo": "MONDO:0004247",
+    "mondo_related": [
+     "MONDO:0004260"
+    ],
+    "name": "Peptic ulcer disease (incl. perforation)",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.acute-cholangitis prior note).",
+     "status": "verify",
+     "value": 0.18
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "lung.lower-lobe-of-right-lung"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "right-lung"
+     }
+    ],
+    "criteria_block": null,
+    "criteria_note": "No criteria system for pneumonia was consulted in-session; discrimination is by the chest findings. Recorded as a gap.",
+    "defining_features": "Infection-driven inflammation of the lung parenchyma (C10; HPO class HP:0002090). The right lower lobe is the anatomically honest version of this hypothesis for RUQ pain: it sits on the diaphragm immediately above the liver and gallbladder (records: lung.lower-lobe-of-right-lung; the diaphragm is muscular record muscle.diaphragm).",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.chest-clear",
+      "note": "no cough, dyspnoea or focal signs \u2014 clinical exclusion, no imaging obtained"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.fever",
+      "note": "fever is shared with every infective hypothesis on the board; it does not discriminate among them"
+     }
+    ],
+    "id": "hyp.pneumonia",
+    "mondo": "MONDO:0005249",
+    "name": "Pneumonia, right lower lobe",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.acute-cholangitis prior note).",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "heart"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "heart.left-ventricle"
+     }
+    ],
+    "criteria_block": null,
+    "criteria_note": "No universal-definition criteria were consulted in-session; the hypothesis is carried as the board's must-not-miss entry and is excluded by the safety-net pair (ECG + troponin), which is how the workbench models must-not-miss reasoning without inventing LRs.",
+    "defining_features": "Necrosis of myocardium from interrupted coronary blood supply (Mondo description, C10). The inferior wall is the honest version here: inferior infarction is the classic epigastric/RUQ-pain mimic, which is why this hypothesis is on an RUQ board at all and why it carries a safety-net test pair rather than waiting for the board to rank it away.",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.ecg-nonischemic",
+      "note": "safety-net result"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.troponin-negative",
+      "note": "safety-net result"
+     }
+    ],
+    "id": "hyp.myocardial-infarction",
+    "mondo": "MONDO:0005068",
+    "name": "Myocardial infarction (inferior)",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.acute-cholangitis prior note).",
+     "status": "verify",
+     "value": 0.07
+    }
+   },
+   {
+    "body_records": [],
+    "criteria_block": null,
+    "defining_features": "The residual: every cause of this presentation not named on the board (biliary colic without inflammation, choledocholithiasis without cholangitis, hepatitis, liver abscess, musculoskeletal pain, and the rest of the RUQ differential as catalogued in the consulted reviews). A board without a residual forces false certainty; design/07's calibration purpose requires one.",
+    "discriminating_findings": [],
+    "id": "hyp.other-unspecified",
+    "mondo": null,
+    "mondo_note": "No Mondo class: the residual is by definition unnamed. Assigning it a code would be inventing an identity.",
+    "name": "Other / unspecified",
+    "prior": {
+     "note": "Residual so the declared priors sum to 1. Case-author value, flagged.",
+     "status": "verify",
+     "value": 0.2
+    }
+   }
+  ],
+  "id": "case.ruq-pain.001",
+  "imaging_link": {
+   "honesty_block": "READ BEFORE CITING THIS LINK. (1) Three different individuals are involved in this module's data and they must not be conflated: the case patient (synthetic, authored for this case), the imaging subject s0778 (a real research subject in the TotalSegmentator dataset, 57-year-old male, CT thorax-abdomen-pelvis), and the atlas Body Model subject (BodyParts3D). The case patient is NOT s0778 and NOT the atlas subject. (2) The s0778 series does not show this case's pathology and must never be presented as doing so: TotalSegmentator's 104-label set contains no gallbladder-wall, gallstone, or pericholecystic-fluid label, so the series cannot express the case's ultrasound findings; and no diagnosis of cholecystitis is recorded for s0778 in the dataset metadata. The case's imaging findings (stage 3) are an authored ultrasound report \u2014 case data. (3) What this link DOES establish, and all it establishes: in the Body Model's label space (Milestone 19), the gallbladder \u2014 the organ this case is about, record 'gallbladder' \u2014 occupies the slices and measures the Hounsfield behaviour recorded below, in a real acquisition. It is the anatomical-localisation reference a learner opens beside the case, wired to the same record panel as the atlas (Milestone 19 section 1).",
+   "label": {
+    "hu_statistics_from_crosswalk": {
+     "max": 167,
+     "mean": 35.66,
+     "median": 34,
+     "min": -95,
+     "p5": -21,
+     "p95": 98,
+     "source_file": "data/imaging/s0778/crosswalk.json",
+     "voxels": 2720
+    },
+    "index": 15,
+    "name": "gallbladder",
+    "record_id": "gallbladder"
+   },
+   "measures": {
+    "bbox_lps_mm": [
+     [
+      -88.5,
+      -281.18,
+      1536.42
+     ],
+     [
+      -66,
+      -242.18,
+      1570.92
+     ]
+    ],
+    "dicom_instance_range": [
+     196,
+     219
+    ],
+    "max_cross_section": {
+     "dicom_instance": 213,
+     "file_index_0based": 212,
+     "voxels": 186
+    },
+    "slice_files_0based": [
+     195,
+     218
+    ],
+    "slices_with_label": 24,
+    "volume_ml_computed": "2720 voxels x 3.375 mm3/voxel = 9180 mm3 = 9.18 mL (arithmetic on the crosswalk voxel count and series.json spacing 1.5 mm isotropic)",
+    "z_range_lps_mm": [
+     1536.42,
+     1570.92
+    ]
+   },
+   "role": "anatomical localisation only",
+   "series": {
+    "file": "data/imaging/s0778/series.json",
+    "id": "s0778",
+    "subject": "TotalSegmentator v1.0 subject s0778 (CC BY 4.0) \u2014 see Milestone 19 section 2"
+   }
+  },
+  "labs": [
+   {
+    "analyte": "White blood cell count",
+    "id": "lab.wbc",
+    "interpretation": "elevated",
+    "reference_range": {
+     "high": 11,
+     "low": 4.5,
+     "source": "C7",
+     "unit": "x10^9/L"
+    },
+    "stage": 2,
+    "test_id": "test.cbc",
+    "unit": "x10^9/L",
+    "value": 14.2
+   },
+   {
+    "analyte": "Platelet count",
+    "id": "lab.platelets",
+    "interpretation": "above the TG18 Grade III dysfunction threshold (not low)",
+    "reference_range": null,
+    "reference_range_note": "No general platelet reference range was consulted in-session. The value is classified only against the one threshold this case uses: TG18 Grade III haematological dysfunction is a count < 100,000/mm3 (C1); the case value 262 x10^9/L (= 262,000/mm3) is above it.",
+    "stage": 2,
+    "test_id": "test.cbc",
+    "unit": "x10^9/L",
+    "value": 262
+   },
+   {
+    "analyte": "C-reactive protein",
+    "id": "lab.crp",
+    "interpretation": "elevated",
+    "reference_range": {
+     "note": "TG18's inflammatory-response quantification: CRP >= 1 mg/dL (10 mg/L) evidences an inflammatory response (C2, A-2). Stated as the guideline threshold it is, not as a laboratory reference range.",
+     "source": "C2",
+     "threshold_high": 10,
+     "unit": "mg/L"
+    },
+    "stage": 2,
+    "test_id": "test.crp",
+    "unit": "mg/L",
+    "value": 86
+   },
+   {
+    "analyte": "Total bilirubin",
+    "id": "lab.bilirubin-total",
+    "interpretation": "within reference; below the TG18 cholangitis threshold",
+    "reference_range": {
+     "high": 1.2,
+     "low": 0.1,
+     "source": "C8",
+     "unit": "mg/dL"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "mg/dL",
+    "value": 0.9
+   },
+   {
+    "analyte": "Alkaline phosphatase",
+    "id": "lab.alp",
+    "interpretation": "within reference",
+    "reference_range": {
+     "high": 129,
+     "low": 40,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 118
+   },
+   {
+    "analyte": "Alanine aminotransferase (ALT)",
+    "id": "lab.alt",
+    "interpretation": "within reference",
+    "reference_range": {
+     "high": 36,
+     "low": 4,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 34
+   },
+   {
+    "analyte": "Aspartate aminotransferase (AST)",
+    "id": "lab.ast",
+    "interpretation": "within reference",
+    "reference_range": {
+     "high": 33,
+     "low": 8,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 29
+   },
+   {
+    "analyte": "Serum lipase",
+    "id": "lab.lipase",
+    "interpretation": "within reference; far below 3x ULN (480 U/L)",
+    "reference_range": {
+     "high": 160,
+     "low": 0,
+     "note": "Assay-dependent in reality; the range used is the one stated by the consulted guideline (C9). The Atlanta comparison uses 3x this range's upper limit (C5).",
+     "source": "C9",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lipase",
+    "unit": "U/L",
+    "value": 92
+   },
+   {
+    "analyte": "Serum amylase",
+    "id": "lab.amylase",
+    "interpretation": "reported within the performing laboratory's range (case data)",
+    "reference_range": null,
+    "reference_range_note": "No amylase reference range was consulted in-session; the value carries a verify flag and is used by no criterion, board update, or score. The order itself is the teaching content (C6).",
+    "stage": 2,
+    "test_id": "test.amylase",
+    "unit": "U/L",
+    "value": 78
+   }
+  ],
+  "management": {
+   "disposition": "Admit; nil by mouth; IV fluids and analgesia as ward care (supportive details are case data, not guideline claims); definitive treatment is operative.",
+   "handoff": {
+    "basis": "TG18 (C1): for Grade I acute cholecystitis, early laparoscopic cholecystectomy is the recommended management where the guideline's comorbidity (CCI) and ASA conditions are met. The case records CCI/ASA as not assessed (they are not part of this case's data) \u2014 the handoff is therefore 'referred for early laparoscopic cholecystectomy, subject to the fitness assessment the case does not model', stated in those words.",
+    "from_case_stage": 4,
+    "module": "theatre",
+    "note": "The loop the master plan section 7 and design/07 describe: the case's disposition is the Theatre attempt's starting point. In the Theatre, this same gallbladder (organ.gallbladder, in proc.chole.lap's structures register) is the organ operated on, and the Theatre's own gates \u2014 above all the Critical View of Safety \u2014 take over. The case asserts nothing about the operation itself.",
+    "procedure_id": "proc.chole.lap",
+    "procedure_name": "Laparoscopic cholecystectomy"
+   },
+   "theatre_link_verified": "theatre/procedures/proc.lap-cholecystectomy.json carries procedure id proc.chole.lap and a structures register resolving organ.gallbladder to data/digestive/digestive.json (C13) \u2014 the checker re-verifies both facts."
+  },
+  "milestone": 20,
+  "module": "cases",
+  "patient": {
+   "age": 54,
+   "allergies": [
+    "none recorded (case data)"
+   ],
+   "habitus": "overweight (case data)",
+   "history": [
+    "One self-limited episode of post-prandial right upper quadrant discomfort three months ago, resolving without medical care (case data).",
+    "No prior biliary surgery, no known gallstones before this presentation (case data).",
+    "No regular medications (case data)."
+   ],
+   "sex": "F",
+   "symptom_duration_hours": 8
+  },
+  "physiology_link": {
+   "baseline_recorded_outputs": {
+    "cardiac_output_l_min": 4.21,
+    "cvp_mmhg": 4.38,
+    "diastolic_bp_mmhg": 62.7,
+    "heart_rate_per_min": 63.2,
+    "map_mmhg": 73.1,
+    "stroke_volume_lv_ml": 66.6,
+    "systolic_bp_mmhg": 97.8
+   },
+   "command": "cd physiology && cargo run --release -- run resting",
+   "gap_statement": "Design/07 specifies that the patient IS an engine state and that presented values are computed from the ground-truth perturbation. That specification is met here only at the baseline: the Milestone 8/18 engine models cardiovascular compensation (baroreflex, venomotor recruitment, transcapillary refill) and has NO inflammatory, febrile, or biliary perturbation \u2014 there is no engine state for acute cholecystitis, and this case does not pretend otherwise. The presentation's fever (38.4 C) and tachycardia (104/min) are authored case data, flagged as such on their findings; the engine's temperature variable does not exist and its heart rate at rest is 63.2/min, not 104. A biliary/inflammatory perturbation for the engine is named future work (Milestones 17/18 both record the missing biliary compartment).",
+   "role": "pre-morbid baseline",
+   "trace_hash": "0x67102f7c27db053d",
+   "verification": "Re-run in this build session; the trace hash and every recorded output match Milestone 18's dossier exactly (C13). The checker re-runs the command and compares."
+  },
+  "presentation_stages": [
+   {
+    "narrative": "A 54-year-old woman presents to the emergency department with 8 hours of right upper quadrant pain that began about an hour after a fatty meal, is constant, and radiates to the right scapular region. The pain was followed by nausea and two episodes of vomiting. She reports one similar, milder episode three months ago that settled on its own. Vitals (case data): temperature 38.4 C, heart rate 104/min, blood pressure 128/78 mmHg, respiratory rate 16/min, SpO2 99% on room air. Examination (case data): RUQ tenderness with mild localised guarding; Murphy's sign positive; no palpable RUQ mass; sclerae anicteric; chest clear; abdomen otherwise soft with bowel sounds present. The learner must now commit a stage-1 differential board before any test result exists.",
+    "stage": 1,
+    "title": "History, vitals, examination"
+   },
+   {
+    "narrative": "Laboratory and bedside results return. The inflammatory markers are up (WBC 14.2 x10^9/L; CRP 86 mg/L). The cholestasis screen is negative: bilirubin 0.9 mg/dL, ALP and transaminases within reference. Lipase is 92 U/L \u2014 normal, and nowhere near three times the upper limit of normal. ECG shows sinus tachycardia without ischaemic changes; high-sensitivity troponin is below the assay's 99th-percentile limit. The learner re-ranks the board.",
+    "stage": 2,
+    "title": "Laboratory and bedside tests"
+   },
+   {
+    "narrative": "Right upper quadrant ultrasound: multiple gallstones (largest 11 mm); gallbladder wall 6 mm and reported thickened; a small amount of pericholecystic fluid; sonographic Murphy sign positive. The common bile duct measures 5 mm and is not dilated; no intrahepatic dilatation and no ductal stone. The pancreas is visualised and unremarkable. The learner re-ranks the board and commits a diagnosis.",
+    "stage": 3,
+    "title": "Imaging"
+   },
+   {
+    "narrative": "Adjudication and disposition. The case's adjudication block evaluates the TG18 criteria and severity grade mechanically from the staged evidence, lists what excludes each rival, and hands the patient to the Theatre for the operation the guideline recommends. The debrief (generated by tools/case_run.py, independently recomputed by tools/case_check.py) scores the attempt's boards against this adjudication.",
+    "stage": 4,
+    "title": "Adjudication, management, handoff"
+   }
+  ],
+  "resource_tier": "enhanced",
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestone 17 recorded it for the procedure; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "status": "dual-sourced-draft",
+  "synthetic": true,
+  "synthetic_note": "SYNTHETIC CASE. The patient is an authored fiction built for teaching; no real patient data exists in this module (design/07, master plan section 8 rule 9: education-only scope). Clinical facts the case relies on (criteria, likelihood ratios, reference ranges, test characteristics) are cited to sources consulted in-session in cases/parameters.json; the patient's particulars (age, values, findings) are case data and are labelled 'case data' wherever they appear.",
+  "title": "Right upper quadrant pain \u2014 fever, a positive Murphy sign, and a tender gallbladder",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights \u2014 inventing weights would violate the precision law. Calibration proper needs a case series; one case yields per-stage Brier scores and board trajectories, and the debrief says so."
+  }
+ }
+}

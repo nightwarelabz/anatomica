@@ -1,0 +1,484 @@
+{
+ "bundle": {
+  "entries_note": "Local lab codes (system urn:anatomica:case-lab-codes) are used deliberately: design/07 fences LOINC into a separately-licensed data pack that is not part of this repository, so no LOINC code is asserted. The Condition is coded in Mondo (CC BY 4.0), the case spine (design/07, master plan section 7). No SNOMED CT code appears anywhere in this bundle \u2014 SNOMED is excluded from the public repository entirely.",
+  "entry": [
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:patient",
+    "resource": {
+     "gender": "female",
+     "id": "case-ruq-pain-001-patient",
+     "identifier": [
+      {
+       "system": "urn:anatomica:case-ids",
+       "value": "case.ruq-pain.001"
+      }
+     ],
+     "meta": {
+      "tag": [
+       {
+        "code": "synthetic-case",
+        "display": "Synthetic teaching case \u2014 no real patient data",
+        "system": "urn:anatomica:case-flags"
+       }
+      ]
+     },
+     "name": [
+      {
+       "text": "Synthetic patient, case.ruq-pain.001 (54-year-old female; authored case data)"
+      }
+     ],
+     "resourceType": "Patient"
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:condition",
+    "resource": {
+     "category": [
+      {
+       "coding": [
+        {
+         "code": "encounter-diagnosis",
+         "display": "Encounter Diagnosis",
+         "system": "http://terminology.hl7.org/CodeSystem/condition-category"
+        }
+       ]
+      }
+     ],
+     "clinicalStatus": {
+      "coding": [
+       {
+        "code": "active",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+       }
+      ]
+     },
+     "code": {
+      "coding": [
+       {
+        "code": "MONDO:0043994",
+        "display": "acute cholecystitis",
+        "system": "http://purl.obolibrary.org/obo/mondo.owl"
+       }
+      ],
+      "text": "Acute calculous cholecystitis \u2014 TG18 definite, Grade I (derivation in the case file's adjudication block)"
+     },
+     "id": "case-ruq-pain-001-condition",
+     "resourceType": "Condition",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "verificationStatus": {
+      "coding": [
+       {
+        "code": "confirmed",
+        "display": "Confirmed",
+        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+       }
+      ]
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-wbc",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "wbc",
+        "display": "White blood cell count",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-wbc",
+     "referenceRange": [
+      {
+       "high": {
+        "code": "10*9/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "x10^9/L",
+        "value": 11
+       },
+       "low": {
+        "code": "10*9/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "x10^9/L",
+        "value": 4.5
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "10*9/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "x10^9/L",
+      "value": 14.2
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-platelets",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "platelets",
+        "display": "Platelet count",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-platelets",
+     "note": [
+      {
+       "text": "No general reference range asserted in the case (none consulted); classified only against the TG18 Grade III threshold < 100,000/mm3."
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "10*9/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "x10^9/L",
+      "value": 262
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-crp",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "crp",
+        "display": "C-reactive protein",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-crp",
+     "note": [
+      {
+       "text": "TG18 inflammatory-response threshold: >= 10 mg/L (1 mg/dL)."
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "mg/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "mg/L",
+      "value": 86
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-bilirubin",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "bilirubin-total",
+        "display": "Total bilirubin",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-bilirubin-total",
+     "referenceRange": [
+      {
+       "high": {
+        "code": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mg/dL",
+        "value": 1.2
+       },
+       "low": {
+        "code": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "unit": "mg/dL",
+        "value": 0.1
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "mg/dL",
+      "system": "http://unitsofmeasure.org",
+      "unit": "mg/dL",
+      "value": 0.9
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-alp",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "alp",
+        "display": "Alkaline phosphatase",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-alp",
+     "referenceRange": [
+      {
+       "high": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 129
+       },
+       "low": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 40
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "U/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "U/L",
+      "value": 118
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-alt",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "alt",
+        "display": "Alanine aminotransferase (ALT)",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-alt",
+     "referenceRange": [
+      {
+       "high": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 36
+       },
+       "low": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 4
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "U/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "U/L",
+      "value": 34
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-ast",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "ast",
+        "display": "Aspartate aminotransferase (AST)",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-ast",
+     "referenceRange": [
+      {
+       "high": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 33
+       },
+       "low": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 8
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "U/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "U/L",
+      "value": 29
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-lipase",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "lipase",
+        "display": "Serum lipase",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-lipase",
+     "note": [
+      {
+       "text": "Revised Atlanta pancreatitis threshold: >= 3x ULN = 480 U/L. This value is far below it."
+      }
+     ],
+     "referenceRange": [
+      {
+       "high": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 160
+       },
+       "low": {
+        "code": "U/L",
+        "system": "http://unitsofmeasure.org",
+        "unit": "U/L",
+        "value": 0
+       }
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "U/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "U/L",
+      "value": 92
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:obs-amylase",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "amylase",
+        "display": "Serum amylase",
+        "system": "urn:anatomica:case-lab-codes"
+       }
+      ]
+     },
+     "id": "obs-amylase",
+     "note": [
+      {
+       "text": "No reference range asserted (none consulted in-session). The order is the case's documented non-contributory order (Choosing Wisely, via C6)."
+      }
+     ],
+     "resourceType": "Observation",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     },
+     "valueQuantity": {
+      "code": "U/L",
+      "system": "http://unitsofmeasure.org",
+      "unit": "U/L",
+      "value": 78
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:us-report",
+    "resource": {
+     "code": {
+      "text": "Right upper quadrant ultrasound"
+     },
+     "conclusion": "Gallstones (largest 11 mm); gallbladder wall 6 mm, thickened; pericholecystic fluid; sonographic Murphy sign positive \u2014 composite POSITIVE for acute cholecystitis. Common bile duct 5 mm, not dilated; no ductal stone; pancreas unremarkable. (Authored case report \u2014 case data. The Milestone 19 s0778 CT series is a different individual and does not show this pathology; see the case file's imaging_link honesty block.)",
+     "conclusionCode": [
+      {
+       "text": "Acute cholecystitis \u2014 imaging findings characteristic (TG18 group C)"
+      }
+     ],
+     "id": "case-ruq-pain-001-us-report",
+     "resourceType": "DiagnosticReport",
+     "status": "final",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     }
+    }
+   },
+   {
+    "fullUrl": "urn:anatomica:case:ruq-pain-001:theatre-handoff",
+    "resource": {
+     "code": {
+      "coding": [
+       {
+        "code": "proc.chole.lap",
+        "display": "Laparoscopic cholecystectomy",
+        "system": "urn:anatomica:theatre-procedures"
+       }
+      ],
+      "text": "Early laparoscopic cholecystectomy (TG18 Grade I pathway), subject to the fitness assessment the case does not model."
+     },
+     "id": "case-ruq-pain-001-theatre-handoff",
+     "intent": "proposal",
+     "reasonReference": [
+      {
+       "reference": "urn:anatomica:case:ruq-pain-001:condition"
+      }
+     ],
+     "resourceType": "ServiceRequest",
+     "status": "draft",
+     "subject": {
+      "reference": "urn:anatomica:case:ruq-pain-001:patient"
+     }
+    }
+   }
+  ],
+  "id": "case-ruq-pain-001-bundle",
+  "interchange_note": "FHIR-shaped export per design/07 (FHIR spec is CC0). It is a hand-authored, checker-validated interchange view of the case file \u2014 the case JSON remains the source of truth, and tools/case_check.py fails the build if the two disagree on any value it carries.",
+  "resourceType": "Bundle",
+  "type": "collection"
+ }
+}

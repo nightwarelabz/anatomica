@@ -1,0 +1,378 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "hypothesis": "hyp.acute-cholecystitis",
+   "mondo": "MONDO:0043994",
+   "severity_items_grade_ii": {
+    "g2.duration-gt-72h": false,
+    "g2.marked-local-inflammation": false,
+    "g2.palpable-mass": false,
+    "g2.wbc-gt-18000": false
+   },
+   "severity_items_grade_iii": {
+    "g3.cardiovascular": false,
+    "g3.hematological": false,
+    "g3.hepatic": "not-assessed",
+    "g3.neurological": false,
+    "g3.renal": "not-assessed",
+    "g3.respiratory": "not-assessed"
+   },
+   "tg18_severity_grade": "I",
+   "tg18_status_final": "definite"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.acute-cholangitis",
+    "learner_probability": 0.15,
+    "ruled_out_at_stage": 3,
+    "stage": 3,
+    "workbench_probability": 0.011146004296784655
+   }
+  ],
+  "attempt_id": "attempt.case-ruq-pain-001.model-learner",
+  "case_id": "case.ruq-pain.001",
+  "generated_by": "tools/case_run.py (Milestone 20)",
+  "orders": [
+   {
+    "basis": "settles guideline item(s): tg18c.B3",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.cbc",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): tg18c.B2",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.crp",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): tg18chol.B1, tg18chol.B2",
+    "classification": "criteria-completing",
+    "cost_units": 3,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.lft-panel",
+    "time_min": 30
+   },
+   {
+    "basis": "hyp.acute-pancreatitis crosses the rule-out line (0.0480 -> 0.0015)",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.lipase",
+    "time_min": 30
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.amylase",
+    "time_min": 30
+   },
+   {
+    "basis": "excludes must-not-miss hyp.myocardial-infarction (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.ecg",
+    "time_min": 10
+   },
+   {
+    "basis": "excludes must-not-miss hyp.myocardial-infarction (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 3,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.troponin",
+    "time_min": 60
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.7342 -> 0.9294",
+    "classification": "discriminating",
+    "cost_units": 5,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.ruq-ultrasound",
+    "time_min": 45
+   }
+  ],
+  "pearls": {
+   "analysis": "Three teaching points, each tied to a scored component. (1) Criteria before fragments: cholangitis under TG18 needs cholestasis or duct imaging; with bilirubin 0.9 mg/dL, enzymes inside reference, no jaundice and a 5 mm duct, there is nothing for the diagnosis to stand on \u2014 Charcot's triad is specific but only 26.4% sensitive (C2), so its partial presence is weak evidence and its textbook vividness is the trap. The consider-the-opposite prompt (design/07's debiasing evidence) for the next RUQ case: 'what would have to be true for this to be cholangitis, and have I measured those things?' (2) One test carried the case: lipase (discriminating \u2014 it alone moves pancreatitis across the rule-out line) and the ultrasound (discriminating \u2014 largest single posterior move, and the TG18 group C test). (3) Amylase alongside lipase is non-contributory by rule and by Choosing Wisely (C6): ordering both is cost without information.",
+   "description": "Stage by stage: the learner's board and the workbench's evidence board agree on the leader from stage 1 (cholecystitis), but diverge on cholangitis \u2014 the learner raises it at stage 2 (0.20 -> 0.25) on the very stage the cholestasis screen returns empty, and still holds it at 0.15 at stage 3, after the workbench has ruled it out (posterior < 0.02 and TG18 groups B and C both unmet). Pancreatitis is handled exactly right: the normal lipase collapses it at stage 2 (the attempt's 0.02 tracks the workbench's rule-out).",
+   "reactions": "The attempt reaches the right diagnosis and the right disposition. Its one systematic error is also the commonest one in the diagnostic-error literature design/07 cites: a vivid fragment (fever + RUQ pain = two-thirds of Charcot's triad) out-arguing a criteria block.",
+   "summary": "Diagnosis: acute calculous cholecystitis, TG18 definite from stage 3, Grade I severity (two Grade III items \u2014 respiratory and renal/hepatic function \u2014 recorded not-assessed rather than assumed). Disposition as committed: early laparoscopic cholecystectomy, handed to the Theatre (proc.chole.lap). Calibration note: a calibration curve is a property of a case SERIES (design/07); this single case contributes four staged Brier scores (learner 0.4550 -> 0.3336 -> 0.1184 -> 0.0276) and one anchoring event to that future series, and claims nothing more."
+  },
+  "per_stage": [
+   {
+    "atlanta": {
+     "diagnosable": false,
+     "imaging": false,
+     "items_met": 0,
+     "lipase_3x_uln": false,
+     "pain_consistent": false
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.2,
+     "hyp.acute-cholecystitis": 0.4,
+     "hyp.acute-pancreatitis": 0.1,
+     "hyp.myocardial-infarction": 0.05,
+     "hyp.other-unspecified": 0,
+     "hyp.peptic-ulcer-disease": 0.2,
+     "hyp.pneumonia": 0.05
+    },
+    "learner_brier": 0.455,
+    "learner_probability_on_truth": 0.4,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-cholecystitis",
+    "stage": 1,
+    "tg18_cholangitis": [
+     {
+      "A": true,
+      "B": false,
+      "C": false
+     },
+     "not suspected"
+    ],
+    "tg18_cholecystitis": [
+     {
+      "A": true,
+      "B": true,
+      "C": false
+     },
+     "suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.04,
+     "hyp.acute-cholecystitis": 0.7,
+     "hyp.acute-pancreatitis": 0.048,
+     "hyp.myocardial-infarction": 0.028,
+     "hyp.other-unspecified": 0.08,
+     "hyp.peptic-ulcer-disease": 0.072,
+     "hyp.pneumonia": 0.032
+    },
+    "workbench_brier": 0.1073,
+    "workbench_probability_on_truth": 0.7,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-cholecystitis"
+   },
+   {
+    "atlanta": {
+     "diagnosable": false,
+     "imaging": false,
+     "items_met": 0,
+     "lipase_3x_uln": false,
+     "pain_consistent": false
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.25,
+     "hyp.acute-cholecystitis": 0.5,
+     "hyp.acute-pancreatitis": 0.02,
+     "hyp.myocardial-infarction": 0.03,
+     "hyp.other-unspecified": 0.02,
+     "hyp.peptic-ulcer-disease": 0.13,
+     "hyp.pneumonia": 0.05
+    },
+    "learner_brier": 0.3336,
+    "learner_probability_on_truth": 0.5,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-cholecystitis",
+    "stage": 2,
+    "tg18_cholangitis": [
+     {
+      "A": true,
+      "B": false,
+      "C": false
+     },
+     "not suspected"
+    ],
+    "tg18_cholecystitis": [
+     {
+      "A": true,
+      "B": true,
+      "C": false
+     },
+     "suspected"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.042,
+     "hyp.acute-cholecystitis": 0.7342,
+     "hyp.acute-pancreatitis": 0.0015,
+     "hyp.myocardial-infarction": 0.0294,
+     "hyp.other-unspecified": 0.0839,
+     "hyp.peptic-ulcer-disease": 0.0755,
+     "hyp.pneumonia": 0.0336
+    },
+    "workbench_brier": 0.0872,
+    "workbench_probability_on_truth": 0.7342,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-cholecystitis"
+   },
+   {
+    "atlanta": {
+     "diagnosable": false,
+     "imaging": false,
+     "items_met": 0,
+     "lipase_3x_uln": false,
+     "pain_consistent": false
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.15,
+     "hyp.acute-cholecystitis": 0.7,
+     "hyp.acute-pancreatitis": 0.01,
+     "hyp.myocardial-infarction": 0.02,
+     "hyp.other-unspecified": 0.03,
+     "hyp.peptic-ulcer-disease": 0.06,
+     "hyp.pneumonia": 0.03
+    },
+    "learner_brier": 0.1184,
+    "learner_probability_on_truth": 0.7,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-cholecystitis",
+    "stage": 3,
+    "tg18_cholangitis": [
+     {
+      "A": true,
+      "B": false,
+      "C": false
+     },
+     "not suspected"
+    ],
+    "tg18_cholecystitis": [
+     {
+      "A": true,
+      "B": true,
+      "C": true
+     },
+     "definite"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.0111,
+     "hyp.acute-cholecystitis": 0.9294,
+     "hyp.acute-pancreatitis": 0.0004,
+     "hyp.myocardial-infarction": 0.0078,
+     "hyp.other-unspecified": 0.0223,
+     "hyp.peptic-ulcer-disease": 0.0201,
+     "hyp.pneumonia": 0.0089
+    },
+    "workbench_brier": 0.0062,
+    "workbench_probability_on_truth": 0.9294,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-cholecystitis"
+   },
+   {
+    "atlanta": {
+     "diagnosable": false,
+     "imaging": false,
+     "items_met": 0,
+     "lipase_3x_uln": false,
+     "pain_consistent": false
+    },
+    "learner_board": {
+     "hyp.acute-cholangitis": 0.05,
+     "hyp.acute-cholecystitis": 0.85,
+     "hyp.acute-pancreatitis": 0.01,
+     "hyp.myocardial-infarction": 0.01,
+     "hyp.other-unspecified": 0.02,
+     "hyp.peptic-ulcer-disease": 0.04,
+     "hyp.pneumonia": 0.02
+    },
+    "learner_brier": 0.0276,
+    "learner_probability_on_truth": 0.85,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-cholecystitis",
+    "stage": 4,
+    "tg18_cholangitis": [
+     {
+      "A": true,
+      "B": false,
+      "C": false
+     },
+     "not suspected"
+    ],
+    "tg18_cholecystitis": [
+     {
+      "A": true,
+      "B": true,
+      "C": true
+     },
+     "definite"
+    ],
+    "workbench_board": {
+     "hyp.acute-cholangitis": 0.0111,
+     "hyp.acute-cholecystitis": 0.9294,
+     "hyp.acute-pancreatitis": 0.0004,
+     "hyp.myocardial-infarction": 0.0078,
+     "hyp.other-unspecified": 0.0223,
+     "hyp.peptic-ulcer-disease": 0.0201,
+     "hyp.pneumonia": 0.0089
+    },
+    "workbench_brier": 0.0062,
+    "workbench_probability_on_truth": 0.9294,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-cholecystitis"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 20,
+   "total_time_min": 265
+  },
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestone 17 recorded it for the procedure; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.acute-cholangitis": 3,
+   "hyp.acute-pancreatitis": 2,
+   "hyp.myocardial-infarction": 3,
+   "hyp.pneumonia": 3
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.455,
+    "2": 0.3336,
+    "3": 0.1184,
+    "4": 0.0276
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.4,
+    "2": 0.5,
+    "3": 0.7,
+    "4": 0.85
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 3,
+    "discriminating": 2,
+    "non-contributory": 1,
+    "safety-net": 2
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.1073,
+    "2": 0.0872,
+    "3": 0.0062,
+    "4": 0.0062
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights \u2014 inventing weights would violate the precision law. Calibration proper needs a case series; one case yields per-stage Brier scores and board trajectories, and the debrief says so."
+  }
+ }
+}
