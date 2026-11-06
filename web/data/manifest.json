@@ -1,0 +1,5616 @@
+{
+ "title": "ANATOMICA web shell geometry manifest \u2014 Milestone 6",
+ "generated_by": "tools/pack_web_geometry.py",
+ "canonical_frame": "centimetres; x+ = subject right, y+ = up, z+ = anterior",
+ "draw_strategy": "one merged static buffer set per layer (positions float32, normals int8 snorm, per-vertex record slot uint32, indices uint32, unique-edge index buffer for wireframe); one draw call per layer when no region filter is active (plus one LINES draw per layer with wireframe on), per-record range draws when filtered",
+ "layers": {
+  "skeleton": {
+   "file": "skeleton.bin",
+   "bytes": 18190236,
+   "vertices": 283091,
+   "indices": 1535904,
+   "faces": 511968,
+   "edges": 798084,
+   "edge_indices": 1596168,
+   "records": 199,
+   "mesh_files": 201,
+   "distinct_mesh_paths": 201,
+   "ranges": [
+    {
+     "slot": 0,
+     "record_id": "frontal",
+     "vertex_start": 0,
+     "vertex_count": 8472,
+     "index_start": 0,
+     "index_count": 43530,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 1,
+     "record_id": "parietal_right",
+     "vertex_start": 8472,
+     "vertex_count": 8028,
+     "index_start": 43530,
+     "index_count": 39006,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.09292476332835077
+    },
+    {
+     "slot": 2,
+     "record_id": "temporal_right",
+     "vertex_start": 16500,
+     "vertex_count": 3102,
+     "index_start": 82536,
+     "index_count": 14784,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 3,
+     "record_id": "parietal_left",
+     "vertex_start": 19602,
+     "vertex_count": 8367,
+     "index_start": 97320,
+     "index_count": 39630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.34050436237600096
+    },
+    {
+     "slot": 4,
+     "record_id": "temporal_left",
+     "vertex_start": 27969,
+     "vertex_count": 3013,
+     "index_start": 136950,
+     "index_count": 14808,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 5,
+     "record_id": "occipital",
+     "vertex_start": 30982,
+     "vertex_count": 6995,
+     "index_start": 151758,
+     "index_count": 37350,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 6,
+     "record_id": "sphenoid",
+     "vertex_start": 37977,
+     "vertex_count": 4957,
+     "index_start": 189108,
+     "index_count": 24462,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 7,
+     "record_id": "ethmoid",
+     "vertex_start": 42934,
+     "vertex_count": 12484,
+     "index_start": 213570,
+     "index_count": 66828,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 8,
+     "record_id": "maxilla_right",
+     "vertex_start": 55418,
+     "vertex_count": 3513,
+     "index_start": 280398,
+     "index_count": 15972,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 9,
+     "record_id": "zygomatic_right",
+     "vertex_start": 58931,
+     "vertex_count": 934,
+     "index_start": 296370,
+     "index_count": 4668,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 10,
+     "record_id": "nasal_right",
+     "vertex_start": 59865,
+     "vertex_count": 265,
+     "index_start": 301038,
+     "index_count": 1248,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 11,
+     "record_id": "lacrimal_right",
+     "vertex_start": 60130,
+     "vertex_count": 401,
+     "index_start": 302286,
+     "index_count": 2106,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 12,
+     "record_id": "palatine_right",
+     "vertex_start": 60531,
+     "vertex_count": 1132,
+     "index_start": 304392,
+     "index_count": 5208,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0008833922261484099
+    },
+    {
+     "slot": 13,
+     "record_id": "concha_right",
+     "vertex_start": 61663,
+     "vertex_count": 572,
+     "index_start": 309600,
+     "index_count": 2142,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 14,
+     "record_id": "maxilla_left",
+     "vertex_start": 62235,
+     "vertex_count": 3577,
+     "index_start": 311742,
+     "index_count": 15594,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.07911657813810456
+    },
+    {
+     "slot": 15,
+     "record_id": "zygomatic_left",
+     "vertex_start": 65812,
+     "vertex_count": 929,
+     "index_start": 327336,
+     "index_count": 4302,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 16,
+     "record_id": "nasal_left",
+     "vertex_start": 66741,
+     "vertex_count": 263,
+     "index_start": 331638,
+     "index_count": 1314,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.44106463878326996
+    },
+    {
+     "slot": 17,
+     "record_id": "lacrimal_left",
+     "vertex_start": 67004,
+     "vertex_count": 366,
+     "index_start": 332952,
+     "index_count": 1920,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 18,
+     "record_id": "palatine_left",
+     "vertex_start": 67370,
+     "vertex_count": 1164,
+     "index_start": 334872,
+     "index_count": 5814,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0506872852233677
+    },
+    {
+     "slot": 19,
+     "record_id": "concha_left",
+     "vertex_start": 68534,
+     "vertex_count": 482,
+     "index_start": 340686,
+     "index_count": 2214,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 20,
+     "record_id": "vomer",
+     "vertex_start": 69016,
+     "vertex_count": 3660,
+     "index_start": 342900,
+     "index_count": 21654,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 21,
+     "record_id": "mandible",
+     "vertex_start": 72676,
+     "vertex_count": 2845,
+     "index_start": 364554,
+     "index_count": 16728,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 22,
+     "record_id": "hyoid",
+     "vertex_start": 75521,
+     "vertex_count": 687,
+     "index_start": 381282,
+     "index_count": 3588,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 23,
+     "record_id": "vert_C1",
+     "vertex_start": 76208,
+     "vertex_count": 1433,
+     "index_start": 384870,
+     "index_count": 6282,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 24,
+     "record_id": "vert_C2",
+     "vertex_start": 77641,
+     "vertex_count": 1540,
+     "index_start": 391152,
+     "index_count": 6864,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 25,
+     "record_id": "vert_C3",
+     "vertex_start": 79181,
+     "vertex_count": 1323,
+     "index_start": 398016,
+     "index_count": 6090,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 26,
+     "record_id": "vert_C4",
+     "vertex_start": 80504,
+     "vertex_count": 1469,
+     "index_start": 404106,
+     "index_count": 7230,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 27,
+     "record_id": "vert_C5",
+     "vertex_start": 81973,
+     "vertex_count": 1539,
+     "index_start": 411336,
+     "index_count": 6588,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 28,
+     "record_id": "vert_C6",
+     "vertex_start": 83512,
+     "vertex_count": 1498,
+     "index_start": 417924,
+     "index_count": 7122,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 29,
+     "record_id": "vert_C7",
+     "vertex_start": 85010,
+     "vertex_count": 1324,
+     "index_start": 425046,
+     "index_count": 5460,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 30,
+     "record_id": "vert_T1",
+     "vertex_start": 86334,
+     "vertex_count": 1078,
+     "index_start": 430506,
+     "index_count": 5100,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 31,
+     "record_id": "vert_T2",
+     "vertex_start": 87412,
+     "vertex_count": 1161,
+     "index_start": 435606,
+     "index_count": 5814,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 32,
+     "record_id": "vert_T3",
+     "vertex_start": 88573,
+     "vertex_count": 1175,
+     "index_start": 441420,
+     "index_count": 6114,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 33,
+     "record_id": "vert_T4",
+     "vertex_start": 89748,
+     "vertex_count": 1210,
+     "index_start": 447534,
+     "index_count": 6198,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 34,
+     "record_id": "vert_T5",
+     "vertex_start": 90958,
+     "vertex_count": 1321,
+     "index_start": 453732,
+     "index_count": 6840,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 35,
+     "record_id": "vert_T6",
+     "vertex_start": 92279,
+     "vertex_count": 1353,
+     "index_start": 460572,
+     "index_count": 6744,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 36,
+     "record_id": "vert_T7",
+     "vertex_start": 93632,
+     "vertex_count": 1478,
+     "index_start": 467316,
+     "index_count": 7722,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 37,
+     "record_id": "vert_T8",
+     "vertex_start": 95110,
+     "vertex_count": 1392,
+     "index_start": 475038,
+     "index_count": 7272,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 38,
+     "record_id": "vert_T9",
+     "vertex_start": 96502,
+     "vertex_count": 1443,
+     "index_start": 482310,
+     "index_count": 7758,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 39,
+     "record_id": "vert_T10",
+     "vertex_start": 97945,
+     "vertex_count": 1584,
+     "index_start": 490068,
+     "index_count": 8370,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 40,
+     "record_id": "vert_T11",
+     "vertex_start": 99529,
+     "vertex_count": 1593,
+     "index_start": 498438,
+     "index_count": 8022,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 41,
+     "record_id": "vert_T12",
+     "vertex_start": 101122,
+     "vertex_count": 1593,
+     "index_start": 506460,
+     "index_count": 8316,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 42,
+     "record_id": "vert_L1",
+     "vertex_start": 102715,
+     "vertex_count": 1682,
+     "index_start": 514776,
+     "index_count": 8916,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 43,
+     "record_id": "vert_L2",
+     "vertex_start": 104397,
+     "vertex_count": 1875,
+     "index_start": 523692,
+     "index_count": 9642,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 44,
+     "record_id": "vert_L3",
+     "vertex_start": 106272,
+     "vertex_count": 1849,
+     "index_start": 533334,
+     "index_count": 9816,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 45,
+     "record_id": "vert_L4",
+     "vertex_start": 108121,
+     "vertex_count": 1968,
+     "index_start": 543150,
+     "index_count": 10536,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 46,
+     "record_id": "vert_L5",
+     "vertex_start": 110089,
+     "vertex_count": 2115,
+     "index_start": 553686,
+     "index_count": 11676,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 47,
+     "record_id": "sacrum",
+     "vertex_start": 112204,
+     "vertex_count": 5293,
+     "index_start": 565362,
+     "index_count": 29766,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 48,
+     "record_id": "sternum",
+     "vertex_start": 117497,
+     "vertex_count": 5632,
+     "index_start": 595128,
+     "index_count": 24342,
+     "mesh_files": 3,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 49,
+     "record_id": "rib1_right",
+     "vertex_start": 123129,
+     "vertex_count": 1642,
+     "index_start": 619470,
+     "index_count": 9828,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 50,
+     "record_id": "rib1_left",
+     "vertex_start": 124771,
+     "vertex_count": 1641,
+     "index_start": 629298,
+     "index_count": 9828,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 51,
+     "record_id": "rib2_right",
+     "vertex_start": 126412,
+     "vertex_count": 2861,
+     "index_start": 639126,
+     "index_count": 16782,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 52,
+     "record_id": "rib2_left",
+     "vertex_start": 129273,
+     "vertex_count": 2862,
+     "index_start": 655908,
+     "index_count": 16782,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 53,
+     "record_id": "rib3_right",
+     "vertex_start": 132135,
+     "vertex_count": 3634,
+     "index_start": 672690,
+     "index_count": 21762,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 54,
+     "record_id": "rib3_left",
+     "vertex_start": 135769,
+     "vertex_count": 3637,
+     "index_start": 694452,
+     "index_count": 21762,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 55,
+     "record_id": "rib4_right",
+     "vertex_start": 139406,
+     "vertex_count": 4435,
+     "index_start": 716214,
+     "index_count": 26496,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 56,
+     "record_id": "rib4_left",
+     "vertex_start": 143841,
+     "vertex_count": 4445,
+     "index_start": 742710,
+     "index_count": 26550,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 57,
+     "record_id": "rib5_right",
+     "vertex_start": 148286,
+     "vertex_count": 4910,
+     "index_start": 769260,
+     "index_count": 29130,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 58,
+     "record_id": "rib5_left",
+     "vertex_start": 153196,
+     "vertex_count": 4912,
+     "index_start": 798390,
+     "index_count": 29130,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 59,
+     "record_id": "rib6_right",
+     "vertex_start": 158108,
+     "vertex_count": 5168,
+     "index_start": 827520,
+     "index_count": 30738,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 60,
+     "record_id": "rib6_left",
+     "vertex_start": 163276,
+     "vertex_count": 5172,
+     "index_start": 858258,
+     "index_count": 30792,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 61,
+     "record_id": "rib7_right",
+     "vertex_start": 168448,
+     "vertex_count": 5058,
+     "index_start": 889050,
+     "index_count": 30096,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 62,
+     "record_id": "rib7_left",
+     "vertex_start": 173506,
+     "vertex_count": 5054,
+     "index_start": 919146,
+     "index_count": 30096,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 63,
+     "record_id": "rib8_right",
+     "vertex_start": 178560,
+     "vertex_count": 4199,
+     "index_start": 949242,
+     "index_count": 25008,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 64,
+     "record_id": "rib8_left",
+     "vertex_start": 182759,
+     "vertex_count": 4211,
+     "index_start": 974250,
+     "index_count": 25008,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 65,
+     "record_id": "rib9_right",
+     "vertex_start": 186970,
+     "vertex_count": 3808,
+     "index_start": 999258,
+     "index_count": 22728,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 66,
+     "record_id": "rib9_left",
+     "vertex_start": 190778,
+     "vertex_count": 3805,
+     "index_start": 1021986,
+     "index_count": 22728,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 67,
+     "record_id": "rib10_right",
+     "vertex_start": 194583,
+     "vertex_count": 3415,
+     "index_start": 1044714,
+     "index_count": 20460,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 68,
+     "record_id": "rib10_left",
+     "vertex_start": 197998,
+     "vertex_count": 3419,
+     "index_start": 1065174,
+     "index_count": 20478,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 69,
+     "record_id": "rib11_right",
+     "vertex_start": 201417,
+     "vertex_count": 2437,
+     "index_start": 1085652,
+     "index_count": 14598,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 70,
+     "record_id": "rib11_left",
+     "vertex_start": 203854,
+     "vertex_count": 2435,
+     "index_start": 1100250,
+     "index_count": 14598,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 71,
+     "record_id": "rib12_right",
+     "vertex_start": 206289,
+     "vertex_count": 1412,
+     "index_start": 1114848,
+     "index_count": 8454,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 72,
+     "record_id": "rib12_left",
+     "vertex_start": 207701,
+     "vertex_count": 1411,
+     "index_start": 1123302,
+     "index_count": 8454,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 73,
+     "record_id": "clavicle_right",
+     "vertex_start": 209112,
+     "vertex_count": 583,
+     "index_start": 1131756,
+     "index_count": 3438,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 74,
+     "record_id": "scapula_right",
+     "vertex_start": 209695,
+     "vertex_count": 13118,
+     "index_start": 1135194,
+     "index_count": 78516,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 75,
+     "record_id": "humerus_right",
+     "vertex_start": 222813,
+     "vertex_count": 2233,
+     "index_start": 1213710,
+     "index_count": 11352,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 76,
+     "record_id": "radius_right",
+     "vertex_start": 225046,
+     "vertex_count": 388,
+     "index_start": 1225062,
+     "index_count": 2016,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 77,
+     "record_id": "ulna_right",
+     "vertex_start": 225434,
+     "vertex_count": 500,
+     "index_start": 1227078,
+     "index_count": 2502,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 78,
+     "record_id": "scaphoid_right",
+     "vertex_start": 225934,
+     "vertex_count": 195,
+     "index_start": 1229580,
+     "index_count": 966,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 79,
+     "record_id": "lunate_right",
+     "vertex_start": 226129,
+     "vertex_count": 196,
+     "index_start": 1230546,
+     "index_count": 996,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 80,
+     "record_id": "triquetrum_right",
+     "vertex_start": 226325,
+     "vertex_count": 139,
+     "index_start": 1231542,
+     "index_count": 510,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 81,
+     "record_id": "pisiform_right",
+     "vertex_start": 226464,
+     "vertex_count": 110,
+     "index_start": 1232052,
+     "index_count": 570,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 82,
+     "record_id": "trapezium_right",
+     "vertex_start": 226574,
+     "vertex_count": 277,
+     "index_start": 1232622,
+     "index_count": 1302,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 83,
+     "record_id": "trapezoid_right",
+     "vertex_start": 226851,
+     "vertex_count": 271,
+     "index_start": 1233924,
+     "index_count": 1080,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 84,
+     "record_id": "capitate_right",
+     "vertex_start": 227122,
+     "vertex_count": 256,
+     "index_start": 1235004,
+     "index_count": 1284,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 85,
+     "record_id": "hamate_right",
+     "vertex_start": 227378,
+     "vertex_count": 335,
+     "index_start": 1236288,
+     "index_count": 1566,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 86,
+     "record_id": "metacarpalI_right",
+     "vertex_start": 227713,
+     "vertex_count": 307,
+     "index_start": 1237854,
+     "index_count": 1698,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 87,
+     "record_id": "phalanxI_prox_right",
+     "vertex_start": 228020,
+     "vertex_count": 197,
+     "index_start": 1239552,
+     "index_count": 954,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 88,
+     "record_id": "phalanxI_mid_right",
+     "vertex_start": 228217,
+     "vertex_count": 187,
+     "index_start": 1240506,
+     "index_count": 720,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 89,
+     "record_id": "metacarpalII_right",
+     "vertex_start": 228404,
+     "vertex_count": 418,
+     "index_start": 1241226,
+     "index_count": 2244,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 90,
+     "record_id": "phalanxII_prox_right",
+     "vertex_start": 228822,
+     "vertex_count": 226,
+     "index_start": 1243470,
+     "index_count": 1158,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 91,
+     "record_id": "phalanxII_mid_right",
+     "vertex_start": 229048,
+     "vertex_count": 190,
+     "index_start": 1244628,
+     "index_count": 792,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 92,
+     "record_id": "phalanxII_dist_right",
+     "vertex_start": 229238,
+     "vertex_count": 188,
+     "index_start": 1245420,
+     "index_count": 630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 93,
+     "record_id": "metacarpalIII_right",
+     "vertex_start": 229426,
+     "vertex_count": 404,
+     "index_start": 1246050,
+     "index_count": 2106,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 94,
+     "record_id": "phalanxIII_prox_right",
+     "vertex_start": 229830,
+     "vertex_count": 271,
+     "index_start": 1248156,
+     "index_count": 1374,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 95,
+     "record_id": "phalanxIII_mid_right",
+     "vertex_start": 230101,
+     "vertex_count": 227,
+     "index_start": 1249530,
+     "index_count": 1026,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 96,
+     "record_id": "phalanxIII_dist_right",
+     "vertex_start": 230328,
+     "vertex_count": 143,
+     "index_start": 1250556,
+     "index_count": 522,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 97,
+     "record_id": "metacarpalIV_right",
+     "vertex_start": 230471,
+     "vertex_count": 340,
+     "index_start": 1251078,
+     "index_count": 1608,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 98,
+     "record_id": "phalanxIV_prox_right",
+     "vertex_start": 230811,
+     "vertex_count": 209,
+     "index_start": 1252686,
+     "index_count": 1128,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 99,
+     "record_id": "phalanxIV_mid_right",
+     "vertex_start": 231020,
+     "vertex_count": 219,
+     "index_start": 1253814,
+     "index_count": 948,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 100,
+     "record_id": "phalanxIV_dist_right",
+     "vertex_start": 231239,
+     "vertex_count": 114,
+     "index_start": 1254762,
+     "index_count": 336,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 101,
+     "record_id": "metacarpalV_right",
+     "vertex_start": 231353,
+     "vertex_count": 279,
+     "index_start": 1255098,
+     "index_count": 1518,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 102,
+     "record_id": "phalanxV_prox_right",
+     "vertex_start": 231632,
+     "vertex_count": 187,
+     "index_start": 1256616,
+     "index_count": 942,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 103,
+     "record_id": "phalanxV_mid_right",
+     "vertex_start": 231819,
+     "vertex_count": 169,
+     "index_start": 1257558,
+     "index_count": 624,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 104,
+     "record_id": "phalanxV_dist_right",
+     "vertex_start": 231988,
+     "vertex_count": 140,
+     "index_start": 1258182,
+     "index_count": 564,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 105,
+     "record_id": "clavicle_left",
+     "vertex_start": 232128,
+     "vertex_count": 602,
+     "index_start": 1258746,
+     "index_count": 3528,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 106,
+     "record_id": "scapula_left",
+     "vertex_start": 232730,
+     "vertex_count": 14068,
+     "index_start": 1262274,
+     "index_count": 84318,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 107,
+     "record_id": "humerus_left",
+     "vertex_start": 246798,
+     "vertex_count": 2073,
+     "index_start": 1346592,
+     "index_count": 11532,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 108,
+     "record_id": "radius_left",
+     "vertex_start": 248871,
+     "vertex_count": 368,
+     "index_start": 1358124,
+     "index_count": 1896,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 109,
+     "record_id": "ulna_left",
+     "vertex_start": 249239,
+     "vertex_count": 496,
+     "index_start": 1360020,
+     "index_count": 2472,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 110,
+     "record_id": "scaphoid_left",
+     "vertex_start": 249735,
+     "vertex_count": 176,
+     "index_start": 1362492,
+     "index_count": 936,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 111,
+     "record_id": "lunate_left",
+     "vertex_start": 249911,
+     "vertex_count": 187,
+     "index_start": 1363428,
+     "index_count": 942,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 112,
+     "record_id": "triquetrum_left",
+     "vertex_start": 250098,
+     "vertex_count": 180,
+     "index_start": 1364370,
+     "index_count": 912,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 113,
+     "record_id": "pisiform_left",
+     "vertex_start": 250278,
+     "vertex_count": 116,
+     "index_start": 1365282,
+     "index_count": 630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 114,
+     "record_id": "trapezium_left",
+     "vertex_start": 250394,
+     "vertex_count": 226,
+     "index_start": 1365912,
+     "index_count": 1068,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 115,
+     "record_id": "trapezoid_left",
+     "vertex_start": 250620,
+     "vertex_count": 279,
+     "index_start": 1366980,
+     "index_count": 1194,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 116,
+     "record_id": "capitate_left",
+     "vertex_start": 250899,
+     "vertex_count": 237,
+     "index_start": 1368174,
+     "index_count": 1206,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 117,
+     "record_id": "hamate_left",
+     "vertex_start": 251136,
+     "vertex_count": 280,
+     "index_start": 1369380,
+     "index_count": 1356,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 118,
+     "record_id": "metacarpalI_left",
+     "vertex_start": 251416,
+     "vertex_count": 304,
+     "index_start": 1370736,
+     "index_count": 1734,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 119,
+     "record_id": "phalanxI_prox_left",
+     "vertex_start": 251720,
+     "vertex_count": 202,
+     "index_start": 1372470,
+     "index_count": 1038,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 120,
+     "record_id": "phalanxI_mid_left",
+     "vertex_start": 251922,
+     "vertex_count": 189,
+     "index_start": 1373508,
+     "index_count": 810,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 121,
+     "record_id": "metacarpalII_left",
+     "vertex_start": 252111,
+     "vertex_count": 420,
+     "index_start": 1374318,
+     "index_count": 2322,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 122,
+     "record_id": "phalanxII_prox_left",
+     "vertex_start": 252531,
+     "vertex_count": 222,
+     "index_start": 1376640,
+     "index_count": 1176,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 123,
+     "record_id": "phalanxII_mid_left",
+     "vertex_start": 252753,
+     "vertex_count": 188,
+     "index_start": 1377816,
+     "index_count": 918,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 124,
+     "record_id": "phalanxII_dist_left",
+     "vertex_start": 252941,
+     "vertex_count": 204,
+     "index_start": 1378734,
+     "index_count": 984,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 125,
+     "record_id": "metacarpalIII_left",
+     "vertex_start": 253145,
+     "vertex_count": 392,
+     "index_start": 1379718,
+     "index_count": 2124,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 126,
+     "record_id": "phalanxIII_prox_left",
+     "vertex_start": 253537,
+     "vertex_count": 264,
+     "index_start": 1381842,
+     "index_count": 1380,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 127,
+     "record_id": "phalanxIII_mid_left",
+     "vertex_start": 253801,
+     "vertex_count": 229,
+     "index_start": 1383222,
+     "index_count": 1152,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 128,
+     "record_id": "phalanxIII_dist_left",
+     "vertex_start": 254030,
+     "vertex_count": 173,
+     "index_start": 1384374,
+     "index_count": 798,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 129,
+     "record_id": "metacarpalIV_left",
+     "vertex_start": 254203,
+     "vertex_count": 316,
+     "index_start": 1385172,
+     "index_count": 1584,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 130,
+     "record_id": "phalanxIV_prox_left",
+     "vertex_start": 254519,
+     "vertex_count": 205,
+     "index_start": 1386756,
+     "index_count": 1128,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 131,
+     "record_id": "phalanxIV_mid_left",
+     "vertex_start": 254724,
+     "vertex_count": 216,
+     "index_start": 1387884,
+     "index_count": 1020,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 132,
+     "record_id": "phalanxIV_dist_left",
+     "vertex_start": 254940,
+     "vertex_count": 140,
+     "index_start": 1388904,
+     "index_count": 588,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 133,
+     "record_id": "metacarpalV_left",
+     "vertex_start": 255080,
+     "vertex_count": 282,
+     "index_start": 1389492,
+     "index_count": 1500,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 134,
+     "record_id": "phalanxV_prox_left",
+     "vertex_start": 255362,
+     "vertex_count": 164,
+     "index_start": 1390992,
+     "index_count": 822,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 135,
+     "record_id": "phalanxV_mid_left",
+     "vertex_start": 255526,
+     "vertex_count": 192,
+     "index_start": 1391814,
+     "index_count": 762,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 136,
+     "record_id": "phalanxV_dist_left",
+     "vertex_start": 255718,
+     "vertex_count": 154,
+     "index_start": 1392576,
+     "index_count": 594,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 137,
+     "record_id": "hip_right",
+     "vertex_start": 255872,
+     "vertex_count": 1282,
+     "index_start": 1393170,
+     "index_count": 7122,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 138,
+     "record_id": "femur_right",
+     "vertex_start": 257154,
+     "vertex_count": 1574,
+     "index_start": 1400292,
+     "index_count": 9306,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 139,
+     "record_id": "patella_right",
+     "vertex_start": 258728,
+     "vertex_count": 178,
+     "index_start": 1409598,
+     "index_count": 918,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 140,
+     "record_id": "tibia_right",
+     "vertex_start": 258906,
+     "vertex_count": 857,
+     "index_start": 1410516,
+     "index_count": 4992,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 141,
+     "record_id": "fibula_right",
+     "vertex_start": 259763,
+     "vertex_count": 593,
+     "index_start": 1415508,
+     "index_count": 3426,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 142,
+     "record_id": "calcaneus_right",
+     "vertex_start": 260356,
+     "vertex_count": 739,
+     "index_start": 1418934,
+     "index_count": 3786,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 143,
+     "record_id": "talus_right",
+     "vertex_start": 261095,
+     "vertex_count": 812,
+     "index_start": 1422720,
+     "index_count": 4140,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 144,
+     "record_id": "navicular_right",
+     "vertex_start": 261907,
+     "vertex_count": 455,
+     "index_start": 1426860,
+     "index_count": 2148,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 145,
+     "record_id": "cuboid_right",
+     "vertex_start": 262362,
+     "vertex_count": 543,
+     "index_start": 1429008,
+     "index_count": 2796,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 146,
+     "record_id": "medial_cuneiform_right",
+     "vertex_start": 262905,
+     "vertex_count": 615,
+     "index_start": 1431804,
+     "index_count": 2856,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 147,
+     "record_id": "intermediate_cuneiform_right",
+     "vertex_start": 263520,
+     "vertex_count": 288,
+     "index_start": 1434660,
+     "index_count": 1350,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 148,
+     "record_id": "lateral_cuneiform_right",
+     "vertex_start": 263808,
+     "vertex_count": 395,
+     "index_start": 1436010,
+     "index_count": 1878,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 149,
+     "record_id": "metatarsalI_right",
+     "vertex_start": 264203,
+     "vertex_count": 602,
+     "index_start": 1437888,
+     "index_count": 3366,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 150,
+     "record_id": "toephalanxI_prox_right",
+     "vertex_start": 264805,
+     "vertex_count": 281,
+     "index_start": 1441254,
+     "index_count": 1458,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 151,
+     "record_id": "toephalanxI_mid_right",
+     "vertex_start": 265086,
+     "vertex_count": 289,
+     "index_start": 1442712,
+     "index_count": 1320,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 152,
+     "record_id": "metatarsalII_right",
+     "vertex_start": 265375,
+     "vertex_count": 515,
+     "index_start": 1444032,
+     "index_count": 2256,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 153,
+     "record_id": "toephalanxII_prox_right",
+     "vertex_start": 265890,
+     "vertex_count": 236,
+     "index_start": 1446288,
+     "index_count": 1242,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 154,
+     "record_id": "toephalanxII_mid_right",
+     "vertex_start": 266126,
+     "vertex_count": 192,
+     "index_start": 1447530,
+     "index_count": 792,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 155,
+     "record_id": "toephalanxII_dist_right",
+     "vertex_start": 266318,
+     "vertex_count": 170,
+     "index_start": 1448322,
+     "index_count": 600,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 156,
+     "record_id": "metatarsalIII_right",
+     "vertex_start": 266488,
+     "vertex_count": 423,
+     "index_start": 1448922,
+     "index_count": 2100,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 157,
+     "record_id": "toephalanxIII_prox_right",
+     "vertex_start": 266911,
+     "vertex_count": 276,
+     "index_start": 1451022,
+     "index_count": 1266,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 158,
+     "record_id": "toephalanxIII_mid_right",
+     "vertex_start": 267187,
+     "vertex_count": 190,
+     "index_start": 1452288,
+     "index_count": 876,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 159,
+     "record_id": "toephalanxIII_dist_right",
+     "vertex_start": 267377,
+     "vertex_count": 162,
+     "index_start": 1453164,
+     "index_count": 780,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 160,
+     "record_id": "metatarsalIV_right",
+     "vertex_start": 267539,
+     "vertex_count": 397,
+     "index_start": 1453944,
+     "index_count": 2022,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 161,
+     "record_id": "toephalanxIV_prox_right",
+     "vertex_start": 267936,
+     "vertex_count": 254,
+     "index_start": 1455966,
+     "index_count": 1314,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 162,
+     "record_id": "toephalanxIV_mid_right",
+     "vertex_start": 268190,
+     "vertex_count": 220,
+     "index_start": 1457280,
+     "index_count": 1050,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 163,
+     "record_id": "toephalanxIV_dist_right",
+     "vertex_start": 268410,
+     "vertex_count": 144,
+     "index_start": 1458330,
+     "index_count": 732,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 164,
+     "record_id": "metatarsalV_right",
+     "vertex_start": 268554,
+     "vertex_count": 436,
+     "index_start": 1459062,
+     "index_count": 2382,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 165,
+     "record_id": "toephalanxV_prox_right",
+     "vertex_start": 268990,
+     "vertex_count": 238,
+     "index_start": 1461444,
+     "index_count": 1218,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 166,
+     "record_id": "toephalanxV_mid_right",
+     "vertex_start": 269228,
+     "vertex_count": 102,
+     "index_start": 1462662,
+     "index_count": 408,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 167,
+     "record_id": "toephalanxV_dist_right",
+     "vertex_start": 269330,
+     "vertex_count": 178,
+     "index_start": 1463070,
+     "index_count": 630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 168,
+     "record_id": "hip_left",
+     "vertex_start": 269508,
+     "vertex_count": 1257,
+     "index_start": 1463700,
+     "index_count": 6996,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 169,
+     "record_id": "femur_left",
+     "vertex_start": 270765,
+     "vertex_count": 1623,
+     "index_start": 1470696,
+     "index_count": 9612,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 170,
+     "record_id": "patella_left",
+     "vertex_start": 272388,
+     "vertex_count": 180,
+     "index_start": 1480308,
+     "index_count": 930,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 171,
+     "record_id": "tibia_left",
+     "vertex_start": 272568,
+     "vertex_count": 880,
+     "index_start": 1481238,
+     "index_count": 5076,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 172,
+     "record_id": "fibula_left",
+     "vertex_start": 273448,
+     "vertex_count": 577,
+     "index_start": 1486314,
+     "index_count": 3372,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 173,
+     "record_id": "calcaneus_left",
+     "vertex_start": 274025,
+     "vertex_count": 719,
+     "index_start": 1489686,
+     "index_count": 3864,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 174,
+     "record_id": "talus_left",
+     "vertex_start": 274744,
+     "vertex_count": 776,
+     "index_start": 1493550,
+     "index_count": 4068,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 175,
+     "record_id": "navicular_left",
+     "vertex_start": 275520,
+     "vertex_count": 459,
+     "index_start": 1497618,
+     "index_count": 2232,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 176,
+     "record_id": "cuboid_left",
+     "vertex_start": 275979,
+     "vertex_count": 494,
+     "index_start": 1499850,
+     "index_count": 2658,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 177,
+     "record_id": "medial_cuneiform_left",
+     "vertex_start": 276473,
+     "vertex_count": 582,
+     "index_start": 1502508,
+     "index_count": 2988,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 178,
+     "record_id": "intermediate_cuneiform_left",
+     "vertex_start": 277055,
+     "vertex_count": 305,
+     "index_start": 1505496,
+     "index_count": 1398,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 179,
+     "record_id": "lateral_cuneiform_left",
+     "vertex_start": 277360,
+     "vertex_count": 405,
+     "index_start": 1506894,
+     "index_count": 2040,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 180,
+     "record_id": "metatarsalI_left",
+     "vertex_start": 277765,
+     "vertex_count": 614,
+     "index_start": 1508934,
+     "index_count": 3516,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 181,
+     "record_id": "toephalanxI_prox_left",
+     "vertex_start": 278379,
+     "vertex_count": 318,
+     "index_start": 1512450,
+     "index_count": 1548,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 182,
+     "record_id": "toephalanxI_mid_left",
+     "vertex_start": 278697,
+     "vertex_count": 256,
+     "index_start": 1513998,
+     "index_count": 1134,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 183,
+     "record_id": "metatarsalII_left",
+     "vertex_start": 278953,
+     "vertex_count": 487,
+     "index_start": 1515132,
+     "index_count": 2322,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 184,
+     "record_id": "toephalanxII_prox_left",
+     "vertex_start": 279440,
+     "vertex_count": 233,
+     "index_start": 1517454,
+     "index_count": 1140,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 185,
+     "record_id": "toephalanxII_mid_left",
+     "vertex_start": 279673,
+     "vertex_count": 197,
+     "index_start": 1518594,
+     "index_count": 972,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 186,
+     "record_id": "toephalanxII_dist_left",
+     "vertex_start": 279870,
+     "vertex_count": 169,
+     "index_start": 1519566,
+     "index_count": 720,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 187,
+     "record_id": "metatarsalIII_left",
+     "vertex_start": 280039,
+     "vertex_count": 429,
+     "index_start": 1520286,
+     "index_count": 2226,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 188,
+     "record_id": "toephalanxIII_prox_left",
+     "vertex_start": 280468,
+     "vertex_count": 248,
+     "index_start": 1522512,
+     "index_count": 1224,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 189,
+     "record_id": "toephalanxIII_mid_left",
+     "vertex_start": 280716,
+     "vertex_count": 185,
+     "index_start": 1523736,
+     "index_count": 882,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 190,
+     "record_id": "toephalanxIII_dist_left",
+     "vertex_start": 280901,
+     "vertex_count": 188,
+     "index_start": 1524618,
+     "index_count": 1008,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 191,
+     "record_id": "metatarsalIV_left",
+     "vertex_start": 281089,
+     "vertex_count": 437,
+     "index_start": 1525626,
+     "index_count": 2316,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 192,
+     "record_id": "toephalanxIV_prox_left",
+     "vertex_start": 281526,
+     "vertex_count": 255,
+     "index_start": 1527942,
+     "index_count": 1314,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 193,
+     "record_id": "toephalanxIV_mid_left",
+     "vertex_start": 281781,
+     "vertex_count": 183,
+     "index_start": 1529256,
+     "index_count": 852,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 194,
+     "record_id": "toephalanxIV_dist_left",
+     "vertex_start": 281964,
+     "vertex_count": 146,
+     "index_start": 1530108,
+     "index_count": 678,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 195,
+     "record_id": "metatarsalV_left",
+     "vertex_start": 282110,
+     "vertex_count": 447,
+     "index_start": 1530786,
+     "index_count": 2592,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 196,
+     "record_id": "toephalanxV_prox_left",
+     "vertex_start": 282557,
+     "vertex_count": 231,
+     "index_start": 1533378,
+     "index_count": 1188,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 197,
+     "record_id": "toephalanxV_mid_left",
+     "vertex_start": 282788,
+     "vertex_count": 143,
+     "index_start": 1534566,
+     "index_count": 678,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 198,
+     "record_id": "toephalanxV_dist_left",
+     "vertex_start": 282931,
+     "vertex_count": 160,
+     "index_start": 1535244,
+     "index_count": 660,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    }
+   ]
+  },
+  "muscles": {
+   "file": "muscles.bin",
+   "bytes": 94585848,
+   "vertices": 1704260,
+   "indices": 7096476,
+   "faces": 2365492,
+   "edges": 4014327,
+   "edge_indices": 8028654,
+   "records": 359,
+   "mesh_files": 417,
+   "distinct_mesh_paths": 417,
+   "ranges": [
+    {
+     "slot": 0,
+     "record_id": "muscle.left-pectoralis-minor",
+     "vertex_start": 0,
+     "vertex_count": 6746,
+     "index_start": 0,
+     "index_count": 28404,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 1,
+     "record_id": "muscle.right-pectoralis-minor",
+     "vertex_start": 6746,
+     "vertex_count": 6741,
+     "index_start": 28404,
+     "index_count": 28404,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 2,
+     "record_id": "muscle.diaphragm",
+     "vertex_start": 13487,
+     "vertex_count": 35527,
+     "index_start": 56808,
+     "index_count": 205566,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 3,
+     "record_id": "muscle.left-external-oblique",
+     "vertex_start": 49014,
+     "vertex_count": 63893,
+     "index_start": 262374,
+     "index_count": 335478,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 4,
+     "record_id": "muscle.right-external-oblique",
+     "vertex_start": 112907,
+     "vertex_count": 63907,
+     "index_start": 597852,
+     "index_count": 335478,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 5,
+     "record_id": "muscle.left-sternohyoid",
+     "vertex_start": 176814,
+     "vertex_count": 1812,
+     "index_start": 933330,
+     "index_count": 9234,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 6,
+     "record_id": "muscle.right-sternohyoid",
+     "vertex_start": 178626,
+     "vertex_count": 1911,
+     "index_start": 942564,
+     "index_count": 9348,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 7,
+     "record_id": "muscle.left-omohyoid",
+     "vertex_start": 180537,
+     "vertex_count": 3211,
+     "index_start": 951912,
+     "index_count": 16074,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 8,
+     "record_id": "muscle.right-omohyoid",
+     "vertex_start": 183748,
+     "vertex_count": 3368,
+     "index_start": 967986,
+     "index_count": 16242,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 9,
+     "record_id": "muscle.left-sternothyroid",
+     "vertex_start": 187116,
+     "vertex_count": 1569,
+     "index_start": 984228,
+     "index_count": 7770,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 10,
+     "record_id": "muscle.right-sternothyroid",
+     "vertex_start": 188685,
+     "vertex_count": 1585,
+     "index_start": 991998,
+     "index_count": 7824,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 11,
+     "record_id": "muscle.left-thyrohyoid",
+     "vertex_start": 190270,
+     "vertex_count": 928,
+     "index_start": 999822,
+     "index_count": 4308,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 12,
+     "record_id": "muscle.right-thyrohyoid",
+     "vertex_start": 191198,
+     "vertex_count": 1102,
+     "index_start": 1004130,
+     "index_count": 4350,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0544464609800363
+    },
+    {
+     "slot": 13,
+     "record_id": "muscle.left-rhomboid-major",
+     "vertex_start": 192300,
+     "vertex_count": 5063,
+     "index_start": 1008480,
+     "index_count": 21606,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.019751135690302193
+    },
+    {
+     "slot": 14,
+     "record_id": "muscle.right-rhomboid-major",
+     "vertex_start": 197363,
+     "vertex_count": 5057,
+     "index_start": 1030086,
+     "index_count": 21606,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.01957682420407356
+    },
+    {
+     "slot": 15,
+     "record_id": "muscle.left-rhomboid-minor",
+     "vertex_start": 202420,
+     "vertex_count": 1505,
+     "index_start": 1051692,
+     "index_count": 6618,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.013289036544850499
+    },
+    {
+     "slot": 16,
+     "record_id": "muscle.right-rhomboid-minor",
+     "vertex_start": 203925,
+     "vertex_count": 1506,
+     "index_start": 1058310,
+     "index_count": 6618,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.013280212483399735
+    },
+    {
+     "slot": 17,
+     "record_id": "muscle.left-scalenus-anterior",
+     "vertex_start": 205431,
+     "vertex_count": 1673,
+     "index_start": 1064928,
+     "index_count": 7788,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 18,
+     "record_id": "muscle.right-scalenus-anterior",
+     "vertex_start": 207104,
+     "vertex_count": 1697,
+     "index_start": 1072716,
+     "index_count": 7896,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 19,
+     "record_id": "muscle.left-scalenus-medius",
+     "vertex_start": 208801,
+     "vertex_count": 2969,
+     "index_start": 1080612,
+     "index_count": 12222,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 20,
+     "record_id": "muscle.right-scalenus-medius",
+     "vertex_start": 211770,
+     "vertex_count": 3015,
+     "index_start": 1092834,
+     "index_count": 12306,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 21,
+     "record_id": "muscle.left-scalenus-posterior",
+     "vertex_start": 214785,
+     "vertex_count": 1920,
+     "index_start": 1105140,
+     "index_count": 8268,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 22,
+     "record_id": "muscle.right-scalenus-posterior",
+     "vertex_start": 216705,
+     "vertex_count": 1979,
+     "index_start": 1113408,
+     "index_count": 8334,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 23,
+     "record_id": "muscle.left-serratus-anterior",
+     "vertex_start": 218684,
+     "vertex_count": 28450,
+     "index_start": 1121742,
+     "index_count": 147636,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 24,
+     "record_id": "muscle.right-serratus-anterior",
+     "vertex_start": 247134,
+     "vertex_count": 28465,
+     "index_start": 1269378,
+     "index_count": 147636,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 25,
+     "record_id": "muscle.left-serratus-posterior-superior",
+     "vertex_start": 275599,
+     "vertex_count": 6203,
+     "index_start": 1417014,
+     "index_count": 27198,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.008383040464291471
+    },
+    {
+     "slot": 26,
+     "record_id": "muscle.right-serratus-posterior-superior",
+     "vertex_start": 281802,
+     "vertex_count": 6219,
+     "index_start": 1444212,
+     "index_count": 27198,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.008843865573243287
+    },
+    {
+     "slot": 27,
+     "record_id": "muscle.left-serratus-posterior-inferior",
+     "vertex_start": 288021,
+     "vertex_count": 8680,
+     "index_start": 1471410,
+     "index_count": 39492,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.053456221198156684
+    },
+    {
+     "slot": 28,
+     "record_id": "muscle.right-serratus-posterior-inferior",
+     "vertex_start": 296701,
+     "vertex_count": 8698,
+     "index_start": 1510902,
+     "index_count": 39492,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.053345596688894
+    },
+    {
+     "slot": 29,
+     "record_id": "muscle.left-sternocleidomastoid",
+     "vertex_start": 305399,
+     "vertex_count": 6210,
+     "index_start": 1550394,
+     "index_count": 30672,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 30,
+     "record_id": "muscle.right-sternocleidomastoid",
+     "vertex_start": 311609,
+     "vertex_count": 6642,
+     "index_start": 1581066,
+     "index_count": 31032,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.008431195423065342
+    },
+    {
+     "slot": 31,
+     "record_id": "muscle.left-subclavius",
+     "vertex_start": 318251,
+     "vertex_count": 1158,
+     "index_start": 1612098,
+     "index_count": 4920,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 32,
+     "record_id": "muscle.right-subclavius",
+     "vertex_start": 319409,
+     "vertex_count": 1155,
+     "index_start": 1617018,
+     "index_count": 4920,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 33,
+     "record_id": "muscle.left-subscapularis",
+     "vertex_start": 320564,
+     "vertex_count": 2759,
+     "index_start": 1621938,
+     "index_count": 6276,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 34,
+     "record_id": "muscle.right-subscapularis",
+     "vertex_start": 323323,
+     "vertex_count": 2775,
+     "index_start": 1628214,
+     "index_count": 6276,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 35,
+     "record_id": "muscle.left-psoas-major",
+     "vertex_start": 326098,
+     "vertex_count": 3634,
+     "index_start": 1634490,
+     "index_count": 14700,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 36,
+     "record_id": "muscle.right-psoas-major",
+     "vertex_start": 329732,
+     "vertex_count": 3632,
+     "index_start": 1649190,
+     "index_count": 14700,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 37,
+     "record_id": "muscle.left-piriformis",
+     "vertex_start": 333364,
+     "vertex_count": 796,
+     "index_start": 1663890,
+     "index_count": 3276,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 38,
+     "record_id": "muscle.right-piriformis",
+     "vertex_start": 334160,
+     "vertex_count": 798,
+     "index_start": 1667166,
+     "index_count": 3276,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 39,
+     "record_id": "muscle.left-coccygeus",
+     "vertex_start": 334958,
+     "vertex_count": 3112,
+     "index_start": 1670442,
+     "index_count": 12510,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 40,
+     "record_id": "muscle.right-coccygeus",
+     "vertex_start": 338070,
+     "vertex_count": 1607,
+     "index_start": 1682952,
+     "index_count": 6258,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 41,
+     "record_id": "muscle.left-pubococcygeus",
+     "vertex_start": 339677,
+     "vertex_count": 6233,
+     "index_start": 1689210,
+     "index_count": 27858,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 42,
+     "record_id": "muscle.right-pubococcygeus",
+     "vertex_start": 345910,
+     "vertex_count": 3498,
+     "index_start": 1717068,
+     "index_count": 13848,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.04288164665523156
+    },
+    {
+     "slot": 43,
+     "record_id": "muscle.left-puborectalis",
+     "vertex_start": 349408,
+     "vertex_count": 6980,
+     "index_start": 1730916,
+     "index_count": 21756,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 44,
+     "record_id": "muscle.right-puborectalis",
+     "vertex_start": 356388,
+     "vertex_count": 4164,
+     "index_start": 1752672,
+     "index_count": 10914,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.10086455331412104
+    },
+    {
+     "slot": 45,
+     "record_id": "muscle.left-iliococcygeus",
+     "vertex_start": 360552,
+     "vertex_count": 6186,
+     "index_start": 1763586,
+     "index_count": 23124,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 46,
+     "record_id": "muscle.right-iliococcygeus",
+     "vertex_start": 366738,
+     "vertex_count": 3319,
+     "index_start": 1786710,
+     "index_count": 11592,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.026514010244049414
+    },
+    {
+     "slot": 47,
+     "record_id": "muscle.external-anal-sphincter",
+     "vertex_start": 370057,
+     "vertex_count": 990,
+     "index_start": 1798302,
+     "index_count": 4404,
+     "mesh_files": 4,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 48,
+     "record_id": "muscle.left-obturator-internus",
+     "vertex_start": 371047,
+     "vertex_count": 1884,
+     "index_start": 1802706,
+     "index_count": 7398,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 49,
+     "record_id": "muscle.right-obturator-internus",
+     "vertex_start": 372931,
+     "vertex_count": 1883,
+     "index_start": 1810104,
+     "index_count": 7398,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 50,
+     "record_id": "muscle.left-obturator-externus",
+     "vertex_start": 374814,
+     "vertex_count": 715,
+     "index_start": 1817502,
+     "index_count": 2352,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 51,
+     "record_id": "muscle.right-obturator-externus",
+     "vertex_start": 375529,
+     "vertex_count": 715,
+     "index_start": 1819854,
+     "index_count": 2352,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 52,
+     "record_id": "muscle.left-iliacus",
+     "vertex_start": 376244,
+     "vertex_count": 2452,
+     "index_start": 1822206,
+     "index_count": 8586,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 53,
+     "record_id": "muscle.right-iliacus",
+     "vertex_start": 378696,
+     "vertex_count": 2447,
+     "index_start": 1830792,
+     "index_count": 8586,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 54,
+     "record_id": "muscle.left-gluteus-maximus",
+     "vertex_start": 381143,
+     "vertex_count": 2053,
+     "index_start": 1839378,
+     "index_count": 7128,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.021919142717973697
+    },
+    {
+     "slot": 55,
+     "record_id": "muscle.right-gluteus-maximus",
+     "vertex_start": 383196,
+     "vertex_count": 2053,
+     "index_start": 1846506,
+     "index_count": 7128,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.021919142717973697
+    },
+    {
+     "slot": 56,
+     "record_id": "muscle.left-gluteus-medius",
+     "vertex_start": 385249,
+     "vertex_count": 2308,
+     "index_start": 1853634,
+     "index_count": 10068,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 57,
+     "record_id": "muscle.right-gluteus-medius",
+     "vertex_start": 387557,
+     "vertex_count": 2312,
+     "index_start": 1863702,
+     "index_count": 10068,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 58,
+     "record_id": "muscle.left-gluteus-minimus",
+     "vertex_start": 389869,
+     "vertex_count": 3066,
+     "index_start": 1873770,
+     "index_count": 12624,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 59,
+     "record_id": "muscle.right-gluteus-minimus",
+     "vertex_start": 392935,
+     "vertex_count": 3066,
+     "index_start": 1886394,
+     "index_count": 12624,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 60,
+     "record_id": "muscle.left-gemellus-superior",
+     "vertex_start": 396001,
+     "vertex_count": 527,
+     "index_start": 1899018,
+     "index_count": 1206,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 61,
+     "record_id": "muscle.right-gemellus-superior",
+     "vertex_start": 396528,
+     "vertex_count": 525,
+     "index_start": 1900224,
+     "index_count": 1206,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 62,
+     "record_id": "muscle.left-gemellus-inferior",
+     "vertex_start": 397053,
+     "vertex_count": 503,
+     "index_start": 1901430,
+     "index_count": 1926,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 63,
+     "record_id": "muscle.right-gemellus-inferior",
+     "vertex_start": 397556,
+     "vertex_count": 503,
+     "index_start": 1903356,
+     "index_count": 1926,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 64,
+     "record_id": "muscle.left-quadratus-femoris",
+     "vertex_start": 398059,
+     "vertex_count": 1013,
+     "index_start": 1905282,
+     "index_count": 3588,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 65,
+     "record_id": "muscle.right-quadratus-femoris",
+     "vertex_start": 399072,
+     "vertex_count": 1015,
+     "index_start": 1908870,
+     "index_count": 3588,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 66,
+     "record_id": "muscle.left-sartorius",
+     "vertex_start": 400087,
+     "vertex_count": 2633,
+     "index_start": 1912458,
+     "index_count": 10332,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 67,
+     "record_id": "muscle.right-sartorius",
+     "vertex_start": 402720,
+     "vertex_count": 2630,
+     "index_start": 1922790,
+     "index_count": 10332,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 68,
+     "record_id": "muscle.left-semitendinosus",
+     "vertex_start": 405350,
+     "vertex_count": 1808,
+     "index_start": 1933122,
+     "index_count": 8136,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 69,
+     "record_id": "muscle.right-semitendinosus",
+     "vertex_start": 407158,
+     "vertex_count": 1812,
+     "index_start": 1941258,
+     "index_count": 8136,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 70,
+     "record_id": "muscle.left-tensor-fasciae-latae",
+     "vertex_start": 408970,
+     "vertex_count": 1087,
+     "index_start": 1949394,
+     "index_count": 3762,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 71,
+     "record_id": "muscle.right-tensor-fasciae-latae",
+     "vertex_start": 410057,
+     "vertex_count": 1087,
+     "index_start": 1953156,
+     "index_count": 3762,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 72,
+     "record_id": "muscle.left-rectus-femoris",
+     "vertex_start": 411144,
+     "vertex_count": 3326,
+     "index_start": 1956918,
+     "index_count": 17064,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 73,
+     "record_id": "muscle.right-rectus-femoris",
+     "vertex_start": 414470,
+     "vertex_count": 3326,
+     "index_start": 1973982,
+     "index_count": 17064,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 74,
+     "record_id": "muscle.left-vastus-lateralis",
+     "vertex_start": 417796,
+     "vertex_count": 3974,
+     "index_start": 1991046,
+     "index_count": 20064,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 75,
+     "record_id": "muscle.right-vastus-lateralis",
+     "vertex_start": 421770,
+     "vertex_count": 3975,
+     "index_start": 2011110,
+     "index_count": 20064,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 76,
+     "record_id": "muscle.left-vastus-medialis",
+     "vertex_start": 425745,
+     "vertex_count": 2772,
+     "index_start": 2031174,
+     "index_count": 13656,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 77,
+     "record_id": "muscle.right-vastus-medialis",
+     "vertex_start": 428517,
+     "vertex_count": 2773,
+     "index_start": 2044830,
+     "index_count": 13656,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 78,
+     "record_id": "muscle.left-vastus-intermedius",
+     "vertex_start": 431290,
+     "vertex_count": 2744,
+     "index_start": 2058486,
+     "index_count": 12780,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 79,
+     "record_id": "muscle.right-vastus-intermedius",
+     "vertex_start": 434034,
+     "vertex_count": 2748,
+     "index_start": 2071266,
+     "index_count": 12780,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 80,
+     "record_id": "muscle.left-semimembranosus",
+     "vertex_start": 436782,
+     "vertex_count": 2588,
+     "index_start": 2084046,
+     "index_count": 13836,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 81,
+     "record_id": "muscle.right-semimembranosus",
+     "vertex_start": 439370,
+     "vertex_count": 2588,
+     "index_start": 2097882,
+     "index_count": 13836,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 82,
+     "record_id": "muscle.left-pectineus",
+     "vertex_start": 441958,
+     "vertex_count": 963,
+     "index_start": 2111718,
+     "index_count": 4140,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 83,
+     "record_id": "muscle.right-pectineus",
+     "vertex_start": 442921,
+     "vertex_count": 963,
+     "index_start": 2115858,
+     "index_count": 4140,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 84,
+     "record_id": "muscle.left-adductor-longus",
+     "vertex_start": 443884,
+     "vertex_count": 1536,
+     "index_start": 2119998,
+     "index_count": 7848,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 85,
+     "record_id": "muscle.right-adductor-longus",
+     "vertex_start": 445420,
+     "vertex_count": 1536,
+     "index_start": 2127846,
+     "index_count": 7848,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 86,
+     "record_id": "muscle.left-adductor-brevis",
+     "vertex_start": 446956,
+     "vertex_count": 1089,
+     "index_start": 2135694,
+     "index_count": 4392,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 87,
+     "record_id": "muscle.right-adductor-brevis",
+     "vertex_start": 448045,
+     "vertex_count": 1091,
+     "index_start": 2140086,
+     "index_count": 4392,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 88,
+     "record_id": "muscle.left-adductor-magnus",
+     "vertex_start": 449136,
+     "vertex_count": 4562,
+     "index_start": 2144478,
+     "index_count": 17916,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 89,
+     "record_id": "muscle.right-adductor-magnus",
+     "vertex_start": 453698,
+     "vertex_count": 4560,
+     "index_start": 2162394,
+     "index_count": 17916,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 90,
+     "record_id": "muscle.left-tibialis-anterior",
+     "vertex_start": 458258,
+     "vertex_count": 2206,
+     "index_start": 2180310,
+     "index_count": 7530,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 91,
+     "record_id": "muscle.right-tibialis-anterior",
+     "vertex_start": 460464,
+     "vertex_count": 2204,
+     "index_start": 2187840,
+     "index_count": 7530,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 92,
+     "record_id": "muscle.left-extensor-hallucis-longus",
+     "vertex_start": 462668,
+     "vertex_count": 1384,
+     "index_start": 2195370,
+     "index_count": 5004,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 93,
+     "record_id": "muscle.right-extensor-hallucis-longus",
+     "vertex_start": 464052,
+     "vertex_count": 1388,
+     "index_start": 2200374,
+     "index_count": 5004,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 94,
+     "record_id": "muscle.left-extensor-digitorum-longus",
+     "vertex_start": 465440,
+     "vertex_count": 3965,
+     "index_start": 2205378,
+     "index_count": 13638,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 95,
+     "record_id": "muscle.right-extensor-digitorum-longus",
+     "vertex_start": 469405,
+     "vertex_count": 3964,
+     "index_start": 2219016,
+     "index_count": 13638,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 96,
+     "record_id": "muscle.left-fibularis-tertius",
+     "vertex_start": 473369,
+     "vertex_count": 1486,
+     "index_start": 2232654,
+     "index_count": 4248,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 97,
+     "record_id": "muscle.right-fibularis-tertius",
+     "vertex_start": 474855,
+     "vertex_count": 1488,
+     "index_start": 2236902,
+     "index_count": 4248,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 98,
+     "record_id": "muscle.left-fibularis-longus",
+     "vertex_start": 476343,
+     "vertex_count": 2947,
+     "index_start": 2241150,
+     "index_count": 11580,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 99,
+     "record_id": "muscle.right-fibularis-longus",
+     "vertex_start": 479290,
+     "vertex_count": 2946,
+     "index_start": 2252730,
+     "index_count": 11580,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 100,
+     "record_id": "muscle.left-fibularis-brevis",
+     "vertex_start": 482236,
+     "vertex_count": 1605,
+     "index_start": 2264310,
+     "index_count": 5298,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 101,
+     "record_id": "muscle.right-fibularis-brevis",
+     "vertex_start": 483841,
+     "vertex_count": 1605,
+     "index_start": 2269608,
+     "index_count": 5298,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 102,
+     "record_id": "muscle.left-soleus",
+     "vertex_start": 485446,
+     "vertex_count": 2674,
+     "index_start": 2274906,
+     "index_count": 13254,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 103,
+     "record_id": "muscle.right-soleus",
+     "vertex_start": 488120,
+     "vertex_count": 2674,
+     "index_start": 2288160,
+     "index_count": 13254,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 104,
+     "record_id": "muscle.left-plantaris",
+     "vertex_start": 490794,
+     "vertex_count": 1466,
+     "index_start": 2301414,
+     "index_count": 7536,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 105,
+     "record_id": "muscle.right-plantaris",
+     "vertex_start": 492260,
+     "vertex_count": 1466,
+     "index_start": 2308950,
+     "index_count": 7536,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 106,
+     "record_id": "muscle.left-popliteus",
+     "vertex_start": 493726,
+     "vertex_count": 589,
+     "index_start": 2316486,
+     "index_count": 2574,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 107,
+     "record_id": "muscle.right-popliteus",
+     "vertex_start": 494315,
+     "vertex_count": 588,
+     "index_start": 2319060,
+     "index_count": 2574,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 108,
+     "record_id": "muscle.left-flexor-hallucis-longus",
+     "vertex_start": 494903,
+     "vertex_count": 1847,
+     "index_start": 2321634,
+     "index_count": 8274,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 109,
+     "record_id": "muscle.right-flexor-hallucis-longus",
+     "vertex_start": 496750,
+     "vertex_count": 1847,
+     "index_start": 2329908,
+     "index_count": 8274,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 110,
+     "record_id": "muscle.left-splenius-capitis",
+     "vertex_start": 498597,
+     "vertex_count": 4846,
+     "index_start": 2338182,
+     "index_count": 23424,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.16962443252166737
+    },
+    {
+     "slot": 111,
+     "record_id": "muscle.right-splenius-capitis",
+     "vertex_start": 503443,
+     "vertex_count": 4841,
+     "index_start": 2361606,
+     "index_count": 23424,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.1697996281759967
+    },
+    {
+     "slot": 112,
+     "record_id": "muscle.left-splenius-cervicis",
+     "vertex_start": 508284,
+     "vertex_count": 4610,
+     "index_start": 2385030,
+     "index_count": 18768,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.08221258134490239
+    },
+    {
+     "slot": 113,
+     "record_id": "muscle.right-splenius-cervicis",
+     "vertex_start": 512894,
+     "vertex_count": 4604,
+     "index_start": 2403798,
+     "index_count": 18768,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.08188531711555169
+    },
+    {
+     "slot": 114,
+     "record_id": "muscle.left-iliocostalis-lumborum",
+     "vertex_start": 517498,
+     "vertex_count": 10581,
+     "index_start": 2422566,
+     "index_count": 47616,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 115,
+     "record_id": "muscle.right-iliocostalis-lumborum",
+     "vertex_start": 528079,
+     "vertex_count": 10585,
+     "index_start": 2470182,
+     "index_count": 47616,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 116,
+     "record_id": "muscle.left-iliocostalis-thoracis",
+     "vertex_start": 538664,
+     "vertex_count": 5509,
+     "index_start": 2517798,
+     "index_count": 25158,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 117,
+     "record_id": "muscle.right-iliocostalis-thoracis",
+     "vertex_start": 544173,
+     "vertex_count": 5508,
+     "index_start": 2542956,
+     "index_count": 25158,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 118,
+     "record_id": "muscle.left-iliocostalis-cervicis",
+     "vertex_start": 549681,
+     "vertex_count": 2326,
+     "index_start": 2568114,
+     "index_count": 9216,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 119,
+     "record_id": "muscle.right-iliocostalis-cervicis",
+     "vertex_start": 552007,
+     "vertex_count": 2315,
+     "index_start": 2577330,
+     "index_count": 9216,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 120,
+     "record_id": "muscle.left-longissimus-thoracis",
+     "vertex_start": 554322,
+     "vertex_count": 13072,
+     "index_start": 2586546,
+     "index_count": 45204,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0024479804161566705
+    },
+    {
+     "slot": 121,
+     "record_id": "muscle.right-longissimus-thoracis",
+     "vertex_start": 567394,
+     "vertex_count": 13066,
+     "index_start": 2631750,
+     "index_count": 45204,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.002449104546150314
+    },
+    {
+     "slot": 122,
+     "record_id": "muscle.left-longissimus-cervicis",
+     "vertex_start": 580460,
+     "vertex_count": 2330,
+     "index_start": 2676954,
+     "index_count": 8448,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 123,
+     "record_id": "muscle.right-longissimus-cervicis",
+     "vertex_start": 582790,
+     "vertex_count": 2325,
+     "index_start": 2685402,
+     "index_count": 8448,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 124,
+     "record_id": "muscle.left-longissimus-capitis",
+     "vertex_start": 585115,
+     "vertex_count": 1824,
+     "index_start": 2693850,
+     "index_count": 6780,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 125,
+     "record_id": "muscle.right-longissimus-capitis",
+     "vertex_start": 586939,
+     "vertex_count": 1821,
+     "index_start": 2700630,
+     "index_count": 6780,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 126,
+     "record_id": "muscle.left-spinalis-thoracis",
+     "vertex_start": 588760,
+     "vertex_count": 5756,
+     "index_start": 2707410,
+     "index_count": 22266,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.04447533009034051
+    },
+    {
+     "slot": 127,
+     "record_id": "muscle.right-spinalis-thoracis",
+     "vertex_start": 594516,
+     "vertex_count": 5758,
+     "index_start": 2729676,
+     "index_count": 22266,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.04480722473080931
+    },
+    {
+     "slot": 128,
+     "record_id": "muscle.left-semispinalis-thoracis",
+     "vertex_start": 600274,
+     "vertex_count": 4582,
+     "index_start": 2751942,
+     "index_count": 15528,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.005456132693147098
+    },
+    {
+     "slot": 129,
+     "record_id": "muscle.right-semispinalis-thoracis",
+     "vertex_start": 604856,
+     "vertex_count": 4575,
+     "index_start": 2767470,
+     "index_count": 15528,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.00546448087431694
+    },
+    {
+     "slot": 130,
+     "record_id": "muscle.left-semispinalis-cervicis",
+     "vertex_start": 609431,
+     "vertex_count": 3047,
+     "index_start": 2782998,
+     "index_count": 10218,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.00590744995077125
+    },
+    {
+     "slot": 131,
+     "record_id": "muscle.right-semispinalis-cervicis",
+     "vertex_start": 612478,
+     "vertex_count": 3060,
+     "index_start": 2793216,
+     "index_count": 10218,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0058823529411764705
+    },
+    {
+     "slot": 132,
+     "record_id": "muscle.left-semispinalis-capitis",
+     "vertex_start": 615538,
+     "vertex_count": 2738,
+     "index_start": 2803434,
+     "index_count": 5736,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 133,
+     "record_id": "muscle.right-semispinalis-capitis",
+     "vertex_start": 618276,
+     "vertex_count": 2744,
+     "index_start": 2809170,
+     "index_count": 5736,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 134,
+     "record_id": "muscle.left-interspinalis-thoracis",
+     "vertex_start": 621020,
+     "vertex_count": 426,
+     "index_start": 2814906,
+     "index_count": 1230,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.1267605633802817
+    },
+    {
+     "slot": 135,
+     "record_id": "muscle.right-interspinalis-thoracis",
+     "vertex_start": 621446,
+     "vertex_count": 425,
+     "index_start": 2816136,
+     "index_count": 1230,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.12705882352941175
+    },
+    {
+     "slot": 136,
+     "record_id": "muscle.lateral-lumbar-intertransversarius",
+     "vertex_start": 621871,
+     "vertex_count": 3256,
+     "index_start": 2817366,
+     "index_count": 8172,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 137,
+     "record_id": "muscle.medial-lumbar-intertransversarius",
+     "vertex_start": 625127,
+     "vertex_count": 2829,
+     "index_start": 2825538,
+     "index_count": 10416,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 138,
+     "record_id": "muscle.left-cervical-rotator",
+     "vertex_start": 627956,
+     "vertex_count": 4535,
+     "index_start": 2835954,
+     "index_count": 10602,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0017640573318632856
+    },
+    {
+     "slot": 139,
+     "record_id": "muscle.right-cervical-rotator",
+     "vertex_start": 632491,
+     "vertex_count": 4553,
+     "index_start": 2846556,
+     "index_count": 10602,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.002415989457500549
+    },
+    {
+     "slot": 140,
+     "record_id": "muscle.thoracic-rotator",
+     "vertex_start": 637044,
+     "vertex_count": 22014,
+     "index_start": 2857158,
+     "index_count": 66372,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 141,
+     "record_id": "muscle.left-lumbar-rotator",
+     "vertex_start": 659058,
+     "vertex_count": 5187,
+     "index_start": 2923530,
+     "index_count": 14226,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.016965490649701175
+    },
+    {
+     "slot": 142,
+     "record_id": "muscle.right-lumbar-rotator",
+     "vertex_start": 664245,
+     "vertex_count": 5188,
+     "index_start": 2937756,
+     "index_count": 14226,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.017347725520431765
+    },
+    {
+     "slot": 143,
+     "record_id": "muscle.left-levator-scapulae",
+     "vertex_start": 669433,
+     "vertex_count": 3324,
+     "index_start": 2951982,
+     "index_count": 14154,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 144,
+     "record_id": "muscle.right-levator-scapulae",
+     "vertex_start": 672757,
+     "vertex_count": 3311,
+     "index_start": 2966136,
+     "index_count": 14154,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 145,
+     "record_id": "muscle.left-rectus-capitis-posterior-major",
+     "vertex_start": 676068,
+     "vertex_count": 1038,
+     "index_start": 2980290,
+     "index_count": 4698,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 146,
+     "record_id": "muscle.right-rectus-capitis-posterior-major",
+     "vertex_start": 677106,
+     "vertex_count": 1074,
+     "index_start": 2984988,
+     "index_count": 4716,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0148975791433892
+    },
+    {
+     "slot": 147,
+     "record_id": "muscle.left-rectus-capitis-posterior-minor",
+     "vertex_start": 678180,
+     "vertex_count": 686,
+     "index_start": 2989704,
+     "index_count": 2580,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.011661807580174927
+    },
+    {
+     "slot": 148,
+     "record_id": "muscle.right-rectus-capitis-posterior-minor",
+     "vertex_start": 678866,
+     "vertex_count": 744,
+     "index_start": 2992284,
+     "index_count": 2658,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 149,
+     "record_id": "muscle.left-obliquus-capitis-superior",
+     "vertex_start": 679610,
+     "vertex_count": 1454,
+     "index_start": 2994942,
+     "index_count": 4254,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 150,
+     "record_id": "muscle.right-obliquus-capitis-superior",
+     "vertex_start": 681064,
+     "vertex_count": 1569,
+     "index_start": 2999196,
+     "index_count": 4230,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 151,
+     "record_id": "muscle.left-obliquus-capitis-inferior",
+     "vertex_start": 682633,
+     "vertex_count": 703,
+     "index_start": 3003426,
+     "index_count": 3132,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 152,
+     "record_id": "muscle.right-obliquus-capitis-inferior",
+     "vertex_start": 683336,
+     "vertex_count": 692,
+     "index_start": 3006558,
+     "index_count": 3096,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 153,
+     "record_id": "muscle.left-infraspinatus-muscle",
+     "vertex_start": 684028,
+     "vertex_count": 738,
+     "index_start": 3009654,
+     "index_count": 2598,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 154,
+     "record_id": "muscle.right-infraspinatus-muscle",
+     "vertex_start": 684766,
+     "vertex_count": 743,
+     "index_start": 3012252,
+     "index_count": 2598,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 155,
+     "record_id": "muscle.left-teres-major",
+     "vertex_start": 685509,
+     "vertex_count": 1052,
+     "index_start": 3014850,
+     "index_count": 3126,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 156,
+     "record_id": "muscle.right-teres-major",
+     "vertex_start": 686561,
+     "vertex_count": 1044,
+     "index_start": 3017976,
+     "index_count": 3126,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 157,
+     "record_id": "muscle.left-teres-minor",
+     "vertex_start": 687605,
+     "vertex_count": 391,
+     "index_start": 3021102,
+     "index_count": 1518,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 158,
+     "record_id": "muscle.right-teres-minor",
+     "vertex_start": 687996,
+     "vertex_count": 392,
+     "index_start": 3022620,
+     "index_count": 1518,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 159,
+     "record_id": "muscle.left-abductor-pollicis-brevis",
+     "vertex_start": 688388,
+     "vertex_count": 711,
+     "index_start": 3024138,
+     "index_count": 2232,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 160,
+     "record_id": "muscle.right-abductor-pollicis-brevis",
+     "vertex_start": 689099,
+     "vertex_count": 713,
+     "index_start": 3026370,
+     "index_count": 2232,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 161,
+     "record_id": "muscle.left-flexor-pollicis-brevis",
+     "vertex_start": 689812,
+     "vertex_count": 735,
+     "index_start": 3028602,
+     "index_count": 2142,
+     "mesh_files": 1,
+     "cross_midline_fraction": 1.0
+    },
+    {
+     "slot": 162,
+     "record_id": "muscle.right-flexor-pollicis-brevis",
+     "vertex_start": 690547,
+     "vertex_count": 735,
+     "index_start": 3030744,
+     "index_count": 2142,
+     "mesh_files": 1,
+     "cross_midline_fraction": 1.0
+    },
+    {
+     "slot": 163,
+     "record_id": "muscle.left-opponens-pollicis",
+     "vertex_start": 691282,
+     "vertex_count": 1015,
+     "index_start": 3032886,
+     "index_count": 2868,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 164,
+     "record_id": "muscle.right-opponens-pollicis",
+     "vertex_start": 692297,
+     "vertex_count": 1015,
+     "index_start": 3035754,
+     "index_count": 2868,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 165,
+     "record_id": "muscle.abductor-digiti-minimi-of-left-hand",
+     "vertex_start": 693312,
+     "vertex_count": 620,
+     "index_start": 3038622,
+     "index_count": 1524,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 166,
+     "record_id": "muscle.abductor-digiti-minimi-of-right-hand",
+     "vertex_start": 693932,
+     "vertex_count": 625,
+     "index_start": 3040146,
+     "index_count": 1524,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 167,
+     "record_id": "muscle.flexor-digiti-minimi-brevis-of-left-hand",
+     "vertex_start": 694557,
+     "vertex_count": 312,
+     "index_start": 3041670,
+     "index_count": 984,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 168,
+     "record_id": "muscle.flexor-digiti-minimi-brevis-of-right-hand",
+     "vertex_start": 694869,
+     "vertex_count": 312,
+     "index_start": 3042654,
+     "index_count": 984,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 169,
+     "record_id": "muscle.opponens-digiti-minimi-of-left-hand",
+     "vertex_start": 695181,
+     "vertex_count": 624,
+     "index_start": 3043638,
+     "index_count": 1452,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 170,
+     "record_id": "muscle.opponens-digiti-minimi-of-right-hand",
+     "vertex_start": 695805,
+     "vertex_count": 626,
+     "index_start": 3045090,
+     "index_count": 1452,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 171,
+     "record_id": "muscle.left-abductor-hallucis",
+     "vertex_start": 696431,
+     "vertex_count": 972,
+     "index_start": 3046542,
+     "index_count": 3204,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 172,
+     "record_id": "muscle.right-abductor-hallucis",
+     "vertex_start": 697403,
+     "vertex_count": 974,
+     "index_start": 3049746,
+     "index_count": 3204,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 173,
+     "record_id": "muscle.left-flexor-digitorum-brevis",
+     "vertex_start": 698377,
+     "vertex_count": 2479,
+     "index_start": 3052950,
+     "index_count": 7308,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 174,
+     "record_id": "muscle.right-flexor-digitorum-brevis",
+     "vertex_start": 700856,
+     "vertex_count": 2468,
+     "index_start": 3060258,
+     "index_count": 7308,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 175,
+     "record_id": "muscle.abductor-digiti-minimi-of-left-foot",
+     "vertex_start": 703324,
+     "vertex_count": 1492,
+     "index_start": 3067566,
+     "index_count": 3828,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 176,
+     "record_id": "muscle.abductor-digiti-minimi-of-right-foot",
+     "vertex_start": 704816,
+     "vertex_count": 1492,
+     "index_start": 3071394,
+     "index_count": 3828,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 177,
+     "record_id": "muscle.left-flexor-accessorius",
+     "vertex_start": 706308,
+     "vertex_count": 718,
+     "index_start": 3075222,
+     "index_count": 2526,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 178,
+     "record_id": "muscle.right-flexor-accessorius",
+     "vertex_start": 707026,
+     "vertex_count": 718,
+     "index_start": 3077748,
+     "index_count": 2526,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 179,
+     "record_id": "muscle.flexor-digiti-minimi-brevis-of-left-foot",
+     "vertex_start": 707744,
+     "vertex_count": 821,
+     "index_start": 3080274,
+     "index_count": 2358,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 180,
+     "record_id": "muscle.flexor-digiti-minimi-brevis-of-right-foot",
+     "vertex_start": 708565,
+     "vertex_count": 820,
+     "index_start": 3082632,
+     "index_count": 2358,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 181,
+     "record_id": "muscle.first-lumbrical-of-left-foot",
+     "vertex_start": 709385,
+     "vertex_count": 838,
+     "index_start": 3084990,
+     "index_count": 1938,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 182,
+     "record_id": "muscle.first-lumbrical-of-right-foot",
+     "vertex_start": 710223,
+     "vertex_count": 838,
+     "index_start": 3086928,
+     "index_count": 1938,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 183,
+     "record_id": "muscle.second-lumbrical-of-left-foot",
+     "vertex_start": 711061,
+     "vertex_count": 266,
+     "index_start": 3088866,
+     "index_count": 798,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 184,
+     "record_id": "muscle.second-lumbrical-of-right-foot",
+     "vertex_start": 711327,
+     "vertex_count": 266,
+     "index_start": 3089664,
+     "index_count": 798,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 185,
+     "record_id": "muscle.third-lumbrical-of-left-foot",
+     "vertex_start": 711593,
+     "vertex_count": 512,
+     "index_start": 3090462,
+     "index_count": 1104,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 186,
+     "record_id": "muscle.third-lumbrical-of-right-foot",
+     "vertex_start": 712105,
+     "vertex_count": 508,
+     "index_start": 3091566,
+     "index_count": 1104,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 187,
+     "record_id": "muscle.fourth-lumbrical-of-left-foot",
+     "vertex_start": 712613,
+     "vertex_count": 410,
+     "index_start": 3092670,
+     "index_count": 984,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 188,
+     "record_id": "muscle.fourth-lumbrical-of-right-foot",
+     "vertex_start": 713023,
+     "vertex_count": 410,
+     "index_start": 3093654,
+     "index_count": 984,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 189,
+     "record_id": "muscle.left-coracobrachialis",
+     "vertex_start": 713433,
+     "vertex_count": 449,
+     "index_start": 3094638,
+     "index_count": 1332,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 190,
+     "record_id": "muscle.right-coracobrachialis",
+     "vertex_start": 713882,
+     "vertex_count": 451,
+     "index_start": 3095970,
+     "index_count": 1332,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 191,
+     "record_id": "muscle.left-brachialis",
+     "vertex_start": 714333,
+     "vertex_count": 1256,
+     "index_start": 3097302,
+     "index_count": 5238,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 192,
+     "record_id": "muscle.right-brachialis",
+     "vertex_start": 715589,
+     "vertex_count": 1266,
+     "index_start": 3102540,
+     "index_count": 5238,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 193,
+     "record_id": "muscle.left-anconeus",
+     "vertex_start": 716855,
+     "vertex_count": 1106,
+     "index_start": 3107778,
+     "index_count": 3834,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 194,
+     "record_id": "muscle.right-anconeus",
+     "vertex_start": 717961,
+     "vertex_count": 1105,
+     "index_start": 3111612,
+     "index_count": 3834,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 195,
+     "record_id": "muscle.first-plantar-interosseous-of-left-foot",
+     "vertex_start": 719066,
+     "vertex_count": 561,
+     "index_start": 3115446,
+     "index_count": 2022,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 196,
+     "record_id": "muscle.first-plantar-interosseous-of-right-foot",
+     "vertex_start": 719627,
+     "vertex_count": 563,
+     "index_start": 3117468,
+     "index_count": 2022,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 197,
+     "record_id": "muscle.second-plantar-interosseous-of-left-foot",
+     "vertex_start": 720190,
+     "vertex_count": 522,
+     "index_start": 3119490,
+     "index_count": 1896,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 198,
+     "record_id": "muscle.second-plantar-interosseous-of-right-foot",
+     "vertex_start": 720712,
+     "vertex_count": 522,
+     "index_start": 3121386,
+     "index_count": 1896,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 199,
+     "record_id": "muscle.third-plantar-interosseous-of-left-foot",
+     "vertex_start": 721234,
+     "vertex_count": 905,
+     "index_start": 3123282,
+     "index_count": 2316,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 200,
+     "record_id": "muscle.third-plantar-interosseous-of-right-foot",
+     "vertex_start": 722139,
+     "vertex_count": 908,
+     "index_start": 3125598,
+     "index_count": 2316,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 201,
+     "record_id": "muscle.left-pronator-quadratus",
+     "vertex_start": 723047,
+     "vertex_count": 2259,
+     "index_start": 3127914,
+     "index_count": 5514,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 202,
+     "record_id": "muscle.right-pronator-quadratus",
+     "vertex_start": 725306,
+     "vertex_count": 2257,
+     "index_start": 3133428,
+     "index_count": 5514,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 203,
+     "record_id": "muscle.left-flexor-carpi-radialis",
+     "vertex_start": 727563,
+     "vertex_count": 819,
+     "index_start": 3138942,
+     "index_count": 3444,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 204,
+     "record_id": "muscle.right-flexor-carpi-radialis",
+     "vertex_start": 728382,
+     "vertex_count": 819,
+     "index_start": 3142386,
+     "index_count": 3444,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 205,
+     "record_id": "muscle.left-palmaris-longus",
+     "vertex_start": 729201,
+     "vertex_count": 4469,
+     "index_start": 3145830,
+     "index_count": 14904,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 206,
+     "record_id": "muscle.right-palmaris-longus",
+     "vertex_start": 733670,
+     "vertex_count": 4471,
+     "index_start": 3160734,
+     "index_count": 14904,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 207,
+     "record_id": "muscle.left-flexor-digitorum-superficialis",
+     "vertex_start": 738141,
+     "vertex_count": 6742,
+     "index_start": 3175638,
+     "index_count": 28692,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 208,
+     "record_id": "muscle.right-flexor-digitorum-superficialis",
+     "vertex_start": 744883,
+     "vertex_count": 6745,
+     "index_start": 3204330,
+     "index_count": 28692,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 209,
+     "record_id": "muscle.left-flexor-digitorum-profundus",
+     "vertex_start": 751628,
+     "vertex_count": 3852,
+     "index_start": 3233022,
+     "index_count": 14514,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 210,
+     "record_id": "muscle.right-flexor-digitorum-profundus",
+     "vertex_start": 755480,
+     "vertex_count": 3857,
+     "index_start": 3247536,
+     "index_count": 14514,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 211,
+     "record_id": "muscle.left-flexor-pollicis-longus",
+     "vertex_start": 759337,
+     "vertex_count": 1783,
+     "index_start": 3262050,
+     "index_count": 4326,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 212,
+     "record_id": "muscle.right-flexor-pollicis-longus",
+     "vertex_start": 761120,
+     "vertex_count": 1781,
+     "index_start": 3266376,
+     "index_count": 4326,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 213,
+     "record_id": "muscle.left-brachioradialis",
+     "vertex_start": 762901,
+     "vertex_count": 3272,
+     "index_start": 3270702,
+     "index_count": 14622,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 214,
+     "record_id": "muscle.right-brachioradialis",
+     "vertex_start": 766173,
+     "vertex_count": 3270,
+     "index_start": 3285324,
+     "index_count": 14622,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 215,
+     "record_id": "muscle.left-extensor-carpi-radialis-longus",
+     "vertex_start": 769443,
+     "vertex_count": 1702,
+     "index_start": 3299946,
+     "index_count": 7422,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 216,
+     "record_id": "muscle.right-extensor-carpi-radialis-longus",
+     "vertex_start": 771145,
+     "vertex_count": 1696,
+     "index_start": 3307368,
+     "index_count": 7422,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 217,
+     "record_id": "muscle.left-extensor-carpi-radialis-brevis",
+     "vertex_start": 772841,
+     "vertex_count": 1564,
+     "index_start": 3314790,
+     "index_count": 6294,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 218,
+     "record_id": "muscle.right-extensor-carpi-radialis-brevis",
+     "vertex_start": 774405,
+     "vertex_count": 1564,
+     "index_start": 3321084,
+     "index_count": 6294,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 219,
+     "record_id": "muscle.left-extensor-digitorum",
+     "vertex_start": 775969,
+     "vertex_count": 3350,
+     "index_start": 3327378,
+     "index_count": 12882,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 220,
+     "record_id": "muscle.right-extensor-digitorum",
+     "vertex_start": 779319,
+     "vertex_count": 3355,
+     "index_start": 3340260,
+     "index_count": 12882,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 221,
+     "record_id": "muscle.left-extensor-digiti-minimi",
+     "vertex_start": 782674,
+     "vertex_count": 1017,
+     "index_start": 3353142,
+     "index_count": 4302,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 222,
+     "record_id": "muscle.right-extensor-digiti-minimi",
+     "vertex_start": 783691,
+     "vertex_count": 1014,
+     "index_start": 3357444,
+     "index_count": 4302,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 223,
+     "record_id": "muscle.left-extensor-carpi-ulnaris",
+     "vertex_start": 784705,
+     "vertex_count": 4099,
+     "index_start": 3361746,
+     "index_count": 10182,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 224,
+     "record_id": "muscle.right-extensor-carpi-ulnaris",
+     "vertex_start": 788804,
+     "vertex_count": 4089,
+     "index_start": 3371928,
+     "index_count": 10182,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 225,
+     "record_id": "muscle.left-supinator",
+     "vertex_start": 792893,
+     "vertex_count": 2379,
+     "index_start": 3382110,
+     "index_count": 9330,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 226,
+     "record_id": "muscle.right-supinator",
+     "vertex_start": 795272,
+     "vertex_count": 2368,
+     "index_start": 3391440,
+     "index_count": 9330,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 227,
+     "record_id": "muscle.left-abductor-pollicis-longus",
+     "vertex_start": 797640,
+     "vertex_count": 1439,
+     "index_start": 3400770,
+     "index_count": 5622,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 228,
+     "record_id": "muscle.right-abductor-pollicis-longus",
+     "vertex_start": 799079,
+     "vertex_count": 1439,
+     "index_start": 3406392,
+     "index_count": 5622,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 229,
+     "record_id": "muscle.left-extensor-pollicis-brevis",
+     "vertex_start": 800518,
+     "vertex_count": 846,
+     "index_start": 3412014,
+     "index_count": 2994,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 230,
+     "record_id": "muscle.right-extensor-pollicis-brevis",
+     "vertex_start": 801364,
+     "vertex_count": 846,
+     "index_start": 3415008,
+     "index_count": 2994,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 231,
+     "record_id": "muscle.left-extensor-pollicis-longus",
+     "vertex_start": 802210,
+     "vertex_count": 1178,
+     "index_start": 3418002,
+     "index_count": 3978,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 232,
+     "record_id": "muscle.right-extensor-pollicis-longus",
+     "vertex_start": 803388,
+     "vertex_count": 1177,
+     "index_start": 3421980,
+     "index_count": 3978,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 233,
+     "record_id": "muscle.left-extensor-indicis",
+     "vertex_start": 804565,
+     "vertex_count": 692,
+     "index_start": 3425958,
+     "index_count": 2160,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 234,
+     "record_id": "muscle.right-extensor-indicis",
+     "vertex_start": 805257,
+     "vertex_count": 690,
+     "index_start": 3428118,
+     "index_count": 2160,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 235,
+     "record_id": "muscle.left-gracilis",
+     "vertex_start": 805947,
+     "vertex_count": 2085,
+     "index_start": 3430278,
+     "index_count": 9516,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 236,
+     "record_id": "muscle.right-gracilis",
+     "vertex_start": 808032,
+     "vertex_count": 2086,
+     "index_start": 3439794,
+     "index_count": 9516,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 237,
+     "record_id": "muscle.left-adductor-minimus",
+     "vertex_start": 810118,
+     "vertex_count": 1597,
+     "index_start": 3449310,
+     "index_count": 5874,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 238,
+     "record_id": "muscle.right-adductor-minimus",
+     "vertex_start": 811715,
+     "vertex_count": 1600,
+     "index_start": 3455184,
+     "index_count": 5874,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 239,
+     "record_id": "muscle.left-platysma",
+     "vertex_start": 813315,
+     "vertex_count": 7290,
+     "index_start": 3461058,
+     "index_count": 40188,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.04609053497942387
+    },
+    {
+     "slot": 240,
+     "record_id": "muscle.right-platysma",
+     "vertex_start": 820605,
+     "vertex_count": 7857,
+     "index_start": 3501246,
+     "index_count": 41340,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.04174621356751941
+    },
+    {
+     "slot": 241,
+     "record_id": "muscle.left-digastric",
+     "vertex_start": 828462,
+     "vertex_count": 2164,
+     "index_start": 3542586,
+     "index_count": 9852,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 242,
+     "record_id": "muscle.right-digastric",
+     "vertex_start": 830626,
+     "vertex_count": 1982,
+     "index_start": 3552438,
+     "index_count": 8856,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 243,
+     "record_id": "muscle.left-longus-capitis",
+     "vertex_start": 832608,
+     "vertex_count": 2300,
+     "index_start": 3561294,
+     "index_count": 11694,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 244,
+     "record_id": "muscle.right-longus-capitis",
+     "vertex_start": 834908,
+     "vertex_count": 2489,
+     "index_start": 3572988,
+     "index_count": 11868,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 245,
+     "record_id": "muscle.left-rectus-capitis-anterior",
+     "vertex_start": 837397,
+     "vertex_count": 646,
+     "index_start": 3584856,
+     "index_count": 2448,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 246,
+     "record_id": "muscle.right-rectus-capitis-anterior",
+     "vertex_start": 838043,
+     "vertex_count": 750,
+     "index_start": 3587304,
+     "index_count": 2412,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.032
+    },
+    {
+     "slot": 247,
+     "record_id": "muscle.left-rectus-capitis-lateralis",
+     "vertex_start": 838793,
+     "vertex_count": 598,
+     "index_start": 3589716,
+     "index_count": 2160,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 248,
+     "record_id": "muscle.right-rectus-capitis-lateralis",
+     "vertex_start": 839391,
+     "vertex_count": 553,
+     "index_start": 3591876,
+     "index_count": 2022,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 249,
+     "record_id": "muscle.left-mylohyoid",
+     "vertex_start": 839944,
+     "vertex_count": 1257,
+     "index_start": 3593898,
+     "index_count": 5814,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.2680986475735879
+    },
+    {
+     "slot": 250,
+     "record_id": "muscle.right-mylohyoid",
+     "vertex_start": 841201,
+     "vertex_count": 1267,
+     "index_start": 3599712,
+     "index_count": 5868,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 251,
+     "record_id": "muscle.left-geniohyoid",
+     "vertex_start": 842468,
+     "vertex_count": 419,
+     "index_start": 3605580,
+     "index_count": 2196,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.1957040572792363
+    },
+    {
+     "slot": 252,
+     "record_id": "muscle.right-geniohyoid",
+     "vertex_start": 842887,
+     "vertex_count": 408,
+     "index_start": 3607776,
+     "index_count": 2184,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 253,
+     "record_id": "muscle.left-posterior-crico-arytenoid",
+     "vertex_start": 843295,
+     "vertex_count": 2611,
+     "index_start": 3609960,
+     "index_count": 14526,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 254,
+     "record_id": "muscle.right-posterior-crico-arytenoid",
+     "vertex_start": 845906,
+     "vertex_count": 2567,
+     "index_start": 3624486,
+     "index_count": 14436,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 255,
+     "record_id": "muscle.left-lateral-crico-arytenoid",
+     "vertex_start": 848473,
+     "vertex_count": 3559,
+     "index_start": 3638922,
+     "index_count": 18642,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 256,
+     "record_id": "muscle.right-lateral-crico-arytenoid",
+     "vertex_start": 852032,
+     "vertex_count": 3501,
+     "index_start": 3657564,
+     "index_count": 18594,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 257,
+     "record_id": "muscle.transverse-arytenoid",
+     "vertex_start": 855533,
+     "vertex_count": 4869,
+     "index_start": 3676158,
+     "index_count": 19740,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 258,
+     "record_id": "muscle.left-oblique-arytenoid",
+     "vertex_start": 860402,
+     "vertex_count": 4267,
+     "index_start": 3695898,
+     "index_count": 18912,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.4663698148582142
+    },
+    {
+     "slot": 259,
+     "record_id": "muscle.right-oblique-arytenoid",
+     "vertex_start": 864669,
+     "vertex_count": 4117,
+     "index_start": 3714810,
+     "index_count": 18252,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.4131649259169298
+    },
+    {
+     "slot": 260,
+     "record_id": "muscle.left-thyro-arytenoid",
+     "vertex_start": 868786,
+     "vertex_count": 9557,
+     "index_start": 3733062,
+     "index_count": 46146,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.022601234697080672
+    },
+    {
+     "slot": 261,
+     "record_id": "muscle.right-thyro-arytenoid",
+     "vertex_start": 878343,
+     "vertex_count": 10412,
+     "index_start": 3779208,
+     "index_count": 50226,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 262,
+     "record_id": "muscle.left-vocalis",
+     "vertex_start": 888755,
+     "vertex_count": 679,
+     "index_start": 3829434,
+     "index_count": 3456,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 263,
+     "record_id": "muscle.right-vocalis",
+     "vertex_start": 889434,
+     "vertex_count": 656,
+     "index_start": 3832890,
+     "index_count": 3444,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 264,
+     "record_id": "muscle.left-aryepiglotticus",
+     "vertex_start": 890090,
+     "vertex_count": 5804,
+     "index_start": 3836334,
+     "index_count": 13530,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 265,
+     "record_id": "muscle.right-aryepiglotticus",
+     "vertex_start": 895894,
+     "vertex_count": 4947,
+     "index_start": 3849864,
+     "index_count": 13098,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.021831412977562158
+    },
+    {
+     "slot": 266,
+     "record_id": "muscle.left-superior-pharyngeal-constrictor",
+     "vertex_start": 900841,
+     "vertex_count": 6380,
+     "index_start": 3862962,
+     "index_count": 32106,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.2263322884012539
+    },
+    {
+     "slot": 267,
+     "record_id": "muscle.right-superior-pharyngeal-constrictor",
+     "vertex_start": 907221,
+     "vertex_count": 6403,
+     "index_start": 3895068,
+     "index_count": 32106,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 268,
+     "record_id": "muscle.left-middle-pharyngeal-constrictor",
+     "vertex_start": 913624,
+     "vertex_count": 3454,
+     "index_start": 3927174,
+     "index_count": 17736,
+     "mesh_files": 1,
+     "cross_midline_fraction": 1.0
+    },
+    {
+     "slot": 269,
+     "record_id": "muscle.right-middle-pharyngeal-constrictor",
+     "vertex_start": 917078,
+     "vertex_count": 3497,
+     "index_start": 3944910,
+     "index_count": 17712,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.828996282527881
+    },
+    {
+     "slot": 270,
+     "record_id": "muscle.left-inferior-pharyngeal-constrictor",
+     "vertex_start": 920575,
+     "vertex_count": 4424,
+     "index_start": 3962622,
+     "index_count": 22266,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.23688969258589512
+    },
+    {
+     "slot": 271,
+     "record_id": "muscle.right-inferior-pharyngeal-constrictor",
+     "vertex_start": 924999,
+     "vertex_count": 4406,
+     "index_start": 3984888,
+     "index_count": 22344,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 272,
+     "record_id": "muscle.left-stylopharyngeus",
+     "vertex_start": 929405,
+     "vertex_count": 1985,
+     "index_start": 4007232,
+     "index_count": 9804,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 273,
+     "record_id": "muscle.right-stylopharyngeus",
+     "vertex_start": 931390,
+     "vertex_count": 13352,
+     "index_start": 4017036,
+     "index_count": 77256,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 274,
+     "record_id": "muscle.left-salpingopharyngeus",
+     "vertex_start": 944742,
+     "vertex_count": 4846,
+     "index_start": 4094292,
+     "index_count": 27456,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 275,
+     "record_id": "muscle.right-salpingopharyngeus",
+     "vertex_start": 949588,
+     "vertex_count": 4853,
+     "index_start": 4121748,
+     "index_count": 27456,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 276,
+     "record_id": "muscle.left-palatopharyngeus",
+     "vertex_start": 954441,
+     "vertex_count": 20760,
+     "index_start": 4149204,
+     "index_count": 124200,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.09070327552986512
+    },
+    {
+     "slot": 277,
+     "record_id": "muscle.right-palatopharyngeus",
+     "vertex_start": 975201,
+     "vertex_count": 20746,
+     "index_start": 4273404,
+     "index_count": 124200,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.025643497541694784
+    },
+    {
+     "slot": 278,
+     "record_id": "muscle.left-genioglossus",
+     "vertex_start": 995947,
+     "vertex_count": 4685,
+     "index_start": 4397604,
+     "index_count": 24642,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.39978655282817505
+    },
+    {
+     "slot": 279,
+     "record_id": "muscle.right-genioglossus",
+     "vertex_start": 1000632,
+     "vertex_count": 4261,
+     "index_start": 4422246,
+     "index_count": 22782,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 280,
+     "record_id": "muscle.left-hyoglossus",
+     "vertex_start": 1004893,
+     "vertex_count": 1709,
+     "index_start": 4445028,
+     "index_count": 8664,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 281,
+     "record_id": "muscle.right-hyoglossus",
+     "vertex_start": 1006602,
+     "vertex_count": 1653,
+     "index_start": 4453692,
+     "index_count": 8622,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 282,
+     "record_id": "muscle.left-levator-veli-palatini",
+     "vertex_start": 1008255,
+     "vertex_count": 6821,
+     "index_start": 4462314,
+     "index_count": 36954,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 283,
+     "record_id": "muscle.right-levator-veli-palatini",
+     "vertex_start": 1015076,
+     "vertex_count": 6835,
+     "index_start": 4499268,
+     "index_count": 36936,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 284,
+     "record_id": "muscle.left-tensor-veli-palatini",
+     "vertex_start": 1021911,
+     "vertex_count": 7523,
+     "index_start": 4536204,
+     "index_count": 41616,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 285,
+     "record_id": "muscle.right-tensor-veli-palatini",
+     "vertex_start": 1029434,
+     "vertex_count": 7464,
+     "index_start": 4577820,
+     "index_count": 41616,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 286,
+     "record_id": "muscle.uvular-muscle",
+     "vertex_start": 1036898,
+     "vertex_count": 894,
+     "index_start": 4619436,
+     "index_count": 4896,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 287,
+     "record_id": "muscle.left-superior-rectus",
+     "vertex_start": 1037792,
+     "vertex_count": 1527,
+     "index_start": 4624332,
+     "index_count": 8508,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 288,
+     "record_id": "muscle.right-superior-rectus",
+     "vertex_start": 1039319,
+     "vertex_count": 1532,
+     "index_start": 4632840,
+     "index_count": 8436,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 289,
+     "record_id": "muscle.left-inferior-rectus",
+     "vertex_start": 1040851,
+     "vertex_count": 1858,
+     "index_start": 4641276,
+     "index_count": 10680,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 290,
+     "record_id": "muscle.right-inferior-rectus",
+     "vertex_start": 1042709,
+     "vertex_count": 1851,
+     "index_start": 4651956,
+     "index_count": 10626,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 291,
+     "record_id": "muscle.left-medial-rectus",
+     "vertex_start": 1044560,
+     "vertex_count": 1353,
+     "index_start": 4662582,
+     "index_count": 7728,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 292,
+     "record_id": "muscle.right-medial-rectus",
+     "vertex_start": 1045913,
+     "vertex_count": 1357,
+     "index_start": 4670310,
+     "index_count": 7644,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 293,
+     "record_id": "muscle.left-lateral-rectus",
+     "vertex_start": 1047270,
+     "vertex_count": 1745,
+     "index_start": 4677954,
+     "index_count": 9948,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 294,
+     "record_id": "muscle.right-lateral-rectus",
+     "vertex_start": 1049015,
+     "vertex_count": 1705,
+     "index_start": 4687902,
+     "index_count": 9828,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 295,
+     "record_id": "muscle.left-superior-oblique",
+     "vertex_start": 1050720,
+     "vertex_count": 1881,
+     "index_start": 4697730,
+     "index_count": 10812,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 296,
+     "record_id": "muscle.right-superior-oblique",
+     "vertex_start": 1052601,
+     "vertex_count": 1870,
+     "index_start": 4708542,
+     "index_count": 10638,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 297,
+     "record_id": "muscle.left-inferior-oblique",
+     "vertex_start": 1054471,
+     "vertex_count": 1217,
+     "index_start": 4719180,
+     "index_count": 7080,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 298,
+     "record_id": "muscle.right-inferior-oblique",
+     "vertex_start": 1055688,
+     "vertex_count": 1241,
+     "index_start": 4726260,
+     "index_count": 7026,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 299,
+     "record_id": "muscle.left-levator-palpebrae-superioris",
+     "vertex_start": 1056929,
+     "vertex_count": 2353,
+     "index_start": 4733286,
+     "index_count": 13080,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 300,
+     "record_id": "muscle.right-levator-palpebrae-superioris",
+     "vertex_start": 1059282,
+     "vertex_count": 2451,
+     "index_start": 4746366,
+     "index_count": 13080,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 301,
+     "record_id": "muscle.left-flexor-digitorum-longus",
+     "vertex_start": 1061733,
+     "vertex_count": 3039,
+     "index_start": 4759446,
+     "index_count": 12012,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 302,
+     "record_id": "muscle.right-flexor-digitorum-longus",
+     "vertex_start": 1064772,
+     "vertex_count": 3037,
+     "index_start": 4771458,
+     "index_count": 12012,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 303,
+     "record_id": "muscle.left-tibialis-posterior",
+     "vertex_start": 1067809,
+     "vertex_count": 5037,
+     "index_start": 4783470,
+     "index_count": 15408,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 304,
+     "record_id": "muscle.right-tibialis-posterior",
+     "vertex_start": 1072846,
+     "vertex_count": 5039,
+     "index_start": 4798878,
+     "index_count": 15408,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 305,
+     "record_id": "muscle.left-extensor-hallucis-brevis",
+     "vertex_start": 1077885,
+     "vertex_count": 1257,
+     "index_start": 4814286,
+     "index_count": 3690,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 306,
+     "record_id": "muscle.right-extensor-hallucis-brevis",
+     "vertex_start": 1079142,
+     "vertex_count": 1257,
+     "index_start": 4817976,
+     "index_count": 3690,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 307,
+     "record_id": "muscle.opponens-digiti-minimi-of-left-foot",
+     "vertex_start": 1080399,
+     "vertex_count": 267,
+     "index_start": 4821666,
+     "index_count": 600,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 308,
+     "record_id": "muscle.opponens-digiti-minimi-of-right-foot",
+     "vertex_start": 1080666,
+     "vertex_count": 267,
+     "index_start": 4822266,
+     "index_count": 600,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 309,
+     "record_id": "muscle.left-stylohyoid",
+     "vertex_start": 1080933,
+     "vertex_count": 909,
+     "index_start": 4822866,
+     "index_count": 3744,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 310,
+     "record_id": "muscle.right-stylohyoid",
+     "vertex_start": 1081842,
+     "vertex_count": 843,
+     "index_start": 4826610,
+     "index_count": 3708,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 311,
+     "record_id": "muscle.left-supraspinatus",
+     "vertex_start": 1082685,
+     "vertex_count": 842,
+     "index_start": 4830318,
+     "index_count": 2634,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 312,
+     "record_id": "muscle.right-supraspinatus",
+     "vertex_start": 1083527,
+     "vertex_count": 843,
+     "index_start": 4832952,
+     "index_count": 2634,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 313,
+     "record_id": "muscle.external-intercostal-muscle",
+     "vertex_start": 1084370,
+     "vertex_count": 171531,
+     "index_start": 4835586,
+     "index_count": 593568,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 314,
+     "record_id": "muscle.internal-intercostal-muscle",
+     "vertex_start": 1255901,
+     "vertex_count": 141671,
+     "index_start": 5429154,
+     "index_count": 539028,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 315,
+     "record_id": "muscle.innermost-intercostal-muscle",
+     "vertex_start": 1397572,
+     "vertex_count": 140575,
+     "index_start": 5968182,
+     "index_count": 523308,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 316,
+     "record_id": "muscle.left-transversus-thoracis",
+     "vertex_start": 1538147,
+     "vertex_count": 4745,
+     "index_start": 6491490,
+     "index_count": 12564,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 317,
+     "record_id": "muscle.right-transversus-thoracis",
+     "vertex_start": 1542892,
+     "vertex_count": 4749,
+     "index_start": 6504054,
+     "index_count": 12564,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 318,
+     "record_id": "muscle.set-of-interspinales-lumborum",
+     "vertex_start": 1547641,
+     "vertex_count": 1636,
+     "index_start": 6516618,
+     "index_count": 4644,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 319,
+     "record_id": "muscle.set-of-interspinales-cervicis",
+     "vertex_start": 1549277,
+     "vertex_count": 2308,
+     "index_start": 6521262,
+     "index_count": 7260,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 320,
+     "record_id": "muscle.set-of-left-levatores-costarum-longi",
+     "vertex_start": 1551585,
+     "vertex_count": 8256,
+     "index_start": 6528522,
+     "index_count": 36630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 321,
+     "record_id": "muscle.set-of-right-levatores-costarum-longi",
+     "vertex_start": 1559841,
+     "vertex_count": 8260,
+     "index_start": 6565152,
+     "index_count": 36630,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 322,
+     "record_id": "muscle.set-of-left-levatores-costarum-breves",
+     "vertex_start": 1568101,
+     "vertex_count": 5815,
+     "index_start": 6601782,
+     "index_count": 18150,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 323,
+     "record_id": "muscle.set-of-right-levatores-costarum-breves",
+     "vertex_start": 1573916,
+     "vertex_count": 5835,
+     "index_start": 6619932,
+     "index_count": 18150,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 324,
+     "record_id": "muscle.set-of-lumbricals-of-left-hand",
+     "vertex_start": 1579751,
+     "vertex_count": 3012,
+     "index_start": 6638082,
+     "index_count": 8004,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 325,
+     "record_id": "muscle.set-of-lumbricals-of-right-hand",
+     "vertex_start": 1582763,
+     "vertex_count": 3008,
+     "index_start": 6646086,
+     "index_count": 8004,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 326,
+     "record_id": "muscle.set-of-dorsal-interossei-of-left-hand",
+     "vertex_start": 1585771,
+     "vertex_count": 3756,
+     "index_start": 6654090,
+     "index_count": 7854,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 327,
+     "record_id": "muscle.set-of-dorsal-interossei-of-right-hand",
+     "vertex_start": 1589527,
+     "vertex_count": 3762,
+     "index_start": 6661944,
+     "index_count": 7854,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 328,
+     "record_id": "muscle.set-of-palmar-interossei-of-left-hand",
+     "vertex_start": 1593289,
+     "vertex_count": 1243,
+     "index_start": 6669798,
+     "index_count": 2898,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 329,
+     "record_id": "muscle.set-of-palmar-interossei-of-right-hand",
+     "vertex_start": 1594532,
+     "vertex_count": 1239,
+     "index_start": 6672696,
+     "index_count": 2898,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 330,
+     "record_id": "muscle.set-of-anterior-cervical-intertransversarii",
+     "vertex_start": 1595771,
+     "vertex_count": 2138,
+     "index_start": 6675594,
+     "index_count": 6912,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 331,
+     "record_id": "muscle.set-of-posterior-cervical-intertransversarii",
+     "vertex_start": 1597909,
+     "vertex_count": 2145,
+     "index_start": 6682506,
+     "index_count": 6540,
+     "mesh_files": 2,
+     "cross_midline_fraction": null
+    },
+    {
+     "slot": 332,
+     "record_id": "muscle.left-adductor-hallucis",
+     "vertex_start": 1600054,
+     "vertex_count": 2283,
+     "index_start": 6689046,
+     "index_count": 5616,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 333,
+     "record_id": "muscle.right-adductor-hallucis",
+     "vertex_start": 1602337,
+     "vertex_count": 2283,
+     "index_start": 6694662,
+     "index_count": 5616,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 334,
+     "record_id": "muscle.left-adductor-pollicis",
+     "vertex_start": 1604620,
+     "vertex_count": 1378,
+     "index_start": 6700278,
+     "index_count": 4236,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 335,
+     "record_id": "muscle.right-adductor-pollicis",
+     "vertex_start": 1605998,
+     "vertex_count": 1379,
+     "index_start": 6704514,
+     "index_count": 4236,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 336,
+     "record_id": "muscle.left-biceps-brachii",
+     "vertex_start": 1607377,
+     "vertex_count": 2782,
+     "index_start": 6708750,
+     "index_count": 9846,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 337,
+     "record_id": "muscle.right-biceps-brachii",
+     "vertex_start": 1610159,
+     "vertex_count": 2792,
+     "index_start": 6718596,
+     "index_count": 9846,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 338,
+     "record_id": "muscle.left-biceps-femoris",
+     "vertex_start": 1612951,
+     "vertex_count": 4052,
+     "index_start": 6728442,
+     "index_count": 20514,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 339,
+     "record_id": "muscle.right-biceps-femoris",
+     "vertex_start": 1617003,
+     "vertex_count": 4049,
+     "index_start": 6748956,
+     "index_count": 20514,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 340,
+     "record_id": "muscle.left-cricothyroid",
+     "vertex_start": 1621052,
+     "vertex_count": 5965,
+     "index_start": 6769470,
+     "index_count": 26550,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 341,
+     "record_id": "muscle.right-cricothyroid",
+     "vertex_start": 1627017,
+     "vertex_count": 5689,
+     "index_start": 6796020,
+     "index_count": 26394,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0031640007031112673
+    },
+    {
+     "slot": 342,
+     "record_id": "muscle.left-deltoid",
+     "vertex_start": 1632706,
+     "vertex_count": 5200,
+     "index_start": 6822414,
+     "index_count": 16218,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 343,
+     "record_id": "muscle.right-deltoid",
+     "vertex_start": 1637906,
+     "vertex_count": 5173,
+     "index_start": 6838632,
+     "index_count": 16218,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 344,
+     "record_id": "muscle.left-flexor-carpi-ulnaris",
+     "vertex_start": 1643079,
+     "vertex_count": 3601,
+     "index_start": 6854850,
+     "index_count": 12582,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 345,
+     "record_id": "muscle.right-flexor-carpi-ulnaris",
+     "vertex_start": 1646680,
+     "vertex_count": 3602,
+     "index_start": 6867432,
+     "index_count": 12582,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 346,
+     "record_id": "muscle.left-flexor-hallucis-brevis",
+     "vertex_start": 1650282,
+     "vertex_count": 3414,
+     "index_start": 6880014,
+     "index_count": 8202,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 347,
+     "record_id": "muscle.right-flexor-hallucis-brevis",
+     "vertex_start": 1653696,
+     "vertex_count": 3412,
+     "index_start": 6888216,
+     "index_count": 8202,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 348,
+     "record_id": "muscle.left-gastrocnemius",
+     "vertex_start": 1657108,
+     "vertex_count": 4010,
+     "index_start": 6896418,
+     "index_count": 20682,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 349,
+     "record_id": "muscle.right-gastrocnemius",
+     "vertex_start": 1661118,
+     "vertex_count": 4011,
+     "index_start": 6917100,
+     "index_count": 20682,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 350,
+     "record_id": "muscle.left-longus-colli",
+     "vertex_start": 1665129,
+     "vertex_count": 4516,
+     "index_start": 6937782,
+     "index_count": 21486,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.02192205491585474
+    },
+    {
+     "slot": 351,
+     "record_id": "muscle.left-pectoralis-major",
+     "vertex_start": 1669645,
+     "vertex_count": 7980,
+     "index_start": 6959268,
+     "index_count": 31488,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 352,
+     "record_id": "muscle.right-pectoralis-major",
+     "vertex_start": 1677625,
+     "vertex_count": 7991,
+     "index_start": 6990756,
+     "index_count": 31488,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 353,
+     "record_id": "muscle.left-pronator-teres",
+     "vertex_start": 1685616,
+     "vertex_count": 2390,
+     "index_start": 7022244,
+     "index_count": 8658,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 354,
+     "record_id": "muscle.right-pronator-teres",
+     "vertex_start": 1688006,
+     "vertex_count": 2379,
+     "index_start": 7030902,
+     "index_count": 8658,
+     "mesh_files": 2,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 355,
+     "record_id": "muscle.left-trapezius",
+     "vertex_start": 1690385,
+     "vertex_count": 3535,
+     "index_start": 7039560,
+     "index_count": 13380,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.13154172560113153
+    },
+    {
+     "slot": 356,
+     "record_id": "muscle.right-trapezius",
+     "vertex_start": 1693920,
+     "vertex_count": 3535,
+     "index_start": 7052940,
+     "index_count": 13380,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.13125884016973127
+    },
+    {
+     "slot": 357,
+     "record_id": "muscle.left-triceps-brachii",
+     "vertex_start": 1697455,
+     "vertex_count": 3402,
+     "index_start": 7066320,
+     "index_count": 15078,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 358,
+     "record_id": "muscle.right-triceps-brachii",
+     "vertex_start": 1700857,
+     "vertex_count": 3403,
+     "index_start": 7081398,
+     "index_count": 15078,
+     "mesh_files": 3,
+     "cross_midline_fraction": 0.0
+    }
+   ]
+  }
+ }
+}
