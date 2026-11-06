@@ -1,0 +1,987 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "air": {
+     "items": {
+      "crp": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "pmn": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_pain": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "wbc": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 12,
+     "not_assessed": [],
+     "partial": false,
+     "status": "intermediate probability",
+     "total": 6
+    },
+    "alvarado": {
+     "items": {
+      "anorexia": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "leukocytosis": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "migration": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "nausea_vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_tenderness": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "shift": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "very probable",
+     "total": 10
+    }
+   },
+   "hypothesis": "hyp.acute-appendicitis",
+   "mondo": "MONDO:0005649"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.ectopic-pregnancy",
+    "learner_probability": 0.15,
+    "ruled_out_at_stage": 2,
+    "stage": 2,
+    "workbench_probability": 0.002224262327404021
+   }
+  ],
+  "attempt_id": "attempt.case-appendicitis-003.model-learner",
+  "case_id": "case.appendicitis.003",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "settles guideline item(s): air.pmn, air.wbc, alvarado.leukocytosis, alvarado.shift",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.cbc",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): air.crp",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.crp",
+    "time_min": 30
+   },
+   {
+    "basis": "hyp.ectopic-pregnancy crosses the rule-out line (0.0582 -> 0.0022)",
+    "classification": "discriminating",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.urine-hcg",
+    "time_min": 10
+   },
+   {
+    "basis": "excludes must-not-miss hyp.acute-pyelonephritis (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.urinalysis",
+    "time_min": 20
+   },
+   {
+    "basis": "excludes must-not-miss hyp.ovarian-torsion (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 5,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.pelvic-ultrasound",
+    "time_min": 45
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.6466 -> 0.9678",
+    "classification": "discriminating",
+    "cost_units": 8,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.ct-abdomen-pelvis",
+    "time_min": 60
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchoring event is precisely located: the learner held a hypothesis at 0.15 at the very stage where the pathway's decisive, stage-ordered test had retired it. The defence offered \u2014 'too early to test' \u2014 inverts the actual logic: the test's negative likelihood ratio already prices its sensitivity (97% in C21), which is why a negative result moves the probability so far; distrusting the number while accepting the number's framework is the anchor talking. The honest residue is also in the case file: a small minority of ectopics do test negative, which is why the adjudication's exclusion rests on the test PLUS two normal adnexal imaging studies \u2014 vigilance is warranted, a 0.15 board entry is not. The second lesson is the score disagreement: the learner initially read the Alvarado 10/10 as case-closed and had to be brought back by the AIR 6/12. Both numbers are correct arithmetic; they price different things (presence vs magnitude), and the guideline evidence (C20) is explicit that Alvarado cannot positively confirm in adults while intermediate-risk patients go to imaging. The pathway the learner eventually walked \u2014 scores, pregnancy test, ultrasound for the gynaecological set, CT as adjudicator \u2014 is the pathway the instruments, read with their calibrations, prescribe.",
+   "description": "Stage 1: migratory pain with anorexia and post-pain vomiting; the learner ranked appendicitis first (0.35) but kept ectopic pregnancy close (0.20) on the strength of the menstrual history \u2014 reasonable at that stage, when nothing has retired it. Stage 2: the bloods completed both scores (Alvarado 10/10, AIR 6/12), the urinalysis was clear, and the urine beta-hCG was NEGATIVE. The workbench applied the test's likelihood ratio and ruled ectopic pregnancy out (0.0022). The learner moved it only from 0.20 to 0.15, writing that the test might have been done too early. Stage 3: normal ovaries on ultrasound; the learner finally dropped ectopic pregnancy to 0.04. Stage 4: CT confirmed uncomplicated appendicitis; the learner committed to it and to laparoscopic appendicectomy in the standard configuration. One anchoring event is scored by the machinery: (stage 2, hyp.ectopic-pregnancy).",
+   "reactions": "The learner reached the right diagnosis, the right disposition and the right operation, and still has something to learn \u2014 which is the normal shape of a good case. The workbench board and both scores were never the problem; the learner's stage-2 board was.",
+   "summary": "One scored event: anchoring on ectopic pregnancy at stage 2, against the negative pregnancy test. Diagnosis, branch and disposition all correct. Carry forward: (1) when a test's likelihood ratio has already priced its own error rate, a negative result is a conclusion, not a suggestion; (2) read every score with its calibration \u2014 a saturated Alvarado and an intermediate AIR are not a contradiction, they are two instruments reporting different features of the same patient; (3) order the decisive cheap test early \u2014 the pregnancy test retired the most dangerous hypothesis in the differential at stage 2 for one cost unit."
+  },
+  "per_stage": [
+   {
+    "air": {
+     "items": {
+      "crp": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "pmn": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_pain": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "wbc": {
+       "points": 0,
+       "state": "unknown"
+      }
+     },
+     "max_total": 12,
+     "not_assessed": [
+      "pmn",
+      "wbc",
+      "crp"
+     ],
+     "partial": true,
+     "status": "low probability",
+     "total": 3
+    },
+    "alvarado": {
+     "items": {
+      "anorexia": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "leukocytosis": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "migration": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "nausea_vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_tenderness": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "shift": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "temperature": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [
+      "leukocytosis",
+      "shift"
+     ],
+     "partial": true,
+     "status": "probable",
+     "total": 7
+    },
+    "criteria": {
+     "air": {
+      "items": {
+       "crp": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "pmn": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_pain": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "wbc": {
+        "points": 0,
+        "state": "unknown"
+       }
+      },
+      "max_total": 12,
+      "not_assessed": [
+       "pmn",
+       "wbc",
+       "crp"
+      ],
+      "partial": true,
+      "status": "low probability",
+      "total": 3
+     },
+     "alvarado": {
+      "items": {
+       "anorexia": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "leukocytosis": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "migration": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "nausea_vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_tenderness": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "shift": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "temperature": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [
+       "leukocytosis",
+       "shift"
+      ],
+      "partial": true,
+      "status": "probable",
+      "total": 7
+     }
+    },
+    "learner_board": {
+     "hyp.acute-appendicitis": 0.35,
+     "hyp.acute-pyelonephritis": 0.04,
+     "hyp.ectopic-pregnancy": 0.2,
+     "hyp.other-unspecified": 0.03,
+     "hyp.ovarian-torsion": 0.12,
+     "hyp.pid": 0.04,
+     "hyp.ruptured-ovarian-cyst": 0.18,
+     "hyp.ureteric-stone": 0.04
+    },
+    "learner_brier": 0.515,
+    "learner_probability_on_truth": 0.35,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-appendicitis",
+    "stage": 1,
+    "workbench_board": {
+     "hyp.acute-appendicitis": 0.6103,
+     "hyp.acute-pyelonephritis": 0.0465,
+     "hyp.ectopic-pregnancy": 0.0582,
+     "hyp.other-unspecified": 0.0582,
+     "hyp.ovarian-torsion": 0.0465,
+     "hyp.pid": 0.0465,
+     "hyp.ruptured-ovarian-cyst": 0.0872,
+     "hyp.ureteric-stone": 0.0465
+    },
+    "workbench_brier": 0.1749,
+    "workbench_probability_on_truth": 0.6103,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-appendicitis"
+   },
+   {
+    "air": {
+     "items": {
+      "crp": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "pmn": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_pain": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "wbc": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 12,
+     "not_assessed": [],
+     "partial": false,
+     "status": "intermediate probability",
+     "total": 6
+    },
+    "alvarado": {
+     "items": {
+      "anorexia": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "leukocytosis": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "migration": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "nausea_vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_tenderness": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "shift": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "very probable",
+     "total": 10
+    },
+    "criteria": {
+     "air": {
+      "items": {
+       "crp": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "pmn": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_pain": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "wbc": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 12,
+      "not_assessed": [],
+      "partial": false,
+      "status": "intermediate probability",
+      "total": 6
+     },
+     "alvarado": {
+      "items": {
+       "anorexia": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "leukocytosis": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "migration": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "nausea_vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_tenderness": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "shift": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "very probable",
+      "total": 10
+     }
+    },
+    "learner_board": {
+     "hyp.acute-appendicitis": 0.45,
+     "hyp.acute-pyelonephritis": 0.03,
+     "hyp.ectopic-pregnancy": 0.15,
+     "hyp.other-unspecified": 0.04,
+     "hyp.ovarian-torsion": 0.1,
+     "hyp.pid": 0.04,
+     "hyp.ruptured-ovarian-cyst": 0.16,
+     "hyp.ureteric-stone": 0.03
+    },
+    "learner_brier": 0.3656,
+    "learner_probability_on_truth": 0.45,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-appendicitis",
+    "stage": 2,
+    "workbench_board": {
+     "hyp.acute-appendicitis": 0.6466,
+     "hyp.acute-pyelonephritis": 0.0493,
+     "hyp.ectopic-pregnancy": 0.0022,
+     "hyp.other-unspecified": 0.0616,
+     "hyp.ovarian-torsion": 0.0493,
+     "hyp.pid": 0.0493,
+     "hyp.ruptured-ovarian-cyst": 0.0924,
+     "hyp.ureteric-stone": 0.0493
+    },
+    "workbench_brier": 0.147,
+    "workbench_probability_on_truth": 0.6466,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-appendicitis"
+   },
+   {
+    "air": {
+     "items": {
+      "crp": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "pmn": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_pain": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "wbc": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 12,
+     "not_assessed": [],
+     "partial": false,
+     "status": "intermediate probability",
+     "total": 6
+    },
+    "alvarado": {
+     "items": {
+      "anorexia": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "leukocytosis": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "migration": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "nausea_vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_tenderness": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "shift": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "very probable",
+     "total": 10
+    },
+    "criteria": {
+     "air": {
+      "items": {
+       "crp": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "pmn": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_pain": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "wbc": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 12,
+      "not_assessed": [],
+      "partial": false,
+      "status": "intermediate probability",
+      "total": 6
+     },
+     "alvarado": {
+      "items": {
+       "anorexia": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "leukocytosis": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "migration": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "nausea_vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_tenderness": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "shift": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "very probable",
+      "total": 10
+     }
+    },
+    "learner_board": {
+     "hyp.acute-appendicitis": 0.55,
+     "hyp.acute-pyelonephritis": 0.04,
+     "hyp.ectopic-pregnancy": 0.04,
+     "hyp.other-unspecified": 0.08,
+     "hyp.ovarian-torsion": 0.08,
+     "hyp.pid": 0.05,
+     "hyp.ruptured-ovarian-cyst": 0.12,
+     "hyp.ureteric-stone": 0.04
+    },
+    "learner_brier": 0.237,
+    "learner_probability_on_truth": 0.55,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-appendicitis",
+    "stage": 3,
+    "workbench_board": {
+     "hyp.acute-appendicitis": 0.6466,
+     "hyp.acute-pyelonephritis": 0.0493,
+     "hyp.ectopic-pregnancy": 0.0022,
+     "hyp.other-unspecified": 0.0616,
+     "hyp.ovarian-torsion": 0.0493,
+     "hyp.pid": 0.0493,
+     "hyp.ruptured-ovarian-cyst": 0.0924,
+     "hyp.ureteric-stone": 0.0493
+    },
+    "workbench_brier": 0.147,
+    "workbench_probability_on_truth": 0.6466,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-appendicitis"
+   },
+   {
+    "air": {
+     "items": {
+      "crp": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "pmn": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_pain": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "wbc": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 12,
+     "not_assessed": [],
+     "partial": false,
+     "status": "intermediate probability",
+     "total": 6
+    },
+    "alvarado": {
+     "items": {
+      "anorexia": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "leukocytosis": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "migration": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "nausea_vomiting": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rebound": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "rif_tenderness": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "shift": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "temperature": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "very probable",
+     "total": 10
+    },
+    "criteria": {
+     "air": {
+      "items": {
+       "crp": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "pmn": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_pain": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "wbc": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 12,
+      "not_assessed": [],
+      "partial": false,
+      "status": "intermediate probability",
+      "total": 6
+     },
+     "alvarado": {
+      "items": {
+       "anorexia": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "leukocytosis": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "migration": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "nausea_vomiting": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rebound": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "rif_tenderness": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "shift": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "temperature": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "very probable",
+      "total": 10
+     }
+    },
+    "learner_board": {
+     "hyp.acute-appendicitis": 0.9,
+     "hyp.acute-pyelonephritis": 0.01,
+     "hyp.ectopic-pregnancy": 0.01,
+     "hyp.other-unspecified": 0.01,
+     "hyp.ovarian-torsion": 0.02,
+     "hyp.pid": 0.01,
+     "hyp.ruptured-ovarian-cyst": 0.03,
+     "hyp.ureteric-stone": 0.01
+    },
+    "learner_brier": 0.0118,
+    "learner_probability_on_truth": 0.9,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acute-appendicitis",
+    "stage": 4,
+    "workbench_board": {
+     "hyp.acute-appendicitis": 0.9678,
+     "hyp.acute-pyelonephritis": 0.0045,
+     "hyp.ectopic-pregnancy": 0.0002,
+     "hyp.other-unspecified": 0.0056,
+     "hyp.ovarian-torsion": 0.0045,
+     "hyp.pid": 0.0045,
+     "hyp.ruptured-ovarian-cyst": 0.0084,
+     "hyp.ureteric-stone": 0.0045
+    },
+    "workbench_brier": 0.0012,
+    "workbench_probability_on_truth": 0.9678,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acute-appendicitis"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 19,
+   "total_time_min": 195
+  },
+  "review": {
+   "recorded_reviewers": [],
+   "required": "Review of this case's clinical content (presentation, score application, LR use, differential weighting, disposition) by a qualified clinician before the case is used as validated teaching content.",
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.acute-pyelonephritis": 4,
+   "hyp.ectopic-pregnancy": 2,
+   "hyp.other-unspecified": 4,
+   "hyp.ovarian-torsion": 4,
+   "hyp.pid": 4,
+   "hyp.ruptured-ovarian-cyst": 4,
+   "hyp.ureteric-stone": 4
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.515,
+    "2": 0.3656,
+    "3": 0.237,
+    "4": 0.0118
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.35,
+    "2": 0.45,
+    "3": 0.55,
+    "4": 0.9
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 2,
+    "discriminating": 2,
+    "non-contributory": 0,
+    "safety-net": 2
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.1749,
+    "2": 0.147,
+    "3": 0.147,
+    "4": 0.0012
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "content": "dual-sourced-draft",
+   "note": "Every quantitative clinical claim in this case traces to a source in cases/parameters.json consulted in-session (C17-C22 for this case). Score items, thresholds and bands are the published instruments' own (C17, C18); likelihood ratios are cited point values or arithmetic on cited sensitivity/specificity pairs, each labelled with its study and its population (C19, C21). The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+   "scores": "formative-only"
+  }
+ }
+}

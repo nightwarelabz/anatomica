@@ -1,0 +1,1506 @@
+{
+ "case": {
+  "adjudication": {
+   "diagnosis_hypothesis": "hyp.acute-appendicitis",
+   "diagnosis_label": "Acute appendicitis, uncomplicated (CT-confirmed) \u2014 Alvarado 10/10 (very probable), AIR 6/12 (intermediate probability); the two scores disagree and the disagreement is adjudicated, below",
+   "evidence_chain": [
+    {
+     "criterion": "Alvarado score (block 'alvarado')",
+     "finding_id": "f.pain-migration",
+     "role": "Migration 1 + anorexia 1 + nausea/vomiting 1 + RIF tenderness 2 + rebound 1 + temperature 1 + leukocytosis 2 + left shift 1 = 10/10, 'very probable' (C17). Partial at stage 1: 7 points with leukocytosis and shift not-assessed."
+    },
+    {
+     "criterion": "AIR score (block 'air')",
+     "finding_id": "f.crp-elevated",
+     "role": "Vomiting 1 + RIF pain 1 + rebound light 1 + temperature 0 (37.6 < 38.5) + PMN 70-84% 1 + WBC 10-14.9 1 + CRP 10-49 1 = 6/12, 'intermediate probability' (C18). Partial at stage 1: 3 points with wbc, pmn and crp not-assessed."
+    },
+    {
+     "criterion": "History likelihood ratio",
+     "finding_id": "f.pain-migration",
+     "role": "Migration of pain LR+ 3.18 (C19) moves the workbench board's appendicitis mass from the 0.33 prior to 0.61 at stage 1 \u2014 strong, but short of commitment, which is exactly the intermediate zone the AIR score also reports."
+    },
+    {
+     "criterion": "Pregnancy test",
+     "finding_id": "f.hcg-negative",
+     "role": "Negative urine beta-hCG, LR- 0.0361 (C21), retires hyp.ectopic-pregnancy at stage 2 (workbench posterior 0.0022, below the 0.02 rule-out threshold) \u2014 the stage ordering is the lesson: the history raised the hypothesis at stage 1 and the cheapest test in the pathway retired it at stage 2."
+    },
+    {
+     "criterion": "Ultrasound",
+     "finding_id": "f.us-ovaries-normal",
+     "role": "Normal ovaries with preserved Doppler flow, no mass, no free fluid (f.us-ovaries-normal, f.us-no-free-fluid): the gynaecological exclusions' imaging legs. The appendix was not visualised (f.us-appendix-not-visualized) \u2014 recorded as a non-result with no LR taken."
+    },
+    {
+     "criterion": "CT (adjudicating evidence)",
+     "finding_id": "f.ct-appendicitis",
+     "role": "Dilated 11 mm appendix, wall thickening, fat stranding, appendicolith: LR+ 16.421 computed from C19's cited CT accuracy pair. The workbench board's appendicitis mass reaches 0.97 at stage 4 and every rival falls below 0.02 for the first time."
+    },
+    {
+     "criterion": "Severity / branch",
+     "finding_id": "f.ct-uncomplicated",
+     "role": "No perforation, no abscess, no free gas, no generalised contamination: the case dispositions to the Theatre procedure's standard configuration, not its perforated branch (management.handoff)."
+    }
+   ],
+   "excluded": [
+    {
+     "basis": "Negative urine beta-hCG (f.hcg-negative; LR- 0.0361, C21 \u2014 workbench posterior 0.0022, ruled out at stage 2), PLUS no adnexal mass and no free fluid on ultrasound (f.us-ovaries-normal, f.us-no-free-fluid) and unremarkable adnexa on CT (f.ct-rest-normal). The exclusion is stated as the conjunction because a small minority of ectopic pregnancies test negative; the test alone is not presented as absolute.",
+     "hypothesis": "hyp.ectopic-pregnancy"
+    },
+    {
+     "basis": "Both ovaries normal in size and appearance with preserved arterial and venous Doppler flow on ultrasound (f.us-ovaries-normal) and unremarkable adnexa on CT (f.ct-rest-normal), in a 24-hour constant-pain presentation with an established alternative diagnosis. Recorded honestly: preserved Doppler flow alone does not exclude torsion \u2014 the exclusion is the conjunction of two normal imaging studies, no mass, and the confirmed appendix pathology; the disposition operation is laparoscopic, so the adnexa are inspected at surgery in any case.",
+     "hypothesis": "hyp.ovarian-torsion"
+    },
+    {
+     "basis": "No ovarian cyst is seen on either study (f.us-ovaries-normal, f.ct-rest-normal) and there is no free fluid anywhere (f.us-no-free-fluid, f.ct-rest-normal) \u2014 a ruptured cyst that produces this presentation leaves a cyst, fluid, or both.",
+     "hypothesis": "hyp.ruptured-ovarian-cyst"
+    },
+    {
+     "basis": "No urinary symptoms (f.no-urinary-symptoms), no costovertebral angle tenderness (f.no-flank-pain), a clear urinalysis (f.ua-clear), and pain that migrated periumbilical-to-RIF rather than sitting in the flank; fever is low-grade (37.6 C). Qualitative exclusion \u2014 no LR for these absences was consulted.",
+     "hypothesis": "hyp.acute-pyelonephritis"
+    },
+    {
+     "basis": "Pain constant and migratory, not colicky, with no groin radiation (f.no-flank-pain); no haematuria on urinalysis (f.ua-clear); CT shows no ureteric calculus and no hydronephrosis (f.ct-rest-normal) and shows the appendix instead.",
+     "hypothesis": "hyp.ureteric-stone"
+    },
+    {
+     "basis": "No discharge, no cervical motion tenderness, no adnexal tenderness or mass (f.no-pid-features); negative pregnancy test; normal adnexa on two imaging studies; and a confirmed alternative diagnosis.",
+     "hypothesis": "hyp.pid"
+    },
+    {
+     "basis": "Excluded by the positive CT diagnosis: the imaged appendix pathology is a complete explanation of the presentation, and no finding in the case points elsewhere (no diarrhoea for gastroenteritis, no colicky pain for a stone, no urinary findings).",
+     "hypothesis": "hyp.other-unspecified"
+    }
+   ],
+   "mondo": "MONDO:0005649",
+   "note": "How the case's three quantitative instruments divide the work, stated so none is mistaken for another: the WORKBENCH BOARD moves only on the three sourced likelihood ratios (migration 3.18, negative hCG 0.0361, CT 16.421) and exists to teach staged probability revision with an auditable rule; the two SCORE BLOCKS are computed mechanically from the findings by the same machinery that computes TG18-style criteria, and exist to teach what each instrument prices; neither score is multiplied into the board, and no composite of any kind is formed \u2014 the checker asserts the absence of composite keys across the case and debrief JSON, as in cases 1 and 2.",
+   "score_comparison": {
+    "agreement": "Both instruments rank appendicitis first among the named hypotheses, both are built from the same bedside evidence, and both complete only when the stage-2 bloods arrive \u2014 at stage 1 each is a partial total with its unmeasured items recorded not-assessed, never assumed.",
+    "air_final": {
+     "max_total": 12,
+     "stage_1_partial": {
+      "not_assessed": [
+       "crp",
+       "pmn",
+       "wbc"
+      ],
+      "total": 3
+     },
+     "status": "intermediate probability",
+     "total": 6
+    },
+    "alvarado_final": {
+     "max_total": 10,
+     "stage_1_partial": {
+      "not_assessed": [
+       "leukocytosis",
+       "shift"
+      ],
+      "total": 7
+     },
+     "status": "very probable",
+     "total": 10
+    },
+    "disagreement": "They place the patient in different risk classes, and the case is built so the divergence is mechanical, not impressionistic. Alvarado saturates: it prices presence, not magnitude \u2014 tenderness is worth 2 points at any severity, leukocytosis 2 points at any count above 10.0, and its temperature line (37.3 C) is low enough that 37.6 C scores. This patient's soft values (WBC 12.4, neutrophils 78%, temperature 37.6 C, light rebound) therefore max it out at 10/10. AIR prices magnitude: the same values land in its lowest positive bands (WBC 10-14.9 = 1 of 2; PMN 70-84% = 1 of 2; CRP 10-49 = 1 of 2; rebound light = 1 of 3), its temperature line (38.5 C) is not met, and it totals 6/12, intermediate. The guideline evidence consulted for this case (C20) sides with AIR's caution twice over: the Alvarado score is not sufficiently specific to positively confirm appendicitis in adults (statement 1.3), AIR is among the best-performing scores (statement 1.4), and intermediate-risk patients \u2014 women of reproductive age in particular \u2014 go to imaging rather than straight to theatre. The CT was therefore not a formality after a 10/10: it was the adjudicating evidence the better-calibrated instrument called for, and it also carried the severity information (uncomplicated, standard position) that selected the Theatre branch.",
+    "teaching_point": "A score is a measuring instrument with a calibration, not a verdict. When two validated instruments disagree, the disagreement itself is information about which features each one prices \u2014 here, presence versus magnitude \u2014 and the pathway follows the instrument whose calibration the evidence supports, with imaging as the tiebreaker the guideline prescribes."
+   }
+  },
+  "available_tests": [
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.cbc",
+    "kind": "laboratory",
+    "name": "Full blood count with differential",
+    "note": "Settles four score items across both instruments (Alvarado leukocytosis and left shift; AIR white count and neutrophil proportion) \u2014 the machinery therefore classifies it criteria-completing, and the classification is the lesson: in a score-driven pathway a blood count completes criteria rather than discriminating on its own.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.wbc",
+     "lab.neutrophils-pct",
+     "f.leukocytosis",
+     "f.neutrophilia"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.crp",
+    "kind": "laboratory",
+    "name": "C-reactive protein",
+    "note": "Settles the AIR score's CRP item. The Alvarado score (1986) predates routine CRP and contains no CRP item \u2014 one structural reason the two instruments can disagree.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.crp",
+     "f.crp-elevated"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 1
+    },
+    "id": "test.urine-hcg",
+    "kind": "bedside",
+    "name": "Urine beta-hCG (pregnancy test)",
+    "note": "The case's decisive stage-ordered test: the workup discipline for abdominal pain in a woman of childbearing age requires it (C19), and its negative likelihood ratio (C21) retires the ectopic-pregnancy hypothesis at stage 2. The machinery classifies it discriminating (its LR crosses the rule-out threshold) rather than merely a safety net.",
+    "safety_net_for": "hyp.ectopic-pregnancy",
+    "time_min": {
+     "status": "verify",
+     "value": 10
+    },
+    "yields": [
+     "f.hcg-negative"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 1
+    },
+    "id": "test.urinalysis",
+    "kind": "laboratory",
+    "name": "Urinalysis (dipstick and microscopy)",
+    "note": "The urinary safety net: a clear urinalysis is the laboratory leg of the exclusions of pyelonephritis and ureteric stone. Qualitative only \u2014 no LR for these findings was consulted.",
+    "safety_net_for": "hyp.acute-pyelonephritis",
+    "time_min": {
+     "status": "verify",
+     "value": 20
+    },
+    "yields": [
+     "f.ua-clear"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 5
+    },
+    "id": "test.pelvic-ultrasound",
+    "kind": "imaging",
+    "name": "Pelvic and transabdominal ultrasound",
+    "note": "In this pathway the ultrasound's job is the gynaecological must-not-miss set (C19: pelvic ultrasound to assess torsion, symptomatic cysts, ectopic pregnancy). Its appendix yield is honestly a non-result: the appendix was not visualised, and no LR is taken from that.",
+    "safety_net_for": "hyp.ovarian-torsion",
+    "time_min": {
+     "status": "verify",
+     "value": 45
+    },
+    "yields": [
+     "f.us-appendix-not-visualized",
+     "f.us-ovaries-normal",
+     "f.us-no-free-fluid"
+    ]
+   },
+   {
+    "available_from_stage": 3,
+    "cost_units": {
+     "status": "verify",
+     "value": 8
+    },
+    "id": "test.ct-abdomen-pelvis",
+    "kind": "imaging",
+    "name": "CT abdomen and pelvis with IV contrast",
+    "note": "The adjudicating study, reached because the AIR score left the patient intermediate-risk and the guideline pathway for intermediate-risk patients \u2014 and for women of reproductive age \u2014 is imaging (C20), not because the Alvarado score's high total demanded confirmation. Its composite positive carries the case's only imaging LR (C19).",
+    "time_min": {
+     "status": "verify",
+     "value": 60
+    },
+    "yields": [
+     "f.ct-appendicitis",
+     "f.ct-uncomplicated",
+     "f.ct-rest-normal"
+    ]
+   }
+  ],
+  "criteria_blocks": [
+   {
+    "bands": [
+     {
+      "max": 10,
+      "min": 9,
+      "status": "very probable"
+     },
+     {
+      "max": 8,
+      "min": 7,
+      "status": "probable"
+     },
+     {
+      "max": 6,
+      "min": 5,
+      "status": "compatible"
+     },
+     {
+      "max": 4,
+      "min": 0,
+      "status": "unlikely"
+     }
+    ],
+    "default_status": "unlikely",
+    "id": "alvarado",
+    "items": [
+     {
+      "evidence": [
+       {
+        "finding_id": "f.pain-migration",
+        "is": "present"
+       }
+      ],
+      "id": "migration",
+      "label": "Migration of pain to the right iliac fossa",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.anorexia",
+        "is": "present"
+       }
+      ],
+      "id": "anorexia",
+      "label": "Anorexia (acetonuria in the original scoring)",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.nausea-vomiting",
+        "is": "present"
+       }
+      ],
+      "id": "nausea_vomiting",
+      "label": "Nausea or vomiting",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.rlq-tenderness",
+        "is": "present"
+       }
+      ],
+      "id": "rif_tenderness",
+      "label": "Tenderness in the right iliac fossa",
+      "points": 2
+     },
+     {
+      "evidence": [
+       {
+        "measurement_id": "meas.rebound-grade",
+        "test": "value_gte",
+        "threshold": 1,
+        "threshold_source": "C18"
+       }
+      ],
+      "id": "rebound",
+      "label": "Rebound pain",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "measurement_id": "meas.temperature-c",
+        "test": "value_gte",
+        "threshold": 37.3,
+        "threshold_source": "C17"
+       }
+      ],
+      "id": "temperature",
+      "label": "Elevated temperature >= 37.3 C",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "lab_id": "lab.wbc",
+        "test": "value_gt",
+        "threshold": 10.0,
+        "threshold_source": "C17"
+       }
+      ],
+      "id": "leukocytosis",
+      "label": "Leukocytosis > 10,000/mm3",
+      "points": 2
+     },
+     {
+      "evidence": [
+       {
+        "lab_id": "lab.neutrophils-pct",
+        "test": "value_gt",
+        "threshold": 75,
+        "threshold_source": "C17"
+       }
+      ],
+      "id": "shift",
+      "label": "Left shift (segmented neutrophils > 75%)",
+      "points": 1
+     }
+    ],
+    "kind": "score",
+    "label": "Alvarado score (MANTRELS)",
+    "max_total": 10,
+    "source": "C17",
+    "system": "Alvarado score for acute appendicitis"
+   },
+   {
+    "bands": [
+     {
+      "max": 12,
+      "min": 9,
+      "status": "high probability"
+     },
+     {
+      "max": 8,
+      "min": 5,
+      "status": "intermediate probability"
+     },
+     {
+      "max": 4,
+      "min": 0,
+      "status": "low probability"
+     }
+    ],
+    "default_status": "low probability",
+    "id": "air",
+    "items": [
+     {
+      "evidence": [
+       {
+        "finding_id": "f.nausea-vomiting",
+        "is": "present"
+       }
+      ],
+      "id": "vomiting",
+      "label": "Vomiting",
+      "points": 1
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.rlq-pain",
+        "is": "present"
+       }
+      ],
+      "id": "rif_pain",
+      "label": "Pain in the right iliac fossa",
+      "points": 1
+     },
+     {
+      "id": "rebound",
+      "label": "Rebound tenderness / abdominal defence, graded",
+      "tiers": [
+       {
+        "evidence": [
+         {
+          "measurement_id": "meas.rebound-grade",
+          "test": "value_gte",
+          "threshold": 3,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 3
+       },
+       {
+        "evidence": [
+         {
+          "measurement_id": "meas.rebound-grade",
+          "test": "value_gte",
+          "threshold": 2,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 2
+       },
+       {
+        "evidence": [
+         {
+          "measurement_id": "meas.rebound-grade",
+          "test": "value_gte",
+          "threshold": 1,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 1
+       }
+      ]
+     },
+     {
+      "evidence": [
+       {
+        "measurement_id": "meas.temperature-c",
+        "test": "value_gte",
+        "threshold": 38.5,
+        "threshold_source": "C18"
+       }
+      ],
+      "id": "temperature",
+      "label": "Body temperature >= 38.5 C",
+      "points": 1
+     },
+     {
+      "id": "pmn",
+      "label": "Polymorphonuclear (segmented neutrophil) proportion",
+      "tiers": [
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.neutrophils-pct",
+          "test": "value_gte",
+          "threshold": 85,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 2
+       },
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.neutrophils-pct",
+          "test": "value_gte",
+          "threshold": 70,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 1
+       }
+      ]
+     },
+     {
+      "id": "wbc",
+      "label": "White blood cell count",
+      "tiers": [
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.wbc",
+          "test": "value_gte",
+          "threshold": 15.0,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 2
+       },
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.wbc",
+          "test": "value_gte",
+          "threshold": 10.0,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 1
+       }
+      ]
+     },
+     {
+      "id": "crp",
+      "label": "C-reactive protein concentration",
+      "tiers": [
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.crp",
+          "test": "value_gte",
+          "threshold": 50,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 2
+       },
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.crp",
+          "test": "value_gte",
+          "threshold": 10,
+          "threshold_source": "C18"
+         }
+        ],
+        "points": 1
+       }
+      ]
+     }
+    ],
+    "kind": "score",
+    "label": "Appendicitis Inflammatory Response (AIR) score",
+    "max_total": 12,
+    "source": "C18",
+    "system": "Appendicitis Inflammatory Response score"
+   }
+  ],
+  "findings": [
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.periumbilical-onset",
+    "kind": "history",
+    "lr": null,
+    "lr_note": "The presenting complaint itself carries no likelihood ratio in this case; the quantified history finding is its migration (f.pain-migration).",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Pain began about 24 hours ago as a vague, poorly localised periumbilical ache (case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [
+     "Alvarado item: migration of pain to the right iliac fossa (C17)"
+    ],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.pain-migration",
+    "kind": "history",
+    "lr": {
+     "for_hypothesis": "hyp.acute-appendicitis",
+     "lr_plus": 3.18,
+     "note": "LR+ 3.18 (LR- 0.50) for migration of pain \u2014 the Wagner 1996 JAMA Rational Clinical Examination table's point value, as reproduced in C19. The same table's RLQ-pain figure is a range (7.3-8.5) across studies and is deliberately not used: the workbench multiplies point values only.",
+     "source": "C19",
+     "status": "cited"
+    },
+    "source": [
+     "case-data",
+     "C19"
+    ],
+    "stage": 1,
+    "text": "Over about six hours the pain migrated from the periumbilical region to the right iliac fossa, where it has remained, constant, and is worse with movement and coughing (case data)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "Alvarado item: anorexia (C17)"
+    ],
+    "hpo": [],
+    "id": "f.anorexia",
+    "kind": "history",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Complete loss of appetite since the pain began; she has eaten nothing for 24 hours (case data)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "Alvarado item: nausea or vomiting (C17)",
+     "AIR item: vomiting (C18)"
+    ],
+    "hpo": [
+     "HP:0002018",
+     "HP:0002013"
+    ],
+    "id": "f.nausea-vomiting",
+    "kind": "history",
+    "lr": null,
+    "lr_note": "No likelihood ratio for nausea/vomiting is used; the finding acts through both score blocks.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Nausea throughout, with one episode of vomiting that came AFTER the onset of pain (case data). The sequence is recorded deliberately: pain first, then vomiting \u2014 in gastroenteritis the vomiting typically leads, and no diarrhoea is reported at any stage."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [
+     "AIR item: pain in the right iliac fossa (C18)"
+    ],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.rlq-pain",
+    "kind": "exam",
+    "lr": null,
+    "lr_note": "Unquantified on the board: the consulted LR table reports RLQ pain as a range across studies (7.3-8.5, C19), and the workbench takes point values only.",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Pain is now localised to the right iliac fossa (case data) \u2014 the AIR score's RIF-pain item."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [
+     "Alvarado item: tenderness in the right iliac fossa, 2 points (C17)"
+    ],
+    "hpo": [],
+    "id": "f.rlq-tenderness",
+    "kind": "exam",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Maximal tenderness at McBurney's point in the right iliac fossa (case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [
+     "Alvarado item: rebound pain (C17)",
+     "AIR item: rebound tenderness, graded (C18)"
+    ],
+    "hpo": [],
+    "id": "f.rebound-tenderness",
+    "kind": "exam",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C18"
+    ],
+    "stage": 1,
+    "text": "Light rebound tenderness in the right iliac fossa (case data). Its grade on the AIR scale (light / medium / strong) is recorded as the measurement meas.rebound-grade, because the two scores price this sign differently: Alvarado counts any rebound as 1 point; AIR grades it 1-3."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "Alvarado item: elevated temperature >= 37.3 C (C17)",
+     "AIR item: body temperature >= 38.5 C \u2014 NOT met at 37.6 C (C18)"
+    ],
+    "hpo": [
+     "HP:0001945"
+    ],
+    "id": "f.fever",
+    "kind": "vital",
+    "lr": null,
+    "lr_note": "Temperature enters through the score blocks, not the LR board; no standalone LR for fever in this presentation was consulted, and none is invented.",
+    "source": [
+     "case-data",
+     "C17",
+     "C18"
+    ],
+    "stage": 1,
+    "text": "Temperature 37.6 C at presentation (case data; the measurement is meas.temperature-c). The value sits between the two scores' lines, and the case states both facts rather than rounding it either way: it is at or above the Alvarado threshold of 37.3 C (C17), and below the AIR threshold of 38.5 C (C18)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.tachycardia",
+    "kind": "vital",
+    "lr": null,
+    "lr_note": "A case datum, not an engine output: the physiology engine has no febrile or inflammatory state (see physiology_link), so this heart rate is authored case data and is never presented as simulated. The engine baseline for contrast is HR 63.3/min (C13 register, re-recorded at Milestone 26).",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Heart rate 98/min at presentation (case data; blood pressure 118/72 mmHg, respiratory rate 14/min, SpO2 99% on room air \u2014 all case data)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "organ.uterus"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.lmp-history",
+    "kind": "history",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Last menstrual period 3 weeks ago, regular 28-day cycles; sexually active; no hormonal contraception; no prior ectopic pregnancy, pelvic inflammatory disease, or abdominal surgery (case data). Recorded at stage 1 because it is what makes ectopic pregnancy a live hypothesis that only the stage-2 pregnancy test can retire."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.no-urinary-symptoms",
+    "kind": "history",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly: no dysuria, no urinary frequency or urgency, no visible haematuria (case data). The history leg of the exclusions of pyelonephritis and ureteric stone; the laboratory leg is f.ua-clear at stage 2."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.no-flank-pain",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly: no costovertebral angle tenderness; the pain is constant, not colicky, and does not radiate to the groin (case data). Against pyelonephritis and ureteric stone, qualitatively \u2014 no LR for these absences was consulted."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "organ.uterus"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.no-pid-features",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT findings, recorded explicitly: no vaginal discharge reported; bimanual examination finds no cervical motion tenderness, no adnexal tenderness and no adnexal mass (case data). Against pelvic inflammatory disease, qualitatively."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [
+     "AIR item context: rebound graded light, not medium/strong (C18)"
+    ],
+    "hpo": [],
+    "id": "f.no-peritonism",
+    "kind": "exam",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly: no rigidity and no generalised guarding; the abdomen is soft outside the right iliac fossa and bowel sounds are present (case data). Recorded at stage 1 because it is severity evidence: it is consistent with the uncomplicated course the CT later confirms, and it is why the AIR rebound grade is light rather than medium or strong."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "Alvarado item: leukocytosis > 10,000/mm3, 2 points (C17)",
+     "AIR item: WBC 10.0-14.9 x10^9/L, 1 point (C18)"
+    ],
+    "hpo": [
+     "HP:0001974"
+    ],
+    "id": "f.leukocytosis",
+    "kind": "lab-result",
+    "lab_id": "lab.wbc",
+    "lr": null,
+    "lr_note": "No standalone LR for the white cell count is applied: the consulted meta-analytic literature (C19's lineage) treats the inflammatory variables as strongest in combination, and the scores are where this case prices them \u2014 multiplying a per-variable LR on top of the same variables' score points would double-count one evidence stream.",
+    "source": [
+     "case-data",
+     "C7",
+     "C17",
+     "C18"
+    ],
+    "stage": 2,
+    "text": "White cell count elevated at 12.4 x10^9/L (reference 4.5-11.0, C7). Priced three ways by the scores, all stated: above the Alvarado leukocytosis line of 10.0 (2 points, C17); inside the AIR band 10.0-14.9 (1 point, C18)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "Alvarado item: left shift, segmented neutrophils > 75% (C17)",
+     "AIR item: polymorphonuclear proportion 70-84% (C18)"
+    ],
+    "hpo": [],
+    "id": "f.neutrophilia",
+    "kind": "lab-result",
+    "lab_id": "lab.neutrophils-pct",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C17",
+     "C18"
+    ],
+    "stage": 2,
+    "text": "Segmented neutrophils 78% of the differential (case data). Above the Alvarado left-shift line of > 75% segmented neutrophils (1 point, C17); inside the AIR band 70-84% (1 point, C18)."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [
+     "AIR item: CRP 10-49 mg/L, 1 point (C18)"
+    ],
+    "hpo": [],
+    "id": "f.crp-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.crp",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C2",
+     "C18"
+    ],
+    "stage": 2,
+    "text": "C-reactive protein 26 mg/L (case data) \u2014 inside the AIR band 10-49 mg/L (1 point, C18), and above the 10 mg/L inflammatory-response threshold the TG18 lineage uses (C2). The Alvarado score contains no CRP item (C17) \u2014 one of the structural reasons the two scores diverge on this patient."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.hcg-negative",
+    "kind": "test-result",
+    "lr": {
+     "computed_from": "C21 sensitivity 0.97, specificity 0.83 for ectopic pregnancy: LR- = (1 - 0.97) / 0.83 = 0.0361",
+     "for_hypothesis": "hyp.ectopic-pregnancy",
+     "lr_minus": 0.0361,
+     "note": "Single study (C21: urine test for intact hCG and free beta-hCG in early-pregnancy presentations; NPV 99.3% in that cohort) \u2014 labelled single-study wherever used. The residual caveat is part of this finding's record: a small minority of ectopic pregnancies test negative, so the adjudication's exclusion of ectopic pregnancy rests on this test PLUS two normal adnexal imaging studies, not on the test alone.",
+     "source": "C21",
+     "status": "computed"
+    },
+    "source": [
+     "case-data",
+     "C21"
+    ],
+    "stage": 2,
+    "text": "Urine beta-hCG NEGATIVE (case data) \u2014 the case's decisive stage-ordered finding: the pregnancy test the workup discipline requires in a woman of childbearing age (C19) returns at stage 2, after the history (f.lmp-history) has made ectopic pregnancy a live hypothesis."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.ua-clear",
+    "kind": "test-result",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 2,
+    "text": "Urinalysis clear (case data): no pyuria, no nitrites, no haematuria on dipstick and microscopy. The laboratory leg of the exclusions of pyelonephritis and ureteric stone; unquantified \u2014 no LR for urinalysis findings in this presentation was consulted, and none is invented."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.us-appendix-not-visualized",
+    "kind": "imaging",
+    "lr": null,
+    "lr_note": "Deliberately unquantified \u2014 see the finding text. The appendix question passes to CT untouched by this study.",
+    "source": [
+     "case-data",
+     "C19"
+    ],
+    "stage": 3,
+    "text": "Ultrasound (transabdominal and pelvic, case imaging report): the appendix is NOT visualised. Recorded as a non-result, in those terms: non-visualisation is not a negative examination, and no likelihood ratio is taken from it \u2014 the accuracy figures in C19 describe examinations in which the appendix is assessed, and a non-visualised appendix is neither a positive nor a negative of that kind."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.us-ovaries-normal",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "Ultrasound (case imaging report): both ovaries are normal in size and appearance, with preserved arterial and venous Doppler flow bilaterally; no adnexal mass and no ovarian cyst is seen. The imaging leg of the exclusions of ovarian torsion and ruptured ovarian cyst \u2014 qualitative: no LR for a normal pelvic ultrasound against torsion was consulted. The case records the standard caution as part of the exclusion's basis (adjudication): preserved Doppler flow alone does not exclude torsion; the exclusion is the conjunction of normal morphology on two modalities, no mass, no free fluid, and an established alternative diagnosis."
+   },
+   {
+    "body_records": [],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.us-no-free-fluid",
+    "kind": "imaging",
+    "lr": null,
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "ABSENT finding, recorded explicitly: no free fluid in the pouch of Douglas or elsewhere in the pelvis or abdomen on ultrasound (case data). Against ruptured ovarian cyst and ruptured ectopic pregnancy, qualitatively \u2014 a rupture that bleeds leaves fluid, and there is none."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.ct-appendicitis",
+    "kind": "imaging",
+    "lr": {
+     "computed_from": "C19 sensitivity 0.936, specificity 0.943 (Kinner et al. CT comparison, as reported in C19): LR+ = 0.936 / (1 - 0.943) = 16.421",
+     "for_hypothesis": "hyp.acute-appendicitis",
+     "lr_plus": 16.421,
+     "note": "The accuracy pair comes from a children-and-young-adults comparison (C19); this patient is 26. The derivation is labelled with that population wherever it is used.",
+     "source": "C19",
+     "status": "computed"
+    },
+    "source": [
+     "case-data",
+     "C19"
+    ],
+    "stage": 4,
+    "text": "CT abdomen and pelvis with IV contrast (case imaging report): the appendix is dilated at 11 mm with mural thickening and enhancement, periappendiceal fat stranding, and an appendicolith; it arises from the caecal pole and lies in standard position in the right iliac fossa. This composite \u2014 not any single sign \u2014 is the result the consulted CT accuracy figures (C19) describe."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.ct-uncomplicated",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data",
+     "C22"
+    ],
+    "stage": 4,
+    "text": "CT (case imaging report): NO perforation, NO periappendiceal abscess or collection, NO free intraperitoneal gas, and NO generalised contamination (case data \u2014 the absences are recorded findings, not defaults). This finding is what places the case on the Theatre procedure's standard configuration rather than its perforated severity branch (see management.handoff)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     }
+    ],
+    "criteria_roles": [],
+    "hpo": [],
+    "id": "f.ct-rest-normal",
+    "kind": "imaging",
+    "lr": null,
+    "source": [
+     "case-data"
+    ],
+    "stage": 4,
+    "text": "CT, remainder of the study (case imaging report): the adnexa are unremarkable bilaterally; there is no ureteric calculus, no hydronephrosis, and no free fluid. The cross-sectional corroboration of the ultrasound's gynaecological exclusions, and the imaging leg of the ureteric-stone exclusion."
+   }
+  ],
+  "ground_truth": {
+   "diagnosis": "Acute appendicitis, uncomplicated \u2014 CT-confirmed; Alvarado 10/10 (very probable) and AIR 6/12 (intermediate probability) disagree, and the adjudication derives the disposition from the disagreement rather than from either number alone",
+   "engine_state": "physiology resting case = pre-morbid baseline only; no inflammatory engine state exists (see physiology_link)",
+   "hpo": [
+    "HP:0002027",
+    "HP:0001945",
+    "HP:0002018",
+    "HP:0002013",
+    "HP:0001974"
+   ],
+   "hpo_absent": [],
+   "mondo": "MONDO:0005649",
+   "mondo_label": "appendicitis"
+  },
+  "hypotheses": [
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "canal.appendix"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.cecum-appendix"
+     }
+    ],
+    "criteria_block": {
+     "combination": "Two declared score blocks (alvarado, air) are computed from the findings at every stage; neither is combined with the other and neither is combined with the board \u2014 the adjudication states where they agree and disagree (adjudication.score_comparison).",
+     "source": "C17, C18",
+     "system": "Alvarado score (1986) and Appendicitis Inflammatory Response score (2008), both mechanically evaluated"
+    },
+    "discriminating_findings": [
+     "f.pain-migration",
+     "f.ct-appendicitis"
+    ],
+    "id": "hyp.acute-appendicitis",
+    "label": "Acute appendicitis",
+    "mondo": "MONDO:0005649",
+    "mondo_label": "appendicitis",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source quantifies the pre-test distribution of diagnoses for migratory RIF pain in women of reproductive age presenting to an emergency department; 0.33 is a round starting prior chosen so the case's sourced likelihood ratios have room to work in both directions. Replace with a cited cohort figure before any quantitative use.",
+     "status": "verify",
+     "value": 0.33
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     }
+    ],
+    "discriminating_findings": [
+     "f.us-ovaries-normal",
+     "f.ct-rest-normal"
+    ],
+    "id": "hyp.ovarian-torsion",
+    "label": "Ovarian (adnexal) torsion",
+    "mondo": null,
+    "mondo_note": "No Mondo class for ovarian/adnexal torsion was found in the in-session OLS query (Milestone 29): the full 'torsion' result set (39 classes) contains torsion dystonias, spermatic cord torsion and non-human torsions only. Per the standing rule the identifier is null with the absence recorded \u2014 no substitute class is asserted.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis). Deliberately non-trivial: torsion is the must-not-miss gynaecological diagnosis in this presentation, and the case is built so that only imaging retires it.",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     }
+    ],
+    "discriminating_findings": [
+     "f.us-ovaries-normal",
+     "f.us-no-free-fluid",
+     "f.ct-rest-normal"
+    ],
+    "id": "hyp.ruptured-ovarian-cyst",
+    "label": "Ruptured ovarian cyst",
+    "mondo": "MONDO:0003282",
+    "mondo_label": "ovarian cyst",
+    "mondo_note": "The Mondo class denotes the ovarian cyst; no rupture-specific class was found in the in-session OLS query (Milestone 29). The hypothesis is the rupture EVENT of that structure, and the coding says exactly that \u2014 the class is not presented as if it encoded the rupture.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis).",
+     "status": "verify",
+     "value": 0.15
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "organ.uterus"
+     }
+    ],
+    "discriminating_findings": [
+     "f.hcg-negative"
+    ],
+    "id": "hyp.ectopic-pregnancy",
+    "label": "Ectopic pregnancy",
+    "mondo": "MONDO:0000755",
+    "mondo_label": "ectopic pregnancy",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis). Kept live by the stage-1 history (f.lmp-history) until the stage-2 pregnancy test retires it \u2014 that ordering is the case's central staging lesson.",
+     "status": "verify",
+     "value": 0.1
+    }
+   },
+   {
+    "body_records": [],
+    "body_records_note": "No kidney record is asserted here: the urinary module's inventory at v1 covers the tract's lower structures only, and this case does not paper over that dataset gap with an unverified reference (the gap is on the project's standing list).",
+    "discriminating_findings": [
+     "f.no-urinary-symptoms",
+     "f.no-flank-pain",
+     "f.ua-clear"
+    ],
+    "id": "hyp.acute-pyelonephritis",
+    "label": "Acute pyelonephritis",
+    "mondo": "MONDO:0003529",
+    "mondo_label": "acute pyelonephritis",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis).",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [],
+    "body_records_note": "As hyp.acute-pyelonephritis: no ureter record is asserted from the v1 urinary inventory.",
+    "discriminating_findings": [
+     "f.no-flank-pain",
+     "f.ua-clear",
+     "f.ct-rest-normal"
+    ],
+    "id": "hyp.ureteric-stone",
+    "label": "Ureteric stone (ureterolithiasis)",
+    "mondo": "MONDO:0007009",
+    "mondo_label": "ureterolithiasis",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis).",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "duct.uterine-tube"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "organ.uterus"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "organ.ovary"
+     }
+    ],
+    "discriminating_findings": [
+     "f.no-pid-features",
+     "f.us-ovaries-normal"
+    ],
+    "id": "hyp.pid",
+    "label": "Pelvic inflammatory disease",
+    "mondo": "MONDO:0000922",
+    "mondo_label": "pelvic inflammatory disease",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER (see hyp.acute-appendicitis).",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [],
+    "discriminating_findings": [],
+    "id": "hyp.other-unspecified",
+    "label": "Other / unspecified",
+    "mondo": null,
+    "mondo_note": "Residual category by construction; no Mondo identifier applies.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER by construction: the residual mass that keeps the board honest about everything the seven named hypotheses do not cover (gastroenteritis, mesenteric adenitis, inflammatory bowel disease, musculoskeletal pain, and the rest).",
+     "status": "verify",
+     "value": 0.1
+    }
+   }
+  ],
+  "id": "case.appendicitis.003",
+  "imaging_link": {
+   "appendix_label": {
+    "label_set": "TotalSegmentator v1.0 task 'total' (104 labels) as shipped for s0778",
+    "present_in_label_set": false,
+    "statement": "The shipped label set contains NO appendix label (the full 104-label list was read at Milestone 29; the crosswalk likewise has no appendix row). The atlas module's newer TotalSegmentator versions are not what this repository ships, and the case does not pretend otherwise: for this case, the imaging series cannot show the appendix at all."
+   },
+   "body_model_appendix": {
+    "clinical_record": "dig.cecum-appendix (data/digestive/digestive.json) \u2014 a compound caecum-and-appendix record whose own text records that the consulted sources do not describe the appendix's structure or function; that inherited absence is stated, not papered over.",
+    "files": [
+     "data/digestive/digestive-inventory.json",
+     "data/digestive/digestive-geometry.json",
+     "data/digestive/digestive-assembled.json"
+    ],
+    "record_exists": true,
+    "record_id": "canal.appendix",
+    "statement": "The asymmetry is the finding: the Body Model HAS an appendix (inventory, geometry and the Theatre's structure register all resolve canal.appendix), while the imaging series does NOT. Case 3's imaging link is therefore localisation-by-neighbour (the colon/caecum label), and the appendix anatomy the learner manipulates in the Theatre comes from the Body Model, not from s0778."
+   },
+   "honesty_block": "Three different individuals are in play and the case keeps them separate: the synthetic patient (a 26-year-old woman, authored case data); imaging subject s0778 (a 57-year-old MAN's CT \u2014 different person, different sex, different scan); and the atlas individual behind the Body Model geometry. No co-registration between any of them is claimed or implied. The s0778 series does NOT show the appendix \u2014 its shipped label set has no appendix label at all \u2014 and it does not show this case's pathology: there are no labels for wall thickening, fat stranding or an appendicolith, so the case's CT findings (f.ct-appendicitis and companions) are authored case data from a fictional scanner encounter, labelled case-data at every appearance. What the link DOES establish, mechanically, is the same thing case 1's link established: the crosswalk's colon label exists, its counted extent is re-verified by the checker from the shipped bins at every run, and the label's caudal reach covers the caecal region this case is about.",
+   "label": {
+    "hu_statistics_from_crosswalk": {
+     "max": 203,
+     "mean": -77.04,
+     "median": 0.0,
+     "min": -1159,
+     "p5": -729.0,
+     "p95": 83.0,
+     "source_file": "data/imaging/s0778/crosswalk.json",
+     "voxels": 324670
+    },
+    "index": 9,
+    "name": "colon",
+    "record_id": "large-intestine"
+   },
+   "measures": {
+    "bbox_lps_mm": [
+     [
+      -160.5,
+      -299.18,
+      1311.42
+     ],
+     [
+      139.5,
+      -84.68,
+      1615.92
+     ]
+    ],
+    "dicom_instance_range": [
+     46,
+     249
+    ],
+    "max_cross_section": {
+     "dicom_instance": 187,
+     "file_index_0based": 186,
+     "voxels": 4722
+    },
+    "slice_files_0based": [
+     45,
+     248
+    ],
+    "slice_spacing_mm": 1.5,
+    "slices_with_label": 204,
+    "volume_ml_computed": "324670 voxels x 3.375 mm3/voxel = 1095761 mm3 = 1095.76 mL (arithmetic performed on the recount at Milestone 29)",
+    "voxel_volume_mm3": 3.375,
+    "z0_ipp_first_slice_mm": 1243.917969,
+    "z_range_lps_mm": [
+     1311.42,
+     1615.92
+    ]
+   },
+   "role": "Anatomical localisation only \u2014 and, in this case, principally a recorded absence (see appendix_label). The colon label's caudal extent includes the caecal region from which the appendix arises; the appendix itself is not in the label set.",
+   "series": "data/imaging/s0778 (subject s0778, 57-year-old man, AbdomenCT-1.0)"
+  },
+  "labs": [
+   {
+    "id": "lab.wbc",
+    "name": "White cell count",
+    "reference_range": {
+     "high": 11.0,
+     "low": 4.5,
+     "source": "C7"
+    },
+    "source": [
+     "case-data",
+     "C7"
+    ],
+    "stage": 2,
+    "unit": "x10^9/L",
+    "value": 12.4
+   },
+   {
+    "id": "lab.neutrophils-pct",
+    "name": "Segmented neutrophils (differential)",
+    "reference_note": "No generic reference range is asserted for the differential percentage: the value is classified only against the two scores' own thresholds \u2014 Alvarado's left-shift line (> 75% segmented neutrophils, C17) and the AIR bands (70-84% / >= 85%, C18).",
+    "reference_range": null,
+    "source": [
+     "case-data",
+     "C17",
+     "C18"
+    ],
+    "stage": 2,
+    "unit": "%",
+    "value": 78.0
+   },
+   {
+    "id": "lab.crp",
+    "name": "C-reactive protein",
+    "reference_range": {
+     "source": "C2",
+     "threshold_high": 10.0
+    },
+    "source": [
+     "case-data",
+     "C2",
+     "C18"
+    ],
+    "stage": 2,
+    "unit": "mg/L",
+    "value": 26.0
+   }
+  ],
+  "management": {
+   "alternatives_considered": "An antibiotics-first, non-operative strategy for uncomplicated appendicitis is a live topic in the consulted guideline's surgical section (C20), and in a real service it would be discussed with the patient. This case's disposition is operative by design \u2014 the workbench's purpose here is the case-to-Theatre loop \u2014 and the alternative is recorded rather than silently omitted.",
+   "disposition": "Admit to the surgical service. IV fluids, analgesia, antiemetic, nil by mouth; a preoperative broad-spectrum antibiotic dose per the treating team's protocol (supportive specifics are case data, not guideline quotation). Definitive treatment is operative: early laparoscopic appendicectomy, handed to the Theatre module below.",
+   "handoff": {
+    "basis": "CT-adjudicated UNCOMPLICATED appendicitis with the appendix in standard position: f.ct-uncomplicated records no perforation, no abscess, no free gas and no generalised contamination, and f.ct-appendicitis places the appendix at the caecal pole in the right iliac fossa. The disposition is therefore the procedure's standard configuration (36 required microsteps \u2014 the configuration Milestone 28's trace-06 runs clean, PASS 37/37). The perforated severity branch (trace-09) is NOT invoked, because its trigger findings are absent \u2014 and the absences are recorded findings in this case file, not assumptions. Neither variant configuration (retrocecal, pelvic) is invoked: the appendix was imaged in standard position. The CT describes a non-necrotic base, so the trace-06 closure decision (endoloop on a healthy base, procedure decision point dp3) is the branch the case implies; the necrotic-base/stapler branch and its stump-leak consequence are not entered.",
+    "from_case_stage": 4,
+    "module": "theatre",
+    "procedure_configuration": "standard",
+    "procedure_id": "proc.appy.lap",
+    "procedure_name": "Laparoscopic appendicectomy"
+   },
+   "theatre_link_verified": "theatre/procedures/proc.lap-appendectomy.json carries procedure id proc.appy.lap and a structures register resolving canal.appendix (kind: record) to data/digestive/digestive-inventory.json (C22) \u2014 the checker re-verifies both facts at every run, so this link is a checked claim, not prose."
+  },
+  "measurements": [
+   {
+    "finding_id": "f.fever",
+    "id": "meas.temperature-c",
+    "name": "Body temperature at presentation",
+    "source": [
+     "case-data",
+     "C17",
+     "C18"
+    ],
+    "stage": 1,
+    "unit": "degC",
+    "value": 37.6
+   },
+   {
+    "finding_id": "f.rebound-tenderness",
+    "id": "meas.rebound-grade",
+    "name": "Rebound tenderness grade (AIR scale: 0 none, 1 light, 2 medium, 3 strong)",
+    "source": [
+     "case-data",
+     "C18"
+    ],
+    "stage": 1,
+    "unit": "grade",
+    "value": 1
+   }
+  ],
+  "milestone": 29,
+  "module": "cases",
+  "patient": {
+   "age": 26,
+   "allergies": [
+    "none recorded (case data)"
+   ],
+   "habitus": "average build (case data)",
+   "history": [
+    "Last menstrual period 3 weeks ago; regular 28-day cycles; sexually active; no hormonal contraception (case data).",
+    "No prior ectopic pregnancy, pelvic inflammatory disease, or abdominal surgery (case data).",
+    "No regular medications (case data)."
+   ],
+   "sex": "F",
+   "symptom_duration_hours": 24
+  },
+  "physiology_link": {
+   "baseline_recorded_outputs": {
+    "cardiac_output_l_min": 4.21,
+    "cvp_mmhg": 4.38,
+    "diastolic_bp_mmhg": 62.7,
+    "heart_rate_per_min": 63.3,
+    "map_mmhg": 73.1,
+    "stroke_volume_lv_ml": 66.6,
+    "systolic_bp_mmhg": 97.7
+   },
+   "command": "cd physiology && cargo run --release -- run resting",
+   "gap_statement": "Contrast, recorded so it is never blurred: the engine's resting heart rate is 63.3/min and its resting temperature concept does not exist; the case patient's heart rate of 98/min and temperature of 37.6 C (f.tachycardia, f.fever) are authored case data describing an inflamed patient the engine cannot yet represent. Closing that gap (an inflammatory/febrile engine state) is physiology work for a later milestone, and until it lands this case links to the baseline only.",
+   "role": "Pre-morbid baseline only. The patient's presentation includes fever and tachycardia, and the engine has NO febrile or inflammatory state \u2014 pain, peritoneal irritation and the systemic inflammatory response are outside the engine's modelled physiology. This link therefore declares the resting baseline (as cases 1 and 2 do) and states the gap, rather than dressing case data as simulation.",
+   "trace_hash": "0x6369b10e9a71c872",
+   "verification": "Recorded at Milestone 29 against the current engine (the same post-Milestone 26 state case 1's link records): the checker re-runs the recorded command at every validation and compares hash and outputs, so this link cannot silently rot. MILESTONE 30 RE-RECORDING: the engine gained the hormonal volume axes (Milestone 30), whose states are folded into the trace hash, so the resting hash changed (0xcee16b0ddee95d76 -> 0x6369b10e9a71c872); re-measured in the Milestone 30 session, no recorded output moved (heart rate 63.3 /min, BP 97.7/62.7 mmHg, MAP 73.1 mmHg, cardiac output 4.21 L/min, stroke volume 66.6 mL, CVP 4.38 mmHg, all identical at the recorded precision). The gap statement above is unaffected."
+  },
+  "presentation_stages": [
+   {
+    "narrative": "A 26-year-old woman presents with 24 hours of abdominal pain. It began as a vague periumbilical ache, and over about six hours migrated to the right iliac fossa, where it is now constant and worse with movement and coughing. She has eaten nothing since the pain began (anorexia) and vomited once, after the pain started. Vitals (case data): temperature 37.6 C, heart rate 98/min, blood pressure 118/72 mmHg, respiratory rate 14/min, SpO2 99% on room air. Examination (case data): maximal tenderness at McBurney's point with light rebound tenderness; no rigidity and no generalised guarding; no costovertebral angle tenderness; bimanual examination finds no cervical motion tenderness, no adnexal tenderness and no mass. She reports no urinary symptoms and no vaginal discharge. Her last menstrual period was 3 weeks ago; she is sexually active and uses no hormonal contraception. The learner must now commit a stage-1 differential board before any test result exists.",
+    "stage": 1,
+    "title": "History, vitals, examination"
+   },
+   {
+    "narrative": "Bloods show a moderate inflammatory response: white cell count 12.4 x10^9/L with segmented neutrophils 78%, C-reactive protein 26 mg/L. Urinalysis is clear \u2014 no pyuria, no nitrites, no haematuria. The urine beta-hCG is NEGATIVE. Both appendicitis scores are now fully assessable: the Alvarado score totals 10 of 10 (very probable), while the Appendicitis Inflammatory Response score totals 6 of 12 (intermediate probability) \u2014 the two instruments place the same patient in different risk classes, and the stage-4 adjudication is built around that disagreement. The learner re-ranks the board.",
+    "stage": 2,
+    "title": "Laboratory and bedside tests"
+   },
+   {
+    "narrative": "Pelvic and transabdominal ultrasound: the appendix is not visualised (a non-result, recorded as such \u2014 non-visualisation is not a negative examination). Both ovaries are normal in size and appearance with preserved arterial and venous Doppler flow; there is no adnexal mass and no free fluid in the pouch of Douglas or elsewhere. The gynaecological must-not-miss hypotheses lose their imaging legs; the appendix question is untouched. The learner re-ranks the board and decides the next step.",
+    "stage": 3,
+    "title": "Ultrasound"
+   },
+   {
+    "narrative": "CT abdomen and pelvis with intravenous contrast: the appendix is dilated at 11 mm with wall thickening, periappendiceal fat stranding and an appendicolith \u2014 acute appendicitis. It arises from the caecal pole in standard position in the right iliac fossa. There is no perforation, no abscess, no free gas and no generalised contamination: uncomplicated appendicitis. The adnexa are unremarkable; there is no ureteric calculus and no hydronephrosis. The adjudication block evaluates both scores mechanically from the staged evidence, lists what excludes each rival, and hands the patient to the Theatre for laparoscopic appendicectomy in the procedure's standard configuration.",
+    "stage": 4,
+    "title": "CT, adjudication, disposition"
+   }
+  ],
+  "resource_tier": "enhanced",
+  "review": {
+   "recorded_reviewers": [],
+   "required": "Review of this case's clinical content (presentation, score application, LR use, differential weighting, disposition) by a qualified clinician before the case is used as validated teaching content.",
+   "status": "UNMET"
+  },
+  "status": "dual-sourced-draft",
+  "synthetic": true,
+  "synthetic_note": "SYNTHETIC CASE. The patient is an authored fiction built for teaching; no real patient data exists in this module (design/07, master plan section 8 rule 9: education-only scope). Clinical facts the case relies on (score items and bands, likelihood ratios, reference ranges, test characteristics) are cited to sources consulted in-session in cases/parameters.json; the patient's particulars (age, values, findings) are case data and are labelled 'case data' wherever they appear.",
+  "title": "Right iliac fossa pain in a 26-year-old woman \u2014 when the two scores disagree",
+  "validity": {
+   "content": "dual-sourced-draft",
+   "note": "Every quantitative clinical claim in this case traces to a source in cases/parameters.json consulted in-session (C17-C22 for this case). Score items, thresholds and bands are the published instruments' own (C17, C18); likelihood ratios are cited point values or arithmetic on cited sensitivity/specificity pairs, each labelled with its study and its population (C19, C21). The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+   "scores": "formative-only"
+  }
+ }
+}

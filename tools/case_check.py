@@ -21,18 +21,22 @@ case checks:
   5. scoring recomputation: priors + LRs reproduce every workbench
      board; learner boards reproduce every Brier score, rank and
      probability; criteria statuses (grouped, k_of_n, classification,
-     severity) recompute from the declared blocks; anchoring events
+     score — Milestone 29, severity) recompute from the declared blocks; anchoring events
      and order classifications recompute; resource tally recomputes;
   6. governance: synthetic, review gate UNMET (never fabricated),
      validity dual-sourced-draft, and NO composite score key anywhere.
 
 Plus per-case profile sections: case 1 (lab arithmetic, the imaging
 voxel recount, the physiology engine re-run, the Theatre handoff, the
-FHIR export) and case 2 (lab arithmetic, the classification
+FHIR export), case 2 (lab arithmetic, the classification
 arithmetic, the WSES timing band, the anchoring headline, and the
 LOOP verification: the trace-02 Theatre debrief is re-read, its
 SHA-256 recomputed, and every matched field compared field-by-field
-against the file's actual contents).
+against the file's actual contents), and case 3 (Milestone 29: both
+scores' arithmetic stage by stage, the ectopic rule-out timing, the
+colon-label recount and the recorded absence of an appendix label,
+the physiology link's identity with case 1's engine state, and the
+appendicectomy handoff with its branch consistency).
 
 Usage: python3 tools/case_check.py
 """
@@ -228,7 +232,48 @@ class Ctx:
             return {"status": block.get("pending_label",
                                         "not yet classifiable"),
                     "result": None, "rule_index": None, "inputs": inputs}
+        if block["kind"] == "score":
+            items = {}
+            total = 0
+            not_assessed = []
+            for it in block["items"]:
+                r = self.score_item(it, stage)
+                items[it["id"]] = r
+                total += r["points"]
+                if r["state"] == "unknown":
+                    not_assessed.append(it["id"])
+            status = block["default_status"]
+            for band in block["bands"]:
+                if band["min"] <= total <= band["max"]:
+                    status = band["status"]
+                    break
+            return {"items": items, "total": total,
+                    "max_total": block["max_total"],
+                    "not_assessed": not_assessed,
+                    "partial": bool(not_assessed), "status": status}
         raise ValueError(block["kind"])
+
+    def score_item(self, item, stage, excl=frozenset()):
+        """Independent re-implementation of the runner's score item
+        (Milestone 29): tiers highest-first, first satisfied tier wins;
+        unsatisfied only if every tier is unsatisfied; else unknown."""
+        tiers = item["tiers"] if "tiers" in item else [
+            {"points": item["points"], "evidence": item["evidence"]}]
+        states = []
+        for t in tiers:
+            vals = [self.atom3(a, stage, excl) for a in t["evidence"]]
+            if "satisfied" in vals:
+                states.append("satisfied")
+            elif vals and all(v == "unsatisfied" for v in vals):
+                states.append("unsatisfied")
+            else:
+                states.append("unknown")
+        for t, s in zip(tiers, states):
+            if s == "satisfied":
+                return {"state": "satisfied", "points": t["points"]}
+        if states and all(s == "unsatisfied" for s in states):
+            return {"state": "unsatisfied", "points": 0}
+        return {"state": "unknown", "points": 0}
 
     def crit_items(self, stage, excl=frozenset()):
         out = {}
@@ -237,6 +282,13 @@ class Ctx:
                 its = [i for g in b["groups"] for i in g["items"]]
             elif b["kind"] == "k_of_n":
                 its = b["items"]
+            elif b["kind"] == "score":
+                for i in b["items"]:
+                    r = self.score_item(i, stage, excl)
+                    out[f"{b['id']}.{i['id']}"] = (
+                        f"satisfied:{r['points']}"
+                        if r["state"] == "satisfied" else r["state"])
+                continue
             else:
                 its = [{"id": inp["id"], "evidence": inp["atoms"]}
                        for inp in b["inputs"]]
@@ -377,6 +429,13 @@ def check_case(case_path, attempt, debrief):
             its = [i for g in b["groups"] for i in g["items"]]
         elif b["kind"] == "k_of_n":
             its = b["items"]
+        elif b["kind"] == "score":
+            its = []
+            for i in b["items"]:
+                atoms = list(i.get("evidence", []))
+                for t in i.get("tiers", []):
+                    atoms += list(t.get("evidence", []))
+                its.append({"id": i["id"], "evidence": atoms})
         else:
             its = [{"id": inp["id"], "evidence": inp["atoms"]}
                    for inp in b["inputs"]]
@@ -776,6 +835,130 @@ def profile_case2(case, ctx, boards):
           f"BDI class {bdi[0]['stewart_way_class'] if bdi else '?'}")
 
 
+# =====================================================================
+# Case 3 profile (Milestone 29): score arithmetic, the disagreement,
+# the anchoring headline, the imaging absence, physiology, handoff
+# =====================================================================
+def profile_case3(case, ctx, boards, attempt):
+    print(f"\n=== {case['id']} profile: scores / anchoring / imaging / "
+          f"physiology / theatre ===")
+    labs, meas = ctx.labs, ctx.meas
+    ok(10.0 <= labs["lab.wbc"]["value"] < 15.0,
+       "case3: WBC 12.4 in the AIR band 10.0-14.9 and above the Alvarado line 10.0")
+    ok(75 < labs["lab.neutrophils-pct"]["value"] < 85,
+       "case3: neutrophils 78% above the Alvarado shift line (75) and inside the AIR band 70-84")
+    ok(10 <= labs["lab.crp"]["value"] < 50,
+       "case3: CRP 26 mg/L inside the AIR band 10-49")
+    t = meas["meas.temperature-c"]["value"]
+    ok(t >= 37.3 and t < 38.5,
+       "case3: temperature 37.6 C meets the Alvarado line (37.3) and misses the AIR line (38.5) — the divergence datum")
+    ok(meas["meas.rebound-grade"]["value"] == 1,
+       "case3: rebound grade 1 (light) — Alvarado 1 point, AIR 1 of 3")
+
+    alv = [b for b in ctx.blocks if b["id"] == "alvarado"][0]
+    air = [b for b in ctx.blocks if b["id"] == "air"][0]
+    a1, a4 = ctx.block_eval(alv, 1), ctx.block_eval(alv, 4)
+    r1, r4 = ctx.block_eval(air, 1), ctx.block_eval(air, 4)
+    ok(a1["total"] == 7 and a1["not_assessed"] == ["leukocytosis", "shift"]
+       and a1["partial"] is True,
+       f"case3: Alvarado stage-1 partial = 7, not-assessed {a1['not_assessed']}")
+    ok(a4["total"] == 10 and a4["status"] == "very probable"
+       and a4["partial"] is False,
+       "case3: Alvarado final = 10/10 'very probable'")
+    ok(r1["total"] == 3 and r1["not_assessed"] == ["pmn", "wbc", "crp"]
+       and r1["partial"] is True,
+       f"case3: AIR stage-1 partial = 3, not-assessed {r1['not_assessed']}")
+    ok(r4["total"] == 6 and r4["status"] == "intermediate probability"
+       and r4["partial"] is False,
+       "case3: AIR final = 6/12 'intermediate probability'")
+    cmp_ = case["adjudication"]["score_comparison"]
+    ok(cmp_["alvarado_final"]["total"] == a4["total"]
+       and cmp_["alvarado_final"]["status"] == a4["status"]
+       and cmp_["air_final"]["total"] == r4["total"]
+       and cmp_["air_final"]["status"] == r4["status"],
+       "case3: adjudication's stated score comparison matches the computed scores")
+
+    ok(boards[1]["hyp.ectopic-pregnancy"] >= RULE_OUT
+       and boards[2]["hyp.ectopic-pregnancy"] < RULE_OUT,
+       "case3: ectopic pregnancy live at stage 1, ruled out at stage 2 by the negative hCG")
+    ok(boards[4]["hyp.acute-appendicitis"] > 0.96,
+       "case3: workbench appendicitis posterior > 0.96 after CT")
+
+    # ---- imaging link: recount + the recorded absence ---------------
+    import numpy as np
+    bindir = os.path.join(ROOT, "web", "data", "imaging", "s0778")
+    counts = []
+    for i in range(431):
+        arr = np.fromfile(os.path.join(bindir, f"lbl-{i:04d}.bin"), dtype=np.uint8)
+        counts.append(int((arr == 9).sum()))
+    present = [i for i, cn in enumerate(counts) if cn > 0]
+    link = case["imaging_link"]
+    m = link["measures"]
+    ok([present[0], present[-1]] == m["slice_files_0based"] == [45, 248],
+       f"case3: colon slices recounted {present[0]}..{present[-1]} (0-based files)")
+    ok(len(present) == m["slices_with_label"] == 204,
+       "case3: 204 slices carry the colon label")
+    ok(sum(counts) == 324670
+       == link["label"]["hu_statistics_from_crosswalk"]["voxels"],
+       "case3: total colon voxels recounted: 324,670")
+    mx = max(range(431), key=lambda i: counts[i])
+    ok(mx == m["max_cross_section"]["file_index_0based"] == 186
+       and counts[mx] == m["max_cross_section"]["voxels"] == 4722,
+       f"case3: max colon cross-section recounted: file {mx}, {counts[mx]} voxels")
+    ok(abs(324670 * 3.375 / 1000 - 1095.76) < 0.01,
+       "case3: volume arithmetic 324,670 x 3.375 mm3 = 1095.76 mL")
+    cw = load(os.path.join(ROOT, "data", "imaging", "s0778", "crosswalk.json"))
+    ok(all(l["label"] != "appendix" for l in cw["labels"]),
+       "case3: NO appendix label exists in the shipped s0778 label set (recorded absence)")
+    colon = next(l for l in cw["labels"] if l["label"] == "colon")
+    ok(colon["record_ids"] == ["large-intestine"] and colon["index"] == 9
+       and link["label"]["record_id"] == "large-intestine",
+       "case3: crosswalk maps label 9 (colon) to record 'large-intestine'")
+    hu = link["label"]["hu_statistics_from_crosswalk"]
+    ok(all(colon["hu"][k] == hu[k] for k in ("mean", "median", "p5", "p95", "min", "max")),
+       "case3: case HU statistics equal crosswalk values")
+    ok("does NOT show" in link["honesty_block"],
+       "case3: imaging honesty block states what the series does not show")
+    ok("canal.appendix" in INVS,
+       "case3: the Body Model HAS an appendix record (canal.appendix) — the asymmetry is real")
+    dig = load(os.path.join(ROOT, "data", "digestive", "digestive.json"))
+    ok(any((r.get("id") or r.get("record_id")) == "dig.cecum-appendix"
+           for r in dig["records"]),
+       "case3: compound clinical record dig.cecum-appendix exists")
+
+    # ---- physiology link: same engine state as case 1 ---------------
+    c1 = load(os.path.join(CASES, "case.ruq-pain.001.json"))["case"]
+    ok(case["physiology_link"]["trace_hash"]
+       == c1["physiology_link"]["trace_hash"] == "0x6369b10e9a71c872",
+       "case3: physiology link records the current engine trace hash (case 1's profile re-runs the engine itself)")
+    ok(case["physiology_link"]["baseline_recorded_outputs"]
+       == c1["physiology_link"]["baseline_recorded_outputs"],
+       "case3: baseline outputs identical to case 1's recorded baseline (same engine state)")
+
+    # ---- theatre handoff ---------------------------------------------
+    appy = load(os.path.join(
+        ROOT, "theatre", "procedures", "proc.lap-appendectomy.json"))["procedure"]
+    ok(appy["id"] == case["management"]["handoff"]["procedure_id"]
+       == "proc.appy.lap",
+       "case3: handoff procedure id matches the theatre file (proc.appy.lap)")
+    reg = {s["id"]: s for s in appy["structures"]}
+    ok(reg["canal.appendix"]["kind"] == "record"
+       and reg["canal.appendix"]["resolves_to"]
+       == "data/digestive/digestive-inventory.json",
+       "case3: theatre register resolves canal.appendix")
+    req = sum(1 for ph in appy["phases"] for st in ph["steps"]
+              for ms in st["microsteps"] if ms.get("required"))
+    ok(req == 36, f"case3: standard configuration requires {req} microsteps (36)")
+    ok(case["management"]["handoff"]["procedure_configuration"] == "standard"
+       and "standard position" in ctx.findings["f.ct-appendicitis"]["text"]
+       and "perforation" in ctx.findings["f.ct-uncomplicated"]["text"],
+       "case3: branch consistency — standard position + recorded no-perforation findings behind the standard configuration")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"] == case["adjudication"]["diagnosis_hypothesis"]
+       and "proc.appy.lap" in commit["management"],
+       "case3: attempt commit matches adjudication and names the handoff procedure")
+
+
 def main():
     attempts = {}
     for p in glob.glob(os.path.join(CASES, "attempts", "*.json")):
@@ -801,6 +984,9 @@ def main():
     if "case.post-op-jaundice.002" in profiles:
         c, ctx, boards = profiles["case.post-op-jaundice.002"]
         profile_case2(c, ctx, boards)
+    if "case.appendicitis.003" in profiles:
+        c, ctx, boards = profiles["case.appendicitis.003"]
+        profile_case3(c, ctx, boards, attempts["case.appendicitis.003"])
 
     print(f"\n{'ALL CHECKS PASS' if FAIL == 0 else 'FAILURES PRESENT'}: "
           f"{PASS} passed, {FAIL} failed")

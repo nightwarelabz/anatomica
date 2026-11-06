@@ -14,7 +14,10 @@ computes — from the case file + cases/parameters.json alone:
      file): "grouped" blocks (TG18-style groups + status rules),
      "k_of_n" blocks (revised Atlanta-style), and "classification"
      blocks (Strasberg-Bismuth-style decision rules over named
-     inputs), plus the TG18 severity grade where a case declares one;
+     inputs), and "score" blocks (Milestone 29: published clinical
+     scores — flat or tiered weighted items summed into declared
+     bands, with unmeasured items recorded not-assessed), plus the
+     TG18 severity grade where a case declares one;
   3. the attempt scores, per design/07 and the rules declared in
      cases/parameters.json: per-stage Brier scores (learner board and
      workbench board) against the adjudicated diagnosis, ranks and
@@ -214,7 +217,51 @@ class CaseRun:
                             "rule_index": i, "inputs": inputs}
             return {"status": block.get("pending_label", "not yet classifiable"),
                     "result": None, "rule_index": None, "inputs": inputs}
+        if kind == "score":
+            items = {}
+            total = 0
+            not_assessed = []
+            for it in block["items"]:
+                r = self.score_item(it, stage)
+                items[it["id"]] = r
+                total += r["points"]
+                if r["state"] == "unknown":
+                    not_assessed.append(it["id"])
+            status = block["default_status"]
+            for band in block["bands"]:
+                if band["min"] <= total <= band["max"]:
+                    status = band["status"]
+                    break
+            return {"items": items, "total": total,
+                    "max_total": block["max_total"],
+                    "not_assessed": not_assessed,
+                    "partial": bool(not_assessed), "status": status}
         raise ValueError(kind)
+
+    def score_item(self, item, stage, excl=frozenset()):
+        """Three-valued state + awarded points for one score item
+        (Milestone 29). Flat item: `points` for its evidence. Tiered
+        item: tiers declared highest-first; the first tier whose
+        evidence is satisfied wins its points. An item is unsatisfied
+        only if every tier is unsatisfied; otherwise unknown."""
+        tiers = item["tiers"] if "tiers" in item else [
+            {"points": item["points"], "evidence": item["evidence"]}]
+        states = []
+        for t in tiers:
+            vals = [self.atom(a, stage, excl, three=True)
+                    for a in t["evidence"]]
+            if "satisfied" in vals:
+                states.append("satisfied")
+            elif vals and all(v == "unsatisfied" for v in vals):
+                states.append("unsatisfied")
+            else:
+                states.append("unknown")
+        for t, s in zip(tiers, states):
+            if s == "satisfied":
+                return {"state": "satisfied", "points": t["points"]}
+        if states and all(s == "unsatisfied" for s in states):
+            return {"state": "unsatisfied", "points": 0}
+        return {"state": "unknown", "points": 0}
 
     def criteria_items(self, stage, excl=frozenset()):
         """Three-valued states of every criteria input, for order
@@ -233,6 +280,12 @@ class CaseRun:
                     item = {"evidence": inp["atoms"]}
                     out[f"{block['id']}.{inp['id']}"] = self.item_three(
                         item, stage, excl)
+            elif block["kind"] == "score":
+                for it in block["items"]:
+                    r = self.score_item(it, stage, excl)
+                    out[f"{block['id']}.{it['id']}"] = (
+                        f"satisfied:{r['points']}"
+                        if r["state"] == "satisfied" else r["state"])
         return out
 
     def severity(self, stage):
@@ -472,6 +525,12 @@ class CaseRun:
                 elif "result" in res:
                     print(f"  {bid}: {res['status']}"
                           + (f" -> {res['result']}" if res["result"] else ""))
+                elif "total" in res:
+                    print(f"  {bid}: {res['total']}/{res['max_total']} -> "
+                          f"{res['status']}"
+                          + (f" (partial; not assessed: "
+                             f"{', '.join(res['not_assessed'])})"
+                             if res["partial"] else ""))
         print(f"\nruled out by workbench (stage): {ruled_out}")
         if "severity_grade" in case["adjudication"]:
             grade, iii, ii = self.severity(final)
