@@ -1,0 +1,548 @@
+{
+ "meta": {
+  "title": "ANATOMICA integumentary system geometry resolution \u2014 Milestone 15",
+  "generated_by": "tools/integ_map.py",
+  "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
+  "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
+  "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
+  "coverage": {
+   "records": 6,
+   "records_with_meshes": 6,
+   "records_without_meshes": 0,
+   "by_line": {
+    "skin": {
+     "records": 1,
+     "records_with_meshes": 1
+    },
+    "appendage": {
+     "records": 5,
+     "records_with_meshes": 5
+    },
+    "system": {
+     "records": 0,
+     "records_with_meshes": 0
+    }
+   },
+   "union_bbox_all_records": {
+    "min": [
+     -334.119,
+     -246.783,
+     -78.1112
+    ],
+    "max": [
+     332.825,
+     45.2476,
+     1651.63
+    ]
+   }
+  },
+  "structure_findings": {
+   "skin_shell_identity": {
+    "claim": "one mesh file, FJ2810, serves as the skin in both tables and as the whole content of the integument and of the integumentary system root in PART-OF",
+    "skin_isa": [
+     "FJ2810"
+    ],
+    "skin_partof": [
+     "FJ2810"
+    ],
+    "integument_partof": [
+     "FJ2810"
+    ],
+    "system_partof": [
+     "FJ2810"
+    ],
+    "identical": true
+   },
+   "hair_file_partition": {
+    "claim": "the subdivision, appendage and hair class concepts carry the same two files; hair of head carries FJ2813 alone; hair of trunk and pubic hair carry FJ2815 alone (pubic hair in both tables) \u2014 the hair geometry partitions into a head file and a trunk file",
+    "subdivision_isa": [
+     "FJ2813",
+     "FJ2815"
+    ],
+    "appendage_isa": [
+     "FJ2813",
+     "FJ2815"
+    ],
+    "hair_isa": [
+     "FJ2813",
+     "FJ2815"
+    ],
+    "head_isa": [
+     "FJ2813"
+    ],
+    "trunk_isa": [
+     "FJ2815"
+    ],
+    "pubic_isa": [
+     "FJ2815"
+    ],
+    "pubic_partof": [
+     "FJ2815"
+    ],
+    "identical": true
+   },
+   "eyebrow_set_identity": {
+    "claim": "the eyebrow and both set classes above it resolve to the same single file, FJ2812, in IS-A (none is carried in PART-OF): the classes carry no geometry beyond the eyebrow record's",
+    "set_of_hairs_isa": [
+     "FJ2812"
+    ],
+    "facial_set_isa": [
+     "FJ2812"
+    ],
+    "eyebrow_isa": [
+     "FJ2812"
+    ],
+    "identical": true
+   },
+   "module_file_census": {
+    "claim": "the module's entire geometry, across both tables and all twelve concepts, is four mesh files",
+    "distinct_files": [
+     "FJ2810",
+     "FJ2812",
+     "FJ2813",
+     "FJ2815"
+    ]
+   }
+  }
+ },
+ "records": [
+  {
+   "record_id": "skin",
+   "name": "skin",
+   "side": "un-sided",
+   "representation": "organ",
+   "line": "skin",
+   "concept_ids": [
+    "FMA7163"
+   ],
+   "concept_names": [
+    "skin"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2810",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2810.obj",
+     "vertices": 102467,
+     "faces": 203382,
+     "bbox": {
+      "min": [
+       -334.119,
+       -246.783,
+       -78.1112
+      ],
+      "max": [
+       332.825,
+       45.2476,
+       1641.36
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ2810",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2810.obj",
+     "vertices": 102467,
+     "faces": 203382,
+     "bbox": {
+      "min": [
+       -334.119,
+       -246.783,
+       -78.1112
+      ],
+      "max": [
+       332.825,
+       45.2476,
+       1641.36
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 102467,
+     "faces": 203382
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 102467,
+     "faces": 203382
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -334.119,
+     -246.783,
+     -78.1112
+    ],
+    "max": [
+     332.825,
+     45.2476,
+     1641.36
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -334.119,
+     -246.783,
+     -78.1112
+    ],
+    "max": [
+     332.825,
+     45.2476,
+     1641.36
+    ]
+   }
+  },
+  {
+   "record_id": "hair",
+   "name": "hair",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA53667"
+   ],
+   "concept_names": [
+    "hair"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2813",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2813.obj",
+     "vertices": 12464,
+     "faces": 18006,
+     "bbox": {
+      "min": [
+       -83.1882,
+       -171.372,
+       1446.18
+      ],
+      "max": [
+       81.3955,
+       30.3713,
+       1651.63
+      ]
+     }
+    },
+    {
+     "fj": "FJ2815",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2815.obj",
+     "vertices": 5523,
+     "faces": 2960,
+     "bbox": {
+      "min": [
+       -61.809,
+       -187.252,
+       765.261
+      ],
+      "max": [
+       59.9573,
+       -149.848,
+       828.9
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 2,
+     "vertices": 17987,
+     "faces": 20966
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 2
+   },
+   "bbox_isa": {
+    "min": [
+     -83.1882,
+     -187.252,
+     765.261
+    ],
+    "max": [
+     81.3955,
+     30.3713,
+     1651.63
+    ]
+   },
+   "bbox_partof": null
+  },
+  {
+   "record_id": "hair.hair-of-head",
+   "name": "hair of head",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54241"
+   ],
+   "concept_names": [
+    "hair of head"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2813",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2813.obj",
+     "vertices": 12464,
+     "faces": 18006,
+     "bbox": {
+      "min": [
+       -83.1882,
+       -171.372,
+       1446.18
+      ],
+      "max": [
+       81.3955,
+       30.3713,
+       1651.63
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 12464,
+     "faces": 18006
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -83.1882,
+     -171.372,
+     1446.18
+    ],
+    "max": [
+     81.3955,
+     30.3713,
+     1651.63
+    ]
+   },
+   "bbox_partof": null
+  },
+  {
+   "record_id": "hair.hair-of-trunk",
+   "name": "hair of trunk",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54250"
+   ],
+   "concept_names": [
+    "hair of trunk"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2815",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2815.obj",
+     "vertices": 5523,
+     "faces": 2960,
+     "bbox": {
+      "min": [
+       -61.809,
+       -187.252,
+       765.261
+      ],
+      "max": [
+       59.9573,
+       -149.848,
+       828.9
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5523,
+     "faces": 2960
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -61.809,
+     -187.252,
+     765.261
+    ],
+    "max": [
+     59.9573,
+     -149.848,
+     828.9
+    ]
+   },
+   "bbox_partof": null
+  },
+  {
+   "record_id": "hair.pubic-hair",
+   "name": "pubic hair",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54319"
+   ],
+   "concept_names": [
+    "pubic hair"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2815",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2815.obj",
+     "vertices": 5523,
+     "faces": 2960,
+     "bbox": {
+      "min": [
+       -61.809,
+       -187.252,
+       765.261
+      ],
+      "max": [
+       59.9573,
+       -149.848,
+       828.9
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ2815",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ2815.obj",
+     "vertices": 5523,
+     "faces": 2960,
+     "bbox": {
+      "min": [
+       -61.809,
+       -187.252,
+       765.261
+      ],
+      "max": [
+       59.9573,
+       -149.848,
+       828.9
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 5523,
+     "faces": 2960
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 5523,
+     "faces": 2960
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -61.809,
+     -187.252,
+     765.261
+    ],
+    "max": [
+     59.9573,
+     -149.848,
+     828.9
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -61.809,
+     -187.252,
+     765.261
+    ],
+    "max": [
+     59.9573,
+     -149.848,
+     828.9
+    ]
+   }
+  },
+  {
+   "record_id": "eyebrow",
+   "name": "eyebrow",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54237"
+   ],
+   "concept_names": [
+    "eyebrow"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ2812",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ2812.obj",
+     "vertices": 17143,
+     "faces": 7912,
+     "bbox": {
+      "min": [
+       -56.8484,
+       -183.498,
+       1534.33
+      ],
+      "max": [
+       55.5629,
+       -154.882,
+       1545.87
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 17143,
+     "faces": 7912
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -56.8484,
+     -183.498,
+     1534.33
+    ],
+    "max": [
+     55.5629,
+     -154.882,
+     1545.87
+    ]
+   },
+   "bbox_partof": null
+  }
+ ]
+}

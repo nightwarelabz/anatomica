@@ -1,0 +1,1436 @@
+{
+ "meta": {
+  "title": "ANATOMICA integumentary system inventory \u2014 Milestone 15",
+  "generated_by": "tools/integ_map.py",
+  "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
+  "counting_convention": "One record for the skin, keyed on its both-table concept; one record for the hair class with its parent class (skin appendage) carried as class_concept_id; one record each for hair of head, hair of trunk and pubic hair, keyed on their own concepts; one record for the eyebrow with its set class (set of facial hairs) carried. Grouping classes \u2014 the integumentary system root, the integument, the subdivision of epidermis and the set of hairs \u2014 are censused, never records. Line is censused per concept and per record: skin (one concept), appendage (nine) and system (the two PART-OF roots). The system's whole universe is twelve concepts: the release carries the skin as one whole-body shell and the hair as four mesh files' worth of concepts, and carries no layer, nail, cutaneous gland or mammary concept at all \u2014 those structures exist in this module only as sourced clinical records with the absence recorded (the Milestone 9/14 pattern). The mammary gland's ownership is adjudicated in this module's clinical tranche: the release files it under neither system (zero hits under every name), and this module owns the record on the modified-sweat-gland basis stated there.",
+  "concept_universe": {
+   "total": 12,
+   "isa_total": 10,
+   "partof_total": 3,
+   "in_both_tables": 1,
+   "isa_sets": {
+    "skin-isa": 1,
+    "epidermis-subdivision-isa": 6,
+    "hair-set-isa": 3
+   },
+   "partof_sets": {
+    "integumentary-system-partof": 1,
+    "integument-partof": 2
+   },
+   "by_line": {
+    "appendage": 9,
+    "system": 2,
+    "skin": 1
+   },
+   "cross_references": {},
+   "dispositions": {
+    "record": 6,
+    "class-carried": 2,
+    "grouping-class": 4
+   },
+   "disposition_concepts": {
+    "class-carried": [
+     "FMA70741",
+     "FMA71012"
+    ],
+    "grouping-class": [
+     "FMA70593",
+     "FMA70752",
+     "FMA72979",
+     "FMA74657"
+    ],
+    "record": [
+     "FMA53667",
+     "FMA54237",
+     "FMA54241",
+     "FMA54250",
+     "FMA54319",
+     "FMA7163"
+    ]
+   },
+   "sweep_rejected_names": [
+    "adrenal gland",
+    "branch of ciliary ganglion",
+    "branch of nasociliary nerve",
+    "ciliary ganglion",
+    "communicating branch of left nasociliary nerve with left ciliary ganglion",
+    "communicating branch of nasociliary nerve with ciliary ganglion",
+    "communicating branch of right nasociliary nerve with right ciliary ganglion",
+    "corona ciliaris",
+    "deep fascial system",
+    "fascia lata of left thigh",
+    "fascia lata of right thigh",
+    "investing fascia of left forearm",
+    "investing fascia of left free lower limb",
+    "investing fascia of left free upper limb",
+    "investing fascia of left lower limb",
+    "investing fascia of left thigh",
+    "investing fascia of left wrist",
+    "investing fascia of right forearm",
+    "investing fascia of right free lower limb",
+    "investing fascia of right free upper limb",
+    "investing fascia of right lower limb",
+    "investing fascia of right thigh",
+    "investing fascia of right upper limb",
+    "investing fascia of right wrist",
+    "lacrimal gland",
+    "left adrenal gland",
+    "left ciliary ganglion",
+    "left corona ciliaris",
+    "left lacrimal gland",
+    "left long ciliary nerve",
+    "left nasociliary nerve",
+    "left sublingual gland",
+    "left submandibular gland",
+    "left tensor fasciae latae",
+    "long ciliary nerve",
+    "major salivary gland",
+    "nasociliary nerve",
+    "organ component gland",
+    "pituitary gland",
+    "region of ciliary body",
+    "right adrenal gland",
+    "right ciliary ganglion",
+    "right corona ciliaris",
+    "right lacrimal gland",
+    "right long ciliary nerve",
+    "right nasociliary nerve",
+    "right sublingual gland",
+    "right submandibular gland",
+    "right tensor fasciae latae",
+    "salivary gland",
+    "short ciliary nerve",
+    "sublingual gland",
+    "submandibular gland",
+    "tensor fasciae latae",
+    "zone of fascia lata",
+    "zone of investing fascia",
+    "zone of investing fascia of free lower limb",
+    "zone of investing fascia of lower limb",
+    "zone of investing fascia of thigh"
+   ],
+   "sweep_adjudications": {
+    "adrenal gland": "endocrine module (Milestone 13): the adrenal gland class, censused there with its instances",
+    "branch of ciliary ganglion": "nervous module (see ciliary ganglion)",
+    "branch of nasociliary nerve": "nervous module: the nasociliary nerve line, a branch system of the ophthalmic nerve (Milestone 9); an ocular sensory nerve, not an eyelash",
+    "ciliary ganglion": "nervous module (Milestone 9): the ciliary ganglion, its one autonomic ganglion; an ocular structure, not an eyelash",
+    "communicating branch of left nasociliary nerve with left ciliary ganglion": "nervous module (see nasociliary nerve)",
+    "communicating branch of nasociliary nerve with ciliary ganglion": "nervous module (see nasociliary nerve)",
+    "communicating branch of right nasociliary nerve with right ciliary ganglion": "nervous module (see nasociliary nerve)",
+    "corona ciliaris": "an ocular structure of the ciliary body of the eyeball, or its autonomic supply \u2014 the ciliary family belongs to the eye and to the nervous module (Milestone 9 censused the ciliary ganglion line); none of these names is an eyelash, and the release has no eyelash concept",
+    "deep fascial system": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "fascia lata of left thigh": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "fascia lata of right thigh": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left forearm": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left free lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left free upper limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left thigh": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of left wrist": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right forearm": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right free lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right free upper limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right thigh": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right upper limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "investing fascia of right wrist": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "lacrimal gland": "the lacrimal apparatus of the eye: an orbital gland, not a cutaneous gland; censused by no system module (the nervous module carries only the lacrimal nerve)",
+    "left adrenal gland": "endocrine module (see adrenal gland)",
+    "left ciliary ganglion": "nervous module (see ciliary ganglion)",
+    "left corona ciliaris": "an ocular structure of the ciliary body of the eyeball, or its autonomic supply \u2014 the ciliary family belongs to the eye and to the nervous module (Milestone 9 censused the ciliary ganglion line); none of these names is an eyelash, and the release has no eyelash concept",
+    "left lacrimal gland": "lacrimal apparatus (see lacrimal gland)",
+    "left long ciliary nerve": "nervous module (see ciliary ganglion)",
+    "left nasociliary nerve": "nervous module: the nasociliary nerve line, a branch system of the ophthalmic nerve (Milestone 9); an ocular sensory nerve, not an eyelash",
+    "left sublingual gland": "digestive module (see salivary gland)",
+    "left submandibular gland": "digestive module (see salivary gland)",
+    "left tensor fasciae latae": "muscular module (see tensor fasciae latae)",
+    "long ciliary nerve": "nervous module (see ciliary ganglion)",
+    "major salivary gland": "digestive module (see salivary gland)",
+    "nasociliary nerve": "nervous module: the nasociliary nerve line, a branch system of the ophthalmic nerve (Milestone 9); an ocular sensory nerve, not an eyelash",
+    "organ component gland": "a generic FMA component class, not a cutaneous structure",
+    "pituitary gland": "endocrine module (Milestone 13): the pituitary, censused there",
+    "region of ciliary body": "an ocular structure of the ciliary body of the eyeball, or its autonomic supply \u2014 the ciliary family belongs to the eye and to the nervous module (Milestone 9 censused the ciliary ganglion line); none of these names is an eyelash, and the release has no eyelash concept",
+    "right adrenal gland": "endocrine module (see adrenal gland)",
+    "right ciliary ganglion": "nervous module (see ciliary ganglion)",
+    "right corona ciliaris": "an ocular structure of the ciliary body of the eyeball, or its autonomic supply \u2014 the ciliary family belongs to the eye and to the nervous module (Milestone 9 censused the ciliary ganglion line); none of these names is an eyelash, and the release has no eyelash concept",
+    "right lacrimal gland": "lacrimal apparatus (see lacrimal gland)",
+    "right long ciliary nerve": "nervous module (see ciliary ganglion)",
+    "right nasociliary nerve": "nervous module: the nasociliary nerve line, a branch system of the ophthalmic nerve (Milestone 9); an ocular sensory nerve, not an eyelash",
+    "right sublingual gland": "digestive module (see salivary gland)",
+    "right submandibular gland": "digestive module (see salivary gland)",
+    "right tensor fasciae latae": "muscular module (see tensor fasciae latae)",
+    "salivary gland": "digestive module (Milestone 11): the salivary gland class, censused there with its instances",
+    "short ciliary nerve": "nervous module (see ciliary ganglion)",
+    "sublingual gland": "digestive module (see salivary gland)",
+    "submandibular gland": "digestive module (see salivary gland)",
+    "tensor fasciae latae": "muscular module: the tensor fasciae latae muscle, censused there as its right and left records \u2014 a muscle that tenses the fascia lata, not fascia",
+    "zone of fascia lata": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "zone of investing fascia": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "zone of investing fascia of free lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "zone of investing fascia of lower limb": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all",
+    "zone of investing fascia of thigh": "the release's deep fascial system: deep investing fascia of the limb compartments, filed under a fascial root of its own \u2014 not skin, not subcutaneous tissue, and censused by no system module; the skin's own subcutaneous layer (hypodermis / superficial fascia) has no concept in the release at all"
+   },
+   "sweep_zero_hit_terms": [
+    "nail",
+    "unguis",
+    "mammary",
+    "breast",
+    "sebaceous",
+    "sweat",
+    "follicle",
+    "eyelash",
+    "scalp",
+    "subcutaneous",
+    "areola",
+    "nipple"
+   ]
+  },
+  "record_count": 6,
+  "record_representations": {
+   "organ": 1,
+   "whole-concept": 5
+  },
+  "records_by_subtree": {
+   "integument-partof": 1,
+   "epidermis-subdivision-isa": 4,
+   "hair-set-isa": 1
+  },
+  "records_by_line": {
+   "skin": 1,
+   "appendage": 5
+  },
+  "boundary_closures": {
+   "milestone_14_reproductive": {
+    "source": "data/reproductive/reproductive-inventory.json (Milestone 14)",
+    "fact": "pubic hair (FMA54319) is filed in PART-OF under the mons pubis (FMA20218); the mons pubis is the reproductive module's record 'mons-pubis', keyed on that concept",
+    "pubic_hair_partof_parent": "FMA20218",
+    "pubic_hair_partof_parent_name": "mons pubis",
+    "reproductive_mons_pubis_concepts": [
+     "FMA20218"
+    ],
+    "closes": true
+   }
+  },
+  "totalsegmentator_overlap": {
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), exactly one is integument-adjacent: 'face', a mask of the facial region \u2014 adjudicated below as a region mask, not skin anatomy. No skin or body-surface label exists in TS v1, so the module's TS overlap is zero labels mapped to records",
+   "labels": [],
+   "labels_without_records": [],
+   "labels_matched_by_terms": [
+    "face"
+   ],
+   "adjudication": "the one TS v1 label matched by the integumentary terms is 'face' \u2014 a region mask of the face (an imaging region in all 1,204 subjects), not a skin structure: it names no skin, layer or appendage. No 'skin', 'body_trunc', 'body_extremities' or other body-surface label exists in the v1.0 label set \u2014 the package class map, the Milestone 3 index census and labels.json agree on the same 104 labels, and none is a skin or body-surface segmentation"
+  },
+  "absences": {
+   "note": "probe-based gap analysis: each substring probe was counted over all six BP3D 4.0 release tables (zero hits = the name does not occur in the release); each exact-name probe was tested for a concept of exactly that name in either parts list. Present controls are interleaved to prove the instrument reads the tables. 'dermis' is probed by exact name only: as a substring it is contained in 'epidermis' and would read the subdivision class as a false present. The finding is total: beyond the skin shell and the hair concepts, every structure the clinical layer names \u2014 layers, strata, nails, follicles, cutaneous glands, sensory corpuscles, the mammary gland \u2014 is absent from the release",
+   "substring_probes": {
+    "absent": [
+     "stratum",
+     "keratinocyte",
+     "melanocyte",
+     "langerhans",
+     "merkel",
+     "dermal papilla",
+     "hair follicle",
+     "follicle",
+     "sebaceous",
+     "sweat",
+     "sudoriferous",
+     "eccrine",
+     "apocrine",
+     "arrector",
+     "nail",
+     "unguis",
+     "lunule",
+     "eponychium",
+     "cuticle",
+     "mammary",
+     "breast",
+     "mamma",
+     "nipple",
+     "areola",
+     "lactiferous",
+     "scalp",
+     "eyelash",
+     "beard",
+     "subcutaneous",
+     "hypodermis",
+     "pacinian",
+     "meissner",
+     "vellus",
+     "lanugo",
+     "corium"
+    ],
+    "present": [
+     "skin",
+     "hair",
+     "eyebrow",
+     "integument",
+     "epidermis",
+     "pubic hair"
+    ],
+    "detail": [
+     {
+      "probe": "stratum",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "keratinocyte",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "melanocyte",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "langerhans",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "merkel",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "dermal papilla",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "hair follicle",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "follicle",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "sebaceous",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "sweat",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "sudoriferous",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "eccrine",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "apocrine",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "arrector",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "nail",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "unguis",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "lunule",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "eponychium",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "cuticle",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "mammary",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "breast",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "mamma",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "nipple",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "areola",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "lactiferous",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "scalp",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "eyelash",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "beard",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "subcutaneous",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "hypodermis",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "pacinian",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "meissner",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "vellus",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "lanugo",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "corium",
+      "total_hits": 0,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "skin",
+      "total_hits": 11,
+      "exact_concept_exists": true,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 2,
+       "partof_parts_list_e.txt": 1,
+       "isa_element_parts.txt": 3,
+       "partof_element_parts.txt": 1,
+       "isa_inclusion_relation_list.txt": 3,
+       "partof_inclusion_relation_list.txt": 1
+      }
+     },
+     {
+      "probe": "hair",
+      "total_hits": 27,
+      "exact_concept_exists": true,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 6,
+       "partof_parts_list_e.txt": 1,
+       "isa_element_parts.txt": 7,
+       "partof_element_parts.txt": 1,
+       "isa_inclusion_relation_list.txt": 11,
+       "partof_inclusion_relation_list.txt": 1
+      }
+     },
+     {
+      "probe": "eyebrow",
+      "total_hits": 3,
+      "exact_concept_exists": true,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 1,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 1,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 1,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "integument",
+      "total_hits": 7,
+      "exact_concept_exists": true,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 0,
+       "partof_parts_list_e.txt": 2,
+       "isa_element_parts.txt": 0,
+       "partof_element_parts.txt": 2,
+       "isa_inclusion_relation_list.txt": 0,
+       "partof_inclusion_relation_list.txt": 3
+      }
+     },
+     {
+      "probe": "epidermis",
+      "total_hits": 5,
+      "exact_concept_exists": false,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 1,
+       "partof_parts_list_e.txt": 0,
+       "isa_element_parts.txt": 2,
+       "partof_element_parts.txt": 0,
+       "isa_inclusion_relation_list.txt": 2,
+       "partof_inclusion_relation_list.txt": 0
+      }
+     },
+     {
+      "probe": "pubic hair",
+      "total_hits": 6,
+      "exact_concept_exists": true,
+      "hits_by_table": {
+       "isa_parts_list_e.txt": 1,
+       "partof_parts_list_e.txt": 1,
+       "isa_element_parts.txt": 1,
+       "partof_element_parts.txt": 1,
+       "isa_inclusion_relation_list.txt": 1,
+       "partof_inclusion_relation_list.txt": 1
+      }
+     }
+    ]
+   },
+   "substring_zero_hit_count": 35,
+   "exact_name_probes": {
+    "absent": [
+     "epidermis",
+     "dermis",
+     "hypodermis",
+     "stratum basale",
+     "stratum corneum",
+     "skin of head",
+     "skin of trunk",
+     "skin of hand",
+     "nail",
+     "fingernail",
+     "toenail",
+     "nail bed",
+     "nail plate",
+     "lunule",
+     "eponychium",
+     "hair follicle",
+     "sebaceous gland",
+     "sweat gland",
+     "eccrine sweat gland",
+     "apocrine sweat gland",
+     "arrector pili muscle",
+     "mammary gland",
+     "breast",
+     "nipple",
+     "areola",
+     "subcutaneous tissue",
+     "superficial fascia",
+     "eyelash",
+     "scalp"
+    ],
+    "present": [
+     "skin",
+     "hair",
+     "eyebrow",
+     "integument",
+     "integumentary system"
+    ],
+    "detail": [
+     {
+      "probe": "epidermis",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "dermis",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "hypodermis",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "stratum basale",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "stratum corneum",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "skin of head",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "skin of trunk",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "skin of hand",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "nail",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "fingernail",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "toenail",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "nail bed",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "nail plate",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "lunule",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "eponychium",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "hair follicle",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "sebaceous gland",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "sweat gland",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "eccrine sweat gland",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "apocrine sweat gland",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "arrector pili muscle",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "mammary gland",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "breast",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "nipple",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "areola",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "subcutaneous tissue",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "superficial fascia",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "eyelash",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "scalp",
+      "concept_exists": false,
+      "in_isa": false,
+      "in_partof": false
+     },
+     {
+      "probe": "skin",
+      "concept_exists": true,
+      "in_isa": true,
+      "in_partof": true
+     },
+     {
+      "probe": "hair",
+      "concept_exists": true,
+      "in_isa": true,
+      "in_partof": false
+     },
+     {
+      "probe": "eyebrow",
+      "concept_exists": true,
+      "in_isa": true,
+      "in_partof": false
+     },
+     {
+      "probe": "integument",
+      "concept_exists": true,
+      "in_isa": false,
+      "in_partof": true
+     },
+     {
+      "probe": "integumentary system",
+      "concept_exists": true,
+      "in_isa": false,
+      "in_partof": true
+     }
+    ]
+   },
+   "exact_name_zero_hit_count": 29
+  }
+ },
+ "concepts": [
+  {
+   "fma_id": "FMA53667",
+   "name": "hair",
+   "representation_id": "BP8352",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "hair",
+   "parent_id": "FMA71012",
+   "parent_name": "skin appendage",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA54237",
+   "name": "eyebrow",
+   "representation_id": "BP8954",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "hair-set-isa",
+   "subtrees": [
+    "hair-set-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "eyebrow",
+   "parent_id": "FMA70741",
+   "parent_name": "set of facial hairs",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA54241",
+   "name": "hair of head",
+   "representation_id": "BP8565",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "hair.hair-of-head",
+   "parent_id": "FMA53667",
+   "parent_name": "hair",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA54250",
+   "name": "hair of trunk",
+   "representation_id": "BP8351",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "hair.hair-of-trunk",
+   "parent_id": "FMA53667",
+   "parent_name": "hair",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA54319",
+   "name": "pubic hair",
+   "representation_id": "BP8350",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "hair.pubic-hair",
+   "parent_id": "FMA54250",
+   "parent_name": "hair of trunk",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA70593",
+   "name": "subdivision of epidermis",
+   "representation_id": "BP8354",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA67538",
+   "parent_name": "subdivision of epithelium",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA70741",
+   "name": "set of facial hairs",
+   "representation_id": "BP8955",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "hair-set-isa",
+   "subtrees": [
+    "hair-set-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA70752",
+   "parent_name": "set of hairs",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA70752",
+   "name": "set of hairs",
+   "representation_id": "BP8956",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "hair-set-isa",
+   "subtrees": [
+    "hair-set-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA78562",
+   "parent_name": "set of organ regions",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA71012",
+   "name": "skin appendage",
+   "representation_id": "BP8353",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epidermis-subdivision-isa",
+   "subtrees": [
+    "epidermis-subdivision-isa"
+   ],
+   "line": "appendage",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA70593",
+   "parent_name": "subdivision of epidermis",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7163",
+   "name": "skin",
+   "representation_id": "BP9115",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "integument-partof",
+   "subtrees": [
+    "integument-partof",
+    "skin-isa"
+   ],
+   "line": "skin",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "skin",
+   "parent_id": "FMA55665",
+   "parent_name": "nonparenchymatous organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA72979",
+   "name": "integumentary system",
+   "representation_id": "BP10157",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "integumentary-system-partof",
+   "subtrees": [
+    "integumentary-system-partof"
+   ],
+   "line": "system",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA20394",
+   "parent_name": "human body",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA74657",
+   "name": "integument",
+   "representation_id": "BP10156",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "integument-partof",
+   "subtrees": [
+    "integument-partof"
+   ],
+   "line": "system",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA20394",
+   "parent_name": "human body",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 1
+  }
+ ],
+ "records": [
+  {
+   "record_id": "skin",
+   "name": "skin",
+   "side": "un-sided",
+   "representation": "organ",
+   "class_concept_id": "FMA7163",
+   "concept_ids": [
+    "FMA7163"
+   ],
+   "subtree": "integument-partof",
+   "line": "skin",
+   "group_path": [
+    "human body",
+    "integument"
+   ],
+   "note": "the module's organ record, keyed on the both-table concept. The release gives the skin no IS-A children and no PART-OF parts: no regional skin, no layers \u2014 its single mesh (FJ2810) is the whole-body shell the PART-OF table also files under integument and under the integumentary system root itself"
+  },
+  {
+   "record_id": "hair",
+   "name": "hair",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA71012",
+   "concept_ids": [
+    "FMA53667"
+   ],
+   "subtree": "epidermis-subdivision-isa",
+   "line": "appendage",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal tissue part",
+    "subdivision of epithelium",
+    "subdivision of epidermis",
+    "skin appendage"
+   ],
+   "note": "the hair class record; its parent class, skin appendage (FMA71012), is carried as class_concept_id. The class carries both hair files ({FJ2813, FJ2815}) \u2014 exactly the union of its regional records' files"
+  },
+  {
+   "record_id": "hair.hair-of-head",
+   "name": "hair of head",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA53667",
+   "concept_ids": [
+    "FMA54241"
+   ],
+   "subtree": "epidermis-subdivision-isa",
+   "line": "appendage",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal tissue part",
+    "subdivision of epithelium",
+    "subdivision of epidermis",
+    "skin appendage",
+    "hair"
+   ],
+   "note": "regional record, keyed on its own concept under the hair class; the only regional hair with its own mesh file (FJ2813)"
+  },
+  {
+   "record_id": "hair.hair-of-trunk",
+   "name": "hair of trunk",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA53667",
+   "concept_ids": [
+    "FMA54250"
+   ],
+   "subtree": "epidermis-subdivision-isa",
+   "line": "appendage",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal tissue part",
+    "subdivision of epithelium",
+    "subdivision of epidermis",
+    "skin appendage",
+    "hair"
+   ],
+   "note": "regional record, keyed on its own concept under the hair class; shares its single mesh file (FJ2815) with its child, pubic hair"
+  },
+  {
+   "record_id": "hair.pubic-hair",
+   "name": "pubic hair",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA54250",
+   "concept_ids": [
+    "FMA54319"
+   ],
+   "subtree": "epidermis-subdivision-isa",
+   "line": "appendage",
+   "group_path": [
+    "human body",
+    "body proper",
+    "trunk",
+    "abdominal segment of trunk",
+    "abdomen",
+    "pelvis",
+    "mons pubis"
+   ],
+   "note": "regional record, keyed on its own concept; the one concept filed across a module boundary \u2014 IS-A under hair of trunk here, PART-OF under the mons pubis (FMA20218), the reproductive module's only female record (Milestone 14). Owned here; the cross-filing is gated by the checker against the reproductive inventory"
+  },
+  {
+   "record_id": "eyebrow",
+   "name": "eyebrow",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA70741",
+   "concept_ids": [
+    "FMA54237"
+   ],
+   "subtree": "hair-set-isa",
+   "line": "appendage",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical set",
+    "set of organ parts",
+    "set of organ regions",
+    "set of hairs",
+    "set of facial hairs"
+   ],
+   "note": "the only named facial hair the release carries; keyed on its own concept under set of facial hairs (FMA70741), carried as class_concept_id. The eyebrow, its set class and the set of hairs above it all resolve to the same single mesh file (FJ2812), so the classes carry no geometry beyond this record's. There is no eyelash concept in the release (exact-name probe-verified)"
+  }
+ ]
+}
