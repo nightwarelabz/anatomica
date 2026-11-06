@@ -1,0 +1,1795 @@
+{
+ "meta": {
+  "title": "ANATOMICA urinary system inventory \u2014 Milestone 12",
+  "generated_by": "tools/uri_map.py",
+  "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
+  "counting_convention": "One record per lateralised instance where the tables lateralise (right/left kidney, right/left ureter), each keyed on its instance concept with the side-stripped class concept carried as class_concept_id; one record for each un-sided organ the release carries (urinary bladder, urethra). The urinary system root, the right/left upper urinary tracts and the lower urinary tract are grouping classes, censused but not records. The adrenal gland class and its two instances are an endocrine cross-reference (the release files them under the endocrine system in PART-OF), censused but not records of this module.",
+  "concept_universe": {
+   "total": 15,
+   "isa_total": 11,
+   "partof_total": 12,
+   "in_both_tables": 8,
+   "isa_sets": {
+    "kidney-isa": 3,
+    "ureter-isa": 3,
+    "bladder-urethra-isa": 2,
+    "adrenal-gland-endocrine-xref-isa": 3
+   },
+   "partof_sets": {
+    "urinary-system-partof": 10,
+    "adrenal-gland-endocrine-xref-partof": 2
+   },
+   "cross_references": {
+    "endocrine": 3
+   },
+   "dispositions": {
+    "grouping-class": 4,
+    "record": 6,
+    "cross-reference:endocrine": 3,
+    "class-carried": 2
+   },
+   "disposition_concepts": {
+    "class-carried": [
+     "FMA7203",
+     "FMA9704"
+    ],
+    "cross-reference:endocrine": [
+     "FMA15629",
+     "FMA15630",
+     "FMA9604"
+    ],
+    "grouping-class": [
+     "FMA45659",
+     "FMA71102",
+     "FMA71103",
+     "FMA7159"
+    ],
+    "record": [
+     "FMA15571",
+     "FMA15572",
+     "FMA15900",
+     "FMA19667",
+     "FMA7204",
+     "FMA7205"
+    ]
+   },
+   "sweep_rejected_names": [
+    "anterior division of left renal artery",
+    "anterior division of renal artery",
+    "anterior division of right renal artery",
+    "gallbladder",
+    "inferior segmental branch of left renal artery",
+    "inferior segmental branch of right renal artery",
+    "inferior segmental renal artery",
+    "inferior suprarenal artery",
+    "left inferior suprarenal artery",
+    "left middle suprarenal artery",
+    "left renal artery",
+    "left renal vein",
+    "left suprarenal vein",
+    "middle suprarenal artery",
+    "posterior division of left renal artery",
+    "posterior division of renal artery",
+    "posterior division of right renal artery",
+    "posterior segmental branch of left renal artery",
+    "posterior segmental branch of right renal artery",
+    "posterior segmental renal artery",
+    "renal artery",
+    "renal vein",
+    "right inferior suprarenal artery",
+    "right middle suprarenal artery",
+    "right renal artery",
+    "right renal vein",
+    "right suprarenal vein",
+    "segment of renal artery",
+    "segmental renal artery",
+    "superior segmental branch of left renal artery",
+    "superior segmental branch of right renal artery",
+    "superior segmental renal artery",
+    "suprarenal vein",
+    "trunk of left renal artery",
+    "trunk of renal artery",
+    "trunk of right renal artery",
+    "ureteric segment of left renal artery",
+    "ureteric segment of renal artery",
+    "ureteric segment of right renal artery"
+   ]
+  },
+  "record_count": 6,
+  "record_representations": {
+   "whole-concept": 6
+  },
+  "records_by_subtree": {
+   "kidney-isa": 2,
+   "ureter-isa": 2,
+   "bladder-urethra-isa": 2
+  },
+  "instance_records": [
+   "left kidney",
+   "left ureter",
+   "right kidney",
+   "right ureter"
+  ],
+  "organ_records": [
+   "urethra",
+   "urinary bladder"
+  ],
+  "adrenal_filing": {
+   "finding": "the release files the adrenal glands under endocrine, not urinary: in PART-OF, right/left adrenal gland (FMA15629/FMA15630) are direct children of FMA9668 'endocrine system' and occur nowhere in the urinary system subtree; in IS-A the class FMA9604 'adrenal gland' hangs under generic organ classes (corticomedullary organ) beside the kidney, with the two instances as its only descendants. The TotalSegmentator census concurs (adrenal_gland_left/right filed under endocrine). The three concepts are censused in this module as an endocrine cross-reference only; the endocrine module owns the adrenal records.",
+   "isa_parent_of_class": "corticomedullary organ",
+   "partof_parent_of_instances": "endocrine system",
+   "partof_parent_id": "FMA9668",
+   "in_urinary_partof_subtree": false
+  },
+  "totalsegmentator_overlap": {
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), exactly three are urinary: kidney_right, kidney_left and urinary_bladder, each present in all 1,204 subjects. The adrenal_gland_left/right labels are filed under endocrine in that census. TS v1 has no ureter or urethra label and nothing below the organ level, so it adds no coverage the release lacks.",
+   "labels": [
+    {
+     "label": "kidney_right",
+     "inventory_record_ids": [
+      "kidney.right-kidney"
+     ],
+     "note": ""
+    },
+    {
+     "label": "kidney_left",
+     "inventory_record_ids": [
+      "kidney.left-kidney"
+     ],
+     "note": ""
+    },
+    {
+     "label": "urinary_bladder",
+     "inventory_record_ids": [
+      "urinary-bladder"
+     ],
+     "note": ""
+    }
+   ],
+   "labels_without_records": []
+  },
+  "absences": {
+   "note": "probe-based gap analysis: each probe name was counted over all six BP3D 4.0 release tables. Zero hits = the name does not occur in the release.",
+   "absent": [
+    "cortex of kidney",
+    "renal cortex",
+    "medulla of kidney",
+    "renal medulla",
+    "renal pyramid",
+    "renal papilla",
+    "renal column",
+    "renal pelvis",
+    "major calyx",
+    "minor calyx",
+    "calyx",
+    "nephron",
+    "glomerulus",
+    "renal corpuscle",
+    "glomerular capsule",
+    "proximal convoluted tubule",
+    "proximal tubule",
+    "loop of henle",
+    "nephron loop",
+    "distal convoluted tubule",
+    "collecting duct",
+    "renal capsule",
+    "fibrous capsule",
+    "renal hilum",
+    "renal sinus",
+    "renal lobe",
+    "renal segment",
+    "medullary ray",
+    "juxtaglomerular",
+    "macula densa",
+    "vasa recta",
+    "peritubular capillary",
+    "afferent arteriole",
+    "efferent arteriole",
+    "pelviureteric junction",
+    "ureteropelvic junction",
+    "ureterovesical junction",
+    "vesicoureteric junction",
+    "ureteric orifice",
+    "abdominal part of ureter",
+    "pelvic part of ureter",
+    "intramural part of ureter",
+    "apex of urinary bladder",
+    "apex of bladder",
+    "body of urinary bladder",
+    "fundus of urinary bladder",
+    "neck of urinary bladder",
+    "neck of bladder",
+    "trigone",
+    "detrusor",
+    "uvula of bladder",
+    "interureteric ridge",
+    "internal urethral orifice",
+    "vesical artery",
+    "vesical vein",
+    "male urethra",
+    "female urethra",
+    "prostatic urethra",
+    "membranous urethra",
+    "spongy urethra",
+    "penile urethra",
+    "preprostatic urethra",
+    "external urethral sphincter",
+    "internal urethral sphincter",
+    "urethral sphincter",
+    "external urethral orifice",
+    "adrenal cortex",
+    "adrenal medulla",
+    "cortex of adrenal gland",
+    "medulla of adrenal gland",
+    "suprarenal gland",
+    "zona glomerulosa",
+    "zona fasciculata",
+    "zona reticularis"
+   ],
+   "present": [
+    "kidney",
+    "right kidney",
+    "left kidney",
+    "ureter",
+    "right ureter",
+    "left ureter",
+    "urinary bladder",
+    "urethra",
+    "urinary system",
+    "upper urinary tract",
+    "lower urinary tract",
+    "adrenal gland",
+    "right adrenal gland",
+    "left adrenal gland",
+    "endocrine system",
+    "prostate",
+    "renal artery",
+    "renal vein"
+   ],
+   "detail": [
+    {
+     "probe": "cortex of kidney",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal cortex",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "medulla of kidney",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal medulla",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal pyramid",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal papilla",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal column",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal pelvis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "major calyx",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "minor calyx",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "calyx",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "nephron",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "glomerulus",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal corpuscle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "glomerular capsule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "proximal convoluted tubule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "proximal tubule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "loop of henle",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "nephron loop",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "distal convoluted tubule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "collecting duct",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal capsule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "fibrous capsule",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal hilum",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal sinus",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal lobe",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "renal segment",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "medullary ray",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "juxtaglomerular",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "macula densa",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "vasa recta",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "peritubular capillary",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "afferent arteriole",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "efferent arteriole",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pelviureteric junction",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "ureteropelvic junction",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "ureterovesical junction",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "vesicoureteric junction",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "ureteric orifice",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "abdominal part of ureter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "pelvic part of ureter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "intramural part of ureter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "apex of urinary bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "apex of bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "body of urinary bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "fundus of urinary bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "neck of urinary bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "neck of bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "trigone",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "detrusor",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "uvula of bladder",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "interureteric ridge",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "internal urethral orifice",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "vesical artery",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "vesical vein",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "male urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "female urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "prostatic urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "membranous urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "spongy urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "penile urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "preprostatic urethra",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "external urethral sphincter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "internal urethral sphincter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "urethral sphincter",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "external urethral orifice",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adrenal cortex",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "adrenal medulla",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "cortex of adrenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "medulla of adrenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "suprarenal gland",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona glomerulosa",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona fasciculata",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "zona reticularis",
+     "total_hits": 0,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 0,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 0,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 0
+     }
+    },
+    {
+     "probe": "kidney",
+     "total_hits": 18,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    },
+    {
+     "probe": "right kidney",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "left kidney",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "ureter",
+     "total_hits": 39,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 6,
+      "partof_parts_list_e.txt": 4,
+      "isa_element_parts.txt": 10,
+      "partof_element_parts.txt": 5,
+      "isa_inclusion_relation_list.txt": 10,
+      "partof_inclusion_relation_list.txt": 4
+     }
+    },
+    {
+     "probe": "right ureter",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "left ureter",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "urinary bladder",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "urethra",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "urinary system",
+     "total_hits": 11,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 6,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 4
+     }
+    },
+    {
+     "probe": "upper urinary tract",
+     "total_hits": 12,
+     "exact_concept_exists": false,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 4,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 6
+     }
+    },
+    {
+     "probe": "lower urinary tract",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 3
+     }
+    },
+    {
+     "probe": "adrenal gland",
+     "total_hits": 18,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 3,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 4,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 5,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    },
+    {
+     "probe": "right adrenal gland",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "left adrenal gland",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "endocrine system",
+     "total_hits": 12,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 0,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 0,
+      "partof_element_parts.txt": 7,
+      "isa_inclusion_relation_list.txt": 0,
+      "partof_inclusion_relation_list.txt": 4
+     }
+    },
+    {
+     "probe": "prostate",
+     "total_hits": 6,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 1,
+      "partof_parts_list_e.txt": 1,
+      "isa_element_parts.txt": 1,
+      "partof_element_parts.txt": 1,
+      "isa_inclusion_relation_list.txt": 1,
+      "partof_inclusion_relation_list.txt": 1
+     }
+    },
+    {
+     "probe": "renal artery",
+     "total_hits": 245,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 32,
+      "partof_parts_list_e.txt": 10,
+      "isa_element_parts.txt": 109,
+      "partof_element_parts.txt": 18,
+      "isa_inclusion_relation_list.txt": 60,
+      "partof_inclusion_relation_list.txt": 16
+     }
+    },
+    {
+     "probe": "renal vein",
+     "total_hits": 34,
+     "exact_concept_exists": true,
+     "hits_by_table": {
+      "isa_parts_list_e.txt": 6,
+      "partof_parts_list_e.txt": 2,
+      "isa_element_parts.txt": 12,
+      "partof_element_parts.txt": 2,
+      "isa_inclusion_relation_list.txt": 10,
+      "partof_inclusion_relation_list.txt": 2
+     }
+    }
+   ]
+  }
+ },
+ "concepts": [
+  {
+   "fma_id": "FMA15571",
+   "name": "right ureter",
+   "representation_id": "BP8912",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "ureter-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "ureter.right-ureter",
+   "parent_id": "FMA9704",
+   "parent_name": "ureter",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15572",
+   "name": "left ureter",
+   "representation_id": "BP8750",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "ureter-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "ureter.left-ureter",
+   "parent_id": "FMA9704",
+   "parent_name": "ureter",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15629",
+   "name": "right adrenal gland",
+   "representation_id": "BP9132",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-endocrine-xref-isa",
+   "cross_reference": "endocrine",
+   "disposition": "cross-reference:endocrine",
+   "record_id": null,
+   "parent_id": "FMA9604",
+   "parent_name": "adrenal gland",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15630",
+   "name": "left adrenal gland",
+   "representation_id": "BP9014",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-endocrine-xref-isa",
+   "cross_reference": "endocrine",
+   "disposition": "cross-reference:endocrine",
+   "record_id": null,
+   "parent_id": "FMA9604",
+   "parent_name": "adrenal gland",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA15900",
+   "name": "urinary bladder",
+   "representation_id": "BP8497",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "bladder-urethra-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "urinary-bladder",
+   "parent_id": "FMA55672",
+   "parent_name": "organ with organ cavity",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA19667",
+   "name": "urethra",
+   "representation_id": "BP9098",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "bladder-urethra-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "urethra",
+   "parent_id": "FMA55672",
+   "parent_name": "organ with organ cavity",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA45659",
+   "name": "lower urinary tract",
+   "representation_id": "BP9804",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "urinary-system-partof",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA7159",
+   "parent_name": "urinary system",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 2
+  },
+  {
+   "fma_id": "FMA71102",
+   "name": "right upper urinary tract",
+   "representation_id": "BP10047",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "urinary-system-partof",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA7159",
+   "parent_name": "urinary system",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 2
+  },
+  {
+   "fma_id": "FMA71103",
+   "name": "left upper urinary tract",
+   "representation_id": "BP9941",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "urinary-system-partof",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA7159",
+   "parent_name": "urinary system",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 2
+  },
+  {
+   "fma_id": "FMA7159",
+   "name": "urinary system",
+   "representation_id": "BP9805",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "urinary-system-partof",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA20394",
+   "parent_name": "human body",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 6
+  },
+  {
+   "fma_id": "FMA7203",
+   "name": "kidney",
+   "representation_id": "BP8908",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "kidney-isa",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA55663",
+   "parent_name": "corticomedullary organ",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7204",
+   "name": "right kidney",
+   "representation_id": "BP8907",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "kidney-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "kidney.right-kidney",
+   "parent_id": "FMA7203",
+   "parent_name": "kidney",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA7205",
+   "name": "left kidney",
+   "representation_id": "BP9289",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "kidney-isa",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "kidney.left-kidney",
+   "parent_id": "FMA7203",
+   "parent_name": "kidney",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA9604",
+   "name": "adrenal gland",
+   "representation_id": "BP9015",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "adrenal-gland-endocrine-xref-isa",
+   "cross_reference": "endocrine",
+   "disposition": "cross-reference:endocrine",
+   "record_id": null,
+   "parent_id": "FMA55663",
+   "parent_name": "corticomedullary organ",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA9704",
+   "name": "ureter",
+   "representation_id": "BP8751",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "ureter-isa",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA55672",
+   "parent_name": "organ with organ cavity",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  }
+ ],
+ "records": [
+  {
+   "record_id": "kidney.left-kidney",
+   "name": "left kidney",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA7203",
+   "concept_ids": [
+    "FMA7205"
+   ],
+   "subtree": "kidney-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "left upper urinary tract"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 11 gland/tooth pattern)"
+  },
+  {
+   "record_id": "ureter.left-ureter",
+   "name": "left ureter",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA9704",
+   "concept_ids": [
+    "FMA15572"
+   ],
+   "subtree": "ureter-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "left upper urinary tract"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 11 gland/tooth pattern)"
+  },
+  {
+   "record_id": "kidney.right-kidney",
+   "name": "right kidney",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA7203",
+   "concept_ids": [
+    "FMA7204"
+   ],
+   "subtree": "kidney-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "right upper urinary tract"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 11 gland/tooth pattern)"
+  },
+  {
+   "record_id": "ureter.right-ureter",
+   "name": "right ureter",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA9704",
+   "concept_ids": [
+    "FMA15571"
+   ],
+   "subtree": "ureter-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "right upper urinary tract"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 11 gland/tooth pattern)"
+  },
+  {
+   "record_id": "urethra",
+   "name": "urethra",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA19667",
+   "concept_ids": [
+    "FMA19667"
+   ],
+   "subtree": "bladder-urethra-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "lower urinary tract"
+   ],
+   "note": "the release carries a single unsexed, undivided urethra concept: no male/female form and no prostatic/membranous/spongy part exists (probe-verified); the sexed anatomy is carried as sourced text in the clinical tranche"
+  },
+  {
+   "record_id": "urinary-bladder",
+   "name": "urinary bladder",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA15900",
+   "concept_ids": [
+    "FMA15900"
+   ],
+   "subtree": "bladder-urethra-isa",
+   "group_path": [
+    "human body",
+    "urinary system",
+    "lower urinary tract"
+   ],
+   "note": null
+  }
+ ]
+}

@@ -1,0 +1,550 @@
+{
+ "meta": {
+  "title": "ANATOMICA urinary system geometry resolution \u2014 Milestone 12",
+  "generated_by": "tools/uri_map.py",
+  "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
+  "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
+  "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
+  "coverage": {
+   "records": 6,
+   "records_with_meshes": 6,
+   "records_without_meshes": 0
+  }
+ },
+ "records": [
+  {
+   "record_id": "kidney.left-kidney",
+   "name": "left kidney",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7205"
+   ],
+   "concept_names": [
+    "left kidney"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3145",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3145.obj",
+     "vertices": 1497,
+     "faces": 2982,
+     "bbox": {
+      "min": [
+       32.8399,
+       -100.185,
+       984.494
+      ],
+      "max": [
+       90.383,
+       -59.5914,
+       1090.44
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3145",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3145.obj",
+     "vertices": 1497,
+     "faces": 2982,
+     "bbox": {
+      "min": [
+       32.8399,
+       -100.185,
+       984.494
+      ],
+      "max": [
+       90.383,
+       -59.5914,
+       1090.44
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1497,
+     "faces": 2982
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1497,
+     "faces": 2982
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     32.8399,
+     -100.185,
+     984.494
+    ],
+    "max": [
+     90.383,
+     -59.5914,
+     1090.44
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     32.8399,
+     -100.185,
+     984.494
+    ],
+    "max": [
+     90.383,
+     -59.5914,
+     1090.44
+    ]
+   }
+  },
+  {
+   "record_id": "ureter.left-ureter",
+   "name": "left ureter",
+   "side": "left",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15572"
+   ],
+   "concept_names": [
+    "left ureter"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3144",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3144.obj",
+     "vertices": 1125,
+     "faces": 2062,
+     "bbox": {
+      "min": [
+       23.2688,
+       -119.751,
+       818.039
+      ],
+      "max": [
+       79.3766,
+       -61.611,
+       1072.57
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3144",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3144.obj",
+     "vertices": 1125,
+     "faces": 2062,
+     "bbox": {
+      "min": [
+       23.2688,
+       -119.751,
+       818.039
+      ],
+      "max": [
+       79.3766,
+       -61.611,
+       1072.57
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1125,
+     "faces": 2062
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1125,
+     "faces": 2062
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     23.2688,
+     -119.751,
+     818.039
+    ],
+    "max": [
+     79.3766,
+     -61.611,
+     1072.57
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     23.2688,
+     -119.751,
+     818.039
+    ],
+    "max": [
+     79.3766,
+     -61.611,
+     1072.57
+    ]
+   }
+  },
+  {
+   "record_id": "kidney.right-kidney",
+   "name": "right kidney",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA7204"
+   ],
+   "concept_names": [
+    "right kidney"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3147",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3147.obj",
+     "vertices": 1163,
+     "faces": 2310,
+     "bbox": {
+      "min": [
+       -87.5754,
+       -111.855,
+       966.812
+      ],
+      "max": [
+       -30.4276,
+       -64.7001,
+       1071.24
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3147",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3147.obj",
+     "vertices": 1163,
+     "faces": 2310,
+     "bbox": {
+      "min": [
+       -87.5754,
+       -111.855,
+       966.812
+      ],
+      "max": [
+       -30.4276,
+       -64.7001,
+       1071.24
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1163,
+     "faces": 2310
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1163,
+     "faces": 2310
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -87.5754,
+     -111.855,
+     966.812
+    ],
+    "max": [
+     -30.4276,
+     -64.7001,
+     1071.24
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -87.5754,
+     -111.855,
+     966.812
+    ],
+    "max": [
+     -30.4276,
+     -64.7001,
+     1071.24
+    ]
+   }
+  },
+  {
+   "record_id": "ureter.right-ureter",
+   "name": "right ureter",
+   "side": "right",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15571"
+   ],
+   "concept_names": [
+    "right ureter"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3146",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3146.obj",
+     "vertices": 1132,
+     "faces": 1924,
+     "bbox": {
+      "min": [
+       -72.7935,
+       -118.969,
+       811.203
+      ],
+      "max": [
+       -9.39929,
+       -60.3459,
+       1057.0
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3146",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3146.obj",
+     "vertices": 1132,
+     "faces": 1924,
+     "bbox": {
+      "min": [
+       -72.7935,
+       -118.969,
+       811.203
+      ],
+      "max": [
+       -9.39929,
+       -60.3459,
+       1057.0
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1924
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 1132,
+     "faces": 1924
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -72.7935,
+     -118.969,
+     811.203
+    ],
+    "max": [
+     -9.39929,
+     -60.3459,
+     1057.0
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -72.7935,
+     -118.969,
+     811.203
+    ],
+    "max": [
+     -9.39929,
+     -60.3459,
+     1057.0
+    ]
+   }
+  },
+  {
+   "record_id": "urethra",
+   "name": "urethra",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA19667"
+   ],
+   "concept_names": [
+    "urethra"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3148",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3148.obj",
+     "vertices": 358,
+     "faces": 440,
+     "bbox": {
+      "min": [
+       -1.60824,
+       -184.174,
+       708.569
+      ],
+      "max": [
+       0.313633,
+       -79.9527,
+       792.512
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3148",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3148.obj",
+     "vertices": 358,
+     "faces": 440,
+     "bbox": {
+      "min": [
+       -1.60824,
+       -184.174,
+       708.569
+      ],
+      "max": [
+       0.313633,
+       -79.9527,
+       792.512
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 358,
+     "faces": 440
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 358,
+     "faces": 440
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -1.60824,
+     -184.174,
+     708.569
+    ],
+    "max": [
+     0.313633,
+     -79.9527,
+     792.512
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -1.60824,
+     -184.174,
+     708.569
+    ],
+    "max": [
+     0.313633,
+     -79.9527,
+     792.512
+    ]
+   }
+  },
+  {
+   "record_id": "urinary-bladder",
+   "name": "urinary bladder",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "concept_ids": [
+    "FMA15900"
+   ],
+   "concept_names": [
+    "urinary bladder"
+   ],
+   "isa_meshes": [
+    {
+     "fj": "FJ3149",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3149.obj",
+     "vertices": 127,
+     "faces": 226,
+     "bbox": {
+      "min": [
+       -34.1466,
+       -128.24,
+       789.732
+      ],
+      "max": [
+       32.6238,
+       -56.5253,
+       829.989
+      ]
+     }
+    }
+   ],
+   "partof_meshes": [
+    {
+     "fj": "FJ3149",
+     "path": "work/bp3d/partof_BP3D_4.0_obj_99/FJ3149.obj",
+     "vertices": 127,
+     "faces": 226,
+     "bbox": {
+      "min": [
+       -34.1466,
+       -128.24,
+       789.732
+      ],
+      "max": [
+       32.6238,
+       -56.5253,
+       829.989
+      ]
+     }
+    }
+   ],
+   "totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 127,
+     "faces": 226
+    },
+    "partof": {
+     "files": 1,
+     "vertices": 127,
+     "faces": 226
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -34.1466,
+     -128.24,
+     789.732
+    ],
+    "max": [
+     32.6238,
+     -56.5253,
+     829.989
+    ]
+   },
+   "bbox_partof": {
+    "min": [
+     -34.1466,
+     -128.24,
+     789.732
+    ],
+    "max": [
+     32.6238,
+     -56.5253,
+     829.989
+    ]
+   }
+  }
+ ]
+}
