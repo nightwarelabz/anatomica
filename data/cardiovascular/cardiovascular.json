@@ -1,0 +1,3068 @@
+{
+ "meta": {
+  "counts": {
+   "clinical_records": 69,
+   "inventory_records_linked_from_clinical": 107,
+   "inventory_records_total": 646,
+   "inventory_records_without_clinical_record": 539,
+   "variant_records": 8
+  },
+  "description": "Cardiovascular clinical tranche v1 (heart, coronary tree, aorta, named arteries and veins, portal system) plus variant records. Built by tools/build_cv_records.py from the inventory in cv-inventory.json (concepts and geometry from the BodyParts3D 4.0 release tables; see tools/cv_map.py).",
+  "field_sourcing_rule": "Values are entered only from sources actually consulted during the build session and are cited per field in each record's `sources` map (keys S1-S20, see sources_bibliography). Anything not sourced is null plus an explicit `verify` entry. Nothing is filled from recall.",
+  "milestone": 5,
+  "module": "cardiovascular",
+  "sources_bibliography": {
+   "S1": "TeachMeAnatomy, 'The Aorta' (teachmeanatomy.info)",
+   "S10": "OpenStax, Anatomy and Physiology (heart structure/conduction, via Pearson study guides)",
+   "S11": "JoVE Core, 'Veins of Head and Neck'",
+   "S12": "UAMS anatomy tables, 'Selected Veins of the Thorax'",
+   "S13": "Frontiers in Surgery (2025), 'Anatomical variations of hepatic arteries'",
+   "S14": "Noussios G et al., J Clin Med Res (2017), hepatic artery variations review",
+   "S15": "Dimmick SJ et al., JBR-BTR (2010), 'Vascular liver anatomy and main variants'",
+   "S16": "ESR EPOS (2017), Michels classification of hepatic arterial variants (poster)",
+   "S17": "Lecture notes, 'Arteries and Veins of the Lower Limb' (Elmedany & Salama); Ankara University lower-limb notes",
+   "S18": "Lecture notes, 'Large Blood Vessels of the Gut' (after Gray's Anatomy)",
+   "S19": "UEN Pressbooks, 'Coronary Vessels - Integrated Human Anatomy and Physiology'",
+   "S2": "TeachMeAnatomy, 'Arterial Supply of the Head and Neck' (teachmeanatomy.info)",
+   "S20": "Wikipedia, 'Azygos vein'",
+   "S3": "TeachMeAnatomy, 'Arterial Supply to the Upper Limb' (teachmeanatomy.info)",
+   "S4": "TeachMeAnatomy, 'Venous Drainage of the Abdomen' (teachmeanatomy.info)",
+   "S5": "TeachMeAnatomy, 'Venous Drainage of the Lower Limb' (teachmeanatomy.info)",
+   "S6": "StatPearls, 'Anatomy, Thorax, Heart Coronary Arteries'",
+   "S7": "StatPearls, 'Cardiac Dominance'",
+   "S8": "StatPearls, 'Anatomy, Thorax, Subclavian Arteries' (NCBI Bookshelf NBK539736)",
+   "S9": "StatPearls, 'Neuroanatomy, Circle of Willis'"
+  },
+  "sourcing_tiers": {
+   "by_group": {
+    "Abdomen - visceral arteries": {
+     "A": 8,
+     "B": 0,
+     "C": 1
+    },
+    "Aorta and great vessels": {
+     "A": 6,
+     "B": 0,
+     "C": 0
+    },
+    "Coronary": {
+     "A": 2,
+     "B": 1,
+     "C": 2
+    },
+    "Head and neck": {
+     "A": 5,
+     "B": 2,
+     "C": 1
+    },
+    "Heart": {
+     "A": 1,
+     "B": 0,
+     "C": 0
+    },
+    "Pelvis and lower limb": {
+     "A": 5,
+     "B": 0,
+     "C": 2
+    },
+    "Portal venous system": {
+     "A": 4,
+     "B": 0,
+     "C": 0
+    },
+    "Pulmonary": {
+     "A": 0,
+     "B": 0,
+     "C": 2
+    },
+    "Systemic veins": {
+     "A": 11,
+     "B": 0,
+     "C": 9
+    },
+    "Upper limb": {
+     "A": 5,
+     "B": 0,
+     "C": 2
+    }
+   },
+   "counts": {
+    "A": 47,
+    "B": 3,
+    "C": 19
+   },
+   "definition": "A = every clinical field sourced; B = sourced except territory and/or termination; C = at least one core field (origin / course / branches) verify-flagged."
+  },
+  "ta_name_status": "null on every record: Terminologia Anatomica names were not given by the consulted sources and are verify-flagged throughout, pending a TA2 pass.",
+  "variant_gate": "Variants with a sourced prevalence >= 1% and a plausible injury consequence are recorded with a prevalence RANGE and citation, and are either modelled or carry an explicit unmodeled_note.",
+  "vessel_field_semantics": "Arteries: origin / course / branches in order / territory supplied / termination. Veins: origin = formation, branches = tributaries, territory = drainage area, termination = vessel joined."
+ },
+ "records": [
+  {
+   "arterial_supply": "Right and left coronary arteries, arising from the right and left aortic sinuses of the ascending aorta; see the coronary records. The sinoatrial nodal artery is a branch of the right coronary artery; the AV node is supplied via a septal perforating branch of the RCA in 90% of people (S6).",
+   "chambers": "Four chambers: right atrium (receives systemic venous blood), right ventricle (pumps to the pulmonary circuit), left atrium (receives the pulmonary veins), left ventricle (pumps to the systemic circuit; thickest wall).",
+   "conduction_system": "Sinoatrial (SA) node: pacemaker of the heart, in the right atrium, initiates each beat. Atrioventricular (AV) node: delays the impulse in the interatrial septum region. AV bundle (bundle of His): the only electrical connection between atria and ventricles; divides into right and left bundle branches in the interventricular septum. Purkinje fibres distribute the impulse through the ventricular myocardium.",
+   "geometry_record_ids": [
+    "heart",
+    "heart.aortic-valve",
+    "heart.fibrous-skeleton-of-heart",
+    "heart.left-atrium",
+    "heart.left-ventricle",
+    "heart.mitral-valve",
+    "heart.pulmonary-valve",
+    "heart.right-atrium",
+    "heart.right-ventricle",
+    "heart.tricuspid-valve"
+   ],
+   "group": "Heart",
+   "id": "organ.heart",
+   "name": "Heart",
+   "note": "Geometry links the BP3D heart organ record and its part records (chambers, valves, fibrous skeleton). The conduction system, septa, chordae and pericardium are absent from the BP3D release and are flagged, not modelled.",
+   "sources": {
+    "arterial_supply": [
+     "S1",
+     "S6"
+    ],
+    "chambers": [
+     "S10"
+    ],
+    "conduction_system": [
+     "S10"
+    ],
+    "valves": [
+     "S10"
+    ],
+    "venous_drainage": [
+     "S10",
+     "S19"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "type": "organ",
+   "valves": "Four valves ensure unidirectional flow: tricuspid (right atrioventricular, three cusps), mitral/bicuspid (left atrioventricular, two cusps), pulmonary semilunar (right ventricle to pulmonary trunk), aortic semilunar (left ventricle to aorta). AV valve cusps are restrained by chordae tendineae attached to papillary muscles.",
+   "venous_drainage": "Most venous blood of the heart wall drains via the coronary sinus into the right atrium; the right atrium also receives the superior and inferior venae cavae.",
+   "verify": [
+    "ta_name: not given by consulted sources - verify",
+    "pericardium: the pericardium has no concept in the BP3D release (stem search over all six release tables returned no match); its description is therefore not entered - verify",
+    "conduction system geometry: the sinoatrial node, atrioventricular node, bundle of His and Purkinje fibres have no concepts in the BP3D release (stem search returned no matches); the conduction system is described in text only and has no geometry in v1 - verify",
+    "interatrial and interventricular septa: no concepts in the BP3D release (stem search returned no matches); chamber separation is described, not modelled - verify",
+    "chordae tendineae: no concept in the BP3D release - verify"
+   ]
+  },
+  {
+   "branches": [
+    "anterior interventricular branch of left coronary artery",
+    "circumflex branch of left coronary artery"
+   ],
+   "course": "Passes along the coronary sulcus and almost immediately divides into the left anterior descending (anterior interventricular) and circumflex branches.",
+   "geometry_record_ids": [
+    "artery.trunk-of-left-coronary-artery"
+   ],
+   "group": "Coronary",
+   "id": "artery.left-coronary-artery",
+   "name": "Left coronary artery",
+   "note": null,
+   "origin": "Arises from the left aortic sinus at the root of the ascending aorta.",
+   "sources": {
+    "branches": [
+     "S6"
+    ],
+    "course": [
+     "S6"
+    ],
+    "origin": [
+     "S1",
+     "S6"
+    ],
+    "termination": [
+     "S6"
+    ],
+    "territory": [
+     "S6"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the anterior interventricular and circumflex branches.",
+   "territory": "Left atrium and left ventricle; the LAD supplies the anterior two-thirds of the interventricular septum.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "sinoatrial nodal branch of right coronary artery",
+    "right marginal branch of right coronary artery",
+    "posterior interventricular branch of right coronary artery"
+   ],
+   "course": "Traces the right coronary sulcus, supplying the anterior and diaphragmatic surfaces of the right side of the heart.",
+   "geometry_record_ids": [
+    "artery.trunk-of-right-coronary-artery"
+   ],
+   "group": "Coronary",
+   "id": "artery.right-coronary-artery",
+   "name": "Right coronary artery",
+   "note": null,
+   "origin": "Arises from the right (anterior) aortic sinus at the root of the ascending aorta.",
+   "sources": {
+    "branches": [
+     "S6"
+    ],
+    "course": [
+     "S6"
+    ],
+    "origin": [
+     "S1",
+     "S6"
+    ],
+    "termination": [
+     "S6",
+     "S7"
+    ],
+    "territory": [
+     "S6"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues in the coronary sulcus to the posterior interventricular branch (in right-dominant circulation).",
+   "territory": "Right atrium, right ventricle, the sinoatrial and atrioventricular nodes, and the posterior third of the interventricular septum (via the posterior descending branch).",
+   "type": "vessel",
+   "verify": [
+    "branches: 'right marginal branch of right coronary artery' and the sinoatrial nodal branch are named in S6 but have no dedicated records in the BP3D inventory partition - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'sinoatrial nodal branch of right coronary artery' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends in the anterior interventricular groove towards the apex of the heart.",
+   "geometry_record_ids": [
+    "artery.trunk-of-anterior-interventricular-branch-of-left-coronary-artery"
+   ],
+   "group": "Coronary",
+   "id": "artery.anterior-interventricular-branch-of-left-coronary-artery",
+   "name": "Anterior interventricular branch of left coronary artery (LAD)",
+   "note": null,
+   "origin": "One of the two major branches of the left coronary artery.",
+   "sources": {
+    "course": [
+     "S6"
+    ],
+    "origin": [
+     "S6"
+    ],
+    "termination": [
+     "S6"
+    ],
+    "territory": [
+     "S6"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Reaches the apex of the heart.",
+   "territory": "Anterior portion of the left ventricle and the anterior two-thirds of the interventricular septum.",
+   "type": "vessel",
+   "verify": [
+    "branches: diagonal and septal perforating branches are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left marginal branch of circumflex branch of left coronary artery"
+   ],
+   "course": "Follows the coronary sulcus around the left side of the heart.",
+   "geometry_record_ids": [
+    "artery.circumflex-branch-of-left-coronary-artery"
+   ],
+   "group": "Coronary",
+   "id": "artery.circumflex-branch-of-left-coronary-artery",
+   "name": "Circumflex branch of left coronary artery",
+   "note": null,
+   "origin": "One of the two major branches of the left coronary artery.",
+   "sources": {
+    "branches": [
+     "S6"
+    ],
+    "course": [
+     "S6"
+    ],
+    "origin": [
+     "S6"
+    ],
+    "territory": [
+     "S6"
+    ]
+   },
+   "sourcing_tier": "B",
+   "ta_name": null,
+   "termination": null,
+   "territory": "Left atrium and the posterior-lateral aspect of the left ventricle; in left-dominant circulation it gives the posterior descending artery.",
+   "type": "vessel",
+   "verify": [
+    "branches: 'left marginal branch of circumflex branch of left coronary artery' is named in S6 but has no dedicated record in the BP3D inventory partition - verify",
+    "ta_name: not given by consulted sources - verify",
+    "termination: not sourced from consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Runs in the posterior interventricular groove towards the apex.",
+   "geometry_record_ids": [
+    "artery.posterior-interventricular-branch-of-right-coronary-artery"
+   ],
+   "group": "Coronary",
+   "id": "artery.posterior-interventricular-branch-of-right-coronary-artery",
+   "name": "Posterior interventricular branch of right coronary artery (PDA)",
+   "note": null,
+   "origin": "Branch of the right coronary artery in right-dominant circulation (70-80% of the population, S7); from the circumflex in left dominance.",
+   "sources": {
+    "course": [
+     "S6"
+    ],
+    "origin": [
+     "S6",
+     "S7"
+    ],
+    "termination": [
+     "S6"
+    ],
+    "territory": [
+     "S6"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Anastomoses with the anterior interventricular branch near the apex.",
+   "territory": "Posterior one-third of the interventricular septum and the inferior aspect of the heart.",
+   "type": "vessel",
+   "verify": [
+    "branches: septal perforating branches not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right coronary artery",
+    "left coronary artery",
+    "brachiocephalic artery",
+    "left common carotid artery",
+    "left subclavian artery",
+    "celiac artery",
+    "superior mesenteric artery",
+    "inferior mesenteric artery",
+    "left renal artery",
+    "right renal artery",
+    "left common iliac artery",
+    "right common iliac artery"
+   ],
+   "course": "Four parts in sequence: ascending aorta, aortic arch, thoracic (descending) aorta, abdominal aorta.",
+   "geometry_record_ids": [
+    "artery.aorta"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "organ.aorta",
+   "name": "Aorta",
+   "note": "The aorta as a whole exists only in the PART-OF table of the BP3D release; its geometry record is the partof-organ record. Segment detail is on the four segment records.",
+   "origin": "Arises from the aortic orifice of the left ventricle; the largest artery in the body, about 2.5 cm in diameter at its origin.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Terminates at the level of the L4 vertebra by bifurcating into the right and left common iliac arteries.",
+   "territory": "The entire systemic circulation.",
+   "type": "vessel",
+   "verify": [
+    "branches: branch list gives the principal named branches only; bronchial, intercostal, phrenic, lumbar, gonadal and other segmental branches are recorded on the segment records - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right coronary artery",
+    "left coronary artery"
+   ],
+   "course": "Ascends within the pericardial sac with the pulmonary trunk, about 5 cm long, to become the aortic arch.",
+   "geometry_record_ids": [
+    "artery.ascending-aorta"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "artery.ascending-aorta",
+   "name": "Ascending aorta",
+   "note": null,
+   "origin": "Arises from the aortic orifice of the left ventricle.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues as the aortic arch at the level of the second sternocostal joint.",
+   "territory": "The myocardium, via the coronary arteries (its only branches).",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "brachiocephalic artery",
+    "left common carotid artery",
+    "left subclavian artery"
+   ],
+   "course": "Arches superiorly, posteriorly and to the left, ending at the level of the T4 vertebra; connected to the pulmonary trunk by the ligamentum arteriosum.",
+   "geometry_record_ids": [
+    "artery.arch-of-aorta"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "artery.arch-of-aorta",
+   "name": "Arch of aorta",
+   "note": null,
+   "origin": "Continuation of the ascending aorta at the level of the second sternocostal joint.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues as the thoracic aorta at the level of T4.",
+   "territory": "Head, neck and upper limbs via its three branches (proximal to distal: brachiocephalic trunk, left common carotid, left subclavian).",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "bronchial artery",
+    "mediastinal artery",
+    "esophageal artery",
+    "pericardial artery",
+    "superior phrenic artery",
+    "posterior intercostal artery",
+    "subcostal artery"
+   ],
+   "course": "Descends through the posterior mediastinum, moving from the left of the vertebral column towards the midline, to the aortic hiatus of the diaphragm at T12.",
+   "geometry_record_ids": [
+    "artery.descending-thoracic-aorta"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "artery.descending-thoracic-aorta",
+   "name": "Thoracic aorta",
+   "note": null,
+   "origin": "Continuation of the aortic arch at the lower border of T4.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the abdominal aorta at the aortic hiatus (T12).",
+   "territory": "Bronchial and peribronchial tissue and visceral pleura; posterior mediastinum; oesophagus; dorsal pericardium; superior diaphragm; intercostal spaces 3-11 (nine pairs of posterior intercostal arteries) and the anterolateral abdominal wall (subcostal).",
+   "type": "vessel",
+   "verify": [
+    "branches: the named branch classes are recorded as unpaired class names; the release lateralises several of them per side - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'mediastinal artery'; 'pericardial artery'; 'superior phrenic artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "inferior phrenic artery",
+    "celiac artery",
+    "superior mesenteric artery",
+    "middle suprarenal artery",
+    "left renal artery",
+    "right renal artery",
+    "gonadal artery",
+    "inferior mesenteric artery",
+    "median sacral artery",
+    "lumbar artery",
+    "left common iliac artery",
+    "right common iliac artery"
+   ],
+   "course": "Descends anterior to the vertebral column, about 13 cm, to the level of L4.",
+   "geometry_record_ids": [
+    "artery.abdominal-aorta"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "artery.abdominal-aorta",
+   "name": "Abdominal aorta",
+   "note": null,
+   "origin": "Begins at the aortic hiatus of the diaphragm at T12.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Bifurcates into the right and left common iliac arteries at L4.",
+   "territory": "Diaphragm; foregut (coeliac); midgut (SMA); adrenal glands; kidneys; gonads; hindgut (IMA); coccyx, lumbar vertebrae and sacrum (median sacral); abdominal wall and spinal cord (four pairs of lumbar arteries); pelvis and lower limbs via the common iliacs.",
+   "type": "vessel",
+   "verify": [
+    "branches: 'median sacral artery' is named in S1 but has no concept in the BP3D release (stem search returned no match) - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'gonadal artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right common carotid artery",
+    "right subclavian artery"
+   ],
+   "course": "Ascends and divides into the right common carotid and right subclavian arteries.",
+   "geometry_record_ids": [
+    "artery.brachiocephalic-artery"
+   ],
+   "group": "Aorta and great vessels",
+   "id": "artery.brachiocephalic-artery",
+   "name": "Brachiocephalic artery",
+   "note": null,
+   "origin": "First and largest branch of the aortic arch.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the right common carotid and right subclavian arteries.",
+   "territory": "Right side of the head and neck, and the right upper limb.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "external carotid artery",
+    "internal carotid artery"
+   ],
+   "course": "Ascends through the neck within the carotid sheath, under cover of the anterior border of sternocleidomastoid.",
+   "geometry_record_ids": [
+    "artery.left-common-carotid-artery",
+    "artery.right-common-carotid-artery"
+   ],
+   "group": "Head and neck",
+   "id": "artery.common-carotid-artery",
+   "name": "Common carotid artery",
+   "note": null,
+   "origin": "Right: from the brachiocephalic artery behind the right sternoclavicular joint. Left: directly from the aortic arch in the superior mediastinum.",
+   "sources": {
+    "branches": [
+     "S2"
+    ],
+    "course": [
+     "S2"
+    ],
+    "origin": [
+     "S2"
+    ],
+    "termination": [
+     "S2"
+    ],
+    "territory": [
+     "S2"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the external and internal carotid arteries at the upper border of the thyroid cartilage (level of C4).",
+   "territory": "The majority of the head and neck.",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'external carotid artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "superior thyroid artery",
+    "ascending pharyngeal artery",
+    "lingual artery",
+    "facial artery",
+    "occipital artery",
+    "posterior auricular artery",
+    "maxillary artery",
+    "superficial temporal artery"
+   ],
+   "course": "Ascends superiorly through the neck and terminates within the parotid gland.",
+   "geometry_record_ids": [],
+   "group": "Head and neck",
+   "id": "artery.external-carotid-artery",
+   "name": "External carotid artery",
+   "note": "Major data gap: the external carotid artery itself and most of its named branches are absent from the BP3D 4.0 release; this record is clinical text only in v1. See MILESTONE-5.md.",
+   "origin": "Terminal branch of the common carotid artery, arising at the level of C4 within the carotid triangle.",
+   "sources": {
+    "branches": [
+     "S2"
+    ],
+    "course": [
+     "S2"
+    ],
+    "origin": [
+     "S2"
+    ],
+    "termination": [
+     "S2"
+    ],
+    "territory": [
+     "S2"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into its terminal branches, the maxillary and superficial temporal arteries, within the parotid gland.",
+   "territory": "The neck, face and scalp (the main arterial supply to these structures).",
+   "type": "vessel",
+   "verify": [
+    "geometry: the external carotid artery has NO concept of its own in the BP3D 4.0 release (the carotid concepts present are the common carotid artery, the internal carotid artery and their subdivisions), so no inventory record exists to link - verify",
+    "branches: 'superior thyroid artery', 'lingual artery' and 'facial artery' are named in S2 but have NO concepts in the BP3D release (stem search over all six release tables returned no matches); the external carotid system in this release is therefore unmodelled - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'ascending pharyngeal artery'; 'occipital artery'; 'posterior auricular artery'; 'maxillary artery'; 'superficial temporal artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "ophthalmic artery",
+    "anterior cerebral artery",
+    "middle cerebral artery"
+   ],
+   "course": "Ascends through the neck without giving branches, enters the skull via the carotid canal, and passes through the cavernous sinus to the intracranial cavity.",
+   "geometry_record_ids": [
+    "artery.left-internal-carotid-artery",
+    "artery.right-internal-carotid-artery"
+   ],
+   "group": "Head and neck",
+   "id": "artery.internal-carotid-artery",
+   "name": "Internal carotid artery",
+   "note": null,
+   "origin": "Terminal branch of the common carotid artery at the level of C4.",
+   "sources": {
+    "branches": [
+     "S2"
+    ],
+    "course": [
+     "S2"
+    ],
+    "origin": [
+     "S2"
+    ],
+    "termination": [
+     "S2"
+    ],
+    "territory": [
+     "S2",
+     "S9"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Terminates intracranially as the anterior and middle cerebral arteries.",
+   "territory": "The brain (anterior circulation: frontal and parietal lobes, lateral temporal lobes, anterior deep cerebrum), orbit, forehead and nose.",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'middle cerebral artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "posterior inferior cerebellar artery"
+   ],
+   "course": "Ascends through the transverse foramina of the cervical vertebrae (C6-C1), curves around the atlas and enters the cranial cavity via the foramen magnum.",
+   "geometry_record_ids": [
+    "artery.left-vertebral-artery",
+    "artery.right-vertebral-artery"
+   ],
+   "group": "Head and neck",
+   "id": "artery.vertebral-artery",
+   "name": "Vertebral artery",
+   "note": null,
+   "origin": "Paired branch of the first part of the subclavian artery.",
+   "sources": {
+    "branches": [
+     "S9"
+    ],
+    "course": [
+     "S2"
+    ],
+    "origin": [
+     "S2",
+     "S8"
+    ],
+    "termination": [
+     "S2"
+    ],
+    "territory": [
+     "S2",
+     "S9"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "The two vertebral arteries unite at the medullopontine junction to form the basilar artery.",
+   "territory": "Posterior circulation of the brain: brainstem, cerebellum, occipital lobes, medial temporal lobes and thalamus; also the spinal cord.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "superior cerebellar artery",
+    "anterior inferior cerebellar artery",
+    "posterior cerebral artery"
+   ],
+   "course": "Ascends along the anterior pons.",
+   "geometry_record_ids": [
+    "artery.basilar-artery"
+   ],
+   "group": "Head and neck",
+   "id": "artery.basilar-artery",
+   "name": "Basilar artery",
+   "note": null,
+   "origin": "Formed by the union of the two vertebral arteries at the medullopontine junction.",
+   "sources": {
+    "branches": [
+     "S9"
+    ],
+    "course": [
+     "S9"
+    ],
+    "origin": [
+     "S2"
+    ],
+    "termination": [
+     "S9"
+    ],
+    "territory": [
+     "S2"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the two posterior cerebral arteries.",
+   "territory": "Brainstem (pontine branches), cerebellum, and the posterior cerebrum via the posterior cerebral arteries.",
+   "type": "vessel",
+   "verify": [
+    "branches: pontine branches are described in S9 but are not enumerated as named branches here - verify",
+    "branches: 'posterior cerebral artery' is named in S9 but has no concept of its own in the BP3D release - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "anterior communicating artery"
+   ],
+   "course": "Courses medially above the optic nerve towards the longitudinal fissure; the two arteries are joined by the anterior communicating artery.",
+   "geometry_record_ids": [
+    "artery.left-anterior-cerebral-artery",
+    "artery.right-anterior-cerebral-artery"
+   ],
+   "group": "Head and neck",
+   "id": "artery.anterior-cerebral-artery",
+   "name": "Anterior cerebral artery",
+   "note": null,
+   "origin": "Terminal branch of the internal carotid artery.",
+   "sources": {
+    "branches": [
+     "S9"
+    ],
+    "course": [
+     "S9"
+    ],
+    "origin": [
+     "S9"
+    ],
+    "territory": [
+     "S2",
+     "S9"
+    ]
+   },
+   "sourcing_tier": "B",
+   "ta_name": null,
+   "termination": null,
+   "territory": "The medial aspects (anteromedial portion) of the cerebral hemispheres.",
+   "type": "vessel",
+   "verify": [
+    "ta_name: not given by consulted sources - verify",
+    "termination: not sourced from consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Runs laterally into the lateral (Sylvian) fissure.",
+   "geometry_record_ids": [],
+   "group": "Head and neck",
+   "id": "artery.middle-cerebral-artery",
+   "name": "Middle cerebral artery",
+   "note": "Clinical text only in v1: the vessel itself is absent from the source tables although its branches are present. See MILESTONE-5.md.",
+   "origin": "The lateral continuation of the internal carotid artery at its termination.",
+   "sources": {
+    "course": [
+     "S9"
+    ],
+    "origin": [
+     "S9"
+    ],
+    "territory": [
+     "S2"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": null,
+   "territory": "The lateral aspects of the cerebral hemispheres (the majority of the lateral part of the brain).",
+   "type": "vessel",
+   "verify": [
+    "geometry: the middle cerebral artery has NO concept of its own in the BP3D 4.0 release - only its named branches (anterolateral central, temporal and terminal branches) exist as concepts and records - so no inventory record exists to link - verify",
+    "branches: cortical and central (lenticulostriate) branches are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify",
+    "termination: not sourced from consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "posterior communicating artery"
+   ],
+   "course": "Courses around the midbrain to the posterior cerebrum; joined to the internal carotid system by the posterior communicating artery.",
+   "geometry_record_ids": [],
+   "group": "Head and neck",
+   "id": "artery.posterior-cerebral-artery",
+   "name": "Posterior cerebral artery",
+   "note": "Clinical text only in v1: the vessel itself is absent from the source tables although a named branch is present. See MILESTONE-5.md.",
+   "origin": "Terminal branch of the basilar artery.",
+   "sources": {
+    "branches": [
+     "S9"
+    ],
+    "course": [
+     "S9"
+    ],
+    "origin": [
+     "S9"
+    ],
+    "territory": [
+     "S9"
+    ]
+   },
+   "sourcing_tier": "B",
+   "ta_name": null,
+   "termination": null,
+   "territory": "The medial and lateral parts of the posterior cerebrum (occipital lobes, medial temporal lobes).",
+   "type": "vessel",
+   "verify": [
+    "geometry: the posterior cerebral artery has NO concept of its own in the BP3D 4.0 release - only its posteromedial central branch exists as a class with lateralised records - so no inventory record exists to link - verify",
+    "ta_name: not given by consulted sources - verify",
+    "termination: not sourced from consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "vertebral artery",
+    "internal thoracic artery",
+    "thyrocervical trunk",
+    "costocervical trunk",
+    "dorsal scapular artery"
+   ],
+   "course": "Courses laterally between the anterior and middle scalene muscles; divided into three parts by the anterior scalene (first: origin to medial border; second: posterior to the muscle; third: lateral border to the lateral border of the first rib).",
+   "geometry_record_ids": [
+    "artery.left-subclavian-artery",
+    "artery.right-subclavian-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.subclavian-artery",
+   "name": "Subclavian artery",
+   "note": null,
+   "origin": "Right: from the brachiocephalic trunk. Left: directly from the aortic arch.",
+   "sources": {
+    "branches": [
+     "S8"
+    ],
+    "course": [
+     "S3",
+     "S8"
+    ],
+    "origin": [
+     "S3",
+     "S8"
+    ],
+    "termination": [
+     "S3",
+     "S8"
+    ],
+    "territory": [
+     "S8"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the axillary artery at the lateral border of the first rib.",
+   "territory": "The upper limb, with contributions to the head and neck (circle of Willis via the vertebral artery, thyroid and breast tissue).",
+   "type": "vessel",
+   "verify": [
+    "branches: 'dorsal scapular artery' is listed in S8 as an additional branch; the BP3D record partition carries it within the subclavian records - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends into the thorax behind the costal cartilages, lateral to the sternum.",
+   "geometry_record_ids": [
+    "artery.left-internal-thoracic-artery",
+    "artery.right-internal-thoracic-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.internal-thoracic-artery",
+   "name": "Internal thoracic artery",
+   "note": "Surgically load-bearing as the left internal mammary artery graft in coronary bypass; course detail beyond S8 is flagged, not entered.",
+   "origin": "Branch of the first part of the subclavian artery.",
+   "sources": {
+    "course": [
+     "S8"
+    ],
+    "origin": [
+     "S8"
+    ],
+    "territory": [
+     "S8"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": null,
+   "territory": "Anterior thoracic wall and breast tissue.",
+   "type": "vessel",
+   "verify": [
+    "branches: anterior intercostal, perforating and terminal (musculophrenic, superior epigastric) branches are not enumerated in the consulted sources - verify",
+    "termination: not stated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "inferior thyroid artery",
+    "ascending cervical artery",
+    "transverse cervical artery",
+    "suprascapular artery"
+   ],
+   "course": "Short trunk at the root of the neck, dividing almost immediately.",
+   "geometry_record_ids": [
+    "artery.left-thyrocervical-trunk",
+    "artery.right-thyrocervical-trunk"
+   ],
+   "group": "Upper limb",
+   "id": "artery.thyrocervical-trunk",
+   "name": "Thyrocervical trunk",
+   "note": null,
+   "origin": "Branch of the first part of the subclavian artery.",
+   "sources": {
+    "branches": [
+     "S2"
+    ],
+    "course": [
+     "S2"
+    ],
+    "origin": [
+     "S8"
+    ],
+    "termination": [
+     "S2"
+    ],
+    "territory": [
+     "S2"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the inferior thyroid, ascending cervical, transverse cervical and suprascapular arteries.",
+   "territory": "Thyroid gland; posterior prevertebral muscles; trapezius and rhomboid muscles; posterior shoulder area.",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'ascending cervical artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "superior thoracic artery",
+    "thoracoacromial artery",
+    "lateral thoracic artery",
+    "subscapular artery",
+    "anterior circumflex humeral artery",
+    "posterior circumflex humeral artery"
+   ],
+   "course": "Passes through the axilla deep to pectoralis minor within the axillary sheath; three parts relative to pectoralis minor (proximal, posterior, distal).",
+   "geometry_record_ids": [
+    "artery.left-axillary-artery",
+    "artery.right-axillary-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.axillary-artery",
+   "name": "Axillary artery",
+   "note": null,
+   "origin": "Continuation of the subclavian artery at the lateral border of the first rib.",
+   "sources": {
+    "branches": [
+     "S3"
+    ],
+    "course": [
+     "S3"
+    ],
+    "origin": [
+     "S3"
+    ],
+    "termination": [
+     "S3"
+    ],
+    "territory": [
+     "S3"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the brachial artery at the lower border of teres major.",
+   "territory": "Axilla, pectoral region and shoulder; the circumflex humeral arteries form an anastomosis around the surgical neck of the humerus.",
+   "type": "vessel",
+   "verify": [
+    "branches: 'thoracoacromial artery' is named in S3 but has no concept in the BP3D release (stem search returned no match) - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'superior thoracic artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "deep artery of arm"
+   ],
+   "course": "Descends the arm with the median nerve, passing through the cubital fossa under the bicipital aponeurosis.",
+   "geometry_record_ids": [
+    "artery.left-brachial-artery",
+    "artery.right-brachial-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.brachial-artery",
+   "name": "Brachial artery",
+   "note": null,
+   "origin": "Continuation of the axillary artery at the lower border of teres major.",
+   "sources": {
+    "branches": [
+     "S3"
+    ],
+    "course": [
+     "S3"
+    ],
+    "origin": [
+     "S3"
+    ],
+    "termination": [
+     "S3"
+    ],
+    "territory": [
+     "S3"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Bifurcates into the radial and ulnar arteries in the cubital fossa.",
+   "territory": "The arm (main arterial supply).",
+   "type": "vessel",
+   "verify": [
+    "branches: the consulted source names the profunda brachii (deep artery of arm) as the principal branch; the ulnar collateral and muscular branches are not enumerated in the consulted sources - verify; note 'profunda brachii' has no concept in the BP3D release under that name - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends the posterolateral forearm; palpable at the distal forearm lateral to the flexor carpi radialis tendon; enters the hand dorsally across the floor of the anatomical snuffbox.",
+   "geometry_record_ids": [
+    "artery.left-radial-artery",
+    "artery.right-radial-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.radial-artery",
+   "name": "Radial artery",
+   "note": null,
+   "origin": "Formed by the bifurcation of the brachial artery in the cubital fossa.",
+   "sources": {
+    "course": [
+     "S3"
+    ],
+    "origin": [
+     "S3"
+    ],
+    "termination": [
+     "S3"
+    ],
+    "territory": [
+     "S3"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Continues as the deep palmar arch in the hand.",
+   "territory": "Posterolateral aspect of the forearm; contributes to the deep palmar arch and to the superficial palmar arch.",
+   "type": "vessel",
+   "verify": [
+    "branches: radial recurrent, palmar carpal and superficial palmar branches are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "anterior interosseous artery",
+    "posterior interosseous artery"
+   ],
+   "course": "Descends the anteromedial forearm; enters the hand anterior to the flexor retinaculum, lateral to the ulnar nerve.",
+   "geometry_record_ids": [
+    "artery.left-ulnar-artery",
+    "artery.right-ulnar-artery"
+   ],
+   "group": "Upper limb",
+   "id": "artery.ulnar-artery",
+   "name": "Ulnar artery",
+   "note": null,
+   "origin": "Formed by the bifurcation of the brachial artery in the cubital fossa.",
+   "sources": {
+    "branches": [
+     "S3"
+    ],
+    "course": [
+     "S3"
+    ],
+    "origin": [
+     "S3"
+    ],
+    "termination": [
+     "S3"
+    ],
+    "territory": [
+     "S3"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues across the palm as the superficial palmar arch.",
+   "territory": "Anteromedial aspect of the forearm and the deeper forearm structures (via the interosseous arteries); forms the superficial palmar arch.",
+   "type": "vessel",
+   "verify": [
+    "branches: the common interosseous trunk itself is not named in the consulted source; S3 names its anterior and posterior divisions - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'posterior interosseous artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left gastric artery",
+    "splenic artery",
+    "common hepatic artery"
+   ],
+   "course": "Short trunk (the coeliac trunk) dividing almost immediately into its three branches.",
+   "geometry_record_ids": [
+    "artery.celiac-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.celiac-artery",
+   "name": "Celiac artery",
+   "note": null,
+   "origin": "Large unpaired visceral branch of the abdominal aorta arising anteriorly at the level of T12.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Trifurcates into the left gastric, splenic and common hepatic arteries.",
+   "territory": "Foregut: liver, stomach, abdominal oesophagus, spleen, superior duodenum and superior pancreas.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "esophageal branch of left gastric artery"
+   ],
+   "course": "Ascends to the gastro-oesophageal junction, giving oesophageal branches, then descends along the lesser curvature of the stomach in the lesser omentum.",
+   "geometry_record_ids": [
+    "artery.left-gastric-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.left-gastric-artery",
+   "name": "Left gastric artery",
+   "note": null,
+   "origin": "Smallest branch of the coeliac trunk.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S18"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S18"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Anastomoses with the right gastric artery along the lesser curvature.",
+   "territory": "Distal oesophagus and both surfaces of the stomach along the lesser curvature.",
+   "type": "vessel",
+   "verify": [
+    "branches: the oesophageal branches are described in S18 without the exact BP3D branch name used here - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'esophageal branch of left gastric artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "pancreatic branch of splenic artery",
+    "short gastric artery",
+    "left gastroepiploic artery"
+   ],
+   "course": "Takes a tortuous course to the left along the superior border of the pancreas, travels in the lienorenal ligament and divides into numerous branches entering the hilum of the spleen.",
+   "geometry_record_ids": [
+    "artery.splenic-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.splenic-artery",
+   "name": "Splenic artery",
+   "note": null,
+   "origin": "Largest branch of the coeliac trunk.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S18"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S18"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into terminal branches at the hilum of the spleen.",
+   "territory": "Spleen; body and tail of the pancreas; fundus of the stomach (short gastric arteries); greater curvature of the stomach (left gastroepiploic artery).",
+   "type": "vessel",
+   "verify": [
+    "branches: branch names are recorded in the terminology of S18 (pancreatic, short gastric, left gastroepiploic); exact BP3D branch record names differ in form - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'pancreatic branch of splenic artery'; 'short gastric artery'; 'left gastroepiploic artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "hepatic artery proper",
+    "gastroduodenal artery",
+    "right gastric artery"
+   ],
+   "course": "Runs to the right towards the liver.",
+   "geometry_record_ids": [
+    "artery.common-hepatic-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.common-hepatic-artery",
+   "name": "Common hepatic artery",
+   "note": null,
+   "origin": "Branch of the coeliac trunk.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S18"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S18"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into its terminal branches, the hepatic artery proper and the gastroduodenal artery.",
+   "territory": "Liver (via the hepatic artery proper), gallbladder, stomach and duodenum/pancreatic head (via the gastroduodenal artery).",
+   "type": "vessel",
+   "verify": [
+    "branches: the right gastric artery is described in S18 as arising from the common hepatic close to the gastroduodenal origin (and commonly from the proper hepatic); its parent vessel varies - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left hepatic artery",
+    "right hepatic artery"
+   ],
+   "course": "Ascends towards the liver in the free edge of the lesser omentum, to the left of the bile duct and anterior to the portal vein (portal triad).",
+   "geometry_record_ids": [
+    "artery.hepatic-artery-proper"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.hepatic-artery-proper",
+   "name": "Hepatic artery proper",
+   "note": null,
+   "origin": "Terminal branch of the common hepatic artery, after the gastroduodenal artery is given off.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S18"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S18"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the right and left hepatic arteries near the porta hepatis.",
+   "territory": "The liver.",
+   "type": "vessel",
+   "verify": [
+    "branches: the cystic artery, classically a branch of the right hepatic artery supplying the gallbladder, has NO concept in the BP3D release (stem search returned no match) and is not modelled - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right gastroepiploic artery",
+    "superior pancreaticoduodenal artery"
+   ],
+   "course": "Travels behind the first part of the duodenum.",
+   "geometry_record_ids": [
+    "artery.trunk-of-gastroduodenal-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.gastroduodenal-artery",
+   "name": "Gastroduodenal artery",
+   "note": "The BP3D release carries this vessel as 'trunk of gastroduodenal artery'; the clinical record links that record.",
+   "origin": "Terminal branch of the common hepatic artery.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S18"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S18"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Splits into the right gastroepiploic and superior pancreaticoduodenal arteries.",
+   "territory": "Superior part of the duodenum (to the major duodenal papilla) and the head and neck of the pancreas; greater curvature of the stomach via the right gastroepiploic artery.",
+   "type": "vessel",
+   "verify": [
+    "branches: branch record names in the BP3D inventory follow the gastroduodenal trunk's own naming and were not individually verified against S18 - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right gastroepiploic artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "inferior pancreaticoduodenal artery",
+    "middle colic artery",
+    "right colic artery",
+    "ileocolic artery",
+    "jejunal artery",
+    "ileal artery"
+   ],
+   "course": "Runs in the root of the mesentery from the duodenojejunal flexure towards the ileocolic junction, crossing the third part of the duodenum.",
+   "geometry_record_ids": [
+    "artery.superior-mesenteric-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.superior-mesenteric-artery",
+   "name": "Superior mesenteric artery",
+   "note": null,
+   "origin": "Large unpaired visceral branch of the abdominal aorta arising anteriorly at the lower level of L1, just below the coeliac artery.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Ends at the ileocolic junction as the ileocolic artery.",
+   "territory": "Midgut: distal duodenum, jejuno-ileum, ascending colon and part of the transverse colon.",
+   "type": "vessel",
+   "verify": [
+    "branches: S18 lists 12-15 jejunal and ileal branches collectively; individual jejunal/ileal branch records are not enumerated - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'jejunal artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left colic artery",
+    "sigmoid artery",
+    "superior rectal artery"
+   ],
+   "course": "Descends on the left side of the abdominal aorta towards the pelvis.",
+   "geometry_record_ids": [
+    "artery.inferior-mesenteric-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.inferior-mesenteric-artery",
+   "name": "Inferior mesenteric artery",
+   "note": null,
+   "origin": "Large unpaired visceral branch of the abdominal aorta arising anteriorly at the level of L3.",
+   "sources": {
+    "branches": [
+     "S18"
+    ],
+    "course": [
+     "S18"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S18"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues as the superior rectal artery into the pelvis.",
+   "territory": "Hindgut: large intestine from the splenic flexure to the upper part of the rectum.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": null,
+   "course": "Passes laterally to the hilum of the kidney on each side.",
+   "geometry_record_ids": [
+    "artery.left-renal-artery",
+    "artery.right-renal-artery"
+   ],
+   "group": "Abdomen - visceral arteries",
+   "id": "artery.renal-artery",
+   "name": "Renal artery",
+   "note": null,
+   "origin": "Paired visceral branches of the abdominal aorta arising laterally between L1 and L2.",
+   "sources": {
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Enters the kidney at the hilum, dividing into segmental branches.",
+   "territory": "The kidneys.",
+   "type": "vessel",
+   "verify": [
+    "branches: the five segmental renal branches are named in the BP3D inventory as segmental artery records; their order is not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "external iliac artery",
+    "internal iliac artery"
+   ],
+   "course": "Descends into the pelvis on each side.",
+   "geometry_record_ids": [
+    "artery.left-common-iliac-artery",
+    "artery.right-common-iliac-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.common-iliac-artery",
+   "name": "Common iliac artery",
+   "note": null,
+   "origin": "Formed by the bifurcation of the abdominal aorta at the level of L4.",
+   "sources": {
+    "branches": [
+     "S1"
+    ],
+    "course": [
+     "S1"
+    ],
+    "origin": [
+     "S1"
+    ],
+    "termination": [
+     "S1"
+    ],
+    "territory": [
+     "S1"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the external and internal iliac arteries.",
+   "territory": "Pelvis and lower limb.",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": [
+    "inferior epigastric artery",
+    "deep circumflex iliac artery"
+   ],
+   "course": "Descends along the pelvic brim and passes posterior to the inguinal ligament into the thigh.",
+   "geometry_record_ids": [
+    "artery.left-external-iliac-artery",
+    "artery.right-external-iliac-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.external-iliac-artery",
+   "name": "External iliac artery",
+   "note": null,
+   "origin": "Larger terminal branch of the common iliac artery.",
+   "sources": {
+    "branches": [
+     "S17"
+    ],
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "termination": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the femoral artery posterior to the inguinal ligament.",
+   "territory": "The lower limb (as the femoral artery) and the lower abdominal wall.",
+   "type": "vessel",
+   "verify": [
+    "branches: the inferior epigastric and deep circumflex iliac branches are named in standard teaching (S17 lists 'branches of the external iliac artery' without a full enumeration in the consulted excerpt) - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'deep circumflex iliac artery' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends into the lesser pelvis.",
+   "geometry_record_ids": [
+    "artery.left-internal-iliac-artery",
+    "artery.right-internal-iliac-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.internal-iliac-artery",
+   "name": "Internal iliac artery",
+   "note": null,
+   "origin": "Smaller terminal branch of the common iliac artery.",
+   "sources": {
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": null,
+   "territory": "Pelvic organs, the gluteal region and the perineum.",
+   "type": "vessel",
+   "verify": [
+    "branches: the named branches of the internal iliac artery (including the obturator and superior gluteal arteries, which have NO concepts in the BP3D release) are not enumerated in the consulted sources - verify",
+    "termination: not stated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "superficial epigastric artery",
+    "superficial circumflex iliac artery",
+    "superficial external pudendal artery",
+    "deep external pudendal artery",
+    "deep artery of thigh"
+   ],
+   "course": "Descends through the femoral triangle, then the adductor canal deep to sartorius, and exits through the adductor hiatus.",
+   "geometry_record_ids": [
+    "artery.left-femoral-artery",
+    "artery.right-femoral-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.femoral-artery",
+   "name": "Femoral artery",
+   "note": null,
+   "origin": "Continuation of the external iliac artery posterior to the inguinal ligament, at the mid-inguinal point.",
+   "sources": {
+    "branches": [
+     "S17"
+    ],
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "termination": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the popliteal artery after passing through the adductor hiatus.",
+   "territory": "Lower abdominal wall, thigh and external genitalia (via its branches); the principal artery of the lower limb.",
+   "type": "vessel",
+   "verify": [
+    "branches: the deep artery of thigh (profunda femoris), the main arterial supply to the thigh, has no dedicated record in the BP3D inventory partition and 'profunda femoris' has no concept in the release - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'superficial circumflex iliac artery'; 'superficial external pudendal artery'; 'deep external pudendal artery' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "anterior tibial artery",
+    "posterior tibial artery"
+   ],
+   "course": "Runs through the popliteal fossa as its deepest structure, close to the capsule of the knee joint.",
+   "geometry_record_ids": [
+    "artery.left-popliteal-artery",
+    "artery.right-popliteal-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.popliteal-artery",
+   "name": "Popliteal artery",
+   "note": null,
+   "origin": "Continuation of the femoral artery after the adductor hiatus.",
+   "sources": {
+    "branches": [
+     "S17"
+    ],
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "termination": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Ends at the lower border of popliteus by dividing into the anterior and posterior tibial arteries.",
+   "territory": "Knee region (via genicular branches) and, through its terminal branches, the leg and foot.",
+   "type": "vessel",
+   "verify": [
+    "branches: the genicular branches around the knee are described in S17 without a full enumeration - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Passes through the interosseous membrane into the anterior compartment of the leg and descends with the deep peroneal (fibular) nerve.",
+   "geometry_record_ids": [
+    "artery.left-anterior-tibial-artery",
+    "artery.right-anterior-tibial-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.anterior-tibial-artery",
+   "name": "Anterior tibial artery",
+   "note": null,
+   "origin": "Smaller terminal branch of the popliteal artery.",
+   "sources": {
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "termination": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Becomes the dorsalis pedis (dorsal artery of the foot) at the ankle joint, midway between the malleoli.",
+   "territory": "Structures of the anterior compartment of the leg and the dorsum of the foot.",
+   "type": "vessel",
+   "verify": [
+    "branches: recurrent and malleolar branches are not enumerated in the consulted sources - verify",
+    "termination: the continuation vessel (dorsalis pedis / dorsal artery of the foot) has no dedicated record in the BP3D inventory partition - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "fibular artery",
+    "medial plantar artery",
+    "lateral plantar artery"
+   ],
+   "course": "Descends in the posterior compartment of the leg and passes posterior to the medial malleolus into the sole of the foot.",
+   "geometry_record_ids": [
+    "artery.left-posterior-tibial-artery",
+    "artery.right-posterior-tibial-artery"
+   ],
+   "group": "Pelvis and lower limb",
+   "id": "artery.posterior-tibial-artery",
+   "name": "Posterior tibial artery",
+   "note": null,
+   "origin": "Larger terminal branch of the popliteal artery.",
+   "sources": {
+    "branches": [
+     "S17"
+    ],
+    "course": [
+     "S17"
+    ],
+    "origin": [
+     "S17"
+    ],
+    "termination": [
+     "S17"
+    ],
+    "territory": [
+     "S17"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into the medial and lateral plantar arteries in the sole of the foot.",
+   "territory": "Posterior compartment of the leg and the sole of the foot.",
+   "type": "vessel",
+   "verify": [
+    "branches: 'fibular artery' is named in S17 as a branch of the posterior tibial artery, but the BP3D release carries fibular VEINS only - no fibular/peroneal artery concept exists in the release - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Each pulmonary artery passes to the hilum of its lung.",
+   "geometry_record_ids": [
+    "artery.left-pulmonary-artery",
+    "artery.pulmonary-trunk",
+    "artery.right-pulmonary-artery"
+   ],
+   "group": "Pulmonary",
+   "id": "artery.pulmonary-artery",
+   "name": "Pulmonary artery",
+   "note": "The pulmonary trunk itself is carried in the inventory within the pulmonary artery records; consulted sources describe the trunk dividing into the two pulmonary arteries.",
+   "origin": "The pulmonary trunk arises from the right ventricle through the pulmonary semilunar valve and divides into the right and left pulmonary arteries.",
+   "sources": {
+    "course": [
+     "S10"
+    ],
+    "origin": [
+     "S10"
+    ],
+    "termination": [
+     "S10"
+    ],
+    "territory": [
+     "S10"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Branches within the lung parenchyma.",
+   "territory": "The lungs (the pulmonary circuit).",
+   "type": "vessel",
+   "verify": [
+    "branches: lobar and segmental branching is not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "azygos vein",
+    "left brachiocephalic vein",
+    "right brachiocephalic vein"
+   ],
+   "course": "Descends vertically in the superior mediastinum.",
+   "geometry_record_ids": [
+    "vein.superior-vena-cava"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.superior-vena-cava",
+   "name": "Superior vena cava",
+   "note": null,
+   "origin": "Formed by the union of the right and left brachiocephalic veins behind the right first costal cartilage.",
+   "sources": {
+    "branches": [
+     "S11"
+    ],
+    "course": [
+     "S11"
+    ],
+    "origin": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Drains into the right atrium of the heart.",
+   "territory": "Head, neck, thorax (above the diaphragm, except the heart wall) and upper limbs.",
+   "type": "vessel",
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left common iliac vein",
+    "right common iliac vein",
+    "lumbar vein",
+    "left renal vein",
+    "right renal vein",
+    "right gonadal vein",
+    "right suprarenal vein",
+    "inferior phrenic vein",
+    "hepatic vein"
+   ],
+   "course": "Ascends on the posterior abdominal wall, anterior to the vertebral column and to the right of the abdominal aorta; leaves the abdomen through the caval hiatus of the diaphragm at T8.",
+   "geometry_record_ids": [
+    "vein.inferior-vena-cava"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.inferior-vena-cava",
+   "name": "Inferior vena cava",
+   "note": null,
+   "origin": "Formed by the union of the common iliac veins at the level of L5.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Drains into the right atrium of the heart.",
+   "territory": "All structures below the diaphragm.",
+   "type": "vessel",
+   "verify": [
+    "branches: tributary names follow S4; the release lateralises several of them per side and carries the hepatic veins as left/right records - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right gonadal vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "vertebral vein",
+    "internal thoracic vein",
+    "inferior thyroid vein",
+    "first posterior intercostal vein"
+   ],
+   "course": "Right: descends vertically (about 2.5 cm). Left: crosses obliquely behind the sternum (about 6 cm).",
+   "geometry_record_ids": [
+    "vein.left-brachiocephalic-vein",
+    "vein.right-brachiocephalic-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.brachiocephalic-vein",
+   "name": "Brachiocephalic vein",
+   "note": null,
+   "origin": "Formed on each side by the union of the internal jugular vein and the subclavian vein, posterior to the sternoclavicular joint.",
+   "sources": {
+    "branches": [
+     "S11"
+    ],
+    "course": [
+     "S11"
+    ],
+    "origin": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "The two brachiocephalic veins unite to form the superior vena cava.",
+   "territory": "Head, neck and upper limb of its side.",
+   "type": "vessel",
+   "verify": [
+    "branches: the tributary list follows the consulted lecture material in S11's result set and is complete for the right side only - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'vertebral vein'; 'inferior thyroid vein'; 'first posterior intercostal vein' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends through the neck in the carotid sheath, beside the internal carotid and then the common carotid artery.",
+   "geometry_record_ids": [
+    "vein.left-internal-jugular-vein",
+    "vein.right-internal-jugular-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.internal-jugular-vein",
+   "name": "Internal jugular vein",
+   "note": null,
+   "origin": "Begins at the jugular foramen as the continuation of the sigmoid sinus (dural venous sinus).",
+   "sources": {
+    "course": [
+     "S11"
+    ],
+    "origin": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Joins the subclavian vein behind the sternal end of the clavicle to form the brachiocephalic vein.",
+   "territory": "The brain (via the dural venous sinuses), face and neck; the largest vein draining the head and neck.",
+   "type": "vessel",
+   "verify": [
+    "branches: named tributaries (facial, lingual, pharyngeal, thyroid veins) are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Descends through the lateral neck, passing obliquely over the sternocleidomastoid muscle.",
+   "geometry_record_ids": [],
+   "group": "Systemic veins",
+   "id": "vein.external-jugular-vein",
+   "name": "External jugular vein",
+   "note": "Clinical text only in v1: the vessel itself is absent from the source tables. See MILESTONE-5.md.",
+   "origin": null,
+   "sources": {
+    "course": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Empties into the subclavian vein.",
+   "territory": "Superficial parts of the scalp and face.",
+   "type": "vessel",
+   "verify": [
+    "geometry: the external jugular vein has NO concept of its own in the BP3D 4.0 release (only a 'tributary of external jugular vein' family concept exists), so no inventory record exists to link - verify",
+    "origin: formation (union of the posterior auricular and retromandibular veins) is not stated in the consulted sources - verify",
+    "branches: tributaries not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "external jugular vein"
+   ],
+   "course": "Runs from the outer border of the first rib to the medial border of the anterior scalene muscle, anterior to the muscle.",
+   "geometry_record_ids": [
+    "vein.left-subclavian-vein",
+    "vein.right-subclavian-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.subclavian-vein",
+   "name": "Subclavian vein",
+   "note": null,
+   "origin": "Continuation of the axillary vein at the outer border of the first rib.",
+   "sources": {
+    "branches": [
+     "S11"
+    ],
+    "course": [
+     "S11"
+    ],
+    "origin": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Joins the internal jugular vein to form the brachiocephalic vein.",
+   "territory": "The upper limb; also receives the external jugular vein (scalp and face).",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'external jugular vein' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Ascends through the axilla with the axillary artery.",
+   "geometry_record_ids": [
+    "vein.left-axillary-vein",
+    "vein.right-axillary-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.axillary-vein",
+   "name": "Axillary vein",
+   "note": null,
+   "origin": null,
+   "sources": {
+    "course": [
+     "S11"
+    ],
+    "termination": [
+     "S11"
+    ],
+    "territory": [
+     "S11"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Becomes the subclavian vein at the outer border of the first rib.",
+   "territory": "The upper limb.",
+   "type": "vessel",
+   "verify": [
+    "origin: formation (continuation of the brachial veins / basilic vein junction) is not stated in the consulted sources - verify",
+    "branches: tributaries not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right posterior intercostal vein",
+    "right superior intercostal vein",
+    "hemiazygos vein",
+    "accessory hemiazygos vein",
+    "esophageal vein",
+    "mediastinal vein",
+    "right bronchial vein"
+   ],
+   "course": "Enters the thorax through the aortic hiatus, ascends along the right side of the thoracic vertebral bodies, and arches anteriorly over the root of the right lung at T4.",
+   "geometry_record_ids": [
+    "vein.azygos-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.azygos-vein",
+   "name": "Azygos vein",
+   "note": null,
+   "origin": "Formed by the union of the right ascending lumbar vein and the right subcostal vein at the level of T12.",
+   "sources": {
+    "branches": [
+     "S12"
+    ],
+    "course": [
+     "S12",
+     "S20"
+    ],
+    "origin": [
+     "S12",
+     "S20"
+    ],
+    "termination": [
+     "S12",
+     "S20"
+    ],
+    "territory": [
+     "S12",
+     "S20"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Empties into the superior vena cava.",
+   "territory": "Posterior walls of the thorax and abdomen; the azygos system also connects the superior and inferior caval systems.",
+   "type": "vessel",
+   "verify": [
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right posterior intercostal vein'; 'esophageal vein'; 'mediastinal vein'; 'right bronchial vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left posterior intercostal vein",
+    "esophageal vein",
+    "mediastinal vein"
+   ],
+   "course": "Ascends on the left side of the vertebral column to about T8-T9, then crosses the vertebral column posterior to the aorta, oesophagus and thoracic duct.",
+   "geometry_record_ids": [
+    "vein.hemiazygos-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.hemiazygos-vein",
+   "name": "Hemiazygos vein",
+   "note": null,
+   "origin": "Formed by the union of the left ascending lumbar vein and the left subcostal vein.",
+   "sources": {
+    "branches": [
+     "S12"
+    ],
+    "course": [
+     "S12"
+    ],
+    "origin": [
+     "S12"
+    ],
+    "termination": [
+     "S12"
+    ],
+    "territory": [
+     "S12"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Joins the azygos vein.",
+   "territory": "Lower left posterolateral chest wall (left posterior intercostal veins 9-11).",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'left posterior intercostal vein'; 'esophageal vein'; 'mediastinal vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left posterior intercostal vein",
+    "left bronchial vein"
+   ],
+   "course": "Descends along the left side of the vertebral column and crosses to the right at about T7-T8.",
+   "geometry_record_ids": [
+    "vein.accessory-hemiazygos-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.accessory-hemiazygos-vein",
+   "name": "Accessory hemiazygos vein",
+   "note": null,
+   "origin": "Begins at the 4th or 5th intercostal space as the continuation of the left fourth posterior intercostal vein.",
+   "sources": {
+    "branches": [
+     "S12"
+    ],
+    "course": [
+     "S12"
+    ],
+    "origin": [
+     "S12"
+    ],
+    "termination": [
+     "S12"
+    ],
+    "territory": [
+     "S12"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Joins the azygos vein (or the hemiazygos vein).",
+   "territory": "Mid levels of the left posterolateral chest wall (left posterior intercostal veins 4-8).",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'left posterior intercostal vein'; 'left bronchial vein' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Runs in the posterior coronary sulcus of the heart.",
+   "geometry_record_ids": [
+    "vein.coronary-sinus"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.coronary-sinus",
+   "name": "Coronary sinus",
+   "note": "The coronary sinus is a PART-OF-only concept in the BP3D release (venous trunk line); its record is the partof-concept inventory record.",
+   "origin": null,
+   "sources": {
+    "course": [
+     "S19"
+    ],
+    "termination": [
+     "S19"
+    ],
+    "territory": [
+     "S19"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Empties directly into the right atrium.",
+   "territory": "The wall of the heart (most of its venous drainage gathers here).",
+   "type": "vessel",
+   "verify": [
+    "origin: formation (continuation of the great cardiac vein) is not stated in the consulted sources - verify",
+    "branches: named tributaries (great, middle and small cardiac veins, oblique vein of the left atrium) are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "external iliac vein",
+    "internal iliac vein"
+   ],
+   "course": "Ascends in the pelvis to the level of L5.",
+   "geometry_record_ids": [
+    "vein.left-common-iliac-vein",
+    "vein.right-common-iliac-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.common-iliac-vein",
+   "name": "Common iliac vein",
+   "note": null,
+   "origin": "Formed by the union of the external iliac and internal iliac veins.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "The two common iliac veins unite to form the inferior vena cava at L5.",
+   "territory": "The lower limb and the gluteal region (and the pelvic viscera via the internal iliac vein).",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": null,
+   "course": "Ascends along the pelvic brim.",
+   "geometry_record_ids": [
+    "vein.left-external-iliac-vein",
+    "vein.right-external-iliac-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.external-iliac-vein",
+   "name": "External iliac vein",
+   "note": null,
+   "origin": "Continuation of the femoral vein posterior to the inguinal ligament.",
+   "sources": {
+    "course": [
+     "S5"
+    ],
+    "origin": [
+     "S5"
+    ],
+    "termination": [
+     "S4",
+     "S5"
+    ],
+    "territory": [
+     "S5"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Joins the internal iliac vein to form the common iliac vein.",
+   "territory": "The lower limb.",
+   "type": "vessel",
+   "verify": [
+    "branches: tributaries (inferior epigastric, deep circumflex iliac, pubic veins) are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": null,
+   "geometry_record_ids": [
+    "vein.left-internal-iliac-vein",
+    "vein.right-internal-iliac-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.internal-iliac-vein",
+   "name": "Internal iliac vein",
+   "note": null,
+   "origin": null,
+   "sources": {
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Joins the external iliac vein to form the common iliac vein.",
+   "territory": "Pelvic viscera and the gluteal region.",
+   "type": "vessel",
+   "verify": [
+    "origin: formation from its tributaries is not described in the consulted sources - verify",
+    "course: not described in the consulted sources - verify",
+    "branches: tributaries are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "left suprarenal vein",
+    "left gonadal vein"
+   ],
+   "course": "Passes medially to join the inferior vena cava; the left renal vein is longer and crosses between the aorta and the superior mesenteric artery.",
+   "geometry_record_ids": [
+    "vein.left-renal-vein",
+    "vein.right-renal-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.renal-vein",
+   "name": "Renal vein",
+   "note": null,
+   "origin": "Formed at the hilum of the kidney.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Drains into the inferior vena cava.",
+   "territory": "The kidney; on the left also the left adrenal gland and the left testis/ovary (via the left suprarenal and left gonadal veins).",
+   "type": "vessel",
+   "verify": [
+    "course: the aortomesenteric crossing of the left renal vein is standard anatomy but was not stated verbatim in the consulted excerpt - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'left gonadal vein' - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Ascends within the liver to the inferior vena cava just below the diaphragm.",
+   "geometry_record_ids": [
+    "vein.left-hepatic-vein",
+    "vein.right-hepatic-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.hepatic-vein",
+   "name": "Hepatic vein",
+   "note": "Venous return from the spleen, pancreas, gallbladder and GI tract reaches the IVC via the hepatic veins after passing through the portal system (S4).",
+   "origin": "Formed within the liver parenchyma from the central veins of the lobules.",
+   "sources": {
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Drains into the inferior vena cava.",
+   "territory": "The liver (its entire venous outflow, including portal blood after processing).",
+   "type": "vessel",
+   "verify": [
+    "branches: the middle hepatic vein is carried in the BP3D inventory within the lateralised hepatic vein records; the consulted source does not enumerate three named trunks - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "deep vein of thigh",
+    "great saphenous vein"
+   ],
+   "course": "Ascends the thigh anteriorly, accompanying the femoral artery.",
+   "geometry_record_ids": [
+    "vein.left-femoral-vein",
+    "vein.right-femoral-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.femoral-vein",
+   "name": "Femoral vein",
+   "note": null,
+   "origin": "Continuation of the popliteal vein as it enters the thigh via the adductor canal.",
+   "sources": {
+    "branches": [
+     "S5"
+    ],
+    "course": [
+     "S5"
+    ],
+    "origin": [
+     "S5"
+    ],
+    "termination": [
+     "S5"
+    ],
+    "territory": [
+     "S5"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Becomes the external iliac vein posterior to the inguinal ligament.",
+   "territory": "The lower limb (deep structures of the thigh and leg, plus the superficial drainage via the great saphenous vein).",
+   "type": "vessel",
+   "verify": [
+    "branches: 'deep vein of thigh' (profunda femoris vein) is named in S5; its record linkage follows the femoral records - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "anterior tibial vein",
+    "posterior tibial vein",
+    "fibular vein",
+    "small saphenous vein"
+   ],
+   "course": "Ascends through the popliteal fossa and enters the thigh via the adductor canal.",
+   "geometry_record_ids": [
+    "vein.left-popliteal-vein",
+    "vein.right-popliteal-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.popliteal-vein",
+   "name": "Popliteal vein",
+   "note": null,
+   "origin": "Formed on the posterior surface of the knee by the union of the anterior tibial, posterior tibial and fibular veins.",
+   "sources": {
+    "branches": [
+     "S5"
+    ],
+    "course": [
+     "S5"
+    ],
+    "origin": [
+     "S5"
+    ],
+    "termination": [
+     "S5"
+    ],
+    "territory": [
+     "S5"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Continues as the femoral vein on entering the thigh.",
+   "territory": "The leg and foot (deep veins) and the posterior leg (via the small saphenous vein).",
+   "type": "vessel",
+   "verify": []
+  },
+  {
+   "branches": null,
+   "course": "Ascends the medial side of the leg, passing anterior to the medial malleolus at the ankle and posterior to the medial condyle at the knee, then up the medial thigh.",
+   "geometry_record_ids": [
+    "vein.left-great-saphenous-vein",
+    "vein.right-great-saphenous-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.great-saphenous-vein",
+   "name": "Great saphenous vein",
+   "note": "Harvested as a graft in coronary artery bypass surgery (S5 flashcards set; recorded as clinical context).",
+   "origin": "Formed by the dorsal venous arch of the foot and the dorsal vein of the great toe.",
+   "sources": {
+    "course": [
+     "S5"
+    ],
+    "origin": [
+     "S5"
+    ],
+    "termination": [
+     "S5"
+    ],
+    "territory": [
+     "S5"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Drains into the femoral vein immediately inferior to the inguinal ligament.",
+   "territory": "Superficial tissues of the medial leg and thigh (the longest vein in the body).",
+   "type": "vessel",
+   "verify": [
+    "branches: named tributaries near the saphenofemoral junction are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Ascends the posterior side of the leg, passing posterior to the lateral malleolus along the lateral border of the calcaneal tendon.",
+   "geometry_record_ids": [
+    "vein.left-small-saphenous-vein",
+    "vein.right-small-saphenous-vein"
+   ],
+   "group": "Systemic veins",
+   "id": "vein.small-saphenous-vein",
+   "name": "Small saphenous vein",
+   "note": null,
+   "origin": "Formed by the dorsal venous arch of the foot and the dorsal vein of the little toe.",
+   "sources": {
+    "course": [
+     "S5"
+    ],
+    "origin": [
+     "S5"
+    ],
+    "termination": [
+     "S5"
+    ],
+    "territory": [
+     "S5"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Passes between the two heads of gastrocnemius and empties into the popliteal vein in the popliteal fossa.",
+   "territory": "Superficial tissues of the posterior leg.",
+   "type": "vessel",
+   "verify": [
+    "branches: tributaries not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": null,
+   "course": "Passes from the hilum of each lung to the left atrium.",
+   "geometry_record_ids": [],
+   "group": "Pulmonary",
+   "id": "vein.pulmonary-vein",
+   "name": "Pulmonary vein",
+   "note": "Anatomy has four pulmonary veins (superior and inferior on each side), as stated in S10; the BP3D release carries the pulmonary veins only as one undivided family concept.",
+   "origin": "Arises within the lung parenchyma from the pulmonary capillary networks.",
+   "sources": {
+    "course": [
+     "S10"
+    ],
+    "origin": [
+     "S10"
+    ],
+    "termination": [
+     "S10"
+    ],
+    "territory": [
+     "S10"
+    ]
+   },
+   "sourcing_tier": "C",
+   "ta_name": null,
+   "termination": "Opens into the left atrium (four pulmonary veins in the usual pattern).",
+   "territory": "The lungs (oxygenated blood returning to the heart).",
+   "type": "vessel",
+   "verify": [
+    "geometry: the pulmonary vein exists in the BP3D release only as a family concept (FMA66643) carrying 84 IS-A element files, with no lateralised instance concepts; under the module counting convention it produced no inventory record, so no geometry record is linked - verify",
+    "branches: tributaries within the lung are not enumerated in the consulted sources - verify",
+    "ta_name: not given by consulted sources - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right portal vein",
+    "left portal vein",
+    "left gastric vein",
+    "right gastric vein",
+    "cystic vein",
+    "paraumbilical vein"
+   ],
+   "course": "Ascends posterior to the superior part of the duodenum and the bile duct, within the hepatoduodenal ligament.",
+   "geometry_record_ids": [
+    "vein.hepatic-portal-vein"
+   ],
+   "group": "Portal venous system",
+   "id": "vein.hepatic-portal-vein",
+   "name": "Hepatic portal vein",
+   "note": null,
+   "origin": "Formed by the union of the splenic vein and the superior mesenteric vein, posterior to the neck of the pancreas at the level of L2.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Divides into right and left branches at the porta hepatis, which enter the liver parenchyma separately.",
+   "territory": "Venous drainage of the spleen, pancreas, gallbladder and the abdominal part of the gastrointestinal tract, carried to the liver for processing; the portal vein provides about three-fourths of the liver's blood supply.",
+   "type": "vessel",
+   "verify": [
+    "branches: the right/left gastric, cystic and para-umbilical tributaries follow S4; several have no dedicated records in the BP3D inventory partition - verify",
+    "ta_name: not given by consulted sources - verify",
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'cystic vein'; 'paraumbilical vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "short gastric vein",
+    "left gastroepiploic vein",
+    "pancreatic vein",
+    "inferior mesenteric vein"
+   ],
+   "course": "Runs straight across the posterior abdominal wall in contact with the body of the pancreas, to the neck of the pancreas.",
+   "geometry_record_ids": [
+    "vein.splenic-vein"
+   ],
+   "group": "Portal venous system",
+   "id": "vein.splenic-vein",
+   "name": "Splenic vein",
+   "note": null,
+   "origin": "Formed from a number of smaller vessels as they leave the hilum of the spleen.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Joins the superior mesenteric vein behind the neck of the pancreas to form the portal vein.",
+   "territory": "Spleen, fundus and greater curvature of the stomach, pancreas, and (via the inferior mesenteric vein) the hindgut colon.",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'short gastric vein'; 'pancreatic vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "right gastroepiploic vein",
+    "inferior pancreaticoduodenal vein",
+    "jejunal vein",
+    "ileal vein",
+    "ileocolic vein",
+    "right colic vein",
+    "middle colic vein"
+   ],
+   "course": "Ascends within the mesentery of the small intestine to the neck of the pancreas.",
+   "geometry_record_ids": [
+    "vein.superior-mesenteric-vein"
+   ],
+   "group": "Portal venous system",
+   "id": "vein.superior-mesenteric-vein",
+   "name": "Superior mesenteric vein",
+   "note": null,
+   "origin": "Begins in the right iliac fossa as the convergence of the veins draining the terminal ileum, caecum and appendix.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Joins the splenic vein behind the neck of the pancreas to form the portal vein.",
+   "territory": "Small intestine, caecum, ascending colon and transverse colon.",
+   "type": "vessel",
+   "verify": [
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'inferior pancreaticoduodenal vein'; 'jejunal vein' - verify"
+   ]
+  },
+  {
+   "branches": [
+    "superior rectal vein",
+    "sigmoid vein",
+    "left colic vein"
+   ],
+   "course": "Ascends, receiving the sigmoid and left colic veins, and passes posterior to the body of the pancreas.",
+   "geometry_record_ids": [
+    "vein.inferior-mesenteric-vein"
+   ],
+   "group": "Portal venous system",
+   "id": "vein.inferior-mesenteric-vein",
+   "name": "Inferior mesenteric vein",
+   "note": null,
+   "origin": "Begins as the superior rectal vein in the pelvis.",
+   "sources": {
+    "branches": [
+     "S4"
+    ],
+    "course": [
+     "S4"
+    ],
+    "origin": [
+     "S4"
+    ],
+    "termination": [
+     "S4"
+    ],
+    "territory": [
+     "S4"
+    ]
+   },
+   "sourcing_tier": "A",
+   "ta_name": null,
+   "termination": "Typically joins the splenic vein.",
+   "territory": "Rectum, sigmoid colon, descending colon and splenic flexure.",
+   "type": "vessel",
+   "verify": []
+  }
+ ],
+ "variants": [
+  {
+   "clinical_significance": "At risk in cholecystectomy, pancreaticoduodenectomy and liver transplantation; the most common hepatic arterial variant and the chief variant source of bile-duct blood supply (S14).",
+   "description": "The right hepatic artery arises from the superior mesenteric artery instead of the hepatic artery proper, and classically ascends posterolateral to the common bile duct, posterior to the main portal vein.",
+   "id": "variant.replaced-right-hepatic-artery-from-sma",
+   "modeled": false,
+   "name": "Replaced right hepatic artery arising from the superior mesenteric artery (Michels type III)",
+   "prevalence": {
+    "basis": "Michels type III range in S13",
+    "high_pct": 11.0,
+    "low_pct": 8.7
+   },
+   "related_record_ids": [
+    "artery.hepatic-artery-proper",
+    "artery.superior-mesenteric-artery"
+   ],
+   "sources": [
+    "S13",
+    "S14"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1 (the BP3D release carries the standard pattern only)."
+  },
+  {
+   "clinical_significance": "At risk in gastrectomy and hepatobiliary surgery; may be the sole supply to the left lobe.",
+   "description": "The left hepatic artery arises from the left gastric artery and reaches the liver through the lesser omentum / fissure for the ligamentum venosum.",
+   "id": "variant.replaced-left-hepatic-artery-from-left-gastric",
+   "modeled": false,
+   "name": "Replaced left hepatic artery arising from the left gastric artery (Michels type II)",
+   "prevalence": {
+    "basis": "pooled 3.0% in S14; 10% in the Michels table of S15",
+    "high_pct": 10.0,
+    "low_pct": 3.0
+   },
+   "related_record_ids": [
+    "artery.hepatic-artery-proper",
+    "artery.left-gastric-artery"
+   ],
+   "sources": [
+    "S14",
+    "S15"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1."
+  },
+  {
+   "clinical_significance": "At risk in gastrectomy; division can compromise left-lobe perfusion where it is dominant.",
+   "description": "An accessory left hepatic artery from the left gastric artery supplements (does not replace) the normal left hepatic artery.",
+   "id": "variant.accessory-left-hepatic-artery-from-left-gastric",
+   "modeled": false,
+   "name": "Accessory left hepatic artery arising from the left gastric artery (Michels type V)",
+   "prevalence": {
+    "basis": "8% in S15; range 8-11% in S16",
+    "high_pct": 11.0,
+    "low_pct": 8.0
+   },
+   "related_record_ids": [
+    "artery.hepatic-artery-proper",
+    "artery.left-gastric-artery"
+   ],
+   "sources": [
+    "S15",
+    "S16"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1."
+  },
+  {
+   "clinical_significance": "At risk in pancreatic and hepatobiliary surgery.",
+   "description": "An accessory right hepatic artery from the superior mesenteric artery supplements the normal right hepatic artery.",
+   "id": "variant.accessory-right-hepatic-artery-from-sma",
+   "modeled": false,
+   "name": "Accessory right hepatic artery arising from the superior mesenteric artery (Michels type VI)",
+   "prevalence": {
+    "basis": "Michels type VI range in S13",
+    "high_pct": 10.7,
+    "low_pct": 7.0
+   },
+   "related_record_ids": [
+    "artery.hepatic-artery-proper",
+    "artery.superior-mesenteric-artery"
+   ],
+   "sources": [
+    "S13"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1."
+  },
+  {
+   "clinical_significance": "Load-bearing in pancreaticoduodenectomy planning and coeliac-axis intervention.",
+   "description": "The entire common hepatic artery arises from the superior mesenteric artery (hepatomesenteric trunk pattern).",
+   "id": "variant.common-hepatic-artery-from-sma",
+   "modeled": false,
+   "name": "Common hepatic artery arising from the superior mesenteric artery (Michels type IX)",
+   "prevalence": {
+    "basis": "Michels type IX range in S13",
+    "high_pct": 4.5,
+    "low_pct": 1.0
+   },
+   "related_record_ids": [
+    "artery.common-hepatic-artery",
+    "artery.superior-mesenteric-artery"
+   ],
+   "sources": [
+    "S13"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1."
+  },
+  {
+   "clinical_significance": "Determines the territory at risk in right coronary occlusion and the interpretation of coronary angiography.",
+   "description": "The posterior descending (posterior interventricular) artery originates from the right coronary artery.",
+   "id": "variant.coronary-dominance-right",
+   "modeled": true,
+   "name": "Right coronary dominance",
+   "prevalence": {
+    "basis": "S7 population estimates",
+    "high_pct": 80.0,
+    "low_pct": 70.0
+   },
+   "related_record_ids": [
+    "artery.right-coronary-artery",
+    "artery.posterior-interventricular-branch-of-right-coronary-artery"
+   ],
+   "sources": [
+    "S7"
+   ],
+   "unmodeled_note": null
+  },
+  {
+   "clinical_significance": "Circumflex occlusion in left dominance jeopardises the inferior wall and the AV node supply.",
+   "description": "The posterior descending artery originates from the left circumflex artery.",
+   "id": "variant.coronary-dominance-left",
+   "modeled": false,
+   "name": "Left coronary dominance",
+   "prevalence": {
+    "basis": "S7 population estimates",
+    "high_pct": 10.0,
+    "low_pct": 5.0
+   },
+   "related_record_ids": [
+    "artery.circumflex-branch-of-left-coronary-artery"
+   ],
+   "sources": [
+    "S7"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; the v1 coronary records describe the right-dominant pattern, with the variant origin stated on the posterior interventricular record."
+  },
+  {
+   "clinical_significance": "Shared inferior-wall supply; relevant to angiographic interpretation.",
+   "description": "The posterior descending artery is supplied by both the right coronary artery and the left circumflex artery.",
+   "id": "variant.coronary-dominance-codominant",
+   "modeled": false,
+   "name": "Coronary codominance",
+   "prevalence": {
+    "basis": "S7 population estimates",
+    "high_pct": 20.0,
+    "low_pct": 10.0
+   },
+   "related_record_ids": [
+    "artery.right-coronary-artery",
+    "artery.circumflex-branch-of-left-coronary-artery"
+   ],
+   "sources": [
+    "S7"
+   ],
+   "unmodeled_note": "Prevalence recorded per the variant gate; variant geometry is not modelled in v1."
+  }
+ ]
+}
