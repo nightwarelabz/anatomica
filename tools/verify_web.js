@@ -19,7 +19,20 @@
         geometry JSONs;
      W5 cross-references: muscle clinical_id links resolve; the 7
         no-geometry bones are exactly Milestone 3's records_without_
-        geometry; clinical-only muscle entries carry a geometry note.
+        geometry; clinical-only muscle entries carry a geometry note;
+     W6 pick-id codec roundtrip, bound to the shipped web/viewer.js:
+        LAYER_BIT, the FS_PICK encoder (id expression + the four vec4
+        channel expressions) and the pick() decoder block are parsed
+        out of the viewer source and evaluated — the decoder block is
+        executed verbatim via new Function against the real manifest
+        ranges and records. Every slot of both layers (skeleton
+        0..198, muscles 0..358) must roundtrip to its own record, and
+        the miss pixel [0,0,0,0] must decode to null. This is the
+        check that would have caught the Milestone-7 §1.4 defect
+        (layer byte dropped: alpha fixed at 1.0, decoder reading only
+        24 bits, every pick resolving against the muscle ranges).
+        Set VIEWER_JS to point the W6 binding at another viewer.js
+        copy (e.g. a pre-fix one) — data files still come from web/.
    Exit 0 iff all checks pass. */
 const fs = require("fs");
 const path = require("path");
@@ -146,6 +159,114 @@ for (const r of muscRecs) {
 }
 report(badLinks === 0 && clinOnly === 1, "W5 clinical links",
   `${Object.keys(clinical).length} clinical records; clinical-only entries ${clinOnly} (multifidus)`);
+
+// ---- W6 pick-id codec roundtrip, bound to the shipped viewer.js ----
+// Binding: nothing here restates the codec. LAYER_BIT, the encoder's
+// expressions and the decoder's statements are extracted from the
+// viewer source at run time; the decoder block is executed verbatim.
+// If the shipped code's shape changes so the extraction no longer
+// matches, W6 fails loudly instead of testing a private copy.
+const viewerPath = process.env.VIEWER_JS || path.join(ROOT, "web", "viewer.js");
+const vsrc = fs.readFileSync(viewerPath, "utf8");
+const w6problems = [];
+
+// LAYER_BIT from the shipped source
+const lbM = vsrc.match(/const LAYER_BIT = \{\s*skeleton:\s*(\d+),\s*muscle:\s*(\d+)\s*\};/);
+const LB = lbM ? { skeleton: +lbM[1], muscle: +lbM[2] } : null;
+if (!LB) w6problems.push("LAYER_BIT declaration not found in viewer source");
+
+// FS_PICK encoder: translate the shipped GLSL expressions to JS.
+// float(x) -> (x) keeps parentheses balanced; Nu -> N.
+function glslFn(expr, params) {
+  const js = expr
+    .replace(/\buLayerBit\b/g, "uLayerBit")
+    .replace(/(\d+)u\b/g, "$1")
+    .replace(/\bfloat\(/g, "(");
+  return new Function(...params, `"use strict"; return (${js});`);
+}
+let encodePick = null;
+const fsM = vsrc.match(/const FS_PICK = `([\s\S]*?)`;/);
+if (!fsM) w6problems.push("FS_PICK shader not found in viewer source");
+else {
+  const idM = fsM[1].match(/uint id = ([^;]+);/);
+  const vecM = fsM[1].match(/o = vec4\(([^;]+)\);/);
+  if (!idM) w6problems.push("FS_PICK: `uint id = ...;` statement not found");
+  if (!vecM) w6problems.push("FS_PICK: `o = vec4(...);` statement not found");
+  if (idM && vecM) {
+    // split the vec4 argument list on top-level commas
+    const args = []; let depth = 0, cur = "";
+    for (const ch of vecM[1]) {
+      if (ch === "(") depth++;
+      if (ch === ")") depth--;
+      if (ch === "," && depth === 0) { args.push(cur); cur = ""; }
+      else cur += ch;
+    }
+    args.push(cur);
+    if (args.length !== 4) w6problems.push(`FS_PICK: vec4 has ${args.length} channels, expected 4`);
+    else {
+      try {
+        const idFn = glslFn(idM[1], ["uLayerBit", "vSlot"]);
+        const chanFns = args.map(a => glslFn(a, ["id"]));
+        encodePick = (layerBit, slot) => {
+          const id = idFn(layerBit, slot) >>> 0;
+          return chanFns.map(f => Math.round(Math.min(1, Math.max(0, f(id))) * 255));
+        };
+      } catch (e) { w6problems.push("FS_PICK expression evaluation failed: " + e.message); }
+    }
+  }
+}
+
+// pick() decoder: extract the shipped statements from the hit test
+// through the range-resolution return, and execute them verbatim.
+let decodePick = null;
+const pickM = vsrc.match(/function pick\(x, y, mvp\) \{([\s\S]*?)\n\}/);
+if (!pickM) w6problems.push("pick() function not found in viewer source");
+else {
+  const body = pickM[1];
+  const start = body.indexOf("if (px[3] === 0)");
+  const endM = body.match(/return rng \?[^;]+;/);
+  if (start < 0) w6problems.push("pick(): hit-test statement `if (px[3] === 0)` not found");
+  if (!endM) w6problems.push("pick(): range-resolution return not found");
+  if (start >= 0 && endM) {
+    const segment = body.slice(start, endM.index + endM[0].length);
+    try {
+      decodePick = new Function("px", "LAYER_BIT", "layers", "byId",
+        `"use strict";\n${segment}`);
+    } catch (e) { w6problems.push("pick() decoder block failed to build: " + e.message); }
+  }
+}
+
+if (!encodePick || !decodePick || !LB) {
+  report(false, "W6 pick codec roundtrip (bound to shipped viewer.js)",
+    "could not bind to shipped code: " + w6problems.join("; "));
+} else {
+  const layersStub = {
+    skeleton: { ranges: manifest.layers.skeleton.ranges },
+    muscles: { ranges: manifest.layers.muscles.ranges },
+  };
+  const byIdW6 = new Map(records.map(r => [r.layer + ":" + r.id, r]));
+  let cases = 0, bad = 0; const badEx = [];
+  for (const [recLayer, drawName] of [["skeleton", "skeleton"], ["muscle", "muscles"]]) {
+    const ranges = manifest.layers[drawName].ranges;
+    for (let slot = 0; slot < ranges.length; slot++) {
+      const bytes = encodePick(LB[recLayer], slot);
+      const rec = decodePick(bytes, LB, layersStub, byIdW6);
+      cases++;
+      if (rec !== byIdW6.get(recLayer + ":" + ranges[slot].record_id)) {
+        bad++;
+        if (badEx.length < 6)
+          badEx.push(`${recLayer} slot ${slot} (bytes ${bytes.join("/")}) -> ` +
+            (rec ? rec.layer + ":" + rec.id : "null"));
+      }
+    }
+  }
+  if (decodePick([0, 0, 0, 0], LB, layersStub, byIdW6) !== null) {
+    bad++; badEx.push("miss pixel [0,0,0,0] did not decode to null");
+  }
+  report(bad === 0, "W6 pick codec roundtrip (bound to shipped viewer.js)",
+    `${cases} encode->decode cases (every slot, both layers) + miss case; failures ${bad}` +
+    (badEx.length ? "; e.g. " + badEx.join(" | ") : ""));
+}
 
 console.log(failures ? `\n${failures} FAILURE(S)` : "\nALL CHECKS PASS");
 process.exit(failures ? 1 : 0);

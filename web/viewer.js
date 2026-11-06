@@ -112,8 +112,10 @@ uniform uint uLayerBit;
 out vec4 o;
 void main(){
   uint id = (uLayerBit << 24) | vSlot;
+  // byte 3 (the layer bit) rides in alpha: 0 = miss (the clear value),
+  // 1/2 = hit — the native shell's pick codec (native/src/model.rs)
   o = vec4(float(id & 255u) / 255.0, float((id >> 8) & 255u) / 255.0,
-           float((id >> 16) & 255u) / 255.0, 1.0);
+           float((id >> 16) & 255u) / 255.0, float((id >> 24) & 255u) / 255.0);
 }`;
 
 function compile(type, src) {
@@ -345,9 +347,10 @@ function pick(x, y, mvp) {
   gl.readPixels(x, gl.canvas.height - y, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
   gl.bindFramebuffer(gl.FRAMEBUFFER, null);
   if (px[3] === 0) return null;
-  const id = px[0] | (px[1] << 8) | (px[2] << 16);
+  const id = px[0] | (px[1] << 8) | (px[2] << 16) | (px[3] << 24);
   const bit = id >>> 24, slot = id & 0xffffff;
-  const layerName = bit === LAYER_BIT.skeleton ? "skeleton" : "muscles";
+  const layerName = bit === LAYER_BIT.skeleton ? "skeleton" : bit === LAYER_BIT.muscle ? "muscles" : null;
+  if (!layerName) return null;
   const lay = layers[layerName];
   const rng = lay.ranges[slot];
   return rng ? byId.get((layerName === "skeleton" ? "skeleton" : "muscle") + ":" + rng.record_id) : null;
