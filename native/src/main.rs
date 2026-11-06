@@ -254,6 +254,11 @@ fn verify(args: &[String]) -> ExitCode {
     let mut focus_state = SceneState::all(&body.infos);
     focus_state.focus = Some(["cardiovascular", "nervous"].iter().map(|s| s.to_string()).collect());
     focus_state.dim = 0.78;
+    // Milestone 21: the same focus view with the integumentary
+    // shell genuinely translucent (per-layer opacity) instead of
+    // merely dimmed — the Milestone-16 defect-1 comparison frame.
+    let mut glass_state = focus_state.clone();
+    glass_state.opacity.insert("integumentary".to_string(), 0.15);
     let cvn_only_state = SceneState::only(&["cardiovascular", "nervous"]);
     let femur_range = body.ranges["skeletal"]
         .iter()
@@ -266,6 +271,8 @@ fn verify(args: &[String]) -> ExitCode {
     std::fs::create_dir_all(&out_dir).ok();
     println!("\n== frames ==");
     let mut hard_fail = false;
+    // Framebuffers kept for the Milestone-21 translucency proof.
+    let mut captured: HashMap<&str, Vec<u8>> = HashMap::new();
     // (name, camera, up, state, silhouette-check layer keys)
     let jobs: Vec<(&str, OrbitCamera, Option<Vec3>, SceneState, Option<Vec<&str>>)> = vec![
         ("front_skeleton", front, None, skel_only.clone(), Some(vec!["skeletal"])),
@@ -276,6 +283,7 @@ fn verify(args: &[String]) -> ExitCode {
         ("front_selection", front, None, selection_state.clone(), None),
         ("front_all_layers", front_all, None, all_state.clone(), Some(all_keys.clone())),
         ("front_cv_nervous_focus", front_all, None, focus_state.clone(), None),
+        ("front_cv_nervous_glass", front_all, None, glass_state.clone(), None),
         ("front_cv_nervous", front_all, None, cvn_only_state.clone(), None),
         ("front_skin", front_all, None, skin_state.clone(), Some(vec!["integumentary"])),
     ];
@@ -288,6 +296,9 @@ fn verify(args: &[String]) -> ExitCode {
             None => (camera.mvp(aspect), camera.view()),
         };
         let frame = renderer.render_offscreen(&layers, size, size, &mvp, &mv, state);
+        if *name == "front_cv_nervous_focus" || *name == "front_cv_nervous_glass" {
+            captured.insert(name, frame.rgba.clone());
+        }
         let path = out_dir.join(format!("{name}.png"));
         if let Err(e) = save_png(&frame, &path) {
             println!("{name}: PNG save failed: {e}");
@@ -342,6 +353,77 @@ fn verify(args: &[String]) -> ExitCode {
         }
     }
 
+    // Milestone 21 translucency proof: in the opaque focus frame
+    // (Milestone 16) the heart's and brain's projected regions show
+    // only the opaque dimmed skin shell — every lit pixel there has
+    // the skin family's channel ratios (g/r 0.70, b/r 0.51, from the
+    // manifest colour 0.88/0.62/0.45; dimming scales all channels
+    // together, so ratios survive it). Two measurements:
+    //  (a) skin-dominated fraction of the heart's region: a pixel is
+    //      skin-dominated when both ratios sit within +/-0.06 of
+    //      the skin family's. Through a translucent shell the
+    //      interior (muscle g/r 0.40, cardiovascular 0.20) pulls the
+    //      composite ratios measurably off the skin point, so the
+    //      fraction must fall.
+    //  (b) nervous-ratio pixels in the brain's region (yellow
+    //      family: g > 0.70 r and b < 0.48 r — skin fails on b/r,
+    //      bone on b/r 0.77): the count must rise.
+    println!("\n== translucency proof (Milestone 21) ==");
+    {
+        let focus_rgba = &captured["front_cv_nervous_focus"];
+        let glass_rgba = &captured["front_cv_nervous_glass"];
+        let mvp_fa = front_all.mvp(aspect);
+        // (skin-dominated fraction, nervous-ratio count, lit pixels)
+        let region_stats = |rgba: &[u8], min: [f64; 3], max: [f64; 3]| -> (f64, usize, usize) {
+            let (x0, y0, x1, y1) = cpu_box_extent(min, max, &mvp_fa, size, size);
+            let xa = (x0.max(0.0) as u32).min(size - 1);
+            let xb = (x1.max(0.0) as u32).min(size - 1);
+            let ya = (y0.max(0.0) as u32).min(size - 1);
+            let yb = (y1.max(0.0) as u32).min(size - 1);
+            let (mut skin, mut nerv, mut lit) = (0usize, 0usize, 0usize);
+            for y in ya..=yb {
+                for x in xa..=xb {
+                    let i = ((y * size + x) * 4) as usize;
+                    let (r, g, b) = (rgba[i] as f32, rgba[i + 1] as f32, rgba[i + 2] as f32);
+                    if r <= 25.0 {
+                        continue; // background / near-black: no family signal
+                    }
+                    lit += 1;
+                    if (g / r - 0.7045).abs() < 0.06 && (b / r - 0.5114).abs() < 0.06 {
+                        skin += 1;
+                    }
+                    if g > 0.70 * r && b < 0.48 * r {
+                        nerv += 1;
+                    }
+                }
+            }
+            (
+                if lit > 0 { skin as f64 / lit as f64 } else { 0.0 },
+                nerv,
+                lit,
+            )
+        };
+        let heart_rec = body.records.by_id("heart").expect("heart record");
+        let hb = heart_rec.bbox().unwrap();
+        let brain_rec = body.records.by_id("brain").expect("brain record");
+        let bb = brain_rec.bbox().unwrap();
+        let (hf_skin, _, hf_lit) = region_stats(focus_rgba, hb.min, hb.max);
+        let (hg_skin, _, hg_lit) = region_stats(glass_rgba, hb.min, hb.max);
+        let (_, bf_nerv, _) = region_stats(focus_rgba, bb.min, bb.max);
+        let (_, bg_nerv, _) = region_stats(glass_rgba, bb.min, bb.max);
+        println!(
+            "heart region: skin-dominated fraction of {hf_lit}/{hg_lit} lit px: opaque focus {hf_skin:.3} -> glass shell {hg_skin:.3}"
+        );
+        println!("brain region, nervous-ratio pixels: opaque focus {bf_nerv} -> glass shell {bg_nerv}");
+        let heart_pass = hg_skin < hf_skin - 0.10;
+        let brain_pass = bg_nerv > bf_nerv;
+        hard_fail |= !heart_pass || !brain_pass;
+        println!(
+            "[{}] interior reads through the translucent shell (heart skin-dominated fraction falls > 0.10; brain nervous pixels increase)",
+            if heart_pass && brain_pass { "PASS" } else { "FAIL" }
+        );
+    }
+
     println!("\n== picking ==");
     let mvp = front.mvp(aspect);
     let mvp_all = front_all.mvp(aspect);
@@ -373,12 +455,28 @@ fn verify(args: &[String]) -> ExitCode {
     let femur_centre = Vec3::from_array(femur.bbox().unwrap().centre().map(|v| v as f32));
     let _thigh = probe(&mut renderer, "thigh probe, skeletal+muscular (femur_right bbox centre)", &mvp, &both_state, femur_centre);
     // All layers visible: the integumentary shell covers the forehead.
-    let _skin = probe(&mut renderer, "forehead probe, all layers", &mvp_all, &all_state, frontal_centre);
+    let skin_probe = probe(&mut renderer, "forehead probe, all layers", &mvp_all, &all_state, frontal_centre);
     // Cardiovascular + nervous only: the heart's own centre.
     let heart = body.records.by_id("heart").expect("heart record");
     let heart_centre = Vec3::from_array(heart.bbox().unwrap().centre().map(|v| v as f32));
     let cvn_state = SceneState::only(&["cardiovascular", "nervous"]);
     let _heart = probe(&mut renderer, "heart probe, cardiovascular+nervous (heart bbox centre)", &mvp_all, &cvn_state, heart_centre);
+    // Milestone 21: opacity must not corrupt picking. The pick pass
+    // renders ids, not colours, and never reads the opacity map —
+    // the same pixels probed through the translucent shell must
+    // return the same records as through the opaque shell.
+    let forehead_glass = probe(&mut renderer, "forehead probe, glass focus state (shell translucent)", &mvp_all, &glass_state, frontal_centre);
+    let heart_all = probe(&mut renderer, "heart-centre probe, all layers", &mvp_all, &all_state, heart_centre);
+    let heart_glass = probe(&mut renderer, "heart-centre probe, glass focus state (shell translucent)", &mvp_all, &glass_state, heart_centre);
+    let pick_opacity_ok = forehead_glass == skin_probe
+        && skin_probe == Some(("integumentary".to_string(), 0))
+        && heart_glass == heart_all;
+    hard_fail |= !pick_opacity_ok;
+    println!(
+        "[{}] pick invariance under opacity: glass-shell probes == opaque-shell probes at the same pixels (forehead {:?}, heart-centre {:?})",
+        if pick_opacity_ok { "PASS" } else { "FAIL" },
+        forehead_glass, heart_glass
+    );
     let bg = renderer.pick(&layers, &body.ranges, size, size, &mvp, &both_state, None, 4, 4);
     println!("corner probe @(4,4): {:?}", bg);
     if bg.is_some() {
@@ -453,7 +551,8 @@ fn main() -> ExitCode {
 // Windowed viewer: same draw code, surface target. Mouse orbit /
 // wheel zoom / right-drag pan; keys: S skeletal, M muscular,
 // 1..9/0 toggle layers 1..10 in manifest order, I integumentary,
-// A all layers on, W wireframe, R reset view; left click picks
+// A all layers on, G glass shell (integumentary opacity 0.15,
+// Milestone 21), W wireframe, R reset view; left click picks
 // (panel text to console, record highlighted). Not runnable on a
 // headless machine.
 // ---------------------------------------------------------------------------
@@ -684,6 +783,16 @@ fn view(args: &[String]) -> ExitCode {
                                     if let Some(info) = self.body.infos.get(idx) {
                                         let key = info.key.clone();
                                         self.toggle_layer(&key);
+                                    }
+                                }
+                                "g" => {
+                                    // Glass shell: toggle the
+                                    // integumentary layer between
+                                    // opaque and translucent.
+                                    if self.state.opacity.remove("integumentary").is_none() {
+                                        self.state
+                                            .opacity
+                                            .insert("integumentary".to_string(), 0.15);
                                     }
                                 }
                                 "w" => self.state.wireframe = !self.state.wireframe,

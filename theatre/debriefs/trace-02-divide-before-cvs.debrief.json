@@ -69,7 +69,7 @@
     "time_points": 3,
     "nadir_points": 2,
     "loss_points": 2,
-    "map_nadir_mmhg": 72.91137121325553,
+    "map_nadir_mmhg": 72.9113712137776,
     "map_baseline_mmhg": 72.91107480813304,
     "seconds_below_threshold": 0.0,
     "blood_loss_ml": 0.0,
@@ -140,9 +140,9 @@
       "choice": "drain-refer"
     }
   ],
-  "engine_trace_hash": "0x211e003d541d0564",
-  "engine_beats": 2728,
-  "engine_conservation_error_ml": 4.1745806811377406e-10,
+  "engine_trace_hash": "0x3044928598ddd5b8",
+  "engine_beats": 2729,
+  "engine_conservation_error_ml": 3.4924596548080444e-10,
   "debrief": {
     "description": [
       "[t=0s] m0.1: Review imaging and laboratory results; confirm the indication for cholecystectomy",

@@ -8,7 +8,12 @@
    pick bit, label and colour — the literals below are asserted
    against it by tools/verify_web.js (W1/W6). Picking renders an
    id pass on demand; the pick codec is the Milestone-7-FIX codec
-   (byte 3 of the id rides in alpha) and must not regress. */
+   (byte 3 of the id rides in alpha) and must not regress.
+   Milestone 21: per-layer opacity — a slider per layer (FS_SHADE's
+   uOpacity) so a focus view can make the integumentary shell
+   genuinely translucent instead of merely dimmed (Milestone-16
+   defect 1). Opacity is shading state only: the id pass never
+   reads it, and tools/verify_web.js W8 asserts that separation. */
 
 const $ = id => document.getElementById(id);
 const statusEl = $("status"), stripEl = $("strip"), panelEl = $("panel"), listEl = $("list");
@@ -96,7 +101,7 @@ precision highp float;
 in vec3 vN; in vec3 vVP; flat in uint vSlot;
 uniform vec3 uColor; uniform uint uSelSlot; uniform int uSelActive;
 uniform int uHoverActive; uniform uint uHoverSlot;
-uniform float uDim; uniform int uWire;
+uniform float uDim; uniform int uWire; uniform float uOpacity;
 out vec4 o;
 void main(){
   vec3 n = normalize(vN);
@@ -112,7 +117,7 @@ void main(){
   if (isSel) col = mix(col, vec3(1.0, 0.62, 0.18), 0.55) + vec3(0.10, 0.05, 0.0);
   else if (isHov) col *= 1.35;
   else if (uSelActive == 1 && uDim > 0.0) col *= (1.0 - uDim);
-  o = vec4(col, 1.0);
+  o = vec4(col, uOpacity);
   if (uWire == 1) { /* wireframe drawn as separate LINES pass */ }
 }`;
 const VS_PICK = `#version 300 es
@@ -204,6 +209,21 @@ const recRegion = r => r.region || "";
 function layerVisible(key) {
   const el = $("lay-" + key);
   return el ? el.checked : DEFAULT_VISIBLE.has(key);
+}
+/* Per-layer opacity (Milestone 21): the layer's slider value as a
+   fraction in [0.01, 1]. No slider (or an unparseable value) means
+   opaque — the pre-Milestone-21 behaviour. Shading state only: the
+   pick pass never calls this (asserted by verify_web.js W8). */
+function layerOpacity(key) {
+  const el = $("op-" + key);
+  const v = el ? parseFloat(el.value) : 100;
+  return isFinite(v) ? Math.min(100, Math.max(1, v)) / 100 : 1;
+}
+function setOpacity(key, pct) {
+  const el = $("op-" + key);
+  if (el) el.value = pct;
+  const v = $("opv-" + key);
+  if (v) v.textContent = pct + "%";
 }
 function regionFilter() { return $("regionSel").value; }
 function recVisible(r) {
@@ -484,38 +504,55 @@ function draw() {
   gl.useProgram(shadeProg);
   gl.uniformMatrix4fv(gl.getUniformLocation(shadeProg, "uMVP"), false, mvp);
   gl.uniformMatrix4fv(gl.getUniformLocation(shadeProg, "uMV"), false, view);
-  const selSlot = selected && selected.has_geometry ? rangeByKey.get(selected.layer + ":" + selected.id) : null;
-  for (const name of layerOrder) {
-    const lay = layers[name];
-    if (!lay || !layerVisible(name)) continue;
-    gl.bindVertexArray(lay.vao);
-    gl.uniform3fv(gl.getUniformLocation(shadeProg, "uColor"), LAYER_STYLE[name].color);
-    const isSelLayer = selected && selected.layer === name && selSlot;
-    gl.uniform1i(gl.getUniformLocation(shadeProg, "uSelActive"), isSelLayer ? 1 : 0);
-    gl.uniform1ui(gl.getUniformLocation(shadeProg, "uSelSlot"), isSelLayer ? selSlot.slot : 0);
-    const hovSlot = hovered && hovered.layer === name && hovered.has_geometry
-      ? rangeByKey.get(hovered.layer + ":" + hovered.id) : null;
-    gl.uniform1i(gl.getUniformLocation(shadeProg, "uHoverActive"), hovSlot ? 1 : 0);
-    gl.uniform1ui(gl.getUniformLocation(shadeProg, "uHoverSlot"), hovSlot ? hovSlot.slot : 0);
-    gl.uniform1f(gl.getUniformLocation(shadeProg, "uDim"), $("optDim").checked ? 0.62 : 0.0);
-    gl.uniform1i(gl.getUniformLocation(shadeProg, "uWire"), 0);
-    drawLayerRanges(name);
-    if ($("optWire").checked) {
-      // wireframe overlay: same VAO positions, edge index buffer, plain dark lines
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lay.edgeBuf);
-      gl.uniform3fv(gl.getUniformLocation(shadeProg, "uColor"), [0.05, 0.05, 0.06]);
-      gl.uniform1i(gl.getUniformLocation(shadeProg, "uSelActive"), 0);
-      gl.uniform1i(gl.getUniformLocation(shadeProg, "uHoverActive"), 0);
-      gl.uniform1f(gl.getUniformLocation(shadeProg, "uDim"), 0.0);
-      if (!regionFilter()) { gl.drawElements(gl.LINES, lay.edgeIndexCount, gl.UNSIGNED_INT, 0); drawCallsLastFrame++; }
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lay.ibo);
-    }
+  // Milestone 21: opaque layers (opacity 1) draw first, exactly as
+  // before; translucent layers draw after them with alpha blending
+  // and depth writes off, in layer order (manifest order runs
+  // innermost -> outermost, the shell last), then the GL state is
+  // restored so the pick pass and the next frame see the defaults.
+  const vis = layerOrder.filter(name => layers[name] && layerVisible(name));
+  for (const name of vis) if (layerOpacity(name) >= 1) drawOneLayer(name);
+  const translucent = vis.filter(name => layerOpacity(name) < 1);
+  if (translucent.length) {
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.depthMask(false);
+    for (const name of translucent) drawOneLayer(name);
+    gl.depthMask(true);
+    gl.disable(gl.BLEND);
   }
   gl.bindVertexArray(null);
   if (visDirty) { computeDrawnStats(); visDirty = false; }
   drawLabels(mvp);
   frameMs = frameMs * 0.92 + (performance.now() - t0) * 0.08;
   updateStrip();
+}
+
+function drawOneLayer(name) {
+  const lay = layers[name];
+  const selSlot = selected && selected.has_geometry ? rangeByKey.get(selected.layer + ":" + selected.id) : null;
+  gl.bindVertexArray(lay.vao);
+  gl.uniform3fv(gl.getUniformLocation(shadeProg, "uColor"), LAYER_STYLE[name].color);
+  const isSelLayer = selected && selected.layer === name && selSlot;
+  gl.uniform1i(gl.getUniformLocation(shadeProg, "uSelActive"), isSelLayer ? 1 : 0);
+  gl.uniform1ui(gl.getUniformLocation(shadeProg, "uSelSlot"), isSelLayer ? selSlot.slot : 0);
+  const hovSlot = hovered && hovered.layer === name && hovered.has_geometry
+    ? rangeByKey.get(hovered.layer + ":" + hovered.id) : null;
+  gl.uniform1i(gl.getUniformLocation(shadeProg, "uHoverActive"), hovSlot ? 1 : 0);
+  gl.uniform1ui(gl.getUniformLocation(shadeProg, "uHoverSlot"), hovSlot ? hovSlot.slot : 0);
+  gl.uniform1f(gl.getUniformLocation(shadeProg, "uDim"), $("optDim").checked ? 0.62 : 0.0);
+  gl.uniform1i(gl.getUniformLocation(shadeProg, "uWire"), 0);
+  gl.uniform1f(gl.getUniformLocation(shadeProg, "uOpacity"), layerOpacity(name));
+  drawLayerRanges(name);
+  if ($("optWire").checked) {
+    // wireframe overlay: same VAO positions, edge index buffer, plain dark lines
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lay.edgeBuf);
+    gl.uniform3fv(gl.getUniformLocation(shadeProg, "uColor"), [0.05, 0.05, 0.06]);
+    gl.uniform1i(gl.getUniformLocation(shadeProg, "uSelActive"), 0);
+    gl.uniform1i(gl.getUniformLocation(shadeProg, "uHoverActive"), 0);
+    gl.uniform1f(gl.getUniformLocation(shadeProg, "uDim"), 0.0);
+    if (!regionFilter()) { gl.drawElements(gl.LINES, lay.edgeIndexCount, gl.UNSIGNED_INT, 0); drawCallsLastFrame++; }
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, lay.ibo);
+  }
 }
 
 // ---------- labels ----------
@@ -660,9 +697,35 @@ async function boot() {
   for (const key of layerOrder) {
     const lay = manifest.layers[key];
     toggles.insertAdjacentHTML("beforeend",
-      `<label class="chk"><input type="checkbox" id="lay-${key}"${DEFAULT_VISIBLE.has(key) ? " checked" : ""}> ${esc(lay.label)} <span class="cnt" id="cnt-${key}"></span></label>`);
+      `<label class="chk"><input type="checkbox" id="lay-${key}"${DEFAULT_VISIBLE.has(key) ? " checked" : ""}> ${esc(lay.label)} <span class="cnt" id="cnt-${key}"></span></label>` +
+      `<label class="chk op">opacity <input type="range" id="op-${key}" min="10" max="100" step="5" value="100" title="${esc(lay.label)} opacity"> <span id="opv-${key}">100%</span></label>`);
     $(`cnt-${key}`).textContent = `${lay.records} with geometry · ${(lay.faces).toLocaleString()} faces`;
   }
+  // Milestone 21 presets: the glass-shell focus view (all layers on,
+  // integumentary at 15% — the native shell's verified focus state)
+  // and a reset back to the default layer state.
+  toggles.insertAdjacentHTML("beforeend",
+    `<div class="chk"><button id="btnGlass" type="button">glass shell — all layers, skin 15%</button> <button id="btnLayerReset" type="button">reset layers</button></div>`);
+  $("btnGlass").addEventListener("click", () => {
+    for (const key of layerOrder) {
+      $("lay-" + key).checked = true;
+      setOpacity(key, key === "integumentary" ? 15 : 100);
+    }
+    visDirty = true;
+  });
+  $("btnLayerReset").addEventListener("click", () => {
+    for (const key of layerOrder) {
+      $("lay-" + key).checked = DEFAULT_VISIBLE.has(key);
+      setOpacity(key, 100);
+    }
+    visDirty = true;
+  });
+  toggles.addEventListener("input", e => {
+    if (e.target.id && e.target.id.startsWith("op-")) {
+      const v = $("opv-" + e.target.id.slice(3));
+      if (v) v.textContent = e.target.value + "%";
+    }
+  });
 
   for (const key of layerOrder) {
     statusEl.textContent = `loading ${key}…`;

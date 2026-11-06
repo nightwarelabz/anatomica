@@ -27,6 +27,35 @@
 //! bounded by a cited interstitial reserve, S14/S15). Both are extra
 //! ODE states in the same RK4 integration and are folded into the
 //! trace hash like every other state.
+//!
+//! Milestone 21 adds the reflex's fourth effector, the one Milestone
+//! 18 named as the binding omission at −1,500 mL: baroreflex
+//! contractility (inotropy). A single multiplier state scales both
+//! ventricles' maximal elastance (S1's E), driven by the same MAP
+//! error signal, first-order at the cited heart-effector time
+//! constant (S13, tau_h = 3 s) toward a target spanning the cited
+//! ±20% elastance swing (S13 eq. S25 with Tables S1/S7: both
+//! ventricles' targets pass through their resting elastances at
+//! resting sympathetic activity and swing the identical fraction).
+//! Same integration and trace-hash discipline as every other state.
+//!
+//! Milestone 24 adds no state and no mechanism. It makes the
+//! circuit's Guyton venous-return formulation explicit and
+//! measurable: the systemic stressed volume and mean systemic
+//! filling pressure (MSFP = stressed volume / systemic compliance)
+//! and the whole-circuit mean circulatory filling pressure (MCFP,
+//! by the stop-flow equilibration construction) are computed
+//! functions of state; a right-atrial-pressure proxy (the
+//! flow-weighted mean RV pressure during tricuspid inflow — this
+//! model has no atrium compartment) is accumulated per beat; and
+//! the resistance to venous return is available both empirically,
+//! (MSFP − RAP)/CO, and by the series-circuit compliance weighting.
+//! At the resting operating point the two agree, which is the
+//! formulation's verification: the lumped circuit already IS a
+//! Guyton system, and venous return needs no new machinery. The
+//! Milestone 21 −1,500 mL question is answered on the scenario side
+//! instead (see cases.rs, the haemorrhage course runner, and
+//! MILESTONE-24.md).
 
 use crate::params::Params;
 
@@ -77,6 +106,12 @@ pub struct Model {
     // within a band derived from S14/S15 human data; reserve cited.
     pub refill_k: f64,
     pub refill_reserve_ml: f64,
+    // contractility / inotropy (Milestone 21): time constant and the
+    // +/- swing fraction of maximal elastance cited (S13, eq. S25,
+    // Tables S1/S7); gain VERIFY-flagged like the other effector gains.
+    pub ino_tau: f64,
+    pub ino_swing: f64,
+    pub ino_gain: f64,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -163,6 +198,9 @@ impl Model {
             veno_gain: p.f64("venomotor_gain"),
             refill_k: p.f64("refill_conductance_ml_s_mmhg"),
             refill_reserve_ml: p.f64("refill_reserve_ml"),
+            ino_tau: p.f64("contractility_tau_seconds"),
+            ino_swing: p.f64("contractility_swing_fraction"),
+            ino_gain: p.f64("contractility_gain"),
         }
     }
 }
@@ -205,6 +243,22 @@ pub struct BeatRecord {
     pub sv_rv_ml: f64,
     pub co_l_min: f64,
     pub cvp: f64,
+    /// Right-atrial-pressure proxy (Milestone 24): the flow-weighted
+    /// mean RV pressure during tricuspid inflow over the beat — the
+    /// pressure against which the systemic veins drain in this
+    /// atrium-less model. NOT the venous reservoir pressure (that is
+    /// `cvp`, upstream of the venous outflow resistance and the
+    /// tricuspid valve).
+    pub rap: f64,
+    /// Flow-weighted moments of tricuspid inflow over the beat
+    /// (Milestone 24): fill_q2_mean = ∫q²dt/∫qdt (mL/s) and
+    /// fill_q3_mean = ∫q³dt/∫qdt ((mL/s)²). Because inflow is
+    /// confined to diastole, these exceed the mean flow and its
+    /// square; they are what the venous outflow segment's effective
+    /// resistance must be evaluated at (see
+    /// resistance_to_venous_return_formula).
+    pub fill_q2_mean: f64,
+    pub fill_q3_mean: f64,
     pub pa_systolic: f64,
     pub pa_diastolic: f64,
     pub pa_mean: f64,
@@ -233,6 +287,13 @@ struct BeatAcc {
     pv_int: f64,
     q_av_int: f64,
     q_pvv_int: f64,
+    // Milestone 24 RAP proxy accumulators: time integrals of
+    // (tricuspid flow x RV pressure), of tricuspid flow, and of its
+    // second and third powers (the pulsatile-resistance moments).
+    rv_fill_pq: f64,
+    rv_fill_q: f64,
+    rv_fill_q2: f64,
+    rv_fill_q3: f64,
     sa_max: f64,
     sa_min: f64,
     pa_max: f64,
@@ -262,6 +323,11 @@ pub struct Engine {
     /// is the integral of the refill flow and an external inflow for
     /// volume accounting, like the external-flow integral.
     refill_ml: f64,
+    /// Contractility multiplier (Milestone 21): the baroreflex
+    /// inotropy state — a dimensionless scale on both ventricles'
+    /// maximal elastance. 1.0 at the resting operating point; the
+    /// reflex drives it within 1 +/- the cited swing fraction (S13).
+    ino_mult: f64,
     tau: f64,
     ext_flow_ml_s: f64,
     ext_integral_ml: f64,
@@ -314,6 +380,7 @@ struct Eval {
     d_cap_lp: f64,
     d_veno: f64,
     d_refill: f64,
+    d_ino: f64,
 }
 
 impl Engine {
@@ -344,6 +411,7 @@ impl Engine {
             cap_ref: None,
             veno_ml: 0.0,
             refill_ml: 0.0,
+            ino_mult: 1.0,
             tau: 0.0,
             ext_flow_ml_s: 0.0,
             ext_integral_ml: 0.0,
@@ -364,13 +432,14 @@ impl Engine {
     }
 
     /// Baroreflex: returns (heart rate bpm, peripheral-resistance
-    /// multiplier, venomotor recruitment target in mL) for a given
-    /// sensed (low-passed) MAP. With no setpoint the reflex is off —
-    /// used for the undisturbed settle, whose measured MAP then
-    /// becomes the setpoint (the model's own operating point).
-    fn reflex(&self, map_lp: f64) -> (f64, f64, f64) {
+    /// multiplier, venomotor recruitment target in mL, contractility
+    /// multiplier target) for a given sensed (low-passed) MAP. With
+    /// no setpoint the reflex is off — used for the undisturbed
+    /// settle, whose measured MAP then becomes the setpoint (the
+    /// model's own operating point).
+    fn reflex(&self, map_lp: f64) -> (f64, f64, f64, f64) {
         match self.setpoint_map {
-            None => (self.model.hr0, 1.0, 0.0),
+            None => (self.model.hr0, 1.0, 0.0, 1.0),
             Some(sp) => {
                 let err = (sp - map_lp) / sp;
                 let hr_mult = (1.0 + self.model.reflex_gain_hr * err)
@@ -382,7 +451,13 @@ impl Engine {
                 // gain, saturating at +/- the full swing.
                 let veno_target = self.model.veno_capacity_ml
                     * (self.model.veno_gain * err).clamp(-1.0, 1.0);
-                (self.model.hr0 * hr_mult, r_mult, veno_target)
+                // Contractility target (Milestone 21): the cited
+                // +/- swing fraction of maximal elastance (S13)
+                // scaled by the same error signal through the flagged
+                // gain, saturating at the full swing either way.
+                let ino_target = 1.0
+                    + self.model.ino_swing * (self.model.ino_gain * err).clamp(-1.0, 1.0);
+                (self.model.hr0 * hr_mult, r_mult, veno_target, ino_target)
             }
         }
     }
@@ -413,12 +488,13 @@ impl Engine {
         cap_lp: f64,
         veno: f64,
         refill: f64,
+        ino: f64,
         tau: f64,
         period: f64,
         tv: f64,
     ) -> Eval {
         let m = &self.model;
-        let (_, r_mult, veno_target) = self.reflex(map_lp);
+        let (_, r_mult, veno_target, ino_target) = self.reflex(map_lp);
         let p_sa = (v[SA] - m.sa.1) / m.sa.0;
         let p_sc = (v[SC] - m.sc.1) / m.sc.0;
         // Venomotor recruitment acts on the venous unstressed volume:
@@ -434,7 +510,10 @@ impl Engine {
         // the pressure gradient (quadratic in Q — closed form).
         let ventricle = |vent: &Ventricle, vol: f64, p_down: f64, b: f64| -> (f64, f64) {
             let pd = vent.a * ((vent.k * (vol - vent.vu_d)).exp() - 1.0);
-            let sys_span = vent.e * (vol - vent.vd);
+            // Contractility (Milestone 21): the inotropy state scales
+            // the maximal elastance — the systolic span only; the
+            // diastolic curve is not an elastance-maximum property.
+            let sys_span = vent.e * ino * (vol - vent.vd);
             let base = pd * (1.0 - act) + sys_span * act;
             let alpha = sys_span * act * vent.kr;
             let q = valve_flow(base - p_down, b, m.valve_reg_r + alpha.max(0.0));
@@ -473,6 +552,10 @@ impl Engine {
         // Venomotor recruitment: first-order approach to the reflex
         // target at the cited effector time constant (S13, tau_v).
         let d_veno = (veno_target - veno) / m.veno_tau;
+        // Contractility: first-order approach to the reflex target
+        // at the cited heart-effector time constant (S13, tau_h) —
+        // the same form as S13's own elastance ODE (S25).
+        let d_ino = (ino_target - ino) / m.ino_tau;
 
         let derivs = [
             q_mv - q_av,
@@ -510,14 +593,15 @@ impl Engine {
             d_cap_lp: (p_sc - cap_lp) / m.reflex_tau,
             d_veno,
             d_refill: q_refill,
+            d_ino,
         }
     }
 
     fn substep(&mut self, h: f64) {
-        let (hr, _, _) = self.reflex(self.map_lp);
+        let (hr, _, _, _) = self.reflex(self.map_lp);
         let period = 60.0 / hr;
         let tv = self.model.tv0 * period.powf(self.model.tv_exp);
-        // RK4 over (volumes, map_lp, cap_lp, veno, refill); cycle
+        // RK4 over (volumes, map_lp, cap_lp, veno, refill, ino); cycle
         // position tau advances in real time and stage taus are
         // tau + frac*h.
         let stage_frac = [0.0, 0.5, 0.5, 1.0];
@@ -527,12 +611,17 @@ impl Engine {
         let mut k_c: [f64; 4] = [0.0; 4];
         let mut k_vn: [f64; 4] = [0.0; 4];
         let mut k_rf: [f64; 4] = [0.0; 4];
+        let mut k_in: [f64; 4] = [0.0; 4];
         let mut acc_d_sa = 0.0;
         let mut acc_d_pa = 0.0;
         let mut acc_d_sv = 0.0;
         let mut acc_d_pv = 0.0;
         let mut acc_d_qav = 0.0;
         let mut acc_d_qpvv = 0.0;
+        let mut acc_d_rvfill_pq = 0.0;
+        let mut acc_d_rvfill_q = 0.0;
+        let mut acc_d_rvfill_q2 = 0.0;
+        let mut acc_d_rvfill_q3 = 0.0;
         // Stage value of a scalar state under this integrator's staging
         // (previous stage's derivative, half or full step).
         let stage = |base: f64, k_prev: f64, s: usize| -> f64 {
@@ -553,13 +642,15 @@ impl Engine {
             let cap_s = stage(self.cap_lp, k_c[s.saturating_sub(1)], s);
             let veno_s = stage(self.veno_ml, k_vn[s.saturating_sub(1)], s);
             let refill_s = stage(self.refill_ml, k_rf[s.saturating_sub(1)], s);
+            let ino_s = stage(self.ino_mult, k_in[s.saturating_sub(1)], s);
             let tau_s = self.tau + stage_frac[s] * h;
-            let ev = self.evaluate(&vs, map_s, cap_s, veno_s, refill_s, tau_s, period, tv);
+            let ev = self.evaluate(&vs, map_s, cap_s, veno_s, refill_s, ino_s, tau_s, period, tv);
             k_v[s] = ev.derivs;
             k_m[s] = ev.d_map_lp;
             k_c[s] = ev.d_cap_lp;
             k_vn[s] = ev.d_veno;
             k_rf[s] = ev.d_refill;
+            k_in[s] = ev.d_ino;
             let w = weights[s];
             acc_d_sa += w * ev.pressures.sa;
             acc_d_pa += w * ev.pressures.pa;
@@ -567,6 +658,11 @@ impl Engine {
             acc_d_pv += w * ev.pressures.pv;
             acc_d_qav += w * ev.flows.aortic_valve;
             acc_d_qpvv += w * ev.flows.pulmonary_valve;
+            acc_d_rvfill_pq += w * ev.flows.tricuspid_valve * ev.pressures.rv;
+            acc_d_rvfill_q += w * ev.flows.tricuspid_valve;
+            acc_d_rvfill_q2 += w * ev.flows.tricuspid_valve * ev.flows.tricuspid_valve;
+            acc_d_rvfill_q3 +=
+                w * ev.flows.tricuspid_valve * ev.flows.tricuspid_valve * ev.flows.tricuspid_valve;
             self.acc.sa_max = self.acc.sa_max.max(ev.pressures.sa);
             self.acc.sa_min = self.acc.sa_min.min(ev.pressures.sa);
             self.acc.pa_max = self.acc.pa_max.max(ev.pressures.pa);
@@ -580,6 +676,7 @@ impl Engine {
         self.cap_lp += rk4(k_c);
         self.veno_ml += rk4(k_vn);
         self.refill_ml += rk4(k_rf);
+        self.ino_mult += rk4(k_in);
         self.ext_integral_ml += self.ext_flow_ml_s * h;
         // Beat accumulators (RK-weighted stage means x h).
         self.acc.time += h;
@@ -589,6 +686,10 @@ impl Engine {
         self.acc.pv_int += acc_d_pv * h;
         self.acc.q_av_int += acc_d_qav * h;
         self.acc.q_pvv_int += acc_d_qpvv * h;
+        self.acc.rv_fill_pq += acc_d_rvfill_pq * h;
+        self.acc.rv_fill_q += acc_d_rvfill_q * h;
+        self.acc.rv_fill_q2 += acc_d_rvfill_q2 * h;
+        self.acc.rv_fill_q3 += acc_d_rvfill_q3 * h;
         // Cycle position / beat boundary.
         self.tau += h;
         if self.tau >= period {
@@ -615,6 +716,21 @@ impl Engine {
             sv_rv_ml: a.q_pvv_int,
             co_l_min: a.q_av_int * hr / 1000.0,
             cvp: a.sv_int / a.time,
+            rap: if a.rv_fill_q > 0.0 {
+                a.rv_fill_pq / a.rv_fill_q
+            } else {
+                0.0
+            },
+            fill_q2_mean: if a.rv_fill_q > 0.0 {
+                a.rv_fill_q2 / a.rv_fill_q
+            } else {
+                0.0
+            },
+            fill_q3_mean: if a.rv_fill_q > 0.0 {
+                a.rv_fill_q3 / a.rv_fill_q
+            } else {
+                0.0
+            },
             pa_systolic: a.pa_max,
             pa_diastolic: a.pa_min,
             pa_mean: a.pa_int / a.time,
@@ -671,6 +787,7 @@ impl Engine {
         h = fnv_fold(h, &self.cap_lp.to_bits().to_le_bytes());
         h = fnv_fold(h, &self.veno_ml.to_bits().to_le_bytes());
         h = fnv_fold(h, &self.refill_ml.to_bits().to_le_bytes());
+        h = fnv_fold(h, &self.ino_mult.to_bits().to_le_bytes());
         self.hash = h;
     }
 
@@ -716,6 +833,120 @@ impl Engine {
         self.veno_ml
     }
 
+    /// Current contractility multiplier (Milestone 21): the scale
+    /// the baroreflex inotropy state applies to both ventricles'
+    /// maximal elastance. 1.0 = the resting operating point.
+    pub fn contractility_multiplier(&self) -> f64 {
+        self.ino_mult
+    }
+
+    // ---- Guyton venous-return formulation (Milestone 24) ----
+    //
+    // Pure functions of the current state; nothing here feeds back
+    // into the integration, the event stream, or the trace hash.
+
+    /// Systemic vascular compliance (mL/mmHg): the three systemic
+    /// vessel compartments (arteries, capillaries, veins). The
+    /// ventricles are the pump, not capacitance, in Guyton's
+    /// systemic formulation.
+    pub fn systemic_compliance_ml_mmhg(&self) -> f64 {
+        self.model.sa.0 + self.model.sc.0 + self.model.sv.0
+    }
+
+    /// Systemic stressed volume (mL): volume above the unstressed
+    /// volumes in the systemic vascular tree, with the venous
+    /// unstressed volume reduced by the currently recruited volume
+    /// (the Milestone 18 venomotor state), exactly as in evaluate().
+    pub fn systemic_stressed_volume_ml(&self) -> f64 {
+        let m = &self.model;
+        (self.v[SA] - m.sa.1)
+            + (self.v[SC] - m.sc.1)
+            + (self.v[SV] - (m.sv.1 - self.veno_ml))
+    }
+
+    /// Mean systemic filling pressure (mmHg): the pressure the
+    /// systemic circuit equilibrates to at zero flow —
+    /// stressed volume / compliance (Guyton; parameters.json S17).
+    pub fn mean_systemic_filling_pressure(&self) -> f64 {
+        self.systemic_stressed_volume_ml() / self.systemic_compliance_ml_mmhg()
+    }
+
+    /// Mean circulatory filling pressure (mmHg): the whole-circuit
+    /// analogue, by the stop-flow equilibration construction Guyton
+    /// used experimentally (arrest the pump, equilibrate pressures;
+    /// S17/S21): the single pressure at which the observed total
+    /// volume distributes over all six vascular compliances plus
+    /// both ventricles' diastolic pressure-volume curves
+    /// (Pd = A*(exp(K*(V-Vu)) - 1), inverted). Solved by bisection;
+    /// deterministic (fixed iteration count).
+    pub fn mean_circulatory_filling_pressure(&self) -> f64 {
+        let m = &self.model;
+        let vasc: [(f64, f64); 6] = [
+            m.sa,
+            m.sc,
+            (m.sv.0, m.sv.1 - self.veno_ml, m.sv.2),
+            m.pa,
+            m.pc,
+            m.pv,
+        ]
+        .map(|t| (t.0, t.1));
+        let v_tot: f64 = self.v.iter().sum();
+        let vol_at = |p: f64| -> f64 {
+            let mut s: f64 = vasc.iter().map(|(c, vu)| vu + c * p).sum();
+            for vent in [&m.lv, &m.rv] {
+                if p <= -vent.a {
+                    return f64::NEG_INFINITY;
+                }
+                s += vent.vu_d + (1.0 + p / vent.a).ln() / vent.k;
+            }
+            s
+        };
+        let (mut lo, mut hi) = (-1.99f64, 60.0f64);
+        for _ in 0..200 {
+            let mid = 0.5 * (lo + hi);
+            if vol_at(mid) < v_tot {
+                lo = mid;
+            } else {
+                hi = mid;
+            }
+        }
+        0.5 * (lo + hi)
+    }
+
+    /// Resistance to venous return by the series-circuit compliance
+    /// weighting (mmHg*s/mL): RVR = sum_k R_k * (compliance upstream
+    /// of R_k) / C_sys over the systemic circuit. Computed at
+    /// BASELINE resistances (reflex multiplier 1.0): the reflex's
+    /// resistance state is not exposed, so this is the circuit's
+    /// structural RVR; the operative empirical value is
+    /// (MSFP - RAP) / CO from the beat record.
+    ///
+    /// The venous outflow segment (systemic veins -> tricuspid
+    /// valve -> RV) needs one correction Guyton's steady-flow
+    /// derivation does not: its flow is intermittent (diastole
+    /// only), so its mean pressure gradient is NOT its resistance
+    /// law evaluated at mean flow. Instantaneously the segment
+    /// obeys dp = B*q^2 + lin*q; the flow-weighted mean gradient
+    /// the circuit actually works against is
+    /// B*<q^3>/<q> + lin*<q^2>/<q> over the beat (the moments on
+    /// BeatRecord), and the segment's effective resistance at the
+    /// beat's mean flow is that gradient divided by the mean flow.
+    /// Evaluated from the last completed beat; None before the
+    /// first beat closes.
+    pub fn resistance_to_venous_return_formula(&self) -> Option<f64> {
+        let m = &self.model;
+        let b = self.beats.last()?;
+        let q_mean = b.sv_rv_ml / b.duration_s;
+        if q_mean <= 0.0 {
+            return None;
+        }
+        let lin = m.valve_reg_r + m.sv.2;
+        let grad_fw = m.b_av_valve * b.fill_q3_mean + lin * b.fill_q2_mean;
+        let r_seg = grad_fw / q_mean;
+        let c_sys = self.systemic_compliance_ml_mmhg();
+        Some((m.sa.2 * m.sa.0 + m.sc.2 * (m.sa.0 + m.sc.0) + r_seg * c_sys) / c_sys)
+    }
+
     pub fn volume_conservation_error_ml(&self) -> f64 {
         (self.total_volume_ml() - self.total_volume_0).abs()
     }
@@ -742,6 +973,18 @@ impl Engine {
             // beat-window statistics like the outputs above).
             "net_transcapillary_refill" => (self.refill_ml, "mL"),
             "recruited_venous_volume" => (self.veno_ml, "mL"),
+            // Milestone 21 mechanism state (instantaneous).
+            "contractility_multiplier" => (self.ino_mult, "ratio"),
+            // Milestone 24 Guyton formulation. The beat-level RAP
+            // proxy is a beat statistic like the outputs above; the
+            // filling pressures and stressed volume are instantaneous
+            // functions of state, like the mechanism states.
+            "right_atrial_pressure_proxy" => (b.rap, "mmHg"),
+            "mean_systemic_filling_pressure" => (self.mean_systemic_filling_pressure(), "mmHg"),
+            "mean_circulatory_filling_pressure" => {
+                (self.mean_circulatory_filling_pressure(), "mmHg")
+            }
+            "systemic_stressed_volume" => (self.systemic_stressed_volume_ml(), "mL"),
             _ => return None,
         };
         Some((val, unit))

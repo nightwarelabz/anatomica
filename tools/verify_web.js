@@ -58,6 +58,18 @@
        identical to the web HU bins; window/level presets equal the
        cited table and cite >= 2 sources; the viewer's imaging
        wiring is located in index.html / imaging.js.
+   W8  per-layer opacity (Milestone 21): FS_SHADE declares uOpacity
+       and writes it as the fragment alpha; the shipped
+       layerOpacity() is sliced out of viewer.js and executed
+       against stub sliders (value mapping + clamping + the
+       no-slider opaque default); the draw path partitions opaque
+       layers before the blended, depth-mask-off translucent pass
+       and restores GL state after it; the per-layer sliders and
+       the glass-shell preset are wired in boot(); and the pick()
+       id pass is asserted to contain no reference to opacity,
+       blending or depth masking — opacity cannot corrupt picking
+       by construction (the pixel-level proof is the native
+       shell's; no browser exists on this VM, as at W6/W7).
 
    Run: node tools/verify_web.js   (exit 0 iff all checks pass)
 */
@@ -478,6 +490,56 @@ for (const key of KEYS) {
         indexHtml.includes('src="imaging.js"') && imagingJs.includes("imaging.json") &&
         imagingJs.includes("select("),
         "W7 imaging mode wired in index.html + imaging.js (manifest fetch; atlas select() panel reuse)");
+}
+
+// ---------- W8: per-layer opacity (Milestone 21) ----------
+{
+  const fsShade = viewerSrc.match(/const FS_SHADE = `#version 300 es([\s\S]*?)`;/)[1];
+  check(/uniform float uOpacity;/.test(fsShade) && /o = vec4\(col, uOpacity\);/.test(fsShade),
+        "W8 FS_SHADE declares uOpacity and writes it as the fragment alpha");
+
+  const loBody = viewerSrc.match(/function layerOpacity\(key\) \{([\s\S]*?)\n\}/);
+  check(!!loBody, "W8 layerOpacity() located in viewer.js");
+  if (loBody) {
+    const els = {};
+    const stub$ = id => (id in els ? els[id] : null);
+    const layerOpacity = new Function("$", "key", loBody[1]);
+    const cases = [
+      ["integumentary", "15", 0.15],
+      ["integumentary", "100", 1],
+      ["integumentary", "250", 1],
+      ["integumentary", "0", 0.01],
+      ["integumentary", "abc", 1],
+      ["nervous", null, 1],
+    ];
+    let ok = true; const det = [];
+    for (const [key, val, want] of cases) {
+      if (val === null) delete els["op-" + key]; else els["op-" + key] = { value: val };
+      const got = layerOpacity(stub$, key);
+      if (Math.abs(got - want) > 1e-12) { ok = false; det.push(`${key}=${val} -> ${got}, want ${want}`); }
+    }
+    check(ok, "W8 layerOpacity() executed: slider mapping, clamping, opaque default",
+          det.join("; ") || "15->0.15, 100->1, 250->1, 0->0.01, unparseable->1, no slider->1");
+  }
+
+  const iOpaque = viewerSrc.indexOf("layerOpacity(name) >= 1");
+  const iBlend = viewerSrc.indexOf("gl.enable(gl.BLEND)");
+  const iMaskOff = viewerSrc.indexOf("gl.depthMask(false)");
+  const iMaskOn = viewerSrc.indexOf("gl.depthMask(true)");
+  const iBlendOff = viewerSrc.indexOf("gl.disable(gl.BLEND)");
+  check(iOpaque >= 0 && iBlend > iOpaque && iMaskOff > iBlend && iMaskOn > iMaskOff && iBlendOff > iMaskOn &&
+        /gl\.blendFunc\(gl\.SRC_ALPHA, gl\.ONE_MINUS_SRC_ALPHA\)/.test(viewerSrc),
+        "W8 draw partition: opaque pass, then blended depth-mask-off translucent pass, GL state restored");
+
+  check(viewerSrc.includes('id="op-${key}"') && viewerSrc.includes('id="btnGlass"') &&
+        viewerSrc.includes('setOpacity(key, key === "integumentary" ? 15 : 100)'),
+        "W8 per-layer opacity sliders + glass-shell preset wired in boot()");
+
+  const pickStart = viewerSrc.indexOf("function pick(x, y, mvp) {");
+  const pickEnd = viewerSrc.indexOf("\n}\n", pickStart);
+  const pickSrc = pickStart >= 0 ? viewerSrc.slice(pickStart, pickEnd) : "";
+  check(pickSrc.length > 0 && !/layerOpacity|uOpacity|BLEND|depthMask|setOpacity/.test(pickSrc),
+        "W8 pick() id pass contains no opacity/blend/depth-mask reference — picking is opacity-blind by construction");
 }
 
 console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASS");

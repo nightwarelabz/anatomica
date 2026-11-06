@@ -121,7 +121,10 @@ struct ShadeUniforms {
     sel_slot: u32,
     sel_active: i32,
     wire: i32,
-    _pad: i32,
+    /// Per-layer opacity (Milestone 21): 1.0 = opaque. Only the
+    /// shaded pass reads it; the pick pass has its own uniforms and
+    /// is unaffected by construction.
+    opacity: f32,
 }
 
 #[repr(C)]
@@ -141,7 +144,7 @@ struct Uniforms {
   sel_slot: u32,
   sel_active: i32,
   wire: i32,
-  pad: i32,
+  opacity: f32,
 };
 @group(0) @binding(0) var<uniform> u: Uniforms;
 
@@ -182,7 +185,10 @@ fn fs_main(in: VsOut) -> @location(0) vec4<f32> {
   } else if (u.sel_active == 1 && u.dim > 0.0) {
     col *= (1.0 - u.dim);
   }
-  return vec4<f32>(col, 1.0);
+  // Per-layer opacity (Milestone 21): consumed only by the
+  // translucent pipeline's blending; the opaque pipeline's output
+  // is identical to Milestone 16 because its layers pass 1.0.
+  return vec4<f32>(col, u.opacity);
 }
 "#;
 
@@ -291,6 +297,11 @@ pub struct SceneState {
     /// active (web shell default when its dim option is on: 0.62).
     pub dim: f32,
     pub wireframe: bool,
+    /// Per-layer opacity overrides (Milestone 21): layer key ->
+    /// opacity in (0, 1]. Layers absent from the map are opaque.
+    /// Shading-only state: the pick pass never reads it, so a
+    /// translucent layer picks exactly as its opaque self does.
+    pub opacity: std::collections::HashMap<String, f32>,
 }
 
 impl SceneState {
@@ -302,6 +313,7 @@ impl SceneState {
             focus: None,
             dim: 0.62,
             wireframe: false,
+            opacity: std::collections::HashMap::new(),
         }
     }
 
@@ -313,11 +325,17 @@ impl SceneState {
             focus: None,
             dim: 0.62,
             wireframe: false,
+            opacity: std::collections::HashMap::new(),
         }
     }
 
     pub fn visible(&self, info: &LayerInfo) -> bool {
         self.visible.contains(&info.key)
+    }
+
+    /// The layer's opacity (1.0 unless overridden).
+    pub fn opacity_of(&self, info: &LayerInfo) -> f32 {
+        self.opacity.get(&info.key).copied().unwrap_or(1.0).clamp(0.0, 1.0)
     }
 }
 
@@ -369,6 +387,7 @@ impl UniformPool {
 pub struct Renderer {
     pub gpu: Gpu,
     shade_pipeline: wgpu::RenderPipeline,
+    shade_translucent_pipeline: wgpu::RenderPipeline,
     wire_pipeline: wgpu::RenderPipeline,
     pick_pipeline: wgpu::RenderPipeline,
     shade_bg_layout: wgpu::BindGroupLayout,
@@ -430,7 +449,9 @@ impl Renderer {
             stencil: wgpu::StencilState::default(),
             bias: wgpu::DepthBiasState::default(),
         });
-        let mk_shade = |topology: wgpu::PrimitiveTopology, depth_write: bool| {
+        let mk_shade = |topology: wgpu::PrimitiveTopology,
+                        depth_write: bool,
+                        blend: Option<wgpu::BlendState>| {
             let mut ds = depth_stencil.clone().unwrap();
             ds.depth_write_enabled = depth_write;
             device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
@@ -454,7 +475,7 @@ impl Renderer {
                     compilation_options: Default::default(),
                     targets: &[Some(wgpu::ColorTargetState {
                         format: color_format,
-                        blend: None,
+                        blend,
                         write_mask: wgpu::ColorWrites::ALL,
                     })],
                 }),
@@ -473,8 +494,19 @@ impl Renderer {
                 cache: None,
             })
         };
-        let shade_pipeline = mk_shade(wgpu::PrimitiveTopology::TriangleList, true);
-        let wire_pipeline = mk_shade(wgpu::PrimitiveTopology::LineList, false);
+        let shade_pipeline = mk_shade(wgpu::PrimitiveTopology::TriangleList, true, None);
+        let wire_pipeline = mk_shade(wgpu::PrimitiveTopology::LineList, false, None);
+        // Translucent shade pipeline (Milestone 21): same shader,
+        // alpha blending on, depth write off — translucent layers
+        // are drawn after the opaque group and composite over it
+        // (and over each other in manifest order, innermost first,
+        // the manifest's nesting proxy). Depth testing stays on, so
+        // opaque geometry still occludes correctly.
+        let shade_translucent_pipeline = mk_shade(
+            wgpu::PrimitiveTopology::TriangleList,
+            false,
+            Some(wgpu::BlendState::ALPHA_BLENDING),
+        );
 
         let pick_module = device.create_shader_module(wgpu::ShaderModuleDescriptor {
             label: Some("anatomica pick"),
@@ -550,6 +582,7 @@ impl Renderer {
         Renderer {
             gpu,
             shade_pipeline,
+            shade_translucent_pipeline,
             wire_pipeline,
             pick_pipeline,
             shade_bg_layout,
@@ -576,6 +609,13 @@ impl Renderer {
 
     /// Record the shaded draws for `layers` into an open render pass.
     /// The caller owns the pass (target + clears).
+    ///
+    /// Draw order (Milestone 21): the opaque group first (every
+    /// visible layer at opacity 1, the Milestone-16 path unchanged),
+    /// then the translucent group (opacity < 1) with the blending
+    /// pipeline, in manifest order — the manifest lists layers
+    /// innermost-first with the integumentary shell last, so outer
+    /// translucent layers composite over inner ones.
     pub fn draw_shaded(
         &mut self,
         pass: &mut wgpu::RenderPass<'_>,
@@ -585,54 +625,75 @@ impl Renderer {
         state: &SceneState,
     ) {
         self.shade_pool.reset();
-        for layer in layers {
-            if !state.visible(&layer.info) {
-                continue;
-            }
-            // Focus dimming reuses the selection path: a layer
-            // outside the focus set is drawn with selection active
-            // on a slot that matches nothing, so every fragment dims.
-            let in_focus = state
-                .focus
-                .as_ref()
-                .map(|f| f.contains(&layer.info.key))
-                .unwrap_or(true);
-            let (sel_active, sel_slot) = if !in_focus {
-                (1, u32::MAX)
-            } else {
-                match &state.selected {
-                    Some((key, slot)) if *key == layer.info.key => (1, *slot),
-                    _ => (0, 0),
+        for translucent in [false, true] {
+            for layer in layers {
+                if !state.visible(&layer.info) {
+                    continue;
                 }
-            };
-            let uniforms = ShadeUniforms {
-                mvp: mvp.to_cols_array_2d(),
-                mv: mv.to_cols_array_2d(),
-                color: layer.info.color,
-                dim: if sel_active == 1 { state.dim } else { 0.0 },
-                sel_slot,
-                sel_active,
-                wire: 0,
-                _pad: 0,
-            };
-            let offset = self.shade_pool.write(&self.gpu.queue, &uniforms);
-            let bg = self.bind_group(&self.shade_bg_layout, &self.shade_pool);
-            pass.set_pipeline(&self.shade_pipeline);
-            pass.set_bind_group(0, &bg, &[offset]);
-            pass.set_vertex_buffer(0, layer.positions.slice(..));
-            pass.set_vertex_buffer(1, layer.normals.slice(..));
-            pass.set_vertex_buffer(2, layer.slots.slice(..));
-            pass.set_index_buffer(layer.indices.slice(..), wgpu::IndexFormat::Uint32);
-            pass.draw_indexed(0..layer.index_count, 0, 0..1);
-            if state.wireframe {
-                let wire_uniforms = ShadeUniforms { wire: 1, ..uniforms };
-                let woffset = self.shade_pool.write(&self.gpu.queue, &wire_uniforms);
-                let wbg = self.bind_group(&self.shade_bg_layout, &self.shade_pool);
-                pass.set_pipeline(&self.wire_pipeline);
-                pass.set_bind_group(0, &wbg, &[woffset]);
-                pass.set_index_buffer(layer.edges.slice(..), wgpu::IndexFormat::Uint32);
-                pass.draw_indexed(0..layer.edge_index_count, 0, 0..1);
+                if (state.opacity_of(&layer.info) < 1.0) != translucent {
+                    continue;
+                }
+                self.draw_one_layer(pass, layer, mvp, mv, state, translucent);
             }
+        }
+    }
+
+    fn draw_one_layer(
+        &mut self,
+        pass: &mut wgpu::RenderPass<'_>,
+        layer: &LayerGpu,
+        mvp: &Mat4,
+        mv: &Mat4,
+        state: &SceneState,
+        translucent: bool,
+    ) {
+        // Focus dimming reuses the selection path: a layer
+        // outside the focus set is drawn with selection active
+        // on a slot that matches nothing, so every fragment dims.
+        let in_focus = state
+            .focus
+            .as_ref()
+            .map(|f| f.contains(&layer.info.key))
+            .unwrap_or(true);
+        let (sel_active, sel_slot) = if !in_focus {
+            (1, u32::MAX)
+        } else {
+            match &state.selected {
+                Some((key, slot)) if *key == layer.info.key => (1, *slot),
+                _ => (0, 0),
+            }
+        };
+        let uniforms = ShadeUniforms {
+            mvp: mvp.to_cols_array_2d(),
+            mv: mv.to_cols_array_2d(),
+            color: layer.info.color,
+            dim: if sel_active == 1 { state.dim } else { 0.0 },
+            sel_slot,
+            sel_active,
+            wire: 0,
+            opacity: state.opacity_of(&layer.info),
+        };
+        let offset = self.shade_pool.write(&self.gpu.queue, &uniforms);
+        let bg = self.bind_group(&self.shade_bg_layout, &self.shade_pool);
+        if translucent {
+            pass.set_pipeline(&self.shade_translucent_pipeline);
+        } else {
+            pass.set_pipeline(&self.shade_pipeline);
+        }
+        pass.set_bind_group(0, &bg, &[offset]);
+        pass.set_vertex_buffer(0, layer.positions.slice(..));
+        pass.set_vertex_buffer(1, layer.normals.slice(..));
+        pass.set_vertex_buffer(2, layer.slots.slice(..));
+        pass.set_index_buffer(layer.indices.slice(..), wgpu::IndexFormat::Uint32);
+        pass.draw_indexed(0..layer.index_count, 0, 0..1);
+        if state.wireframe {
+            let wire_uniforms = ShadeUniforms { wire: 1, ..uniforms };
+            let woffset = self.shade_pool.write(&self.gpu.queue, &wire_uniforms);
+            let wbg = self.bind_group(&self.shade_bg_layout, &self.shade_pool);
+            pass.set_pipeline(&self.wire_pipeline);
+            pass.set_bind_group(0, &wbg, &[woffset]);
+            pass.set_index_buffer(layer.edges.slice(..), wgpu::IndexFormat::Uint32);
+            pass.draw_indexed(0..layer.edge_index_count, 0, 0..1);
         }
     }
 

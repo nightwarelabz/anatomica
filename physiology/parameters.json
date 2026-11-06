@@ -1,5 +1,5 @@
 {
-  "about": "Every value in this file was entered from a source actually consulted during the Milestone 8 build session (2026-11-06) and is cited per entry, or is explicitly status-flagged. Status meanings: 'cited' = value taken from the cited source; 'calibrated' = value chosen by the build within a cited published range, choice disclosed in the note and in MILESTONE-8.md; 'verify' = engineering placeholder with NO literature source — never to be read as a physiological value. Units are carried on every entry. Milestone 18 additions (sources S13-S16, the venomotor and transcapillary-refill parameters, the widened heart-rate multiplier bound, and the magnitude-gated perturbation expectations) were likewise entered from sources consulted during the Milestone 18 session (2026-11-06) and are cited per entry; amendments to Milestone 8 entries are appended to those entries' notes, never silently rewritten.",
+  "about": "Every value in this file was entered from a source actually consulted during the Milestone 8 build session (2026-11-06) and is cited per entry, or is explicitly status-flagged. Status meanings: 'cited' = value taken from the cited source; 'calibrated' = value chosen by the build within a cited published range, choice disclosed in the note and in MILESTONE-8.md; 'verify' = engineering placeholder with NO literature source — never to be read as a physiological value. Units are carried on every entry. Milestone 18 additions (sources S13-S16, the venomotor and transcapillary-refill parameters, the widened heart-rate multiplier bound, and the magnitude-gated perturbation expectations) were likewise entered from sources consulted during the Milestone 18 session (2026-11-06) and are cited per entry; amendments to Milestone 8 entries are appended to those entries' notes, never silently rewritten. Milestone 21 additions (the contractility/inotropy effector parameters, transcribed from the S13 supplement re-read during the Milestone 21 session, 2026-11-06) follow the same rule. Milestone 24 additions (sources S17-S22, the right-atrial-pressure validation range, the haemorrhage-course case, and an appended amendment on the haemorrhage_1500 heart-rate expectation) were likewise entered from sources consulted during the Milestone 24 session (2026-11-06); Milestone 24 adds NO model parameter — the Guyton quantities it reports are computed functions of the existing state.",
   "parameters": [
     {
       "cited_range": null,
@@ -449,6 +449,33 @@
       "value": 12.0
     },
     {
+      "cited_range": null,
+      "name": "contractility_tau_seconds",
+      "note": "First-order time constant of the ventricular-elastance (inotropy) effector in S13's baroreceptor equations (S25): dE_lv,max/dt = (-E_lv,max + alpha_Elv * ns + gamma_Elv) / tau_h, with tau_h = 3 s (Table S7; the arterial-resistance effector there is 12 s, the venous 60 s). Contractility is the fast sympathetic limb, acting on the heart effector's own cited time constant — distinct from this engine's verify-flagged reflex sensing lag (reflex_tau_seconds), which it happens to share numerically.",
+      "source": "S13",
+      "status": "cited",
+      "unit": "s",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "contractility_swing_fraction",
+      "note": "Maximal sympathetic swing of maximal ventricular elastance, as a fraction of the resting value, from S13's elastance effector (S25 with Tables S1/S7). LV steady-state target E = alpha_Elv * ns + gamma_Elv = 1.0 * ns + 2.0 mmHg/mL passes through the resting Elv,max,0 = 2.5 mmHg/mL (Table S1) at the resting sympathetic activity ns = 0.5 (S28), and reaches 3.0 mmHg/mL at ns = 1 and 2.0 mmHg/mL at ns = 0: a +/-20% swing. RV: 0.46 * ns + 0.92 about Erv,max,0 = 1.15 mmHg/mL is the identical +/-20% fraction, so one shared multiplier state modulates both ventricles. This engine adopts the swing fraction and the time constant; it does not adopt S13's absolute elastances (its own are S1's: LV 2.8, RV 0.8 mmHg/mL), its sigmoid, or its sympathetic-activity state — the same adoption discipline as the venomotor capacity at Milestone 18.",
+      "source": "S13",
+      "status": "cited",
+      "unit": "dimensionless",
+      "value": 0.2
+    },
+    {
+      "cited_range": null,
+      "name": "contractility_gain",
+      "note": "Proportional gain mapping the baroreflex MAP error signal (the same normalised error the HR, resistance and venomotor effectors use) to the driven fraction of contractility_swing_fraction: multiplier target = 1 + swing * clamp(gain * err, -1, 1), approached first-order at contractility_tau_seconds. Engineering placeholder of the same class as venomotor_gain; NO literature source. The cited quantities are the swing fraction and time constant (S13); this gain is not a physiological claim. VERIFY. MILESTONE 21 SWEEP: with all other parameters at their Milestone 18 values, gains {4, 8, 12, 20} were exercised; every hard gate passes at every cell and the response surface is shallow (post-haemorrhage heart rate at -750 mL spans 103.2 -> 101.0 /min across the grid, refill at +30 min 191.6 -> 184.6 mL in band, -1,500 mL MAP 29.8 -> 29.6 mmHg — the Class III picture is preload-bound, not gain-bound). Shipped value 12.0 by parity with the sibling effector gains set at Milestone 18 (reflex_gain_hr 12.0, venomotor_gain 12.0); the choice is a disclosed convention, not an identification.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": 12.0
+    },
+    {
       "cited_range": [
         0.008,
         0.08
@@ -560,7 +587,7 @@
             140.0
           ],
           "output": "heart_rate",
-          "source": "S16 (ATLS Class III pulse rate 120-140 /min, Table 2). MAGNITUDE GATE. 1,500 mL is the Class II/III boundary volume, so the band's lower edge is boundary-consistent. SOFT LINE (Milestone 18): reported, not gated. Measured model behaviour at -1,500 mL is decompensation, not the Class III presentation: recruitment capacity (630 mL, S13) plus in-window refill covers under half the loss, no contractility effector exists in the model, and the heart rate saturates its placeholder multiplier bound (144/min at the 2.4 bound) with MAP in the mid-20s. Gating this line would gate a state the patient in the source table is not in; the miss and its mechanism are reported in MILESTONE-18.md instead.",
+          "source": "S16 (ATLS Class III pulse rate 120-140 /min, Table 2). MAGNITUDE GATE. 1,500 mL is the Class II/III boundary volume, so the band's lower edge is boundary-consistent. SOFT LINE (Milestone 18): reported, not gated. Measured model behaviour at -1,500 mL is decompensation, not the Class III presentation: recruitment capacity (630 mL, S13) plus in-window refill covers under half the loss, no contractility effector exists in the model, and the heart rate saturates its placeholder multiplier bound (144/min at the 2.4 bound) with MAP in the mid-20s. Gating this line would gate a state the patient in the source table is not in; the miss and its mechanism are reported in MILESTONE-18.md instead. MILESTONE 21 AMENDMENT: the contractility effector whose absence this line records now exists (S13 elastance effector; contractility_* parameters). Measured behaviour with it: the -1,500 mL picture is essentially unmoved (post MAP 29.1 -> 29.6 mmHg; heart rate still saturates its placeholder bound at 144.0 /min; post stroke volume ~7.6 mL) — at this loss the ventricles are preload-starved, so the cited +/-20% elastance swing multiplies a near-empty chamber. The binding omission is no longer contractility; it is stressed volume / venous return beyond the cited 630 mL recruitment plus in-window refill. The line stays SOFT and the miss is carried in MILESTONE-21.md. MILESTONE 24 RESOLUTION: the venous-return formulation is now computed first-class (MSFP/MCFP/stressed volume/RVR reported for every case; resting MSFP 6.29 mmHg against the cited ~7, S17/S18; resting empirical-vs-formula RVR agreement 6.1%), and the long-horizon course case (hemorrhage_1500_course) measures what this line's window actually samples: the standard post window (30-60 s after the bleed ends) catches the transient nadir of a 60-second bleed. Untreated, the model then recovers on the cited mechanisms alone — recruitment completing over its cited 60 s time constant, refill accumulating: MAP 29.6 -> 68.2 mmHg and heart rate 144.0 -> 108.2 /min by +30 min (the +30 min heart rate inside the Class II band on the effective-deficit reading disclosed in the course case), and 60-minute refill 858.9 mL inside S15's 500-1,000 mL envelope. The ATLS classes are stated for patients under assessment and treatment (S20); no ATLS class describes an untreated patient 60 seconds after a 60-second bleed. The line stays SOFT: its statement is timescale-dependent, and the dependence is now measured and reported in MILESTONE-24.md rather than carried as an unexplained miss.",
           "soft": true
         },
         {
@@ -577,6 +604,62 @@
           "direction": "falls",
           "output": "cardiac_output",
           "source": "S2 ('as blood volume decreases, pressure and flow decrease')."
+        }
+      ]
+    },
+    {
+      "id": "hemorrhage_1500_course",
+      "description": "Milestone 24 long-horizon course of the 1,500 mL haemorrhage (NOT the standard case protocol): settle/baseline/engage exactly as the standard cases, bleed 1,500 mL over 60 s, then 60 minutes of course sampled at +1/+2/+5/+10/+20/+30/+60 min after the bleed ends, in two arms — untreated, and treated with the ATLS initial fluid bolus (1,000 mL crystalloid over 60 s beginning at the bleed end, S20; in-model the bolus is volume-identical to the infusion_1000 case's fluid and stays intravascular except for the lumped transcapillary escape — real crystalloid redistributes mostly interstitial within the hour, which this engine does not represent; disclosed in MILESTONE-24.md). Evaluated by the dedicated evaluator in cases.rs against the expectations below. Rationale: the standard protocol's post window (30-60 s after the bleed ends) samples the transient nadir of a 60-second bleed — before the cited venomotor time constant (60 s, S13) completes even one time constant — while the ATLS classes (S16) and the textbook haemorrhage course (S19) are stated on presentation timescales. This case tests the course, not the nadir.",
+      "expectations": [
+        {
+          "direction": "rises",
+          "output": "map_recovery_untreated",
+          "source": "S19 (Boron & Boulpaep, Response to Hemorrhage): 'After its abrupt initial fall, arterial pressure tends to return to normal' under favourable circumstances, by the two lines of defence (reflex restoration of output/resistance, then capillary exchange restoring volume). Evaluated as untreated MAP at +30 min above untreated MAP at +2 min (the standard window's timescale). Directional hard gate; the recovered magnitude is reported, not gated — the same source notes pressure falls irreversibly in some cases, so the gate tests which branch this model is on, and MILESTONE-24.md reports the branch with its mechanism."
+        },
+        {
+          "direction": "rises",
+          "output": "treated_map_advantage_10min",
+          "source": "S2 ('as blood volume increases, pressure and flow increase') applied comparatively: at +10 min after the bleed ends, the arm given the ATLS 1 L bolus (S20) must sit above the untreated arm's MAP at the same minute. Mechanism-level expectation, hard gate."
+        },
+        {
+          "direction": "rises",
+          "output": "treated_co_advantage_10min",
+          "source": "S2 (volume-flow relation), comparative form as for treated_map_advantage_10min. Hard gate."
+        },
+        {
+          "direction": "falls",
+          "output": "treated_hr_relief_10min",
+          "source": "S19: tachycardia tracks the severity of the volume deficit ('the degree of tachycardia is an index of the severity of the haemorrhage'); restoring 1,000 of 1,500 mL must therefore relieve heart rate relative to the untreated arm at the same minute. Comparative directional expectation, hard gate."
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            500.0,
+            1000.0
+          ],
+          "output": "net_refill_ml_at_60min_untreated",
+          "source": "S15: refill 'can restore plasma volume by 500-1000 mL within 1-2 hours'. SOFT LINE: S15's figure is stated for moderate loss; applying its envelope to a 1,500 mL loss at +60 min is an extrapolation, disclosed here and in MILESTONE-24.md. S19's independent statement (interstitial fluid replaces ~75% of the shed volume within an hour) would put the figure higher still; the model is read against the more conservative envelope and the comparison to both is reported.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            100.0,
+            120.0
+          ],
+          "output": "hr_untreated_30min",
+          "source": "S16 ATLS Class II pulse band 100-120 /min. SOFT LINE, and an interpretation, stated openly: by +30 min the untreated model's own refill has replaced roughly 40% of the loss, so its effective remaining deficit is of Class II size (~900 mL); reading the +30 min heart rate against the Class II band tests whether the settled untreated picture is class-coherent. It is NOT a claim that a 1,500 mL patient presents as Class II — the nominal class is II/III boundary and the early course (see the +2/+5 min samples in MILESTONE-24.md) is read against Class III.",
+          "soft": true
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            120.0,
+            140.0
+          ],
+          "output": "hr_treated_10min",
+          "source": "S16 ATLS Class III pulse band 120-140 /min. SOFT LINE: a Class III patient whose bleeding is controlled and who has received the initial 1 L bolus (S20) but no blood products remains tachycardic in the source presentation. In-model the bolus cannot redistribute interstitially (no interstitial compartment; only the bounded lumped escape), so the model may over-relieve heart rate relative to the band; the reading and that mechanism are reported in MILESTONE-24.md either way.",
+          "soft": true
         }
       ]
     },
@@ -673,7 +756,7 @@
     {
       "id": "S13",
       "citation": "Scarsoglio S, Ridolfi L. 'Different impact of heart rate variability in the deep cerebral and central hemodynamics at rest: an in silico investigation.' Frontiers in Physiology — Supplementary Material: full description and parameter tables of a lumped cardiovascular model carrying the Ursino-lineage baroreceptor mechanism, whose baroreceptor parameters are stated there to be taken according to the validated model of Ursino & Magosso (their ref [4]).",
-      "locator": "Table S1 (initial conditions): systemic venous unstressed volume Vsvn,un,0 = 3000 mL. Baroreceptor equations (S27): dVsvn,un/dt = (-Vsvn,un + alpha_Vsvn * ns + gamma_Vsvn) / tau_v, with sympathetic activity ns from the sigmoid of (S28) (ns = 0.5 at the resting carotid pressure mu). Table S7 (baroreceptor parameters): tau_v = 60 s (venous effector; arterial tau_a = 12 s, heart tau_h = 3 s), alpha_Vsvn = -1260 mL*s, gamma_Vsvn = 3630 mL. Steady state Vun = 3630 - 1260*ns mL: ns 0.5 -> 1.0 moves Vun 3000 -> 2370 mL (630 mL of unstressed volume recruited into stressed volume); ns -> 0 gives 3630 mL (a symmetric 630 mL dilation).",
+      "locator": "Table S1 (initial conditions): systemic venous unstressed volume Vsvn,un,0 = 3000 mL. Baroreceptor equations (S27): dVsvn,un/dt = (-Vsvn,un + alpha_Vsvn * ns + gamma_Vsvn) / tau_v, with sympathetic activity ns from the sigmoid of (S28) (ns = 0.5 at the resting carotid pressure mu). Table S7 (baroreceptor parameters): tau_v = 60 s (venous effector; arterial tau_a = 12 s, heart tau_h = 3 s), alpha_Vsvn = -1260 mL*s, gamma_Vsvn = 3630 mL. Steady state Vun = 3630 - 1260*ns mL: ns 0.5 -> 1.0 moves Vun 3000 -> 2370 mL (630 mL of unstressed volume recruited into stressed volume); ns -> 0 gives 3630 mL (a symmetric 630 mL dilation). Elastance (inotropy) effector, transcribed at Milestone 21: equations (S25): dE_lv,max/dt = (-E_lv,max + alpha_Elv * ns + gamma_Elv) / tau_h, and the RV analogue with alpha_Erv / gamma_Erv; Table S7: tau_h = 3 s (heart effector), alpha_Elv = 1 mmHg*s/mL, gamma_Elv = 2 mmHg/mL, alpha_Erv = 0.46 mmHg*s/mL, gamma_Erv = 0.92 mmHg/mL; Table S1 resting maximal elastances Elv,max,0 = 2.5 mmHg/mL and Erv,max,0 = 1.15 mmHg/mL — both effector targets pass through their resting values at ns = 0.5 and swing +/-20% over ns in [0, 1].",
       "accessed": "2026-11-06, publisher supplementary PDF read in-session (equations S25-S28 and Tables S1 and S7 read in full)"
     },
     {
@@ -693,6 +776,42 @@
       "citation": "Rossaint R, et al. 'The European guideline on management of major bleeding and coagulopathy following trauma: fourth edition.' Critical Care 2016;20:100 — Table 2, 'American College of Surgeons Advanced Trauma Life Support (ATLS) classification of blood loss', reprinted with permission of the American College of Surgeons.",
       "locator": "Values estimated for a 70-kg man. Class II: blood loss 750-1500 mL (15-30% blood volume), pulse rate 100-120 /min, systolic blood pressure Normal, pulse pressure Decreased. Class III: 1500-2000 mL (30-40%), pulse rate 120-140 /min, systolic blood pressure Decreased, pulse pressure Decreased. Class IV: >2000 mL (>40%), pulse rate >140 /min, blood pressure Decreased. S6 cites the same classification via an earlier edition of this guideline; this entry pins the edition whose numeric pulse bands the Milestone 18 magnitude gates use. The Mutschler validity caveat recorded at S7 applies to this table equally: ATLS magnitudes are contested, and the gates below are reported with that caveat attached.",
       "accessed": "2026-11-06, journal table read in full in-session"
+    },
+    {
+      "id": "S17",
+      "citation": "Henderson WR, Griesdale DEG, Walley KR, Sheel AW. 'Clinical review: Guyton — the role of mean circulatory filling pressure and right atrial pressure in controlling cardiac output.' Critical Care 2010;14:243. DOI 10.1186/cc9247.",
+      "locator": "MCFP is the pressure in the vasculature when there is no flow, determined by the stressed volume (the volume distending the elastic structures) and the sum of their compliances; Guyton measured it by arresting the circulation and rapidly equilibrating arterial and venous pressures. Cardiac output is determined by the intersection of the cardiac function curve with the venous return curve, VR = (MCFP - Pra) / RVR; at zero flow Pra equals MCFP. The review records that subsequently reported measurements in humans support Guyton's theoretical and animal values.",
+      "accessed": "2026-11-06, full text read in-session via PMC (PMC3220048)"
+    },
+    {
+      "id": "S18",
+      "citation": "LITFL (Life in the Fast Lane), 'Venous Return' — critical-care physiology teaching summary of the Guyton framework (secondary source; its references are Guyton & Hall and Henderson et al. 2010 = S17). SECONDARY status recorded: used only for the canonical normal values it states, which S17's framework implies.",
+      "locator": "Venous return VR = (MSFP - RAP) / RVR at steady state equals cardiac output; 'Normal mean systemic filling pressure is ~7 mmHg'; the venous system contains ~65% of blood volume; alterations to circulating volume and compliance shift MSFP, alterations to RVR change slope only.",
+      "accessed": "2026-11-06, page read in full in-session"
+    },
+    {
+      "id": "S19",
+      "citation": "Boron WF, Boulpaep EL. Medical Physiology, 3rd edition — 'Response to Hemorrhage' (Integrated Control of the Cardiovascular System).",
+      "locator": "'After its abrupt initial fall, arterial pressure tends to return to normal (Fig. 25-8), although blood pressure falls irreversibly in some cases', by two lines of defence: reflex restoration of cardiac output and peripheral resistance, then capillary exchange and fluid conservation restoring intravascular volume. Loss of 30% or more of total blood volume produces hypovolemic shock, in which systolic pressure is usually <90 mmHg and mean arterial pressure <70 mmHg. 'Increased sympathetic tone increases myocardial contractility but can increase stroke volume only after venous return also improves.' Sympathetic venous constriction 'decreases both the capacity and the compliance of the large veins'. Transcapillary refill: 'Within an hour, interstitial fluid replaces ~75% of the shed blood volume.' Tachycardia: sympathetic activity 'increases heart rate roughly in proportion to the volume of shed blood... the degree of tachycardia is an index of the severity of the hemorrhage.'",
+      "accessed": "2026-11-06, chapter read in full in-session via an indexed textbook reproduction"
+    },
+    {
+      "id": "S20",
+      "citation": "Advanced Trauma Life Support (ATLS) Student Course Manual, 10th edition (American College of Surgeons) — initial resuscitation of haemorrhagic shock; response classification as summarised in Family Practice Notebook, 'Fluid Resuscitation in Trauma' (secondary summary, status recorded).",
+      "locator": "Initial fluid resuscitation: a bolus of isotonic crystalloid, 1 L in adults (20 mL/kg in children), given judiciously; 'if a patient is unresponsive to initial crystalloid therapy, he should receive a blood transfusion'; early resuscitation with blood and blood products must be considered in Class III and IV haemorrhage. Response to the initial bolus classifies the patient: rapid/sustained response (<10-20% blood loss), transient response (20-40% blood loss — improves, then deteriorates without ongoing replacement), no response (>40%).",
+      "accessed": "2026-11-06, 10th-edition update presentation and student-manual excerpts read in-session, with the response categories read in the FPN summary"
+    },
+    {
+      "id": "S21",
+      "citation": "Drees JA, Rothe CF. 'Reflex venoconstriction and capacity vessel pressure-volume relationships in dogs.' Circulation Research 1974;34:360-373.",
+      "locator": "Mean circulatory pressure (PMC) measured by Guyton's method (fibrillate the heart, rapidly transfer blood aorta-to-vena-cava until pressures equilibrate) at blood volumes varied 0 to +/-30%. Control PMC 10.7 mmHg with reflexes intact vs 7.8 mmHg under ganglionic blockade. A 17 mL/kg haemorrhage was required to bring PMC from 10.7 to 4 mmHg with reflexes intact (0.5 min), vs only 8 mL/kg under blockade (7.8 -> 4) — reflex venoconstriction roughly doubles the loss needed for the same filling-pressure fall, an active compensation of ~9 mL/kg (~630 mL at 70 kg). 'Less than half of the compensation for hemorrhage during the first 5 minutes came from the reflex venoconstriction' — the remainder from passive viscoelastic creep and fluid shifts. Effective total vascular compliance 2.60 mL/kg/mmHg at 0.5 min after a volume change (rising to 4.17 by 5 min).",
+      "accessed": "2026-11-06, abstract read in full in-session via an indexed reproduction"
+    },
+    {
+      "id": "S22",
+      "citation": "Greenway CV. 'Capacitance effects and blood reservoir function in the splanchnic vascular bed during non-hypotensive haemorrhage and blood volume expansion in anaesthetized cats.' Journal of Physiology 1974;237:279-294.",
+      "locator": "With haemorrhages of 15% of blood volume, the liver contributed 21%, the gastro-intestinal tract 22% and the spleen 19% of the volume removed — a total splanchnic contribution of 62%; during infusions the splanchnic bed pooled 66% of the volume infused. 'It is concluded that the splanchnic bed mobilizes or pools up to 65% of the volume of blood removed from or infused into the cats' — the capacitance compensation this engine lumps into its single systemic venous compartment and venomotor state is, in the experimental record, predominantly splanchnic.",
+      "accessed": "2026-11-06, abstract read in full in-session via PMC (PMC1350884)"
     }
   ],
   "validation_ranges": [
@@ -766,6 +885,15 @@
       "note": "Mean systemic venous compartment pressure, the lumped analogue of CVP/right atrial pressure. S4: 2-6 mmHg (mean 4). S3 gives 1-7 mmHg — gate uses S4; both consulted ranges disclosed.",
       "output": "central_venous_pressure",
       "source": "S4",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 7.0,
+      "low": 1.0,
+      "note": "Milestone 24: the engine's right-atrial-pressure proxy — the flow-weighted mean RV pressure during tricuspid inflow (the model has no atrium compartment; see engine.rs). Gated against S3's right-atrial range (RA 1-7 mmHg), the RAP-specific range among the consulted sources; S4's CVP range (2-6) gates the venous-reservoir pressure separately (central_venous_pressure). The two pressures are different points of the same lumped path (reservoir upstream, atrial side downstream of the venous outflow resistance and tricuspid valve) and are reported side by side.",
+      "output": "right_atrial_pressure_proxy",
+      "source": "S3",
       "unit": "mmHg"
     },
     {

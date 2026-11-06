@@ -175,6 +175,55 @@ fn mechanisms_are_quiet_at_rest() {
 }
 
 #[test]
+fn contractility_is_quiet_at_rest_and_engages_in_hemorrhage() {
+    // Milestone 21: the inotropy state rests at its operating point
+    // (multiplier ~1, inside a few percent — the same tolerance class
+    // as the Milestone 18 quiet-at-rest bounds) and drives toward the
+    // cited +20% swing ceiling (S13) under a Class III-scale loss,
+    // where the reflex error signal saturates.
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let mut e = Engine::new(&p);
+    e.tick_n(6000);
+    let (map, _) = e.query("mean_arterial_pressure").expect("MAP after settle");
+    e.set_reflex_setpoint(map);
+    e.tick_n(6000);
+    assert!(
+        (e.contractility_multiplier() - 1.0).abs() < 0.05,
+        "contractility at rest: {:.3}",
+        e.contractility_multiplier()
+    );
+
+    let mut e = Engine::new(&p);
+    e.tick_n(6000);
+    let (map, _) = e.query("mean_arterial_pressure").expect("MAP after settle");
+    e.set_reflex_setpoint(map);
+    e.apply(
+        6000,
+        Event::SetExtFlow {
+            rate_ml_s: -1500.0 / 60.0,
+            label: "test haemorrhage".to_string(),
+        },
+    );
+    e.apply(
+        9000,
+        Event::SetExtFlow {
+            rate_ml_s: 0.0,
+            label: "test haemorrhage ends".to_string(),
+        },
+    );
+    e.tick_n(6000);
+    assert!(
+        e.contractility_multiplier() > 1.10,
+        "contractility after -1500 mL: {:.3} (cited swing ceiling 1.20)",
+        e.contractility_multiplier()
+    );
+    let (mult, unit) = e.query("contractility_multiplier").expect("query");
+    assert_eq!(unit, "ratio");
+    assert!((mult - e.contractility_multiplier()).abs() < 1e-12);
+}
+
+#[test]
 fn infusion_moves_in_the_sourced_directions() {
     let p = params();
     let outcome = run_case(&p, CaseKind::Infusion1000);
@@ -185,6 +234,95 @@ fn infusion_moves_in_the_sourced_directions() {
             line.output, line.expected, line.baseline, line.post
         );
     }
+}
+
+#[test]
+fn guyton_quantities_close_at_rest() {
+    // Milestone 24: the Guyton formulation made first-class. Resting
+    // MSFP inside the project tolerance band around the cited ~7
+    // mmHg (S17/S18); the right-atrial-pressure proxy inside S3's
+    // right-atrial range (the same line the CLI gates); systemic
+    // stressed volume a plausible fraction of the calibrated total
+    // volume (consulted reviews put stressed volume at roughly
+    // 20-30% of total blood volume); and the empirical resistance
+    // to venous return, (MSFP - RAP)/CO, agrees with the
+    // series-circuit formula (compliance-weighted, pulsatile
+    // venous-outflow segment) within the 15% engineering criterion
+    // the CLI prints.
+    let p = params();
+    let outcome = run_case(&p, CaseKind::Resting);
+    assert!(
+        outcome.msfp_mmhg >= 5.0 && outcome.msfp_mmhg <= 9.0,
+        "resting MSFP {:.2} mmHg outside [5, 9] (cited ~7, S17/S18)",
+        outcome.msfp_mmhg
+    );
+    assert!(
+        outcome.post.rap >= 1.0 && outcome.post.rap <= 7.0,
+        "resting RAP proxy {:.2} mmHg outside S3 range [1, 7]",
+        outcome.post.rap
+    );
+    let frac = outcome.stressed_sys_ml / 5000.0;
+    assert!(
+        frac > 0.10 && frac < 0.30,
+        "systemic stressed volume {:.0} mL = {:.0}% of total volume",
+        outcome.stressed_sys_ml,
+        frac * 100.0
+    );
+    let rel = (outcome.rvr_empirical - outcome.rvr_formula).abs() / outcome.rvr_formula;
+    assert!(
+        rel < 0.15,
+        "RVR empirical {:.4} vs formula {:.4} mmHg*s/mL (rel. diff {:.1}%)",
+        outcome.rvr_empirical,
+        outcome.rvr_formula,
+        rel * 100.0
+    );
+    // MCFP (whole circuit, stop-flow construction) sits below MSFP
+    // in this circuit: the pulmonary tree and ventricles add
+    // compliance whose stressed share is smaller.
+    assert!(
+        outcome.mcfp_mmhg > 0.0 && outcome.mcfp_mmhg < outcome.msfp_mmhg,
+        "MCFP {:.2} vs MSFP {:.2}",
+        outcome.mcfp_mmhg,
+        outcome.msfp_mmhg
+    );
+}
+
+#[test]
+fn hemorrhage_course_recovers_untreated_and_bolus_helps() {
+    // Milestone 24 course case: the hard lines only (the soft lines
+    // — S15 refill envelope, the two disclosed ATLS-band readings —
+    // are reported by the CLI and in MILESTONE-24.md). Untreated,
+    // the +30 min MAP must exceed the +2 min MAP (S19 course);
+    // the ATLS-bolus arm must beat the untreated arm on MAP and CO
+    // and relieve heart rate at +10 min. Both arms conserve volume.
+    use anatomica_physiology::cases::{evaluate_course, run_hemorrhage_1500_course};
+    let p = params();
+    let untreated = run_hemorrhage_1500_course(&p, false);
+    let treated = run_hemorrhage_1500_course(&p, true);
+    for line in evaluate_course(&p, &untreated, &treated) {
+        if line.soft {
+            continue;
+        }
+        assert!(
+            line.pass,
+            "{}: expected {} but {:.2} -> {:.2}",
+            line.output, line.expected, line.baseline, line.post
+        );
+    }
+    assert!(untreated.conservation_error_ml < 0.01);
+    assert!(treated.conservation_error_ml < 0.01);
+    // The course's +1 min sample is the standard case's post state:
+    // same protocol, same window — the two runners must agree.
+    let standard = run_case(&p, CaseKind::Hemorrhage1500);
+    let first = &untreated.samples[0].window;
+    assert!(
+        (first.map - standard.post.map).abs() < 0.05 && (first.hr - standard.post.hr).abs() < 0.5,
+        "course +1 min (MAP {:.2}, HR {:.1}) vs standard post (MAP {:.2}, HR {:.1})",
+        first.map,
+        first.hr,
+        standard.post.map,
+        standard.post.hr
+    );
 }
 
 #[test]
