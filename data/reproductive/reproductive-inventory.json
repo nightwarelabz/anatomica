@@ -1,0 +1,1918 @@
+{
+ "meta": {
+  "title": "ANATOMICA reproductive system inventory \u2014 Milestone 14",
+  "generated_by": "tools/repro_map.py",
+  "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
+  "counting_convention": "One record per lateralised instance (right/left testis, epididymis, seminal vesicle), keyed on its instance concept with the side-stripped class concept carried as class_concept_id; one record for the prostate, keyed on its both-table concept; one record each for the corpus cavernosum, the corpus spongiosum and the glans penis, keyed on their IS-A concepts (the glans carries its zone concept as class_concept_id); one record for the mons pubis, keyed on its PART-OF-only concept; one record for the perineum and one for its anal part, keyed on their PART-OF concepts. The genital system root is a grouping class, censused but not a record. The perineal muscle concepts are cross-references to the muscular module, censused but never records here. Sex line is censused per concept and per record: the female line of the release is exactly one concept (the mons pubis) against fourteen male concepts \u2014 every internal female organ is absent from the release entirely and exists in this module only as sourced clinical records with the absence recorded (the Milestone 9 pattern). The urethra is not in this universe: it is the urinary module's single unsexed record (Milestone 12), cross-referenced, never duplicated.",
+  "concept_universe": {
+   "total": 21,
+   "isa_total": 17,
+   "partof_total": 6,
+   "in_both_tables": 2,
+   "isa_sets": {
+    "testis-isa": 3,
+    "epididymis-isa": 3,
+    "seminal-vesicle-isa": 3,
+    "prostate-isa": 1,
+    "corpus-cavernosum-isa": 1,
+    "corpus-spongiosum-isa": 1,
+    "glans-zone-isa": 2,
+    "perineal-muscle-isa": 3
+   },
+   "partof_sets": {
+    "genital-system-partof": 2,
+    "perineum-partof": 3,
+    "mons-pubis-partof": 1
+   },
+   "by_sex_line": {
+    "male": 14,
+    "shared": 6,
+    "female": 1
+   },
+   "cross_references": {
+    "muscular": 3
+   },
+   "dispositions": {
+    "record": 13,
+    "class-carried": 4,
+    "cross-reference:muscular": 3,
+    "grouping-class": 1
+   },
+   "disposition_concepts": {
+    "class-carried": [
+     "FMA18255",
+     "FMA19386",
+     "FMA20247",
+     "FMA7210"
+    ],
+    "cross-reference:muscular": [
+     "FMA19728",
+     "FMA21930",
+     "FMA9623"
+    ],
+    "grouping-class": [
+     "FMA7160"
+    ],
+    "record": [
+     "FMA18247",
+     "FMA18256",
+     "FMA18257",
+     "FMA19387",
+     "FMA19388",
+     "FMA19617",
+     "FMA19618",
+     "FMA20218",
+     "FMA20347",
+     "FMA7211",
+     "FMA7212",
+     "FMA9579",
+     "FMA9600"
+    ]
+   },
+   "sweep_rejected_names": [
+    "commissure of fornix of forebrain",
+    "deep dorsal vein of penis",
+    "dorsal artery of penis",
+    "fornix of forebrain",
+    "fornix of neuraxis",
+    "left dorsal artery of penis",
+    "left fornix of forebrain",
+    "left superficial dorsal vein of penis",
+    "right dorsal artery of penis",
+    "right fornix of forebrain",
+    "right superficial dorsal vein of penis",
+    "superficial dorsal vein of penis",
+    "urethra"
+   ],
+   "sweep_adjudications": {
+    "commissure of fornix of forebrain": "nervous module (see fornix of forebrain)",
+    "deep dorsal vein of penis": "cardiovascular module record vein.deep-dorsal-vein-of-penis",
+    "dorsal artery of penis": "cardiovascular module class concept, carried there as artery.right-dorsal-artery-of-penis and artery.left-dorsal-artery-of-penis",
+    "fornix of forebrain": "nervous module: a cerebral fornix, not a vaginal fornix \u2014 the vaginal fornix has no concept in the release",
+    "fornix of neuraxis": "nervous module (see fornix of forebrain)",
+    "left dorsal artery of penis": "cardiovascular module record artery.left-dorsal-artery-of-penis",
+    "left fornix of forebrain": "nervous module (see fornix of forebrain)",
+    "left superficial dorsal vein of penis": "cardiovascular module record vein.left-superficial-dorsal-vein-of-penis",
+    "right dorsal artery of penis": "cardiovascular module record artery.right-dorsal-artery-of-penis",
+    "right fornix of forebrain": "nervous module (see fornix of forebrain)",
+    "right superficial dorsal vein of penis": "cardiovascular module record vein.right-superficial-dorsal-vein-of-penis",
+    "superficial dorsal vein of penis": "cardiovascular module class concept, carried there as the right and left superficial dorsal vein records",
+    "urethra": "urinary module record 'urethra' (FMA19667): the release's single unsexed urethra concept, held by Milestone 12; cross-referenced by this module's male pathway record, never duplicated"
+   }
+  },
+  "record_count": 13,
+  "record_representations": {
+   "whole-concept": 10,
+   "organ": 2,
+   "partof-concept": 1
+  },
+  "records_by_subtree": {
+   "epididymis-isa": 2,
+   "seminal-vesicle-isa": 2,
+   "testis-isa": 2,
+   "genital-system-partof": 1,
+   "corpus-cavernosum-isa": 1,
+   "corpus-spongiosum-isa": 1,
+   "glans-zone-isa": 1,
+   "mons-pubis-partof": 1,
+   "perineum-partof": 2
+  },
+  "records_by_sex_line": {
+   "male": 10,
+   "female": 1,
+   "shared": 2
+  },
+  "instance_records": [
+   "left epididymis",
+   "left seminal vesicle",
+   "left testis",
+   "right epididymis",
+   "right seminal vesicle",
+   "right testis"
+  ],
+  "boundary_closures": {
+   "milestone_13_endocrine": {
+    "source": "data/endocrine/endocrine-inventory.json (Milestone 13)",
+    "endocrine_cross_reference_reproductive": [
+     "FMA7210",
+     "FMA7211",
+     "FMA7212"
+    ],
+    "this_module_testis_census": [
+     "FMA7210",
+     "FMA7211",
+     "FMA7212"
+    ],
+    "equal": true
+   }
+  },
+  "totalsegmentator_overlap": {
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), NONE names a reproductive structure \u2014 there is no prostate, seminal_vesicle, testis, ovary, uterus or any other reproductive label in the index; the overlap of this module with TS v1 is exactly zero, derived here from the label index by term match and re-derived by the checker",
+   "labels": [],
+   "labels_without_records": [],
+   "labels_matched_by_terms": []
+  },
+  "absences": {
+   "note": "probe-based gap analysis, per sex line: each substring probe was counted over all six BP3D 4.0 release tables (zero hits = the name does not occur in the release); each exact-name probe was tested for a concept of exactly that name in either parts list. Present controls are interleaved in each line to prove the instrument reads the tables. The asymmetry is the finding: the male line's probes find the gonad, its duct's first segment, two of three accessory glands and the erectile tissues present and the duct system absent; the female line's probes find nothing but the control \u2014 the entire internal female tract is absent from the release",
+   "substring_probes": {
+    "male": {
+     "absent": [
+      "ductus deferens",
+      "vas deferens",
+      "spermatic",
+      "ejaculat",
+      "ampulla of ductus deferens",
+      "scrotum",
+      "tunica",
+      "dartos",
+      "cremaster",
+      "seminiferous",
+      "rete testis",
+      "testicle",
+      "bulbourethral",
+      "cowper",
+      "prepuce",
+      "foreskin",
+      "gonad"
+     ],
+     "present": [
+      "testis",
+      "epididymis",
+      "prostate",
+      "seminal vesicle"
+     ],
+     "detail": [
+      {
+       "probe": "ductus deferens",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "vas deferens",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "spermatic",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "ejaculat",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "ampulla of ductus deferens",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "scrotum",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "tunica",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "dartos",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "cremaster",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "seminiferous",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "rete testis",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "testicle",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "bulbourethral",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "cowper",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "prepuce",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "foreskin",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "gonad",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "testis",
+       "total_hits": 12,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 3,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 4,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 5,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "epididymis",
+       "total_hits": 12,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 3,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 4,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 5,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "prostate",
+       "total_hits": 6,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 1,
+        "partof_parts_list_e.txt": 1,
+        "isa_element_parts.txt": 1,
+        "partof_element_parts.txt": 1,
+        "isa_inclusion_relation_list.txt": 1,
+        "partof_inclusion_relation_list.txt": 1
+       }
+      },
+      {
+       "probe": "seminal vesicle",
+       "total_hits": 12,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 3,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 4,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 5,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      }
+     ]
+    },
+    "female": {
+     "absent": [
+      "ovary",
+      "ovarian",
+      "corpus luteum",
+      "oocyte",
+      "mesovarium",
+      "uterus",
+      "uterine",
+      "fallopian",
+      "fimbria",
+      "cervix",
+      "vagina",
+      "vaginal",
+      "endometrium",
+      "myometrium",
+      "perimetrium",
+      "broad ligament",
+      "mesosalpinx",
+      "mesometrium",
+      "vulva",
+      "clitoris",
+      "labia",
+      "labium",
+      "hymen",
+      "bartholin",
+      "skene"
+     ],
+     "present": [
+      "mons pubis"
+     ],
+     "detail": [
+      {
+       "probe": "ovary",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "ovarian",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "corpus luteum",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "oocyte",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "mesovarium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "uterus",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "uterine",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "fallopian",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "fimbria",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "cervix",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "vagina",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "vaginal",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "endometrium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "myometrium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "perimetrium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "broad ligament",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "mesosalpinx",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "mesometrium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "vulva",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "clitoris",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "labia",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "labium",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "hymen",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "bartholin",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "skene",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "mons pubis",
+       "total_hits": 4,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 1,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 1,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 2
+       }
+      }
+     ]
+    },
+    "shared": {
+     "absent": [
+      "perineal body",
+      "perineal membrane",
+      "ischioanal",
+      "perineal pouch",
+      "sphincter urethrae"
+     ],
+     "present": [
+      "perineum",
+      "genital system"
+     ],
+     "detail": [
+      {
+       "probe": "perineal body",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "perineal membrane",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "ischioanal",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "perineal pouch",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "sphincter urethrae",
+       "total_hits": 0,
+       "exact_concept_exists": false,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 0,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 0,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 0
+       }
+      },
+      {
+       "probe": "perineum",
+       "total_hits": 14,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 2,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 8,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 4
+       }
+      },
+      {
+       "probe": "genital system",
+       "total_hits": 4,
+       "exact_concept_exists": true,
+       "hits_by_table": {
+        "isa_parts_list_e.txt": 0,
+        "partof_parts_list_e.txt": 1,
+        "isa_element_parts.txt": 0,
+        "partof_element_parts.txt": 1,
+        "isa_inclusion_relation_list.txt": 0,
+        "partof_inclusion_relation_list.txt": 2
+       }
+      }
+     ]
+    }
+   },
+   "substring_zero_hit_counts": {
+    "male": 17,
+    "female": 25,
+    "shared": 5
+   },
+   "exact_name_probes": {
+    "male": {
+     "absent": [
+      "penis",
+      "ductus deferens",
+      "ejaculatory duct",
+      "bulbourethral gland",
+      "spermatic cord",
+      "tunica albuginea",
+      "scrotum"
+     ],
+     "present": [],
+     "detail": [
+      {
+       "probe": "penis",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "ductus deferens",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "ejaculatory duct",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "bulbourethral gland",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "spermatic cord",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "tunica albuginea",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "scrotum",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      }
+     ]
+    },
+    "female": {
+     "absent": [
+      "ovary",
+      "uterus",
+      "vagina",
+      "clitoris",
+      "uterine tube",
+      "fallopian tube",
+      "cervix",
+      "cervix of uterus",
+      "vulva",
+      "labium majus",
+      "labium minus",
+      "hymen",
+      "endometrium",
+      "myometrium",
+      "broad ligament",
+      "broad ligament of uterus",
+      "round ligament of uterus",
+      "mesovarium",
+      "ovarian follicle",
+      "corpus luteum",
+      "greater vestibular gland",
+      "vestibule of vagina"
+     ],
+     "present": [],
+     "detail": [
+      {
+       "probe": "ovary",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "uterus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "vagina",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "clitoris",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "uterine tube",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "fallopian tube",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "cervix",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "cervix of uterus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "vulva",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "labium majus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "labium minus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "hymen",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "endometrium",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "myometrium",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "broad ligament",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "broad ligament of uterus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "round ligament of uterus",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "mesovarium",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "ovarian follicle",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "corpus luteum",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "greater vestibular gland",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "vestibule of vagina",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      }
+     ]
+    },
+    "shared": {
+     "absent": [
+      "perineal body",
+      "perineal membrane",
+      "urogenital triangle",
+      "anal triangle"
+     ],
+     "present": [],
+     "detail": [
+      {
+       "probe": "perineal body",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "perineal membrane",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "urogenital triangle",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      },
+      {
+       "probe": "anal triangle",
+       "concept_exists": false,
+       "in_isa": false,
+       "in_partof": false
+      }
+     ]
+    }
+   },
+   "exact_name_zero_hit_counts": {
+    "male": 7,
+    "female": 22,
+    "shared": 4
+   }
+  }
+ },
+ "concepts": [
+  {
+   "fma_id": "FMA18247",
+   "name": "glans penis",
+   "representation_id": "BP8793",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "glans-zone-isa",
+   "subtrees": [
+    "glans-zone-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "glans-penis",
+   "parent_id": "FMA20247",
+   "parent_name": "zone of corpus spongiosum of penis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA18255",
+   "name": "epididymis",
+   "representation_id": "BP8142",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epididymis-isa",
+   "subtrees": [
+    "epididymis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA30320",
+   "parent_name": "duct",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA18256",
+   "name": "right epididymis",
+   "representation_id": "BP8141",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epididymis-isa",
+   "subtrees": [
+    "epididymis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "epididymis.right-epididymis",
+   "parent_id": "FMA18255",
+   "parent_name": "epididymis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA18257",
+   "name": "left epididymis",
+   "representation_id": "BP8772",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "epididymis-isa",
+   "subtrees": [
+    "epididymis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "epididymis.left-epididymis",
+   "parent_id": "FMA18255",
+   "parent_name": "epididymis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19386",
+   "name": "seminal vesicle",
+   "representation_id": "BP8531",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "seminal-vesicle-isa",
+   "subtrees": [
+    "seminal-vesicle-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA7146",
+   "parent_name": "organ component gland",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19387",
+   "name": "right seminal vesicle",
+   "representation_id": "BP8530",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "seminal-vesicle-isa",
+   "subtrees": [
+    "seminal-vesicle-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "seminal-vesicle.right-seminal-vesicle",
+   "parent_id": "FMA19386",
+   "parent_name": "seminal vesicle",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19388",
+   "name": "left seminal vesicle",
+   "representation_id": "BP9064",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "seminal-vesicle-isa",
+   "subtrees": [
+    "seminal-vesicle-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "seminal-vesicle.left-seminal-vesicle",
+   "parent_id": "FMA19386",
+   "parent_name": "seminal vesicle",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19617",
+   "name": "corpus spongiosum of penis",
+   "representation_id": "BP8470",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "corpus-spongiosum-isa",
+   "subtrees": [
+    "corpus-spongiosum-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "corpus-spongiosum-of-penis",
+   "parent_id": "FMA20194",
+   "parent_name": "cavernous organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19618",
+   "name": "corpus cavernosum of penis",
+   "representation_id": "BP9224",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "corpus-cavernosum-isa",
+   "subtrees": [
+    "corpus-cavernosum-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "corpus-cavernosum-of-penis",
+   "parent_id": "FMA20221",
+   "parent_name": "zone of cavernous organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA19728",
+   "name": "superficial perineal muscle",
+   "representation_id": "BP8935",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "perineal-muscle-isa",
+   "subtrees": [
+    "perineal-muscle-isa"
+   ],
+   "sex_line": "shared",
+   "cross_reference": "muscular",
+   "disposition": "cross-reference:muscular",
+   "record_id": null,
+   "parent_id": "FMA9623",
+   "parent_name": "perineal muscle",
+   "isa_mesh_files": 4,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA20218",
+   "name": "mons pubis",
+   "representation_id": "BP9719",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "mons-pubis-partof",
+   "subtrees": [
+    "mons-pubis-partof"
+   ],
+   "sex_line": "female",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "mons-pubis",
+   "parent_id": "FMA9578",
+   "parent_name": "pelvis",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA20247",
+   "name": "zone of corpus spongiosum of penis",
+   "representation_id": "BP8794",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "glans-zone-isa",
+   "subtrees": [
+    "glans-zone-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA20221",
+   "parent_name": "zone of cavernous organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA20347",
+   "name": "anal part of perineum",
+   "representation_id": "BP10062",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "perineum-partof",
+   "subtrees": [
+    "perineum-partof"
+   ],
+   "sex_line": "shared",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "perineum.anal-part-of-perineum",
+   "parent_id": "FMA9579",
+   "parent_name": "perineum",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 4
+  },
+  {
+   "fma_id": "FMA21930",
+   "name": "external anal sphincter",
+   "representation_id": "BP8934",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "perineum-partof",
+   "subtrees": [
+    "perineal-muscle-isa",
+    "perineum-partof"
+   ],
+   "sex_line": "shared",
+   "cross_reference": "muscular",
+   "disposition": "cross-reference:muscular",
+   "record_id": null,
+   "parent_id": "FMA19728",
+   "parent_name": "superficial perineal muscle",
+   "isa_mesh_files": 4,
+   "partof_mesh_files": 4
+  },
+  {
+   "fma_id": "FMA7160",
+   "name": "genital system",
+   "representation_id": "BP9785",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "genital-system-partof",
+   "subtrees": [
+    "genital-system-partof"
+   ],
+   "sex_line": "shared",
+   "cross_reference": null,
+   "disposition": "grouping-class",
+   "record_id": null,
+   "parent_id": "FMA20394",
+   "parent_name": "human body",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA7210",
+   "name": "testis",
+   "representation_id": "BP8579",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-isa",
+   "subtrees": [
+    "testis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "class-carried",
+   "record_id": null,
+   "parent_id": "FMA55662",
+   "parent_name": "lobular organ",
+   "isa_mesh_files": 2,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7211",
+   "name": "right testis",
+   "representation_id": "BP9204",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-isa",
+   "subtrees": [
+    "testis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "testis.right-testis",
+   "parent_id": "FMA7210",
+   "parent_name": "testis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA7212",
+   "name": "left testis",
+   "representation_id": "BP8578",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "testis-isa",
+   "subtrees": [
+    "testis-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "testis.left-testis",
+   "parent_id": "FMA7210",
+   "parent_name": "testis",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 0
+  },
+  {
+   "fma_id": "FMA9579",
+   "name": "perineum",
+   "representation_id": "BP10063",
+   "table": "partof",
+   "also_in_partof": true,
+   "also_in_isa": false,
+   "subtree": "perineum-partof",
+   "subtrees": [
+    "perineum-partof"
+   ],
+   "sex_line": "shared",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "perineum",
+   "parent_id": "FMA7181",
+   "parent_name": "trunk",
+   "isa_mesh_files": 0,
+   "partof_mesh_files": 4
+  },
+  {
+   "fma_id": "FMA9600",
+   "name": "prostate",
+   "representation_id": "BP8469",
+   "table": "isa",
+   "also_in_partof": true,
+   "also_in_isa": true,
+   "subtree": "genital-system-partof",
+   "subtrees": [
+    "genital-system-partof",
+    "prostate-isa"
+   ],
+   "sex_line": "male",
+   "cross_reference": null,
+   "disposition": "record",
+   "record_id": "prostate",
+   "parent_id": "FMA55662",
+   "parent_name": "lobular organ",
+   "isa_mesh_files": 1,
+   "partof_mesh_files": 1
+  },
+  {
+   "fma_id": "FMA9623",
+   "name": "perineal muscle",
+   "representation_id": "BP8936",
+   "table": "isa",
+   "also_in_partof": false,
+   "also_in_isa": true,
+   "subtree": "perineal-muscle-isa",
+   "subtrees": [
+    "perineal-muscle-isa"
+   ],
+   "sex_line": "shared",
+   "cross_reference": "muscular",
+   "disposition": "cross-reference:muscular",
+   "record_id": null,
+   "parent_id": "FMA58274",
+   "parent_name": "muscle of trunk",
+   "isa_mesh_files": 4,
+   "partof_mesh_files": 0
+  }
+ ],
+ "records": [
+  {
+   "record_id": "epididymis.left-epididymis",
+   "name": "left epididymis",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA18255",
+   "concept_ids": [
+    "FMA18257"
+   ],
+   "subtree": "epididymis-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ region",
+    "organ segment",
+    "duct",
+    "epididymis"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id"
+  },
+  {
+   "record_id": "seminal-vesicle.left-seminal-vesicle",
+   "name": "left seminal vesicle",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA19386",
+   "concept_ids": [
+    "FMA19388"
+   ],
+   "subtree": "seminal-vesicle-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ component",
+    "organ component gland",
+    "seminal vesicle"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id"
+  },
+  {
+   "record_id": "testis.left-testis",
+   "name": "left testis",
+   "side": "left",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA7210",
+   "concept_ids": [
+    "FMA7212"
+   ],
+   "subtree": "testis-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "organ",
+    "solid organ",
+    "parenchymatous organ",
+    "lobular organ",
+    "testis"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id. Milestone 13 censused this line as the endocrine module's reproductive cross-reference; these records close that boundary"
+  },
+  {
+   "record_id": "epididymis.right-epididymis",
+   "name": "right epididymis",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA18255",
+   "concept_ids": [
+    "FMA18256"
+   ],
+   "subtree": "epididymis-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ region",
+    "organ segment",
+    "duct",
+    "epididymis"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id"
+  },
+  {
+   "record_id": "seminal-vesicle.right-seminal-vesicle",
+   "name": "right seminal vesicle",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA19386",
+   "concept_ids": [
+    "FMA19387"
+   ],
+   "subtree": "seminal-vesicle-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ component",
+    "organ component gland",
+    "seminal vesicle"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id"
+  },
+  {
+   "record_id": "testis.right-testis",
+   "name": "right testis",
+   "side": "right",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA7210",
+   "concept_ids": [
+    "FMA7211"
+   ],
+   "subtree": "testis-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "organ",
+    "solid organ",
+    "parenchymatous organ",
+    "lobular organ",
+    "testis"
+   ],
+   "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id. Milestone 13 censused this line as the endocrine module's reproductive cross-reference; these records close that boundary"
+  },
+  {
+   "record_id": "prostate",
+   "name": "prostate",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA9600",
+   "concept_ids": [
+    "FMA9600"
+   ],
+   "subtree": "genital-system-partof",
+   "sex_line": "male",
+   "group_path": [
+    "human body",
+    "genital system"
+   ],
+   "note": "the only member the release files under its own genital system in PART-OF, and a singleton under 'organ with cavitated organ parts' in IS-A; keyed on the both-table concept"
+  },
+  {
+   "record_id": "corpus-cavernosum-of-penis",
+   "name": "corpus cavernosum of penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA19618",
+   "concept_ids": [
+    "FMA19618"
+   ],
+   "subtree": "corpus-cavernosum-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ region",
+    "organ zone",
+    "zone of cavernous organ"
+   ],
+   "note": "IS-A leaf. The penis itself has no concept in the release (exact-name probe-verified); the organ exists in the data only as its erectile parts here and its vessels in the cardiovascular module"
+  },
+  {
+   "record_id": "corpus-spongiosum-of-penis",
+   "name": "corpus spongiosum of penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA19617",
+   "concept_ids": [
+    "FMA19617"
+   ],
+   "subtree": "corpus-spongiosum-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "organ",
+    "cavitated organ",
+    "organ with cavitated organ parts",
+    "cavernous organ"
+   ],
+   "note": "IS-A leaf; see corpus-cavernosum-of-penis"
+  },
+  {
+   "record_id": "glans-penis",
+   "name": "glans penis",
+   "side": "un-sided",
+   "representation": "whole-concept",
+   "class_concept_id": "FMA20247",
+   "concept_ids": [
+    "FMA18247"
+   ],
+   "subtree": "glans-zone-isa",
+   "sex_line": "male",
+   "group_path": [
+    "anatomical entity",
+    "physical anatomical entity",
+    "material anatomical entity",
+    "anatomical structure",
+    "cardinal organ part",
+    "organ region",
+    "organ zone",
+    "zone of cavernous organ",
+    "zone of corpus spongiosum of penis"
+   ],
+   "note": "IS-A child of FMA20247 'zone of corpus spongiosum of penis', carried as class_concept_id; the zone and the glans resolve to the same single mesh file (FJ3134, IS-A table \u2014 neither concept is carried in PART-OF), so the class carries no geometry beyond this record's"
+  },
+  {
+   "record_id": "mons-pubis",
+   "name": "mons pubis",
+   "side": "un-sided",
+   "representation": "organ",
+   "class_concept_id": "FMA20218",
+   "concept_ids": [
+    "FMA20218"
+   ],
+   "subtree": "mons-pubis-partof",
+   "sex_line": "female",
+   "group_path": [
+    "human body",
+    "body proper",
+    "trunk",
+    "abdominal segment of trunk",
+    "abdomen",
+    "pelvis"
+   ],
+   "note": "the only female-named concept in either parts list; the release files it in PART-OF under the pelvis, not under any genital root \u2014 there is no female genital tree in the release to file it under"
+  },
+  {
+   "record_id": "perineum",
+   "name": "perineum",
+   "side": "un-sided",
+   "representation": "organ",
+   "class_concept_id": "FMA9579",
+   "concept_ids": [
+    "FMA9579"
+   ],
+   "subtree": "perineum-partof",
+   "sex_line": "shared",
+   "group_path": [
+    "human body",
+    "body proper",
+    "trunk"
+   ],
+   "note": "PART-OF organ record: the release roots the perineum under the trunk. It carries the same four PART-OF mesh files as its anal part \u2014 exactly the perineal-muscle file set the muscular module carries for the external anal sphincter \u2014 so the release draws the perineum as its sphincter and nothing else (identity gated by the checker)"
+  },
+  {
+   "record_id": "perineum.anal-part-of-perineum",
+   "name": "anal part of perineum",
+   "side": "un-sided",
+   "representation": "partof-concept",
+   "class_concept_id": "FMA20347",
+   "concept_ids": [
+    "FMA20347"
+   ],
+   "subtree": "perineum-partof",
+   "sex_line": "shared",
+   "group_path": [
+    "human body",
+    "body proper",
+    "trunk",
+    "perineum"
+   ],
+   "note": "PART-OF child of the perineum; the release gives it the same mesh files as its parent"
+  }
+ ]
+}
