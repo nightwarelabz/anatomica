@@ -1,0 +1,1141 @@
+{
+ "meta": {
+  "title": "ANATOMICA digestive system clinical records \u2014 Milestone 11",
+  "generated_by": "tools/build_dig_records.py",
+  "sourcing_rule": "every non-null clinical field cites a source consulted during the build session in the record's sources map; every null field carries an explicit verify entry; TA names were not given by the consulted sources and are null + flagged throughout",
+  "sources": {
+   "S1": "TeachMeAnatomy, 'The Oesophagus' (teachmeanatomy.info)",
+   "S2": "TeachMeAnatomy, 'The Stomach' (teachmeanatomy.info)",
+   "S3": "TeachMeAnatomy, 'The Small Intestine' (teachmeanatomy.info)",
+   "S4": "TeachMeAnatomy, 'The Colon' (teachmeanatomy.info)",
+   "S5": "TeachMeAnatomy, 'The Liver' (teachmeanatomy.info)",
+   "S6": "TeachMeAnatomy, 'The Gallbladder' (teachmeanatomy.info)",
+   "S7": "TeachMeAnatomy, 'The Pancreas' (teachmeanatomy.info)",
+   "S8": "TeachMeAnatomy, 'The Peritoneum' (teachmeanatomy.info)",
+   "S9": "TeachMeAnatomy, 'The Rectum' (teachmeanatomy.info)",
+   "S10": "TeachMeAnatomy, 'The Anal Canal' (teachmeanatomy.info)",
+   "S11": "TeachMeAnatomy, 'The Submandibular Gland' and 'The Parotid Gland' (teachmeanatomy.info)",
+   "S12": "OpenStax, Anatomy and Physiology 2e, section 23.3 'The Mouth, Pharynx, and Esophagus'",
+   "S13": "Sibulesky, 'Normal liver anatomy', Clinical Liver Disease 2013 (PMC6448666)",
+   "S14": "Last's Anatomy (Regional and Applied), 'Liver and biliary tract' (chapter text consulted in-session)",
+   "S15": "TeachMeAnatomy, 'The Peritoneal Cavity' (teachmeanatomy.info)",
+   "S16": "anatomy.app, 'Salivary glands (overview)'"
+  },
+  "record_count": 31,
+  "tiers": {
+   "A": 30,
+   "B": 1
+  },
+  "groups": {
+   "Alimentary canal pathway": 13,
+   "Biliary system": 1,
+   "Liver segments (Couinaud)": 8,
+   "Oral cavity": 3,
+   "Organs": 4,
+   "Peritoneum": 2
+  },
+  "link_failures": []
+ },
+ "records": [
+  {
+   "id": "dig.oral-cavity",
+   "name": "Oral cavity",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S12"
+    ],
+    "structure": [
+     "S12"
+    ],
+    "function": [
+     "S12"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the soft palate and uvula records and the gingiva records are inventory records of this module; the palate muscles (levator and tensor veli palatini, uvular muscle) and the jaws are cross-referenced to the muscular and skeletal modules in the inventory",
+   "geometry_record_ids": [
+    "mouth",
+    "mouth.gingiva-of-lower-jaw",
+    "mouth.gingiva-of-upper-jaw",
+    "mouth.soft-palate",
+    "mouth.uvula",
+    "tongue",
+    "tooth.left-lower-central-secondary-incisor-tooth",
+    "tooth.left-lower-first-secondary-molar-tooth",
+    "tooth.left-lower-first-secondary-premolar-tooth",
+    "tooth.left-lower-lateral-secondary-incisor-tooth",
+    "tooth.left-lower-second-secondary-molar-tooth",
+    "tooth.left-lower-second-secondary-premolar-tooth",
+    "tooth.left-lower-secondary-canine-tooth",
+    "tooth.left-upper-central-secondary-incisor-tooth",
+    "tooth.left-upper-first-secondary-molar-tooth",
+    "tooth.left-upper-first-secondary-premolar-tooth",
+    "tooth.left-upper-lateral-secondary-incisor-tooth",
+    "tooth.left-upper-second-secondary-molar-tooth",
+    "tooth.left-upper-second-secondary-premolar-tooth",
+    "tooth.left-upper-secondary-canine-tooth",
+    "tooth.right-lower-central-secondary-incisor-tooth",
+    "tooth.right-lower-first-secondary-molar-tooth",
+    "tooth.right-lower-first-secondary-premolar-tooth",
+    "tooth.right-lower-lateral-secondary-incisor-tooth",
+    "tooth.right-lower-second-secondary-molar-tooth",
+    "tooth.right-lower-second-secondary-premolar-tooth",
+    "tooth.right-lower-secondary-canine-tooth",
+    "tooth.right-upper-central-secondary-incisor-tooth",
+    "tooth.right-upper-first-secondary-molar-tooth",
+    "tooth.right-upper-first-secondary-premolar-tooth",
+    "tooth.right-upper-lateral-secondary-incisor-tooth",
+    "tooth.right-upper-second-secondary-molar-tooth",
+    "tooth.right-upper-second-secondary-premolar-tooth",
+    "tooth.right-upper-secondary-canine-tooth"
+   ],
+   "pathway_order": 1,
+   "extent": "The mouth (oral or buccal cavity), framed by the cheeks, tongue and palate; it runs from the lips back to the fauces, the opening into the oropharynx",
+   "structure": "The lips (covered by the orbicularis oris, the inner lip attached to the gum by the labial frenulum) and the cheeks (buccinator muscles between skin and mucous membrane) form the outer walls; the oral vestibule is the pocket framed inside by the gums and teeth and outside by the cheeks and lips, and the oral cavity proper runs from the gums and teeth to the fauces. Its three accessory structures are the tongue, the salivary glands and the teeth",
+   "function": "Ingestion; mechanical digestion by the teeth and tongue, which positions food for chewing, gathers it into a bolus and positions it for swallowing; chemical digestion begins here (salivary amylase and lingual lipase)",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.oesophagus",
+   "name": "Oesophagus",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S1"
+    ],
+    "structure": [
+     "S1"
+    ],
+    "function": [
+     "S1"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "esophagus"
+   ],
+   "pathway_order": 2,
+   "extent": "A fibromuscular tube approximately 25 cm long, from the inferior border of the cricoid cartilage (C6) to the cardiac orifice of the stomach (T11); it passes through the oesophageal hiatus of the diaphragm at T10, and its abdominal portion is approximately 1.25 cm long",
+   "structure": "Wall of four layers: adventitia (serosa only on the very distal, intraperitoneal part), muscle layer (superior third voluntary striated muscle, middle third mixed, inferior third smooth muscle), submucosa, and mucosa of non-keratinised stratified squamous epithelium. Four physiological constrictions: arch of aorta, left main bronchus, cricoid cartilage, diaphragmatic hiatus",
+   "function": "Conducts the food bolus from the pharynx to the stomach. The upper oesophageal sphincter is an anatomical sphincter of striated muscle (cricopharyngeus), normally constricted to prevent air entering; the lower oesophageal sphincter is a physiological sphincter at the gastro-oesophageal junction (left of T11) that prevents reflux of gastric contents",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.stomach",
+   "name": "Stomach",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S2"
+    ],
+    "structure": [
+     "S2"
+    ],
+    "function": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "stomach"
+   ],
+   "pathway_order": 3,
+   "extent": "An intraperitoneal organ between the oesophagus and the duodenum, in the epigastric and left hypochondriac regions; its superior opening (the cardia) is at T11 and the pylorus demarcates the transpyloric plane at L1",
+   "structure": "J-shaped, with a long convex greater curvature and a short concave lesser curvature; four divisions: cardia, fundus, body and pylorus (see the Stomach (structure) record)",
+   "function": "Receives the bolus from the oesophagus; the pyloric sphincter \u2014 an anatomical sphincter of smooth muscle, normally contracted \u2014 controls the exit of chyme into the duodenum",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.duodenum",
+   "name": "Duodenum",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S3"
+    ],
+    "structure": [
+     "S3"
+    ],
+    "function": [
+     "S3",
+     "S6"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.duodenum"
+   ],
+   "pathway_order": 4,
+   "extent": "The most proximal part of the small intestine, approximately 25 cm long ('twelve fingers length'), running in a C-shape around the head of the pancreas from the pylorus to the duodenojejunal junction",
+   "structure": "Four parts: superior (D1, at L1 \u2014 the 'cap'; its first 3 cm are covered by peritoneum on both sides, the remainder retroperitoneal), descending (D2, L1-L3; the major duodenal papilla on its internal wall is the opening of the hepatopancreatic ampulla), inferior (D3, at L3; crosses the IVC and aorta, posterior to the superior mesenteric artery and vein) and ascending (D4, L3-L2; joins the jejunum at the duodenojejunal flexure, whose angle is widened by the suspensory muscle of the duodenum)",
+   "function": "Receives chyme from the stomach and, at the major duodenal papilla, the bile and pancreatic secretions delivered by the hepatopancreatic ampulla; the first part is the most common site of duodenal ulceration",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.jejunum",
+   "name": "Jejunum",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S3"
+    ],
+    "structure": [
+     "S3"
+    ],
+    "function": [
+     "S3"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.jejunum"
+   ],
+   "pathway_order": 5,
+   "extent": "The middle part of the small intestine, beginning at the duodenojejunal flexure; there is no clear external demarcation between the jejunum and the ileum",
+   "structure": "Intraperitoneal, attached to the posterior abdominal wall by the mesentery; located in the upper left quadrant, with a thick intestinal wall, longer vasa recta, fewer arterial arcades and a red colour (the consulted source's distinguishing table against the ileum)",
+   "function": "With the rest of the small intestine (about 6.5 m in the average person), assists in the digestion and absorption of ingested food",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.ileum",
+   "name": "Ileum",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S3"
+    ],
+    "structure": [
+     "S3"
+    ],
+    "function": [
+     "S3"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the ileocecal valve itself has no concept in the release (probe-verified absence); the ileocecal junction concept is the linked geometry",
+   "geometry_record_ids": [
+    "canal.ileocecal-junction",
+    "canal.ileum"
+   ],
+   "pathway_order": 6,
+   "extent": "The distal part of the small intestine, ending at the ileocaecal junction where it meets the large intestine",
+   "structure": "Intraperitoneal, attached by the mesentery; located in the lower right quadrant, with a thin intestinal wall, shorter vasa recta, more arterial arcades and a pink colour (the consulted source's distinguishing table against the jejunum)",
+   "function": "Assists in the digestion and absorption of ingested food; at the ileocaecal junction the ileum invaginates into the cecum to form the ileocecal valve, whose main function is to prevent reflux of enteric fluid from the colon into the small intestine",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.cecum-appendix",
+   "name": "Cecum and appendix",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S3",
+     "S4"
+    ],
+    "structure": [
+     "S3"
+    ],
+    "function": [
+     "S3"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the consulted sources do not describe the structure or function of the appendix itself in the passages used; its inventory record is linked and no unsourced detail is entered",
+   "geometry_record_ids": [
+    "canal.appendix",
+    "canal.cecum"
+   ],
+   "pathway_order": 7,
+   "extent": "The cecum is the first part of the large intestine, receiving the ileum at the ileocaecal junction; the appendix is carried with it in the consulted large-intestine source's division of the large bowel",
+   "structure": "The cecum is a blind-ended pouch: its blind end lies inferiorly and the ascending colon continues from it superiorly",
+   "function": "The ileocaecal valve at the junction separates the small from the large intestine and prevents reflux of enteric fluid from the colon into the small intestine",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.ascending-colon",
+   "name": "Ascending colon",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S4"
+    ],
+    "structure": [
+     "S4"
+    ],
+    "function": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.ascending-colon"
+   ],
+   "pathway_order": 8,
+   "extent": "The first of the four parts of the colon (total colon length about 150 cm): retroperitoneal, running superiorly from the cecum on the right side to the right colic (hepatic) flexure at the right lobe of the liver, where it turns 90 degrees",
+   "structure": "Carries the colon's distinguishing features: omental appendices (small fat-filled peritoneal pouches), teniae coli (three longitudinal muscle strips \u2014 mesocolic, free and omental) and haustra (sacculations produced by teniae contraction); a paracolic gutter lies laterally",
+   "function": "As the colon as a whole: absorbs water and electrolytes from the intestinal contents and forms faeces; the ascending colon and proximal two-thirds of the transverse colon are midgut in embryological origin",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.transverse-colon",
+   "name": "Transverse colon",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S4"
+    ],
+    "structure": [
+     "S4"
+    ],
+    "function": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.transverse-colon"
+   ],
+   "pathway_order": 9,
+   "extent": "From the right colic (hepatic) flexure to the spleen, where the left colic (splenic) flexure turns 90 degrees inferiorly; attached to the diaphragm by the phrenicocolic ligament; the least fixed part of the colon",
+   "structure": "Intraperitoneal, enclosed by the transverse mesocolon; embryologically the proximal two-thirds are midgut and the distal third hindgut; carries teniae coli, haustra and omental appendices",
+   "function": "Absorbs water and electrolytes and forms faeces (the colon's function, per the consulted source)",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.descending-colon",
+   "name": "Descending colon",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S4"
+    ],
+    "structure": [
+     "S4"
+    ],
+    "function": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.descending-colon"
+   ],
+   "pathway_order": 10,
+   "extent": "From the left colic (splenic) flexure inferiorly; retroperitoneal in most people, lying anterior to the left kidney over its lateral border, then turning medially to become the sigmoid colon",
+   "structure": "A hindgut part of the colon, carrying teniae coli, haustra and omental appendices; a paracolic gutter lies laterally",
+   "function": "Absorbs water and electrolytes and forms faeces (the colon's function, per the consulted source)",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.sigmoid-colon",
+   "name": "Sigmoid colon",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S4"
+    ],
+    "structure": [
+     "S4"
+    ],
+    "function": [
+     "S4"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "neither the sigmoid colon nor the sigmoid mesocolon has a concept in the release (probe-verified absences); the TotalSegmentator 'colon' label is one undivided label and does not resolve this gap",
+   "geometry_record_ids": [],
+   "pathway_order": 11,
+   "extent": "Approximately 40 cm long, in the left lower quadrant from the left iliac fossa to the third sacral vertebra (S3), where it becomes the rectum",
+   "structure": "S-shaped and mobile, suspended by the sigmoid mesocolon; at the rectosigmoid junction the teniae coli broaden out to form a complete longitudinal muscle layer in the rectum, and the haustra and omental appendices cease",
+   "function": "Absorbs water and electrolytes and forms faeces (the colon's function, per the consulted source); a hindgut part of the colon",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.rectum",
+   "name": "Rectum",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S9"
+    ],
+    "structure": [
+     "S9"
+    ],
+    "function": [
+     "S9"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "canal.rectum"
+   ],
+   "pathway_order": 12,
+   "extent": "The most distal segment of the large intestine: continuous proximally with the sigmoid colon, beginning at S3, and terminating into the anal canal; the most posterior pelvic viscus",
+   "structure": "Macroscopically distinct from the colon by the absence of taenia coli, haustra and omental appendices. Three flexure groups: the sacral flexure (following the sacrum and coccyx), the anorectal flexure (formed by puborectalis tone, contributing to continence) and three lateral flexures formed by transverse folds of the internal wall. Peritoneal coverings: superior third anterior and lateral surfaces, middle third anterior only, lower third none",
+   "function": "A temporary store for faeces; its final segment, the ampulla, relaxes to accumulate and store faeces before defecation",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.anal-canal",
+   "name": "Anal canal",
+   "type": "pathway",
+   "group": "Alimentary canal pathway",
+   "ta_name": null,
+   "sources": {
+    "extent": [
+     "S10"
+    ],
+    "structure": [
+     "S10"
+    ],
+    "function": [
+     "S10"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the anal canal, the anus and the pectinate line have no concepts in the release (probe-verified absences); the external anal sphincter is the muscular module's record (muscle.external-anal-sphincter), censused in this module's inventory as a cross-reference",
+   "geometry_record_ids": [],
+   "pathway_order": 13,
+   "extent": "The final segment of the gastrointestinal tract, approximately 4 cm long, beginning as the continuation of the rectum, passing inferoposteriorly through the pelvic floor to the anus; it lies within the anal triangle of the perineum between the right and left ischioanal fossae",
+   "structure": "Two sphincters keep the canal collapsed: the internal anal sphincter (involuntary circular smooth muscle surrounding the upper two-thirds) and the external anal sphincter (voluntary, surrounding the lower two-thirds, blending superiorly with puborectalis); their fusion with puborectalis forms the anorectal ring. The superior mucosa is thrown into anal columns joined by anal valves, which collectively form the pectinate (dentate) line dividing the hindgut-derived upper canal from the proctodeum-derived lower canal",
+   "function": "Defecation and the maintenance of faecal continence; the canal is collapsed by the anal sphincters except during defecation",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "organ.stomach",
+   "name": "Stomach (structure)",
+   "type": "organ",
+   "group": "Organs",
+   "ta_name": null,
+   "sources": {
+    "parts": [
+     "S2"
+    ],
+    "curvatures": [
+     "S2"
+    ],
+    "sphincters": [
+     "S2",
+     "S1"
+    ],
+    "blood_supply": [
+     "S2"
+    ],
+    "innervation": [
+     "S2"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the cardia, fundus, body and pylorus named here are sourced text: the release carries no stomach-part concepts (probe-verified absences in the inventory). The supplying vessels are cardiovascular module records (e.g. artery.celiac-artery, artery.gastroduodenal-artery) and are not duplicated here",
+   "geometry_record_ids": [
+    "stomach"
+   ],
+   "parts": "Four divisions: cardia (surrounds the superior opening of the stomach, at T11), fundus (the rounded, often gas-filled part superior and to the left of the cardia), body (the large central region, inferior to the fundus) and pylorus (pyloric antrum, pyloric canal and pyloric sphincter; the sphincter demarcates the transpyloric plane at L1)",
+   "curvatures": "Greater curvature: the long convex lateral border, from the cardiac notch to the pyloric antrum, giving attachment to the greater omentum; supplied by the short gastric and right and left gastro-omental arteries. Lesser curvature: the short concave medial border, where the angular notch marks the junction of body and pyloric part and the hepatogastric ligament attaches; supplied by the left gastric artery and the right gastric branch of the hepatic artery",
+   "sphincters": "Inferior oesophageal sphincter at the cardiac orifice (T11; the oesophagus passes the diaphragmatic hiatus at T10) \u2014 physiological, not under voluntary control. Pyloric sphincter \u2014 anatomical, of smooth muscle, controlling the exit of chyme, normally contracted",
+   "blood_supply": "All arterial supply derives from the coeliac trunk and its branches, with anastomoses along both curvatures. The veins parallel the arteries and drain into the hepatic portal system: right and left gastric veins directly to the portal vein, short gastric and left gastro-omental veins to the splenic vein, right gastro-omental vein to the superior mesenteric vein",
+   "innervation": "Parasympathetic supply from the anterior and posterior vagal trunks; sympathetic supply from T6-T9 via the greater splanchnic nerve to the coeliac plexus, which also carries pain fibres",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "organ.liver",
+   "name": "Liver",
+   "type": "organ",
+   "group": "Organs",
+   "ta_name": null,
+   "sources": {
+    "position": [
+     "S5",
+     "S13"
+    ],
+    "surfaces": [
+     "S5"
+    ],
+    "lobes": [
+     "S5",
+     "S13"
+    ],
+    "ligaments": [
+     "S5"
+    ],
+    "blood_supply": [
+     "S5",
+     "S13"
+    ],
+    "nerve_supply": [
+     "S5"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the quadrate lobe, porta hepatis, bare area and the named ligaments are sourced text: the release carries no concepts for them (probe-verified absences). The supplying vessels are cardiovascular module records (artery.hepatic-artery-proper, artery.common-hepatic-artery, vein.hepatic-portal-vein, vein.hepatic-vein) and are cited, not duplicated. The release also carries a 'hepatovenous segment ix' concept (IS-A only) with no counterpart in the eight-segment Couinaud classification (S13); it is an inventory record and deliberately has no clinical segment record here",
+   "geometry_record_ids": [
+    "liver"
+   ],
+   "position": "A peritoneal organ of the right upper quadrant \u2014 predominantly the right hypochondrium and epigastrium, extending into the left hypochondrium; the largest visceral structure in the abdominal cavity and the largest gland in the body, an accessory gland of digestion. About 2% of adult body weight (approximately 1400 g in females and 1800 g in males, S13)",
+   "surfaces": "Diaphragmatic surface (anterosuperior): smooth and convex, fitting beneath the diaphragm; its posterior aspect is not covered by visceral peritoneum and contacts the diaphragm directly \u2014 the bare area. Visceral surface (posteroinferior): covered by peritoneum except at the gallbladder fossa and the porta hepatis, and moulded by the right kidney, right adrenal gland, right colic flexure, transverse colon, first part of the duodenum, gallbladder, oesophagus and stomach",
+   "lobes": "Externally a large right lobe and a smaller left lobe, divided by the falciform ligament. Caudate lobe: on the upper visceral surface, between the IVC and the fossa for the ligamentum venosum. Quadrate lobe: on the lower visceral surface, between the gallbladder and the fossa for the ligamentum teres. The functional (Couinaud) division into eight segments is carried in this module's segment records",
+   "ligaments": "Falciform ligament: anterior surface to the anterior abdominal wall, its free edge containing the ligamentum teres (remnant of the umbilical vein). Coronary ligament: superior surface to the diaphragm, demarcating the bare area. Right and left triangular ligaments: the unions of the coronary folds at each lobe. Lesser omentum: to the lesser curvature of the stomach and the first part of the duodenum; its hepatoduodenal ligament surrounds the portal triad",
+   "blood_supply": "Dual supply: the hepatic artery proper contributes approximately 25% of the liver's blood (oxygenated, from the coeliac trunk) and the hepatic portal vein approximately 75% (nutrient-rich blood from the gut; the portal vein is formed by the union of the splenic and superior mesenteric veins, S13). Drainage is by the hepatic veins into the IVC",
+   "nerve_supply": "The hepatic plexus (sympathetic fibres from the coeliac plexus and parasympathetic fibres from the vagus) enters at the porta hepatis and follows the hepatic artery and portal vein branches; Glisson's capsule is supplied by the lower intercostal nerves, so capsular distension gives sharp, localised pain",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "organ.gallbladder",
+   "name": "Gallbladder",
+   "type": "organ",
+   "group": "Organs",
+   "ta_name": null,
+   "sources": {
+    "position_relations": [
+     "S6"
+    ],
+    "parts": [
+     "S6"
+    ],
+    "function": [
+     "S6"
+    ],
+    "blood_supply": [
+     "S6"
+    ],
+    "innervation": [
+     "S6"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "gallbladder"
+   ],
+   "position_relations": "An intraperitoneal, pear-shaped sac in the right hypochondrium, lying in a fossa between the inferior aspects of the right and quadrate lobes of the liver, anterior to the first part of the duodenum; posterior relations are the transverse colon and proximal duodenum",
+   "parts": "Fundus: the rounded distal end, projecting at the inferior border of the liver in the mid-clavicular line. Body: the largest part. Neck: tapers into the cystic duct and contains a mucosal fold (Hartmann's pouch), a common site for gallstones to lodge",
+   "function": "Concentrates and stores the bile produced by the liver (capacity 30-50 mL); bile is released into the biliary tree in response to cholecystokinin",
+   "blood_supply": "The cystic artery, a branch of the right hepatic artery (from the common hepatic artery, from the coeliac trunk). Venous drainage: the neck via cystic veins directly into the portal vein; the fundus and body into the hepatic sinusoids",
+   "innervation": "Coeliac plexus (sympathetic and sensory fibres) and the vagus nerve (parasympathetic; gallbladder contraction and relaxation of the sphincter of Oddi), although most post-prandial emptying is driven by cholecystokinin",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "organ.pancreas",
+   "name": "Pancreas",
+   "type": "organ",
+   "group": "Organs",
+   "ta_name": null,
+   "sources": {
+    "position": [
+     "S7"
+    ],
+    "parts": [
+     "S7"
+    ],
+    "duct_system": [
+     "S7",
+     "S6"
+    ],
+    "blood_supply": [
+     "S7"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: the head, neck, body, tail and uncinate process named in the parts field have no concepts in the BodyParts3D 4.0 release (probe-verified absences); the parts are sourced text and the record's geometry is the whole-organ pancreas record",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the supplying vessels are cardiovascular module records (artery.splenic-artery, artery.gastroduodenal-artery, artery.superior-mesenteric-artery, vein.splenic-vein) and are cited, not duplicated",
+   "geometry_record_ids": [
+    "pancreas"
+   ],
+   "position": "In the upper abdomen at the transpyloric plane (L1), deep in the epigastric and left hypochondriac regions; retroperitoneal except for the tail",
+   "parts": "Five parts: head (the widest part, sitting in the C-curve of the duodenum), uncinate process (a hook from the lower head extending medially beneath the body, posterior to the superior mesenteric vessels), neck (between head and body, overlying the superior mesenteric vessels and the formation of the portal vein), body (crossing the midline posterior to the stomach) and tail (the left-most part, the only intraperitoneal part, reaching the splenic hilum within the splenorenal ligament with the splenic vessels)",
+   "duct_system": "The main pancreatic duct runs the length of the gland (collecting from intercalated and intralobular ducts draining about one million acini) and unites with the common bile duct at the hepatopancreatic ampulla of Vater, opening into the second part of the duodenum at the major duodenal papilla; the sphincter of Oddi surrounds the ampulla. The consulted source does not describe an accessory pancreatic duct",
+   "blood_supply": "Pancreatic branches of the splenic artery; the head is additionally supplied by the superior pancreaticoduodenal artery (gastroduodenal, from the coeliac trunk) and the inferior pancreaticoduodenal artery (superior mesenteric artery). Venous drainage: head to superior mesenteric branches of the hepatic portal vein, the remainder to the splenic vein",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-i",
+   "name": "Segment I (caudate)",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S13",
+     "S14"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify",
+    "surgical_note: not sourced from consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver.caudate-lobe-of-liver"
+   ],
+   "sector": "The caudate lobe: outside the functional right / left division of the liver (the functional left lobe is segments II-IV and the functional right lobe segments V-VIII)",
+   "position": "Located posteriorly (S13). Autonomous: it receives blood from both the right and left hepatic artery and portal branches, drains bile into both the right and left hepatic ducts, and has independent venous drainage directly into the IVC (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": null,
+   "sourcing_tier": "B"
+  },
+  {
+   "id": "seg.couinaud-ii",
+   "name": "Segment II",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-ii"
+   ],
+   "sector": "Left lateral sector (with segment III, the left lateral segment, i.e. the topographic left lobe); part of the functional left lobe (II-IV)",
+   "position": "The posterior segment of the left lateral sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments II and III are resected together as a left lateral segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-iii",
+   "name": "Segment III",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-iii"
+   ],
+   "sector": "Left lateral sector (with segment II, the left lateral segment, i.e. the topographic left lobe); part of the functional left lobe (II-IV)",
+   "position": "The anterior segment of the left lateral sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments II and III are resected together as a left lateral segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-iv",
+   "name": "Segment IV",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-iv"
+   ],
+   "sector": "Left medial sector: segment IV is the medial segment of the left lobe; part of the functional left lobe (II-IV)",
+   "position": "Recognised on the visceral surface of the liver as the quadrate lobe (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Resection of segment IV is a left medial segmentectomy; resection of segments II, III and IV is a left hepatectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-v",
+   "name": "Segment V",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-v"
+   ],
+   "sector": "Right anterior sector (with segment VIII); part of the functional right lobe (V-VIII)",
+   "position": "The inferior segment of the right anterior sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments V and VIII are resected together as a right anterior segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-vi",
+   "name": "Segment VI",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-vi"
+   ],
+   "sector": "Right posterior sector (with segment VII); part of the functional right lobe (V-VIII)",
+   "position": "The inferior segment of the right posterior sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments VI and VII are resected together as a right posterior segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-vii",
+   "name": "Segment VII",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-vii"
+   ],
+   "sector": "Right posterior sector (with segment VI); part of the functional right lobe (V-VIII)",
+   "position": "The superior segment of the right posterior sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments VI and VII are resected together as a right posterior segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "seg.couinaud-viii",
+   "name": "Segment VIII",
+   "type": "segment",
+   "group": "Liver segments (Couinaud)",
+   "ta_name": null,
+   "sources": {
+    "sector": [
+     "S13"
+    ],
+    "definition": [
+     "S13"
+    ],
+    "position": [
+     "S14"
+    ],
+    "surgical_note": [
+     "S13"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "liver-segment.hepatovenous-segment-viii"
+   ],
+   "sector": "Right anterior sector (with segment V); part of the functional right lobe (V-VIII)",
+   "position": "The superior segment of the right anterior sector (S14)",
+   "definition": "One of the eight independent functional segments of the Couinaud classification: each segment has its own portal pedicle \u2014 a hepatic arterial branch, a portal branch and a bile duct \u2014 with a separate hepatic venous branch providing outflow (S13). The middle hepatic vein divides the functional right and left lobes, the right hepatic vein divides the right lobe into anterior and posterior sectors, the left hepatic vein divides the left lobe into medial and lateral sectors, and the portal vein plane divides upper from lower segments",
+   "surgical_note": "Segments V and VIII are resected together as a right anterior segmentectomy",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.biliary-tree",
+   "name": "Biliary tree",
+   "type": "ductpath",
+   "group": "Biliary system",
+   "ta_name": null,
+   "sources": {
+    "sequence": [
+     "S6"
+    ],
+    "territory": [
+     "S6"
+    ],
+    "termination": [
+     "S6"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: the common bile duct named in the sequence has no concept in the BodyParts3D 4.0 release (probe-verified absence); the release's extrahepatic tree runs from the common hepatic duct and the cystic duct with the final common channel unnamed",
+    "no BP3D concept: the hepatopancreatic ampulla and the major duodenal papilla named in the sequence and termination have no concepts in the BodyParts3D 4.0 release (probe-verified absences)",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the cystic artery and the hepatic arterial and portal records relevant to this system are cardiovascular module records and are cited, not duplicated",
+   "geometry_record_ids": [
+    "biliary.biliary-tree",
+    "biliary.hepatic-biliary-tree",
+    "biliary.intrahepatic-biliary-tree",
+    "biliary.left-hepatic-biliary-tree",
+    "biliary.right-hepatic-biliary-tree",
+    "duct.common-hepatic-duct",
+    "duct.cystic-duct",
+    "duct.left-hepatic-duct",
+    "duct.right-hepatic-duct",
+    "gallbladder"
+   ],
+   "sequence": "Bile secreted by the hepatocytes drains through canaliculi, intralobular ducts and collecting ducts into the left and right hepatic ducts, which converge to form the common hepatic duct; the cystic duct (the duct to and from the gallbladder) joins it to form the common bile duct, which descends posterior to the first part of the duodenum and the head of the pancreas, is joined by the main pancreatic duct at the hepatopancreatic ampulla (of Vater) and empties into the duodenum",
+   "territory": "Both lobes of the liver, drained by the right and left hepatic ducts and their intrahepatic trees; the gallbladder is a side reservoir on the cystic duct, concentrating and storing bile between meals",
+   "termination": "The major duodenal papilla, in the second part of the duodenum; flow is regulated by the sphincter of Oddi, which surrounds the hepatopancreatic ampulla",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.oral-cavity-structure",
+   "name": "Oral cavity (structure)",
+   "type": "region",
+   "group": "Oral cavity",
+   "ta_name": null,
+   "sources": {
+    "divisions": [
+     "S12"
+    ],
+    "palate": [
+     "S12"
+    ],
+    "functions": [
+     "S12"
+    ]
+   },
+   "verify": [
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the hard palate and the palatine tonsil named here have no concepts in the release (probe-verified absences); the maxilla and palatine bones are skeletal module records",
+   "geometry_record_ids": [
+    "mouth",
+    "mouth.gingiva-of-lower-jaw",
+    "mouth.gingiva-of-upper-jaw",
+    "mouth.soft-palate",
+    "mouth.uvula",
+    "tongue"
+   ],
+   "divisions": "Oral vestibule: the pocket framed inside by the gums and teeth and outside by the cheeks and lips. Oral cavity proper: from the gums and teeth back to the fauces, the opening between the oral cavity and the oropharynx (throat)",
+   "palate": "Hard palate (anterior): formed by the maxillary and palatine bones, a wall between the oral and nasal cavities and a rigid shelf against which the tongue forces food during chewing. Soft palate (posterior): mainly skeletal muscle, with the uvula dropping from the centre of its posterior edge; on swallowing the soft palate and uvula move up to block the nasal cavity. The palatoglossal arch (front) and palatopharyngeal arch (behind) extend down from the soft palate, with the palatine tonsils between them and the lingual tonsils at the base of the tongue",
+   "functions": "The tongue facilitates ingestion, mechanical digestion, chemical digestion (lingual lipase), sensation (including taste, via the taste buds of the fungiform papillae), swallowing and vocalisation; the cavity receives food and begins its digestion",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.salivary-glands",
+   "name": "Salivary glands",
+   "type": "glands",
+   "group": "Oral cavity",
+   "ta_name": null,
+   "sources": {
+    "major_glands": [
+     "S12",
+     "S16"
+    ],
+    "parotid": [
+     "S11",
+     "S12",
+     "S16"
+    ],
+    "submandibular": [
+     "S11",
+     "S16"
+    ],
+    "sublingual": [
+     "S12",
+     "S16"
+    ],
+    "saliva": [
+     "S12"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: the parotid gland and the parotid duct described in this record have no concepts in the BodyParts3D 4.0 release (probe-verified absences); the release's salivary census carries only the submandibular and sublingual glands",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": "the submandibular duct is the most calculus-susceptible of the salivary ducts (about 80% of salivary calculi, S11)",
+   "geometry_record_ids": [
+    "gland.left-sublingual-gland",
+    "gland.left-submandibular-gland",
+    "gland.right-sublingual-gland",
+    "gland.right-submandibular-gland"
+   ],
+   "major_glands": "Three pairs of major glands, lying outside the oral mucosa and each secreting through one central duct: parotid (largest), submandibular (second largest) and sublingual (smallest). Many minor glands (labial, buccal, palatal and lingual) in the mucosa of the mouth and tongue secrete constantly, even in sleep",
+   "parotid": "The largest salivary gland, lying between the skin and the masseter near the ear; lobulated, its superficial and deep lobes separated by the facial nerve. It produces serous (watery, enzyme-rich) saliva, transported by the parotid (Stensen) duct, which opens into the oral cavity opposite the maxillary second molar tooth",
+   "submandibular": "Bilateral glands in the anterior part of the submandibular triangle, of elongate flattened hook shape with superficial and deep arms; they produce mixed serous and mucous secretions. The submandibular (Wharton) duct, about 5 cm long, emerges anteromedially from the deep arm between the mylohyoid, hyoglossus and genioglossus and opens into the floor of the oral cavity near the frenulum of the tongue. Supplied by the submental artery (branch of the facial artery) and the sublingual artery (branch of the lingual artery)",
+   "sublingual": "The smallest of the major glands, below the tongue; it drains into the floor of the oral cavity by the lesser sublingual ducts and Bartholin's duct. Its secretion is mostly mucous \u2014 the thickest saliva of the three glands, with the least amylase",
+   "saliva": "1-1.5 litres of saliva are produced per day; saliva is 99.4% water, with salivary amylase initiating carbohydrate breakdown (acting until inactivated by stomach acid), bicarbonate and phosphate buffers keeping pH between 6.35 and 6.85, mucus for lubrication, and IgA and lysozyme for antimicrobial action",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.dentition",
+   "name": "Dentition",
+   "type": "dentition",
+   "group": "Oral cavity",
+   "ta_name": null,
+   "sources": {
+    "values": [
+     "S12"
+    ]
+   },
+   "verify": [],
+   "note": "the clinical permanent count of 32 includes the four third molars (wisdom teeth); the release carries no third-molar concepts, so its 28 tooth records are the clinical 32 minus the third molars. Deciduous (primary) teeth have no concepts in the release either",
+   "geometry_record_ids": [
+    "tooth.left-lower-central-secondary-incisor-tooth",
+    "tooth.left-lower-first-secondary-molar-tooth",
+    "tooth.left-lower-first-secondary-premolar-tooth",
+    "tooth.left-lower-lateral-secondary-incisor-tooth",
+    "tooth.left-lower-second-secondary-molar-tooth",
+    "tooth.left-lower-second-secondary-premolar-tooth",
+    "tooth.left-lower-secondary-canine-tooth",
+    "tooth.left-upper-central-secondary-incisor-tooth",
+    "tooth.left-upper-first-secondary-molar-tooth",
+    "tooth.left-upper-first-secondary-premolar-tooth",
+    "tooth.left-upper-lateral-secondary-incisor-tooth",
+    "tooth.left-upper-second-secondary-molar-tooth",
+    "tooth.left-upper-second-secondary-premolar-tooth",
+    "tooth.left-upper-secondary-canine-tooth",
+    "tooth.right-lower-central-secondary-incisor-tooth",
+    "tooth.right-lower-first-secondary-molar-tooth",
+    "tooth.right-lower-first-secondary-premolar-tooth",
+    "tooth.right-lower-lateral-secondary-incisor-tooth",
+    "tooth.right-lower-second-secondary-molar-tooth",
+    "tooth.right-lower-second-secondary-premolar-tooth",
+    "tooth.right-lower-secondary-canine-tooth",
+    "tooth.right-upper-central-secondary-incisor-tooth",
+    "tooth.right-upper-first-secondary-molar-tooth",
+    "tooth.right-upper-first-secondary-premolar-tooth",
+    "tooth.right-upper-lateral-secondary-incisor-tooth",
+    "tooth.right-upper-second-secondary-molar-tooth",
+    "tooth.right-upper-second-secondary-premolar-tooth",
+    "tooth.right-upper-secondary-canine-tooth"
+   ],
+   "values": {
+    "permanent_teeth_total": 32,
+    "deciduous_teeth_total": 20,
+    "incisors": 8,
+    "canines": 4,
+    "premolars": 8,
+    "molars": 12,
+    "third_molars_within_molars": 4,
+    "release_permanent_tooth_records": 28
+   },
+   "value_definitions": {
+    "permanent_teeth_total": "permanent (secondary) teeth in the complete adult dentition (S12)",
+    "deciduous_teeth_total": "deciduous teeth of the first dentition, appearing from about 6 months and replaced between about 6 and 12 years (S12)",
+    "incisors": "permanent incisors, for biting (S12)",
+    "canines": "permanent canines (cuspids), for tearing (S12)",
+    "premolars": "permanent premolars (bicuspids), for mashing (S12)",
+    "molars": "permanent molars, for crushing, including the four third molars (S12)",
+    "third_molars_within_molars": "the third molars (wisdom teeth) within the molar count; eruption is often delayed and they may remain impacted (S12)",
+    "release_permanent_tooth_records": "lateralised permanent-tooth records in this module's inventory (counted from digestive-inventory.json); the release models seven tooth types per quadrant, without third molars"
+   },
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.peritoneum",
+   "name": "Peritoneum",
+   "type": "region",
+   "group": "Peritoneum",
+   "ta_name": null,
+   "sources": {
+    "layers": [
+     "S8"
+    ],
+    "cavity": [
+     "S8",
+     "S15"
+    ],
+    "reflections": [
+     "S8"
+    ],
+    "organ_relations": [
+     "S8"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: the parietal peritoneum has no separate concept in the BodyParts3D 4.0 release (probe-verified absence); the release carries the peritoneum and the visceral peritoneum only",
+    "no BP3D concept: the greater and lesser omenta and the sigmoid mesocolon named in the reflections field have no concepts in the BodyParts3D 4.0 release (probe-verified absences)",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "peritoneum.mesentery-of-large-intestine",
+    "peritoneum.mesentery-of-small-intestine",
+    "peritoneum.mesoappendix",
+    "peritoneum.peritoneal-sac",
+    "peritoneum.peritoneum",
+    "peritoneum.transverse-mesocolon",
+    "peritoneum.visceral-peritoneum"
+   ],
+   "layers": "A continuous membrane of mesothelium (simple squamous epithelium) in two layers. Parietal peritoneum: lines the abdominopelvic wall, derived from somatic mesoderm, with the same somatic nerve supply as the wall it lines \u2014 sensitive to pressure, pain, laceration and temperature, with well-localised pain. Visceral peritoneum: covers the viscera, derived from splanchnic mesoderm, with the autonomic supply of the viscus it covers \u2014 sensitive only to stretch and chemical irritation, with poorly localised pain referred to the dermatomes of the supplying spinal cord segments",
+   "cavity": "The peritoneal cavity is the potential space between the parietal and visceral layers, normally containing only a thin film of peritoneal fluid (water, electrolytes, leukocytes and antibodies) that lubricates the movement of the viscera (see the Peritoneal cavity record)",
+   "reflections": "A mesentery is a double layer of visceral peritoneum connecting an intraperitoneal organ to (usually) the posterior abdominal wall, providing a pathway for nerves, vessels and lymphatics; the small-intestine mesentery is simply 'the mesentery', the others being named (transverse mesocolon, sigmoid mesocolon, mesoappendix). The greater omentum is four layers of visceral peritoneum descending from the greater curvature of the stomach and proximal duodenum and folding back to the transverse colon ('abdominal policeman', with an immunity role). The lesser omentum is a double layer from the lesser curvature and proximal duodenum to the liver: the hepatogastric ligament and the hepatoduodenal ligament, whose free edge contains the portal triad",
+   "organ_relations": "Intraperitoneal organs are enveloped by visceral peritoneum (stomach, liver and spleen among them). Retroperitoneal organs are covered only on their anterior surface: primarily retroperitoneal (oesophagus, rectum, kidneys among them) and secondarily retroperitoneal, whose mesentery has fused to the posterior wall (ascending and descending colon; also duodenum except its proximal cap and pancreas except its tail)",
+   "sourcing_tier": "A"
+  },
+  {
+   "id": "dig.peritoneal-cavity",
+   "name": "Peritoneal cavity",
+   "type": "region",
+   "group": "Peritoneum",
+   "ta_name": null,
+   "sources": {
+    "greater_sac": [
+     "S15"
+    ],
+    "lesser_sac": [
+     "S15"
+    ],
+    "pelvic_pouches": [
+     "S15"
+    ]
+   },
+   "verify": [
+    "no BP3D concept: the peritoneal cavity as a space, the lesser sac, the epiploic foramen and the pelvic pouches named here have no concepts in the BodyParts3D 4.0 release (probe-verified absences); the linked geometry is the release's peritoneal sac and peritoneum records",
+    "ta_name: not given by consulted sources - verify"
+   ],
+   "note": null,
+   "geometry_record_ids": [
+    "peritoneum.peritoneal-sac",
+    "peritoneum.peritoneum"
+   ],
+   "greater_sac": "The greater sac comprises the majority of the peritoneal cavity and is divided by the transverse mesocolon into a supracolic compartment (containing the stomach, liver and spleen) and an infracolic compartment (containing the small intestine and the ascending and descending colon, itself divided into left and right infracolic spaces by the mesentery of the small intestine); the two compartments are connected by the paracolic gutters",
+   "lesser_sac": "The lesser sac (omental bursa) lies posterior to the stomach and the lesser omentum and allows the stomach to move freely against the structures posterior and inferior to it; it communicates with the greater sac through the epiploic foramen (of Winslow), situated posterior to the free edge of the lesser omentum (the hepatoduodenal ligament)",
+   "pelvic_pouches": "In males the most distal part of the cavity is the rectovesical pouch and the cavity is completely closed. In females there are the rectouterine pouch (of Douglas) and the vesicouterine pouch, and the cavity is not completely closed: the uterine tubes open into it",
+   "sourcing_tier": "A"
+  }
+ ]
+}
