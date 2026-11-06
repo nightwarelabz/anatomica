@@ -7,7 +7,8 @@
    "S2": "OpenStax Anatomy and Physiology 2e, §5.2 Accessory Structures of the Skin (openstax.org): accessory structures (hair, nails, sweat and sebaceous glands) originating from the epidermis; hair a keratinous filament — follicle, shaft, root, bulb, matrix, papilla, medulla/cortex/cuticle, arrector pili, root plexus; head hair protecting the skull from the sun, eyebrows keeping sweat and particles from the eyes, eyelashes trapping dust; growth cycle anagen 2-7 years, catagen 2-3 weeks, telogen 2-4 months, ~0.3 mm/day, ~50 hairs shed per day; nails — bed, body, root, matrix, lateral fold, eponychium, lunula, hyponychium — protecting the digits; eccrine glands over the whole surface (palms, soles, forehead), hypotonic sweat by exocytosis, primary thermoregulation; apocrine glands of armpits and genital regions emptying into follicles under nervous and hormonal control; sebaceous glands with follicles, sebum lubricating and waterproofing, antibacterial fatty acids, hormone-driven from puberty",
    "S3": "OpenStax Anatomy and Physiology 2e, §5.3 Functions of the Integumentary System (openstax.org): protection against microorganisms, chemicals, abrasion, dehydration and UV; sensation via Meissner and Pacinian corpuscles, Merkel cells and pain/temperature receptors, densest at the fingertips; thermoregulation under sympathetic monitoring — ~500 mL/day insensible perspiration, 0.7-1.5 L/hour of sweat in activity, dermal arteriole dilation and constriction; epidermal vitamin D synthesis; the hypodermis storing fat, cushioning and insulating",
    "S4": "TeachMeAnatomy — The Breasts (teachmeanatomy.info): paired anterior thoracic structures in both sexes, prominent in females after puberty; mammary glands called an accessory gland of the female reproductive system and defined structurally as modified sweat glands — 15-20 lobules of alveoli, each lobule drained by a lactiferous duct converging at the nipple; circular body and axillary tail; nipple and areola with sebaceous glands; suspensory ligaments of Cooper; retromammary space; extent lateral sternum to mid-axillary line, 2nd-6th costal cartilages, on pectoralis major and serratus anterior; internal thoracic artery medially, lateral thoracic, thoracoacromial, lateral mammary and anterior intercostal mammary branches laterally; veins to axillary and internal thoracic; lymphatics axillary 75%, parasternal 20%, posterior intercostal 5%, nipple/areola to the subareolar plexus; innervation by cutaneous branches of the 4th-6th intercostal nerves, milk production under prolactin and oxytocin, not the nerves",
-   "S5": "ANATOMICA project datasets consulted in-session: this milestone's BP3D 4.0 census (tools/integ_map.py), the reproductive module inventory and tranche (Milestone 14 — no mammary or breast record there; the mons pubis as the pubic hair's PART-OF parent) and the TotalSegmentator label index (Milestone 3 — 'face' adjudicated a region mask) — dataset facts and cross-module pointers only"
+   "S5": "ANATOMICA project datasets consulted in-session: this milestone's BP3D 4.0 census (tools/integ_map.py), the reproductive module inventory and tranche (Milestone 14 — no mammary or breast record there; the mons pubis as the pubic hair's PART-OF parent) and the TotalSegmentator label index (Milestone 3 — 'face' adjudicated a region mask) — dataset facts and cross-module pointers only",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 13,
   "tiers": {
@@ -31,7 +32,18 @@
    "Appendages",
    "The mammary gland"
   ],
-  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Six records link geometry the release carries (the skin shell, the hair class and its three regional records, the eyebrow); seven link none, each with the dataset absence recorded — the epidermis, dermis and hypodermis, the nail, both cutaneous glands and the mammary gland. Two of the linked records (trunk hair, pubic hair) are tier C by design: the consulted sources give their regions no separate account, and the records say so rather than padding. The mammary record's ownership is an adjudicated convention stated on the record itself: the release files the gland under neither candidate system, the reproductive module claimed no mammary name, and this module owns it on the modified-sweat-gland basis."
+  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Six records link geometry the release carries (the skin shell, the hair class and its three regional records, the eyebrow); seven link none, each with the dataset absence recorded — the epidermis, dermis and hypodermis, the nail, both cutaneous glands and the mammary gland. Two of the linked records (trunk hair, pubic hair) are tier C by design: the consulted sources give their regions no separate account, and the records say so rather than padding. The mammary record's ownership is an adjudicated convention stated on the record itself: the release files the gland under neither candidate system, the reproductive module claimed no mammary name, and this module owns it on the modified-sweat-gland basis.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 10 of 13 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 1 ambiguous and 2 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 13,
+   "resolved": 10,
+   "ambiguous": 1,
+   "not_found": 2,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -39,7 +51,8 @@
    "name": "Skin",
    "type": "organ",
    "group": "Skin and its layers",
-   "ta_name": null,
+   "ta_name": "cutis",
+   "ta_code": 7041,
    "sources": {
     "description": [
      "S1",
@@ -61,11 +74,12 @@
     "innervation": [
      "S1",
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": "The release's skin record is the shell this clinical record describes; the layers it names are the next three records, each carried over a total concept absence.",
    "geometry_record_ids": [
     "skin"
@@ -87,7 +101,8 @@
    "name": "Epidermis",
    "type": "structure",
    "group": "Skin and its layers",
-   "ta_name": null,
+   "ta_name": "epidermis",
+   "ta_code": 7046,
    "sources": {
     "description": [
      "S1",
@@ -105,11 +120,13 @@
     ],
     "forms": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": "Sourced text over a total absence: the release's 'subdivision of epidermis' concept (FMA70593) is a tissue class carrying the appendage line's geometry, not an epidermis — it is a grouping class of the inventory, and this record links no geometry.",
    "geometry_record_ids": [],
@@ -131,7 +148,8 @@
    "name": "Dermis",
    "type": "structure",
    "group": "Skin and its layers",
-   "ta_name": null,
+   "ta_name": "dermis",
+   "ta_code": 7047,
    "sources": {
     "description": [
      "S1",
@@ -146,11 +164,13 @@
     ],
     "contents": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -168,7 +188,8 @@
    "name": "Hypodermis",
    "type": "structure",
    "group": "Skin and its layers",
-   "ta_name": null,
+   "ta_name": "tela subcutanea",
+   "ta_code": 7083,
    "sources": {
     "description": [
      "S1",
@@ -180,11 +201,13 @@
     ],
     "composition": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": "The clinical name 'superficial fascia' for this layer is OpenStax's (S1); the release's fascial concepts are the deep investing fascia of the limbs, a different structure, rejected by this module's sweep and censused by no module (S5).",
    "geometry_record_ids": [],
@@ -218,7 +241,7 @@
     ]
    },
    "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names hairs only by region (7055 capilli, 7062 pubes, 7059 pili tragi); no generic hair term ('pilus') exists in the consulted table."
    ],
    "note": "The parts list names two structures the release does not carry — the follicle and the arrector pili are probe-verified absences (S5); they are clinical anatomy from S2, not dataset concepts.",
    "geometry_record_ids": [
@@ -248,7 +271,8 @@
    "name": "Hair of head",
    "type": "structure",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "capilli",
+   "ta_code": 7055,
    "sources": {
     "description": [
      "S2",
@@ -256,11 +280,12 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "hair.hair-of-head"
@@ -283,7 +308,7 @@
    },
    "verify": [
     "function: not asserted — no consulted source treats trunk hair separately from hair in general; the general functions are carried on structure.hair and are not repeated here as if they were region-specific",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — no TA2 term for hair of the trunk in the consulted table; TA2's regional hair terms cover head, pubis and tragus only."
    ],
    "note": "Recorded thin by design (the mons pubis precedent, Milestone 14): the dataset gives the region a record and a mesh; the consulted literature gives it no separate account.",
    "geometry_record_ids": [
@@ -298,16 +323,19 @@
    "name": "Pubic hair",
    "type": "structure",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "pubes",
+   "ta_code": 7062,
    "sources": {
     "description": [
      "S2",
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "function: not asserted — no consulted source treats pubic hair separately from hair in general; the general functions are carried on structure.hair",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "function: not asserted — no consulted source treats pubic hair separately from hair in general; the general functions are carried on structure.hair"
    ],
    "note": "The one clinical record of this tranche whose dataset concept sits in two modules' filings; the concept is owned by this module's inventory and cross-filed under the reproductive module's mons pubis (S5).",
    "geometry_record_ids": [
@@ -322,7 +350,8 @@
    "name": "Eyebrow",
    "type": "structure",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "supercilium",
+   "ta_code": 181,
    "sources": {
     "description": [
      "S2",
@@ -330,11 +359,12 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "eyebrow"
@@ -348,7 +378,8 @@
    "name": "Nail",
    "type": "structure",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "unguis",
+   "ta_code": 7065,
    "sources": {
     "description": [
      "S2",
@@ -359,11 +390,13 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -386,7 +419,8 @@
    "name": "Sebaceous glands",
    "type": "gland",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "glandula sebacea",
+   "ta_code": 7082,
    "sources": {
     "description": [
      "S2",
@@ -401,11 +435,13 @@
     "activation": [
      "S2",
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -420,7 +456,8 @@
    "name": "Sweat glands",
    "type": "gland",
    "group": "Appendages",
-   "ta_name": null,
+   "ta_name": "glandulae sudoriferae",
+   "ta_code": 7079,
    "sources": {
     "description": [
      "S2",
@@ -432,11 +469,13 @@
     "function": [
      "S2",
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry"
    ],
    "note": "The mammary gland record that follows is this gland family's other member by kind: the consulted source defines the mammary glands as modified sweat glands (S4).",
    "geometry_record_ids": [],
@@ -487,7 +526,7 @@
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/integ_map.py); the record is sourced text only and links no geometry",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — compound record ('mammary gland and breast'): TA2 terms 7097 mamma (breast) and 7099 glandula mammaria (mammary gland) each denote part of what this single record covers; neither denotes the whole."
    ],
    "note": "The tranche's closing record and the module's argument, as the ovary was Milestone 14's: complete sourced clinical anatomy for a structure the dataset does not contain, with the absence recorded on the record and its ownership decided in the open, on a stated basis.",
    "geometry_record_ids": [],

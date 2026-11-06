@@ -738,21 +738,26 @@ def main():
           "(16 records)",
           clin["meta"]["record_count"] == len(CORE) == 16
           and set(by_id) == set(CORE), f"{sorted(by_id)}")
-    check("clinical meta sources are exactly S1-S10",
+    check("clinical meta sources are exactly S1-S10 + TA2 (M23)",
           set(clin["meta"]["sources"]) ==
-          {f"S{i}" for i in range(1, 11)})
+          {f"S{i}" for i in range(1, 11)} | {"TA2"})
     bad = []
     tier_count = Counter()
     tier_group = {}
     tier_sex = {}
     for rid, r in by_id.items():
         core, soft = CORE[rid], SOFT[rid]
-        if set(r.keys()) != BASE_KEYS | set(core) | set(soft):
+        if set(r.keys()) - {"ta_code"} != BASE_KEYS | set(core) | set(soft):
             bad.append((rid, "key set"))
         if r["sex_line"] != RECORD_SEX[rid]:
             bad.append((rid, "sex line"))
-        if r["ta_name"] is not None or \
-                not any("ta_name" in v for v in r["verify"]):
+        if r["ta_name"] is not None:
+            # M23 discipline: TA2 name + integer ta_code + TA2
+            # citation (table equality via tools/ta2_discipline.py)
+            if r["sources"].get("ta_name") != ["TA2"] or \
+                    not isinstance(r.get("ta_code"), int):
+                bad.append((rid, "ta_name discipline"))
+        elif not any("ta_name" in v for v in r["verify"]):
             bad.append((rid, "ta_name discipline"))
         exp_tier = "A"
         for fname in core + soft:
@@ -940,6 +945,12 @@ def main():
           and by_id["structure.mons-pubis"]["function"] is None
           and dict(tier_count) == {"A": 7, "B": 8, "C": 1},
           f"tiers={dict(tier_count)}")
+
+    # TA2 discipline (M23)
+    import os as _os, sys as _sys
+    _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+    import ta2_discipline as _ta2d
+    _ta2d.run("reproductive", "data/reproductive/reproductive.json", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"repro_check: {npass}/{len(checks)} checks passed")

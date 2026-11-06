@@ -10,7 +10,8 @@
    "S5": "OpenStax §17.4: thyroid follicles and colloid, thyroxine (T4) and triiodothyronine (T3), calcitonin from parafollicular cells, TSH regulation and the TRH–TSH negative feedback loop, parathyroid glands embedded on the posterior surfaces of the lobes",
    "S6": "OpenStax §17.5: parathyroid number and posterior thyroid position, separating capsule, chief cells and parathyroid hormone, oxyphil cells of unclear function, PTH actions on bone, kidney and calcitriol, calcitonin as the antagonist hormone",
    "S7": "OpenStax §17.7: pineal position in the diencephalon, pinealocytes secreting melatonin, the retina–SCN–spinal-cord control pathway, light inhibition and darkness stimulation of secretion, circadian effects",
-   "S8": "OpenStax §17.9: pancreatic islets and their four cell varieties with proportions — alpha ~20% glucagon, beta ~75% insulin, delta ~4% somatostatin, PP ~1% pancreatic polypeptide; the pancreas as a primarily exocrine organ posterior to the stomach"
+   "S8": "OpenStax §17.9: pancreatic islets and their four cell varieties with proportions — alpha ~20% glucagon, beta ~75% insulin, delta ~4% somatostatin, PP ~1% pancreatic polypeptide; the pancreas as a primarily exocrine organ posterior to the stomach",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 6,
   "tiers": {
@@ -24,7 +25,18 @@
    "Pineal",
    "Pancreatic islets"
   ],
-  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Three records link geometry the release carries (pituitary, both adrenals); the thyroid, parathyroid and islet records are sourced text with the dataset absence recorded, and the pineal record points at the nervous module's geometry rather than duplicating it. Hormone names are asserted only where a consulted source lists them."
+  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Three records link geometry the release carries (pituitary, both adrenals); the thyroid, parathyroid and islet records are sourced text with the dataset absence recorded, and the pineal record points at the nervous module's geometry rather than duplicating it. Hormone names are asserted only where a consulted source lists them.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 6 of 6 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 0 ambiguous and 0 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 6,
+   "resolved": 6,
+   "ambiguous": 0,
+   "not_found": 0,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -32,7 +44,8 @@
    "name": "Pituitary gland",
    "type": "gland",
    "group": "Pituitary",
-   "ta_name": null,
+   "ta_name": "glandula pituitaria",
+   "ta_code": 3854,
    "sources": {
     "position": [
      "S1"
@@ -53,11 +66,12 @@
     "control": [
      "S1",
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": "The release's only intracranial endocrine gland with geometry, and one of only three endocrine glands it carries at all.",
    "geometry_record_ids": [
     "pituitary-gland"
@@ -75,7 +89,8 @@
    "name": "Thyroid gland",
    "type": "gland",
    "group": "Thyroid and parathyroid",
-   "ta_name": null,
+   "ta_name": "glandula thyreoidea",
+   "ta_code": 3863,
    "sources": {
     "position": [
      "S2"
@@ -102,12 +117,14 @@
     "control": [
      "S2",
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/endo_map.py); the record is sourced text only and links no geometry — the release contains no thyroid gland concept in either parts list; every 'thyroid' name it carries is the thyroid cartilage (skeletal module), the inferior thyroid arteries (cardiovascular module) or the sternothyroid and cricothyroid muscles (muscular module)",
-    "arterial_supply: the inferior thyroid arteries are cardiovascular inventory records (artery.left-inferior-thyroid-artery, artery.right-inferior-thyroid-artery), resolved by the checker; the superior thyroid artery has no cardiovascular record of its own because its parent, the external carotid artery, is one of the concepts Milestone 5 found absent from the release",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: the inferior thyroid arteries are cardiovascular inventory records (artery.left-inferior-thyroid-artery, artery.right-inferior-thyroid-artery), resolved by the checker; the superior thyroid artery has no cardiovascular record of its own because its parent, the external carotid artery, is one of the concepts Milestone 5 found absent from the release"
    ],
    "note": "Sourced-text record: the dataset carries the gland's arteries, its cartilage namesake and the muscles named for it, but not the gland.",
    "geometry_record_ids": [],
@@ -126,7 +143,8 @@
    "name": "Parathyroid glands",
    "type": "gland",
    "group": "Thyroid and parathyroid",
-   "ta_name": null,
+   "ta_name": "glandulae parathyreoideae",
+   "ta_code": 3870,
    "sources": {
     "position": [
      "S6"
@@ -142,12 +160,14 @@
     ],
     "relations": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/endo_map.py); the record is sourced text only and links no geometry — 'parathyroid' scores zero hits in both parts lists and in all six release tables",
-    "arterial_supply: no value asserted — none of the sources consulted in this session states the parathyroid glands' arterial supply in citable form; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: no value asserted — none of the sources consulted in this session states the parathyroid glands' arterial supply in citable form; the field stays null rather than unsourced"
    ],
    "note": "Sourced-text record; the glands' surgical weight is inverse to their size, and the dataset carries no trace of them.",
    "geometry_record_ids": [],
@@ -164,7 +184,8 @@
    "name": "Adrenal glands",
    "type": "gland",
    "group": "Adrenal",
-   "ta_name": null,
+   "ta_name": "glandula suprarenalis",
+   "ta_code": 3874,
    "sources": {
     "position": [
      "S3"
@@ -192,11 +213,13 @@
     ],
     "lymphatics": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for the adrenal cortex, the adrenal medulla or any cortical zone (probe-verified over all six release tables); the cortex and medulla fields are sourced text on the two whole-gland records",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for the adrenal cortex, the adrenal medulla or any cortical zone (probe-verified over all six release tables); the cortex and medulla fields are sourced text on the two whole-gland records"
    ],
    "note": "Owned by this module per the release's own filing (Milestone 12 finding): the glands are direct members of the endocrine system in PART-OF and instances of the adrenal class in IS-A; Milestone 12's urinary census pointed here and this record closes that pointer.",
    "geometry_record_ids": [
@@ -219,7 +242,8 @@
    "name": "Pineal gland",
    "type": "gland",
    "group": "Pineal",
-   "ta_name": null,
+   "ta_name": "glandula pinealis",
+   "ta_code": 3862,
    "sources": {
     "position": [
      "S7"
@@ -232,11 +256,13 @@
     ],
     "regulation": [
      "S7"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "geometry held by the nervous module: the release files the pineal body inside the nervous system tree, where it is the nervous inventory record brain.pineal-body (FMA62033, Milestone 9); this record carries the gland's endocrine account and does not duplicate the mesh link",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "geometry held by the nervous module: the release files the pineal body inside the nervous system tree, where it is the nervous inventory record brain.pineal-body (FMA62033, Milestone 9); this record carries the gland's endocrine account and does not duplicate the mesh link"
    ],
    "note": "Cross-module record: geometry in the nervous module (brain.pineal-body), function here — the release's filing split, kept, with each side pointing at the other.",
    "geometry_record_ids": [],
@@ -251,7 +277,8 @@
    "name": "Pancreatic islets",
    "type": "gland",
    "group": "Pancreatic islets",
-   "ta_name": null,
+   "ta_name": "insulae pancreaticae",
+   "ta_code": 3128,
    "sources": {
     "definition": [
      "S8"
@@ -264,11 +291,13 @@
     ],
     "host_organ": [
      "S8"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/endo_map.py); the record is sourced text only and links no geometry — 'islet' and 'langerhans' score zero hits in both parts lists and in all six release tables",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/endo_map.py); the record is sourced text only and links no geometry — 'islet' and 'langerhans' score zero hits in both parts lists and in all six release tables"
    ],
    "note": "Sourced-text record on another module's organ: the endocrine pancreas exists in the clinical layer only, exactly as far as the consulted source describes it.",
    "geometry_record_ids": [],

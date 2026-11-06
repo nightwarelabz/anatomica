@@ -5,7 +5,7 @@
   "generated": "2026-11-06",
   "generator": "tools/build_muscle_records.py",
   "field_sourcing_rule": "Every non-null clinical field value was entered only from a source consulted in the building session and is cited per field in the record's 'sources' map. Fields not available from a consulted source are null and carry an explicit entry in the record's 'verify' list. No field was filled from unaided recall.",
-  "ta_name_status": "ta_name is null on every record in this tranche and verify-flagged: Terminologia Anatomica names were not present in the consulted sources and are not carried by the BodyParts3D/FMA tables used for the inventory.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 126 of 127 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 1 ambiguous and 0 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
   "sourcing_tiers": "A = every clinical field sourced; B = sourced except arterial supply and/or innervation root values; C = at least one core field (origin, insertion, actions, innervation) verify-flagged.",
   "geometry_linkage": "geometry.inventory_record_ids reference records in data/muscular/muscle-inventory.json; mesh detail lives in data/muscular/muscle-geometry.json.",
   "counts": {
@@ -80,7 +80,18 @@
    "SN-IC": "Thoracic-wall study notes (intercostal muscles and transversus thoracis: attachments and innervation), study-notes-pdfs.s3.us-west-2.amazonaws.com/1031196.pdf (consulted 2026-11-06 via search extract)",
    "SD-DIA": "'Anatomy of the Diaphragm and Stomach' lecture deck (abdominal muscle table: external oblique row), slideshare.net (consulted 2026-11-06 via search extract)",
    "KSU-NECK": "Kentucky State University BIO 301 lecture notes, 'Muscles of the neck' (sternocleidomastoid and scalenes), notes.edubirdie.com (consulted 2026-11-06 via search extract)",
-   "MOORE-NECK": "Moore, Clinically Oriented Anatomy, flashcard sets (neck muscle attachments and scalene root values), brainscape.com (consulted 2026-11-06 via search extracts)"
+   "MOORE-NECK": "Moore, Clinically Oriented Anatomy, flashcard sets (neck muscle attachments and scalene root values), brainscape.com (consulted 2026-11-06 via search extracts)",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
+  },
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 127,
+   "resolved": 126,
+   "ambiguous": 1,
+   "not_found": 0,
+   "artifact": "data/ta2-name-pass.json"
   }
  },
  "records": [
@@ -88,7 +99,8 @@
    "record_id": "muscle.trapezius",
    "kind": "muscle",
    "name": "trapezius",
-   "ta_name": null,
+   "ta_name": "musculus trapezius",
+   "ta_code": 2226,
    "region": "back",
    "subregion": "superficial (extrinsic)",
    "origin": [
@@ -132,11 +144,11 @@
     "insertion": "TMA-SB",
     "actions": "TMA-SB",
     "innervation.nerve": "TMA-SB",
-    "innervation.root_values": "TMA-SB"
+    "innervation.root_values": "TMA-SB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -145,7 +157,8 @@
    "record_id": "muscle.levator-scapulae",
    "kind": "muscle",
    "name": "levator scapulae",
-   "ta_name": null,
+   "ta_name": "levator scapulae",
+   "ta_code": 2234,
    "region": "back",
    "subregion": "superficial (extrinsic)",
    "origin": [
@@ -182,12 +195,12 @@
     "origin": "TMA-SB",
     "insertion": "TMA-SB",
     "actions": "TMA-SB",
-    "innervation.nerve": "TMA-SB"
+    "innervation.nerve": "TMA-SB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "StatPearls' shoulder article gives this muscle the thoracodorsal nerve and latissimus dorsi actions (an apparent copy error in that source); the TeachMeAnatomy values are used.",
    "sourcing_tier": "B"
@@ -196,7 +209,8 @@
    "record_id": "muscle.rhomboid-major",
    "kind": "muscle",
    "name": "rhomboid major",
-   "ta_name": null,
+   "ta_name": "musculus rhomboideus major",
+   "ta_code": 2232,
    "region": "back",
    "subregion": "superficial (extrinsic)",
    "origin": [
@@ -234,11 +248,11 @@
     "insertion": "TMA-SB",
     "actions": "TMA-SB",
     "innervation.nerve": "TMA-SB",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -247,7 +261,8 @@
    "record_id": "muscle.rhomboid-minor",
    "kind": "muscle",
    "name": "rhomboid minor",
-   "ta_name": null,
+   "ta_name": "musculus rhomboideus minor",
+   "ta_code": 2233,
    "region": "back",
    "subregion": "superficial (extrinsic)",
    "origin": [
@@ -285,11 +300,11 @@
     "insertion": "TMA-SB",
     "actions": "TMA-SB",
     "innervation.nerve": "TMA-SB",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -298,7 +313,8 @@
    "record_id": "muscle.serratus-posterior-superior",
    "kind": "muscle",
    "name": "serratus posterior superior",
-   "ta_name": null,
+   "ta_name": "musculus serratus posterior superior",
+   "ta_code": 2236,
    "region": "back",
    "subregion": "intermediate (extrinsic)",
    "origin": [
@@ -337,11 +353,11 @@
     "insertion": "ANK-BACK",
     "actions": "ANK-BACK",
     "innervation.nerve": "ANK-BACK",
-    "innervation.root_values": "ANK-BACK"
+    "innervation.root_values": "ANK-BACK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Some teaching sources give the insertion as ribs 2-5; the Ankara University lecture value (ribs 2-4) is recorded.",
    "sourcing_tier": "B"
@@ -350,7 +366,8 @@
    "record_id": "muscle.serratus-posterior-inferior",
    "kind": "muscle",
    "name": "serratus posterior inferior",
-   "ta_name": null,
+   "ta_name": "musculus serratus posterior inferior",
+   "ta_code": 2235,
    "region": "back",
    "subregion": "intermediate (extrinsic)",
    "origin": [
@@ -388,11 +405,11 @@
     "insertion": "ANK-BACK",
     "actions": "ANK-BACK",
     "innervation.nerve": "ANK-BACK",
-    "innervation.root_values": "ANK-BACK"
+    "innervation.root_values": "ANK-BACK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -401,7 +418,8 @@
    "record_id": "muscle.splenius-capitis",
    "kind": "muscle",
    "name": "splenius capitis",
-   "ta_name": null,
+   "ta_name": "musculus splenius capitis",
+   "ta_code": 2273,
    "region": "back",
    "subregion": "intrinsic, superficial layer",
    "origin": [
@@ -442,11 +460,11 @@
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
     "innervation.nerve": "TMA-IB",
-    "innervation.root_values": "TMA-IB"
+    "innervation.root_values": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -455,7 +473,8 @@
    "record_id": "muscle.splenius-cervicis",
    "kind": "muscle",
    "name": "splenius cervicis",
-   "ta_name": null,
+   "ta_name": "musculus splenius colli",
+   "ta_code": 2274,
    "region": "back",
    "subregion": "intrinsic, superficial layer",
    "origin": [
@@ -493,12 +512,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -507,7 +526,8 @@
    "record_id": "muscle.iliocostalis-lumborum",
    "kind": "muscle",
    "name": "iliocostalis lumborum",
-   "ta_name": null,
+   "ta_name": "musculus iliocostalis lumborum",
+   "ta_code": 2258,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -545,12 +565,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -559,7 +579,8 @@
    "record_id": "muscle.iliocostalis-thoracis",
    "kind": "muscle",
    "name": "iliocostalis thoracis",
-   "ta_name": null,
+   "ta_name": "musculus iliocostalis thoracis",
+   "ta_code": 2260,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -597,12 +618,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -611,7 +632,8 @@
    "record_id": "muscle.iliocostalis-cervicis",
    "kind": "muscle",
    "name": "iliocostalis cervicis",
-   "ta_name": null,
+   "ta_name": "musculus iliocostalis colli",
+   "ta_code": 2261,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -649,12 +671,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -663,7 +685,8 @@
    "record_id": "muscle.longissimus-thoracis",
    "kind": "muscle",
    "name": "longissimus thoracis",
-   "ta_name": null,
+   "ta_name": "musculus longissimus thoracis",
+   "ta_code": 2263,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -701,12 +724,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -715,7 +738,8 @@
    "record_id": "muscle.longissimus-cervicis",
    "kind": "muscle",
    "name": "longissimus cervicis",
-   "ta_name": null,
+   "ta_name": "musculus longissimus colli",
+   "ta_code": 2265,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -753,12 +777,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -767,7 +791,8 @@
    "record_id": "muscle.longissimus-capitis",
    "kind": "muscle",
    "name": "longissimus capitis",
-   "ta_name": null,
+   "ta_name": "musculus longissimus capitis",
+   "ta_code": 2266,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -805,12 +830,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -819,7 +844,8 @@
    "record_id": "muscle.spinalis-thoracis",
    "kind": "muscle",
    "name": "spinalis thoracis",
-   "ta_name": null,
+   "ta_name": "musculus spinalis thoracis",
+   "ta_code": 2268,
    "region": "back",
    "subregion": "intrinsic, intermediate layer (erector spinae)",
    "origin": [
@@ -857,12 +883,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -871,7 +897,8 @@
    "record_id": "muscle.semispinalis-thoracis",
    "kind": "muscle",
    "name": "semispinalis thoracis",
-   "ta_name": null,
+   "ta_name": "musculus semispinalis thoracis",
+   "ta_code": 2281,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -908,12 +935,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -922,7 +949,8 @@
    "record_id": "muscle.semispinalis-cervicis",
    "kind": "muscle",
    "name": "semispinalis cervicis",
-   "ta_name": null,
+   "ta_name": "musculus semispinalis colli",
+   "ta_code": 2282,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -959,12 +987,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -973,7 +1001,8 @@
    "record_id": "muscle.semispinalis-capitis",
    "kind": "muscle",
    "name": "semispinalis capitis",
-   "ta_name": null,
+   "ta_name": "musculus semispinalis capitis",
+   "ta_code": 2283,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -1010,12 +1039,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
    "sourcing_tier": "B"
@@ -1024,7 +1053,8 @@
    "record_id": "muscle.cervical-rotator",
    "kind": "muscle",
    "name": "cervical rotator",
-   "ta_name": null,
+   "ta_name": "rotatores colli",
+   "ta_code": 2289,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -1063,12 +1093,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
    "sourcing_tier": "B"
@@ -1077,7 +1107,8 @@
    "record_id": "muscle.thoracic-rotator",
    "kind": "muscle",
    "name": "thoracic rotator",
-   "ta_name": null,
+   "ta_name": "rotatores thoracis",
+   "ta_code": 2286,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -1113,12 +1144,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
    "sourcing_tier": "B"
@@ -1127,7 +1158,8 @@
    "record_id": "muscle.lumbar-rotator",
    "kind": "muscle",
    "name": "lumbar rotator",
-   "ta_name": null,
+   "ta_name": "rotatores lumborum",
+   "ta_code": 2285,
    "region": "back",
    "subregion": "intrinsic, deep layer (transversospinales)",
    "origin": [
@@ -1166,12 +1198,12 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
    "sourcing_tier": "B"
@@ -1180,7 +1212,8 @@
    "record_id": "muscle.interspinalis-thoracis",
    "kind": "muscle",
    "name": "interspinalis thoracis",
-   "ta_name": null,
+   "ta_name": "musculi interspinales thoracis",
+   "ta_code": 2292,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1216,12 +1249,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1230,7 +1263,8 @@
    "record_id": "muscle.set-of-interspinales-cervicis",
    "kind": "muscle",
    "name": "set of interspinales cervicis",
-   "ta_name": null,
+   "ta_name": "musculi interspinales colli",
+   "ta_code": 2293,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1263,12 +1297,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1277,7 +1311,8 @@
    "record_id": "muscle.set-of-interspinales-lumborum",
    "kind": "muscle",
    "name": "set of interspinales lumborum",
-   "ta_name": null,
+   "ta_name": "musculi interspinales lumborum",
+   "ta_code": 2291,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1310,12 +1345,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1324,7 +1359,8 @@
    "record_id": "muscle.lateral-lumbar-intertransversarius",
    "kind": "muscle",
    "name": "lateral lumbar intertransversarius",
-   "ta_name": null,
+   "ta_name": "musculi intertransversarii laterales lumborum",
+   "ta_code": 2239,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1357,12 +1393,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1371,7 +1407,8 @@
    "record_id": "muscle.medial-lumbar-intertransversarius",
    "kind": "muscle",
    "name": "medial lumbar intertransversarius",
-   "ta_name": null,
+   "ta_name": "musculi intertransversarii mediales lumborum",
+   "ta_code": 2295,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1404,12 +1441,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1418,7 +1455,8 @@
    "record_id": "muscle.set-of-anterior-cervical-intertransversarii",
    "kind": "muscle",
    "name": "set of anterior cervical intertransversarii",
-   "ta_name": null,
+   "ta_name": "musculi intertransversarii anteriores colli",
+   "ta_code": 2237,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1451,12 +1489,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1501,9 +1539,9 @@
     "actions": "TMA-IB"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 splits the posterior cervical intertransversarii into 2238 (laterales) and 2297 (mediales), with no single term for the posterior set as a whole."
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1512,7 +1550,8 @@
    "record_id": "muscle.set-of-levatores-costarum-breves",
    "kind": "muscle",
    "name": "set of levatores costarum breves",
-   "ta_name": null,
+   "ta_name": "levatores breves costarum",
+   "ta_code": 2310,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1548,12 +1587,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source gives attachments and action for the levatores costarum; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1562,7 +1601,8 @@
    "record_id": "muscle.set-of-levatores-costarum-longi",
    "kind": "muscle",
    "name": "set of levatores costarum longi",
-   "ta_name": null,
+   "ta_name": "levatores longi costarum",
+   "ta_code": 2309,
    "region": "back",
    "subregion": "intrinsic, minor deep (segmental)",
    "origin": [
@@ -1598,12 +1638,12 @@
    "sources": {
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
-    "actions": "TMA-IB"
+    "actions": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source gives attachments and action for the levatores costarum; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1612,7 +1652,8 @@
    "record_id": "muscle.rectus-capitis-posterior-major",
    "kind": "muscle",
    "name": "rectus capitis posterior major",
-   "ta_name": null,
+   "ta_name": "musculus rectus posterior major capitis",
+   "ta_code": 2249,
    "region": "neck",
    "subregion": "suboccipital",
    "origin": [
@@ -1654,11 +1695,10 @@
     "actions": "TMA-SO",
     "innervation.nerve": "TMA-SO",
     "innervation.root_values": "TMA-SO",
-    "arterial_supply": "GM-SO"
+    "arterial_supply": "GM-SO",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the suboccipital group as a whole.",
    "sourcing_tier": "A"
   },
@@ -1666,7 +1706,8 @@
    "record_id": "muscle.rectus-capitis-posterior-minor",
    "kind": "muscle",
    "name": "rectus capitis posterior minor",
-   "ta_name": null,
+   "ta_name": "musculus rectus posterior minor capitis",
+   "ta_code": 2250,
    "region": "neck",
    "subregion": "suboccipital",
    "origin": [
@@ -1708,11 +1749,10 @@
     "actions": "TMA-SO",
     "innervation.nerve": "TMA-SO",
     "innervation.root_values": "TMA-SO",
-    "arterial_supply": "GM-SO"
+    "arterial_supply": "GM-SO",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the suboccipital group as a whole.",
    "sourcing_tier": "A"
   },
@@ -1720,7 +1760,8 @@
    "record_id": "muscle.obliquus-capitis-inferior",
    "kind": "muscle",
    "name": "obliquus capitis inferior",
-   "ta_name": null,
+   "ta_name": "musculus obliquus inferior capitis",
+   "ta_code": 2252,
    "region": "neck",
    "subregion": "suboccipital",
    "origin": [
@@ -1762,11 +1803,10 @@
     "actions": "TMA-SO",
     "innervation.nerve": "TMA-SO",
     "innervation.root_values": "TMA-SO",
-    "arterial_supply": "GM-SO"
+    "arterial_supply": "GM-SO",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the suboccipital group as a whole.",
    "sourcing_tier": "A"
   },
@@ -1774,7 +1814,8 @@
    "record_id": "muscle.obliquus-capitis-superior",
    "kind": "muscle",
    "name": "obliquus capitis superior",
-   "ta_name": null,
+   "ta_name": "musculus obliquus superior capitis",
+   "ta_code": 2251,
    "region": "neck",
    "subregion": "suboccipital",
    "origin": [
@@ -1816,11 +1857,10 @@
     "actions": "TMA-SO",
     "innervation.nerve": "TMA-SO",
     "innervation.root_values": "TMA-SO",
-    "arterial_supply": "GM-SO"
+    "arterial_supply": "GM-SO",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the suboccipital group as a whole.",
    "sourcing_tier": "A"
   },
@@ -1828,7 +1868,8 @@
    "record_id": "muscle.pectoralis-major",
    "kind": "muscle",
    "name": "pectoralis major",
-   "ta_name": null,
+   "ta_name": "musculus pectoralis major",
+   "ta_code": 2301,
    "region": "upper limb",
    "subregion": "shoulder, anterior axioappendicular",
    "origin": [
@@ -1869,11 +1910,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -1882,7 +1923,8 @@
    "record_id": "muscle.pectoralis-minor",
    "kind": "muscle",
    "name": "pectoralis minor",
-   "ta_name": null,
+   "ta_name": "musculus pectoralis minor",
+   "ta_code": 2305,
    "region": "upper limb",
    "subregion": "shoulder, anterior axioappendicular",
    "origin": [
@@ -1921,11 +1963,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -1934,7 +1976,8 @@
    "record_id": "muscle.subclavius",
    "kind": "muscle",
    "name": "subclavius",
-   "ta_name": null,
+   "ta_name": "musculus subclavius",
+   "ta_code": 2306,
    "region": "upper limb",
    "subregion": "shoulder, anterior axioappendicular",
    "origin": [
@@ -1972,11 +2015,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -1985,7 +2028,8 @@
    "record_id": "muscle.serratus-anterior",
    "kind": "muscle",
    "name": "serratus anterior",
-   "ta_name": null,
+   "ta_name": "musculus serratus anterior",
+   "ta_code": 2307,
    "region": "upper limb",
    "subregion": "shoulder, anterior axioappendicular",
    "origin": [
@@ -2024,11 +2068,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2037,7 +2081,8 @@
    "record_id": "muscle.deltoid",
    "kind": "muscle",
    "name": "deltoid",
-   "ta_name": null,
+   "ta_name": "musculus deltoideus",
+   "ta_code": 2452,
    "region": "upper limb",
    "subregion": "shoulder, intrinsic (scapulohumeral)",
    "origin": [
@@ -2079,11 +2124,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2092,7 +2137,8 @@
    "record_id": "muscle.teres-major",
    "kind": "muscle",
    "name": "teres major",
-   "ta_name": null,
+   "ta_name": "musculus teres major",
+   "ta_code": 2462,
    "region": "upper limb",
    "subregion": "shoulder, intrinsic (scapulohumeral)",
    "origin": [
@@ -2131,11 +2177,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2144,7 +2190,8 @@
    "record_id": "muscle.supraspinatus",
    "kind": "muscle",
    "name": "supraspinatus",
-   "ta_name": null,
+   "ta_name": "musculus supraspinatus",
+   "ta_code": 2457,
    "region": "upper limb",
    "subregion": "shoulder, rotator cuff",
    "origin": [
@@ -2182,11 +2229,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2195,7 +2242,8 @@
    "record_id": "muscle.infraspinatus",
    "kind": "muscle",
    "name": "infraspinatus",
-   "ta_name": null,
+   "ta_name": "musculus infraspinatus",
+   "ta_code": 2458,
    "region": "upper limb",
    "subregion": "shoulder, rotator cuff",
    "origin": [
@@ -2233,11 +2281,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2246,7 +2294,8 @@
    "record_id": "muscle.subscapularis",
    "kind": "muscle",
    "name": "subscapularis",
-   "ta_name": null,
+   "ta_name": "musculus subscapularis",
+   "ta_code": 2460,
    "region": "upper limb",
    "subregion": "shoulder, rotator cuff",
    "origin": [
@@ -2284,11 +2333,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2297,7 +2346,8 @@
    "record_id": "muscle.teres-minor",
    "kind": "muscle",
    "name": "teres minor",
-   "ta_name": null,
+   "ta_name": "musculus teres minor",
+   "ta_code": 2459,
    "region": "upper limb",
    "subregion": "shoulder, rotator cuff",
    "origin": [
@@ -2335,11 +2385,11 @@
     "insertion": "TMA-IS",
     "actions": "TMA-IS",
     "innervation.nerve": "TMA-IS",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "StatPearls gives the origin as the inferior angle of the scapula (the teres major origin); the TeachMeAnatomy value is used.",
    "sourcing_tier": "B"
@@ -2348,7 +2398,8 @@
    "record_id": "muscle.coracobrachialis",
    "kind": "muscle",
    "name": "coracobrachialis",
-   "ta_name": null,
+   "ta_name": "musculus coracobrachialis",
+   "ta_code": 2468,
    "region": "upper limb",
    "subregion": "arm, anterior compartment",
    "origin": [
@@ -2390,11 +2441,10 @@
     "actions": "TMA-UA",
     "innervation.nerve": "TMA-UA",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-UA"
+    "arterial_supply": "TMA-UA",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the arm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2402,7 +2452,8 @@
    "record_id": "muscle.biceps-brachii",
    "kind": "muscle",
    "name": "biceps brachii",
-   "ta_name": null,
+   "ta_name": "musculus biceps brachii",
+   "ta_code": 2464,
    "region": "upper limb",
    "subregion": "arm, anterior compartment",
    "origin": [
@@ -2446,11 +2497,10 @@
     "actions": "TMA-UA",
     "innervation.nerve": "TMA-UA",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-UA"
+    "arterial_supply": "TMA-UA",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the arm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2458,7 +2508,8 @@
    "record_id": "muscle.brachialis",
    "kind": "muscle",
    "name": "brachialis",
-   "ta_name": null,
+   "ta_name": "musculus brachialis",
+   "ta_code": 2469,
    "region": "upper limb",
    "subregion": "arm, anterior compartment",
    "origin": [
@@ -2499,11 +2550,10 @@
     "actions": "TMA-UA",
     "innervation.nerve": "TMA-UA",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-UA"
+    "arterial_supply": "TMA-UA",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the arm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2511,7 +2561,8 @@
    "record_id": "muscle.triceps-brachii",
    "kind": "muscle",
    "name": "triceps brachii",
-   "ta_name": null,
+   "ta_name": "musculus triceps brachii",
+   "ta_code": 2471,
    "region": "upper limb",
    "subregion": "arm, posterior compartment",
    "origin": [
@@ -2554,11 +2605,10 @@
     "actions": "TMA-UA",
     "innervation.nerve": "TMA-UA",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-UA"
+    "arterial_supply": "TMA-UA",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the posterior compartment of the arm.",
    "sourcing_tier": "A"
   },
@@ -2566,7 +2616,8 @@
    "record_id": "muscle.anconeus",
    "kind": "muscle",
    "name": "anconeus",
-   "ta_name": null,
+   "ta_name": "musculus anconeus",
+   "ta_code": 2510,
    "region": "upper limb",
    "subregion": "arm, posterior compartment",
    "origin": [
@@ -2605,11 +2656,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -2618,7 +2669,8 @@
    "record_id": "muscle.pronator-teres",
    "kind": "muscle",
    "name": "pronator teres",
-   "ta_name": null,
+   "ta_name": "pronator teres",
+   "ta_code": 2478,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, superficial",
    "origin": [
@@ -2660,11 +2712,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2672,7 +2723,8 @@
    "record_id": "muscle.flexor-carpi-radialis",
    "kind": "muscle",
    "name": "flexor carpi radialis",
-   "ta_name": null,
+   "ta_name": "flexor radialis carpi",
+   "ta_code": 2481,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, superficial",
    "origin": [
@@ -2713,11 +2765,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2725,7 +2776,8 @@
    "record_id": "muscle.palmaris-longus",
    "kind": "muscle",
    "name": "palmaris longus",
-   "ta_name": null,
+   "ta_name": "musculus palmaris longus",
+   "ta_code": 2482,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, superficial",
    "origin": [
@@ -2767,11 +2819,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Absent in about 15% of the population (TeachMeAnatomy). Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2779,7 +2830,8 @@
    "record_id": "muscle.flexor-carpi-ulnaris",
    "kind": "muscle",
    "name": "flexor carpi ulnaris",
-   "ta_name": null,
+   "ta_name": "flexor ulnaris carpi",
+   "ta_code": 2483,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, superficial",
    "origin": [
@@ -2822,11 +2874,11 @@
     "insertion": "TMA-AF",
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
    ],
    "note": "StatPearls gives this muscle a median-nerve supply, which conflicts with TeachMeAnatomy (ulnar nerve) and standard teaching; the TeachMeAnatomy value is used and the root values are left flagged rather than taken from the conflicting entry. Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "B"
@@ -2835,7 +2887,8 @@
    "record_id": "muscle.flexor-digitorum-superficialis",
    "kind": "muscle",
    "name": "flexor digitorum superficialis",
-   "ta_name": null,
+   "ta_name": "flexor superficialis digitorum",
+   "ta_code": 2486,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, intermediate",
    "origin": [
@@ -2879,11 +2932,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2891,7 +2943,8 @@
    "record_id": "muscle.flexor-digitorum-profundus",
    "kind": "muscle",
    "name": "flexor digitorum profundus",
-   "ta_name": null,
+   "ta_name": "flexor profundus digitorum",
+   "ta_code": 2491,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, deep",
    "origin": [
@@ -2933,11 +2986,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2945,7 +2997,8 @@
    "record_id": "muscle.flexor-pollicis-longus",
    "kind": "muscle",
    "name": "flexor pollicis longus",
-   "ta_name": null,
+   "ta_name": "flexor longus pollicis",
+   "ta_code": 2492,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, deep",
    "origin": [
@@ -2986,11 +3039,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -2998,7 +3050,8 @@
    "record_id": "muscle.pronator-quadratus",
    "kind": "muscle",
    "name": "pronator quadratus",
-   "ta_name": null,
+   "ta_name": "pronator quadratus",
+   "ta_code": 2493,
    "region": "upper limb",
    "subregion": "forearm, anterior compartment, deep",
    "origin": [
@@ -3039,11 +3092,10 @@
     "actions": "TMA-AF",
     "innervation.nerve": "TMA-AF",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "TMA-AF"
+    "arterial_supply": "TMA-AF",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "A"
   },
@@ -3051,7 +3103,8 @@
    "record_id": "muscle.brachioradialis",
    "kind": "muscle",
    "name": "brachioradialis",
-   "ta_name": null,
+   "ta_name": "musculus brachioradialis",
+   "ta_code": 2496,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3089,11 +3142,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3102,7 +3155,8 @@
    "record_id": "muscle.extensor-carpi-radialis-longus",
    "kind": "muscle",
    "name": "extensor carpi radialis longus",
-   "ta_name": null,
+   "ta_name": "extensor radialis longus carpi",
+   "ta_code": 2497,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3140,11 +3194,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3153,7 +3207,8 @@
    "record_id": "muscle.extensor-carpi-radialis-brevis",
    "kind": "muscle",
    "name": "extensor carpi radialis brevis",
-   "ta_name": null,
+   "ta_name": "extensor radialis brevis carpi",
+   "ta_code": 2499,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3191,11 +3246,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3204,7 +3259,8 @@
    "record_id": "muscle.extensor-digitorum",
    "kind": "muscle",
    "name": "extensor digitorum",
-   "ta_name": null,
+   "ta_name": "extensor digitorum",
+   "ta_code": 2500,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3242,11 +3298,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3255,7 +3311,8 @@
    "record_id": "muscle.extensor-digiti-minimi",
    "kind": "muscle",
    "name": "extensor digiti minimi",
-   "ta_name": null,
+   "ta_name": "extensor digiti minimi",
+   "ta_code": 2506,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3293,11 +3350,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3306,7 +3363,8 @@
    "record_id": "muscle.extensor-carpi-ulnaris",
    "kind": "muscle",
    "name": "extensor carpi ulnaris",
-   "ta_name": null,
+   "ta_name": "extensor ulnaris carpi",
+   "ta_code": 2507,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, superficial",
    "origin": [
@@ -3345,11 +3403,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3358,7 +3416,8 @@
    "record_id": "muscle.extensor-indicis",
    "kind": "muscle",
    "name": "extensor indicis",
-   "ta_name": null,
+   "ta_name": "extensor indicis",
+   "ta_code": 2515,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, deep",
    "origin": [
@@ -3396,11 +3455,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3409,7 +3468,8 @@
    "record_id": "muscle.supinator",
    "kind": "muscle",
    "name": "supinator",
-   "ta_name": null,
+   "ta_name": "supinator",
+   "ta_code": 2512,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, deep",
    "origin": [
@@ -3448,11 +3508,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3461,7 +3521,8 @@
    "record_id": "muscle.abductor-pollicis-longus",
    "kind": "muscle",
    "name": "abductor pollicis longus",
-   "ta_name": null,
+   "ta_name": "abductor longus pollicis",
+   "ta_code": 2517,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, deep",
    "origin": [
@@ -3499,11 +3560,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3512,7 +3573,8 @@
    "record_id": "muscle.extensor-pollicis-longus",
    "kind": "muscle",
    "name": "extensor pollicis longus",
-   "ta_name": null,
+   "ta_name": "extensor longus pollicis",
+   "ta_code": 2516,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, deep",
    "origin": [
@@ -3550,11 +3612,11 @@
     "insertion": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -3563,7 +3625,8 @@
    "record_id": "muscle.extensor-pollicis-brevis",
    "kind": "muscle",
    "name": "extensor pollicis brevis",
-   "ta_name": null,
+   "ta_name": "extensor brevis pollicis",
+   "ta_code": 2518,
    "region": "upper limb",
    "subregion": "forearm, posterior compartment, deep",
    "origin": [
@@ -3598,12 +3661,12 @@
     "origin": "SP-UL",
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
-    "innervation.root_values": "SP-UL"
+    "innervation.root_values": "SP-UL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "insertion: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "insertion: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted StatPearls text gives the insertion as the distal phalanx of the thumb, which conflicts with the standard proximal-phalanx attachment; the field is flagged for verification rather than entered from a conflicting source.",
    "sourcing_tier": "C"
@@ -3612,7 +3675,8 @@
    "record_id": "muscle.opponens-pollicis",
    "kind": "muscle",
    "name": "opponens pollicis",
-   "ta_name": null,
+   "ta_name": "musculus opponens pollicis",
+   "ta_code": 2525,
    "region": "upper limb",
    "subregion": "hand, thenar",
    "origin": [
@@ -3653,11 +3717,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3665,7 +3728,8 @@
    "record_id": "muscle.abductor-pollicis-brevis",
    "kind": "muscle",
    "name": "abductor pollicis brevis",
-   "ta_name": null,
+   "ta_name": "abductor brevis pollicis",
+   "ta_code": 2521,
    "region": "upper limb",
    "subregion": "hand, thenar",
    "origin": [
@@ -3706,11 +3770,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3718,7 +3781,8 @@
    "record_id": "muscle.flexor-pollicis-brevis",
    "kind": "muscle",
    "name": "flexor pollicis brevis",
-   "ta_name": null,
+   "ta_name": "flexor brevis pollicis",
+   "ta_code": 2522,
    "region": "upper limb",
    "subregion": "hand, thenar",
    "origin": [
@@ -3759,11 +3823,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "The deep head is also supplied by the deep branch of the ulnar nerve (MyMedSchool hand-muscles table). Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3771,7 +3834,8 @@
    "record_id": "muscle.adductor-pollicis",
    "kind": "muscle",
    "name": "adductor pollicis",
-   "ta_name": null,
+   "ta_name": "adductor pollicis",
+   "ta_code": 2526,
    "region": "upper limb",
    "subregion": "hand, adductor compartment",
    "origin": [
@@ -3812,11 +3876,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3824,7 +3887,8 @@
    "record_id": "muscle.abductor-digiti-minimi-of-hand",
    "kind": "muscle",
    "name": "abductor digiti minimi of hand",
-   "ta_name": null,
+   "ta_name": "abductor digiti minimi manus",
+   "ta_code": 2529,
    "region": "upper limb",
    "subregion": "hand, hypothenar",
    "origin": [
@@ -3865,11 +3929,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3877,7 +3940,8 @@
    "record_id": "muscle.flexor-digiti-minimi-brevis-of-hand",
    "kind": "muscle",
    "name": "flexor digiti minimi brevis of hand",
-   "ta_name": null,
+   "ta_name": "flexor digiti minimi manus",
+   "ta_code": 2530,
    "region": "upper limb",
    "subregion": "hand, hypothenar",
    "origin": [
@@ -3918,11 +3982,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3930,7 +3993,8 @@
    "record_id": "muscle.opponens-digiti-minimi-of-hand",
    "kind": "muscle",
    "name": "opponens digiti minimi of hand",
-   "ta_name": null,
+   "ta_name": "musculus opponens digiti minimi manus",
+   "ta_code": 2531,
    "region": "upper limb",
    "subregion": "hand, hypothenar",
    "origin": [
@@ -3971,11 +4035,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -3983,7 +4046,8 @@
    "record_id": "muscle.set-of-dorsal-interossei-of-hand",
    "kind": "muscle",
    "name": "set of dorsal interossei of hand",
-   "ta_name": null,
+   "ta_name": "musculi interossei dorsales manus",
+   "ta_code": 2533,
    "region": "upper limb",
    "subregion": "hand, interosseous (set)",
    "origin": [
@@ -4024,11 +4088,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Values are the consulted source's statement for the dorsal interossei as a group. Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -4036,7 +4099,8 @@
    "record_id": "muscle.set-of-palmar-interossei-of-hand",
    "kind": "muscle",
    "name": "set of palmar interossei of hand",
-   "ta_name": null,
+   "ta_name": "musculi interossei palmares",
+   "ta_code": 2534,
    "region": "upper limb",
    "subregion": "hand, interosseous (set)",
    "origin": [
@@ -4077,11 +4141,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Values are the consulted source's statement for the palmar interossei as a group. Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -4089,7 +4152,8 @@
    "record_id": "muscle.set-of-lumbricals-of-hand",
    "kind": "muscle",
    "name": "set of lumbricals of hand",
-   "ta_name": null,
+   "ta_name": "musculi lumbricales manus",
+   "ta_code": 2532,
    "region": "upper limb",
    "subregion": "hand, central compartment (set)",
    "origin": [
@@ -4130,11 +4194,10 @@
     "actions": "SP-UL",
     "innervation.nerve": "SP-UL",
     "innervation.root_values": "SP-UL",
-    "arterial_supply": "SP-UL"
+    "arterial_supply": "SP-UL",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Values are the consulted source's statement for the lumbricals as a group. Arterial supply is the consulted source's statement for the hand vasculature as a whole.",
    "sourcing_tier": "A"
   },
@@ -4142,7 +4205,8 @@
    "record_id": "muscle.multifidus",
    "kind": "muscle",
    "name": "multifidus",
-   "ta_name": null,
+   "ta_name": "musculi multifidi",
+   "ta_code": 2276,
    "region": "back",
    "subregion": "intrinsic, deep (transversospinales)",
    "origin": [
@@ -4169,22 +4233,23 @@
     "origin": "TMA-IB",
     "insertion": "TMA-IB",
     "actions": "TMA-IB",
-    "innervation.nerve": "TMA-IB"
+    "innervation.nerve": "TMA-IB",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables",
-    "geometry: no inventory record resolved for this concept (flagged gap \u2014 see MILESTONE-4.md)"
+    "geometry: no inventory record resolved for this concept (flagged gap — see MILESTONE-4.md)"
    ],
-   "note": "NO GEOMETRY: multifidus has no concept in the BodyParts3D/FMA tables (absence probe: 0 hits in all six tables) \u2014 a flagged data gap, recorded in MILESTONE-4.md. The clinical values are from the consulted TeachMeAnatomy intrinsic-back article.",
+   "note": "NO GEOMETRY: multifidus has no concept in the BodyParts3D/FMA tables (absence probe: 0 hits in all six tables) — a flagged data gap, recorded in MILESTONE-4.md. The clinical values are from the consulted TeachMeAnatomy intrinsic-back article.",
    "sourcing_tier": "B"
   },
   {
    "record_id": "muscle.gluteus-maximus",
    "kind": "muscle",
    "name": "gluteus maximus",
-   "ta_name": null,
+   "ta_name": "musculus gluteus maximus",
+   "ta_code": 2598,
    "region": "lower limb",
    "subregion": "gluteal region",
    "origin": [
@@ -4228,11 +4293,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "GM-GLUT",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4240,7 +4304,8 @@
    "record_id": "muscle.gluteus-medius",
    "kind": "muscle",
    "name": "gluteus medius",
-   "ta_name": null,
+   "ta_name": "musculus gluteus medius",
+   "ta_code": 2599,
    "region": "lower limb",
    "subregion": "gluteal region",
    "origin": [
@@ -4283,11 +4348,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "GM-GLUT",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4295,7 +4359,8 @@
    "record_id": "muscle.gluteus-minimus",
    "kind": "muscle",
    "name": "gluteus minimus",
-   "ta_name": null,
+   "ta_name": "musculus gluteus minimus",
+   "ta_code": 2600,
    "region": "lower limb",
    "subregion": "gluteal region",
    "origin": [
@@ -4337,11 +4402,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "GM-GLUT",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4349,7 +4413,8 @@
    "record_id": "muscle.tensor-fasciae-latae",
    "kind": "muscle",
    "name": "tensor fasciae latae",
-   "ta_name": null,
+   "ta_name": "tensor fasciae latae",
+   "ta_code": 2602,
    "region": "lower limb",
    "subregion": "gluteal region / lateral thigh",
    "origin": [
@@ -4393,11 +4458,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "GM-GLUT",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4405,7 +4469,8 @@
    "record_id": "muscle.piriformis",
    "kind": "muscle",
    "name": "piriformis",
-   "ta_name": null,
+   "ta_name": "musculus piriformis",
+   "ta_code": 2604,
    "region": "lower limb",
    "subregion": "gluteal region (deep)",
    "origin": [
@@ -4448,11 +4513,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted article's group statement for the gluteal region (superior and inferior gluteal arteries).",
    "sourcing_tier": "A"
   },
@@ -4460,7 +4524,8 @@
    "record_id": "muscle.obturator-internus",
    "kind": "muscle",
    "name": "obturator internus",
-   "ta_name": null,
+   "ta_name": "obturator internus",
+   "ta_code": 2605,
    "region": "lower limb",
    "subregion": "gluteal region (deep)",
    "origin": [
@@ -4504,11 +4569,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted article's group statement for the gluteal region.",
    "sourcing_tier": "A"
   },
@@ -4516,7 +4580,8 @@
    "record_id": "muscle.gemellus-superior",
    "kind": "muscle",
    "name": "gemellus superior",
-   "ta_name": null,
+   "ta_name": "musculus gemellus superior",
+   "ta_code": 2606,
    "region": "lower limb",
    "subregion": "gluteal region (deep)",
    "origin": [
@@ -4558,11 +4623,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted article's group statement for the gluteal region.",
    "sourcing_tier": "A"
   },
@@ -4570,7 +4634,8 @@
    "record_id": "muscle.gemellus-inferior",
    "kind": "muscle",
    "name": "gemellus inferior",
-   "ta_name": null,
+   "ta_name": "musculus gemellus inferior",
+   "ta_code": 2607,
    "region": "lower limb",
    "subregion": "gluteal region (deep)",
    "origin": [
@@ -4612,11 +4677,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted article's group statement for the gluteal region.",
    "sourcing_tier": "A"
   },
@@ -4624,7 +4688,8 @@
    "record_id": "muscle.quadratus-femoris",
    "kind": "muscle",
    "name": "quadratus femoris",
-   "ta_name": null,
+   "ta_name": "musculus quadratus femoris",
+   "ta_code": 2608,
    "region": "lower limb",
    "subregion": "gluteal region (deep)",
    "origin": [
@@ -4666,11 +4731,10 @@
     "actions": "TMA-GR",
     "innervation.nerve": "TMA-GR",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "TMA-GR"
+    "arterial_supply": "TMA-GR",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the consulted article's group statement for the gluteal region.",
    "sourcing_tier": "A"
   },
@@ -4678,7 +4742,8 @@
    "record_id": "muscle.psoas-major",
    "kind": "muscle",
    "name": "psoas major",
-   "ta_name": null,
+   "ta_name": "psoas major",
+   "ta_code": 2595,
    "region": "lower limb",
    "subregion": "anterior thigh (hip flexor group)",
    "origin": [
@@ -4717,11 +4782,11 @@
     "insertion": "TMA-AT",
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
-    "innervation.root_values": "TMA-AT"
+    "innervation.root_values": "TMA-AT",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -4730,7 +4795,8 @@
    "record_id": "muscle.iliacus",
    "kind": "muscle",
    "name": "iliacus",
-   "ta_name": null,
+   "ta_name": "musculus iliacus",
+   "ta_code": 2594,
    "region": "lower limb",
    "subregion": "anterior thigh (hip flexor group)",
    "origin": [
@@ -4768,11 +4834,11 @@
     "insertion": "TMA-AT",
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
-    "innervation.root_values": "GM-AT"
+    "innervation.root_values": "GM-AT",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -4781,7 +4847,8 @@
    "record_id": "muscle.sartorius",
    "kind": "muscle",
    "name": "sartorius",
-   "ta_name": null,
+   "ta_name": "musculus sartorius",
+   "ta_code": 2610,
    "region": "lower limb",
    "subregion": "anterior compartment of thigh",
    "origin": [
@@ -4820,11 +4887,11 @@
     "insertion": "TMA-AT",
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
-    "innervation.root_values": "GM-AT"
+    "innervation.root_values": "GM-AT",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -4833,7 +4900,8 @@
    "record_id": "muscle.rectus-femoris",
    "kind": "muscle",
    "name": "rectus femoris",
-   "ta_name": null,
+   "ta_name": "musculus rectus femoris",
+   "ta_code": 2614,
    "region": "lower limb",
    "subregion": "anterior thigh (quadriceps)",
    "origin": [
@@ -4876,11 +4944,10 @@
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
     "innervation.root_values": "TMA-AT",
-    "arterial_supply": "SP-THIGH"
+    "arterial_supply": "SP-THIGH",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4888,7 +4955,8 @@
    "record_id": "muscle.vastus-lateralis",
    "kind": "muscle",
    "name": "vastus lateralis",
-   "ta_name": null,
+   "ta_name": "musculus vastus lateralis",
+   "ta_code": 2618,
    "region": "lower limb",
    "subregion": "anterior thigh (quadriceps)",
    "origin": [
@@ -4931,11 +4999,10 @@
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
     "innervation.root_values": "TMA-AT",
-    "arterial_supply": "SP-THIGH"
+    "arterial_supply": "SP-THIGH",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -4943,7 +5010,8 @@
    "record_id": "muscle.vastus-medialis",
    "kind": "muscle",
    "name": "vastus medialis",
-   "ta_name": null,
+   "ta_name": "musculus vastus medialis",
+   "ta_code": 2620,
    "region": "lower limb",
    "subregion": "anterior thigh (quadriceps)",
    "origin": [
@@ -4988,11 +5056,10 @@
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
     "innervation.root_values": "TMA-AT",
-    "arterial_supply": "SP-THIGH"
+    "arterial_supply": "SP-THIGH",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Supply values are StatPearls' specific statement for vastus medialis (the lateral femoral circumflex artery supplies the other quadriceps components).",
    "sourcing_tier": "A"
   },
@@ -5000,7 +5067,8 @@
    "record_id": "muscle.vastus-intermedius",
    "kind": "muscle",
    "name": "vastus intermedius",
-   "ta_name": null,
+   "ta_name": "musculus vastus intermedius",
+   "ta_code": 2619,
    "region": "lower limb",
    "subregion": "anterior thigh (quadriceps)",
    "origin": [
@@ -5041,11 +5109,10 @@
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
     "innervation.root_values": "TMA-AT",
-    "arterial_supply": "SP-THIGH"
+    "arterial_supply": "SP-THIGH",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5053,7 +5120,8 @@
    "record_id": "muscle.pectineus",
    "kind": "muscle",
    "name": "pectineus",
-   "ta_name": null,
+   "ta_name": "musculus pectineus",
+   "ta_code": 2627,
    "region": "lower limb",
    "subregion": "anterior / medial thigh",
    "origin": [
@@ -5092,11 +5160,11 @@
     "insertion": "TMA-AT",
     "actions": "TMA-AT",
     "innervation.nerve": "TMA-AT",
-    "innervation.root_values": "BS-LE"
+    "innervation.root_values": "BS-LE",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -5105,7 +5173,8 @@
    "record_id": "muscle.gracilis",
    "kind": "muscle",
    "name": "gracilis",
-   "ta_name": null,
+   "ta_name": "musculus gracilis",
+   "ta_code": 2635,
    "region": "lower limb",
    "subregion": "medial compartment of thigh",
    "origin": [
@@ -5148,11 +5217,10 @@
     "actions": "TMA-MT",
     "innervation.nerve": "TMA-MT",
     "innervation.root_values": "TMA-MT",
-    "arterial_supply": "TMA-MT"
+    "arterial_supply": "TMA-MT",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5160,7 +5228,8 @@
    "record_id": "muscle.adductor-longus",
    "kind": "muscle",
    "name": "adductor longus",
-   "ta_name": null,
+   "ta_name": "adductor longus",
+   "ta_code": 2628,
    "region": "lower limb",
    "subregion": "medial compartment of thigh",
    "origin": [
@@ -5202,11 +5271,10 @@
     "actions": "TMA-MT",
     "innervation.nerve": "TMA-MT",
     "innervation.root_values": "TMA-MT",
-    "arterial_supply": "TMA-MT"
+    "arterial_supply": "TMA-MT",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5214,7 +5282,8 @@
    "record_id": "muscle.adductor-brevis",
    "kind": "muscle",
    "name": "adductor brevis",
-   "ta_name": null,
+   "ta_name": "adductor brevis",
+   "ta_code": 2629,
    "region": "lower limb",
    "subregion": "medial compartment of thigh",
    "origin": [
@@ -5256,11 +5325,10 @@
     "actions": "TMA-MT",
     "innervation.nerve": "TMA-MT",
     "innervation.root_values": "TMA-MT",
-    "arterial_supply": "TMA-MT"
+    "arterial_supply": "TMA-MT",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5268,7 +5336,8 @@
    "record_id": "muscle.adductor-magnus",
    "kind": "muscle",
    "name": "adductor magnus",
-   "ta_name": null,
+   "ta_name": "adductor magnus",
+   "ta_code": 2630,
    "region": "lower limb",
    "subregion": "medial / posterior thigh",
    "origin": [
@@ -5313,11 +5382,10 @@
     "actions": "TMA-MT",
     "innervation.nerve": "TMA-MT",
     "innervation.root_values": "TMA-MT",
-    "arterial_supply": "TMA-MT"
+    "arterial_supply": "TMA-MT",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5325,7 +5393,8 @@
    "record_id": "muscle.obturator-externus",
    "kind": "muscle",
    "name": "obturator externus",
-   "ta_name": null,
+   "ta_name": "obturator externus",
+   "ta_code": 2636,
    "region": "lower limb",
    "subregion": "medial compartment of thigh",
    "origin": [
@@ -5366,11 +5435,10 @@
     "actions": "TMA-MT",
     "innervation.nerve": "TMA-MT",
     "innervation.root_values": "TMA-MT",
-    "arterial_supply": "TMA-MT"
+    "arterial_supply": "TMA-MT",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5378,7 +5446,8 @@
    "record_id": "muscle.biceps-femoris",
    "kind": "muscle",
    "name": "biceps femoris",
-   "ta_name": null,
+   "ta_name": "musculus biceps femoris",
+   "ta_code": 2638,
    "region": "lower limb",
    "subregion": "posterior compartment of thigh",
    "origin": [
@@ -5424,11 +5493,10 @@
     "actions": "SP-HAM",
     "innervation.nerve": "SP-HAM",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "SP-HAM"
+    "arterial_supply": "SP-HAM",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5436,7 +5504,8 @@
    "record_id": "muscle.semitendinosus",
    "kind": "muscle",
    "name": "semitendinosus",
-   "ta_name": null,
+   "ta_name": "musculus semitendinosus",
+   "ta_code": 2641,
    "region": "lower limb",
    "subregion": "posterior compartment of thigh",
    "origin": [
@@ -5479,11 +5548,10 @@
     "actions": "MS-ST",
     "innervation.nerve": "MS-ST",
     "innervation.root_values": "BS-LE",
-    "arterial_supply": "MS-ST"
+    "arterial_supply": "MS-ST",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -5491,7 +5559,8 @@
    "record_id": "muscle.semimembranosus",
    "kind": "muscle",
    "name": "semimembranosus",
-   "ta_name": null,
+   "ta_name": "musculus semimembranosus",
+   "ta_code": 2642,
    "region": "lower limb",
    "subregion": "posterior compartment of thigh",
    "origin": [
@@ -5531,11 +5600,11 @@
     "insertion": "SP-HAM",
     "actions": "SP-HAM",
     "innervation.nerve": "SP-HAM",
-    "innervation.root_values": "BS-LE"
+    "innervation.root_values": "BS-LE",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -5544,7 +5613,8 @@
    "record_id": "muscle.tibialis-anterior",
    "kind": "muscle",
    "name": "tibialis anterior",
-   "ta_name": null,
+   "ta_name": "musculus tibialis anterior",
+   "ta_code": 2644,
    "region": "lower limb",
    "subregion": "anterior compartment of leg",
    "origin": [
@@ -5588,11 +5658,10 @@
     "actions": "TMA-AL",
     "innervation.nerve": "TMA-AL",
     "innervation.root_values": "TMA-AL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (anterior compartment: anterior tibial artery).",
    "sourcing_tier": "A"
   },
@@ -5600,7 +5669,8 @@
    "record_id": "muscle.extensor-hallucis-longus",
    "kind": "muscle",
    "name": "extensor hallucis longus",
-   "ta_name": null,
+   "ta_name": "extensor longus hallucis",
+   "ta_code": 2650,
    "region": "lower limb",
    "subregion": "anterior compartment of leg",
    "origin": [
@@ -5643,11 +5713,10 @@
     "actions": "TMA-AL",
     "innervation.nerve": "TMA-AL",
     "innervation.root_values": "TMA-AL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (anterior compartment: anterior tibial artery).",
    "sourcing_tier": "A"
   },
@@ -5655,7 +5724,8 @@
    "record_id": "muscle.extensor-digitorum-longus",
    "kind": "muscle",
    "name": "extensor digitorum longus",
-   "ta_name": null,
+   "ta_name": "extensor longus digitorum",
+   "ta_code": 2645,
    "region": "lower limb",
    "subregion": "anterior compartment of leg",
    "origin": [
@@ -5698,11 +5768,10 @@
     "actions": "TMA-AL",
     "innervation.nerve": "TMA-AL",
     "innervation.root_values": "TMA-AL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (anterior compartment: anterior tibial artery).",
    "sourcing_tier": "A"
   },
@@ -5710,7 +5779,8 @@
    "record_id": "muscle.fibularis-tertius",
    "kind": "muscle",
    "name": "fibularis tertius",
-   "ta_name": null,
+   "ta_name": "musculus fibularis tertius",
+   "ta_code": 2649,
    "region": "lower limb",
    "subregion": "anterior compartment of leg",
    "origin": [
@@ -5752,11 +5822,10 @@
     "actions": "TMA-AL",
     "innervation.nerve": "TMA-AL",
     "innervation.root_values": "TMA-AL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Variant: not present in all individuals (source statement). Arterial supply is the compartment statement of the consulted leg-lecture tables (anterior compartment: anterior tibial artery).",
    "sourcing_tier": "A"
   },
@@ -5764,7 +5833,8 @@
    "record_id": "muscle.fibularis-longus",
    "kind": "muscle",
    "name": "fibularis longus",
-   "ta_name": null,
+   "ta_name": "musculus fibularis longus",
+   "ta_code": 2652,
    "region": "lower limb",
    "subregion": "lateral compartment of leg",
    "origin": [
@@ -5808,11 +5878,11 @@
     "insertion": "BS-LE",
     "actions": "UOM-LEG",
     "innervation.nerve": "BS-LE",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
    ],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (lateral compartment: fibular/peroneal artery). Root values for the superficial fibular nerve differ between consulted flashcard sources and are verify-flagged rather than entered.",
    "sourcing_tier": "B"
@@ -5821,7 +5891,8 @@
    "record_id": "muscle.fibularis-brevis",
    "kind": "muscle",
    "name": "fibularis brevis",
-   "ta_name": null,
+   "ta_name": "musculus fibularis brevis",
+   "ta_code": 2653,
    "region": "lower limb",
    "subregion": "lateral compartment of leg",
    "origin": [
@@ -5862,11 +5933,11 @@
     "insertion": "BS-LE",
     "actions": "UOM-LEG",
     "innervation.nerve": "BS-LE",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
    ],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (lateral compartment: fibular/peroneal artery). Root values for the superficial fibular nerve differ between consulted flashcard sources and are verify-flagged rather than entered.",
    "sourcing_tier": "B"
@@ -5875,7 +5946,8 @@
    "record_id": "muscle.gastrocnemius",
    "kind": "muscle",
    "name": "gastrocnemius",
-   "ta_name": null,
+   "ta_name": "musculus gastrocnemius",
+   "ta_code": 2657,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (superficial)",
    "origin": [
@@ -5915,11 +5987,11 @@
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
-    "innervation.root_values": "WIKI-PL"
+    "innervation.root_values": "WIKI-PL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -5928,7 +6000,8 @@
    "record_id": "muscle.soleus",
    "kind": "muscle",
    "name": "soleus",
-   "ta_name": null,
+   "ta_name": "musculus soleus",
+   "ta_code": 2660,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (superficial)",
    "origin": [
@@ -5967,11 +6040,11 @@
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
-    "innervation.root_values": "BS-LE"
+    "innervation.root_values": "BS-LE",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -5980,7 +6053,8 @@
    "record_id": "muscle.plantaris",
    "kind": "muscle",
    "name": "plantaris",
-   "ta_name": null,
+   "ta_name": "musculus plantaris",
+   "ta_code": 2663,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (superficial)",
    "origin": [
@@ -6018,12 +6092,12 @@
     "origin": "WIKI-PL",
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
-    "innervation.nerve": "WIKI-PL"
+    "innervation.nerve": "WIKI-PL",
+    "ta_name": "TA2"
    },
    "verify": [
     "innervation.root_values: not stated in the consulted sources",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Nerve entered from the consulted article's compartment statement (the posterior compartment of the leg is supplied by the tibial nerve).",
    "sourcing_tier": "B"
@@ -6032,7 +6106,8 @@
    "record_id": "muscle.popliteus",
    "kind": "muscle",
    "name": "popliteus",
-   "ta_name": null,
+   "ta_name": "musculus popliteus",
+   "ta_code": 2665,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (deep)",
    "origin": [
@@ -6072,11 +6147,11 @@
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
-    "innervation.root_values": "WIKI-PL"
+    "innervation.root_values": "WIKI-PL",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -6085,7 +6160,8 @@
    "record_id": "muscle.tibialis-posterior",
    "kind": "muscle",
    "name": "tibialis posterior",
-   "ta_name": null,
+   "ta_name": "musculus tibialis posterior",
+   "ta_code": 2666,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (deep)",
    "origin": [
@@ -6132,11 +6208,10 @@
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
     "innervation.root_values": "WIKI-PL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (deep posterior compartment: posterior tibial artery).",
    "sourcing_tier": "A"
   },
@@ -6144,7 +6219,8 @@
    "record_id": "muscle.flexor-digitorum-longus",
    "kind": "muscle",
    "name": "flexor digitorum longus",
-   "ta_name": null,
+   "ta_name": "flexor longus digitorum",
+   "ta_code": 2667,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (deep)",
    "origin": [
@@ -6185,11 +6261,11 @@
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
    ],
    "note": "Root values conflict between consulted sources (S1, S2 in the Wikipedia table vs S2, S3 in a Gray's Atlas flashcard table) and are verify-flagged. Arterial supply is the compartment statement of the consulted leg-lecture tables (deep posterior compartment: posterior tibial artery).",
    "sourcing_tier": "B"
@@ -6198,7 +6274,8 @@
    "record_id": "muscle.flexor-hallucis-longus",
    "kind": "muscle",
    "name": "flexor hallucis longus",
-   "ta_name": null,
+   "ta_name": "flexor longus hallucis",
+   "ta_code": 2668,
    "region": "lower limb",
    "subregion": "posterior compartment of leg (deep)",
    "origin": [
@@ -6241,11 +6318,11 @@
     "insertion": "WIKI-PL",
     "actions": "WIKI-PL",
     "innervation.nerve": "WIKI-PL",
-    "arterial_supply": "UOM-LEG"
+    "arterial_supply": "UOM-LEG",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
    ],
    "note": "Root values conflict between consulted sources (S1, S2 in the Wikipedia table vs S2, S3 in a Gray's Atlas flashcard table) and are verify-flagged. Arterial supply is the compartment statement of the consulted leg-lecture tables (deep posterior compartment: posterior tibial artery).",
    "sourcing_tier": "B"
@@ -6254,7 +6331,8 @@
    "record_id": "muscle.diaphragm",
    "kind": "muscle",
    "name": "diaphragm",
-   "ta_name": null,
+   "ta_name": "diaphragma",
+   "ta_code": 2327,
    "region": "thorax",
    "subregion": "respiratory",
    "origin": [
@@ -6296,11 +6374,10 @@
     "actions": "MS-DIA",
     "innervation.nerve": "WIKI-DIA",
     "innervation.root_values": "WIKI-DIA",
-    "arterial_supply": "WIKI-DIA"
+    "arterial_supply": "WIKI-DIA",
+    "ta_name": "TA2"
    },
-   "verify": [
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
-   ],
+   "verify": [],
    "note": null,
    "sourcing_tier": "A"
   },
@@ -6308,7 +6385,8 @@
    "record_id": "muscle.external-intercostal",
    "kind": "muscle",
    "name": "external intercostal",
-   "ta_name": null,
+   "ta_name": "musculi intercostales externi",
+   "ta_code": 2311,
    "region": "thorax",
    "subregion": "intercostal spaces",
    "origin": [
@@ -6342,12 +6420,12 @@
     "origin": "SN-IC",
     "insertion": "SN-IC",
     "actions": "MS-DIA",
-    "innervation.nerve": "SN-IC"
+    "innervation.nerve": "SN-IC",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "FMA/BP3D models the intercostals as single classes spanning all intercostal spaces; each space is supplied by its own intercostal nerve (T1-T11), so no single root value applies to the class record.",
    "sourcing_tier": "B"
@@ -6356,7 +6434,8 @@
    "record_id": "muscle.internal-intercostal",
    "kind": "muscle",
    "name": "internal intercostal",
-   "ta_name": null,
+   "ta_name": "musculi intercostales interni",
+   "ta_code": 2312,
    "region": "thorax",
    "subregion": "intercostal spaces",
    "origin": [
@@ -6390,12 +6469,12 @@
     "origin": "SN-IC",
     "insertion": "SN-IC",
     "actions": "MS-DIA",
-    "innervation.nerve": "SN-IC"
+    "innervation.nerve": "SN-IC",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "FMA/BP3D models the intercostals as single classes spanning all intercostal spaces; each space is supplied by its own intercostal nerve (T1-T11), so no single root value applies to the class record.",
    "sourcing_tier": "B"
@@ -6404,7 +6483,8 @@
    "record_id": "muscle.innermost-intercostal",
    "kind": "muscle",
    "name": "innermost intercostal",
-   "ta_name": null,
+   "ta_name": "musculi intercostales intimi",
+   "ta_code": 2313,
    "region": "thorax",
    "subregion": "intercostal spaces",
    "origin": null,
@@ -6431,14 +6511,14 @@
     "geometry_file": "data/muscular/muscle-geometry.json"
    },
    "sources": {
-    "actions": "MS-DIA"
+    "actions": "MS-DIA",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
     "origin: not stated in the consulted sources",
     "insertion: not stated in the consulted sources",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments and innervation were not separately stated in the consulted sources (the layer mirrors the internal intercostals); flagged rather than entered. FMA/BP3D models the intercostals as single classes spanning all intercostal spaces; each space is supplied by its own intercostal nerve (T1-T11), so no single root value applies to the class record.",
    "sourcing_tier": "C"
@@ -6447,7 +6527,8 @@
    "record_id": "muscle.transversus-thoracis",
    "kind": "muscle",
    "name": "transversus thoracis",
-   "ta_name": null,
+   "ta_name": "musculus transversus thoracis",
+   "ta_code": 2315,
    "region": "thorax",
    "subregion": "anterior thoracic wall (deep)",
    "origin": [
@@ -6480,14 +6561,14 @@
    },
    "sources": {
     "origin": "SN-IC",
-    "insertion": "SN-IC"
+    "insertion": "SN-IC",
+    "ta_name": "TA2"
    },
    "verify": [
     "actions: not stated in the consulted sources",
     "innervation.nerve: not stated in the consulted sources",
     "innervation.root_values: not stated in the consulted sources",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "C"
@@ -6496,7 +6577,8 @@
    "record_id": "muscle.external-oblique",
    "kind": "muscle",
    "name": "external oblique",
-   "ta_name": null,
+   "ta_name": "musculus obliquus externus abdominis",
+   "ta_code": 2364,
    "region": "abdomen",
    "subregion": "anterolateral abdominal wall",
    "origin": [
@@ -6530,13 +6612,13 @@
    },
    "sources": {
     "origin": "SD-DIA",
-    "insertion": "SD-DIA"
+    "insertion": "SD-DIA",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
+    "innervation: flagged for verification — not stated in the consulted sources (see note)",
     "actions: not stated in the consulted sources",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted extract's table row gives attachments only (nerve column truncated); actions and innervation are verify-flagged rather than entered.",
    "sourcing_tier": "C"
@@ -6545,7 +6627,8 @@
    "record_id": "muscle.sternocleidomastoid",
    "kind": "muscle",
    "name": "sternocleidomastoid",
-   "ta_name": null,
+   "ta_name": "musculus sternocleidomastoideus",
+   "ta_code": 2156,
    "region": "neck",
    "subregion": "superficial",
    "origin": [
@@ -6586,11 +6669,11 @@
     "insertion": "MOORE-NECK",
     "actions": "MOORE-NECK",
     "innervation.nerve": "KSU-NECK",
-    "innervation.root_values": "KSU-NECK"
+    "innervation.root_values": "KSU-NECK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -6599,7 +6682,8 @@
    "record_id": "muscle.scalenus-anterior",
    "kind": "muscle",
    "name": "scalenus anterior",
-   "ta_name": null,
+   "ta_name": "musculus scalenus anterior",
+   "ta_code": 2152,
    "region": "neck",
    "subregion": "lateral vertebral group",
    "origin": [
@@ -6638,11 +6722,11 @@
     "insertion": "KSU-NECK",
     "actions": "KSU-NECK",
     "innervation.nerve": "MOORE-NECK",
-    "innervation.root_values": "MOORE-NECK"
+    "innervation.root_values": "MOORE-NECK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"
@@ -6651,7 +6735,8 @@
    "record_id": "muscle.scalenus-medius",
    "kind": "muscle",
    "name": "scalenus medius",
-   "ta_name": null,
+   "ta_name": "musculus scalenus medius",
+   "ta_code": 2153,
    "region": "neck",
    "subregion": "lateral vertebral group",
    "origin": [
@@ -6689,12 +6774,12 @@
     "origin": "KSU-NECK",
     "insertion": "MOORE-NECK",
     "actions": "KSU-NECK",
-    "innervation.nerve": "KSU-NECK"
+    "innervation.nerve": "KSU-NECK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Root values are not stated consistently across the consulted sources and are verify-flagged.",
    "sourcing_tier": "B"
@@ -6703,7 +6788,8 @@
    "record_id": "muscle.scalenus-posterior",
    "kind": "muscle",
    "name": "scalenus posterior",
-   "ta_name": null,
+   "ta_name": "musculus scalenus posterior",
+   "ta_code": 2154,
    "region": "neck",
    "subregion": "lateral vertebral group",
    "origin": [
@@ -6742,11 +6828,11 @@
     "insertion": "MOORE-NECK",
     "actions": "KSU-NECK",
     "innervation.nerve": "MOORE-NECK",
-    "innervation.root_values": "MOORE-NECK"
+    "innervation.root_values": "MOORE-NECK",
+    "ta_name": "TA2"
    },
    "verify": [
-    "arterial_supply: not stated in the consulted sources",
-    "ta_name: not present in the consulted sources or in the BodyParts3D/FMA tables"
+    "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
    "sourcing_tier": "B"

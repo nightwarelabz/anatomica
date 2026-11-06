@@ -491,9 +491,13 @@ for r in crecs:
         bad.append((r["id"], "unknown type/shape"))
         continue
     if r["ta_name"] is not None:
-        bad.append((r["id"], "ta_name not null"))
-    if not any(v.startswith("ta_name:") for v in r["verify"]):
-        bad.append((r["id"], "ta_name verify flag missing"))
+        # M23 discipline: entered ta_name = TA2 pass (citation +
+        # ta_code; table equality via tools/ta2_discipline.py)
+        if r["sources"].get("ta_name") != ["TA2"] or \
+                not isinstance(r.get("ta_code"), int):
+            bad.append((r["id"], "ta_name without TA2 citation/ta_code"))
+    elif not any(v.startswith("ta_name:") for v in r["verify"]):
+        bad.append((r["id"], "ta_name null without verify flag"))
     for f in fields:
         if r[f] is None:
             if not any(v.startswith(f + ":") for v in r["verify"]):
@@ -578,6 +582,12 @@ check(mech["sources"].get("values") == ["S8"] and
 groups = Counter(r["group"] for r in crecs)
 check(dict(groups) == clin["meta"]["groups"],
       f"clinical groups: {dict(sorted(groups.items()))}")
+
+# ------------------------------------------------- TA2 discipline (M23)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import ta2_discipline as _ta2d
+_ta2d.run("respiratory", "data/respiratory/respiratory.json", check)
 
 print()
 if failures:

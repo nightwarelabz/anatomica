@@ -31,7 +31,8 @@
    "S6": "StatPearls, 'Anatomy, Thorax, Heart Coronary Arteries'",
    "S7": "StatPearls, 'Cardiac Dominance'",
    "S8": "StatPearls, 'Anatomy, Thorax, Subclavian Arteries' (NCBI Bookshelf NBK539736)",
-   "S9": "StatPearls, 'Neuroanatomy, Circle of Willis'"
+   "S9": "StatPearls, 'Neuroanatomy, Circle of Willis'",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "sourcing_tiers": {
    "by_group": {
@@ -93,9 +94,19 @@
    },
    "definition": "A = every clinical field sourced; B = sourced except territory and/or termination; C = at least one core field (origin / course / branches) verify-flagged."
   },
-  "ta_name_status": "null on every record: Terminologia Anatomica names were not given by the consulted sources and are verify-flagged throughout, pending a TA2 pass.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 68 of 69 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 1 ambiguous and 0 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
   "variant_gate": "Variants with a sourced prevalence >= 1% and a plausible injury consequence are recorded with a prevalence RANGE and citation, and are either modelled or carry an explicit unmodeled_note.",
-  "vessel_field_semantics": "Arteries: origin / course / branches in order / territory supplied / termination. Veins: origin = formation, branches = tributaries, territory = drainage area, termination = vessel joined."
+  "vessel_field_semantics": "Arteries: origin / course / branches in order / territory supplied / termination. Veins: origin = formation, branches = tributaries, territory = drainage area, termination = vessel joined.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 69,
+   "resolved": 68,
+   "ambiguous": 1,
+   "not_found": 0,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -135,15 +146,18 @@
     "venous_drainage": [
      "S10",
      "S19"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "cor",
+   "ta_code": 3932,
    "type": "organ",
    "valves": "Four valves ensure unidirectional flow: tricuspid (right atrioventricular, three cusps), mitral/bicuspid (left atrioventricular, two cusps), pulmonary semilunar (right ventricle to pulmonary trunk), aortic semilunar (left ventricle to aorta). AV valve cusps are restrained by chordae tendineae attached to papillary muscles.",
    "venous_drainage": "Most venous blood of the heart wall drains via the coronary sinus into the right atrium; the right atrium also receives the superior and inferior venae cavae.",
    "verify": [
-    "ta_name: not given by consulted sources - verify",
     "pericardium: the pericardium has no concept in the BP3D release (stem search over all six release tables returned no match); its description is therefore not entered - verify",
     "conduction system geometry: the sinoatrial node, atrioventricular node, bundle of His and Purkinje fibres have no concepts in the BP3D release (stem search returned no matches); the conduction system is described in text only and has no geometry in v1 - verify",
     "interatrial and interventricular septa: no concepts in the BP3D release (stem search returned no matches); chamber separation is described, not modelled - verify",
@@ -180,10 +194,14 @@
     ],
     "territory": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria coronaria sinistra",
+   "ta_code": 4142,
    "termination": "Divides into the anterior interventricular and circumflex branches.",
    "territory": "Left atrium and left ventricle; the LAD supplies the anterior two-thirds of the interventricular septum.",
    "type": "vessel",
@@ -221,16 +239,19 @@
     ],
     "territory": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria coronaria dextra",
+   "ta_code": 4131,
    "termination": "Continues in the coronary sulcus to the posterior interventricular branch (in right-dominant circulation).",
    "territory": "Right atrium, right ventricle, the sinoatrial and atrioventricular nodes, and the posterior third of the interventricular septum (via the posterior descending branch).",
    "type": "vessel",
    "verify": [
     "branches: 'right marginal branch of right coronary artery' and the sinoatrial nodal branch are named in S6 but have no dedicated records in the BP3D inventory partition - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'sinoatrial nodal branch of right coronary artery' - verify"
    ]
   },
@@ -257,16 +278,19 @@
     ],
     "territory": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria interventricularis anterior",
+   "ta_code": 4143,
    "termination": "Reaches the apex of the heart.",
    "territory": "Anterior portion of the left ventricle and the anterior two-thirds of the interventricular septum.",
    "type": "vessel",
    "verify": [
-    "branches: diagonal and septal perforating branches are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: diagonal and septal perforating branches are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -294,16 +318,19 @@
     ],
     "territory": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "B",
-   "ta_name": null,
+   "ta_name": "arteria circumflexa cordis",
+   "ta_code": 4148,
    "termination": null,
    "territory": "Left atrium and the posterior-lateral aspect of the left ventricle; in left-dominant circulation it gives the posterior descending artery.",
    "type": "vessel",
    "verify": [
     "branches: 'left marginal branch of circumflex branch of left coronary artery' is named in S6 but has no dedicated record in the BP3D inventory partition - verify",
-    "ta_name: not given by consulted sources - verify",
     "termination: not sourced from consulted sources - verify"
    ]
   },
@@ -331,16 +358,19 @@
     ],
     "territory": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria interventricularis inferior",
+   "ta_code": 4138,
    "termination": "Anastomoses with the anterior interventricular branch near the apex.",
    "territory": "Posterior one-third of the interventricular septum and the inferior aspect of the heart.",
    "type": "vessel",
    "verify": [
-    "branches: septal perforating branches not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: septal perforating branches not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -382,16 +412,19 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "aorta",
+   "ta_code": 4175,
    "termination": "Terminates at the level of the L4 vertebra by bifurcating into the right and left common iliac arteries.",
    "territory": "The entire systemic circulation.",
    "type": "vessel",
    "verify": [
-    "branches: branch list gives the principal named branches only; bronchial, intercostal, phrenic, lumbar, gonadal and other segmental branches are recorded on the segment records - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: branch list gives the principal named branches only; bronchial, intercostal, phrenic, lumbar, gonadal and other segmental branches are recorded on the segment records - verify"
    ]
   },
   {
@@ -423,10 +456,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "aorta ascendens",
+   "ta_code": 4176,
    "termination": "Continues as the aortic arch at the level of the second sternocostal joint.",
    "territory": "The myocardium, via the coronary arteries (its only branches).",
    "type": "vessel",
@@ -462,10 +499,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arcus aortae",
+   "ta_code": 4177,
    "termination": "Continues as the thoracic aorta at the level of T4.",
    "territory": "Head, neck and upper limbs via its three branches (proximal to distal: brachiocephalic trunk, left common carotid, left subclavian).",
    "type": "vessel",
@@ -505,16 +546,19 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "aorta thoracica",
+   "ta_code": 4186,
    "termination": "Becomes the abdominal aorta at the aortic hiatus (T12).",
    "territory": "Bronchial and peribronchial tissue and visceral pleura; posterior mediastinum; oesophagus; dorsal pericardium; superior diaphragm; intercostal spaces 3-11 (nine pairs of posterior intercostal arteries) and the anterolateral abdominal wall (subcostal).",
    "type": "vessel",
    "verify": [
     "branches: the named branch classes are recorded as unpaired class names; the release lateralises several of them per side - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'mediastinal artery'; 'pericardial artery'; 'superior phrenic artery' - verify"
    ]
   },
@@ -557,16 +601,19 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "aorta abdominalis",
+   "ta_code": 4205,
    "termination": "Bifurcates into the right and left common iliac arteries at L4.",
    "territory": "Diaphragm; foregut (coeliac); midgut (SMA); adrenal glands; kidneys; gonads; hindgut (IMA); coccyx, lumbar vertebrae and sacrum (median sacral); abdominal wall and spinal cord (four pairs of lumbar arteries); pelvis and lower limbs via the common iliacs.",
    "type": "vessel",
    "verify": [
     "branches: 'median sacral artery' is named in S1 but has no concept in the BP3D release (stem search returned no match) - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'gonadal artery' - verify"
    ]
   },
@@ -599,10 +646,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "truncus brachiocephalicus",
+   "ta_code": 4179,
    "termination": "Divides into the right common carotid and right subclavian arteries.",
    "territory": "Right side of the head and neck, and the right upper limb.",
    "type": "vessel",
@@ -638,10 +689,14 @@
     ],
     "territory": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "carotis communis",
+   "ta_code": 4366,
    "termination": "Divides into the external and internal carotid arteries at the upper border of the thyroid cartilage (level of C4).",
    "territory": "The majority of the head and neck.",
    "type": "vessel",
@@ -682,17 +737,20 @@
     ],
     "territory": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "carotis externa",
+   "ta_code": 4369,
    "termination": "Divides into its terminal branches, the maxillary and superficial temporal arteries, within the parotid gland.",
    "territory": "The neck, face and scalp (the main arterial supply to these structures).",
    "type": "vessel",
    "verify": [
     "geometry: the external carotid artery has NO concept of its own in the BP3D 4.0 release (the carotid concepts present are the common carotid artery, the internal carotid artery and their subdivisions), so no inventory record exists to link - verify",
     "branches: 'superior thyroid artery', 'lingual artery' and 'facial artery' are named in S2 but have NO concepts in the BP3D release (stem search over all six release tables returned no matches); the external carotid system in this release is therefore unmodelled - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'ascending pharyngeal artery'; 'occipital artery'; 'posterior auricular artery'; 'maxillary artery'; 'superficial temporal artery' - verify"
    ]
   },
@@ -728,10 +786,14 @@
     "territory": [
      "S2",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "carotis interna",
+   "ta_code": 4463,
    "termination": "Terminates intracranially as the anterior and middle cerebral arteries.",
    "territory": "The brain (anterior circulation: frontal and parietal lobes, lateral temporal lobes, anterior deep cerebrum), orbit, forehead and nose.",
    "type": "vessel",
@@ -770,10 +832,14 @@
     "territory": [
      "S2",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria vertebralis",
+   "ta_code": 4538,
    "termination": "The two vertebral arteries unite at the medullopontine junction to form the basilar artery.",
    "territory": "Posterior circulation of the brain: brainstem, cerebellum, occipital lobes, medial temporal lobes and thalamus; also the spinal cord.",
    "type": "vessel",
@@ -809,17 +875,20 @@
     ],
     "territory": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria basilaris",
+   "ta_code": 4548,
    "termination": "Divides into the two posterior cerebral arteries.",
    "territory": "Brainstem (pontine branches), cerebellum, and the posterior cerebrum via the posterior cerebral arteries.",
    "type": "vessel",
    "verify": [
     "branches: pontine branches are described in S9 but are not enumerated as named branches here - verify",
-    "branches: 'posterior cerebral artery' is named in S9 but has no concept of its own in the BP3D release - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: 'posterior cerebral artery' is named in S9 but has no concept of its own in the BP3D release - verify"
    ]
   },
   {
@@ -849,15 +918,18 @@
     "territory": [
      "S2",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "B",
-   "ta_name": null,
+   "ta_name": "arteria anterior cerebri",
+   "ta_code": 4502,
    "termination": null,
    "territory": "The medial aspects (anteromedial portion) of the cerebral hemispheres.",
    "type": "vessel",
    "verify": [
-    "ta_name: not given by consulted sources - verify",
     "termination: not sourced from consulted sources - verify"
    ]
   },
@@ -879,17 +951,20 @@
     ],
     "territory": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria media cerebri",
+   "ta_code": 4509,
    "termination": null,
    "territory": "The lateral aspects of the cerebral hemispheres (the majority of the lateral part of the brain).",
    "type": "vessel",
    "verify": [
     "geometry: the middle cerebral artery has NO concept of its own in the BP3D 4.0 release - only its named branches (anterolateral central, temporal and terminal branches) exist as concepts and records - so no inventory record exists to link - verify",
     "branches: cortical and central (lenticulostriate) branches are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify",
     "termination: not sourced from consulted sources - verify"
    ]
   },
@@ -916,16 +991,19 @@
     ],
     "territory": [
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "B",
-   "ta_name": null,
+   "ta_name": "arteria posterior cerebri",
+   "ta_code": 4565,
    "termination": null,
    "territory": "The medial and lateral parts of the posterior cerebrum (occipital lobes, medial temporal lobes).",
    "type": "vessel",
    "verify": [
     "geometry: the posterior cerebral artery has NO concept of its own in the BP3D 4.0 release - only its posteromedial central branch exists as a class with lateralised records - so no inventory record exists to link - verify",
-    "ta_name: not given by consulted sources - verify",
     "termination: not sourced from consulted sources - verify"
    ]
   },
@@ -965,16 +1043,19 @@
     ],
     "territory": [
      "S8"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria subclavia",
+   "ta_code": 4537,
    "termination": "Becomes the axillary artery at the lateral border of the first rib.",
    "territory": "The upper limb, with contributions to the head and neck (circle of Willis via the vertebral artery, thyroid and breast tissue).",
    "type": "vessel",
    "verify": [
-    "branches: 'dorsal scapular artery' is listed in S8 as an additional branch; the BP3D record partition carries it within the subclavian records - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: 'dorsal scapular artery' is listed in S8 as an additional branch; the BP3D record partition carries it within the subclavian records - verify"
    ]
   },
   {
@@ -998,17 +1079,20 @@
     ],
     "territory": [
      "S8"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria thoracica interna",
+   "ta_code": 4576,
    "termination": null,
    "territory": "Anterior thoracic wall and breast tissue.",
    "type": "vessel",
    "verify": [
     "branches: anterior intercostal, perforating and terminal (musculophrenic, superior epigastric) branches are not enumerated in the consulted sources - verify",
-    "termination: not stated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "termination: not stated in the consulted sources - verify"
    ]
   },
   {
@@ -1043,10 +1127,14 @@
     ],
     "territory": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "truncus thyreocervicalis",
+   "ta_code": 4590,
    "termination": "Divides into the inferior thyroid, ascending cervical, transverse cervical and suprascapular arteries.",
    "territory": "Thyroid gland; posterior prevertebral muscles; trapezius and rhomboid muscles; posterior shoulder area.",
    "type": "vessel",
@@ -1088,16 +1176,19 @@
     ],
     "territory": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria axillaris",
+   "ta_code": 4616,
    "termination": "Becomes the brachial artery at the lower border of teres major.",
    "territory": "Axilla, pectoral region and shoulder; the circumflex humeral arteries form an anastomosis around the surgical neck of the humerus.",
    "type": "vessel",
    "verify": [
     "branches: 'thoracoacromial artery' is named in S3 but has no concept in the BP3D release (stem search returned no match) - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'superior thoracic artery' - verify"
    ]
   },
@@ -1130,16 +1221,19 @@
     ],
     "territory": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria brachialis",
+   "ta_code": 4632,
    "termination": "Bifurcates into the radial and ulnar arteries in the cubital fossa.",
    "territory": "The arm (main arterial supply).",
    "type": "vessel",
    "verify": [
-    "branches: the consulted source names the profunda brachii (deep artery of arm) as the principal branch; the ulnar collateral and muscular branches are not enumerated in the consulted sources - verify; note 'profunda brachii' has no concept in the BP3D release under that name - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the consulted source names the profunda brachii (deep artery of arm) as the principal branch; the ulnar collateral and muscular branches are not enumerated in the consulted sources - verify; note 'profunda brachii' has no concept in the BP3D release under that name - verify"
    ]
   },
   {
@@ -1166,16 +1260,19 @@
     ],
     "territory": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria radialis",
+   "ta_code": 4641,
    "termination": "Continues as the deep palmar arch in the hand.",
    "territory": "Posterolateral aspect of the forearm; contributes to the deep palmar arch and to the superficial palmar arch.",
    "type": "vessel",
    "verify": [
-    "branches: radial recurrent, palmar carpal and superficial palmar branches are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: radial recurrent, palmar carpal and superficial palmar branches are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -1208,16 +1305,19 @@
     ],
     "territory": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria ulnaris",
+   "ta_code": 4655,
    "termination": "Continues across the palm as the superficial palmar arch.",
    "territory": "Anteromedial aspect of the forearm and the deeper forearm structures (via the interosseous arteries); forms the superficial palmar arch.",
    "type": "vessel",
    "verify": [
     "branches: the common interosseous trunk itself is not named in the consulted source; S3 names its anterior and posterior divisions - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'posterior interosseous artery' - verify"
    ]
   },
@@ -1251,10 +1351,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "truncus coeliacus",
+   "ta_code": 4211,
    "termination": "Trifurcates into the left gastric, splenic and common hepatic arteries.",
    "territory": "Foregut: liver, stomach, abdominal oesophagus, spleen, superior duodenum and superior pancreas.",
    "type": "vessel",
@@ -1288,16 +1392,19 @@
     ],
     "territory": [
      "S18"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria gastrica sinistra",
+   "ta_code": 4212,
    "termination": "Anastomoses with the right gastric artery along the lesser curvature.",
    "territory": "Distal oesophagus and both surfaces of the stomach along the lesser curvature.",
    "type": "vessel",
    "verify": [
     "branches: the oesophageal branches are described in S18 without the exact BP3D branch name used here - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'esophageal branch of left gastric artery' - verify"
    ]
   },
@@ -1331,16 +1438,19 @@
     ],
     "territory": [
      "S18"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria splenica",
+   "ta_code": 4239,
    "termination": "Divides into terminal branches at the hilum of the spleen.",
    "territory": "Spleen; body and tail of the pancreas; fundus of the stomach (short gastric arteries); greater curvature of the stomach (left gastroepiploic artery).",
    "type": "vessel",
    "verify": [
     "branches: branch names are recorded in the terminology of S18 (pancreatic, short gastric, left gastroepiploic); exact BP3D branch record names differ in form - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'pancreatic branch of splenic artery'; 'short gastric artery'; 'left gastroepiploic artery' - verify"
    ]
   },
@@ -1374,16 +1484,19 @@
     ],
     "territory": [
      "S18"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria hepatica communis",
+   "ta_code": 4214,
    "termination": "Divides into its terminal branches, the hepatic artery proper and the gastroduodenal artery.",
    "territory": "Liver (via the hepatic artery proper), gallbladder, stomach and duodenum/pancreatic head (via the gastroduodenal artery).",
    "type": "vessel",
    "verify": [
-    "branches: the right gastric artery is described in S18 as arising from the common hepatic close to the gastroduodenal origin (and commonly from the proper hepatic); its parent vessel varies - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the right gastric artery is described in S18 as arising from the common hepatic close to the gastroduodenal origin (and commonly from the proper hepatic); its parent vessel varies - verify"
    ]
   },
   {
@@ -1415,16 +1528,19 @@
     ],
     "territory": [
      "S18"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria hepatica propria",
+   "ta_code": 4227,
    "termination": "Divides into the right and left hepatic arteries near the porta hepatis.",
    "territory": "The liver.",
    "type": "vessel",
    "verify": [
-    "branches: the cystic artery, classically a branch of the right hepatic artery supplying the gallbladder, has NO concept in the BP3D release (stem search returned no match) and is not modelled - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the cystic artery, classically a branch of the right hepatic artery supplying the gallbladder, has NO concept in the BP3D release (stem search returned no match) and is not modelled - verify"
    ]
   },
   {
@@ -1456,16 +1572,19 @@
     ],
     "territory": [
      "S18"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria gastroduodenalis",
+   "ta_code": 4215,
    "termination": "Splits into the right gastroepiploic and superior pancreaticoduodenal arteries.",
    "territory": "Superior part of the duodenum (to the major duodenal papilla) and the head and neck of the pancreas; greater curvature of the stomach via the right gastroepiploic artery.",
    "type": "vessel",
    "verify": [
     "branches: branch record names in the BP3D inventory follow the gastroduodenal trunk's own naming and were not individually verified against S18 - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right gastroepiploic artery' - verify"
    ]
   },
@@ -1502,16 +1621,19 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria mesenterica superior",
+   "ta_code": 4252,
    "termination": "Ends at the ileocolic junction as the ileocolic artery.",
    "territory": "Midgut: distal duodenum, jejuno-ileum, ascending colon and part of the transverse colon.",
    "type": "vessel",
    "verify": [
     "branches: S18 lists 12-15 jejunal and ileal branches collectively; individual jejunal/ileal branch records are not enumerated - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'jejunal artery' - verify"
    ]
   },
@@ -1545,10 +1667,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria mesenterica inferior",
+   "ta_code": 4291,
    "termination": "Continues as the superior rectal artery into the pelvis.",
    "territory": "Hindgut: large intestine from the splenic flexure to the upper part of the rectum.",
    "type": "vessel",
@@ -1578,16 +1704,19 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria renalis",
+   "ta_code": 4269,
    "termination": "Enters the kidney at the hilum, dividing into segmental branches.",
    "territory": "The kidneys.",
    "type": "vessel",
    "verify": [
-    "branches: the five segmental renal branches are named in the BP3D inventory as segmental artery records; their order is not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the five segmental renal branches are named in the BP3D inventory as segmental artery records; their order is not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -1620,10 +1749,14 @@
     ],
     "territory": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria iliaca communis",
+   "ta_code": 4301,
    "termination": "Divides into the external and internal iliac arteries.",
    "territory": "Pelvis and lower limb.",
    "type": "vessel",
@@ -1659,16 +1792,19 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria iliaca externa",
+   "ta_code": 4357,
    "termination": "Becomes the femoral artery posterior to the inguinal ligament.",
    "territory": "The lower limb (as the femoral artery) and the lower abdominal wall.",
    "type": "vessel",
    "verify": [
     "branches: the inferior epigastric and deep circumflex iliac branches are named in standard teaching (S17 lists 'branches of the external iliac artery' without a full enumeration in the consulted excerpt) - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'deep circumflex iliac artery' - verify"
    ]
   },
@@ -1693,17 +1829,20 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria iliaca interna",
+   "ta_code": 4302,
    "termination": null,
    "territory": "Pelvic organs, the gluteal region and the perineum.",
    "type": "vessel",
    "verify": [
     "branches: the named branches of the internal iliac artery (including the obturator and superior gluteal arteries, which have NO concepts in the BP3D release) are not enumerated in the consulted sources - verify",
-    "termination: not stated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "termination: not stated in the consulted sources - verify"
    ]
   },
   {
@@ -1739,16 +1878,19 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria femoralis",
+   "ta_code": 4674,
    "termination": "Becomes the popliteal artery after passing through the adductor hiatus.",
    "territory": "Lower abdominal wall, thigh and external genitalia (via its branches); the principal artery of the lower limb.",
    "type": "vessel",
    "verify": [
     "branches: the deep artery of thigh (profunda femoris), the main arterial supply to the thigh, has no dedicated record in the BP3D inventory partition and 'profunda femoris' has no concept in the release - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'superficial circumflex iliac artery'; 'superficial external pudendal artery'; 'deep external pudendal artery' - verify"
    ]
   },
@@ -1782,16 +1924,19 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria poplitea",
+   "ta_code": 4699,
    "termination": "Ends at the lower border of popliteus by dividing into the anterior and posterior tibial arteries.",
    "territory": "Knee region (via genicular branches) and, through its terminal branches, the leg and foot.",
    "type": "vessel",
    "verify": [
-    "branches: the genicular branches around the knee are described in S17 without a full enumeration - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the genicular branches around the knee are described in S17 without a full enumeration - verify"
    ]
   },
   {
@@ -1818,17 +1963,20 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteria tibialis anterior",
+   "ta_code": 4708,
    "termination": "Becomes the dorsalis pedis (dorsal artery of the foot) at the ankle joint, midway between the malleoli.",
    "territory": "Structures of the anterior compartment of the leg and the dorsum of the foot.",
    "type": "vessel",
    "verify": [
     "branches: recurrent and malleolar branches are not enumerated in the consulted sources - verify",
-    "termination: the continuation vessel (dorsalis pedis / dorsal artery of the foot) has no dedicated record in the BP3D inventory partition - verify",
-    "ta_name: not given by consulted sources - verify"
+    "termination: the continuation vessel (dorsalis pedis / dorsal artery of the foot) has no dedicated record in the BP3D inventory partition - verify"
    ]
   },
   {
@@ -1862,16 +2010,19 @@
     ],
     "territory": [
      "S17"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "arteria tibialis posterior",
+   "ta_code": 4721,
    "termination": "Divides into the medial and lateral plantar arteries in the sole of the foot.",
    "territory": "Posterior compartment of the leg and the sole of the foot.",
    "type": "vessel",
    "verify": [
-    "branches: 'fibular artery' is named in S17 as a branch of the posterior tibial artery, but the BP3D release carries fibular VEINS only - no fibular/peroneal artery concept exists in the release - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: 'fibular artery' is named in S17 as a branch of the posterior tibial artery, but the BP3D release carries fibular VEINS only - no fibular/peroneal artery concept exists in the release - verify"
    ]
   },
   {
@@ -1899,16 +2050,19 @@
     ],
     "territory": [
      "S10"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "arteriae pulmonales",
+   "ta_code": 4074,
    "termination": "Branches within the lung parenchyma.",
    "territory": "The lungs (the pulmonary circuit).",
    "type": "vessel",
    "verify": [
-    "branches: lobar and segmental branching is not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: lobar and segmental branching is not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -1941,16 +2095,18 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena cava superior",
+   "ta_code": 4745,
    "termination": "Drains into the right atrium of the heart.",
    "territory": "Head, neck, thorax (above the diaphragm, except the heart wall) and upper limbs.",
    "type": "vessel",
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ]
+   "verify": []
   },
   {
    "branches": [
@@ -1988,16 +2144,19 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena cava inferior",
+   "ta_code": 4991,
    "termination": "Drains into the right atrium of the heart.",
    "territory": "All structures below the diaphragm.",
    "type": "vessel",
    "verify": [
     "branches: tributary names follow S4; the release lateralises several of them per side and carries the hepatic veins as left/right records - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right gonadal vein' - verify"
    ]
   },
@@ -2033,16 +2192,19 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena brachiocephalica",
+   "ta_code": 4772,
    "termination": "The two brachiocephalic veins unite to form the superior vena cava.",
    "territory": "Head, neck and upper limb of its side.",
    "type": "vessel",
    "verify": [
     "branches: the tributary list follows the consulted lecture material in S11's result set and is complete for the right side only - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'vertebral vein'; 'inferior thyroid vein'; 'first posterior intercostal vein' - verify"
    ]
   },
@@ -2070,16 +2232,19 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena jugularis interna",
+   "ta_code": 4800,
    "termination": "Joins the subclavian vein behind the sternal end of the clavicle to form the brachiocephalic vein.",
    "territory": "The brain (via the dural venous sinuses), face and neck; the largest vein draining the head and neck.",
    "type": "vessel",
    "verify": [
-    "branches: named tributaries (facial, lingual, pharyngeal, thyroid veins) are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: named tributaries (facial, lingual, pharyngeal, thyroid veins) are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2100,18 +2265,21 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena jugularis externa",
+   "ta_code": 4956,
    "termination": "Empties into the subclavian vein.",
    "territory": "Superficial parts of the scalp and face.",
    "type": "vessel",
    "verify": [
     "geometry: the external jugular vein has NO concept of its own in the BP3D 4.0 release (only a 'tributary of external jugular vein' family concept exists), so no inventory record exists to link - verify",
     "origin: formation (union of the posterior auricular and retromandibular veins) is not stated in the consulted sources - verify",
-    "branches: tributaries not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2143,10 +2311,14 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena subclavia",
+   "ta_code": 4953,
    "termination": "Joins the internal jugular vein to form the brachiocephalic vein.",
    "territory": "The upper limb; also receives the external jugular vein (scalp and face).",
    "type": "vessel",
@@ -2175,17 +2347,20 @@
     ],
     "territory": [
      "S11"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena axillaris",
+   "ta_code": 4963,
    "termination": "Becomes the subclavian vein at the outer border of the first rib.",
    "territory": "The upper limb.",
    "type": "vessel",
    "verify": [
     "origin: formation (continuation of the brachial veins / basilic vein junction) is not stated in the consulted sources - verify",
-    "branches: tributaries not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2226,15 +2401,18 @@
     "territory": [
      "S12",
      "S20"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena azyga",
+   "ta_code": 4747,
    "termination": "Empties into the superior vena cava.",
    "territory": "Posterior walls of the thorax and abdomen; the azygos system also connects the superior and inferior caval systems.",
    "type": "vessel",
    "verify": [
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'right posterior intercostal vein'; 'esophageal vein'; 'mediastinal vein'; 'right bronchial vein' - verify"
    ]
   },
@@ -2268,10 +2446,14 @@
     ],
     "territory": [
      "S12"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena hemiazyga",
+   "ta_code": 4764,
    "termination": "Joins the azygos vein.",
    "territory": "Lower left posterolateral chest wall (left posterior intercostal veins 9-11).",
    "type": "vessel",
@@ -2308,10 +2490,14 @@
     ],
     "territory": [
      "S12"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena hemiazyga accessoria",
+   "ta_code": 4758,
    "termination": "Joins the azygos vein (or the hemiazygos vein).",
    "territory": "Mid levels of the left posterolateral chest wall (left posterior intercostal veins 4-8).",
    "type": "vessel",
@@ -2339,17 +2525,20 @@
     ],
     "territory": [
      "S19"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "sinus coronarius",
+   "ta_code": 4158,
    "termination": "Empties directly into the right atrium.",
    "territory": "The wall of the heart (most of its venous drainage gathers here).",
    "type": "vessel",
    "verify": [
     "origin: formation (continuation of the great cardiac vein) is not stated in the consulted sources - verify",
-    "branches: named tributaries (great, middle and small cardiac veins, oblique vein of the left atrium) are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: named tributaries (great, middle and small cardiac veins, oblique vein of the left atrium) are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2382,10 +2571,14 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena iliaca communis",
+   "ta_code": 5021,
    "termination": "The two common iliac veins unite to form the inferior vena cava at L5.",
    "territory": "The lower limb and the gluteal region (and the pelvic viscera via the internal iliac vein).",
    "type": "vessel",
@@ -2416,16 +2609,19 @@
     ],
     "territory": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena iliaca externa",
+   "ta_code": 5050,
    "termination": "Joins the internal iliac vein to form the common iliac vein.",
    "territory": "The lower limb.",
    "type": "vessel",
    "verify": [
-    "branches: tributaries (inferior epigastric, deep circumflex iliac, pubic veins) are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries (inferior epigastric, deep circumflex iliac, pubic veins) are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2446,18 +2642,21 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena iliaca interna",
+   "ta_code": 5024,
    "termination": "Joins the external iliac vein to form the common iliac vein.",
    "territory": "Pelvic viscera and the gluteal region.",
    "type": "vessel",
    "verify": [
     "origin: formation from its tributaries is not described in the consulted sources - verify",
     "course: not described in the consulted sources - verify",
-    "branches: tributaries are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2499,8 +2698,8 @@
    "type": "vessel",
    "verify": [
     "course: the aortomesenteric crossing of the left renal vein is standard anatomy but was not stated verbatim in the consulted excerpt - verify",
-    "ta_name: not given by consulted sources - verify",
-    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'left gonadal vein' - verify"
+    "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'left gonadal vein' - verify",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 lists the renal vein only as sided terms (5000 vena renalis dextra, 5006 vena renalis sinistra); no unpaired term denotes this unsided record."
    ]
   },
   {
@@ -2527,16 +2726,19 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "venae hepaticae",
+   "ta_code": 4994,
    "termination": "Drains into the inferior vena cava.",
    "territory": "The liver (its entire venous outflow, including portal blood after processing).",
    "type": "vessel",
    "verify": [
-    "branches: the middle hepatic vein is carried in the BP3D inventory within the lateralised hepatic vein records; the consulted source does not enumerate three named trunks - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: the middle hepatic vein is carried in the BP3D inventory within the lateralised hepatic vein records; the consulted source does not enumerate three named trunks - verify"
    ]
   },
   {
@@ -2569,16 +2771,19 @@
     ],
     "territory": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena femoralis",
+   "ta_code": 5055,
    "termination": "Becomes the external iliac vein posterior to the inguinal ligament.",
    "territory": "The lower limb (deep structures of the thigh and leg, plus the superficial drainage via the great saphenous vein).",
    "type": "vessel",
    "verify": [
-    "branches: 'deep vein of thigh' (profunda femoris vein) is named in S5; its record linkage follows the femoral records - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: 'deep vein of thigh' (profunda femoris vein) is named in S5; its record linkage follows the femoral records - verify"
    ]
   },
   {
@@ -2613,10 +2818,14 @@
     ],
     "territory": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena poplitea",
+   "ta_code": 5072,
    "termination": "Continues as the femoral vein on entering the thigh.",
    "territory": "The leg and foot (deep veins) and the posterior leg (via the small saphenous vein).",
    "type": "vessel",
@@ -2646,16 +2855,19 @@
     ],
     "territory": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena saphena magna",
+   "ta_code": 5058,
    "termination": "Drains into the femoral vein immediately inferior to the inguinal ligament.",
    "territory": "Superficial tissues of the medial leg and thigh (the longest vein in the body).",
    "type": "vessel",
    "verify": [
-    "branches: named tributaries near the saphenofemoral junction are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: named tributaries near the saphenofemoral junction are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2682,16 +2894,19 @@
     ],
     "territory": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "vena saphena parva",
+   "ta_code": 5085,
    "termination": "Passes between the two heads of gastrocnemius and empties into the popliteal vein in the popliteal fossa.",
    "territory": "Superficial tissues of the posterior leg.",
    "type": "vessel",
    "verify": [
-    "branches: tributaries not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2715,17 +2930,20 @@
     ],
     "territory": [
      "S10"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "C",
-   "ta_name": null,
+   "ta_name": "venae pulmonales",
+   "ta_code": 4107,
    "termination": "Opens into the left atrium (four pulmonary veins in the usual pattern).",
    "territory": "The lungs (oxygenated blood returning to the heart).",
    "type": "vessel",
    "verify": [
     "geometry: the pulmonary vein exists in the BP3D release only as a family concept (FMA66643) carrying 84 IS-A element files, with no lateralised instance concepts; under the module counting convention it produced no inventory record, so no geometry record is linked - verify",
-    "branches: tributaries within the lung are not enumerated in the consulted sources - verify",
-    "ta_name: not given by consulted sources - verify"
+    "branches: tributaries within the lung are not enumerated in the consulted sources - verify"
    ]
   },
   {
@@ -2761,16 +2979,19 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena portae hepatis",
+   "ta_code": 5092,
    "termination": "Divides into right and left branches at the porta hepatis, which enter the liver parenchyma separately.",
    "territory": "Venous drainage of the spleen, pancreas, gallbladder and the abdominal part of the gastrointestinal tract, carried to the liver for processing; the portal vein provides about three-fourths of the liver's blood supply.",
    "type": "vessel",
    "verify": [
     "branches: the right/left gastric, cystic and para-umbilical tributaries follow S4; several have no dedicated records in the BP3D inventory partition - verify",
-    "ta_name: not given by consulted sources - verify",
     "branches: the following names are given by the consulted sources but have no matching concept or record in the BP3D 4.0 release, and are carried as sourced text only: 'cystic vein'; 'paraumbilical vein' - verify"
    ]
   },
@@ -2805,10 +3026,14 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena splenica",
+   "ta_code": 5123,
    "termination": "Joins the superior mesenteric vein behind the neck of the pancreas to form the portal vein.",
    "territory": "Spleen, fundus and greater curvature of the stomach, pancreas, and (via the inferior mesenteric vein) the hindgut colon.",
    "type": "vessel",
@@ -2850,10 +3075,14 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena mesenterica superior",
+   "ta_code": 5113,
    "termination": "Joins the splenic vein behind the neck of the pancreas to form the portal vein.",
    "territory": "Small intestine, caecum, ascending colon and transverse colon.",
    "type": "vessel",
@@ -2891,10 +3120,14 @@
     ],
     "territory": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "sourcing_tier": "A",
-   "ta_name": null,
+   "ta_name": "vena mesenterica inferior",
+   "ta_code": 5127,
    "termination": "Typically joins the splenic vein.",
    "territory": "Rectum, sigmoid colon, descending colon and splenic flexure.",
    "type": "vessel",

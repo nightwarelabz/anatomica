@@ -247,6 +247,12 @@ for label, data in (("inventory", inv), ("geometry", geo),
 ok({g["record_id"] for g in geo["records"]} == inv_ids,
    "X2b geometry record ids == inventory record ids")
 
+# ------------------------------------------------- TA2 discipline (M23)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import ta2_discipline as _ta2d
+_ta2d.run("muscular", "data/muscular/muscles.json", ok)
+
 print()
 print(f"SUMMARY: {len(FAILURES)} failures, {len(INFOS)} info lines")
 if FAILURES:

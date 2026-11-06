@@ -421,17 +421,22 @@ def main():
     check("clinical record count and ids match this checker",
           clin["meta"]["record_count"] == len(CORE)
           and set(by_id) == set(CORE), f"{sorted(by_id)}")
-    check("clinical meta sources are exactly S1-S3",
-          set(clin["meta"]["sources"]) == {"S1", "S2", "S3"})
+    check("clinical meta sources are exactly S1-S3 + TA2 (M23)",
+          set(clin["meta"]["sources"]) == {"S1", "S2", "S3", "TA2"})
     all_inv_names = {r["name"] for r in inv["records"]}
     bad = []
     tier_count = Counter()
     for rid, r in by_id.items():
         core, soft = CORE[rid], SOFT[rid]
-        if set(r.keys()) != BASE_KEYS | set(core) | set(soft):
+        if set(r.keys()) - {"ta_code"} != BASE_KEYS | set(core) | set(soft):
             bad.append((rid, "key set"))
-        if r["ta_name"] is not None or \
-                not any("ta_name" in v for v in r["verify"]):
+        if r["ta_name"] is not None:
+            # M23 discipline: TA2 name + integer ta_code + TA2
+            # citation (table equality via tools/ta2_discipline.py)
+            if r["sources"].get("ta_name") != ["TA2"] or \
+                    not isinstance(r.get("ta_code"), int):
+                bad.append((rid, "ta_name discipline"))
+        elif not any("ta_name" in v for v in r["verify"]):
             bad.append((rid, "ta_name discipline"))
         exp_tier = "A"
         for fname in core + soft:
@@ -501,6 +506,12 @@ def main():
           sp["relations"] is None
           and by_id["organ.thymus"]["arterial_supply"] is None
           and dict(tier_count) == {"A": 2, "B": 2})
+
+    # TA2 discipline (M23)
+    import os as _os, sys as _sys
+    _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+    import ta2_discipline as _ta2d
+    _ta2d.run("lymphatic", "data/lymphatic/lymphatic.json", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"lymph_check: {npass}/{len(checks)} checks passed")

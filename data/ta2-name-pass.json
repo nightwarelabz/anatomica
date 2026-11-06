@@ -1,0 +1,3778 @@
+{
+ "meta": {
+  "milestone": "M23",
+  "date": "2026-11-06",
+  "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+  "source_terms_sha256_note": "see data/sources/ta2-2.07/SOURCE.md",
+  "method": "tools/ta2_match.py (candidates) -> tools/ta2_decide.py (curated decisions) -> tools/ta2_pass.py (this application)",
+  "rule": "a record resolves only when TA2's own naming apparatus (preferred term, listed synonym, or listed related term) names a term for a structure identical to the record's, with no competing TA2 term; otherwise ambiguous (candidates listed) or not found (probe evidence in the decision record)."
+ },
+ "systems": {
+  "cardiovascular": {
+   "file": "data/cardiovascular/cardiovascular.json",
+   "records": 69,
+   "resolved": 68,
+   "ambiguous": 1,
+   "not_found": 0
+  },
+  "digestive": {
+   "file": "data/digestive/digestive.json",
+   "records": 31,
+   "resolved": 28,
+   "ambiguous": 3,
+   "not_found": 0
+  },
+  "endocrine": {
+   "file": "data/endocrine/endocrine.json",
+   "records": 6,
+   "resolved": 6,
+   "ambiguous": 0,
+   "not_found": 0
+  },
+  "integumentary": {
+   "file": "data/integumentary/integumentary.json",
+   "records": 13,
+   "resolved": 10,
+   "ambiguous": 1,
+   "not_found": 2
+  },
+  "lymphatic": {
+   "file": "data/lymphatic/lymphatic.json",
+   "records": 4,
+   "resolved": 2,
+   "ambiguous": 1,
+   "not_found": 1
+  },
+  "muscular": {
+   "file": "data/muscular/muscles.json",
+   "records": 127,
+   "resolved": 126,
+   "ambiguous": 1,
+   "not_found": 0
+  },
+  "nervous": {
+   "file": "data/nervous/nervous.json",
+   "records": 52,
+   "resolved": 51,
+   "ambiguous": 1,
+   "not_found": 0
+  },
+  "reproductive": {
+   "file": "data/reproductive/reproductive.json",
+   "records": 16,
+   "resolved": 14,
+   "ambiguous": 0,
+   "not_found": 2
+  },
+  "respiratory": {
+   "file": "data/respiratory/respiratory.json",
+   "records": 37,
+   "resolved": 31,
+   "ambiguous": 1,
+   "not_found": 5
+  },
+  "urinary": {
+   "file": "data/urinary/urinary.json",
+   "records": 6,
+   "resolved": 4,
+   "ambiguous": 0,
+   "not_found": 2
+  }
+ },
+ "resolved": [
+  {
+   "system": "cardiovascular",
+   "record_id": "organ.heart",
+   "name": "Heart",
+   "ta_id": 3932,
+   "ta_name": "cor",
+   "ta_english": "heart",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.left-coronary-artery",
+   "name": "Left coronary artery",
+   "ta_id": 4142,
+   "ta_name": "arteria coronaria sinistra",
+   "ta_english": "left coronary artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.right-coronary-artery",
+   "name": "Right coronary artery",
+   "ta_id": 4131,
+   "ta_name": "arteria coronaria dextra",
+   "ta_english": "right coronary artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.anterior-interventricular-branch-of-left-coronary-artery",
+   "name": "Anterior interventricular branch of left coronary artery (LAD)",
+   "ta_id": 4143,
+   "ta_name": "arteria interventricularis anterior",
+   "ta_english": "anterior interventricular artery",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.circumflex-branch-of-left-coronary-artery",
+   "name": "Circumflex branch of left coronary artery",
+   "ta_id": 4148,
+   "ta_name": "arteria circumflexa cordis",
+   "ta_english": "circumflex artery of heart",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.posterior-interventricular-branch-of-right-coronary-artery",
+   "name": "Posterior interventricular branch of right coronary artery (PDA)",
+   "ta_id": 4138,
+   "ta_name": "arteria interventricularis inferior",
+   "ta_english": "inferior interventricular artery",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "organ.aorta",
+   "name": "Aorta",
+   "ta_id": 4175,
+   "ta_name": "aorta",
+   "ta_english": "aorta",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.ascending-aorta",
+   "name": "Ascending aorta",
+   "ta_id": 4176,
+   "ta_name": "aorta ascendens",
+   "ta_english": "ascending aorta",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.arch-of-aorta",
+   "name": "Arch of aorta",
+   "ta_id": 4177,
+   "ta_name": "arcus aortae",
+   "ta_english": "aortic arch",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.descending-thoracic-aorta",
+   "name": "Thoracic aorta",
+   "ta_id": 4186,
+   "ta_name": "aorta thoracica",
+   "ta_english": "thoracic aorta",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.abdominal-aorta",
+   "name": "Abdominal aorta",
+   "ta_id": 4205,
+   "ta_name": "aorta abdominalis",
+   "ta_english": "abdominal aorta",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.brachiocephalic-artery",
+   "name": "Brachiocephalic artery",
+   "ta_id": 4179,
+   "ta_name": "truncus brachiocephalicus",
+   "ta_english": "brachiocephalic trunk",
+   "basis": "related-term",
+   "note": "TA2's term for this vessel is truncus brachiocephalicus ('brachiocephalic trunk'; listed synonym 'innominate artery', related term 'arteria anonyma'); it is the sole TA2 term for the structure and the record's FMA class identity agrees."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.common-carotid-artery",
+   "name": "Common carotid artery",
+   "ta_id": 4366,
+   "ta_name": "carotis communis",
+   "ta_english": "common carotid artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.external-carotid-artery",
+   "name": "External carotid artery",
+   "ta_id": 4369,
+   "ta_name": "carotis externa",
+   "ta_english": "external carotid artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.internal-carotid-artery",
+   "name": "Internal carotid artery",
+   "ta_id": 4463,
+   "ta_name": "carotis interna",
+   "ta_english": "internal carotid artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.vertebral-artery",
+   "name": "Vertebral artery",
+   "ta_id": 4538,
+   "ta_name": "arteria vertebralis",
+   "ta_english": "vertebral artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.basilar-artery",
+   "name": "Basilar artery",
+   "ta_id": 4548,
+   "ta_name": "arteria basilaris",
+   "ta_english": "basilar artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.anterior-cerebral-artery",
+   "name": "Anterior cerebral artery",
+   "ta_id": 4502,
+   "ta_name": "arteria anterior cerebri",
+   "ta_english": "anterior cerebral artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.middle-cerebral-artery",
+   "name": "Middle cerebral artery",
+   "ta_id": 4509,
+   "ta_name": "arteria media cerebri",
+   "ta_english": "middle cerebral artery",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.posterior-cerebral-artery",
+   "name": "Posterior cerebral artery",
+   "ta_id": 4565,
+   "ta_name": "arteria posterior cerebri",
+   "ta_english": "posterior cerebral artery",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.subclavian-artery",
+   "name": "Subclavian artery",
+   "ta_id": 4537,
+   "ta_name": "arteria subclavia",
+   "ta_english": "subclavian artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.internal-thoracic-artery",
+   "name": "Internal thoracic artery",
+   "ta_id": 4576,
+   "ta_name": "arteria thoracica interna",
+   "ta_english": "internal thoracic artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.thyrocervical-trunk",
+   "name": "Thyrocervical trunk",
+   "ta_id": 4590,
+   "ta_name": "truncus thyreocervicalis",
+   "ta_english": "thyrocervical trunk",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.axillary-artery",
+   "name": "Axillary artery",
+   "ta_id": 4616,
+   "ta_name": "arteria axillaris",
+   "ta_english": "axillary artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.brachial-artery",
+   "name": "Brachial artery",
+   "ta_id": 4632,
+   "ta_name": "arteria brachialis",
+   "ta_english": "brachial artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.radial-artery",
+   "name": "Radial artery",
+   "ta_id": 4641,
+   "ta_name": "arteria radialis",
+   "ta_english": "radial artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.ulnar-artery",
+   "name": "Ulnar artery",
+   "ta_id": 4655,
+   "ta_name": "arteria ulnaris",
+   "ta_english": "ulnar artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.celiac-artery",
+   "name": "Celiac artery",
+   "ta_id": 4211,
+   "ta_name": "truncus coeliacus",
+   "ta_english": null,
+   "basis": "related-term",
+   "note": "TA2's term is truncus coeliacus (English equivalent not given in the served table); TA2 lists 'arteria celiaca' as its related term. Sole TA2 term for the structure; the record denotes that trunk."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.left-gastric-artery",
+   "name": "Left gastric artery",
+   "ta_id": 4212,
+   "ta_name": "arteria gastrica sinistra",
+   "ta_english": "left gastric artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.splenic-artery",
+   "name": "Splenic artery",
+   "ta_id": 4239,
+   "ta_name": "arteria splenica",
+   "ta_english": "splenic artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.common-hepatic-artery",
+   "name": "Common hepatic artery",
+   "ta_id": 4214,
+   "ta_name": "arteria hepatica communis",
+   "ta_english": "common hepatic artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.hepatic-artery-proper",
+   "name": "Hepatic artery proper",
+   "ta_id": 4227,
+   "ta_name": "arteria hepatica propria",
+   "ta_english": "proper hepatic artery",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.gastroduodenal-artery",
+   "name": "Gastroduodenal artery",
+   "ta_id": 4215,
+   "ta_name": "arteria gastroduodenalis",
+   "ta_english": "gastroduodenal artery",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.superior-mesenteric-artery",
+   "name": "Superior mesenteric artery",
+   "ta_id": 4252,
+   "ta_name": "arteria mesenterica superior",
+   "ta_english": "superior mesenteric artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.inferior-mesenteric-artery",
+   "name": "Inferior mesenteric artery",
+   "ta_id": 4291,
+   "ta_name": "arteria mesenterica inferior",
+   "ta_english": "inferior mesenteric artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.renal-artery",
+   "name": "Renal artery",
+   "ta_id": 4269,
+   "ta_name": "arteria renalis",
+   "ta_english": "renal artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.common-iliac-artery",
+   "name": "Common iliac artery",
+   "ta_id": 4301,
+   "ta_name": "arteria iliaca communis",
+   "ta_english": "common iliac artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.external-iliac-artery",
+   "name": "External iliac artery",
+   "ta_id": 4357,
+   "ta_name": "arteria iliaca externa",
+   "ta_english": "external iliac artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.internal-iliac-artery",
+   "name": "Internal iliac artery",
+   "ta_id": 4302,
+   "ta_name": "arteria iliaca interna",
+   "ta_english": "internal iliac artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.femoral-artery",
+   "name": "Femoral artery",
+   "ta_id": 4674,
+   "ta_name": "arteria femoralis",
+   "ta_english": "femoral artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.popliteal-artery",
+   "name": "Popliteal artery",
+   "ta_id": 4699,
+   "ta_name": "arteria poplitea",
+   "ta_english": "popliteal artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.anterior-tibial-artery",
+   "name": "Anterior tibial artery",
+   "ta_id": 4708,
+   "ta_name": "arteria tibialis anterior",
+   "ta_english": "anterior tibial artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.posterior-tibial-artery",
+   "name": "Posterior tibial artery",
+   "ta_id": 4721,
+   "ta_name": "arteria tibialis posterior",
+   "ta_english": "posterior tibial artery",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "artery.pulmonary-artery",
+   "name": "Pulmonary artery",
+   "ta_id": 4074,
+   "ta_name": "arteriae pulmonales",
+   "ta_english": "pulmonary arteries",
+   "basis": "collective-term",
+   "note": "the record spans the pulmonary trunk and both pulmonary arteries (its own geometry ids and note); TA2's collective term for that set is 4074 arteriae pulmonales, parent of 4075/4077/4091."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.superior-vena-cava",
+   "name": "Superior vena cava",
+   "ta_id": 4745,
+   "ta_name": "vena cava superior",
+   "ta_english": "superior vena cava",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.inferior-vena-cava",
+   "name": "Inferior vena cava",
+   "ta_id": 4991,
+   "ta_name": "vena cava inferior",
+   "ta_english": "inferior vena cava",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.brachiocephalic-vein",
+   "name": "Brachiocephalic vein",
+   "ta_id": 4772,
+   "ta_name": "vena brachiocephalica",
+   "ta_english": "brachiocephalic vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.internal-jugular-vein",
+   "name": "Internal jugular vein",
+   "ta_id": 4800,
+   "ta_name": "vena jugularis interna",
+   "ta_english": "internal jugular vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.external-jugular-vein",
+   "name": "External jugular vein",
+   "ta_id": 4956,
+   "ta_name": "vena jugularis externa",
+   "ta_english": "external jugular vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.subclavian-vein",
+   "name": "Subclavian vein",
+   "ta_id": 4953,
+   "ta_name": "vena subclavia",
+   "ta_english": "subclavian vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.axillary-vein",
+   "name": "Axillary vein",
+   "ta_id": 4963,
+   "ta_name": "vena axillaris",
+   "ta_english": "axillary vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.azygos-vein",
+   "name": "Azygos vein",
+   "ta_id": 4747,
+   "ta_name": "vena azyga",
+   "ta_english": "azygos vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.hemiazygos-vein",
+   "name": "Hemiazygos vein",
+   "ta_id": 4764,
+   "ta_name": "vena hemiazyga",
+   "ta_english": null,
+   "basis": "class-word-form",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.accessory-hemiazygos-vein",
+   "name": "Accessory hemiazygos vein",
+   "ta_id": 4758,
+   "ta_name": "vena hemiazyga accessoria",
+   "ta_english": null,
+   "basis": "latin-synonym",
+   "note": "TA2 lists the Latin synonym 'vena hemiazygos accessoria' for vena hemiazyga accessoria."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.coronary-sinus",
+   "name": "Coronary sinus",
+   "ta_id": 4158,
+   "ta_name": "sinus coronarius",
+   "ta_english": "coronary sinus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.common-iliac-vein",
+   "name": "Common iliac vein",
+   "ta_id": 5021,
+   "ta_name": "vena iliaca communis",
+   "ta_english": "common iliac vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.external-iliac-vein",
+   "name": "External iliac vein",
+   "ta_id": 5050,
+   "ta_name": "vena iliaca externa",
+   "ta_english": "external iliac vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.internal-iliac-vein",
+   "name": "Internal iliac vein",
+   "ta_id": 5024,
+   "ta_name": "vena iliaca interna",
+   "ta_english": "internal iliac vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.hepatic-vein",
+   "name": "Hepatic vein",
+   "ta_id": 4994,
+   "ta_name": "venae hepaticae",
+   "ta_english": "hepatic veins",
+   "basis": "collective-term",
+   "note": "the record is the hepatic venous outflow collectively; TA2's term is the plural collective venae hepaticae."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.femoral-vein",
+   "name": "Femoral vein",
+   "ta_id": 5055,
+   "ta_name": "vena femoralis",
+   "ta_english": "femoral vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.popliteal-vein",
+   "name": "Popliteal vein",
+   "ta_id": 5072,
+   "ta_name": "vena poplitea",
+   "ta_english": "popliteal vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.great-saphenous-vein",
+   "name": "Great saphenous vein",
+   "ta_id": 5058,
+   "ta_name": "vena saphena magna",
+   "ta_english": "great saphenous vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.small-saphenous-vein",
+   "name": "Small saphenous vein",
+   "ta_id": 5085,
+   "ta_name": "vena saphena parva",
+   "ta_english": "small saphenous vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.pulmonary-vein",
+   "name": "Pulmonary vein",
+   "ta_id": 4107,
+   "ta_name": "venae pulmonales",
+   "ta_english": "pulmonary veins",
+   "basis": "collective-term",
+   "note": "the record is the pulmonary veins collectively (four veins, one undivided family concept per its note); TA2's term is the plural collective."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.hepatic-portal-vein",
+   "name": "Hepatic portal vein",
+   "ta_id": 5092,
+   "ta_name": "vena portae hepatis",
+   "ta_english": "hepatic portal vein",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.splenic-vein",
+   "name": "Splenic vein",
+   "ta_id": 5123,
+   "ta_name": "vena splenica",
+   "ta_english": "splenic vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.superior-mesenteric-vein",
+   "name": "Superior mesenteric vein",
+   "ta_id": 5113,
+   "ta_name": "vena mesenterica superior",
+   "ta_english": "superior mesenteric vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.inferior-mesenteric-vein",
+   "name": "Inferior mesenteric vein",
+   "ta_id": 5127,
+   "ta_name": "vena mesenterica inferior",
+   "ta_english": "inferior mesenteric vein",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.oral-cavity",
+   "name": "Oral cavity",
+   "ta_id": 2794,
+   "ta_name": "cavitas oris",
+   "ta_english": "oral cavity",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.oesophagus",
+   "name": "Oesophagus",
+   "ta_id": 2887,
+   "ta_name": "oesophagus",
+   "ta_english": null,
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.stomach",
+   "name": "Stomach",
+   "ta_id": 2901,
+   "ta_name": "gaster",
+   "ta_english": "stomach",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.duodenum",
+   "name": "Duodenum",
+   "ta_id": 2944,
+   "ta_name": "duodenum",
+   "ta_english": "duodenum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.jejunum",
+   "name": "Jejunum",
+   "ta_id": 2958,
+   "ta_name": "jejunum",
+   "ta_english": "jejunum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.ileum",
+   "name": "Ileum",
+   "ta_id": 2959,
+   "ta_name": "ileum",
+   "ta_english": "ileum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.ascending-colon",
+   "name": "Ascending colon",
+   "ta_id": 2982,
+   "ta_name": "colon ascendens",
+   "ta_english": "ascending colon",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.transverse-colon",
+   "name": "Transverse colon",
+   "ta_id": 2984,
+   "ta_name": "colon transversum",
+   "ta_english": "transverse colon",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.descending-colon",
+   "name": "Descending colon",
+   "ta_id": 2986,
+   "ta_name": "colon descendens",
+   "ta_english": "descending colon",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.sigmoid-colon",
+   "name": "Sigmoid colon",
+   "ta_id": 2987,
+   "ta_name": "colon sigmoideum",
+   "ta_english": "sigmoid colon",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.rectum",
+   "name": "Rectum",
+   "ta_id": 2998,
+   "ta_name": "rectum",
+   "ta_english": "rectum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.anal-canal",
+   "name": "Anal canal",
+   "ta_id": 3009,
+   "ta_name": "canalis analis",
+   "ta_english": "anal canal",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "organ.stomach",
+   "name": "Stomach (structure)",
+   "ta_id": 2901,
+   "ta_name": "gaster",
+   "ta_english": "stomach",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "organ.liver",
+   "name": "Liver",
+   "ta_id": 3023,
+   "ta_name": "hepar",
+   "ta_english": "liver",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "organ.gallbladder",
+   "name": "Gallbladder",
+   "ta_id": 3081,
+   "ta_name": "vesica biliaris",
+   "ta_english": "gallbladder",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "organ.pancreas",
+   "name": "Pancreas",
+   "ta_id": 3114,
+   "ta_name": "pancreas",
+   "ta_english": "pancreas",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-i",
+   "name": "Segment I (caudate)",
+   "ta_id": 3073,
+   "ta_name": "segmentum posterius hepatis",
+   "ta_english": "posterior segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment I of liver'; its related term is 'caudate lobe', matching the record's own name."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-ii",
+   "name": "Segment II",
+   "ta_id": 3068,
+   "ta_name": "segmentum posterius laterale sinistrum hepatis",
+   "ta_english": "left posterior lateral segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment II of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-iii",
+   "name": "Segment III",
+   "ta_id": 3069,
+   "ta_name": "segmentum anterius laterale sinistrum hepatis",
+   "ta_english": "left anterior lateral segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment III of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-iv",
+   "name": "Segment IV",
+   "ta_id": 3071,
+   "ta_name": "segmentum mediale sinistrum hepatis",
+   "ta_english": "left medial segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment IV of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-v",
+   "name": "Segment V",
+   "ta_id": 3076,
+   "ta_name": "segmentum anterius mediale dextrum hepatis",
+   "ta_english": "anterior medial segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment V of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-vi",
+   "name": "Segment VI",
+   "ta_id": 3079,
+   "ta_name": "segmentum anterius laterale dextrum hepatis",
+   "ta_english": "anterior lateral segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment VI of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-vii",
+   "name": "Segment VII",
+   "ta_id": 3080,
+   "ta_name": "segmentum posterius laterale dextrum hepatis",
+   "ta_english": "posterior lateral segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment VII of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "seg.couinaud-viii",
+   "name": "Segment VIII",
+   "ta_id": 3077,
+   "ta_name": "segmentum posterius mediale dextrum hepatis",
+   "ta_english": "posterior medial segment of liver",
+   "basis": "synonym",
+   "note": "TA2 synonym 'segment VIII of liver'."
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.oral-cavity-structure",
+   "name": "Oral cavity (structure)",
+   "ta_id": 2794,
+   "ta_name": "cavitas oris",
+   "ta_english": "oral cavity",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.salivary-glands",
+   "name": "Salivary glands",
+   "ta_id": 2798,
+   "ta_name": "glandulae salivariae",
+   "ta_english": "salivary glands",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.peritoneum",
+   "name": "Peritoneum",
+   "ta_id": 3729,
+   "ta_name": "peritoneum",
+   "ta_english": "peritoneum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.peritoneal-cavity",
+   "name": "Peritoneal cavity",
+   "ta_id": 3702,
+   "ta_name": "cavitas peritonealis",
+   "ta_english": "peritoneal cavity",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.pituitary-gland",
+   "name": "Pituitary gland",
+   "ta_id": 3854,
+   "ta_name": "glandula pituitaria",
+   "ta_english": "pituitary gland",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.thyroid-gland",
+   "name": "Thyroid gland",
+   "ta_id": 3863,
+   "ta_name": "glandula thyreoidea",
+   "ta_english": "thyroid gland",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.parathyroid-glands",
+   "name": "Parathyroid glands",
+   "ta_id": 3870,
+   "ta_name": "glandulae parathyreoideae",
+   "ta_english": "parathyroid glands",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.adrenal-gland",
+   "name": "Adrenal glands",
+   "ta_id": 3874,
+   "ta_name": "glandula suprarenalis",
+   "ta_english": "suprarenal gland",
+   "basis": "synonym",
+   "note": "TA2 lists the English synonym 'adrenal gland' for glandula suprarenalis; the record is the class record for both glands, TA2's term is singular."
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.pineal-gland",
+   "name": "Pineal gland",
+   "ta_id": 3862,
+   "ta_name": "glandula pinealis",
+   "ta_english": "pineal gland",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "endocrine",
+   "record_id": "gland.pancreatic-islets",
+   "name": "Pancreatic islets",
+   "ta_id": 3128,
+   "ta_name": "insulae pancreaticae",
+   "ta_english": "pancreatic islets",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "organ.skin",
+   "name": "Skin",
+   "ta_id": 7041,
+   "ta_name": "cutis",
+   "ta_english": "skin",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.epidermis",
+   "name": "Epidermis",
+   "ta_id": 7046,
+   "ta_name": "epidermis",
+   "ta_english": "epidermis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.dermis",
+   "name": "Dermis",
+   "ta_id": 7047,
+   "ta_name": "dermis",
+   "ta_english": "dermis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.hypodermis",
+   "name": "Hypodermis",
+   "ta_id": 7083,
+   "ta_name": "tela subcutanea",
+   "ta_english": "subcutaneous tissue",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.hair-of-head",
+   "name": "Hair of head",
+   "ta_id": 7055,
+   "ta_name": "capilli",
+   "ta_english": "hairs of head",
+   "basis": "preferred",
+   "note": "TA2 'capilli', English 'hairs of head' (record name is the singular collective form)."
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.pubic-hair",
+   "name": "Pubic hair",
+   "ta_id": 7062,
+   "ta_name": "pubes",
+   "ta_english": "pubic hairs",
+   "basis": "preferred",
+   "note": "TA2 'pubes', English 'pubic hairs'."
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.eyebrow",
+   "name": "Eyebrow",
+   "ta_id": 181,
+   "ta_name": "supercilium",
+   "ta_english": "eyebrow",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.nail",
+   "name": "Nail",
+   "ta_id": 7065,
+   "ta_name": "unguis",
+   "ta_english": "nail",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "integumentary",
+   "record_id": "gland.sebaceous-glands",
+   "name": "Sebaceous glands",
+   "ta_id": 7082,
+   "ta_name": "glandula sebacea",
+   "ta_english": "sebaceous gland",
+   "basis": "preferred",
+   "note": "TA2 class term is singular (glandula sebacea); the record is the class record for the glands."
+  },
+  {
+   "system": "integumentary",
+   "record_id": "gland.sweat-glands",
+   "name": "Sweat glands",
+   "ta_id": 7079,
+   "ta_name": "glandulae sudoriferae",
+   "ta_english": "sweat glands",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "lymphatic",
+   "record_id": "organ.spleen",
+   "name": "Spleen",
+   "ta_id": 5159,
+   "ta_name": "splen",
+   "ta_english": "spleen",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "lymphatic",
+   "record_id": "organ.thymus",
+   "name": "Thymus",
+   "ta_id": 5152,
+   "ta_name": "thymus",
+   "ta_english": "thymus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.trapezius",
+   "name": "trapezius",
+   "ta_id": 2226,
+   "ta_name": "musculus trapezius",
+   "ta_english": "trapezius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.levator-scapulae",
+   "name": "levator scapulae",
+   "ta_id": 2234,
+   "ta_name": "levator scapulae",
+   "ta_english": "levator scapulae",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.rhomboid-major",
+   "name": "rhomboid major",
+   "ta_id": 2232,
+   "ta_name": "musculus rhomboideus major",
+   "ta_english": "rhomboid major muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.rhomboid-minor",
+   "name": "rhomboid minor",
+   "ta_id": 2233,
+   "ta_name": "musculus rhomboideus minor",
+   "ta_english": "rhomboid minor muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.serratus-posterior-superior",
+   "name": "serratus posterior superior",
+   "ta_id": 2236,
+   "ta_name": "musculus serratus posterior superior",
+   "ta_english": "serratus posterior superior muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.serratus-posterior-inferior",
+   "name": "serratus posterior inferior",
+   "ta_id": 2235,
+   "ta_name": "musculus serratus posterior inferior",
+   "ta_english": "serratus posterior inferior muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.splenius-capitis",
+   "name": "splenius capitis",
+   "ta_id": 2273,
+   "ta_name": "musculus splenius capitis",
+   "ta_english": "splenius capitis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.splenius-cervicis",
+   "name": "splenius cervicis",
+   "ta_id": 2274,
+   "ta_name": "musculus splenius colli",
+   "ta_english": "splenius colli muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.iliocostalis-lumborum",
+   "name": "iliocostalis lumborum",
+   "ta_id": 2258,
+   "ta_name": "musculus iliocostalis lumborum",
+   "ta_english": "iliocostalis lumborum muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.iliocostalis-thoracis",
+   "name": "iliocostalis thoracis",
+   "ta_id": 2260,
+   "ta_name": "musculus iliocostalis thoracis",
+   "ta_english": "iliocostalis thoracis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.iliocostalis-cervicis",
+   "name": "iliocostalis cervicis",
+   "ta_id": 2261,
+   "ta_name": "musculus iliocostalis colli",
+   "ta_english": "iliocostalis colli muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.longissimus-thoracis",
+   "name": "longissimus thoracis",
+   "ta_id": 2263,
+   "ta_name": "musculus longissimus thoracis",
+   "ta_english": "longissimus thoracis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.longissimus-cervicis",
+   "name": "longissimus cervicis",
+   "ta_id": 2265,
+   "ta_name": "musculus longissimus colli",
+   "ta_english": "longissimus colli muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.longissimus-capitis",
+   "name": "longissimus capitis",
+   "ta_id": 2266,
+   "ta_name": "musculus longissimus capitis",
+   "ta_english": "longissimus capitis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.spinalis-thoracis",
+   "name": "spinalis thoracis",
+   "ta_id": 2268,
+   "ta_name": "musculus spinalis thoracis",
+   "ta_english": "spinalis thoracis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.semispinalis-thoracis",
+   "name": "semispinalis thoracis",
+   "ta_id": 2281,
+   "ta_name": "musculus semispinalis thoracis",
+   "ta_english": "semispinalis thoracis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.semispinalis-cervicis",
+   "name": "semispinalis cervicis",
+   "ta_id": 2282,
+   "ta_name": "musculus semispinalis colli",
+   "ta_english": "semispinalis colli muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.semispinalis-capitis",
+   "name": "semispinalis capitis",
+   "ta_id": 2283,
+   "ta_name": "musculus semispinalis capitis",
+   "ta_english": "semispinalis capitis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.cervical-rotator",
+   "name": "cervical rotator",
+   "ta_id": 2289,
+   "ta_name": "rotatores colli",
+   "ta_english": "rotatores colli",
+   "basis": "synonym",
+   "note": "TA2 lists 'rotatores cervicis' among the English synonyms of rotatores colli."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.thoracic-rotator",
+   "name": "thoracic rotator",
+   "ta_id": 2286,
+   "ta_name": "rotatores thoracis",
+   "ta_english": "rotatores thoracis",
+   "basis": "preferred",
+   "note": "TA2 'rotatores thoracis'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.lumbar-rotator",
+   "name": "lumbar rotator",
+   "ta_id": 2285,
+   "ta_name": "rotatores lumborum",
+   "ta_english": "rotatores lumborum",
+   "basis": "preferred",
+   "note": "TA2 'rotatores lumborum'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.interspinalis-thoracis",
+   "name": "interspinalis thoracis",
+   "ta_id": 2292,
+   "ta_name": "musculi interspinales thoracis",
+   "ta_english": "interspinales thoracis muscles",
+   "basis": "preferred",
+   "note": "TA2 'musculi interspinales thoracis'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-interspinales-cervicis",
+   "name": "set of interspinales cervicis",
+   "ta_id": 2293,
+   "ta_name": "musculi interspinales colli",
+   "ta_english": "interspinales colli muscles",
+   "basis": "latin-synonym",
+   "note": "TA2 lists the Latin synonym 'musculi interspinales cervicis' for musculi interspinales colli."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-interspinales-lumborum",
+   "name": "set of interspinales lumborum",
+   "ta_id": 2291,
+   "ta_name": "musculi interspinales lumborum",
+   "ta_english": "interspinales lumborum muscles",
+   "basis": "preferred",
+   "note": "TA2 'musculi interspinales lumborum'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.lateral-lumbar-intertransversarius",
+   "name": "lateral lumbar intertransversarius",
+   "ta_id": 2239,
+   "ta_name": "musculi intertransversarii laterales lumborum",
+   "ta_english": "lateral intertransversarii lumborum muscles",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'lateral lumbar intertransversarii muscles'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.medial-lumbar-intertransversarius",
+   "name": "medial lumbar intertransversarius",
+   "ta_id": 2295,
+   "ta_name": "musculi intertransversarii mediales lumborum",
+   "ta_english": "medial intertransversarii lumborum muscles",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'medial lumbar intertransversarii muscles'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-anterior-cervical-intertransversarii",
+   "name": "set of anterior cervical intertransversarii",
+   "ta_id": 2237,
+   "ta_name": "musculi intertransversarii anteriores colli",
+   "ta_english": "anterior intertransversarii colli muscles",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'anterior cervical intertransversarii muscles'; Latin synonym carries the record's own 'cervicis' form."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-levatores-costarum-breves",
+   "name": "set of levatores costarum breves",
+   "ta_id": 2310,
+   "ta_name": "levatores breves costarum",
+   "ta_english": "levatores breves costarum",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'levatores costarum breves muscles'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-levatores-costarum-longi",
+   "name": "set of levatores costarum longi",
+   "ta_id": 2309,
+   "ta_name": "levatores longi costarum",
+   "ta_english": "levatores longi costarum",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'levatores costarum longi muscles'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.rectus-capitis-posterior-major",
+   "name": "rectus capitis posterior major",
+   "ta_id": 2249,
+   "ta_name": "musculus rectus posterior major capitis",
+   "ta_english": "rectus posterior major capitis muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.rectus-capitis-posterior-minor",
+   "name": "rectus capitis posterior minor",
+   "ta_id": 2250,
+   "ta_name": "musculus rectus posterior minor capitis",
+   "ta_english": "rectus posterior minor capitis muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.obliquus-capitis-inferior",
+   "name": "obliquus capitis inferior",
+   "ta_id": 2252,
+   "ta_name": "musculus obliquus inferior capitis",
+   "ta_english": "obliquus inferior capitis muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.obliquus-capitis-superior",
+   "name": "obliquus capitis superior",
+   "ta_id": 2251,
+   "ta_name": "musculus obliquus superior capitis",
+   "ta_english": "obliquus superior capitis muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.pectoralis-major",
+   "name": "pectoralis major",
+   "ta_id": 2301,
+   "ta_name": "musculus pectoralis major",
+   "ta_english": "pectoralis major muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.pectoralis-minor",
+   "name": "pectoralis minor",
+   "ta_id": 2305,
+   "ta_name": "musculus pectoralis minor",
+   "ta_english": "pectoralis minor muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.subclavius",
+   "name": "subclavius",
+   "ta_id": 2306,
+   "ta_name": "musculus subclavius",
+   "ta_english": "subclavius muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.serratus-anterior",
+   "name": "serratus anterior",
+   "ta_id": 2307,
+   "ta_name": "musculus serratus anterior",
+   "ta_english": "serratus anterior muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.deltoid",
+   "name": "deltoid",
+   "ta_id": 2452,
+   "ta_name": "musculus deltoideus",
+   "ta_english": "deltoid muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.teres-major",
+   "name": "teres major",
+   "ta_id": 2462,
+   "ta_name": "musculus teres major",
+   "ta_english": "teres major muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.supraspinatus",
+   "name": "supraspinatus",
+   "ta_id": 2457,
+   "ta_name": "musculus supraspinatus",
+   "ta_english": "supraspinatus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.infraspinatus",
+   "name": "infraspinatus",
+   "ta_id": 2458,
+   "ta_name": "musculus infraspinatus",
+   "ta_english": "infraspinatus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.subscapularis",
+   "name": "subscapularis",
+   "ta_id": 2460,
+   "ta_name": "musculus subscapularis",
+   "ta_english": "subscapularis muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.teres-minor",
+   "name": "teres minor",
+   "ta_id": 2459,
+   "ta_name": "musculus teres minor",
+   "ta_english": "teres minor muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.coracobrachialis",
+   "name": "coracobrachialis",
+   "ta_id": 2468,
+   "ta_name": "musculus coracobrachialis",
+   "ta_english": "coracobrachialis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.biceps-brachii",
+   "name": "biceps brachii",
+   "ta_id": 2464,
+   "ta_name": "musculus biceps brachii",
+   "ta_english": "biceps brachii muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.brachialis",
+   "name": "brachialis",
+   "ta_id": 2469,
+   "ta_name": "musculus brachialis",
+   "ta_english": "brachialis muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.triceps-brachii",
+   "name": "triceps brachii",
+   "ta_id": 2471,
+   "ta_name": "musculus triceps brachii",
+   "ta_english": "triceps brachii muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.anconeus",
+   "name": "anconeus",
+   "ta_id": 2510,
+   "ta_name": "musculus anconeus",
+   "ta_english": "anconeus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.pronator-teres",
+   "name": "pronator teres",
+   "ta_id": 2478,
+   "ta_name": "pronator teres",
+   "ta_english": "pronator teres",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-carpi-radialis",
+   "name": "flexor carpi radialis",
+   "ta_id": 2481,
+   "ta_name": "flexor radialis carpi",
+   "ta_english": "flexor carpi radialis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.palmaris-longus",
+   "name": "palmaris longus",
+   "ta_id": 2482,
+   "ta_name": "musculus palmaris longus",
+   "ta_english": "palmaris longus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-carpi-ulnaris",
+   "name": "flexor carpi ulnaris",
+   "ta_id": 2483,
+   "ta_name": "flexor ulnaris carpi",
+   "ta_english": "flexor carpi ulnaris",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-digitorum-superficialis",
+   "name": "flexor digitorum superficialis",
+   "ta_id": 2486,
+   "ta_name": "flexor superficialis digitorum",
+   "ta_english": "flexor digitorum superficialis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-digitorum-profundus",
+   "name": "flexor digitorum profundus",
+   "ta_id": 2491,
+   "ta_name": "flexor profundus digitorum",
+   "ta_english": "flexor digitorum profundus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-pollicis-longus",
+   "name": "flexor pollicis longus",
+   "ta_id": 2492,
+   "ta_name": "flexor longus pollicis",
+   "ta_english": "flexor pollicis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.pronator-quadratus",
+   "name": "pronator quadratus",
+   "ta_id": 2493,
+   "ta_name": "pronator quadratus",
+   "ta_english": "pronator quadratus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.brachioradialis",
+   "name": "brachioradialis",
+   "ta_id": 2496,
+   "ta_name": "musculus brachioradialis",
+   "ta_english": "brachioradialis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-carpi-radialis-longus",
+   "name": "extensor carpi radialis longus",
+   "ta_id": 2497,
+   "ta_name": "extensor radialis longus carpi",
+   "ta_english": "extensor carpi radialis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-carpi-radialis-brevis",
+   "name": "extensor carpi radialis brevis",
+   "ta_id": 2499,
+   "ta_name": "extensor radialis brevis carpi",
+   "ta_english": "extensor carpi radialis brevis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-digitorum",
+   "name": "extensor digitorum",
+   "ta_id": 2500,
+   "ta_name": "extensor digitorum",
+   "ta_english": "extensor digitorum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-digiti-minimi",
+   "name": "extensor digiti minimi",
+   "ta_id": 2506,
+   "ta_name": "extensor digiti minimi",
+   "ta_english": "extensor digiti minimi",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-carpi-ulnaris",
+   "name": "extensor carpi ulnaris",
+   "ta_id": 2507,
+   "ta_name": "extensor ulnaris carpi",
+   "ta_english": "extensor carpi ulnaris",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-indicis",
+   "name": "extensor indicis",
+   "ta_id": 2515,
+   "ta_name": "extensor indicis",
+   "ta_english": "extensor indicis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.supinator",
+   "name": "supinator",
+   "ta_id": 2512,
+   "ta_name": "supinator",
+   "ta_english": "supinator",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.abductor-pollicis-longus",
+   "name": "abductor pollicis longus",
+   "ta_id": 2517,
+   "ta_name": "abductor longus pollicis",
+   "ta_english": "abductor pollicis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-pollicis-longus",
+   "name": "extensor pollicis longus",
+   "ta_id": 2516,
+   "ta_name": "extensor longus pollicis",
+   "ta_english": "extensor pollicis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-pollicis-brevis",
+   "name": "extensor pollicis brevis",
+   "ta_id": 2518,
+   "ta_name": "extensor brevis pollicis",
+   "ta_english": "extensor pollicis brevis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.opponens-pollicis",
+   "name": "opponens pollicis",
+   "ta_id": 2525,
+   "ta_name": "musculus opponens pollicis",
+   "ta_english": "opponens pollicis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.abductor-pollicis-brevis",
+   "name": "abductor pollicis brevis",
+   "ta_id": 2521,
+   "ta_name": "abductor brevis pollicis",
+   "ta_english": "abductor pollicis brevis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-pollicis-brevis",
+   "name": "flexor pollicis brevis",
+   "ta_id": 2522,
+   "ta_name": "flexor brevis pollicis",
+   "ta_english": "flexor pollicis brevis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.adductor-pollicis",
+   "name": "adductor pollicis",
+   "ta_id": 2526,
+   "ta_name": "adductor pollicis",
+   "ta_english": "adductor pollicis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.abductor-digiti-minimi-of-hand",
+   "name": "abductor digiti minimi of hand",
+   "ta_id": 2529,
+   "ta_name": "abductor digiti minimi manus",
+   "ta_english": "abductor digiti minimi of hand",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-digiti-minimi-brevis-of-hand",
+   "name": "flexor digiti minimi brevis of hand",
+   "ta_id": 2530,
+   "ta_name": "flexor digiti minimi manus",
+   "ta_english": "flexor digiti minimi of hand",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'flexor digiti minimi brevis muscle of hand' for flexor digiti minimi manus."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.opponens-digiti-minimi-of-hand",
+   "name": "opponens digiti minimi of hand",
+   "ta_id": 2531,
+   "ta_name": "musculus opponens digiti minimi manus",
+   "ta_english": "opponens digiti minimi muscle of hand",
+   "basis": "preferred",
+   "note": "TA2 'musculus opponens digiti minimi manus', English 'opponens digiti minimi muscle of hand'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-dorsal-interossei-of-hand",
+   "name": "set of dorsal interossei of hand",
+   "ta_id": 2533,
+   "ta_name": "musculi interossei dorsales manus",
+   "ta_english": "dorsal interossei muscles of hand",
+   "basis": "preferred",
+   "note": "TA2 'musculi interossei dorsales manus'."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-palmar-interossei-of-hand",
+   "name": "set of palmar interossei of hand",
+   "ta_id": 2534,
+   "ta_name": "musculi interossei palmares",
+   "ta_english": "palmar interossei muscles",
+   "basis": "preferred",
+   "note": "TA2 'musculi interossei palmares' (hand chapter position; its Latin synonym set is I-III)."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-lumbricals-of-hand",
+   "name": "set of lumbricals of hand",
+   "ta_id": 2532,
+   "ta_name": "musculi lumbricales manus",
+   "ta_english": "lumbrical muscles of hand",
+   "basis": "synonym",
+   "note": "TA2 English synonym 'lumbricals of hand' for musculi lumbricales manus."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.multifidus",
+   "name": "multifidus",
+   "ta_id": 2276,
+   "ta_name": "musculi multifidi",
+   "ta_english": "multifidus muscles",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gluteus-maximus",
+   "name": "gluteus maximus",
+   "ta_id": 2598,
+   "ta_name": "musculus gluteus maximus",
+   "ta_english": "gluteus maximus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gluteus-medius",
+   "name": "gluteus medius",
+   "ta_id": 2599,
+   "ta_name": "musculus gluteus medius",
+   "ta_english": "gluteus medius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gluteus-minimus",
+   "name": "gluteus minimus",
+   "ta_id": 2600,
+   "ta_name": "musculus gluteus minimus",
+   "ta_english": "gluteus minimus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.tensor-fasciae-latae",
+   "name": "tensor fasciae latae",
+   "ta_id": 2602,
+   "ta_name": "tensor fasciae latae",
+   "ta_english": "tensor fasciae latae",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.piriformis",
+   "name": "piriformis",
+   "ta_id": 2604,
+   "ta_name": "musculus piriformis",
+   "ta_english": "piriformis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.obturator-internus",
+   "name": "obturator internus",
+   "ta_id": 2605,
+   "ta_name": "obturator internus",
+   "ta_english": "obturator internus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gemellus-superior",
+   "name": "gemellus superior",
+   "ta_id": 2606,
+   "ta_name": "musculus gemellus superior",
+   "ta_english": "superior gemellus muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gemellus-inferior",
+   "name": "gemellus inferior",
+   "ta_id": 2607,
+   "ta_name": "musculus gemellus inferior",
+   "ta_english": "inferior gemellus muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.quadratus-femoris",
+   "name": "quadratus femoris",
+   "ta_id": 2608,
+   "ta_name": "musculus quadratus femoris",
+   "ta_english": "quadratus femoris muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.psoas-major",
+   "name": "psoas major",
+   "ta_id": 2595,
+   "ta_name": "psoas major",
+   "ta_english": "psoas major",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.iliacus",
+   "name": "iliacus",
+   "ta_id": 2594,
+   "ta_name": "musculus iliacus",
+   "ta_english": "iliacus muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.sartorius",
+   "name": "sartorius",
+   "ta_id": 2610,
+   "ta_name": "musculus sartorius",
+   "ta_english": "sartorius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.rectus-femoris",
+   "name": "rectus femoris",
+   "ta_id": 2614,
+   "ta_name": "musculus rectus femoris",
+   "ta_english": "rectus femoris muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.vastus-lateralis",
+   "name": "vastus lateralis",
+   "ta_id": 2618,
+   "ta_name": "musculus vastus lateralis",
+   "ta_english": "vastus lateralis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.vastus-medialis",
+   "name": "vastus medialis",
+   "ta_id": 2620,
+   "ta_name": "musculus vastus medialis",
+   "ta_english": "vastus medialis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.vastus-intermedius",
+   "name": "vastus intermedius",
+   "ta_id": 2619,
+   "ta_name": "musculus vastus intermedius",
+   "ta_english": "vastus intermedius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.pectineus",
+   "name": "pectineus",
+   "ta_id": 2627,
+   "ta_name": "musculus pectineus",
+   "ta_english": "pectineus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gracilis",
+   "name": "gracilis",
+   "ta_id": 2635,
+   "ta_name": "musculus gracilis",
+   "ta_english": "gracilis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.adductor-longus",
+   "name": "adductor longus",
+   "ta_id": 2628,
+   "ta_name": "adductor longus",
+   "ta_english": "adductor longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.adductor-brevis",
+   "name": "adductor brevis",
+   "ta_id": 2629,
+   "ta_name": "adductor brevis",
+   "ta_english": "adductor brevis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.adductor-magnus",
+   "name": "adductor magnus",
+   "ta_id": 2630,
+   "ta_name": "adductor magnus",
+   "ta_english": "adductor magnus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.obturator-externus",
+   "name": "obturator externus",
+   "ta_id": 2636,
+   "ta_name": "obturator externus",
+   "ta_english": "obturator externus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.biceps-femoris",
+   "name": "biceps femoris",
+   "ta_id": 2638,
+   "ta_name": "musculus biceps femoris",
+   "ta_english": "biceps femoris muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.semitendinosus",
+   "name": "semitendinosus",
+   "ta_id": 2641,
+   "ta_name": "musculus semitendinosus",
+   "ta_english": "semitendinosus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.semimembranosus",
+   "name": "semimembranosus",
+   "ta_id": 2642,
+   "ta_name": "musculus semimembranosus",
+   "ta_english": "semimembranosus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.tibialis-anterior",
+   "name": "tibialis anterior",
+   "ta_id": 2644,
+   "ta_name": "musculus tibialis anterior",
+   "ta_english": "tibialis anterior muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-hallucis-longus",
+   "name": "extensor hallucis longus",
+   "ta_id": 2650,
+   "ta_name": "extensor longus hallucis",
+   "ta_english": "extensor hallucis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.extensor-digitorum-longus",
+   "name": "extensor digitorum longus",
+   "ta_id": 2645,
+   "ta_name": "extensor longus digitorum",
+   "ta_english": "extensor digitorum longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.fibularis-tertius",
+   "name": "fibularis tertius",
+   "ta_id": 2649,
+   "ta_name": "musculus fibularis tertius",
+   "ta_english": "fibularis tertius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.fibularis-longus",
+   "name": "fibularis longus",
+   "ta_id": 2652,
+   "ta_name": "musculus fibularis longus",
+   "ta_english": "fibularis longus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.fibularis-brevis",
+   "name": "fibularis brevis",
+   "ta_id": 2653,
+   "ta_name": "musculus fibularis brevis",
+   "ta_english": "fibularis brevis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.gastrocnemius",
+   "name": "gastrocnemius",
+   "ta_id": 2657,
+   "ta_name": "musculus gastrocnemius",
+   "ta_english": "gastrocnemius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.soleus",
+   "name": "soleus",
+   "ta_id": 2660,
+   "ta_name": "musculus soleus",
+   "ta_english": "soleus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.plantaris",
+   "name": "plantaris",
+   "ta_id": 2663,
+   "ta_name": "musculus plantaris",
+   "ta_english": "plantaris muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.popliteus",
+   "name": "popliteus",
+   "ta_id": 2665,
+   "ta_name": "musculus popliteus",
+   "ta_english": "popliteus muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.tibialis-posterior",
+   "name": "tibialis posterior",
+   "ta_id": 2666,
+   "ta_name": "musculus tibialis posterior",
+   "ta_english": "tibialis posterior muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-digitorum-longus",
+   "name": "flexor digitorum longus",
+   "ta_id": 2667,
+   "ta_name": "flexor longus digitorum",
+   "ta_english": "flexor digitorum longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.flexor-hallucis-longus",
+   "name": "flexor hallucis longus",
+   "ta_id": 2668,
+   "ta_name": "flexor longus hallucis",
+   "ta_english": "flexor hallucis longus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.diaphragm",
+   "name": "diaphragm",
+   "ta_id": 2327,
+   "ta_name": "diaphragma",
+   "ta_english": "diaphragm",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.external-intercostal",
+   "name": "external intercostal",
+   "ta_id": 2311,
+   "ta_name": "musculi intercostales externi",
+   "ta_english": "external intercostal muscles",
+   "basis": "class-word-form",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.internal-intercostal",
+   "name": "internal intercostal",
+   "ta_id": 2312,
+   "ta_name": "musculi intercostales interni",
+   "ta_english": "internal intercostal muscles",
+   "basis": "class-word-form",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.innermost-intercostal",
+   "name": "innermost intercostal",
+   "ta_id": 2313,
+   "ta_name": "musculi intercostales intimi",
+   "ta_english": "innermost intercostal muscles",
+   "basis": "class-word-form",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.transversus-thoracis",
+   "name": "transversus thoracis",
+   "ta_id": 2315,
+   "ta_name": "musculus transversus thoracis",
+   "ta_english": "transversus thoracis muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.external-oblique",
+   "name": "external oblique",
+   "ta_id": 2364,
+   "ta_name": "musculus obliquus externus abdominis",
+   "ta_english": "external abdominal oblique muscle",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.sternocleidomastoid",
+   "name": "sternocleidomastoid",
+   "ta_id": 2156,
+   "ta_name": "musculus sternocleidomastoideus",
+   "ta_english": "sternocleidomastoid muscle",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.scalenus-anterior",
+   "name": "scalenus anterior",
+   "ta_id": 2152,
+   "ta_name": "musculus scalenus anterior",
+   "ta_english": "scalenus anterior muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.scalenus-medius",
+   "name": "scalenus medius",
+   "ta_id": 2153,
+   "ta_name": "musculus scalenus medius",
+   "ta_english": "scalenus medius muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.scalenus-posterior",
+   "name": "scalenus posterior",
+   "ta_id": 2154,
+   "ta_name": "musculus scalenus posterior",
+   "ta_english": "scalenus posterior muscle",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-01-olfactory",
+   "name": "Olfactory nerve (CN I)",
+   "ta_id": 6181,
+   "ta_name": "nervus olfactorius",
+   "ta_english": "olfactory nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-02-optic",
+   "name": "Optic nerve (CN II)",
+   "ta_id": 6183,
+   "ta_name": "nervus opticus",
+   "ta_english": "optic nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-03-oculomotor",
+   "name": "Oculomotor nerve (CN III)",
+   "ta_id": 6187,
+   "ta_name": "nervus oculomotorius",
+   "ta_english": "oculomotor nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-04-trochlear",
+   "name": "Trochlear nerve (CN IV)",
+   "ta_id": 6191,
+   "ta_name": "nervus trochlearis",
+   "ta_english": "trochlear nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-05-trigeminal",
+   "name": "Trigeminal nerve (CN V)",
+   "ta_id": 6192,
+   "ta_name": "nervus trigeminus",
+   "ta_english": "trigeminal nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-06-abducens",
+   "name": "Abducens nerve (CN VI)",
+   "ta_id": 6283,
+   "ta_name": "nervus abducens",
+   "ta_english": "abducens nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-07-facial",
+   "name": "Facial nerve (CN VII)",
+   "ta_id": 6284,
+   "ta_name": "nervus facialis",
+   "ta_english": "facial nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-08-vestibulocochlear",
+   "name": "Vestibulocochlear nerve (CN VIII)",
+   "ta_id": 6307,
+   "ta_name": "nervus vestibulocochlearis",
+   "ta_english": "vestibulocochlear nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-09-glossopharyngeal",
+   "name": "Glossopharyngeal nerve (CN IX)",
+   "ta_id": 6320,
+   "ta_name": "nervus glossopharyngeus",
+   "ta_english": "glossopharyngeal nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-10-vagus",
+   "name": "Vagus nerve (CN X)",
+   "ta_id": 6332,
+   "ta_name": "nervus vagus",
+   "ta_english": "vagus nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-11-accessory",
+   "name": "Accessory nerve (CN XI)",
+   "ta_id": 6352,
+   "ta_name": "nervus accessorius",
+   "ta_english": "accessory nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.cn-12-hypoglossal",
+   "name": "Hypoglossal nerve (CN XII)",
+   "ta_id": 6357,
+   "ta_name": "nervus hypoglossus",
+   "ta_english": "hypoglossal nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "plexus.brachial",
+   "name": "Brachial plexus",
+   "ta_id": 6395,
+   "ta_name": "plexus brachialis",
+   "ta_english": "brachial plexus",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "plexus.lumbar",
+   "name": "Lumbar plexus",
+   "ta_id": 6517,
+   "ta_name": "plexus lumbalis",
+   "ta_english": "lumbar plexus",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "plexus.sacral",
+   "name": "Sacral plexus",
+   "ta_id": 6539,
+   "ta_name": "plexus sacralis",
+   "ta_english": "sacral plexus",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.musculocutaneous",
+   "name": "Musculocutaneous nerve",
+   "ta_id": 6421,
+   "ta_name": "nervus musculocutaneus",
+   "ta_english": "musculocutaneous nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.axillary",
+   "name": "Axillary nerve",
+   "ta_id": 6440,
+   "ta_name": "nervus axillaris",
+   "ta_english": "axillary nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.median",
+   "name": "Median nerve",
+   "ta_id": 6459,
+   "ta_name": "nervus medianus",
+   "ta_english": "median nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.radial",
+   "name": "Radial nerve",
+   "ta_id": 6431,
+   "ta_name": "nervus radialis",
+   "ta_english": "radial nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.ulnar",
+   "name": "Ulnar nerve",
+   "ta_id": 6449,
+   "ta_name": "nervus ulnaris",
+   "ta_english": "ulnar nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.iliohypogastric",
+   "name": "Iliohypogastric nerve",
+   "ta_id": 6496,
+   "ta_name": "nervus iliohypogastricus",
+   "ta_english": "iliohypogastric nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.ilioinguinal",
+   "name": "Ilioinguinal nerve",
+   "ta_id": 6499,
+   "ta_name": "nervus ilioinguinalis",
+   "ta_english": null,
+   "basis": "latin-term",
+   "note": "TA2 carries no English equivalent for 6499; its Latin 'nervus ilioinguinalis' is the unique ilioinguinal nerve entry in the table."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.genitofemoral",
+   "name": "Genitofemoral nerve",
+   "ta_id": 6529,
+   "ta_name": "nervus genitofemoralis",
+   "ta_english": "genitofemoral nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.lateral-cutaneous-thigh",
+   "name": "Lateral cutaneous nerve of thigh",
+   "ta_id": 6521,
+   "ta_name": "nervus cutaneus lateralis femoris",
+   "ta_english": "lateral femoral cutaneous nerve",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.obturator",
+   "name": "Obturator nerve",
+   "ta_id": 6532,
+   "ta_name": "nervus obturatorius",
+   "ta_english": "obturator nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.femoral",
+   "name": "Femoral nerve",
+   "ta_id": 6522,
+   "ta_name": "nervus femoralis",
+   "ta_english": "femoral nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.superior-gluteal",
+   "name": "Superior gluteal nerve",
+   "ta_id": 6543,
+   "ta_name": "nervus gluteus superior",
+   "ta_english": "superior gluteal nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.inferior-gluteal",
+   "name": "Inferior gluteal nerve",
+   "ta_id": 6544,
+   "ta_name": "nervus gluteus inferior",
+   "ta_english": "inferior gluteal nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.sciatic",
+   "name": "Sciatic nerve",
+   "ta_id": 6569,
+   "ta_name": "nervus ischiadicus",
+   "ta_english": "sciatic nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.posterior-cutaneous-thigh",
+   "name": "Posterior cutaneous nerve of thigh",
+   "ta_id": 6566,
+   "ta_name": "nervus cutaneus posterior femoris",
+   "ta_english": "posterior femoral cutaneous nerve",
+   "basis": "synonym",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.pudendal",
+   "name": "Pudendal nerve",
+   "ta_id": 6554,
+   "ta_name": "nervus pudendalis",
+   "ta_english": "pudendal nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.tibial",
+   "name": "Tibial nerve",
+   "ta_id": 6582,
+   "ta_name": "nervus tibialis",
+   "ta_english": "tibial nerve",
+   "basis": "preferred",
+   "note": "unique STRONG candidate in the record's own structure class; remaining candidates matched only the bare epithet (CORE keys) and denote other structures."
+  },
+  {
+   "system": "nervous",
+   "record_id": "nerve.common-fibular",
+   "name": "Common fibular nerve",
+   "ta_id": 6571,
+   "ta_name": "nervus fibularis communis",
+   "ta_english": "common fibular nerve",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.cerebrum",
+   "name": "Cerebrum",
+   "ta_id": 5416,
+   "ta_name": "cerebrum",
+   "ta_english": "cerebrum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.frontal-lobe",
+   "name": "Frontal lobe",
+   "ta_id": 5445,
+   "ta_name": "lobus frontalis",
+   "ta_english": "frontal lobe",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.parietal-lobe",
+   "name": "Parietal lobe",
+   "ta_id": 5467,
+   "ta_name": "lobus parietalis",
+   "ta_english": "parietal lobe",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.temporal-lobe",
+   "name": "Temporal lobe",
+   "ta_id": 5488,
+   "ta_name": "lobus temporalis",
+   "ta_english": "temporal lobe",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.occipital-lobe",
+   "name": "Occipital lobe",
+   "ta_id": 5480,
+   "ta_name": "lobus occipitalis",
+   "ta_english": "occipital lobe",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.insula",
+   "name": "Insula",
+   "ta_id": 5502,
+   "ta_name": "insula",
+   "ta_english": "insula",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.limbic-lobe",
+   "name": "Limbic lobe",
+   "ta_id": 5507,
+   "ta_name": "lobus limbicus",
+   "ta_english": "limbic lobe",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.cerebellum",
+   "name": "Cerebellum",
+   "ta_id": 5788,
+   "ta_name": "cerebellum",
+   "ta_english": "cerebellum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.brainstem",
+   "name": "Brainstem",
+   "ta_id": 5856,
+   "ta_name": "truncus encephali",
+   "ta_english": "brainstem",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.midbrain",
+   "name": "Midbrain",
+   "ta_id": 5874,
+   "ta_name": "mesencephalon",
+   "ta_english": "midbrain",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.pons",
+   "name": "Pons",
+   "ta_id": 5921,
+   "ta_name": "pons",
+   "ta_english": "pons",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.medulla",
+   "name": "Medulla oblongata",
+   "ta_id": 5983,
+   "ta_name": "medulla oblongata",
+   "ta_english": "medulla oblongata",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.thalamus",
+   "name": "Thalamus",
+   "ta_id": 5678,
+   "ta_name": "thalamus",
+   "ta_english": "thalamus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.hypothalamus",
+   "name": "Hypothalamus",
+   "ta_id": 5714,
+   "ta_name": "hypothalamus",
+   "ta_english": "hypothalamus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.hippocampus",
+   "name": "Hippocampus",
+   "ta_id": 5518,
+   "ta_name": "hippocampus",
+   "ta_english": "hippocampus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.corpus-callosum",
+   "name": "Corpus callosum",
+   "ta_id": 5604,
+   "ta_name": "corpus callosum",
+   "ta_english": "corpus callosum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "organ.brain",
+   "name": "Brain",
+   "ta_id": 5415,
+   "ta_name": "encephalon",
+   "ta_english": "brain",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "nervous",
+   "record_id": "organ.spinal-cord",
+   "name": "Spinal cord",
+   "ta_id": 6049,
+   "ta_name": "medulla spinalis",
+   "ta_english": "spinal cord",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "organ.testis",
+   "name": "Testis",
+   "ta_id": 3576,
+   "ta_name": "testis",
+   "ta_english": "testis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "structure.epididymis",
+   "name": "Epididymis",
+   "ta_id": 3603,
+   "ta_name": "epididymis",
+   "ta_english": "epididymis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "duct.ductus-deferens",
+   "name": "Ductus deferens (vas deferens)",
+   "ta_id": 3621,
+   "ta_name": "ductus deferens",
+   "ta_english": "ductus deferens",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "gland.seminal-vesicles",
+   "name": "Seminal vesicles",
+   "ta_id": 3631,
+   "ta_name": "glandula seminalis",
+   "ta_english": "seminal gland",
+   "basis": "synonym",
+   "note": "TA2 lists 'seminal vesicle' as the English synonym and 'vesicula seminalis' as the Latin synonym of glandula seminalis."
+  },
+  {
+   "system": "reproductive",
+   "record_id": "gland.prostate",
+   "name": "Prostate gland",
+   "ta_id": 3637,
+   "ta_name": "prostata",
+   "ta_english": "prostate",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "gland.bulbourethral-glands",
+   "name": "Bulbourethral glands (Cowper's glands)",
+   "ta_id": 3659,
+   "ta_name": "glandula bulbourethralis",
+   "ta_english": null,
+   "basis": "latin-term",
+   "note": "TA2 carries no English equivalent for 3659; its related terms include 'Cowper's gland', the record's own parenthetical name."
+  },
+  {
+   "system": "reproductive",
+   "record_id": "organ.penis",
+   "name": "Penis",
+   "ta_id": 3662,
+   "ta_name": "penis",
+   "ta_english": "penis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "organ.ovary",
+   "name": "Ovary",
+   "ta_id": 3470,
+   "ta_name": "ovarium",
+   "ta_english": "ovary",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "duct.uterine-tube",
+   "name": "Uterine tube (Fallopian tube)",
+   "ta_id": 3486,
+   "ta_name": "tuba uterina",
+   "ta_english": "uterine tube",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "organ.uterus",
+   "name": "Uterus",
+   "ta_id": 3500,
+   "ta_name": "uterus",
+   "ta_english": "uterus",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "organ.vagina",
+   "name": "Vagina",
+   "ta_id": 3523,
+   "ta_name": "vagina",
+   "ta_english": "vagina",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "structure.vulva",
+   "name": "Vulva",
+   "ta_id": 3547,
+   "ta_name": "vulva",
+   "ta_english": "vulva",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "structure.mons-pubis",
+   "name": "Mons pubis",
+   "ta_id": 3548,
+   "ta_name": "mons pubis",
+   "ta_english": "mons pubis",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "reproductive",
+   "record_id": "region.perineum",
+   "name": "Perineum",
+   "ta_id": 131,
+   "ta_name": "perineum",
+   "ta_english": "perineum",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.nasal-cavity",
+   "name": "Nasal cavity",
+   "ta_id": 3165,
+   "ta_name": "cavitas nasi",
+   "ta_english": "nasal cavity",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.nasopharynx",
+   "name": "Nasopharynx",
+   "ta_id": 2862,
+   "ta_name": "pars nasalis pharyngis",
+   "ta_english": "nasopharynx",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.oropharynx",
+   "name": "Oropharynx",
+   "ta_id": 2875,
+   "ta_name": "pars oralis pharyngis",
+   "ta_english": "oropharynx",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.laryngopharynx",
+   "name": "Laryngopharynx",
+   "ta_id": 2879,
+   "ta_name": "pars laryngea pharyngis",
+   "ta_english": "laryngopharynx",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.larynx",
+   "name": "Larynx",
+   "ta_id": 3184,
+   "ta_name": "larynx",
+   "ta_english": "larynx",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.trachea",
+   "name": "Trachea",
+   "ta_id": 3213,
+   "ta_name": "trachea",
+   "ta_english": "trachea",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.main-bronchi",
+   "name": "Main bronchi",
+   "ta_id": 3227,
+   "ta_name": "bronchus principalis",
+   "ta_english": "main bronchus",
+   "basis": "preferred",
+   "note": "TA2 class term 'bronchus principalis' (English 'main bronchus'); the sided bronchi are its children 3237/3252."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.lobar-bronchi",
+   "name": "Lobar bronchi",
+   "ta_id": 3229,
+   "ta_name": "bronchus lobaris",
+   "ta_english": "lobar bronchus",
+   "basis": "preferred",
+   "note": "TA2 class term 'bronchus lobaris' (English 'lobar bronchus', synonym 'secondary bronchus')."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.bronchioles",
+   "name": "Bronchioles",
+   "ta_id": 3282,
+   "ta_name": "bronchiolus",
+   "ta_english": "bronchiole",
+   "basis": "preferred",
+   "note": "TA2 class term 'bronchiolus' (English 'bronchiole')."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.right-lung",
+   "name": "Right lung",
+   "ta_id": 3283,
+   "ta_name": "pulmo dexter",
+   "ta_english": "right lung",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.left-lung",
+   "name": "Left lung",
+   "ta_id": 3299,
+   "ta_name": "pulmo sinister",
+   "ta_english": "left lung",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.nasal-cavity-organ",
+   "name": "Nasal cavity (structure)",
+   "ta_id": 3165,
+   "ta_name": "cavitas nasi",
+   "ta_english": "nasal cavity",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.pharynx",
+   "name": "Pharynx",
+   "ta_id": 2855,
+   "ta_name": "pharynx",
+   "ta_english": "pharynx",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-apical",
+   "name": "Apical segment (S1)",
+   "ta_id": 3285,
+   "ta_name": "segmentum apicale pulmonis dextri",
+   "ta_english": "apical segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 1 of right lung', 's1'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-posterior",
+   "name": "Posterior segment (S2)",
+   "ta_id": 3286,
+   "ta_name": "segmentum posterius pulmonis dextri",
+   "ta_english": "posterior segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 2 of right lung', 's2'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-anterior",
+   "name": "Anterior segment (S3)",
+   "ta_id": 3287,
+   "ta_name": "segmentum anterius pulmonis dextri",
+   "ta_english": "anterior segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 3 of right lung', 's3'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-lateral",
+   "name": "Lateral segment (S4)",
+   "ta_id": 3290,
+   "ta_name": "segmentum laterale pulmonis dextri",
+   "ta_english": "lateral segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 4 of right lung', 's4'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-medial",
+   "name": "Medial segment (S5)",
+   "ta_id": 3291,
+   "ta_name": "segmentum mediale pulmonis dextri",
+   "ta_english": "medial segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 5 of right lung', 's5'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-superior",
+   "name": "Superior segment (S6)",
+   "ta_id": 3294,
+   "ta_name": "segmentum superius pulmonis dextri",
+   "ta_english": "superior segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 6 of right lung', 's6'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-medial-basal",
+   "name": "Medial basal segment (S7)",
+   "ta_id": 3295,
+   "ta_name": "segmentum basale mediale pulmonis dextri",
+   "ta_english": "medial basal segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 7 of right lung', 's7'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-anterior-basal",
+   "name": "Anterior basal segment (S8)",
+   "ta_id": 3296,
+   "ta_name": "segmentum basale anterius pulmonis dextri",
+   "ta_english": "anterior basal segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 8 of right lung', 's8'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-lateral-basal",
+   "name": "Lateral basal segment (S9)",
+   "ta_id": 3297,
+   "ta_name": "segmentum basale laterale pulmonis dextri",
+   "ta_english": "lateral basal segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 9 of right lung', 's9'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.right-posterior-basal",
+   "name": "Posterior basal segment (S10)",
+   "ta_id": 3298,
+   "ta_name": "segmentum basale posterius pulmonis dextri",
+   "ta_english": "posterior basal segment of right lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 10 of right lung', 's10'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-apicoposterior",
+   "name": "Apico-posterior segment (S1+2)",
+   "ta_id": 3301,
+   "ta_name": "segmentum apicoposterius pulmonis sinistri",
+   "ta_english": "apicoposterior segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 1+2 of left lung', 's1+2'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-anterior",
+   "name": "Anterior segment (S3)",
+   "ta_id": 3302,
+   "ta_name": "segmentum anterius pulmonis sinistri",
+   "ta_english": "anterior segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 3 of left lung', 's3'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-superior-lingular",
+   "name": "Superior lingular segment (S4)",
+   "ta_id": 3305,
+   "ta_name": "segmentum lingulare superius pulmonis sinistri",
+   "ta_english": "superior lingular segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 4 of left lung', 's4'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-inferior-lingular",
+   "name": "Inferior lingular segment (S5)",
+   "ta_id": 3306,
+   "ta_name": "segmentum lingulare inferius pulmonis sinistri",
+   "ta_english": "inferior lingular segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 5 of left lung', 's5'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-superior",
+   "name": "Superior segment (S6)",
+   "ta_id": 3309,
+   "ta_name": "segmentum superius pulmonis sinistri",
+   "ta_english": "superior segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 6 of left lung', 's6'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-anteromedial-basal",
+   "name": "Anteromedial basal segment (S7+8)",
+   "ta_id": 3311,
+   "ta_name": "segmentum basale anteromediale pulmonis sinistri",
+   "ta_english": "anteromedial basal segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 7+8', 's7+8' — the combined left segment, as the record defines it."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-lateral-basal",
+   "name": "Lateral basal segment (S9)",
+   "ta_id": 3313,
+   "ta_name": "segmentum basale laterale pulmonis sinistri",
+   "ta_english": "lateral basal segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 9 of left lung', 's9'."
+  },
+  {
+   "system": "respiratory",
+   "record_id": "segment.left-posterior-basal",
+   "name": "Posterior basal segment (S10)",
+   "ta_id": 3314,
+   "ta_name": "segmentum basale posterius pulmonis sinistri",
+   "ta_english": "posterior basal segment of left lung",
+   "basis": "preferred",
+   "note": "TA2 synonyms 'segment 10 of left lung', 's10'."
+  },
+  {
+   "system": "urinary",
+   "record_id": "organ.kidney",
+   "name": "Kidney",
+   "ta_id": 3358,
+   "ta_name": "ren",
+   "ta_english": "kidney",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "urinary",
+   "record_id": "organ.ureter",
+   "name": "Ureter",
+   "ta_id": 3394,
+   "ta_name": "ureter",
+   "ta_english": "ureter",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "urinary",
+   "record_id": "organ.urinary-bladder",
+   "name": "Urinary bladder",
+   "ta_id": 3401,
+   "ta_name": "vesica urinaria",
+   "ta_english": "urinary bladder",
+   "basis": "preferred",
+   "note": null
+  },
+  {
+   "system": "urinary",
+   "record_id": "structure.urethra",
+   "name": "Urethra",
+   "ta_id": 3425,
+   "ta_name": "urethra",
+   "ta_english": "urethra",
+   "basis": "preferred",
+   "note": null
+  }
+ ],
+ "ambiguous": [
+  {
+   "system": "cardiovascular",
+   "record_id": "vein.renal-vein",
+   "name": "Renal vein",
+   "reason": "TA2 lists the renal vein only as sided terms (5000 vena renalis dextra, 5006 vena renalis sinistra); no unpaired term denotes this unsided record.",
+   "candidates": [
+    {
+     "ta_id": 5000,
+     "latin": "vena renalis dextra",
+     "english": "right renal vein"
+    },
+    {
+     "ta_id": 5006,
+     "latin": "vena renalis sinistra",
+     "english": "left renal vein"
+    }
+   ]
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.cecum-appendix",
+   "name": "Cecum and appendix",
+   "reason": "compound record (two organs in one record): TA2 terms exist separately — 2970 caecum, 2976 appendix vermiformis; no single TA2 term denotes the pair.",
+   "candidates": [
+    {
+     "ta_id": 2970,
+     "latin": "caecum",
+     "english": null
+    },
+    {
+     "ta_id": 2976,
+     "latin": "appendix vermiformis",
+     "english": "vermiform appendix"
+    }
+   ]
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.biliary-tree",
+   "name": "Biliary tree",
+   "reason": "collective record: TA2 names the parts separately (3064 ductus biliferi interlobulares, 3091 ductus biliares extrahepatici, 3092 ductus hepaticus communis, 3101 ductus cysticus, 3103 ductus biliaris) and has no single term for the whole biliary tree.",
+   "candidates": [
+    {
+     "ta_id": 3064,
+     "latin": "ductus biliferi interlobulares",
+     "english": "interlobular bile ducts"
+    },
+    {
+     "ta_id": 3091,
+     "latin": "ductus biliares extrahepatici",
+     "english": "extrahepatic bile ducts"
+    },
+    {
+     "ta_id": 3092,
+     "latin": "ductus hepaticus communis",
+     "english": "common hepatic duct"
+    },
+    {
+     "ta_id": 3101,
+     "latin": "ductus cysticus",
+     "english": "cystic duct"
+    },
+    {
+     "ta_id": 3103,
+     "latin": "ductus biliaris",
+     "english": "bile duct"
+    }
+   ]
+  },
+  {
+   "system": "digestive",
+   "record_id": "dig.dentition",
+   "name": "Dentition",
+   "reason": "TA2 repeats 'dentes' (teeth) under two ids — 901 (skeletal chapter) and 2818 (digestive chapter) — and carries no term 'dentition' for the dental set as such, which is what this record denotes.",
+   "candidates": [
+    {
+     "ta_id": 901,
+     "latin": "dentes",
+     "english": "teeth"
+    },
+    {
+     "ta_id": 2818,
+     "latin": "dentes",
+     "english": "teeth"
+    }
+   ]
+  },
+  {
+   "system": "integumentary",
+   "record_id": "organ.mammary-gland",
+   "name": "Mammary gland and breast",
+   "reason": "compound record ('mammary gland and breast'): TA2 terms 7097 mamma (breast) and 7099 glandula mammaria (mammary gland) each denote part of what this single record covers; neither denotes the whole.",
+   "candidates": [
+    {
+     "ta_id": 7097,
+     "latin": "mamma",
+     "english": "breast"
+    },
+    {
+     "ta_id": 7099,
+     "latin": "glandula mammaria",
+     "english": "mammary gland"
+    }
+   ]
+  },
+  {
+   "system": "lymphatic",
+   "record_id": "structure.lymph-nodes",
+   "name": "Lymph nodes and lymphoid tissue",
+   "reason": "the record covers lymph nodes AND lymphoid tissue generally; TA2 5191 nodi lymphoidei denotes the nodes only, and lymphoid tissue as such is TA2's chapter grouping (5149 organa lymphoidea), not a term denoting this record.",
+   "candidates": [
+    {
+     "ta_id": 5191,
+     "latin": "nodi lymphoidei",
+     "english": "lymph nodes"
+    }
+   ]
+  },
+  {
+   "system": "muscular",
+   "record_id": "muscle.set-of-posterior-cervical-intertransversarii",
+   "name": "set of posterior cervical intertransversarii",
+   "reason": "TA2 splits the posterior cervical intertransversarii into 2238 (laterales) and 2297 (mediales), with no single term for the posterior set as a whole.",
+   "candidates": [
+    {
+     "ta_id": 2238,
+     "latin": "musculi intertransversarii posteriores laterales colli",
+     "english": "lateral posterior intertransversarii colli muscles"
+    },
+    {
+     "ta_id": 2297,
+     "latin": "musculi intertransversarii posteriores mediales colli",
+     "english": "medial posterior intertransversarii colli muscles"
+    }
+   ]
+  },
+  {
+   "system": "nervous",
+   "record_id": "central.basal-ganglia",
+   "name": "Basal ganglia (basal nuclei)",
+   "reason": "TA2 lists 'basal ganglia' only as a related term of 5559 corpus striatum, whose structure differs from this record (corpus striatum = caudate + lentiform nuclei; the record covers the basal nuclei group); no TA2 preferred or synonym term denotes the basal ganglia.",
+   "candidates": [
+    {
+     "ta_id": 5559,
+     "latin": "corpus striatum",
+     "english": "corpus striatum"
+    }
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.pleura",
+   "name": "Pleurae and pleural cavities",
+   "reason": "compound record ('pleurae and pleural cavities'): TA2 terms 3322 pleura and 3316 cavitas pleuralis denote its two parts separately.",
+   "candidates": [
+    {
+     "ta_id": 3322,
+     "latin": "pleura",
+     "english": "pleura"
+    },
+    {
+     "ta_id": 3316,
+     "latin": "cavitas pleuralis",
+     "english": "pleural cavity"
+    }
+   ]
+  }
+ ],
+ "not_found": [
+  {
+   "system": "integumentary",
+   "record_id": "structure.hair",
+   "name": "Hair",
+   "reason": "TA2 names hairs only by region (7055 capilli, 7062 pubes, 7059 pili tragi); no generic hair term ('pilus') exists in the consulted table.",
+   "probes": [
+    "pilus"
+   ]
+  },
+  {
+   "system": "integumentary",
+   "record_id": "structure.hair-of-trunk",
+   "name": "Hair of trunk",
+   "reason": "no TA2 term for hair of the trunk in the consulted table; TA2's regional hair terms cover head, pubis and tragus only.",
+   "probes": [
+    "trunci",
+    "of trunk"
+   ]
+  },
+  {
+   "system": "lymphatic",
+   "record_id": "pathway.lymphatic-drainage",
+   "name": "Lymphatic drainage pathway",
+   "reason": "project pathway construct (a drainage route, not a structure); no TA2 term denotes it.",
+   "probes": [
+    "drainage"
+   ]
+  },
+  {
+   "system": "reproductive",
+   "record_id": "pathway.male-reproductive-pathway",
+   "name": "Male reproductive pathway",
+   "reason": "project pathway construct (the sperm pathway as a route, not a structure); no TA2 term denotes it.",
+   "probes": [
+    "pathway"
+   ]
+  },
+  {
+   "system": "reproductive",
+   "record_id": "pathway.female-reproductive-pathway",
+   "name": "Female reproductive pathway",
+   "reason": "project pathway construct (a route, not a structure); no TA2 term denotes it.",
+   "probes": [
+    "pathway"
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.segmental-bronchi",
+   "name": "Segmental bronchi",
+   "reason": "TA2 names the segmental bronchi only individually (20 terms); no collective or class term exists for them — unlike bronchus principalis (3227) and bronchus lobaris (3229), which TA2 does carry as class terms.",
+   "probes": [
+    "bronchi segmentales",
+    "bronchus segmentalis"
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.respiratory-bronchioles",
+   "name": "Respiratory bronchioles",
+   "reason": "no respiratory-bronchiole term in the consulted TA2 table; the served respiratory tree ends at 3282 bronchiolus.",
+   "probes": [
+    "respiratorius",
+    "bronchiolus respiratorius"
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.alveolar-ducts-and-sacs",
+   "name": "Alveolar ducts and sacs",
+   "reason": "no alveolar duct or alveolar sac term in the consulted TA2 table; the served respiratory tree ends at 3282 bronchiolus.",
+   "probes": [
+    "ductus alveolaris",
+    "sacculus alveolaris",
+    "sacculi alveolares"
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.alveoli",
+   "name": "Alveoli",
+   "reason": "no pulmonary alveoli term in the consulted TA2 table; in TA2 'alveoli' denotes the dental alveoli (793, 853).",
+   "probes": [
+    "alveoli pulmonis",
+    "alveolus pulmonis"
+   ]
+  },
+  {
+   "system": "respiratory",
+   "record_id": "resp.mechanics",
+   "name": "Respiratory volumes and capacities",
+   "reason": "measurements (respiratory volumes and capacities), not an anatomical structure; no TA2 term applies.",
+   "probes": [
+    "capacitas",
+    "volumen"
+   ]
+  },
+  {
+   "system": "urinary",
+   "record_id": "structure.nephron",
+   "name": "Nephron",
+   "reason": "the string 'nephron' occurs in no TA2 term, synonym or related term in the consulted table; TA2 2.07 carries no nephron term.",
+   "probes": [
+    "nephron"
+   ]
+  },
+  {
+   "system": "urinary",
+   "record_id": "pathway.urinary-pathway",
+   "name": "Urinary pathway",
+   "reason": "project pathway construct (the urine pathway as a route, not a structure); TA2 names its organs individually.",
+   "probes": [
+    "pathway"
+   ]
+  }
+ ],
+ "served_string_anomalies": [
+  {
+   "ta_id": 4366,
+   "served": "carotis communis ",
+   "entered": "carotis communis",
+   "note": "served string carries trailing whitespace; entered value trimmed"
+  }
+ ]
+}

@@ -259,7 +259,13 @@ for r in recs:
         if gid not in inv_records:
             link_fail.append((r["id"], gid))
     if r["ta_name"] is not None:
-        cit_fail.append((r["id"], "ta_name entered despite stated null status"))
+        # M23 discipline: an entered ta_name must be the TA2 pass's
+        # (TA2 citation + integer ta_code; table equality is
+        # asserted by tools/ta2_discipline.py below)
+        if r["sources"].get("ta_name") != ["TA2"] or \
+                not isinstance(r.get("ta_code"), int):
+            cit_fail.append((r["id"], "ta_name entered without TA2 "
+                                      "citation/ta_code"))
 check(not cit_fail, "C1 every entered field cites a bibliography source",
       f"failures: {cit_fail[:6]}" if cit_fail else "all cited")
 check(not flag_fail, "C2 every null field carries a verify flag",
@@ -305,6 +311,12 @@ check(not var_fail, "V1 variant gate (range, citation, declaration)",
 print()
 for rpt in reports:
     print(f"[REPORT] {rpt}")
+# ------------------------------------------------- TA2 discipline (M23)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import ta2_discipline as _ta2d
+_ta2d.run("cardiovascular", "data/cardiovascular/cardiovascular.json", check)
+
 print()
 if failures:
     print(f"RESULT: FAIL — {len(failures)} hard check(s) failed: {failures}")

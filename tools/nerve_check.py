@@ -260,8 +260,13 @@ FIELDS = {
 }
 cit_bad, flag_bad, tier_bad = [], [], []
 for r in crecs:
-    if r["ta_name"] is not None or not any(
-            v.startswith("ta_name:") for v in r["verify"]):
+    if r["ta_name"] is not None:
+        # M23 discipline: entered ta_name must cite TA2 (table
+        # equality asserted by tools/ta2_discipline.py below)
+        if r["sources"].get("ta_name") != ["TA2"]:
+            cit_bad.append((r["id"], "ta_name",
+                            "TA2 name without TA2 citation"))
+    elif not any(v.startswith("ta_name:") for v in r["verify"]):
         flag_bad.append((r["id"], "ta_name"))
     fields, core, soft = FIELDS[r["type"]]
     if fields is None:
@@ -336,6 +341,12 @@ report("C8 Milestone 4 C3 continuity",
        f"for them")
 print("  resolved to clinical records:", resolved_cli)
 print("  resolved to inventory records:", resolved_inv)
+
+# ------------------------------------------------- TA2 discipline (M23)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import ta2_discipline as _ta2d
+_ta2d.run("nervous", "data/nervous/nervous.json", check)
 
 print()
 if failures:

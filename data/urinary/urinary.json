@@ -8,7 +8,8 @@
    "S3": "TeachMeAnatomy, 'The Urinary Bladder' (teachmeanatomy.info)",
    "S4": "OpenStax, Anatomy and Physiology 2e, section 25.2 'Gross Anatomy of Urine Transport'",
    "S5": "OpenStax, Anatomy and Physiology 2e, section 25.2 'Microscopic Anatomy of the Kidney: Anatomy of the Nephron'",
-   "S6": "OpenStax, Anatomy and Physiology 2e, section 25.3 'Gross Anatomy of the Kidney'"
+   "S6": "OpenStax, Anatomy and Physiology 2e, section 25.3 'Gross Anatomy of the Kidney'",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 6,
   "tiers": {
@@ -19,7 +20,18 @@
    "Urinary pathway": 2,
    "Lower urinary tract": 2
   },
-  "sourcing_rule": "every non-null field cites a source actually consulted during the build in the record's `sources` map; every null field carries a verify flag; TA names were not given by the consulted sources and are null + flagged on all records"
+  "sourcing_rule": "every non-null field cites a source actually consulted during the build in the record's `sources` map; every null field carries a verify flag; TA names were not given by the consulted sources and are null + flagged on all records",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 4 of 6 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 0 ambiguous and 2 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 6,
+   "resolved": 4,
+   "ambiguous": 0,
+   "not_found": 2,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -27,7 +39,8 @@
    "name": "Kidney",
    "type": "organ",
    "group": "Kidney",
-   "ta_name": null,
+   "ta_name": "ren",
+   "ta_code": 3358,
    "sources": {
     "position": [
      "S1"
@@ -57,11 +70,13 @@
     ],
     "relations": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "internal_structure: no BP3D concept exists for any internal kidney structure (cortex, medulla, pyramid, papilla, column, pelvis, calyx — 74-probe gap analysis in the inventory); the fields are sourced text on the two whole-kidney geometry records",
-    "ta_name: not given by consulted sources - verify"
+    "internal_structure: no BP3D concept exists for any internal kidney structure (cortex, medulla, pyramid, papilla, column, pelvis, calyx — 74-probe gap analysis in the inventory); the fields are sourced text on the two whole-kidney geometry records"
    ],
    "note": "The adrenal (suprarenal) glands sit immediately superior to the kidneys within a separate envelope of the renal fascia (S1). The source release files them under the endocrine system, not this module — see the inventory's adrenal_filing finding; they are endocrine module records, cross-referenced, never duplicated here. The renal vessels are cardiovascular module records, cited per field.",
    "geometry_record_ids": [
@@ -104,7 +119,7 @@
    },
    "verify": [
     "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry — no nephron, glomerulus, capsule, tubule segment or collecting duct concept exists; the record links the two whole-kidney records it would subdivide",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — the string 'nephron' occurs in no TA2 term, synonym or related term in the consulted table; TA2 2.07 carries no nephron term."
    ],
    "note": "The nephron is the load-bearing microscopic unit for the physiology follow-on: its segment order here is the sequence a renal compartment model must follow.",
    "geometry_record_ids": [
@@ -129,7 +144,8 @@
    "name": "Ureter",
    "type": "organ",
    "group": "Urinary pathway",
-   "ta_name": null,
+   "ta_name": "ureter",
+   "ta_code": 3394,
    "sources": {
     "extent": [
      "S2",
@@ -153,11 +169,13 @@
     ],
     "relations_at_risk": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "constrictions: no BP3D concept exists for any ureteric junction, part or orifice (probe-verified); the constrictions are sourced text on the two whole-ureter geometry records",
-    "ta_name: not given by consulted sources - verify"
+    "constrictions: no BP3D concept exists for any ureteric junction, part or orifice (probe-verified); the constrictions are sourced text on the two whole-ureter geometry records"
    ],
    "note": null,
    "geometry_record_ids": [
@@ -195,7 +213,7 @@
    },
    "verify": [
     "sequence: the intrarenal stations (papilla, minor and major calyx, renal pelvis) have no BP3D concepts (probe-verified); the pathway is sourced text linking the six whole-organ geometry records",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — project pathway construct (the urine pathway as a route, not a structure); TA2 names its organs individually."
    ],
    "note": null,
    "geometry_record_ids": [
@@ -224,7 +242,8 @@
    "name": "Urinary bladder",
    "type": "organ",
    "group": "Lower urinary tract",
-   "ta_name": null,
+   "ta_name": "vesica urinaria",
+   "ta_code": 3401,
    "sources": {
     "position": [
      "S4",
@@ -253,12 +272,14 @@
     ],
     "innervation": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "parts: no BP3D concept exists for any bladder part or feature (apex, body, fundus, neck, trigone, detrusor — probe-verified); the fields are sourced text on the single whole-bladder geometry record",
-    "vasculature: no vesical artery or vein has a BP3D concept ('vesical artery'/'vesical vein' probes return zero hits) and the cardiovascular census carries no vesical record; the supply is sourced text (S3) only",
-    "ta_name: not given by consulted sources - verify"
+    "vasculature: no vesical artery or vein has a BP3D concept ('vesical artery'/'vesical vein' probes return zero hits) and the cardiovascular census carries no vesical record; the supply is sourced text (S3) only"
    ],
    "note": null,
    "geometry_record_ids": [
@@ -284,7 +305,8 @@
    "name": "Urethra",
    "type": "structure",
    "group": "Lower urinary tract",
-   "ta_name": null,
+   "ta_name": "urethra",
+   "ta_code": 3425,
    "sources": {
     "function": [
      "S4"
@@ -301,12 +323,14 @@
     ],
     "epithelium": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "female: no BP3D concept — the release carries a single unsexed, undivided urethra (probes for 'male urethra', 'female urethra' and every named part return zero hits); the sexed anatomy is sourced text on the one urethra geometry record",
-    "male: no BP3D concept — as for female: no sexed form and no prostatic/membranous/spongy part exists in the release",
-    "ta_name: not given by consulted sources - verify"
+    "male: no BP3D concept — as for female: no sexed form and no prostatic/membranous/spongy part exists in the release"
    ],
    "note": "The inventory's single urethra record is unsexed because the source release is; this record states the sex difference from the consulted sources and flags that neither sex's urethra has geometry of its own.",
    "geometry_record_ids": [

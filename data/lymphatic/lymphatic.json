@@ -5,7 +5,8 @@
   "sources": {
    "S1": "TeachMeAnatomy — The Spleen (teachmeanatomy.info): position, ligaments, capsule and surfaces, blood filtration function, splenic artery (coeliac trunk, five terminal branches, vascular segments), splenic vein and the portal confluence, coeliac plexus innervation, lymphatic drainage to pancreaticosplenic and coeliac nodes",
    "S2": "OpenStax Anatomy and Physiology 2e, §21.1 Anatomy of the Lymphatic and Immune Systems (openstax.org): the drainage pathway in order, duct territories and the cisterna chyli, lymph node structure and number, tonsils, MALT and Peyer's patches, thymus structure and involution rates, spleen red and white pulp",
-   "S3": "StatPearls — Anatomy, Head and Neck, Thymus (NCBI Bookshelf NBK539748; consulted at search-excerpt level, full page blocked by a robot check): thymus position in the superior and retrosternal mediastinum, lobes converging at the manubrium, cervical extensions toward the thyroid"
+   "S3": "StatPearls — Anatomy, Head and Neck, Thymus (NCBI Bookshelf NBK539748; consulted at search-excerpt level, full page blocked by a robot check): thymus position in the superior and retrosternal mediastinum, lobes converging at the manubrium, cervical extensions toward the thyroid",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 4,
   "tiers": {
@@ -18,7 +19,18 @@
    "Lymphatic pathway",
    "Lymphoid tissue"
   ],
-  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). The tranche is two organ records plus two sourced-text records for the parts of the system the dataset does not carry at all — the drainage pathway and the lymphoid tissue; no geometry is invented for them and their absence from the dataset is recorded on each."
+  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). The tranche is two organ records plus two sourced-text records for the parts of the system the dataset does not carry at all — the drainage pathway and the lymphoid tissue; no geometry is invented for them and their absence from the dataset is recorded on each.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 2 of 4 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 1 ambiguous and 1 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 4,
+   "resolved": 2,
+   "ambiguous": 1,
+   "not_found": 1,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -26,7 +38,8 @@
    "name": "Spleen",
    "type": "organ",
    "group": "Spleen",
-   "ta_name": null,
+   "ta_name": "splen",
+   "ta_code": 5159,
    "sources": {
     "position": [
      "S1",
@@ -51,11 +64,13 @@
     ],
     "innervation": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "relations: no value asserted — the consulted TeachMeAnatomy page's relations table did not render in the fetched text, and no other consulted source states the spleen's relations; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "relations: no value asserted — the consulted TeachMeAnatomy page's relations table did not render in the fetched text, and no other consulted source states the spleen's relations; the field stays null rather than unsourced"
    ],
    "note": "The release's only intraperitoneal lymphoid organ and, with the thymus, one of only two lymphatic organs it carries at all.",
    "geometry_record_ids": [
@@ -76,7 +91,8 @@
    "name": "Thymus",
    "type": "organ",
    "group": "Thymus",
-   "ta_name": null,
+   "ta_name": "thymus",
+   "ta_code": 5152,
    "sources": {
     "position": [
      "S2",
@@ -90,11 +106,13 @@
     ],
     "age_changes": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "arterial_supply: no value asserted — none of the sources consulted in this session states the thymus's arterial supply; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: no value asserted — none of the sources consulted in this session states the thymus's arterial supply; the field stays null rather than unsourced"
    ],
    "note": "The release carries the thymus as an organ only in the PART-OF table, filed under the contents of the anterior mediastinum; the IS-A table carries only its lobe line.",
    "geometry_record_ids": [
@@ -128,7 +146,7 @@
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/lymph_map.py); the record is sourced text only and links no geometry — this holds for every station of the pathway: no capillary, vessel, trunk or duct of the lymphatic system exists in the release, and the thoracic duct's absence was already probe-verified by Milestone 5 against the same tables",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — project pathway construct (a drainage route, not a structure); no TA2 term denotes it."
    ],
    "note": "The pathway is the system the dataset does not carry: it exists here as sourced clinical text only, in the order the consulted source gives.",
    "geometry_record_ids": [],
@@ -162,7 +180,7 @@
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/lymph_map.py); the record is sourced text only and links no geometry — no lymph node, tonsil or MALT concept of any kind exists in the release",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — the record covers lymph nodes AND lymphoid tissue generally; TA2 5191 nodi lymphoidei denotes the nodes only, and lymphoid tissue as such is TA2's chapter grouping (5149 organa lymphoidea), not a term denoting this record."
    ],
    "note": "The filtering tissue of the system, carried as sourced text; the geometry layer has none of it.",
    "geometry_record_ids": [],

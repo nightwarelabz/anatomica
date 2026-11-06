@@ -1,6 +1,6 @@
 {
  "meta": {
-  "title": "ANATOMICA respiratory system clinical records \u2014 Milestone 10",
+  "title": "ANATOMICA respiratory system clinical records — Milestone 10",
   "generated_by": "tools/build_resp_records.py",
   "sourcing_rule": "every non-null clinical field cites a source consulted during the build session in the record's sources map; every null field carries an explicit verify entry; TA names were not given by the consulted sources and are null + flagged throughout",
   "sources": {
@@ -14,7 +14,8 @@
    "S8": "ETSU (Currie), 'The Lung Volumes and Capacities Page' (faculty.etsu.edu)",
    "S9": "LibreTexts BIO 50 (Zingg), 'Functional Anatomy of the Respiratory Tract'",
    "S10": "OpenStax, Anatomy and Physiology 2e, section 22.2 'The Lungs'",
-   "S11": "TeachMeAnatomy, 'Laryngeal Cartilages' (teachmeanatomy.info)"
+   "S11": "TeachMeAnatomy, 'Laryngeal Cartilages' (teachmeanatomy.info)",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 37,
   "tiers": {
@@ -28,7 +29,18 @@
    "Respiratory mechanics": 1,
    "Upper airway": 2
   },
-  "link_failures": []
+  "link_failures": [],
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 31 of 37 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 1 ambiguous and 5 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 37,
+   "resolved": 31,
+   "ambiguous": 1,
+   "not_found": 5,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -36,7 +48,8 @@
    "name": "Nasal cavity",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "cavitas nasi",
+   "ta_code": 3165,
    "sources": {
     "extent": [
      "S5"
@@ -46,11 +59,12 @@
     ],
     "function": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": "the nasal cavity as a space has no concept in the release; geometry links are the nose organ record and its named parts and cartilages",
    "geometry_record_ids": [
     "nose",
@@ -75,7 +89,8 @@
    "name": "Nasopharynx",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "pars nasalis pharyngis",
+   "ta_code": 2862,
    "sources": {
     "extent": [
      "S7"
@@ -85,11 +100,13 @@
     ],
     "function": [
      "S7"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -105,7 +122,8 @@
    "name": "Oropharynx",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "pars oralis pharyngis",
+   "ta_code": 2875,
    "sources": {
     "extent": [
      "S7"
@@ -115,11 +133,13 @@
     ],
     "function": [
      "S7"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -135,7 +155,8 @@
    "name": "Laryngopharynx",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "pars laryngea pharyngis",
+   "ta_code": 2879,
    "sources": {
     "extent": [
      "S7"
@@ -146,11 +167,13 @@
     "function": [
      "S7",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -166,7 +189,8 @@
    "name": "Larynx",
    "type": "organ",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "larynx",
+   "ta_code": 3184,
    "sources": {
     "position": [
      "S6"
@@ -185,11 +209,12 @@
     ],
     "blood_supply": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": "the larynx as an organ has no concept in the release; geometry links are its nine cartilages and its ligament/membrane records as released",
    "geometry_record_ids": [
     "larynx.cricoid-cartilage",
@@ -229,7 +254,8 @@
    "name": "Trachea",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "trachea",
+   "ta_code": 3213,
    "sources": {
     "extent": [
      "S2"
@@ -240,11 +266,12 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.trachea"
@@ -261,7 +288,8 @@
    "name": "Main bronchi",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "bronchus principalis",
+   "ta_code": 3227,
    "sources": {
     "extent": [
      "S2"
@@ -271,11 +299,12 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-main-bronchus",
@@ -293,7 +322,8 @@
    "name": "Lobar bronchi",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "bronchus lobaris",
+   "ta_code": 3229,
    "sources": {
     "extent": [
      "S2"
@@ -303,11 +333,13 @@
     ],
     "function": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": "the release contains no lobar bronchus concept: its bronchial tree jumps from the main bronchi to the segmental bronchial trees",
    "geometry_record_ids": [],
@@ -337,7 +369,7 @@
     ]
    },
    "verify": [
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the segmental bronchi only individually (20 terms); no collective or class term exists for them — unlike bronchus principalis (3227) and bronchus lobaris (3229), which TA2 does carry as class terms."
    ],
    "note": "geometry links are the release's 21 segmental bronchial tree records (16 lateralised instances and the un-sided lateral, medial, basal and two lingular trees)",
    "geometry_record_ids": [
@@ -367,7 +399,7 @@
    "zone": "conducting",
    "extent": "Branch from the lobar bronchi within each lobe",
    "structure": "Tertiary bronchi; cartilage only in crescent shapes",
-   "function": "Each segmental bronchus provides air to a bronchopulmonary segment \u2014 the functional units of the lungs",
+   "function": "Each segmental bronchus provides air to a bronchopulmonary segment — the functional units of the lungs",
    "sourcing_tier": "A"
   },
   {
@@ -375,7 +407,8 @@
    "name": "Bronchioles",
    "type": "pathway",
    "group": "Airway pathway",
-   "ta_name": null,
+   "ta_name": "bronchiolus",
+   "ta_code": 3282,
    "sources": {
     "extent": [
      "S2"
@@ -387,11 +420,13 @@
     "function": [
      "S2",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -424,7 +459,7 @@
    },
    "verify": [
     "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — no respiratory-bronchiole term in the consulted TA2 table; the served respiratory tree ends at 3282 bronchiolus."
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -454,7 +489,7 @@
    },
    "verify": [
     "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — no alveolar duct or alveolar sac term in the consulted TA2 table; the served respiratory tree ends at 3282 bronchiolus."
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -485,7 +520,7 @@
    },
    "verify": [
     "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — no pulmonary alveoli term in the consulted TA2 table; in TA2 'alveoli' denotes the dental alveoli (793, 853)."
    ],
    "note": null,
    "geometry_record_ids": [],
@@ -501,7 +536,8 @@
    "name": "Right lung",
    "type": "organ",
    "group": "Lungs",
-   "ta_name": null,
+   "ta_name": "pulmo dexter",
+   "ta_code": 3283,
    "sources": {
     "lobes": [
      "S1"
@@ -520,11 +556,12 @@
     ],
     "nerve_supply": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "lung.lower-lobe-of-right-lung",
@@ -545,7 +582,8 @@
    "name": "Left lung",
    "type": "organ",
    "group": "Lungs",
-   "ta_name": null,
+   "ta_name": "pulmo sinister",
+   "ta_code": 3299,
    "sources": {
     "lobes": [
      "S1"
@@ -564,11 +602,12 @@
     ],
     "nerve_supply": [
      "S1"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "left-lung",
@@ -588,7 +627,8 @@
    "name": "Nasal cavity (structure)",
    "type": "region",
    "group": "Upper airway",
-   "ta_name": null,
+   "ta_name": "cavitas nasi",
+   "ta_code": 3165,
    "sources": {
     "divisions": [
      "S5"
@@ -607,11 +647,12 @@
     ],
     "innervation": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": "companion to the pathway record of the same name: the cavity's own sourced structure; the release carries no nasal cavity concept",
    "geometry_record_ids": [
     "nose",
@@ -637,7 +678,8 @@
    "name": "Pharynx",
    "type": "region",
    "group": "Upper airway",
-   "ta_name": null,
+   "ta_name": "pharynx",
+   "ta_code": 2855,
    "sources": {
     "extent": [
      "S7"
@@ -653,17 +695,19 @@
     ],
     "blood_supply": [
      "S7"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry"
    ],
    "note": "the pharynx has no concept in the release (only its subdivision classes, its raphe and its muscles); its muscle records live in the muscular module (superior/middle/inferior constrictors, stylopharyngeus, salpingopharyngeus, palatopharyngeus)",
    "geometry_record_ids": [],
    "extent": "A muscular tube connecting the oral and nasal cavities to the larynx and oesophagus; it begins at the base of the skull and ends at the inferior border of the cricoid cartilage (C6)",
    "parts": "Three parts, superior to inferior: nasopharynx (base of skull to soft palate), oropharynx (soft palate to superior border of the epiglottis) and laryngopharynx (superior border of the epiglottis to the inferior border of the cricoid cartilage, C6)",
-   "muscles": "Two groups: circular muscles \u2014 the superior, middle and inferior pharyngeal constrictors, arranged like stacked glasses, contracting sequentially from superior to inferior to propel the bolus into the oesophagus (the inferior constrictor has thyropharyngeal and cricopharyngeal parts); longitudinal muscles \u2014 stylopharyngeus, palatopharyngeus and salpingopharyngeus, which shorten and widen the pharynx and elevate the larynx during swallowing",
+   "muscles": "Two groups: circular muscles — the superior, middle and inferior pharyngeal constrictors, arranged like stacked glasses, contracting sequentially from superior to inferior to propel the bolus into the oesophagus (the inferior constrictor has thyropharyngeal and cricopharyngeal parts); longitudinal muscles — stylopharyngeus, palatopharyngeus and salpingopharyngeus, which shorten and widen the pharynx and elevate the larynx during swallowing",
    "innervation": "Motor and sensory supply mainly via the pharyngeal plexus (pharyngeal branches of the glossopharyngeal and vagus nerves, branches of the external laryngeal nerve and sympathetic fibres from the superior cervical ganglion); all pharyngeal muscles are supplied by the vagus except the stylopharyngeus (glossopharyngeal); sensory supply is mainly glossopharyngeal, with the maxillary nerve to the anterior/superior nasopharynx",
    "blood_supply": "Arterial supply from branches of the external carotid artery: the ascending pharyngeal artery and branches of the facial, lingual and maxillary arteries; venous drainage by the pharyngeal venous plexus into the internal jugular vein",
    "sourcing_tier": "A"
@@ -673,7 +717,8 @@
    "name": "Apical segment (S1)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum apicale pulmonis dextri",
+   "ta_code": 3285,
    "sources": {
     "lobe": [
      "S4"
@@ -683,11 +728,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-apical-segmental-bronchial-tree",
@@ -703,7 +749,8 @@
    "name": "Posterior segment (S2)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum posterius pulmonis dextri",
+   "ta_code": 3286,
    "sources": {
     "lobe": [
      "S4"
@@ -713,11 +760,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-posterior-segmental-bronchial-tree",
@@ -733,7 +781,8 @@
    "name": "Anterior segment (S3)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum anterius pulmonis dextri",
+   "ta_code": 3287,
    "sources": {
     "lobe": [
      "S4"
@@ -743,11 +792,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-anterior-segmental-bronchial-tree",
@@ -763,7 +813,8 @@
    "name": "Lateral segment (S4)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum laterale pulmonis dextri",
+   "ta_code": 3290,
    "sources": {
     "lobe": [
      "S4"
@@ -773,11 +824,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.lateral-segmental-bronchial-tree",
@@ -793,7 +845,8 @@
    "name": "Medial segment (S5)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum mediale pulmonis dextri",
+   "ta_code": 3291,
    "sources": {
     "lobe": [
      "S4"
@@ -803,11 +856,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.medial-segmental-bronchial-tree",
@@ -823,7 +877,8 @@
    "name": "Superior segment (S6)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum superius pulmonis dextri",
+   "ta_code": 3294,
    "sources": {
     "lobe": [
      "S4"
@@ -833,11 +888,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-superior-segmental-bronchial-tree",
@@ -853,7 +909,8 @@
    "name": "Medial basal segment (S7)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale mediale pulmonis dextri",
+   "ta_code": 3295,
    "sources": {
     "lobe": [
      "S4"
@@ -863,11 +920,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-medial-basal-segmental-bronchial-tree",
@@ -883,7 +941,8 @@
    "name": "Anterior basal segment (S8)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale anterius pulmonis dextri",
+   "ta_code": 3296,
    "sources": {
     "lobe": [
      "S4"
@@ -893,11 +952,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-anterior-basal-segmental-bronchial-tree",
@@ -913,7 +973,8 @@
    "name": "Lateral basal segment (S9)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale laterale pulmonis dextri",
+   "ta_code": 3297,
    "sources": {
     "lobe": [
      "S4"
@@ -923,11 +984,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-lateral-basal-segmental-bronchial-tree",
@@ -943,7 +1005,8 @@
    "name": "Posterior basal segment (S10)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale posterius pulmonis dextri",
+   "ta_code": 3298,
    "sources": {
     "lobe": [
      "S4"
@@ -953,11 +1016,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.right-posterior-basal-segmental-bronchial-tree",
@@ -973,7 +1037,8 @@
    "name": "Apico-posterior segment (S1+2)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum apicoposterius pulmonis sinistri",
+   "ta_code": 3301,
    "sources": {
     "lobe": [
      "S4"
@@ -983,11 +1048,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-apical-segmental-bronchial-tree",
@@ -1006,7 +1072,8 @@
    "name": "Anterior segment (S3)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum anterius pulmonis sinistri",
+   "ta_code": 3302,
    "sources": {
     "lobe": [
      "S4"
@@ -1016,11 +1083,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-anterior-segmental-bronchial-tree",
@@ -1036,7 +1104,8 @@
    "name": "Superior lingular segment (S4)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum lingulare superius pulmonis sinistri",
+   "ta_code": 3305,
    "sources": {
     "lobe": [
      "S4"
@@ -1046,11 +1115,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.superior-lingular-bronchial-tree",
@@ -1066,7 +1136,8 @@
    "name": "Inferior lingular segment (S5)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum lingulare inferius pulmonis sinistri",
+   "ta_code": 3306,
    "sources": {
     "lobe": [
      "S4"
@@ -1076,11 +1147,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.inferior-lingular-bronchial-tree",
@@ -1096,7 +1168,8 @@
    "name": "Superior segment (S6)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum superius pulmonis sinistri",
+   "ta_code": 3309,
    "sources": {
     "lobe": [
      "S4"
@@ -1106,11 +1179,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-superior-segmental-bronchial-tree",
@@ -1126,7 +1200,8 @@
    "name": "Anteromedial basal segment (S7+8)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale anteromediale pulmonis sinistri",
+   "ta_code": 3311,
    "sources": {
     "lobe": [
      "S4"
@@ -1136,11 +1211,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-anterior-basal-segmental-bronchial-tree",
@@ -1158,7 +1234,8 @@
    "name": "Lateral basal segment (S9)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale laterale pulmonis sinistri",
+   "ta_code": 3313,
    "sources": {
     "lobe": [
      "S4"
@@ -1168,11 +1245,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-lateral-basal-segmental-bronchial-tree",
@@ -1188,7 +1266,8 @@
    "name": "Posterior basal segment (S10)",
    "type": "segment",
    "group": "Bronchopulmonary segments",
-   "ta_name": null,
+   "ta_name": "segmentum basale posterius pulmonis sinistri",
+   "ta_code": 3314,
    "sources": {
     "lobe": [
      "S4"
@@ -1198,11 +1277,12 @@
     ],
     "surgical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not given by consulted sources - verify"
-   ],
+   "verify": [],
    "note": null,
    "geometry_record_ids": [
     "airway.left-posterior-basal-segmental-bronchial-tree",
@@ -1238,11 +1318,11 @@
    },
    "verify": [
     "no BP3D concept: this structure has no concept in the BodyParts3D 4.0 release (see the inventory gap analysis); the record is sourced text without geometry",
-    "ta_name: not given by consulted sources - verify"
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — compound record ('pleurae and pleural cavities'): TA2 terms 3322 pleura and 3316 cavitas pleuralis denote its two parts separately."
    ],
    "note": "no pleura concept of any kind exists in the release; the only pleura-adjacent concepts are the two pulmopleural compartments, censused in the inventory as compartment concepts, not records",
    "geometry_record_ids": [],
-   "layers": "Two pleurae, one associated with each lung; each is a serous membrane (a layer of simple squamous cells \u2014 mesothelium \u2014 on connective tissue) divided into the visceral pleura, which covers the lungs, and the parietal pleura, which covers the internal surface of the thoracic cavity; the two are continuous with each other at the hilum of the lung",
+   "layers": "Two pleurae, one associated with each lung; each is a serous membrane (a layer of simple squamous cells — mesothelium — on connective tissue) divided into the visceral pleura, which covers the lungs, and the parietal pleura, which covers the internal surface of the thoracic cavity; the two are continuous with each other at the hilum of the lung",
    "parietal_parts": "The parietal pleura is subdivided by the surface it covers: mediastinal pleura (lateral aspect of the mediastinum), cervical pleura (the extension into the neck), costal pleura (inner aspect of the ribs, costal cartilages and intercostal muscles) and diaphragmatic pleura (superior surface of the diaphragm)",
    "cavity_and_fluid": "The pleural cavity is a potential space between the visceral and parietal pleura containing a small volume of serous fluid; the fluid lubricates the pleural surfaces so they slide over each other, and its surface tension pulls the two layers together, ensuring the lung expands when the thorax expands",
    "recesses": "Two recesses in each pleural cavity where opposing parietal surfaces touch and fluid can collect: the costodiaphragmatic recess (between the costal and diaphragmatic pleurae) and the costomediastinal recess (between the costal and mediastinal pleurae, behind the sternum)",
@@ -1261,7 +1341,8 @@
     ]
    },
    "verify": [
-    "no BP3D concept: spirometric values are measurements, not anatomical structures; no geometry is linked by design"
+    "no BP3D concept: spirometric values are measurements, not anatomical structures; no geometry is linked by design",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — measurements (respiratory volumes and capacities), not an anatomical structure; no TA2 term applies."
    ],
    "note": "all values are the consulted source's stated approximates, which the source itself notes will vary somewhat between sources; resting adult values. Related structure record: the diaphragm (muscular module, muscle.diaphragm), the dome-shaped muscle at the base of the lungs (S10)",
    "geometry_record_ids": [],

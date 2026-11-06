@@ -12,7 +12,8 @@
    "S7": "OpenStax Anatomy and Physiology 2e, §27.2 (LibreTexts mirrors, consulted at chapter/excerpt level): ovaries as paired 2–3 cm ovals on the mesovarium, uterus ~5 cm wide by ~7 cm long with three parts and three wall layers, uterine tubes with distal fimbriae, vagina a ~10 cm muscular canal with its fornix at the cervix, vulva including the mons pubis as the pad of fat over the pubic bone, labia, clitoris, vestibule and Bartholin's glands",
    "S8": "TeachMeAnatomy — The Perineum (teachmeanatomy.info; article text consulted in full extract): diamond region at the pelvic outlet, anatomical and surface borders, the transverse ischial line dividing urogenital and anal triangles, anal triangle contents (anal aperture, external anal sphincter, ischioanal fossae), the perineal body at the junction",
    "S9": "InnerBody — Female Reproductive Organs of the Lower Torso (innerbody.com; excerpt level): vulva as the collective external organs, labia majora and minora, vagina connecting vulva to cervix, uterus between vagina and tubes, tubes extending toward the ovaries, the tract as a conduit for sperm and for birth",
-   "S10": "ANATOMICA project datasets consulted in-session: this milestone's BP3D 4.0 census (tools/repro_map.py), the cardiovascular module inventory (Milestone 5), the urinary module (Milestone 12), the endocrine inventory (Milestone 13) and the muscular module geometry (Milestone 4) — dataset facts and cross-module pointers only"
+   "S10": "ANATOMICA project datasets consulted in-session: this milestone's BP3D 4.0 census (tools/repro_map.py), the cardiovascular module inventory (Milestone 5), the urinary module (Milestone 12), the endocrine inventory (Milestone 13) and the muscular module geometry (Milestone 4) — dataset facts and cross-module pointers only",
+   "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json"
   },
   "record_count": 16,
   "tiers": {
@@ -61,7 +62,18 @@
    "Female organs",
    "Shared"
   ],
-  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Seven records link geometry the release carries (testis, epididymis, seminal vesicles, prostate, penis — assembled from its erectile parts — mons pubis, and the perineum with its anal part); the remaining nine link none — eight with the dataset absence recorded (the ductus deferens, the bulbourethral glands, and the female tract's pathway, ovary, uterine tube, uterus, vagina and vulva) and the male pathway with its own no-geometry statement. The urethra is not duplicated: the male pathway record states its relationship and points at the urinary module's records, and the checker resolves the pointer."
+  "sourcing_rule": "every field value is drawn only from the sources listed, consulted in this session, and cites them per field in the record's sources map; a field no consulted source supports is null and carries a verify entry naming it. TA names are not asserted anywhere in this tranche (no TA2 list consulted). Seven records link geometry the release carries (testis, epididymis, seminal vesicles, prostate, penis — assembled from its erectile parts — mons pubis, and the perineum with its anal part); the remaining nine link none — eight with the dataset absence recorded (the ductus deferens, the bulbourethral glands, and the female tract's pathway, ovary, uterine tube, uterus, vagina and vulva) and the male pathway with its own no-geometry statement. The urethra is not duplicated: the male pathway record states its relationship and points at the urinary module's records, and the checker resolves the pointer.",
+  "ta_name_status": "TA2 name pass applied 2026-11-06 (Milestone 23): 14 of 16 records carry a TA2 Latin name with its TA2 id in ta_code, cited to source register entry TA2; 0 ambiguous and 2 not found in TA2 2.07, each verify-flagged with its reason. Full accounting: data/ta2-name-pass.json.",
+  "ta2_pass": {
+   "milestone": "M23",
+   "date": "2026-11-06",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer (ta2viewer.openanatomy.org); extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "records": 16,
+   "resolved": 14,
+   "ambiguous": 0,
+   "not_found": 2,
+   "artifact": "data/ta2-name-pass.json"
+  }
  },
  "records": [
   {
@@ -99,7 +111,7 @@
    },
    "verify": [
     "the pathway record links no geometry itself: its stations' geometry is held by this module's organ records where the release carries them (testis, epididymis, seminal vesicles, prostate, erectile tissues), and the ductus deferens and ejaculatory duct stations have no BP3D 4.0 concept at all (probe-verified over all six release tables by tools/repro_map.py)",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — project pathway construct (the sperm pathway as a route, not a structure); no TA2 term denotes it."
    ],
    "note": "The pathway crosses two module boundaries by design: it begins in this module's gonad and ends in the urinary module's urethra, and two of its stations are dataset absences carried as sourced text.",
    "geometry_record_ids": [],
@@ -129,7 +141,8 @@
    "type": "organ",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "testis",
+   "ta_code": 3576,
    "sources": {
     "description": [
      "S1"
@@ -162,11 +175,12 @@
     "relations": [
      "S1",
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": "The male gonad is the dataset's best-served reproductive organ: geometry, its arteries and veins in the cardiovascular module, and this record — against the female gonad's sourced text over a total dataset absence (organ.ovary).",
    "geometry_record_ids": [
     "testis.right-testis",
@@ -189,7 +203,8 @@
    "type": "structure",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "epididymis",
+   "ta_code": 3603,
    "sources": {
     "description": [
      "S1",
@@ -209,11 +224,13 @@
     ],
     "relations": [
      "S3"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "arterial_supply: no value asserted — none of the sources consulted in this session states the epididymis' own arterial supply in citable form (the testicular arteries are recorded on organ.testis); the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: no value asserted — none of the sources consulted in this session states the epididymis' own arterial supply in citable form (the testicular arteries are recorded on organ.testis); the field stays null rather than unsourced"
    ],
    "note": "The only duct of the male pathway the release carries — the pathway is continuous in the data from the testis to here, and broken from here on.",
    "geometry_record_ids": [
@@ -234,7 +251,8 @@
    "type": "duct",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "ductus deferens",
+   "ta_code": 3621,
    "sources": {
     "description": [
      "S3",
@@ -253,11 +271,13 @@
     ],
     "clinical_note": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'ductus deferens', 'vas deferens', 'spermatic' and 'ejaculat' all score zero hits in both parts lists and in all six release tables; the ejaculatory duct it ends in is likewise absent, so the male pathway's middle is missing from the data entire",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'ductus deferens', 'vas deferens', 'spermatic' and 'ejaculat' all score zero hits in both parts lists and in all six release tables; the ejaculatory duct it ends in is likewise absent, so the male pathway's middle is missing from the data entire"
    ],
    "note": "Sourced-text record for the pathway's missing middle: the duct a vasectomy interrupts has no more presence in the dataset than the ovary does.",
    "geometry_record_ids": [],
@@ -274,7 +294,8 @@
    "type": "gland",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "glandula seminalis",
+   "ta_code": 3631,
    "sources": {
     "description": [
      "S3",
@@ -286,11 +307,13 @@
     "relations": [
      "S3",
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "arterial_supply: no value asserted — none of the sources consulted in this session states the seminal vesicles' arterial supply in citable form; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: no value asserted — none of the sources consulted in this session states the seminal vesicles' arterial supply in citable form; the field stays null rather than unsourced"
    ],
    "note": "Geometry-linked, unlike the duct they join: the release carries the glands but not the ductus deferens or the ejaculatory duct they complete.",
    "geometry_record_ids": [
@@ -309,7 +332,8 @@
    "type": "gland",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "prostata",
+   "ta_code": 3637,
    "sources": {
     "description": [
      "S2",
@@ -333,11 +357,13 @@
     ],
     "innervation": [
      "S2"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "lymphatic_drainage: no value asserted — none of the sources consulted in this session states the prostate's lymphatic drainage in citable form; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "lymphatic_drainage: no value asserted — none of the sources consulted in this session states the prostate's lymphatic drainage in citable form; the field stays null rather than unsourced"
    ],
    "note": "The release's only genital-system member gets the tranche's fullest gland record — geometry, zones, relations and the nerve-sparing relation included.",
    "geometry_record_ids": [
@@ -359,7 +385,8 @@
    "type": "gland",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "glandula bulbourethralis",
+   "ta_code": 3659,
    "sources": {
     "description": [
      "S3",
@@ -367,12 +394,14 @@
     ],
     "function": [
      "S4"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'bulbourethral' and 'cowper' score zero hits in both parts lists and in all six release tables",
-    "position: no value asserted — none of the sources consulted in this session places the glands (the deep perineal pouch) in citable form, and the pouch itself has no concept in the release; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "position: no value asserted — none of the sources consulted in this session places the glands (the deep perineal pouch) in citable form, and the pouch itself has no concept in the release; the field stays null rather than unsourced"
    ],
    "note": "The third accessory gland completes the pathway's gland order as sourced text; the release carries its two companions but not it.",
    "geometry_record_ids": [],
@@ -387,7 +416,8 @@
    "type": "organ",
    "group": "Male organs and glands",
    "sex_line": "male",
-   "ta_name": null,
+   "ta_name": "penis",
+   "ta_code": 3662,
    "sources": {
     "description": [
      "S4",
@@ -406,11 +436,13 @@
     "venous_drainage": [
      "S4",
      "S10"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "innervation: no value asserted — none of the sources consulted in this session states the penile innervation in citable form; the pudendal nerve is not asserted here, and no penile nerve concept exists in the release (nervous module census)",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "innervation: no value asserted — none of the sources consulted in this session states the penile innervation in citable form; the pudendal nerve is not asserted here, and no penile nerve concept exists in the release (nervous module census)"
    ],
    "note": "An organ the dataset represents only in pieces: three erectile structures here, five vessels in the cardiovascular module, and no whole-organ concept anywhere.",
    "geometry_record_ids": [
@@ -454,7 +486,7 @@
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — for every station of the pathway, not one structure: 'ovary', 'uterus', 'vagina' and 'uterine' all score zero hits in both parts lists and in all six release tables",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — project pathway construct (a route, not a structure); no TA2 term denotes it."
    ],
    "note": "A pathway with no geometry at any station — the exact inverse of the male pathway, whose first stations are the dataset's best-served organs.",
    "geometry_record_ids": [],
@@ -477,7 +509,8 @@
    "type": "organ",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "ovarium",
+   "ta_code": 3470,
    "sources": {
     "description": [
      "S5"
@@ -508,11 +541,13 @@
     ],
     "innervation": [
      "S5"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — the absence is recorded on this record itself, as the milestone directs: 'ovary', 'ovarian', 'ovarian follicle' and 'corpus luteum' score zero hits in both parts lists and in all six release tables; Milestone 13 recorded the same absence at the endocrine boundary and this record inherits it",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — the absence is recorded on this record itself, as the milestone directs: 'ovary', 'ovarian', 'ovarian follicle' and 'corpus luteum' score zero hits in both parts lists and in all six release tables; Milestone 13 recorded the same absence at the endocrine boundary and this record inherits it"
    ],
    "note": "The module's headline record: a fully sourced account (tier A on fields) of the female gonad over a total dataset absence — the mirror image of organ.testis, which has geometry, vessels and a census line.",
    "geometry_record_ids": [],
@@ -533,7 +568,8 @@
    "type": "duct",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "tuba uterina",
+   "ta_code": 3486,
    "sources": {
     "description": [
      "S7",
@@ -545,12 +581,14 @@
     "function": [
      "S7",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'uterine', 'fallopian' and 'fimbria' score zero hits in both parts lists and in all six release tables",
-    "regional_subdivisions: the tube's named regions beyond the fimbriae are not asserted — they are not named in citable form in the sources consulted in this session, and no regional concept exists in the release; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "regional_subdivisions: the tube's named regions beyond the fimbriae are not asserted — they are not named in citable form in the sources consulted in this session, and no regional concept exists in the release; the field stays null rather than unsourced"
    ],
    "note": "Sourced-text record; the fimbriae are its one sourced part, the rest of the tube's regional anatomy flagged rather than filled.",
    "geometry_record_ids": [],
@@ -566,7 +604,8 @@
    "type": "organ",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "uterus",
+   "ta_code": 3500,
    "sources": {
     "description": [
      "S6"
@@ -601,11 +640,13 @@
     ],
     "innervation": [
      "S6"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
-    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'uterus' and 'uterine' score zero hits in both parts lists and in all six release tables, and the wall layers with them: 'endometrium', 'myometrium' and 'perimetrium' are likewise zero-hit probes",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'uterus' and 'uterine' score zero hits in both parts lists and in all six release tables, and the wall layers with them: 'endometrium', 'myometrium' and 'perimetrium' are likewise zero-hit probes"
    ],
    "note": "Fully sourced (tier A on fields) over a total dataset absence, like organ.ovary: the release contains the ureter this organ's artery crosses, but not the organ.",
    "geometry_record_ids": [],
@@ -628,7 +669,8 @@
    "type": "organ",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "vagina",
+   "ta_code": 3523,
    "sources": {
     "description": [
      "S7",
@@ -643,13 +685,15 @@
     ],
     "dimension": [
      "S7"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'vagina' and 'vaginal' score zero hits in both parts lists and in all six release tables",
     "arterial_supply: no value asserted — none of the sources consulted in this session states the vagina's arterial supply in citable form; the field stays null rather than unsourced",
-    "innervation: no value asserted — none of the sources consulted in this session states the vagina's innervation in citable form; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "innervation: no value asserted — none of the sources consulted in this session states the vagina's innervation in citable form; the field stays null rather than unsourced"
    ],
    "note": "Sourced-text record; the dataset's only 'fornix' is in the brain, not here.",
    "geometry_record_ids": [],
@@ -667,7 +711,8 @@
    "type": "structure",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "vulva",
+   "ta_code": 3547,
    "sources": {
     "description": [
      "S9"
@@ -680,12 +725,14 @@
     "function": [
      "S8",
      "S9"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "no BP3D 4.0 concept exists for this structure (probe-verified over all six release tables by tools/repro_map.py); the record is sourced text only and links no geometry — 'vulva', 'clitoris', 'labia', 'labium' and 'hymen' score zero hits in both parts lists and in all six release tables; the mons pubis is the sole exception and is a separate record",
-    "arterial_supply: no value asserted — none of the sources consulted in this session states the vulva's arterial supply in citable form; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "arterial_supply: no value asserted — none of the sources consulted in this session states the vulva's arterial supply in citable form; the field stays null rather than unsourced"
    ],
    "note": "A collective term whose members are absent almost to one: the vulva exists in this module as a sourced parts list and a single fatty pad of geometry.",
    "geometry_record_ids": [],
@@ -701,19 +748,22 @@
    "type": "structure",
    "group": "Female organs",
    "sex_line": "female",
-   "ta_name": null,
+   "ta_name": "mons pubis",
+   "ta_code": 3548,
    "sources": {
     "description": [
      "S7",
      "S8",
      "S10"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
    "verify": [
     "parts: no value asserted — the release carries the mons pubis as a single undivided concept and none of the sources consulted in this session subdivides it; the field stays null rather than unsourced",
     "function: no value asserted — beyond its descriptive identity as the fatty pad over the pubic bone, none of the sources consulted in this session assigns the mons pubis a function in citable form; the field stays null rather than unsourced",
-    "relations: no value asserted — none of the sources consulted in this session states the mons pubis' relations in citable form beyond the perineum's surface border already carried in the description; the field stays null rather than unsourced",
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
+    "relations: no value asserted — none of the sources consulted in this session states the mons pubis' relations in citable form beyond the perineum's surface border already carried in the description; the field stays null rather than unsourced"
    ],
    "note": "The tranche's one tier-C record, and the female line's one geometry record: the dataset's entire female reproductive presence is a pad of fat the sources describe in a sentence. Recorded thin, not padded.",
    "geometry_record_ids": [
@@ -731,7 +781,8 @@
    "type": "region",
    "group": "Shared",
    "sex_line": "shared",
-   "ta_name": null,
+   "ta_name": "perineum",
+   "ta_code": 131,
    "sources": {
     "description": [
      "S8"
@@ -748,11 +799,12 @@
     ],
     "dataset_note": [
      "S10"
+    ],
+    "ta_name": [
+     "TA2"
     ]
    },
-   "verify": [
-    "ta_name: not asserted — no TA2 term list was consulted in this session"
-   ],
+   "verify": [],
    "note": "Shared ground in every sense: one region for both sex lines, its clinical anatomy sourced whole, its geometry borrowed entire from a muscle another module owns.",
    "geometry_record_ids": [
     "perineum",

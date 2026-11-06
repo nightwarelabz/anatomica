@@ -447,8 +447,9 @@ check(not any("adrenal" in r["id"] for r in crecs),
       "no adrenal clinical record in the urinary tranche "
       "(endocrine module owns the glands)")
 SOURCES = set(clin["meta"]["sources"])
-STRUCT = {"id", "name", "type", "group", "ta_name", "sources",
-          "verify", "note", "geometry_record_ids", "sourcing_tier"}
+STRUCT = {"id", "name", "type", "group", "ta_name", "ta_code",
+          "sources", "verify", "note", "geometry_record_ids",
+          "sourcing_tier"}
 # the checker's own core/soft declaration per record
 TIERS = {
     "organ.kidney": (
@@ -485,9 +486,14 @@ for r in crecs:
     check(all(s in SOURCES for ss in r["sources"].values()
               for s in ss),
           f"{r['id']}: all cited source ids exist")
-    check(r["ta_name"] is None
-          and any(v.startswith("ta_name:") for v in r["verify"]),
-          f"{r['id']}: ta_name null + verify-flagged")
+    check((r["ta_name"] is None
+           and any(v.startswith("ta_name:") for v in r["verify"]))
+          or (r["ta_name"] is not None
+              and r["sources"].get("ta_name") == ["TA2"]
+              and isinstance(r.get("ta_code"), int)),
+          f"{r['id']}: ta_name follows the M23 TA2 discipline "
+          "(TA2 name + ta_code + citation, or null + verify-flagged; "
+          "table equality via tools/ta2_discipline.py)")
     check(all(i in inv_ids for i in r["geometry_record_ids"]),
           f"{r['id']}: geometry links resolve to inventory "
           "records")
@@ -581,6 +587,12 @@ for r in crecs:
     linked |= set(r["geometry_record_ids"])
 report(f"clinical linkage: {len(crecs)} records link "
        f"{len(linked)} of {len(inv_ids)} inventory records")
+
+# ------------------------------------------------- TA2 discipline (M23)
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import ta2_discipline as _ta2d
+_ta2d.run("urinary", "data/urinary/urinary.json", check)
 
 print()
 if failures:
