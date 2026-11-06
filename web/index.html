@@ -61,6 +61,31 @@
   button { background: var(--panel2); color: var(--text); border: 1px solid var(--line);
     border-radius: 4px; padding: 4px 9px; cursor: pointer; }
   button:hover { border-color: var(--accent); }
+  button.mode { font-weight: 600; letter-spacing: .06em; }
+  button.mode.on { border-color: var(--accent); color: var(--accent); }
+  body.mode-imaging .atlas-ui { display: none !important; }
+  body.mode-imaging #status { display: none; }
+  #imgwrap { position: absolute; inset: 0; display: flex; flex-direction: column; }
+  #imgwrap[hidden] { display: none; }
+  #imgBanner { padding: 6px 10px; background: #3a2c12; color: #f2c877; font-size: 12px;
+    border-bottom: 1px solid var(--line); }
+  #imgStage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  #imgCanvas { max-width: 100%; max-height: 100%; image-rendering: pixelated; cursor: crosshair; background: #000; }
+  #imgBar { display: flex; align-items: center; gap: 10px; padding: 6px 10px; flex-wrap: wrap;
+    background: var(--panel); border-top: 1px solid var(--line); font-size: 12px; color: var(--dim); }
+  #imgBar input[type="range"] { accent-color: var(--accent); }
+  #imgSlice { flex: 1; min-width: 120px; }
+  #imgBar .val { color: var(--text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  #imgBar button.preset.on { border-color: var(--accent); color: var(--accent); }
+  .series { border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; margin: 6px 0; }
+  .series .sm { color: var(--dim); font-size: 11px; }
+  .lrow { display: flex; gap: 6px; align-items: baseline; padding: 3px 6px; border-radius: 4px; cursor: pointer; }
+  .lrow:hover { background: var(--panel2); }
+  .lrow.solo { outline: 1px solid var(--accent); }
+  .lrow.absent { opacity: .42; cursor: default; }
+  .lrow .chip { width: 10px; height: 10px; border-radius: 2px; align-self: center; flex: none; }
+  .lrow .nm { flex: 1; }
+  .lrow .rc { color: var(--dim); font-size: 11px; }
 </style>
 </head>
 <body>
@@ -68,14 +93,17 @@
   <header>
     <span class="wordmark">ANATOMICA</span>
     <span class="sub">web shell — all 11 systems, real assembled geometry (BodyParts3D 4.0, canonical frame, cm)</span>
+    <button class="mode on" id="btnModeAtlas">Atlas</button>
+    <button class="mode" id="btnModeImaging">Imaging</button>
     <span class="spacer"></span>
-    <label><input type="checkbox" id="optLabels"> labels</label>
-    <label><input type="checkbox" id="optWire"> wireframe</label>
-    <label><input type="checkbox" id="optDim" checked> dim others on select</label>
-    <button id="btnReset">reset view</button>
+    <label class="atlas-ui"><input type="checkbox" id="optLabels"> labels</label>
+    <label class="atlas-ui"><input type="checkbox" id="optWire"> wireframe</label>
+    <label class="atlas-ui"><input type="checkbox" id="optDim" checked> dim others on select</label>
+    <button class="atlas-ui" id="btnReset">reset view</button>
   </header>
   <div id="main">
     <aside id="left">
+      <div id="leftAtlas">
       <h3>Search</h3>
       <input type="search" id="search" placeholder="name, TA name, id…">
       <h3>Layers</h3>
@@ -84,16 +112,48 @@
       <select id="regionSel"><option value="">All regions</option></select>
       <h3>Records</h3>
       <div id="list"></div>
+      </div>
+      <div id="leftImg" hidden>
+        <h3>Study — synthetic derived CT</h3>
+        <div id="imgSeries"></div>
+        <h3>Window / level</h3>
+        <div id="imgPresets"></div>
+        <div style="margin-top:8px">
+          <label>Width <span class="val" id="imgWWVal"></span><br>
+            <input type="range" id="imgWW" min="1" max="2500" step="1" style="width:100%"></label>
+          <label>Level <span class="val" id="imgWLVal"></span><br>
+            <input type="range" id="imgWL" min="-1200" max="1200" step="1" style="width:100%"></label>
+        </div>
+        <h3>Label overlay</h3>
+        <label class="chk"><input type="checkbox" id="imgOverlay" checked> show overlay</label>
+        <label>Opacity <span class="val" id="imgAlphaVal"></span><br>
+          <input type="range" id="imgAlpha" min="0.05" max="1" step="0.05" value="0.5" style="width:100%"></label>
+        <p style="color:var(--dim);font-size:12px">Click a legend row to isolate a label; click again to release. Click a voxel in the slice to identify it.</p>
+        <h3>Labels in this volume</h3>
+        <div id="imgLegend"></div>
+      </div>
     </aside>
     <div id="viewwrap">
-      <canvas id="gl"></canvas>
-      <canvas id="labels"></canvas>
+      <canvas id="gl" class="atlas-ui"></canvas>
+      <canvas id="labels" class="atlas-ui"></canvas>
       <div id="status">loading…</div>
+      <div id="imgwrap" hidden>
+        <div id="imgBanner"></div>
+        <div id="imgStage"><canvas id="imgCanvas" width="262" height="262"></canvas></div>
+        <div id="imgBar">
+          <button id="imgPrev">◀ slice</button>
+          <input type="range" id="imgSlice" min="0" max="430" step="1" value="0">
+          <button id="imgNext">slice ▶</button>
+          <span class="val" id="imgSliceVal"></span>
+          <span class="val" id="imgHover"></span>
+        </div>
+      </div>
     </div>
     <aside id="right"><div id="panel"><p class="empty">Select a structure — click a mesh in the view, or a row in the record list.</p></div></aside>
   </div>
   <footer id="strip"></footer>
 </div>
 <script src="viewer.js"></script>
+<script src="imaging.js"></script>
 </body>
 </html>

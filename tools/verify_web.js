@@ -44,6 +44,20 @@
        roundtrip to its own record, the miss pixel [0,0,0,0] must
        decode to null, and an unknown layer bit must decode to null.
        This is the Milestone-7-FIX regression gate, generalized.
+   W7  imaging (Milestone 19): web/data/imaging.json + the derived
+       DICOM series under data/imaging/<subject>/. The TS-label ->
+       Body Model record crosswalk is re-derived independently
+       (Milestone-3 skeletal rules + the inventories'
+       totalsegmentator_overlap blocks) and compared exactly;
+       per-label voxel counts are recounted from the shipped label
+       bins; every DICOM instance is hash-checked against
+       series.json, parsed (EVLE walk), and asserted for the
+       synthetic watermark in metadata (BurnedInAnnotation,
+       ImageType, SeriesDescription) and in pixels (glyph voxels ==
+       3071 at the recorded offsets), with DICOM pixel data byte-
+       identical to the web HU bins; window/level presets equal the
+       cited table and cite >= 2 sources; the viewer's imaging
+       wiring is located in index.html / imaging.js.
 
    Run: node tools/verify_web.js   (exit 0 iff all checks pass)
 */
@@ -300,6 +314,170 @@ for (const key of KEYS) {
           "W6 pick codec roundtrip — every slot of every layer",
           `${cases} slot cases, ${bad} failures; miss pixel -> ${miss}; unknown bit 200 -> ${unknown}`);
   }
+}
+
+// ---------- W7: imaging (Milestone 19) ----------
+{
+  const crypto = require("crypto");
+  const imgMan = loadJSON(path.join(WEB, "imaging.json"));
+  const SUBJ = imgMan.meta.subject.id;
+  const series = loadJSON(path.join(ROOT, "data", "imaging", SUBJ, "series.json"));
+  const census = loadJSON(path.join(ROOT, "data", "sources", "totalsegmentator-1.0", "labels.json"));
+  const geo = imgMan.geometry, dims = geo.dims_voxels;
+  const recIds = new Set(records.map(r => r.id));
+
+  check(imgMan.meta.synthetic === true && /SYNTHETIC/.test(imgMan.meta.banner),
+        "W7 imaging manifest declares the series synthetic, banner carries it");
+  const wantPresets = { "soft-tissue": [350, 50], "lung": [1600, -600], "bone": [2000, 500] };
+  let presetsOk = imgMan.meta.preset_sources.length >= 2;
+  for (const p of imgMan.meta.presets) {
+    const w = wantPresets[p.id];
+    if (!w || w[0] !== p.window_width || w[1] !== p.window_level) presetsOk = false;
+  }
+  check(presetsOk && Object.keys(wantPresets).length === imgMan.meta.presets.length,
+        "W7 window/level presets == cited table (soft 350/50, lung 1600/-600, bone 2000/500), >= 2 sources");
+
+  // expected crosswalk, re-derived from the milestone sources
+  function skeletalRecord(label) {
+    if (label.startsWith("vertebrae_")) return "vert_" + label.split("_").slice(1).join("_");
+    if (label.startsWith("rib_left_")) return "rib" + label.split("_").pop() + "_left";
+    if (label.startsWith("rib_right_")) return "rib" + label.split("_").pop() + "_right";
+    const direct = { femur_left: "femur_left", femur_right: "femur_right",
+      humerus_left: "humerus_left", humerus_right: "humerus_right",
+      scapula_left: "scapula_left", scapula_right: "scapula_right",
+      hip_left: "hip_left", hip_right: "hip_right", sacrum: "sacrum",
+      clavicula_left: "clavicle_left", clavicula_right: "clavicle_right" };
+    return direct[label] || null;
+  }
+  const expected = new Map();
+  for (const lab of Object.keys(census.labels)) {
+    const r = skeletalRecord(lab);
+    if (r) expected.set(lab, [r]);
+  }
+  for (const dir of fs.readdirSync(path.join(ROOT, "data"))) {
+    const dpath = path.join(ROOT, "data", dir);
+    if (!fs.statSync(dpath).isDirectory()) continue;
+    for (const f of fs.readdirSync(dpath).filter(f => f.endsWith("-inventory.json"))) {
+      const doc = loadJSON(path.join(dpath, f));
+      (function walk(o) {
+        if (o && typeof o === "object") {
+          if (o.totalsegmentator_overlap)
+            for (const e of o.totalsegmentator_overlap.labels || [])
+              expected.set(e.label, [...e.inventory_record_ids].sort());
+          for (const v of Object.values(o)) walk(v);
+        }
+      })(doc);
+    }
+  }
+  let cwOk = true; const cwDetail = [];
+  const manByLabel = new Map(imgMan.labels.map(e => [e.label, e]));
+  if (imgMan.labels.length !== Object.keys(census.labels).length) cwOk = false;
+  for (const lab of Object.keys(census.labels)) {
+    const e = manByLabel.get(lab), exp = expected.get(lab);
+    if (!e) { cwOk = false; cwDetail.push(lab + " missing"); continue; }
+    if (exp) {
+      if (e.mapping_status !== "mapped" ||
+          JSON.stringify([...e.record_ids].sort()) !== JSON.stringify(exp))
+        { cwOk = false; cwDetail.push(lab + " mapping differs"); }
+    } else if (e.mapping_status !== "unmapped" || (e.record_ids || []).length)
+      { cwOk = false; cwDetail.push(lab + " should be unmapped"); }
+    for (const rid of [...(e.record_ids || []), ...(e.candidate_record_ids || [])])
+      if (!recIds.has(rid)) { cwOk = false; cwDetail.push(`${lab} -> unresolved ${rid}`); }
+  }
+  const T = imgMan.crosswalk_totals;
+  const reachP = new Set(), reachA = new Set();
+  for (const e of imgMan.labels) if (e.mapping_status === "mapped") {
+    for (const rid of e.record_ids) { reachA.add(rid); if (e.present_in_subject) reachP.add(rid); }
+  }
+  const totalsOk = T.labels_in_source_set === imgMan.labels.length &&
+    T.labels_mapped === expected.size &&
+    T.labels_unmapped === imgMan.labels.length - expected.size &&
+    T.labels_present_in_subject === imgMan.labels.filter(e => e.present_in_subject).length &&
+    T.records_reachable_from_present_labels === reachP.size &&
+    T.records_reachable_from_all_mapped_labels === reachA.size;
+  check(cwOk && totalsOk, "W7 label->record crosswalk == re-derived M3 + inventory adjudications; totals reconcile",
+        cwDetail.slice(0, 4).join("; ") ||
+        `${T.labels_mapped} mapped / ${T.labels_unmapped} unmapped; ${reachP.size} records reachable from present labels`);
+
+  // series integrity + per-label recount from the shipped label bins
+  const recount = new Array(imgMan.labels.length + 1).fill(0);
+  let binsOk = true;
+  for (let k = 0; k < dims.slices; k++) {
+    const hp = path.join(WEB, "imaging", SUBJ, `hu-${String(k).padStart(4, "0")}.bin`);
+    const lp = path.join(WEB, "imaging", SUBJ, `lbl-${String(k).padStart(4, "0")}.bin`);
+    const hb = fs.readFileSync(hp), lb = fs.readFileSync(lp);
+    if (hb.length !== dims.cols * dims.rows * 2 || lb.length !== dims.cols * dims.rows) binsOk = false;
+    for (let i = 0; i < lb.length; i++) if (lb[i]) recount[lb[i]]++;
+  }
+  let recountOk = binsOk;
+  for (const e of imgMan.labels)
+    if (recount[e.index] !== e.voxels || e.present_in_subject !== (e.voxels > 0)) recountOk = false;
+  check(recountOk, "W7 slice bins: sizes exact; per-label voxel counts == imaging.json (recounted)",
+        `${dims.slices} slice pairs; ${recount.reduce((a, b) => a + b, 0)} labelled voxels`);
+
+  // watermark in pixels (web bins) at the recorded glyph offsets
+  const offs = series.pixel_route.watermark_offsets_row_col;
+  let wmOk = true;
+  for (let k = 0; k < dims.slices && wmOk; k++) {
+    const hb = fs.readFileSync(path.join(WEB, "imaging", SUBJ, `hu-${String(k).padStart(4, "0")}.bin`));
+    for (const [r, c] of offs)
+      if (hb.readInt16LE((r * dims.cols + c) * 2) !== 3071) { wmOk = false; break; }
+  }
+  check(wmOk && /SYNTHETIC/.test(series.pixel_route.watermark),
+        `W7 watermark glyphs present in every web slice (${offs.length} voxels/slice @ 3071 HU)`);
+
+  // DICOM file set: hashes, EVLE structure, metadata + pixel watermark
+  function parseDicom(buf) {
+    if (buf.toString("ascii", 128, 132) !== "DICM") return null;
+    let pos = 132; const tags = {};
+    while (pos + 8 <= buf.length) {
+      const g = buf.readUInt16LE(pos), e = buf.readUInt16LE(pos + 2);
+      const vr = buf.toString("ascii", pos + 4, pos + 6);
+      let len, start;
+      if (["OB", "OW", "OF", "SQ", "UC", "UR", "UT", "UN"].includes(vr)) {
+        len = buf.readUInt32LE(pos + 8); start = pos + 12;
+      } else { len = buf.readUInt16LE(pos + 6); start = pos + 8; }
+      if (g === 0x7FE0 && e === 0x0010) { tags.pixels = { start, len }; break; }
+      tags[`${g},${e}`] = buf.toString("ascii", start, start + len).replace(/[\s\x00]+$/, "");
+      pos = start + len;
+    }
+    return tags;
+  }
+  let dcmOk = true; const dcmDetail = [];
+  const inst = series.dicom.instances;
+  if (inst.length !== dims.slices) { dcmOk = false; dcmDetail.push("instance count"); }
+  for (let k = 0; k < inst.length; k++) {
+    const p = path.join(ROOT, "data", "imaging", SUBJ, inst[k].file);
+    const buf = fs.readFileSync(p);
+    const sha = crypto.createHash("sha256").update(buf).digest("hex");
+    if (sha !== inst[k].sha256) { dcmOk = false; dcmDetail.push(`k${k} sha`); continue; }
+    const t = parseDicom(buf);
+    if (!t || !t.pixels) { dcmOk = false; dcmDetail.push(`k${k} parse`); continue; }
+    const ipp = (t["32,50"] || "").split("\\").map(Number);
+    const good = t["40,769"] === "YES" && /^DERIVED/.test(t["8,8"] || "") &&
+      /SYNTHETIC/.test(t["8,4158"] || "") && t["8,24"] === inst[k].sop_instance_uid &&
+      t["32,19"] === String(k + 1) && t.pixels.len === dims.cols * dims.rows * 2 &&
+      Math.abs(ipp[2] - (geo.ipp_first_slice_lps_mm[2] + k * geo.spacing_mm[2])) < 1e-3;
+    if (!good) { dcmOk = false; dcmDetail.push(`k${k} tags`); continue; }
+    const web = fs.readFileSync(path.join(WEB, "imaging", SUBJ, `hu-${String(k).padStart(4, "0")}.bin`));
+    if (!buf.subarray(t.pixels.start, t.pixels.start + t.pixels.len).equals(web)) {
+      dcmOk = false; dcmDetail.push(`k${k} pixels != web bin`); continue;
+    }
+    for (const [r, c] of offs)
+      if (buf.readInt16LE(t.pixels.start + (r * dims.cols + c) * 2) !== 3071) {
+        dcmOk = false; dcmDetail.push(`k${k} watermark`); break;
+      }
+  }
+  check(dcmOk, "W7 DICOM set: sha256 == series.json; EVLE tags, synthetic metadata, IPP arithmetic, pixel identity with web bins, pixel watermark",
+        dcmDetail.slice(0, 4).join("; ") || `${inst.length} instances`);
+
+  // viewer wiring
+  const indexHtml = fs.readFileSync(path.join(ROOT, "web", "index.html"), "utf8");
+  const imagingJs = fs.readFileSync(path.join(ROOT, "web", "imaging.js"), "utf8");
+  check(indexHtml.includes('id="imgCanvas"') && indexHtml.includes('id="btnModeImaging"') &&
+        indexHtml.includes('src="imaging.js"') && imagingJs.includes("imaging.json") &&
+        imagingJs.includes("select("),
+        "W7 imaging mode wired in index.html + imaging.js (manifest fetch; atlas select() panel reuse)");
 }
 
 console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASS");

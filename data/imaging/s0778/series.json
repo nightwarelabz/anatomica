@@ -1,0 +1,3616 @@
+{
+ "crosswalk_totals": {
+  "contested_voxels": 6103,
+  "labelled_voxels_total": 6418721,
+  "labels_absent_in_subject": 6,
+  "labels_in_source_set": 104,
+  "labels_mapped": 93,
+  "labels_present_in_subject": 98,
+  "labels_unmapped": 11,
+  "mapped_and_absent": 6,
+  "mapped_and_present": 87,
+  "mask_voxel_claims_total": 6424824,
+  "records_reachable_from_all_mapped_labels": 96,
+  "records_reachable_from_present_labels": 90,
+  "unmapped_and_absent": 0,
+  "unmapped_and_present": 11
+ },
+ "derivation_tool": "tools/imaging_derive.py",
+ "derived_at_utc": "2026-11-06T12:14:50.076031+00:00",
+ "dicom": {
+  "instances": [
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0001.dcm",
+    "instance_number": 1,
+    "sha256": "62d49928b0dd3a798f4ae42452c9ba5bd38b61750cd98cda1e992da75c31f423",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.1"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0002.dcm",
+    "instance_number": 2,
+    "sha256": "ace258adc796f405370a1bd96a4aac733ace7a33ff7c1dd20624a68356aed3b1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.2"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0003.dcm",
+    "instance_number": 3,
+    "sha256": "28cb8f9049e99333092b81f43cbb2a30a874c1de280ceee8a925d83ed50c80da",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.3"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0004.dcm",
+    "instance_number": 4,
+    "sha256": "c417c600c7f3bdbc74742fcd4f89445a0b42c60b0984f9e5785d3553704bedb7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.4"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0005.dcm",
+    "instance_number": 5,
+    "sha256": "b436f24f597740d337a8c2f8aa1c0c98a74b9ef2c70724b9d125883201f672ed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.5"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0006.dcm",
+    "instance_number": 6,
+    "sha256": "a822f4039267277aa0067e2b287d9d93f1bbcd460430f40900e7384b0bc57f86",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.6"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0007.dcm",
+    "instance_number": 7,
+    "sha256": "f38e429dc387847782376a21275fe0cfe63fa3fe972cef1d5babb523cb9b0834",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.7"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0008.dcm",
+    "instance_number": 8,
+    "sha256": "17d4e0d96b0048b97306a22ed15a2e9cbfab1e739e7c29db345f9ac44396adcc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.8"
+   },
+   {
+    "bytes": 138881,
+    "file": "dicom/s0778-ct-synth-0009.dcm",
+    "instance_number": 9,
+    "sha256": "70aa437f5eec540dd2f5d0ed1225df1835183c46359ef0c27228cdcd15fffb66",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.9"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0010.dcm",
+    "instance_number": 10,
+    "sha256": "4d479589dc8e1dac5e811606a5a12e713a739cfbca75ad1945c730d70d93cdea",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.10"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0011.dcm",
+    "instance_number": 11,
+    "sha256": "faa14056df1040773225b83c3e8e7aca1010c6a2f99359a936562dc979b63678",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.11"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0012.dcm",
+    "instance_number": 12,
+    "sha256": "b1e19e8f289b4fbbb31f35f3ac3e928549321fa6b9f6884c21cfc2980e318bbf",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.12"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0013.dcm",
+    "instance_number": 13,
+    "sha256": "df6f778121b73099695fc7c92fd9e9f2626b17b8155cb662f5632cef00072f18",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.13"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0014.dcm",
+    "instance_number": 14,
+    "sha256": "7d8eebe49b19dfbe3a30bd9aa5029cef0a216338ceeaa2ac61ffb603147930c7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.14"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0015.dcm",
+    "instance_number": 15,
+    "sha256": "387984973dc6db1ed25de1abd75417002ff95fe7286256cc2e7e8de0afc6cd22",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.15"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0016.dcm",
+    "instance_number": 16,
+    "sha256": "d9978c2ff94f33ae72b5e7ed19c5e1ffcc340393f47be57d804b2f3f0d9fe61b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.16"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0017.dcm",
+    "instance_number": 17,
+    "sha256": "91bea799649e258cf0a5269d388024394acd43c27a113b8c8e463319cb517bc8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.17"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0018.dcm",
+    "instance_number": 18,
+    "sha256": "54b29b5065b5f1fc0833152f5879039f2c3b08e9af7bc4f6555ad16f7964c376",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.18"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0019.dcm",
+    "instance_number": 19,
+    "sha256": "93363dbfaf1851feb3cb2b6e26e6a577fa094116c682d1f3510a3579b1f6d78b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.19"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0020.dcm",
+    "instance_number": 20,
+    "sha256": "95964630ae208940d70495f772297901951beb74a7fd4760065ab22e861a8b32",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.20"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0021.dcm",
+    "instance_number": 21,
+    "sha256": "09165b0b66a3a1f803a336f9c43b779fb4b74874a2138c2576649aa77d4a2f3f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.21"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0022.dcm",
+    "instance_number": 22,
+    "sha256": "1dba75142eff3dae52f5e3ee7404cd2c68b49d0c0352c2b6699094b4a6e005b3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.22"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0023.dcm",
+    "instance_number": 23,
+    "sha256": "a38e2d1e64f4d006db2d2e288a20c5475c0eb4ba70b864889a51cdfbb9ab5c6c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.23"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0024.dcm",
+    "instance_number": 24,
+    "sha256": "6e2dcdf62dfd4b414e50a7beab47d015f8d2f1cec56d0567a239a09b49a802b9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.24"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0025.dcm",
+    "instance_number": 25,
+    "sha256": "dadbec0f8551c04229a1f7767491270ce98f15f138ad5e2e7a0a0f30d02b5c3d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.25"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0026.dcm",
+    "instance_number": 26,
+    "sha256": "59be584c53bf7b95a1854b1a055d06a7ffac3a3e4d906fad506003cd957c96d8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.26"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0027.dcm",
+    "instance_number": 27,
+    "sha256": "b3a741785486c9e662a36677563e131f532c884597265fb4ee80140fe8f4ed90",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.27"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0028.dcm",
+    "instance_number": 28,
+    "sha256": "9f09b99f2c034b48850626b575b04b510f7cdc476f7f1e309415041fdf4432e4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.28"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0029.dcm",
+    "instance_number": 29,
+    "sha256": "9962773c2758324a6f6ac9cbbf6b0786b12c451e861d84798b251681d37bc739",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.29"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0030.dcm",
+    "instance_number": 30,
+    "sha256": "632ee0c2ef8b9f22daea35dd7dceea1e2ba6f3a8e96fbfd9a93a113b0c606d09",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.30"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0031.dcm",
+    "instance_number": 31,
+    "sha256": "b961f35daf70933ae40fcd8f168c9ef75c75df7732ffaf4fa00646f58c2f950c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.31"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0032.dcm",
+    "instance_number": 32,
+    "sha256": "3eb0c48f3235f46958c3b50637dd2908a1c6220a6cebf33d6f3b6dfe734ada48",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.32"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0033.dcm",
+    "instance_number": 33,
+    "sha256": "2c03b30017e1d381b71cf0a01c424554cce8f416309f5bfe43036a686c317912",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.33"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0034.dcm",
+    "instance_number": 34,
+    "sha256": "e8ed7ff63c62fc964bf402b21036b5e6e3aec005d55cf75dae323a74982bce64",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.34"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0035.dcm",
+    "instance_number": 35,
+    "sha256": "f72fa8090efc6b53b46eb1ab86f4d424618e889015307dbe192b8211ecfa04b5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.35"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0036.dcm",
+    "instance_number": 36,
+    "sha256": "e8e974a3efd05620d3838cd8c924f060ac02af79822e1cf411b004bbfb49f294",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.36"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0037.dcm",
+    "instance_number": 37,
+    "sha256": "67bce8d6614aa05daf8ebd8458d4e4868f98740d99a14ae5d02775e8f7316456",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.37"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0038.dcm",
+    "instance_number": 38,
+    "sha256": "d429531a596cc43f13061f32e5f7c57eca2a333339e24dd0961310b7f63de491",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.38"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0039.dcm",
+    "instance_number": 39,
+    "sha256": "34b253028cbe14f01fe8730b16bf7606417637a7661f1b068e4dd30c1e334595",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.39"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0040.dcm",
+    "instance_number": 40,
+    "sha256": "5413de263ff9a43420b32115c58f4f8174be5c91913b50fcc0eadebc46ef6506",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.40"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0041.dcm",
+    "instance_number": 41,
+    "sha256": "2cdf5468adc6dd2417554a31dfbe1c1f300b7a127dda8c6b1d65ca33d31341b6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.41"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0042.dcm",
+    "instance_number": 42,
+    "sha256": "473064590ad95da22deac614d26bd7a427f22bcea2fc88669af5df1224a527e7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.42"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0043.dcm",
+    "instance_number": 43,
+    "sha256": "9e694605f7a94a20dcb2183340fb5ad337b75c6cf33cfa8d7a8a3e1e48cbfef8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.43"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0044.dcm",
+    "instance_number": 44,
+    "sha256": "2afe08e98c8fed0a8bd17715dd35e5976de11a8d62bb503eddc2c838e0b5c569",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.44"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0045.dcm",
+    "instance_number": 45,
+    "sha256": "c5021bb8fc7e9c36f01a7795c50455a376aaa6676f3d541c76027bba0fede512",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.45"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0046.dcm",
+    "instance_number": 46,
+    "sha256": "379216b2d645f403b8b357cc58608d3233e7c86ec87e0d3b795fb5c8695a92b7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.46"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0047.dcm",
+    "instance_number": 47,
+    "sha256": "b53e732e7e29aebcaabab2df1a9ba7c54c1f07c833bd8c17acf078cdb9f0b7ac",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.47"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0048.dcm",
+    "instance_number": 48,
+    "sha256": "934df142bc75989130526853b5170eee0b979fd8b7d18bf8c2b73dbcaf65409e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.48"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0049.dcm",
+    "instance_number": 49,
+    "sha256": "e47ae5fb8d6c20e24b2b2c94162de1d836239a28043b619fadfc9fa97fb547a2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.49"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0050.dcm",
+    "instance_number": 50,
+    "sha256": "80eca51fc1c23f10f2923007dfa39438a803c1915826bdc50bffe23c08a9a0a8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.50"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0051.dcm",
+    "instance_number": 51,
+    "sha256": "9fa4070435c1976c2c7e88d66d2bb3809ed96e9ed3325b080898c40d7265c456",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.51"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0052.dcm",
+    "instance_number": 52,
+    "sha256": "127b4e2342450d0184e59faef623cc566c2ab947d6243f35b338bb5f595ba7e7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.52"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0053.dcm",
+    "instance_number": 53,
+    "sha256": "61b0968cfeb683e5b6b4155d5c34133e41e8fb17e8b7fef0fb95759fc38f8f9c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.53"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0054.dcm",
+    "instance_number": 54,
+    "sha256": "15fbd7bb84fee91a3442ea8f403f8349f9072ad4f13105b885d5076b2a2c7b73",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.54"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0055.dcm",
+    "instance_number": 55,
+    "sha256": "23baa07831b1646ad6e9e37d1c74fef3a98817e2000afc0bee6c4593eeb5f62f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.55"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0056.dcm",
+    "instance_number": 56,
+    "sha256": "5c045710f2309bf7b748542e2cac941ed40dd08352e99b533a5bb5801384952f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.56"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0057.dcm",
+    "instance_number": 57,
+    "sha256": "999bac24b9cd23b61b1138e1f34fe5abf01dbe139e3eb9f6185644e57e0cc7b7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.57"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0058.dcm",
+    "instance_number": 58,
+    "sha256": "91a11f58222d23f9bfa2b72e89965e03f090e01fc2ad371d73f7b32d091e2aa9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.58"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0059.dcm",
+    "instance_number": 59,
+    "sha256": "27f40af009116a00185c985eb38b762d5963859ca9a6c268e3023fe60a895887",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.59"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0060.dcm",
+    "instance_number": 60,
+    "sha256": "889069677d9405881ae6773651de61aef787322ebb1f2eef1add7dade81b5995",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.60"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0061.dcm",
+    "instance_number": 61,
+    "sha256": "2582c0b08ee6d3b721cb37bac1b178f8b8995106f47dcec9dd5ae60503e547d7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.61"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0062.dcm",
+    "instance_number": 62,
+    "sha256": "288e0929f787cc149abcef93ded457e0bf63fd25112306dea081ec4ad819f945",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.62"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0063.dcm",
+    "instance_number": 63,
+    "sha256": "ecb32aef7039f16a9401882f818bfadee678ec10a1f952a157f0637b08fbdcd1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.63"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0064.dcm",
+    "instance_number": 64,
+    "sha256": "381d860530a415880147b22274203566015c163cc0ce988bbce31abff1ff513f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.64"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0065.dcm",
+    "instance_number": 65,
+    "sha256": "d6b3f515f26df7c067e7b0e01623b5767583e7ecb8f45d84931c9e10490caaa8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.65"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0066.dcm",
+    "instance_number": 66,
+    "sha256": "73c982acfce257eefba50fa75237d374f2b11b35e78a3b5543026665046b052b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.66"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0067.dcm",
+    "instance_number": 67,
+    "sha256": "cdbdcd1089031a14bf714c3a5c17944ae26503e3788185d398d50529dd87f8b2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.67"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0068.dcm",
+    "instance_number": 68,
+    "sha256": "65fae694c2e5c1952e4ef1110e2c9740a7c6549d21efdf7a0a61104984ea11a8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.68"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0069.dcm",
+    "instance_number": 69,
+    "sha256": "bb1fddb115caa7422ebe46b506d4c0656c6cc384c90f684c6ab3da0af21f5da0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.69"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0070.dcm",
+    "instance_number": 70,
+    "sha256": "335e1a7cf852e1ad48f4832240dd1889d4a02cd5b0888bc95c7fe2a76456f005",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.70"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0071.dcm",
+    "instance_number": 71,
+    "sha256": "7d45bf66c2b2f1c2659f2fb1fb0730d67af7c99203c1e04801b44165fa7e9890",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.71"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0072.dcm",
+    "instance_number": 72,
+    "sha256": "016a70311bd4b6c4e65de2bf2bf36a770c1113599a93ce9728d1bad077241df0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.72"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0073.dcm",
+    "instance_number": 73,
+    "sha256": "92406f93e5ca05dc16857ce636139b274b26cddd7158c2b0d84239d38b824d41",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.73"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0074.dcm",
+    "instance_number": 74,
+    "sha256": "f817033fd33868d201e8569d7f665fe16810174ea59c3878c134aa29e5a308ce",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.74"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0075.dcm",
+    "instance_number": 75,
+    "sha256": "6a724863865c760545b289293123fbb47ead2b96d162280c58aefd7334ddd3ef",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.75"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0076.dcm",
+    "instance_number": 76,
+    "sha256": "1d785f7f90f68411086fb11cda576d781f88cd5298736dad601a8f31eede7af6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.76"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0077.dcm",
+    "instance_number": 77,
+    "sha256": "f20ff7016b22f2a2cc54f408d9c11784b15dff49d1fa7d7ab055486e1ec608cb",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.77"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0078.dcm",
+    "instance_number": 78,
+    "sha256": "25345d3a0878ed408d1b276dd2cce5ee92b5c5e8876649691af7c959f3b3393b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.78"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0079.dcm",
+    "instance_number": 79,
+    "sha256": "e3163f9d376b3eacfcfd76030508cca926fc5af05cddc4c5265f883ecad57bc8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.79"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0080.dcm",
+    "instance_number": 80,
+    "sha256": "d41cd5eaf4af2b31b7b5d1828d100a3d4e929004306911cdf59996b374f2867e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.80"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0081.dcm",
+    "instance_number": 81,
+    "sha256": "ff77e21c6249b00286e0c5260a11cdedf7d868c2a8842cd85078cc8ade61bd5d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.81"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0082.dcm",
+    "instance_number": 82,
+    "sha256": "d3d4cf432f79de0c5b4140d8ee09bf5917538e823b8eb9cbc1566e552e57bb17",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.82"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0083.dcm",
+    "instance_number": 83,
+    "sha256": "cc69efd35e168a253dcbe7e93f59409f4c36a52a8396655bdd02a86569ff0e1b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.83"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0084.dcm",
+    "instance_number": 84,
+    "sha256": "7aac1420e90365e25ae95a0fe6c3f70ed27ab39e71edb8b7c6b33ce31cd648da",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.84"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0085.dcm",
+    "instance_number": 85,
+    "sha256": "dff587e04a6dcef44d0cbb3e0b667edef4021a1d04e621966c70b6c703d49992",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.85"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0086.dcm",
+    "instance_number": 86,
+    "sha256": "fdae489db307242709003e62151f549f35e46dab40f82795f0cbae86f12c7ad5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.86"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0087.dcm",
+    "instance_number": 87,
+    "sha256": "e666599994da8c02e4280f115a8d19f66671fb098998d3bdd7d99e9a8fb9b90d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.87"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0088.dcm",
+    "instance_number": 88,
+    "sha256": "056b0737cd699d3668c88c8d73ec3690a48f9e1376502a832ee1747153223dbe",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.88"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0089.dcm",
+    "instance_number": 89,
+    "sha256": "96d17b90d9321162e783298d13c5c08f095e193fc0da9bbd52b50fd77a24d09c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.89"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0090.dcm",
+    "instance_number": 90,
+    "sha256": "d6513dcdeab1ba86f949f1bc68151f12c42808d3a7a01eba46d96ec7909c8340",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.90"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0091.dcm",
+    "instance_number": 91,
+    "sha256": "18b7788d3b3bf9b743a3d8cc82223afb90b5b4ecc13ecf43b5bd6b55a33de391",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.91"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0092.dcm",
+    "instance_number": 92,
+    "sha256": "f9e8e1e7e68e30324ff05ac4c82f372a1fdbe9760d706588b25fc0f0051cc0a3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.92"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0093.dcm",
+    "instance_number": 93,
+    "sha256": "001ac456cf174e9259c3abedae1145c0e9595526159782a6ba65d79e8080c621",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.93"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0094.dcm",
+    "instance_number": 94,
+    "sha256": "e8850bc2e68f3433df04dcc5146640475d95c1ca6864f795421f84725b44cc30",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.94"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0095.dcm",
+    "instance_number": 95,
+    "sha256": "23f20ed325ddcc87231201f9746a98fe3b6c876f5929ba2c3108984232c54ab0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.95"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0096.dcm",
+    "instance_number": 96,
+    "sha256": "22ee6970a59042e35d11cb67d091e168a09afcb30624128adf59bebea12e852e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.96"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0097.dcm",
+    "instance_number": 97,
+    "sha256": "d2ecb1568cf2040433828b7c2f44966ea4e46af2726c4ee847897ddc0653efe7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.97"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0098.dcm",
+    "instance_number": 98,
+    "sha256": "eb0c265c0f94b441cb4d716abcbf4a7b94e36e472baf45699641e433b3c786b5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.98"
+   },
+   {
+    "bytes": 138885,
+    "file": "dicom/s0778-ct-synth-0099.dcm",
+    "instance_number": 99,
+    "sha256": "048293a7854fd99ade7b35d60bc800c33a5156c182b65fc3a45410164dcb03bd",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.99"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0100.dcm",
+    "instance_number": 100,
+    "sha256": "36b27f203946bbbdf62b29f37adf11ae15822c581318d272a8ab79da68209d41",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.100"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0101.dcm",
+    "instance_number": 101,
+    "sha256": "d070e5826ae89cd88719a081f2f4e44bdb76acd83bfacd6d5bc2212fd3e53725",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.101"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0102.dcm",
+    "instance_number": 102,
+    "sha256": "ec0707664fae070a151a51cf2f4ddc8e00d91b6b6e2da6cb8cebf05e5ef3601e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.102"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0103.dcm",
+    "instance_number": 103,
+    "sha256": "a573bda0380959ea65a408b78090abbdc33ff94ddc2bfd62e99f4cc339eddebb",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.103"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0104.dcm",
+    "instance_number": 104,
+    "sha256": "4b63567c9032fdb1f87b89803884323cdb9161d52341fb41dcaa96ff661282f4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.104"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0105.dcm",
+    "instance_number": 105,
+    "sha256": "507a2201d90d188d397e071e1444b12a5db5cfa613345e4118fede8d47abb265",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.105"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0106.dcm",
+    "instance_number": 106,
+    "sha256": "6486c781a41262cba125fc3d85303e22053fd587bdaefa3ba52cc4d52db3f4b6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.106"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0107.dcm",
+    "instance_number": 107,
+    "sha256": "8a687872e52a1be72f232dd4651c5d2541f01f624a0752b38c5bb3e153b72c25",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.107"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0108.dcm",
+    "instance_number": 108,
+    "sha256": "bcbf9029a95ac837d9a9fbb5d46819e28468cb9e5a1574eb0662b3248e1f17d1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.108"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0109.dcm",
+    "instance_number": 109,
+    "sha256": "4ec3fa9cae1a0c2c5a22cb0b7b901774ff92e55626f9c8d82e6a7f8b9334a608",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.109"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0110.dcm",
+    "instance_number": 110,
+    "sha256": "905c55a962d10a68a89f28fd84e788f884cb8a6ce446abd631459d6a5a42d774",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.110"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0111.dcm",
+    "instance_number": 111,
+    "sha256": "8931fee90e2948d1c24f63b2494af9868015e5307f547731fbb09ba0d5a209cc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.111"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0112.dcm",
+    "instance_number": 112,
+    "sha256": "4485860f0103597f3f75ca8e9c6fd06bb123012c80b2ea4ab74c1a6784fd6652",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.112"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0113.dcm",
+    "instance_number": 113,
+    "sha256": "1d5a169d93717dc486061f45e45cfae28d406033dbad5cd68c5fb57772ff4c0d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.113"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0114.dcm",
+    "instance_number": 114,
+    "sha256": "7cc7f5904e19f35872c6a34a36f692ac0d3bb67a8b97f3b77c008c7150affff9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.114"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0115.dcm",
+    "instance_number": 115,
+    "sha256": "de38a80b67f8ad7c83ac5c7264518c267a70d1b590cbc9cab6924d44391cb58d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.115"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0116.dcm",
+    "instance_number": 116,
+    "sha256": "e653fd77b98adc4178d24c71935ba673d801a41255f0e5179308b683d60b2dc1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.116"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0117.dcm",
+    "instance_number": 117,
+    "sha256": "0e51bf9115c8c949f95c2b5509ca9cbefbd22a8669c46bcffa21e0d547328ef7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.117"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0118.dcm",
+    "instance_number": 118,
+    "sha256": "6a06bf07e05b9d1b1a44b23910dd9c3e819b8a221aef3b859c5e251e0139212e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.118"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0119.dcm",
+    "instance_number": 119,
+    "sha256": "1c4491dcd250c3d54176c9b201ef5651711a536c7742ee6521e46f27da4ddb6e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.119"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0120.dcm",
+    "instance_number": 120,
+    "sha256": "0c121227f557aca05e6d7f1810df7acb6ffe4ea19195dcec32c9113222807eed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.120"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0121.dcm",
+    "instance_number": 121,
+    "sha256": "c539a1d20cae9f1b9b3b497644679b9f5e45146b8f65d4e8fe10a64aea277aac",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.121"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0122.dcm",
+    "instance_number": 122,
+    "sha256": "d32163c02e9ec522380d459fd49013807209798f3a81e30025482f7e70b4ce0e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.122"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0123.dcm",
+    "instance_number": 123,
+    "sha256": "64787adeaccbe594ad582311140aa49403b3a6b43fc4878938dec27d416511e7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.123"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0124.dcm",
+    "instance_number": 124,
+    "sha256": "5ad6f95db60317d983f77cb1e36823c25daa686a6782e2df5aabdb780cdeaea1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.124"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0125.dcm",
+    "instance_number": 125,
+    "sha256": "7a3cfcd161f8ab7d42f6432c597a9be414d9b408ddab3093a0c4e6d1bca8cec0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.125"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0126.dcm",
+    "instance_number": 126,
+    "sha256": "3eeb8897e5c5c336113a54268632a35306179c20d9495a87bc2bc65ff99efe6e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.126"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0127.dcm",
+    "instance_number": 127,
+    "sha256": "59c49629e6cd65b81a0752937b51d558a98db7d579d7570008b38f70df4d4203",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.127"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0128.dcm",
+    "instance_number": 128,
+    "sha256": "6819648863abf99641779397fdcb8ea926335b5542049e5360496042db5bc08d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.128"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0129.dcm",
+    "instance_number": 129,
+    "sha256": "e77d1815cfad792d981b881a3ddfe052b8bdfa892107e4552fe181f6cdbc22d8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.129"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0130.dcm",
+    "instance_number": 130,
+    "sha256": "591469114ca31821ad0d33c7faaa4ae8947f1b5dd3563e1f64f5612c87e77769",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.130"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0131.dcm",
+    "instance_number": 131,
+    "sha256": "d8b26619898b00770cd30199ec9dec2b7518b4e168a26899b2f72c49d4640f39",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.131"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0132.dcm",
+    "instance_number": 132,
+    "sha256": "55a7c54171672765905c3dc1138a6e69c98ad5725ef375c2a10b035f8fda7dbf",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.132"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0133.dcm",
+    "instance_number": 133,
+    "sha256": "4a84a2fcc4fd8148725cb0fd0024af73920cf157cf30763be2c6c37de7c20ea1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.133"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0134.dcm",
+    "instance_number": 134,
+    "sha256": "1bb58c44f7e2b1a35ce27752439c27dd502a056408f179e5048857553919d8f6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.134"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0135.dcm",
+    "instance_number": 135,
+    "sha256": "f0bf8b2ed0692a817ced16f23e1608f789ddb2f59bce29f19e6d927024110bed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.135"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0136.dcm",
+    "instance_number": 136,
+    "sha256": "d51f659fe255f7ac76adad6c979de252900ad013e0dbaff7567c673015db4896",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.136"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0137.dcm",
+    "instance_number": 137,
+    "sha256": "db671078db5ed6056e44977fa82112b6fd59500a971cbf8fc6a40ea0e803b3bc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.137"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0138.dcm",
+    "instance_number": 138,
+    "sha256": "332c30d5932409f217d5c813d287aa9ae040eed63e8de3b3a0c8bf8568f1eb6a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.138"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0139.dcm",
+    "instance_number": 139,
+    "sha256": "b73be50c0e1a7a35956920f6a22694873780f37ad7db351a0b111e042cdab0c9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.139"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0140.dcm",
+    "instance_number": 140,
+    "sha256": "c9a1acc842fac0b0b020437c9c145f9e58a7e15bc481ce0b0d292ed12b7ffb42",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.140"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0141.dcm",
+    "instance_number": 141,
+    "sha256": "e465703852e1daa7dfd04160b82a715502bb7f3e207f18c46462487c75e79c7a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.141"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0142.dcm",
+    "instance_number": 142,
+    "sha256": "4f6adcb32616d8780054c4896502f50c3c3a6775ac0a0ce6dce5948401030a3d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.142"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0143.dcm",
+    "instance_number": 143,
+    "sha256": "b853b0a782ade358aadf205a9403dd833111a84ad3455f8fca2140d5d23bdf26",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.143"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0144.dcm",
+    "instance_number": 144,
+    "sha256": "02128aa6883574b3cbbca4105a85a09d5ef2a9fae21eebc5e0e0f92846ab7f48",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.144"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0145.dcm",
+    "instance_number": 145,
+    "sha256": "9cbac09e93c26b4ef045ee513d532b90c15455d8124894d18da08d170543580e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.145"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0146.dcm",
+    "instance_number": 146,
+    "sha256": "bcb3be4aad049e133c672d16e972f44f998e3ec6da13051f1f710ec0d33307e9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.146"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0147.dcm",
+    "instance_number": 147,
+    "sha256": "4fb7812a0b4dbafadeb2f4c3a15b6121878205b9cb4e992836836d90b167cba9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.147"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0148.dcm",
+    "instance_number": 148,
+    "sha256": "f0ac4ee018732719a48f2e8e8a2e504d31d4129783256dedff77d596ca381325",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.148"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0149.dcm",
+    "instance_number": 149,
+    "sha256": "d82254d4eaf1d47ac2ac2e8b9e0db80cb35a1c858e79f5c77831a913ee5e6fad",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.149"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0150.dcm",
+    "instance_number": 150,
+    "sha256": "99149f3231ca5dbfd1619a5a5722187bdcff83aa9edf44112ff59251fb2898a5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.150"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0151.dcm",
+    "instance_number": 151,
+    "sha256": "e1017d6036a013a92fac32eef9d6af6a36d282802ef0a346887321acd6fa676b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.151"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0152.dcm",
+    "instance_number": 152,
+    "sha256": "5c28f881fbcc0adae28a0830d1420388ee007810e7ae61585e18853b733d5106",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.152"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0153.dcm",
+    "instance_number": 153,
+    "sha256": "e1abb30f23e2e3c17064d4fdbd2bd6371f6056b06dd989011daf83a7e85a499f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.153"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0154.dcm",
+    "instance_number": 154,
+    "sha256": "a0775e4e9b07a9325bdfda0a10349f1f79ed2fcf4c431acab7984f47980a11e1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.154"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0155.dcm",
+    "instance_number": 155,
+    "sha256": "31f25729e0e473c96cf54dddaaca67ba842b8b7027c42946d166deadae4a6e52",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.155"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0156.dcm",
+    "instance_number": 156,
+    "sha256": "a44a1609d3e6a5a4abcb73595922a58150198a8424fa9fe7898bc60d91f0c88d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.156"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0157.dcm",
+    "instance_number": 157,
+    "sha256": "981f93729f58c0e1d4c2107e36d7ec620f9f70bc6bce04712411ba09c70bd2a8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.157"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0158.dcm",
+    "instance_number": 158,
+    "sha256": "081374618d57538b00db0b960f47b00403e57baa20493e53f5e5c0958f050592",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.158"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0159.dcm",
+    "instance_number": 159,
+    "sha256": "4cc443d59a36f68a197622abad02fe9aa3064991bd4f0d578ad640fe34602bb4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.159"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0160.dcm",
+    "instance_number": 160,
+    "sha256": "252278cbbbd1704a6295d427db6628f4b1e4d43c9eaa0a781f8be472519a649d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.160"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0161.dcm",
+    "instance_number": 161,
+    "sha256": "4760862c3febaea60800840ce22e046da7782ec019a38d41d67e9973669ccf67",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.161"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0162.dcm",
+    "instance_number": 162,
+    "sha256": "6775cc19d8d1c2bafaa9becc9a6b9a58e1b9bc3ac21f2ec0ff2671a419f49e24",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.162"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0163.dcm",
+    "instance_number": 163,
+    "sha256": "ac17e030207aba5dc5a24ede8dc9483bcd47c898247e1909ac59cf4a9a545fef",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.163"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0164.dcm",
+    "instance_number": 164,
+    "sha256": "c14690cfe86f6275f8b2a197b8e0ec75092bed45c2c5497db68b08b95ee1867a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.164"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0165.dcm",
+    "instance_number": 165,
+    "sha256": "31a988f2470fe69256502ae09b8e3c9cddb746b410fac1b99faafee6c93cbe90",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.165"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0166.dcm",
+    "instance_number": 166,
+    "sha256": "cdf8dfa1469492384ed0436351bb464b455a0dc28a75c6c24dc2ddbed3d2d5bc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.166"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0167.dcm",
+    "instance_number": 167,
+    "sha256": "7a23b12cff3ef3e62558acf921a3142c06063bbda21f9f263d358c4eef95ee0b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.167"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0168.dcm",
+    "instance_number": 168,
+    "sha256": "b154a180b21431942da537f9e366c5f205f37020345fb22fa512f711386e8464",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.168"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0169.dcm",
+    "instance_number": 169,
+    "sha256": "8f0e75f1007d91cc73af8176385635a82525e84c8277032d0ad9de65e6974fc3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.169"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0170.dcm",
+    "instance_number": 170,
+    "sha256": "d906aa81323852dca1c7baa29c1a2c5b030b6f15f672c51ff2e9176ab00e7515",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.170"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0171.dcm",
+    "instance_number": 171,
+    "sha256": "11869dbf50ab2fd4a45ed0db0673f768f8e708b69fa56fdf2c9163336e8bc526",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.171"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0172.dcm",
+    "instance_number": 172,
+    "sha256": "90e5f0e5d9d797fa014a0a319cbcbd56ec2b0534556bee2bb14554dd3dc66529",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.172"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0173.dcm",
+    "instance_number": 173,
+    "sha256": "281d3c6f31e408fab536e3fcef1d0dd8ca007c76c8a3df63601fbaaa7e88e128",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.173"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0174.dcm",
+    "instance_number": 174,
+    "sha256": "7026fa3795f60ed93a06c70575b498d2a3572ea44967aa7dad77f6d62b2c2082",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.174"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0175.dcm",
+    "instance_number": 175,
+    "sha256": "7a23696e87c61d5212a237e21dae165c9940a188bd365d534aa1d9e8a8673bfc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.175"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0176.dcm",
+    "instance_number": 176,
+    "sha256": "9f6c2ba8aa11b3a0c4885840fb2b28735b6b4612d74ab9110b403f2b6d911f28",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.176"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0177.dcm",
+    "instance_number": 177,
+    "sha256": "0f7671bee2aa74212b96647009a0b07e11755ec197a49720722bc18cc1865e11",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.177"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0178.dcm",
+    "instance_number": 178,
+    "sha256": "0b9c40026777433443b05c0884971a5e25c893147f68ebcf8876fbd8a90f7317",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.178"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0179.dcm",
+    "instance_number": 179,
+    "sha256": "34c862d2f940ed6ac4b702c5b3217c9208f1240a1a9fc76fd65728d3be2f1892",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.179"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0180.dcm",
+    "instance_number": 180,
+    "sha256": "e0ff80d3704a4e5978a19ece0d260235804b4ff89f34a9bf988362e67a2fabca",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.180"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0181.dcm",
+    "instance_number": 181,
+    "sha256": "4266c00da37e196de83be5b990ef0efe491494e7689652cbb2bc99939e2b7916",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.181"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0182.dcm",
+    "instance_number": 182,
+    "sha256": "01059c0c787be1de2a38a25ff26275468cc8aad74af88a3e6f3d53dc44118b82",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.182"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0183.dcm",
+    "instance_number": 183,
+    "sha256": "242195b69e1be2c9a9879f1be4d8016693bde0356ce815c082858052a35956d5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.183"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0184.dcm",
+    "instance_number": 184,
+    "sha256": "47ab0592b0d01e266952ea56bd078827c28dced5d19972be69b95e978beb4aa8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.184"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0185.dcm",
+    "instance_number": 185,
+    "sha256": "7a0c07a983aa41a1b046de75183f0e83accd2394322eecc49baa412aee73c9d4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.185"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0186.dcm",
+    "instance_number": 186,
+    "sha256": "4d63652067d6e515f84208df3c3c5e46cc36fd2f2d460b7621557432e5def431",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.186"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0187.dcm",
+    "instance_number": 187,
+    "sha256": "3a23ab03167bbe2a890bc30fdcf267b543a6efbb77b59db85e68860249185464",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.187"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0188.dcm",
+    "instance_number": 188,
+    "sha256": "cbc5721ef195a80467ecbd47f336be3ffb3099ef827b34d55fe2ca2acaac3cd6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.188"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0189.dcm",
+    "instance_number": 189,
+    "sha256": "71e9b88c1df66d81d8f7e6793f28079603f0e3f86b6d0b2508f25b3d2d6b1318",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.189"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0190.dcm",
+    "instance_number": 190,
+    "sha256": "8cd9d3fa5c03c9f6a16561642748a2346c16573e62976176a092891fc31fcce7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.190"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0191.dcm",
+    "instance_number": 191,
+    "sha256": "8dc642eaeb6138b71efc9a218f90c5eef63e279376f3ffb088539c85a8428cf7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.191"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0192.dcm",
+    "instance_number": 192,
+    "sha256": "4cf5e7329a090060394de10b46a7d9c118e4f3df00310c0774519e9d41ff129a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.192"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0193.dcm",
+    "instance_number": 193,
+    "sha256": "84b8daa2d17d33aeef8a77cd647c5eaebb3c0cdf91045a8f183909b49ede3422",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.193"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0194.dcm",
+    "instance_number": 194,
+    "sha256": "bd40682ce2cfdefa90ac0f8e040896bb2e42d97d1280a6abad332923c375cf2b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.194"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0195.dcm",
+    "instance_number": 195,
+    "sha256": "208f08b37cc4f2856712e7b670d551d2cb811973a4167535be38020ddc85c992",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.195"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0196.dcm",
+    "instance_number": 196,
+    "sha256": "e90136377024ee30f56d656a4e036cc8598369b1403c5153f268d2dfa20e6625",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.196"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0197.dcm",
+    "instance_number": 197,
+    "sha256": "b50a38fde5f80dbee9e54e8123f345908af19f90adac57377f7de5c7ff802f05",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.197"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0198.dcm",
+    "instance_number": 198,
+    "sha256": "5d0c0877e6e439dd33a0a369413f80c0036d7bac9284fe1f38b9cc393eeb70ba",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.198"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0199.dcm",
+    "instance_number": 199,
+    "sha256": "3d5e583c2d041fec920948cebab958b227e2f64dfcfd00e6218a446b0e12707c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.199"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0200.dcm",
+    "instance_number": 200,
+    "sha256": "5a1c8011361e057955f615b2e3276efbbd54f6455ea50faff4bd670fc94e5f19",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.200"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0201.dcm",
+    "instance_number": 201,
+    "sha256": "ad6a7c0bc47d6a4dc616d34884a061957ecd4c04746d8afd3e84a2d772c8b975",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.201"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0202.dcm",
+    "instance_number": 202,
+    "sha256": "d56e589e2f6439ff908c065390e8e47433888e546b4844cef0f8855890ab84db",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.202"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0203.dcm",
+    "instance_number": 203,
+    "sha256": "c054a9bd0ed7f08f161084cd64626b41a510236938c307c7d8d6d3207f006523",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.203"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0204.dcm",
+    "instance_number": 204,
+    "sha256": "83b1f2900b547099061117b0cc9a74f25d6de73ec93dcdf7384673facb9edcfa",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.204"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0205.dcm",
+    "instance_number": 205,
+    "sha256": "069ff918dba85ea8574aa5507bf0932a3095be53fa18e93dff08531b8b0c6ae6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.205"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0206.dcm",
+    "instance_number": 206,
+    "sha256": "eb68480d8b1bcb58b57c767be3c49b45f643748356fd5fcb7d88de788de951c8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.206"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0207.dcm",
+    "instance_number": 207,
+    "sha256": "e46435a3c7a4a1120fd022a5e65c0df5cb0e37091124634eae461670765abf56",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.207"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0208.dcm",
+    "instance_number": 208,
+    "sha256": "55a1b33282665eeddad4d7ba1288afd09d5351d3642bfe07109a0e8a78c020e0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.208"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0209.dcm",
+    "instance_number": 209,
+    "sha256": "19ce2169275bb4428d130d6926e3658d876ddcb6bef52ed3f51f399cdd0eb1e9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.209"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0210.dcm",
+    "instance_number": 210,
+    "sha256": "3f6fde4164d577fd6f53d7dab8c212df9b941264954ab32a2c2108d0f711a4d1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.210"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0211.dcm",
+    "instance_number": 211,
+    "sha256": "f8974bd11c008d4027a421981e006eb63fcb27de6760b39c345b86b132ec5573",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.211"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0212.dcm",
+    "instance_number": 212,
+    "sha256": "76d70dbb42a12ed63baeb7b1cc7e36273dc7316f9f505dfc5e5afca1c0e067ed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.212"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0213.dcm",
+    "instance_number": 213,
+    "sha256": "a14b4231bc6ae97797c7d84f7f183ce1ba6436484a54d681c6f5f8111a98fadb",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.213"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0214.dcm",
+    "instance_number": 214,
+    "sha256": "45b94e08a0090c761f3a937db1c214633659d42fcd2f3dcc15e0aa896b4d94e8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.214"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0215.dcm",
+    "instance_number": 215,
+    "sha256": "d091f83e4452686ab51e5cd90ffa51508b4fd2764df0e65f0a4f2bd147b9c16a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.215"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0216.dcm",
+    "instance_number": 216,
+    "sha256": "677351fb13047db73b1011108268518d30462925dcaac556d441895d0509ca82",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.216"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0217.dcm",
+    "instance_number": 217,
+    "sha256": "47e12ed692a6f75e557a16c5daa4cd98bc6469ef1917ee07d853c24579134185",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.217"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0218.dcm",
+    "instance_number": 218,
+    "sha256": "f6bc3f5f4d6c95cfb49027e9396ec16c566ff6c87e2c0129bf9a1bf0bed93752",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.218"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0219.dcm",
+    "instance_number": 219,
+    "sha256": "e7a56ae57ac330c9a63929bf579681c244a14d3def77a6333606fdd440d6ba3f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.219"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0220.dcm",
+    "instance_number": 220,
+    "sha256": "2646919603662ffa4de593e2cd814a0604ca1cb0b0d4de378ff63e36090039fc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.220"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0221.dcm",
+    "instance_number": 221,
+    "sha256": "62551099db7463fe8d322678c27497e9711275eb71013d28aee7e069b99ef0c4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.221"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0222.dcm",
+    "instance_number": 222,
+    "sha256": "dd95056d2502141c208ccdef7f8355a911d9b75426470b69c22da7d9ae2998d7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.222"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0223.dcm",
+    "instance_number": 223,
+    "sha256": "42db068cb2ffbb25c1db9d20f9c867f8f860a340c11da42cab9f948e637f3da1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.223"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0224.dcm",
+    "instance_number": 224,
+    "sha256": "3481232f09238a40aeab1e601b1f2d20e193c8e9531ef037f0079ad3c695161f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.224"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0225.dcm",
+    "instance_number": 225,
+    "sha256": "4919d2da16d86513523f23a9b6771956e1e4c81cfedac12c14d65eb885121967",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.225"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0226.dcm",
+    "instance_number": 226,
+    "sha256": "c63a0d3ba198a51587fd544d016784c76ec8d58c75fddea291877ab55364608a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.226"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0227.dcm",
+    "instance_number": 227,
+    "sha256": "8c6931db4a38cd09bfeef20f72a311fe955c8af8fad4d1482a7d6bc0b5c3170d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.227"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0228.dcm",
+    "instance_number": 228,
+    "sha256": "8ff9ccca5d1e21b4234913169f4db2aa097d2e92ff5fcb3a6fe532fb0673ff3d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.228"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0229.dcm",
+    "instance_number": 229,
+    "sha256": "a659e1aec2e18cb4a7651ed15f89cc848580c66cc5e67246524909c251d09bf4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.229"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0230.dcm",
+    "instance_number": 230,
+    "sha256": "458aa0d3937223ca94cc9f3688106c7807b47978e8ad9b5438f58348725c72fa",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.230"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0231.dcm",
+    "instance_number": 231,
+    "sha256": "0c793d41ed401f751633804b85abfe283d0688b80b6b20c0e401bcce419944c9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.231"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0232.dcm",
+    "instance_number": 232,
+    "sha256": "d7156d0785f39106f11bd981c3af3642a6707f45758afeae2125ac75474f8b6b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.232"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0233.dcm",
+    "instance_number": 233,
+    "sha256": "8241dee895b10daa30ace8c86b10ad15c0ec6c1eff0b6ca66231df32ea6955a8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.233"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0234.dcm",
+    "instance_number": 234,
+    "sha256": "060fc915572043bbdd0653648be017a9085ad987a449c1000fa5850e0baa4957",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.234"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0235.dcm",
+    "instance_number": 235,
+    "sha256": "76469e423a9fc6314db0b92d66c939a7ce565f5931bacb8183745ddf4d9bd8af",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.235"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0236.dcm",
+    "instance_number": 236,
+    "sha256": "173ceedb9d066c03810ddd08ad5211ef5f2753e9f1053d1887e2c8bb38bebb3c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.236"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0237.dcm",
+    "instance_number": 237,
+    "sha256": "b7b3d2a69c19692b359aad3e5bb07dc653173049036eb3d23c0ff89cc86ba10a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.237"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0238.dcm",
+    "instance_number": 238,
+    "sha256": "4238e22e077153ba878c69e2aafbbae74c43e541dd5feb875c6ecbf049b03f2a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.238"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0239.dcm",
+    "instance_number": 239,
+    "sha256": "9d02560ba20354b9f4a5d2cd21a7eea241bebb46b6ca29f2eba195bc83d3210b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.239"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0240.dcm",
+    "instance_number": 240,
+    "sha256": "086ce19a13b91bde892d03a647edf9bd2e9e604954458a78eb46677d61bca0b6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.240"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0241.dcm",
+    "instance_number": 241,
+    "sha256": "e0042cd1c1e0065219d5b6f26adfae8bb7a45b20f45950bac896af6dcb745309",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.241"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0242.dcm",
+    "instance_number": 242,
+    "sha256": "f55d5db06fc8dd7d75566e0edd9e270dc5e1ba96666314520104ba923aebff5a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.242"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0243.dcm",
+    "instance_number": 243,
+    "sha256": "6bfd9552a1faa72c3a1b472feb479a4808390e91644045a78cb0609775cdd18f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.243"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0244.dcm",
+    "instance_number": 244,
+    "sha256": "258f8ed0f954fec5b1fbc707955292356ca1aac8a51d833478f70394080891c2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.244"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0245.dcm",
+    "instance_number": 245,
+    "sha256": "8cc2aedd77286b6901261af1c9e907f2ae2ed99c4c0595a36e25c9d73206c7b8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.245"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0246.dcm",
+    "instance_number": 246,
+    "sha256": "91c446998d072cacc591f632d7dfbff2f657875850b2f325d2753f2715c83b16",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.246"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0247.dcm",
+    "instance_number": 247,
+    "sha256": "d29fcf590d12776308d710f30f8f3c2341f997c42baa810970f19a9fb1dc47ed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.247"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0248.dcm",
+    "instance_number": 248,
+    "sha256": "dfa11ecd20795a1d4bd378bc2df0c4ebfdaaab6fe552a6f0e8626b02609b69f1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.248"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0249.dcm",
+    "instance_number": 249,
+    "sha256": "3ed5069f28a9bcc99ff3aaaf8f64300456333117c05ddc597fcdc0cfe130fa6d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.249"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0250.dcm",
+    "instance_number": 250,
+    "sha256": "9318248a824d18ae30c9061f421e95a3283a0f6d96cd5f87637f740bc5fbb02b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.250"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0251.dcm",
+    "instance_number": 251,
+    "sha256": "2ecd1594953348fa6e0137c78d80e9d1838d37377197c2343e21f7ea9b7289bc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.251"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0252.dcm",
+    "instance_number": 252,
+    "sha256": "278ca8f3c4322b144abcb6434ce266a16a8042e82ee495d74eebfd7fc3fcf416",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.252"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0253.dcm",
+    "instance_number": 253,
+    "sha256": "d0ad8114c3069ab363d1890142eefcc01b5c47f01966aaf7a92c5ca59033ac87",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.253"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0254.dcm",
+    "instance_number": 254,
+    "sha256": "11cbb96b57e12cee5c981c241a1540cc45d3d9e52b3ab1f2a990088684cd9f75",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.254"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0255.dcm",
+    "instance_number": 255,
+    "sha256": "dcff37b03e10a8028f232efa62f8938e49d7dc3ce0ee477bd8f26a46cd5d6e46",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.255"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0256.dcm",
+    "instance_number": 256,
+    "sha256": "a67b4e5611517291b9801a1c67190c6d77aa4821eecc0425f3125e63e8f609ed",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.256"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0257.dcm",
+    "instance_number": 257,
+    "sha256": "ac622c93224340435470e5387cd02053f10d992ca8836e72bc7e48856045895f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.257"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0258.dcm",
+    "instance_number": 258,
+    "sha256": "16066ab7da8dc21dfc1ca0b8f0e3db2bed5efe316803eb3eb5a74abb016cda43",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.258"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0259.dcm",
+    "instance_number": 259,
+    "sha256": "6d679bdb65fb9dce246a64e4312cff5be64a53e7af3e0b7138754e310d880da8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.259"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0260.dcm",
+    "instance_number": 260,
+    "sha256": "d27745fb8a3ae93cd748316ed64808a7cfbb52d4e20800629ab9af8f30009fb0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.260"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0261.dcm",
+    "instance_number": 261,
+    "sha256": "84c289ddafb72fd09d7532dc78a7b262603af96809e8ef47c2388734baf95af4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.261"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0262.dcm",
+    "instance_number": 262,
+    "sha256": "afcc1b2b7955d22d19facc62a880c0e45b2498187bae9968f180b38d87db68cd",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.262"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0263.dcm",
+    "instance_number": 263,
+    "sha256": "c33561e13075b7c8505b1c6d6843603263d09a89ac1f1c65ecf1b46d882faa86",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.263"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0264.dcm",
+    "instance_number": 264,
+    "sha256": "903cda7ec34eec89dd52d80610f0d90fc9f1a924ae30163b88fd3b6ff0660a89",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.264"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0265.dcm",
+    "instance_number": 265,
+    "sha256": "e712a6d7d58625cff278b55e35478fc17b12ee332beb45c67de3c138977f93e5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.265"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0266.dcm",
+    "instance_number": 266,
+    "sha256": "b3696781357666b8b43a5076eb38dc3e3e424711e4aa3bd9abaaade01d42d8bc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.266"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0267.dcm",
+    "instance_number": 267,
+    "sha256": "e64e31a660216436d3278b0d063c50a582fd50400334d3df18731a7667db0895",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.267"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0268.dcm",
+    "instance_number": 268,
+    "sha256": "17ae77c809b915f311a1c2440a441c0bcd66d0348afd8d284e304b6fa6e25aa9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.268"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0269.dcm",
+    "instance_number": 269,
+    "sha256": "01c3e6c3669682d9d72036c64a50786f780c8fd24cb12047a65806e908e31153",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.269"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0270.dcm",
+    "instance_number": 270,
+    "sha256": "22bf58f99526b5565780989acbf310df7a4518e96a06043155f8cafd1ad55e80",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.270"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0271.dcm",
+    "instance_number": 271,
+    "sha256": "d5536ba79bb5eb7463282410e76b89a33cad623c41a34713e7c8d90c7dd64e98",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.271"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0272.dcm",
+    "instance_number": 272,
+    "sha256": "92e66403fc2ea9c3f65b4676f0562213342b37c2fba8d1069a9931867f438eb7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.272"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0273.dcm",
+    "instance_number": 273,
+    "sha256": "55a0932f2a719b69cb28df4f293f68b60332e5a0e94fc280c39f82a523a7ec85",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.273"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0274.dcm",
+    "instance_number": 274,
+    "sha256": "18bf544c9f873cebb0a9b986791d2c21a21b08dd87c69ed834b469fcd299358c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.274"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0275.dcm",
+    "instance_number": 275,
+    "sha256": "5bacd0da4d1c7e8a0c9abaf8faa3f5e299621ae4a6995af2e1faef473a5c620d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.275"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0276.dcm",
+    "instance_number": 276,
+    "sha256": "6efbd3fe3523a4bb9a29b1fb8c3cb93dc3b81bbc6a1fa95de5cf3df958c9bed3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.276"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0277.dcm",
+    "instance_number": 277,
+    "sha256": "7a782554bc0fd2479ddc75cf2638ef8e6fdc31361e9ef6f45e1e3d2733dd96fc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.277"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0278.dcm",
+    "instance_number": 278,
+    "sha256": "712ae391d049977c767614b3a80c93075afd399477336c07c4b6d2d011cecbe0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.278"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0279.dcm",
+    "instance_number": 279,
+    "sha256": "864773719a201effa471e6264dbaa0f079a21de0d667c128883a1ab701b47c84",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.279"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0280.dcm",
+    "instance_number": 280,
+    "sha256": "7acaaae0c044054b34b54cc3dc716cccc2819ae921b21a62ead9dad1da1f0ac7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.280"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0281.dcm",
+    "instance_number": 281,
+    "sha256": "6e9616c16092fd8351ae08167fbcea5bdb1efa17a633948b0fc9b24015a16a0d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.281"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0282.dcm",
+    "instance_number": 282,
+    "sha256": "6909a00ac37797f8556943316b4327b8b6a09db4b3ebeb3cf112ba2c367a975f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.282"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0283.dcm",
+    "instance_number": 283,
+    "sha256": "0cbbd009b4d1d49836d675cf779da9ba69faed7dc795017bc19e894daeb2eafd",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.283"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0284.dcm",
+    "instance_number": 284,
+    "sha256": "704fdf663aba1c9d56772e04ae29db0fa4d1b08fa9c89936ab6b0587faf6bbe2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.284"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0285.dcm",
+    "instance_number": 285,
+    "sha256": "af649b6a7666b8800a5ec1c2ade2fb5e9b504dff7a075e486ebdaef904741ea0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.285"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0286.dcm",
+    "instance_number": 286,
+    "sha256": "54679dee3184a82b6f7a67253d7ccce98fb5f544b821d45edfdcade8aae0da95",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.286"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0287.dcm",
+    "instance_number": 287,
+    "sha256": "c39b840245d862585b68fc0654fd13566e0292d7268d1903253423610ae58386",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.287"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0288.dcm",
+    "instance_number": 288,
+    "sha256": "dbc9742ab1263fbb3e68d48b9e458e6817f967072603f33a034459ae7cffd1e2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.288"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0289.dcm",
+    "instance_number": 289,
+    "sha256": "2c2df11f289f77594cef65c88ba9c586cfe070fa96bf848f8bd02ac7535d506f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.289"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0290.dcm",
+    "instance_number": 290,
+    "sha256": "a7f52f9836d49a2d6d7d4da7cb682d9aa73529f9607c14de359e8ef85148a8fc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.290"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0291.dcm",
+    "instance_number": 291,
+    "sha256": "3225092bcf928db2e751179d6fb9c0b47387335f604fe6323c97ace1eec12993",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.291"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0292.dcm",
+    "instance_number": 292,
+    "sha256": "5e83aeab2cb10924159d4a7cf6ec3d63a17e12feb113bcb19cd45c3911b44991",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.292"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0293.dcm",
+    "instance_number": 293,
+    "sha256": "aec0ac5f5e5190aa2d0b32513d0b827f7b717d475d7f3ab8ad90a717227ecca2",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.293"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0294.dcm",
+    "instance_number": 294,
+    "sha256": "1966d55613d8f6cb44c2e2230dca808686da1aa48d04040805d1a27e2e978747",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.294"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0295.dcm",
+    "instance_number": 295,
+    "sha256": "486291a0b19a67f53b4f296f0b0488f0feda61a2677544274103fead800b8afe",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.295"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0296.dcm",
+    "instance_number": 296,
+    "sha256": "f8b9fdee1cc60ac43a7cff7237bac8a0dcb95c6b007a825ed24a8db551cf63bc",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.296"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0297.dcm",
+    "instance_number": 297,
+    "sha256": "eeed9f4b74768cd246b26c0dd5adc622d9ee33aca1a523d9ddbcb9e0b0a91d56",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.297"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0298.dcm",
+    "instance_number": 298,
+    "sha256": "d0f668ecaf54eff3061e91831f7d54aec702fc5bc85401111d99d59c68baf573",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.298"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0299.dcm",
+    "instance_number": 299,
+    "sha256": "91db6d170b6075c3a665608ede1f58a6421c1cd3895f63f3f7710854e5be422e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.299"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0300.dcm",
+    "instance_number": 300,
+    "sha256": "4850c5b0482be01cf2304573d26bc3cbfdd555f5b227ab7316d7e7dce876e24e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.300"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0301.dcm",
+    "instance_number": 301,
+    "sha256": "4c639bfa34c9cf029aa0aa10ecaac4c7a3a3e1cb61a3ec076650ab7f622f5228",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.301"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0302.dcm",
+    "instance_number": 302,
+    "sha256": "aa38f50b9bd5207ed12bed7d84ec8bda7d968f154c2c2042df7dc153dd6c462d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.302"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0303.dcm",
+    "instance_number": 303,
+    "sha256": "368aa13aa2ceb48b2db8c4c7d692848f04d67f3157738ed09efc17ed7da3e00a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.303"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0304.dcm",
+    "instance_number": 304,
+    "sha256": "6a3c03436127170880f5f32579560f4f0537c14e699f1ded833af74d85f8e1ce",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.304"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0305.dcm",
+    "instance_number": 305,
+    "sha256": "ed35e14cef0b81fa6e60d1df62f426aaf7da02fa83d6b4e438d608ef623ce9a8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.305"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0306.dcm",
+    "instance_number": 306,
+    "sha256": "8ae1341c5a32cf8019d8870c16be50084fb0819acb4e3fffb0e973f4149a3f53",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.306"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0307.dcm",
+    "instance_number": 307,
+    "sha256": "d47dbba534972afc579427ec76b48618f47b2a0dda830b814572656f3265f6ad",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.307"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0308.dcm",
+    "instance_number": 308,
+    "sha256": "1bade50f3d9d04cbbb9bbd63e234a032c781470a1b6ec600e794a4bb08d0e75d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.308"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0309.dcm",
+    "instance_number": 309,
+    "sha256": "53aeed22323fed15e6e3e70155310f78629dfb3f6c92d0fac28a64202b1e118e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.309"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0310.dcm",
+    "instance_number": 310,
+    "sha256": "a8c25589f5fe5d9dd96a1bdf33fea0569fb3a53c874f478b527a112d466e6961",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.310"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0311.dcm",
+    "instance_number": 311,
+    "sha256": "40408aab38696bc3146eaf91bf9e2c31cbc0f81fa7b4e399b26488f716a4bcc9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.311"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0312.dcm",
+    "instance_number": 312,
+    "sha256": "9dafe56cf4b55900384556bb3e715f0f43aadd2a8d8dc020b8aee769514028b4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.312"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0313.dcm",
+    "instance_number": 313,
+    "sha256": "2d7af16d80a2a58eba38f784050c921c1b61e01ce3d2eb338c269e30551fbe65",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.313"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0314.dcm",
+    "instance_number": 314,
+    "sha256": "aa4a263a709bbf95cc768c124d982486169b7ff70251bfed9f9e1833caba6ef1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.314"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0315.dcm",
+    "instance_number": 315,
+    "sha256": "1113ccd95fece53b6f1d0ac650687c3d7e534fb7ad7eb54cc6702f3a0856de14",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.315"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0316.dcm",
+    "instance_number": 316,
+    "sha256": "5beebfc32677d94235d9600e4a83defed8daef3409499ab31b2d81a1e654b5c1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.316"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0317.dcm",
+    "instance_number": 317,
+    "sha256": "995e3e292dd59b7823097e589a76e02b3719e148ee99f07d7e2c6fac038427d5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.317"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0318.dcm",
+    "instance_number": 318,
+    "sha256": "47ba613289e33094fb0f6d6e2adda6118c9da457630649e474aac89fbde7c366",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.318"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0319.dcm",
+    "instance_number": 319,
+    "sha256": "85bf26344fe6a364469235b9581c595f6ac4e8842a9655629eab32a0d1c11a10",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.319"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0320.dcm",
+    "instance_number": 320,
+    "sha256": "4a8544d6d0f4d2fa7e92d7862ad7ab24da041a2179e66503ac4075ad49a64671",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.320"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0321.dcm",
+    "instance_number": 321,
+    "sha256": "fc300d42db67f2ea20826cc75cc0ca8cd5cedd103b91992d4a94f65cdd153f2b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.321"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0322.dcm",
+    "instance_number": 322,
+    "sha256": "8fcf25f5390931469606aa0a06c7c908ce51f91434079f0ab3e18347144cfcda",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.322"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0323.dcm",
+    "instance_number": 323,
+    "sha256": "e2601dc80e969140e6ddc5f3c6477e8ef154ffb1146597f6aa3897418e3dbf59",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.323"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0324.dcm",
+    "instance_number": 324,
+    "sha256": "22d4f990102c9d0ca4339398164a3d46cbbb4c910ffa61fcb39272e0fe945611",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.324"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0325.dcm",
+    "instance_number": 325,
+    "sha256": "08345f783b9c576b1c71a624870a57d1f8134986669fd7e88b7acf5eccd4df13",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.325"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0326.dcm",
+    "instance_number": 326,
+    "sha256": "b6b18d569de233e97367f846df1440e96a3bdff18fd21036795ed5af2bb43411",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.326"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0327.dcm",
+    "instance_number": 327,
+    "sha256": "c2ddf482dfd1264939429bfad1c962b90596c021c660d3e0f52882c87c101361",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.327"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0328.dcm",
+    "instance_number": 328,
+    "sha256": "0ec89082fcf49f92f4c376d6b1048238779ea3e7dab21c89e4ae70f244bb834c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.328"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0329.dcm",
+    "instance_number": 329,
+    "sha256": "817ddf98ef6776d768d9de494205f083510e1ea0dd6c7af3e819a33b93defd0e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.329"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0330.dcm",
+    "instance_number": 330,
+    "sha256": "bc68c2f9fe4314f26211f4dd2c4922f1bf86e0fe717d94362df0122d858792e8",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.330"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0331.dcm",
+    "instance_number": 331,
+    "sha256": "c7ed5f0ac7dcb594ba0c26b2def6eed5f80e9d6c711abe71a98ea8bd591f96da",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.331"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0332.dcm",
+    "instance_number": 332,
+    "sha256": "4a612d08427247cf2b254545ec542688f3be6ad5a72627fb8c22488062bd9f4d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.332"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0333.dcm",
+    "instance_number": 333,
+    "sha256": "94aadf7516352408e2be93823b8ce865dd5af102653fa3c14ccccc6265859c0f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.333"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0334.dcm",
+    "instance_number": 334,
+    "sha256": "57c8afa7a8a776e73a49f159afb0bd83be4badec60b9342a73bbdcdf58a996de",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.334"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0335.dcm",
+    "instance_number": 335,
+    "sha256": "aa3e665eb850b6550c452b349b2e879d9f504725a44e9438792ba15f58befa3c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.335"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0336.dcm",
+    "instance_number": 336,
+    "sha256": "2d9c3f51a2c19681992551cbaf8a8127ade87792e1ec218b79a0bf541fa5055a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.336"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0337.dcm",
+    "instance_number": 337,
+    "sha256": "a27b4697ea63fc1c25101ee2056ae5d78d94b95c11a55f2b48b3df5059f07219",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.337"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0338.dcm",
+    "instance_number": 338,
+    "sha256": "7cea19456ddf32dcff91f1f1dc4d90f5011aa7082ec9a9e3396e9389bdc95fa5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.338"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0339.dcm",
+    "instance_number": 339,
+    "sha256": "5de223915fc4027a4f3032c8bdeee9fd8add12a8cf442ace6699123166340497",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.339"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0340.dcm",
+    "instance_number": 340,
+    "sha256": "14dc81b11719c9fbdaaeead5614181a714010de26c8b8b952c34e29e7eafb2d3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.340"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0341.dcm",
+    "instance_number": 341,
+    "sha256": "ec7834e9cc6d54f03a4791120f38571a88ef44b66bcd2fae761cbbc45e9e1d97",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.341"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0342.dcm",
+    "instance_number": 342,
+    "sha256": "2b74fba76a5f1f9dbe5a2919c145d33f5defb50c05c23bd7430e66fb2e8e053a",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.342"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0343.dcm",
+    "instance_number": 343,
+    "sha256": "911dd7484760ea5d4cfb414b186070c478a48e5c48da17dc0eedf0283e7c0f97",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.343"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0344.dcm",
+    "instance_number": 344,
+    "sha256": "f8018486efc299061afed4833349d327c265632071812942c3cd2b24120304c5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.344"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0345.dcm",
+    "instance_number": 345,
+    "sha256": "534a1e503ba0c93ac0531917f29263e3a98fb27e521171c69c5b8e51f9cdaf8b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.345"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0346.dcm",
+    "instance_number": 346,
+    "sha256": "7743e3dd051cef87dcb83bf6353eab3243b0f5f4b145bf63bbebc0bdba8d7932",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.346"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0347.dcm",
+    "instance_number": 347,
+    "sha256": "340a61d410e3ac1f0434b9cae2abe83085c0e666b55285857d6be1ef7d74af23",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.347"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0348.dcm",
+    "instance_number": 348,
+    "sha256": "bf375edfdd5f8c0097949b8337fe30e33accb38534878d8a57edb2569d268cab",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.348"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0349.dcm",
+    "instance_number": 349,
+    "sha256": "3f1d6d8d100a95643753c5d9a2d38decc886c2223cd987ba763c98eaec1b421c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.349"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0350.dcm",
+    "instance_number": 350,
+    "sha256": "9e8a27a4e7c9785eddc825c01f5f0abf2572cc7830fd4dbd26d2aba70d1bd9f9",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.350"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0351.dcm",
+    "instance_number": 351,
+    "sha256": "87cbac9b1af94c2ec89fd642c0f993d4f28ecffed2605e7547f33a1a00f0097d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.351"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0352.dcm",
+    "instance_number": 352,
+    "sha256": "da38bcddc3b4668d5c81582f0d3041b93fc5d28fa51f6d62967d2f6befa420a7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.352"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0353.dcm",
+    "instance_number": 353,
+    "sha256": "f074dee821242fa0e5e3ecb3db8b73d4b72953ebed07518deb6eac64fd39f39f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.353"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0354.dcm",
+    "instance_number": 354,
+    "sha256": "5170997b8590ea1e980315d6062299f2e970313f3df5ca9ba6c943a5cc4e2217",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.354"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0355.dcm",
+    "instance_number": 355,
+    "sha256": "e0beedf9b3f51530a5dbf928f19eb3c5f21c7356a12f6800000dd64d5995892b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.355"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0356.dcm",
+    "instance_number": 356,
+    "sha256": "efb9093a7fe91d29857dd2d9340c0b79c5a7b1d3b42ac5cc75f5e7016d9af46c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.356"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0357.dcm",
+    "instance_number": 357,
+    "sha256": "8990c3cf34f43bd994cfa7d41da41a636f2eef6a62c77019e79d7d206bcaae41",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.357"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0358.dcm",
+    "instance_number": 358,
+    "sha256": "a04beaaf0192c8b86e3fb6fa3dcee4628738553f9f155b530b9e338858ea9d04",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.358"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0359.dcm",
+    "instance_number": 359,
+    "sha256": "ee9b4925936c067ec8d697e3a3b5d078f76ea561553cb1724b36b7414d89155d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.359"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0360.dcm",
+    "instance_number": 360,
+    "sha256": "5de2988cd4b5a4fe5115928d71cb8fd7e27b073ee413fff86d012f5e99b82f51",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.360"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0361.dcm",
+    "instance_number": 361,
+    "sha256": "c64462f303a02d36a3ce6ce7ab22e7898d35b6c8bba4e10102f4ab5d8243584c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.361"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0362.dcm",
+    "instance_number": 362,
+    "sha256": "3d7ac9d98edc2fa5285bae292b983ec377715153d8271006b4e9bd6893a80e69",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.362"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0363.dcm",
+    "instance_number": 363,
+    "sha256": "1b5f2080857f240bb17d23601dbd6350b919a3426f6810da761cb8c7f8bfce94",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.363"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0364.dcm",
+    "instance_number": 364,
+    "sha256": "89ccb7b67cd4420f61be74d387dd13aa5ebb8a1692795d4325fe4762ffdffe82",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.364"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0365.dcm",
+    "instance_number": 365,
+    "sha256": "7b9198f28ab697d3555b88f3bc8e9b20d24157e47d065d676fcf5d07efb36a69",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.365"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0366.dcm",
+    "instance_number": 366,
+    "sha256": "d3379a74e208ba31f1f1f6ded8d2fa9c3da48247d2937c0f9787e6fb9b62c7bf",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.366"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0367.dcm",
+    "instance_number": 367,
+    "sha256": "39728382b22bbf4b129f4a36a588f8ab8a3f4a8908500c3f8c9585bc415f24fb",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.367"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0368.dcm",
+    "instance_number": 368,
+    "sha256": "06cb76d478257f190d65a66bbc1ec752b51d46c81f5b593c6d7ff9a72cc270b4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.368"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0369.dcm",
+    "instance_number": 369,
+    "sha256": "31d5ef64a50034fa031c1eb3eb7327e9c1ec22b78d9b994ec1da506b3251233f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.369"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0370.dcm",
+    "instance_number": 370,
+    "sha256": "811cae0e2d308b12e45121a473fc4b4f50aefe6877fdf6945a568e5825e9142c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.370"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0371.dcm",
+    "instance_number": 371,
+    "sha256": "651dd365d2ff5bbdf6c19e1e0ede2ef018ab77ddcc40dbd13a0af203440c8827",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.371"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0372.dcm",
+    "instance_number": 372,
+    "sha256": "af2649786a3fdfe1072967925645cb416636485dbf9f340fa17782cb5989fa1e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.372"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0373.dcm",
+    "instance_number": 373,
+    "sha256": "3dd76c180521293eb585967c95ff53c8a6f89a0c222ebfd5795e3daa6a659106",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.373"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0374.dcm",
+    "instance_number": 374,
+    "sha256": "9bf78731126658e853e00eb10e803bf4cab472718611388b158ea61c83156cd7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.374"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0375.dcm",
+    "instance_number": 375,
+    "sha256": "3e53f95b7cbe0c16c497cf0975b42db30fbbf27742db7915375b202f6842bb36",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.375"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0376.dcm",
+    "instance_number": 376,
+    "sha256": "f9022d11fcf7d655ca6cc280c27e4fc79fb276ae0e473d8db70083607a17d72f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.376"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0377.dcm",
+    "instance_number": 377,
+    "sha256": "9812cd0266e7c325a76b735cfe8607bc6d8cc5cc9eb706ac6c29bcf6f939bb95",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.377"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0378.dcm",
+    "instance_number": 378,
+    "sha256": "6c9b53ac3c7a524a1f436e46c4734ef85ff18b79de00718fe9eb578531e67b53",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.378"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0379.dcm",
+    "instance_number": 379,
+    "sha256": "2a42a5391c0480a370727cccca86b0e317f82b12f01ff7b1c552f79ad1362ed6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.379"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0380.dcm",
+    "instance_number": 380,
+    "sha256": "d506fa79e64b45ad1f2e08c6add205f36cb67fc82ca82189cfef65e151147298",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.380"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0381.dcm",
+    "instance_number": 381,
+    "sha256": "2adbbef5e3474b71689cda086c06788362d26a7242ef1bedfcac348867f44e9d",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.381"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0382.dcm",
+    "instance_number": 382,
+    "sha256": "a777c7058d3315f579a4f3e8e42255448068ec8df2f63b615594b75e0224c645",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.382"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0383.dcm",
+    "instance_number": 383,
+    "sha256": "0a95bc6851e6a588b1c0e9912ffe307ce254618461addfcaf72a48fb52661eba",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.383"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0384.dcm",
+    "instance_number": 384,
+    "sha256": "c4017549d5f7498184a0b0b72efd184e0ccdc1434ba4ad305a8838c92746073f",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.384"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0385.dcm",
+    "instance_number": 385,
+    "sha256": "10a458b247348bbb7937f37d65eadb6ec1083c4f28301ac2f5ea08de7a187637",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.385"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0386.dcm",
+    "instance_number": 386,
+    "sha256": "6742ad7294ca8f2bb49b358a34d948e2a3e88c3762a07fde467cb52420c4ce3e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.386"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0387.dcm",
+    "instance_number": 387,
+    "sha256": "b51c6a21bbb30670f586d8656faa2d8c2e2974d38830f667700dbc0db93266ab",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.387"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0388.dcm",
+    "instance_number": 388,
+    "sha256": "2c3b0f6d8b0b9f8435fc2be3ec0291d473f90d06fa6261d35f9fc54dbfe4a615",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.388"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0389.dcm",
+    "instance_number": 389,
+    "sha256": "7de9d7a79d495d2ee0c1d53d16c1c99601a8a215d22e48f22d786c88b82778a1",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.389"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0390.dcm",
+    "instance_number": 390,
+    "sha256": "5748f993dc9db1ebfeda9656a0995482a0aae389d9f37cb7b67ee41d5582de07",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.390"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0391.dcm",
+    "instance_number": 391,
+    "sha256": "2194e0d9f9c10b1c6c93ea4b6689fa4c5b80703aa4287075a23e2fa83bd9ecfe",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.391"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0392.dcm",
+    "instance_number": 392,
+    "sha256": "2320097e93e783be6a99bd19466612ccdd0c348db59be051faf6cfbe35061d34",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.392"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0393.dcm",
+    "instance_number": 393,
+    "sha256": "ea822809b3f14f7a5330b334d6e45f264cada8f2e695eca471a91e6b87bdaa33",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.393"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0394.dcm",
+    "instance_number": 394,
+    "sha256": "9ddd49c33ab0d962169f537dbabb27e1c749a16000d3b233927c6a927f5d41a5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.394"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0395.dcm",
+    "instance_number": 395,
+    "sha256": "a634dafeb2b07fa18603e1e53c822b7e41082f1f33a9f067a79237724809031c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.395"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0396.dcm",
+    "instance_number": 396,
+    "sha256": "7b2853dffcfb15facd8b1c11dda2543830f2b9f78b5d8887f1cf274d7c45393b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.396"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0397.dcm",
+    "instance_number": 397,
+    "sha256": "fc5f49d08d7e0041f9bb422eb08fd9ea8cde7aa918ae56bf21557bbfc3ad4101",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.397"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0398.dcm",
+    "instance_number": 398,
+    "sha256": "009ccd1abb9f44a42b9c40dfb92ac15b64d9e8c80d1ddfd73165f03932287720",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.398"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0399.dcm",
+    "instance_number": 399,
+    "sha256": "450dcba93f5a7aeb0bd6a7830d8887924d923d4482c0c52fe26ff19c5f734367",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.399"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0400.dcm",
+    "instance_number": 400,
+    "sha256": "a7c9a4af3590a4aed91d8ab13b1ea61dbc0f2950523e1e5450c752f2063ed3e5",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.400"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0401.dcm",
+    "instance_number": 401,
+    "sha256": "d455777891e5e9bf6e3db95c86f22a426d3b1bd5fa64b459a6b1982cd0312de7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.401"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0402.dcm",
+    "instance_number": 402,
+    "sha256": "03897f8607154cffa1739a12c79f1d2151c9e6ac8ee1421f236591fc6898a230",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.402"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0403.dcm",
+    "instance_number": 403,
+    "sha256": "5f444d7c6edf36076b6ba91a9d2e9d99585a339a74258a510ab46d0d8840182e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.403"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0404.dcm",
+    "instance_number": 404,
+    "sha256": "32acd52fc84ab6d992f955bafdf2175b5e1f30e79930bd05caf11fed1eceee54",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.404"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0405.dcm",
+    "instance_number": 405,
+    "sha256": "4c9627b89b693c653e0acd83c98fb07dd30ecbc17c4d3dca5659bd75af03f367",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.405"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0406.dcm",
+    "instance_number": 406,
+    "sha256": "c9ac2546ada431ada5ede29461678b4906d1be95380fd03be0ffb15e6b48565b",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.406"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0407.dcm",
+    "instance_number": 407,
+    "sha256": "30a57d210bb30fd727888d7e9ffdc25a894262bdb53d7bedf6b2580e729bc086",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.407"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0408.dcm",
+    "instance_number": 408,
+    "sha256": "57ece51a4781edb09260062e7bf0e453b3e7b635fd40dc1d32780c6eb335b8c0",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.408"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0409.dcm",
+    "instance_number": 409,
+    "sha256": "8ffb2b66ba15be78f13de3994780694504638e21298c0564c957c109d0c695f6",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.409"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0410.dcm",
+    "instance_number": 410,
+    "sha256": "d3e4b8fb0b662d803d86e3b126c45e6d3b0fc7420d850da765f2d6f957703c9c",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.410"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0411.dcm",
+    "instance_number": 411,
+    "sha256": "399240ce6446b75c23fae09c9bc2b308cd7d68ab2e066d6f9d5617ddaa42c872",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.411"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0412.dcm",
+    "instance_number": 412,
+    "sha256": "d2babce16d0b72171a23f876037f4626c90baef064661e87c449895c39900202",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.412"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0413.dcm",
+    "instance_number": 413,
+    "sha256": "4196b12a7b78a8a78998d825713a2d0dc0b9a0db700fb530367148d14389ee37",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.413"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0414.dcm",
+    "instance_number": 414,
+    "sha256": "aa20b21d153a9e824fe5d297d005220a5f58f4e2a302e7889b3d4673e40c9fae",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.414"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0415.dcm",
+    "instance_number": 415,
+    "sha256": "f0880e3dcc7ab1b0d81e2209c33ac26c94bc1d3aa8c8201961d1f294c48be098",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.415"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0416.dcm",
+    "instance_number": 416,
+    "sha256": "b44bac817995a734f7265a5524c242af1baf23f45d578de43e87b3572b522740",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.416"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0417.dcm",
+    "instance_number": 417,
+    "sha256": "475cf952ad3ebdbadcefcc1c05e521091a18b8d176d4fff7399812da7d56e7ff",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.417"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0418.dcm",
+    "instance_number": 418,
+    "sha256": "3699f8cf5b20291044272264b10796be5559349a404e8e37d284b9c766446b9e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.418"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0419.dcm",
+    "instance_number": 419,
+    "sha256": "3a354f8199181af1190d61987e54e1e3f3c3cf34e49689bf2caf1db075631fb4",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.419"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0420.dcm",
+    "instance_number": 420,
+    "sha256": "ad0f68396d6fd05479280cc547cd883f49fbd1a15f98638236a3ec3545262bda",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.420"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0421.dcm",
+    "instance_number": 421,
+    "sha256": "29efa3bf66a0e452fe2dfe35f6a8ddc9428e002a67616d824261cda7769195b7",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.421"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0422.dcm",
+    "instance_number": 422,
+    "sha256": "286b66ce71c0410c041185133ad9e7af41583210d256c0e4022113f874314251",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.422"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0423.dcm",
+    "instance_number": 423,
+    "sha256": "deff5cc3b0a462d86daf1c13a1af9b67d35653d86f6cc746cc76b3e99e923728",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.423"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0424.dcm",
+    "instance_number": 424,
+    "sha256": "c21139fd913b686604691b5a58bd69e1e8059764ebd64b06226ac3874560ab4e",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.424"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0425.dcm",
+    "instance_number": 425,
+    "sha256": "6fb39b372e3fd9fb9401811ab9ec7d4985cdde8058c59a26eb6ea1c795c22403",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.425"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0426.dcm",
+    "instance_number": 426,
+    "sha256": "04e29bb58cee2615dc155333e5114af4267e7b50b3f201e48938ceb3c79807ad",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.426"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0427.dcm",
+    "instance_number": 427,
+    "sha256": "6c1a4ea9fcd5bb35c793ff9ede02e9ad00b98c0dc5c03a4b11e7ebb6617c5fcf",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.427"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0428.dcm",
+    "instance_number": 428,
+    "sha256": "0cd6da94d87fc7e4bc90e991cfc2ab750ca2ef7d6c487b504cf5be05ad889dc3",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.428"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0429.dcm",
+    "instance_number": 429,
+    "sha256": "a498fcda692d86cc8c443b85c8a19c3da415803af1f73bd106c3ce2ba0ec99ef",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.429"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0430.dcm",
+    "instance_number": 430,
+    "sha256": "09cbb1ef7f8a64d750863f914fdc641e1cfb23fcf55a377bcdf20571c9d9e8fa",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.430"
+   },
+   {
+    "bytes": 138887,
+    "file": "dicom/s0778-ct-synth-0431.dcm",
+    "instance_number": 431,
+    "sha256": "75b54baa0bd0bd695a2f174a63ee12cf7a60a475926c56ba4d41ed2644fde059",
+    "sop_instance_uid": "2.25.250897527427018584249495243277704591936.431"
+   }
+  ],
+  "series_instance_uid": "2.25.298438996343173801966697550196605545912",
+  "sop_class_uid": "1.2.840.10008.5.1.4.1.1.2",
+  "study_instance_uid": "2.25.163720870524478782057557218769442362356",
+  "transfer_syntax": "1.2.840.10008.1.2.1 (Explicit VR Little Endian)"
+ },
+ "geometry": {
+  "dims_voxels": {
+   "cols": 262,
+   "rows": 262,
+   "slices": 431
+  },
+  "frame_of_reference_uid": "2.25.138788580965501814605140955475988516601",
+  "image_orientation_patient": [
+   1,
+   0,
+   0,
+   0,
+   1,
+   0
+  ],
+  "ipp_first_slice_lps_mm": [
+   -209.998611,
+   -384.684639,
+   1243.917969
+  ],
+  "nifti_srow": [
+   [
+    1.5,
+    0.0,
+    0.0,
+    -181.5013885498047
+   ],
+   [
+    0.0,
+    1.5,
+    0.0,
+    -6.815361022949219
+   ],
+   [
+    0.0,
+    0.0,
+    1.5,
+    1243.91796875
+   ]
+  ],
+  "spacing_mm": [
+   1.5,
+   1.5,
+   1.5
+  ],
+  "stored_orientation": "stored[c,r,k] = nifti[nx-1-c, ny-1-r, k] (both in-plane axes flipped)"
+ },
+ "label_assignment_rule": "per-voxel: among masks claiming a voxel, the smallest mask (fewest voxels; ties by label index) wins; contested voxels counted, not hidden",
+ "milestone": "Milestone 19",
+ "pixel_route": {
+  "conversion": "int32 -> int16, asserted lossless (all values within int16 range)",
+  "remapping": "none",
+  "source": "subject ct.nii.gz, int32, scl_slope 1.0, scl_inter 0.0 (HU as stored)",
+  "stored_range_hu": [
+   -9571,
+   3526
+  ],
+  "watermark": "'SYNTHETIC' 5x7 glyphs burned at value 3071 HU, rows 6..12, cols 6..58 of every slice (stored orientation), applied AFTER HU statistics; 123 voxels per slice, 53013 total",
+  "watermark_metadata": "DICOM BurnedInAnnotation (0028,0301) = YES; ImageType DERIVED\\SECONDARY; SYNTHETIC stated in StudyDescription, SeriesDescription and ImageComments",
+  "watermark_offsets_row_col": [
+   [
+    6,
+    7
+   ],
+   [
+    6,
+    8
+   ],
+   [
+    6,
+    9
+   ],
+   [
+    7,
+    6
+   ],
+   [
+    7,
+    10
+   ],
+   [
+    8,
+    6
+   ],
+   [
+    9,
+    7
+   ],
+   [
+    9,
+    8
+   ],
+   [
+    9,
+    9
+   ],
+   [
+    10,
+    10
+   ],
+   [
+    11,
+    6
+   ],
+   [
+    11,
+    10
+   ],
+   [
+    12,
+    7
+   ],
+   [
+    12,
+    8
+   ],
+   [
+    12,
+    9
+   ],
+   [
+    6,
+    12
+   ],
+   [
+    6,
+    16
+   ],
+   [
+    7,
+    12
+   ],
+   [
+    7,
+    16
+   ],
+   [
+    8,
+    13
+   ],
+   [
+    8,
+    15
+   ],
+   [
+    9,
+    14
+   ],
+   [
+    10,
+    14
+   ],
+   [
+    11,
+    14
+   ],
+   [
+    12,
+    14
+   ],
+   [
+    6,
+    18
+   ],
+   [
+    6,
+    22
+   ],
+   [
+    7,
+    18
+   ],
+   [
+    7,
+    19
+   ],
+   [
+    7,
+    22
+   ],
+   [
+    8,
+    18
+   ],
+   [
+    8,
+    20
+   ],
+   [
+    8,
+    22
+   ],
+   [
+    9,
+    18
+   ],
+   [
+    9,
+    21
+   ],
+   [
+    9,
+    22
+   ],
+   [
+    10,
+    18
+   ],
+   [
+    10,
+    22
+   ],
+   [
+    11,
+    18
+   ],
+   [
+    11,
+    22
+   ],
+   [
+    12,
+    18
+   ],
+   [
+    12,
+    22
+   ],
+   [
+    6,
+    24
+   ],
+   [
+    6,
+    25
+   ],
+   [
+    6,
+    26
+   ],
+   [
+    6,
+    27
+   ],
+   [
+    6,
+    28
+   ],
+   [
+    7,
+    26
+   ],
+   [
+    8,
+    26
+   ],
+   [
+    9,
+    26
+   ],
+   [
+    10,
+    26
+   ],
+   [
+    11,
+    26
+   ],
+   [
+    12,
+    26
+   ],
+   [
+    6,
+    30
+   ],
+   [
+    6,
+    34
+   ],
+   [
+    7,
+    30
+   ],
+   [
+    7,
+    34
+   ],
+   [
+    8,
+    30
+   ],
+   [
+    8,
+    34
+   ],
+   [
+    9,
+    30
+   ],
+   [
+    9,
+    31
+   ],
+   [
+    9,
+    32
+   ],
+   [
+    9,
+    33
+   ],
+   [
+    9,
+    34
+   ],
+   [
+    10,
+    30
+   ],
+   [
+    10,
+    34
+   ],
+   [
+    11,
+    30
+   ],
+   [
+    11,
+    34
+   ],
+   [
+    12,
+    30
+   ],
+   [
+    12,
+    34
+   ],
+   [
+    6,
+    36
+   ],
+   [
+    6,
+    37
+   ],
+   [
+    6,
+    38
+   ],
+   [
+    6,
+    39
+   ],
+   [
+    6,
+    40
+   ],
+   [
+    7,
+    36
+   ],
+   [
+    8,
+    36
+   ],
+   [
+    9,
+    36
+   ],
+   [
+    9,
+    37
+   ],
+   [
+    9,
+    38
+   ],
+   [
+    9,
+    39
+   ],
+   [
+    10,
+    36
+   ],
+   [
+    11,
+    36
+   ],
+   [
+    12,
+    36
+   ],
+   [
+    12,
+    37
+   ],
+   [
+    12,
+    38
+   ],
+   [
+    12,
+    39
+   ],
+   [
+    12,
+    40
+   ],
+   [
+    6,
+    42
+   ],
+   [
+    6,
+    43
+   ],
+   [
+    6,
+    44
+   ],
+   [
+    6,
+    45
+   ],
+   [
+    6,
+    46
+   ],
+   [
+    7,
+    44
+   ],
+   [
+    8,
+    44
+   ],
+   [
+    9,
+    44
+   ],
+   [
+    10,
+    44
+   ],
+   [
+    11,
+    44
+   ],
+   [
+    12,
+    44
+   ],
+   [
+    6,
+    49
+   ],
+   [
+    6,
+    50
+   ],
+   [
+    6,
+    51
+   ],
+   [
+    7,
+    50
+   ],
+   [
+    8,
+    50
+   ],
+   [
+    9,
+    50
+   ],
+   [
+    10,
+    50
+   ],
+   [
+    11,
+    50
+   ],
+   [
+    12,
+    49
+   ],
+   [
+    12,
+    50
+   ],
+   [
+    12,
+    51
+   ],
+   [
+    6,
+    55
+   ],
+   [
+    6,
+    56
+   ],
+   [
+    6,
+    57
+   ],
+   [
+    7,
+    54
+   ],
+   [
+    7,
+    58
+   ],
+   [
+    8,
+    54
+   ],
+   [
+    9,
+    54
+   ],
+   [
+    10,
+    54
+   ],
+   [
+    11,
+    54
+   ],
+   [
+    11,
+    58
+   ],
+   [
+    12,
+    55
+   ],
+   [
+    12,
+    56
+   ],
+   [
+    12,
+    57
+   ]
+  ]
+ },
+ "provenance_note": "The atlas Body Model is a DIFFERENT individual (BodyParts3D subject). This series and the atlas share structure identity (record ids) only \u2014 no spatial co-registration between the two subjects is claimed.",
+ "subject": {
+  "dataset": "TotalSegmentator dataset v1.0 (Zenodo 6802614), CC BY 4.0",
+  "id": "s0778",
+  "intake": "Milestone 3 subset (CRC-verified at intake)",
+  "meta_csv_row": {
+   "age": "57",
+   "gender": "m",
+   "image_id": "s0778",
+   "institute": "A",
+   "split": "train",
+   "study_type": "ct thorax-abdomen-pelvis"
+  },
+  "selection_reason": "most complete of the 10 locally held subjects: 98 of 104 label masks non-empty (next best 95); thorax-abdomen-pelvis coverage, 646.5 mm z-extent"
+ },
+ "synthetic": true,
+ "title": "ANATOMICA Imaging v1 \u2014 synthetic derived CT series (s0778)"
+}
