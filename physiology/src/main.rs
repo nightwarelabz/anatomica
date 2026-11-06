@@ -1,12 +1,15 @@
 //! CLI: `anatomica-physiology validate | run <case> | determinism`
 //!
 //! `validate` runs the resting case against every published normal range
-//! in parameters.json (one PASS/FAIL line per output), then the two
-//! perturbation sanity cases against their sourced directional
-//! expectations. Exit status is 0 only if every hard-gated line passes.
+//! in parameters.json (one PASS/FAIL line per output), then the
+//! perturbation cases against their sourced directional expectations
+//! and (Milestone 18) magnitude gates, then the 30-minute transcapillary
+//! refill observation against its cited band. Exit status is 0 only if
+//! every hard-gated line passes.
 
 use anatomica_physiology::cases::{
-    evaluate_perturbation, evaluate_resting, run_case, CaseKind, WindowStats,
+    evaluate_perturbation, evaluate_refill, evaluate_resting, run_case, run_refill_observation,
+    CaseKind, WindowStats,
 };
 use anatomica_physiology::params::Params;
 use std::process::ExitCode;
@@ -99,24 +102,37 @@ fn validate(params: &Params) -> bool {
     for (kind, id, title) in [
         (CaseKind::Hemorrhage750, "hemorrhage_750", "HAEMORRHAGE -750 mL"),
         (CaseKind::Infusion1000, "infusion_1000", "VOLUME INFUSION +1000 mL"),
+        (CaseKind::Hemorrhage1500, "hemorrhage_1500", "HAEMORRHAGE -1500 mL"),
     ] {
-        println!("\n=== {title} — directional expectations ===");
+        println!("\n=== {title} — directional + magnitude expectations ===");
         let outcome = run_case(params, kind);
         print_window("baseline", &outcome.baseline);
         print_window("post    ", &outcome.post);
         for line in evaluate_perturbation(params, id, &outcome) {
-            if !line.pass {
+            if !line.pass && !line.soft {
                 ok = false;
             }
+            let band = match line.magnitude_range {
+                Some([lo, hi]) => format!("  band [{lo:.1} .. {hi:.1}]"),
+                None => String::new(),
+            };
+            let verdict = if line.pass {
+                "PASS"
+            } else if line.soft {
+                "SOFT-FAIL (disclosed, not gating)"
+            } else {
+                "FAIL"
+            };
             println!(
-                "  {:<28} {:>9.2} -> {:>9.2}  (delta {:+.2})  expected {:<8} [{}] {}",
+                "  {:<28} {:>9.2} -> {:>9.2}  (delta {:+.2})  expected {:<8}{} [{}] {}",
                 line.output,
                 line.baseline,
                 line.post,
                 line.delta,
                 line.expected,
+                band,
                 line.source,
-                if line.pass { "PASS" } else { "FAIL" }
+                verdict
             );
         }
         println!("  trace hash: {:#018x}", outcome.trace_hash);
@@ -125,6 +141,43 @@ fn validate(params: &Params) -> bool {
             println!("    {entry}");
         }
     }
+
+    println!("\n=== TRANSCAPILLARY REFILL OBSERVATION — 750 mL loss, 30 min horizon ===");
+    let refill = run_refill_observation(params);
+    for (m, rf, vn) in &refill.samples {
+        println!(
+            "  +{:>4.0} min after bleed end: net refill {:7.1} mL ({:4.1}% of loss), recruited {:6.1} mL",
+            m,
+            rf,
+            rf / 750.0 * 100.0,
+            vn
+        );
+    }
+    print_window("final window (last 30 s)", &refill.final_window);
+    let (value, band, pass) = evaluate_refill(params, &refill);
+    if !pass {
+        ok = false;
+    }
+    println!(
+        "  {:<34} {:>9.1} mL   band [{:.1} .. {:.1}] mL (15-35% of loss; cited point ~25%, S15) {}",
+        "net refill at +30 min",
+        value,
+        band[0],
+        band[1],
+        if pass { "PASS" } else { "FAIL" }
+    );
+    let cons_ok = refill.conservation_error_ml < 0.01;
+    if !cons_ok {
+        ok = false;
+    }
+    println!(
+        "  {:<34} {:.2e} mL   criterion < 0.01 mL   [closed-loop identity incl. refill inflow] {}",
+        "volume conservation error",
+        refill.conservation_error_ml,
+        if cons_ok { "PASS" } else { "FAIL" }
+    );
+    println!("  trace hash: {:#018x}", refill.trace_hash);
+
     println!("\nVALIDATION: {}", if ok { "ALL HARD GATES PASS" } else { "FAILURES PRESENT" });
     ok
 }
@@ -146,13 +199,30 @@ fn main() -> ExitCode {
                 ExitCode::FAILURE
             }
         }
+        Some("run") if args.get(2).map(|s| s.as_str()) == Some("refill") => {
+            let outcome = run_refill_observation(&params);
+            for (m, rf, vn) in &outcome.samples {
+                println!(
+                    "+{:>4.0} min: net refill {:7.1} mL ({:4.1}% of 750 mL loss), recruited {:6.1} mL",
+                    m,
+                    rf,
+                    rf / 750.0 * 100.0,
+                    vn
+                );
+            }
+            print_window("final window", &outcome.final_window);
+            println!("trace hash: {:#018x}", outcome.trace_hash);
+            println!("volume conservation error: {:.2e} mL", outcome.conservation_error_ml);
+            ExitCode::SUCCESS
+        }
         Some("run") => {
             let kind = match args.get(2).map(|s| s.as_str()) {
                 Some("resting") => CaseKind::Resting,
                 Some("hemorrhage") => CaseKind::Hemorrhage750,
                 Some("infusion") => CaseKind::Infusion1000,
+                Some("hemorrhage1500") => CaseKind::Hemorrhage1500,
                 _ => {
-                    eprintln!("usage: run resting|hemorrhage|infusion");
+                    eprintln!("usage: run resting|hemorrhage|infusion|hemorrhage1500|refill");
                     return ExitCode::FAILURE;
                 }
             };
@@ -180,7 +250,7 @@ fn main() -> ExitCode {
             }
         }
         _ => {
-            eprintln!("usage: anatomica-physiology validate | run resting|hemorrhage|infusion | determinism");
+            eprintln!("usage: anatomica-physiology validate | run resting|hemorrhage|infusion|hemorrhage1500|refill | determinism");
             ExitCode::FAILURE
         }
     }

@@ -176,6 +176,12 @@ struct Attempt<'a> {
     engine: Engine,
     beats_at_start: usize,
     volume_at_start: f64,
+    /// Engine net transcapillary refill at attempt start (Milestone
+    /// 18 physiology): refill during the attempt is a real inflow, so
+    /// the volume identity must add it back to keep measuring gross
+    /// blood loss — the same accounting the infused volume already
+    /// gets. Zero with the v0 engine semantics.
+    refill_at_start: f64,
     // procedure state
     performed: HashMap<String, f64>,
     criteria: HashMap<String, f64>,
@@ -629,6 +635,7 @@ pub fn run_attempt(
     // (compartment sum minus the external-flow integral), so it
     // cannot measure blood loss — volumes() can.
     let volume_at_start: f64 = engine.volumes().iter().sum();
+    let refill_at_start: f64 = engine.net_refill_ml();
 
     let mut at = Attempt {
         proc,
@@ -636,6 +643,7 @@ pub fn run_attempt(
         engine,
         beats_at_start,
         volume_at_start,
+        refill_at_start,
         performed: HashMap::new(),
         criteria: HashMap::new(),
         identified: HashSet::new(),
@@ -874,8 +882,14 @@ fn score(
     let volume_end: f64 = at.engine.volumes().iter().sum();
     // Snap sub-0.01 mL values to zero: the identity carries the
     // engine's conservation noise (~1e-10 mL), which is not blood.
+    // Milestone 18: transcapillary refill during the attempt is a
+    // real inflow into the compartments (interstitium -> plasma), so
+    // it is added back exactly as infused volume is — the identity
+    // then measures gross blood loss, and refill is reported by the
+    // engine's own state, not hidden inside the loss figure.
+    let refill_during_attempt = at.engine.net_refill_ml() - at.refill_at_start;
     let loss_engine = {
-        let l = (at.volume_at_start + at.infused_ml) - volume_end;
+        let l = (at.volume_at_start + at.infused_ml + refill_during_attempt) - volume_end;
         if l.abs() < 0.01 { 0.0 } else { l }
     };
 

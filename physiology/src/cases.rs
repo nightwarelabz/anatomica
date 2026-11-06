@@ -20,6 +20,7 @@ pub enum CaseKind {
     Resting,
     Hemorrhage750,
     Infusion1000,
+    Hemorrhage1500,
 }
 
 #[derive(Debug, Clone)]
@@ -145,6 +146,22 @@ pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
                 },
             );
         }
+        CaseKind::Hemorrhage1500 => {
+            e.apply(
+                6000,
+                Event::SetExtFlow {
+                    rate_ml_s: -1500.0 / 60.0,
+                    label: "haemorrhage 1500 mL over 60 s begins".to_string(),
+                },
+            );
+            e.apply(
+                9000,
+                Event::SetExtFlow {
+                    rate_ml_s: 0.0,
+                    label: "haemorrhage ends (1500 mL removed)".to_string(),
+                },
+            );
+        }
     }
     e.tick_n(4500);
     let b2 = e.beats.len();
@@ -227,6 +244,12 @@ pub struct PerturbationLine {
     pub post: f64,
     pub delta: f64,
     pub expected: String,
+    /// The published band from parameters.json, when this expectation
+    /// carries a Milestone 18 magnitude gate.
+    pub magnitude_range: Option<[f64; 2]>,
+    /// Soft lines are reported and disclosed but do not fail
+    /// validation (see params::Expectation::soft).
+    pub soft: bool,
     pub source: String,
     pub pass: bool,
 }
@@ -244,11 +267,18 @@ pub fn evaluate_perturbation(
         .map(|x| {
             let b = stat_for(&outcome.baseline, &x.output);
             let p = stat_for(&outcome.post, &x.output);
-            let pass = match x.direction.as_str() {
+            let direction_pass = match x.direction.as_str() {
                 "rises" => p > b,
                 "falls" => p < b,
                 "narrows" => p < b,
+                // "in_range": no directional requirement; the band
+                // check below is the whole expectation.
+                "in_range" => true,
                 _ => false,
+            };
+            let range_pass = match x.magnitude_range {
+                Some([lo, hi]) => p >= lo && p <= hi,
+                None => true,
             };
             PerturbationLine {
                 output: x.output.clone(),
@@ -256,9 +286,94 @@ pub fn evaluate_perturbation(
                 post: p,
                 delta: p - b,
                 expected: x.direction.clone(),
+                magnitude_range: x.magnitude_range,
+                soft: x.soft,
                 source: x.source.clone(),
-                pass,
+                pass: direction_pass && range_pass,
             }
         })
         .collect()
+}
+
+/// The Milestone 18 long-horizon refill observation: the standard
+/// settle/baseline/engage protocol, a 750 mL haemorrhage over 60 s,
+/// then 30 minutes of undisturbed simulated time after the bleed
+/// ends. Samples the mechanism states as the trajectory unfolds.
+#[derive(Debug, Clone)]
+pub struct RefillOutcome {
+    /// (minutes after bleed end, net refill mL, recruited mL)
+    pub samples: Vec<(f64, f64, f64)>,
+    pub refill_30min_ml: f64,
+    pub refill_fraction_of_loss: f64,
+    /// Post-observation window (last 30 s) haemodynamics.
+    pub final_window: WindowStats,
+    pub trace_hash: u64,
+    pub conservation_error_ml: f64,
+}
+
+pub fn run_refill_observation(params: &Params) -> RefillOutcome {
+    let mut e = Engine::new(params);
+    e.tick_n(4500);
+    let b0 = e.beats.len();
+    e.tick_n(1500);
+    let b1 = e.beats.len();
+    let baseline = window_stats(&e.beats[b0..b1]);
+    e.set_reflex_setpoint(baseline.map);
+    e.apply(
+        6000,
+        Event::SetExtFlow {
+            rate_ml_s: -750.0 / 60.0,
+            label: "haemorrhage 750 mL over 60 s begins".to_string(),
+        },
+    );
+    e.apply(
+        9000,
+        Event::SetExtFlow {
+            rate_ml_s: 0.0,
+            label: "haemorrhage ends (750 mL removed)".to_string(),
+        },
+    );
+    // Bleed ends at tick 9000 (t = 180 s). Sample at +1, +5, +10,
+    // +20, +30 min after the bleed ends.
+    let marks_min = [1.0, 5.0, 10.0, 20.0, 30.0];
+    let mut samples = Vec::new();
+    let mut target_tick = 9000u64;
+    for m in marks_min {
+        let t = 9000 + (m * 60.0 / crate::engine::TICK_SECONDS) as u64;
+        e.tick_n(t - target_tick);
+        target_tick = t;
+        samples.push((m, e.net_refill_ml(), e.recruited_ml()));
+    }
+    let refill_30min_ml = samples.last().map(|s| s.1).unwrap_or(0.0);
+    // Final window: beats of the last 30 s of the run.
+    let n = e.beats.len();
+    let from = n.saturating_sub(31);
+    let final_window = window_stats(&e.beats[from..n.max(from)]);
+    RefillOutcome {
+        samples,
+        refill_30min_ml,
+        refill_fraction_of_loss: refill_30min_ml / 750.0,
+        final_window,
+        trace_hash: e.hash(),
+        conservation_error_ml: e.volume_conservation_error_ml(),
+    }
+}
+
+/// Evaluate the refill observation against the magnitude band in
+/// parameters.json (case `refill_observation_750`). Returns
+/// (measured mL, band, pass).
+pub fn evaluate_refill(params: &Params, outcome: &RefillOutcome) -> (f64, [f64; 2], bool) {
+    let case = params
+        .perturbation_case("refill_observation_750")
+        .expect("refill_observation_750 case missing from parameters.json");
+    let exp = case
+        .expectations
+        .iter()
+        .find(|x| x.output == "net_refill_ml_at_30min")
+        .expect("net_refill_ml_at_30min expectation missing");
+    let band = exp
+        .magnitude_range
+        .expect("refill expectation must carry a magnitude_range");
+    let v = outcome.refill_30min_ml;
+    (v, band, v >= band[0] && v <= band[1])
 }

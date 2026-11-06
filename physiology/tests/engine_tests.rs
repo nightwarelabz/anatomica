@@ -92,15 +92,86 @@ fn resting_case_meets_published_normal_ranges() {
 
 #[test]
 fn hemorrhage_moves_in_the_sourced_directions() {
+    // Since Milestone 18 this also asserts the case's hard magnitude
+    // gate (ATLS Class II heart-rate band, S16): evaluate_perturbation
+    // folds magnitude_range into `pass`. Soft lines (the systolic
+    // band, whose lower bound was not read in a consulted source)
+    // are reported by the CLI and disclosed in MILESTONE-18.md; like
+    // the CLI, this test gates only hard lines.
     let p = params();
     let outcome = run_case(&p, CaseKind::Hemorrhage750);
     for line in evaluate_perturbation(&p, "hemorrhage_750", &outcome) {
+        if line.soft {
+            continue;
+        }
         assert!(
             line.pass,
             "{}: expected {} but {:.2} -> {:.2}",
             line.output, line.expected, line.baseline, line.post
         );
     }
+}
+
+#[test]
+fn hemorrhage_1500_meets_atls_class_iii_expectations() {
+    // Hard lines: the sourced directional expectations. The Class
+    // III heart-rate band is a soft line — the model decompensates
+    // at this volume (its documented compensation ceiling,
+    // MILESTONE-18.md), so the band is reported, not gated.
+    let p = params();
+    let outcome = run_case(&p, CaseKind::Hemorrhage1500);
+    for line in evaluate_perturbation(&p, "hemorrhage_1500", &outcome) {
+        if line.soft {
+            continue;
+        }
+        assert!(
+            line.pass,
+            "{}: expected {} but {:.2} -> {:.2}",
+            line.output, line.expected, line.baseline, line.post
+        );
+    }
+}
+
+#[test]
+fn refill_observation_lands_in_the_cited_band() {
+    use anatomica_physiology::cases::{evaluate_refill, run_refill_observation};
+    let p = params();
+    let outcome = run_refill_observation(&p);
+    let (value, band, pass) = evaluate_refill(&p, &outcome);
+    assert!(
+        pass,
+        "net refill at +30 min was {value:.1} mL, band [{:.1}, {:.1}]",
+        band[0], band[1]
+    );
+    assert!(
+        outcome.conservation_error_ml < 0.01,
+        "conservation with refill inflow: {} mL",
+        outcome.conservation_error_ml
+    );
+}
+
+#[test]
+fn mechanisms_are_quiet_at_rest() {
+    // The Milestone 18 mechanisms must not disturb the resting
+    // operating point they are referenced to: over the standard
+    // resting protocol, recruited volume and net refill stay within
+    // a few percent of their full scales (630 mL / 1000 mL).
+    let p = params();
+    let mut e = Engine::new(&p);
+    e.tick_n(6000);
+    let (map, _) = e.query("mean_arterial_pressure").expect("MAP after settle");
+    e.set_reflex_setpoint(map);
+    e.tick_n(6000);
+    assert!(
+        e.recruited_ml().abs() < 32.0,
+        "recruited at rest: {:.1} mL",
+        e.recruited_ml()
+    );
+    assert!(
+        e.net_refill_ml().abs() < 50.0,
+        "net refill at rest: {:.1} mL",
+        e.net_refill_ml()
+    );
 }
 
 #[test]

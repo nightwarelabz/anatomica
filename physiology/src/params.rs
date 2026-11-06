@@ -45,8 +45,23 @@ pub struct ValidationRange {
 #[derive(Debug, Clone, Deserialize)]
 pub struct Expectation {
     pub output: String,
-    pub direction: String, // "rises" | "falls" | "narrows"
+    /// "rises" | "falls" | "narrows" | "in_range" (Milestone 18:
+    /// "in_range" carries no directional requirement — the post value
+    /// must lie inside `magnitude_range`).
+    pub direction: String,
     pub source: String,
+    /// Optional published band the post value must also lie inside
+    /// (Milestone 18 magnitude gates, e.g. the ATLS class bands).
+    #[serde(default)]
+    pub magnitude_range: Option<[f64; 2]>,
+    /// Milestone 8's soft-gate treatment, extended to perturbation
+    /// lines at Milestone 18: a soft line is reported and a miss is
+    /// disclosed, but it does not by itself fail validation. Used
+    /// only where the expectation's own source text states why
+    /// (a bound not read in a consulted source, or a demonstrated
+    /// model limitation) — never to hide a miss.
+    #[serde(default)]
+    pub soft: bool,
 }
 
 #[derive(Debug, Clone, Deserialize)]

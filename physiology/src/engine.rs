@@ -17,6 +17,16 @@
 //! counter, fixed-order RK4 integration at a fixed substep, no wall clock,
 //! no randomness anywhere. Same initial state + same event stream gives a
 //! bit-identical trace hash on every run.
+//!
+//! Milestone 18 adds the two compensatory mechanisms v0 omitted:
+//! baroreflex venomotor recruitment (the reflex's third effector — a
+//! first-order shift of venous unstressed into stressed volume at the
+//! cited capacity and time constant, parameters.json S13) and
+//! transcapillary refill (a lumped Starling flow driven by the deficit
+//! of low-passed mean capillary pressure below its own resting value,
+//! bounded by a cited interstitial reserve, S14/S15). Both are extra
+//! ODE states in the same RK4 integration and are folded into the
+//! trace hash like every other state.
 
 use crate::params::Params;
 
@@ -58,6 +68,15 @@ pub struct Model {
     pub reflex_gain_r: f64,
     pub reflex_hr_bounds: [f64; 2],
     pub reflex_r_bounds: [f64; 2],
+    // venomotor recruitment (Milestone 18): capacity and time constant
+    // cited (S13, published baroreflex model); gain VERIFY-flagged.
+    pub veno_capacity_ml: f64,
+    pub veno_tau: f64,
+    pub veno_gain: f64,
+    // transcapillary refill (Milestone 18): conductance calibrated
+    // within a band derived from S14/S15 human data; reserve cited.
+    pub refill_k: f64,
+    pub refill_reserve_ml: f64,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -139,6 +158,11 @@ impl Model {
             reflex_gain_r: p.f64("reflex_gain_resistance"),
             reflex_hr_bounds: p.bounds("reflex_hr_mult_bounds"),
             reflex_r_bounds: p.bounds("reflex_r_mult_bounds"),
+            veno_capacity_ml: p.f64("venomotor_capacity_ml"),
+            veno_tau: p.f64("venomotor_tau_seconds"),
+            veno_gain: p.f64("venomotor_gain"),
+            refill_k: p.f64("refill_conductance_ml_s_mmhg"),
+            refill_reserve_ml: p.f64("refill_reserve_ml"),
         }
     }
 }
@@ -221,6 +245,23 @@ pub struct Engine {
     pub tick: u64,
     v: [f64; 8],
     map_lp: f64,
+    /// Low-passed mean systemic capillary pressure (the refill sensor;
+    /// same sensing lag as the baroreflex MAP channel).
+    cap_lp: f64,
+    /// Capillary-pressure reference captured when the reflex engages
+    /// (the model's own resting capillary pressure — the refill
+    /// mechanism's zero, like the MAP setpoint).
+    cap_ref: Option<f64>,
+    /// Recruited venous volume (mL): the amount by which sympathetic
+    /// venoconstriction has currently reduced the systemic venous
+    /// unstressed volume (negative = dilation below resting tone).
+    veno_ml: f64,
+    /// Net cumulative transcapillary transfer into the circulation
+    /// (mL): positive = interstitial-to-plasma refill, negative =
+    /// net escape. The interstitium is not a compartment; this state
+    /// is the integral of the refill flow and an external inflow for
+    /// volume accounting, like the external-flow integral.
+    refill_ml: f64,
     tau: f64,
     ext_flow_ml_s: f64,
     ext_integral_ml: f64,
@@ -270,6 +311,9 @@ struct Eval {
     flows: Flows,
     derivs: [f64; 8],
     d_map_lp: f64,
+    d_cap_lp: f64,
+    d_veno: f64,
+    d_refill: f64,
 }
 
 impl Engine {
@@ -290,11 +334,16 @@ impl Engine {
         let v_rv = 110.0;
         let v_sv = tbv - (v_lv + v_sa + v_sc + v_pa + v_pc + v_pv + v_rv);
         let v = [v_lv, v_sa, v_sc, v_sv, v_rv, v_pa, v_pc, v_pv];
+        let cap_lp0 = (v_sc - model.sc.1) / model.sc.0;
         Engine {
             model,
             tick: 0,
             v,
             map_lp: 90.0,
+            cap_lp: cap_lp0,
+            cap_ref: None,
+            veno_ml: 0.0,
+            refill_ml: 0.0,
             tau: 0.0,
             ext_flow_ml_s: 0.0,
             ext_integral_ml: 0.0,
@@ -315,25 +364,34 @@ impl Engine {
     }
 
     /// Baroreflex: returns (heart rate bpm, peripheral-resistance
-    /// multiplier) for a given sensed (low-passed) MAP. With no setpoint
-    /// the reflex is off — used for the undisturbed settle, whose measured
-    /// MAP then becomes the setpoint (the model's own operating point).
-    fn reflex(&self, map_lp: f64) -> (f64, f64) {
+    /// multiplier, venomotor recruitment target in mL) for a given
+    /// sensed (low-passed) MAP. With no setpoint the reflex is off —
+    /// used for the undisturbed settle, whose measured MAP then
+    /// becomes the setpoint (the model's own operating point).
+    fn reflex(&self, map_lp: f64) -> (f64, f64, f64) {
         match self.setpoint_map {
-            None => (self.model.hr0, 1.0),
+            None => (self.model.hr0, 1.0, 0.0),
             Some(sp) => {
                 let err = (sp - map_lp) / sp;
                 let hr_mult = (1.0 + self.model.reflex_gain_hr * err)
                     .clamp(self.model.reflex_hr_bounds[0], self.model.reflex_hr_bounds[1]);
                 let r_mult = (1.0 + self.model.reflex_gain_r * err)
                     .clamp(self.model.reflex_r_bounds[0], self.model.reflex_r_bounds[1]);
-                (self.model.hr0 * hr_mult, r_mult)
+                // Venomotor target: the cited swing capacity (S13)
+                // scaled by the same error signal through the flagged
+                // gain, saturating at +/- the full swing.
+                let veno_target = self.model.veno_capacity_ml
+                    * (self.model.veno_gain * err).clamp(-1.0, 1.0);
+                (self.model.hr0 * hr_mult, r_mult, veno_target)
             }
         }
     }
 
     pub fn set_reflex_setpoint(&mut self, map: f64) {
         self.setpoint_map = Some(map);
+        // The refill mechanism's zero is captured at the same moment:
+        // the model's own resting mean capillary pressure.
+        self.cap_ref = Some(self.cap_lp);
         self.log.push(LogEntry {
             tick: self.tick,
             text: format!("baroreflex engaged, setpoint MAP = {map:.2} mmHg (model's own resting operating point)"),
@@ -347,12 +405,25 @@ impl Engine {
         self.events.sort_by_key(|(t, _)| *t);
     }
 
-    fn evaluate(&self, v: &[f64; 8], map_lp: f64, tau: f64, period: f64, tv: f64) -> Eval {
+    #[allow(clippy::too_many_arguments)]
+    fn evaluate(
+        &self,
+        v: &[f64; 8],
+        map_lp: f64,
+        cap_lp: f64,
+        veno: f64,
+        refill: f64,
+        tau: f64,
+        period: f64,
+        tv: f64,
+    ) -> Eval {
         let m = &self.model;
-        let (_, r_mult) = self.reflex(map_lp);
+        let (_, r_mult, veno_target) = self.reflex(map_lp);
         let p_sa = (v[SA] - m.sa.1) / m.sa.0;
         let p_sc = (v[SC] - m.sc.1) / m.sc.0;
-        let p_sv = (v[SV] - m.sv.1) / m.sv.0;
+        // Venomotor recruitment acts on the venous unstressed volume:
+        // recruited volume is stressed volume (S13's mechanism).
+        let p_sv = (v[SV] - (m.sv.1 - veno)) / m.sv.0;
         let p_pa = (v[PA] - m.pa.1) / m.pa.0;
         let p_pc = (v[PC] - m.pc.1) / m.pc.0;
         let p_pv = (v[PV] - m.pv.1) / m.pv.0;
@@ -381,11 +452,33 @@ impl Engine {
         let q_pa = (p_pa - p_pc) / m.pa.2;
         let q_pc = (p_pc - p_pv) / m.pc.2;
 
+        // Transcapillary refill (Milestone 18): lumped Starling form —
+        // net flow proportional to the deficit of mean capillary
+        // pressure below its own resting reference, bounded by the
+        // interstitial reserve in both directions (refill / escape).
+        // Zero before the reflex engages (no reference captured).
+        let q_refill = match self.cap_ref {
+            None => 0.0,
+            Some(r) => {
+                let q = m.refill_k * (r - cap_lp);
+                if (refill >= m.refill_reserve_ml && q > 0.0)
+                    || (refill <= -m.refill_reserve_ml && q < 0.0)
+                {
+                    0.0
+                } else {
+                    q
+                }
+            }
+        };
+        // Venomotor recruitment: first-order approach to the reflex
+        // target at the cited effector time constant (S13, tau_v).
+        let d_veno = (veno_target - veno) / m.veno_tau;
+
         let derivs = [
             q_mv - q_av,
             q_av - q_sa,
             q_sa - q_sc,
-            q_sc - q_tv + self.ext_flow_ml_s,
+            q_sc - q_tv + self.ext_flow_ml_s + q_refill,
             q_tv - q_pvv,
             q_pvv - q_pa,
             q_pa - q_pc,
@@ -414,25 +507,41 @@ impl Engine {
             },
             derivs,
             d_map_lp: (p_sa - map_lp) / m.reflex_tau,
+            d_cap_lp: (p_sc - cap_lp) / m.reflex_tau,
+            d_veno,
+            d_refill: q_refill,
         }
     }
 
     fn substep(&mut self, h: f64) {
-        let (hr, _) = self.reflex(self.map_lp);
+        let (hr, _, _) = self.reflex(self.map_lp);
         let period = 60.0 / hr;
         let tv = self.model.tv0 * period.powf(self.model.tv_exp);
-        // RK4 over (volumes, map_lp); cycle position tau advances in real
-        // time and stage taus are tau + frac*h.
+        // RK4 over (volumes, map_lp, cap_lp, veno, refill); cycle
+        // position tau advances in real time and stage taus are
+        // tau + frac*h.
         let stage_frac = [0.0, 0.5, 0.5, 1.0];
         let weights = [1.0 / 6.0, 2.0 / 6.0, 2.0 / 6.0, 1.0 / 6.0];
         let mut k_v: [[f64; 8]; 4] = [[0.0; 8]; 4];
         let mut k_m: [f64; 4] = [0.0; 4];
+        let mut k_c: [f64; 4] = [0.0; 4];
+        let mut k_vn: [f64; 4] = [0.0; 4];
+        let mut k_rf: [f64; 4] = [0.0; 4];
         let mut acc_d_sa = 0.0;
         let mut acc_d_pa = 0.0;
         let mut acc_d_sv = 0.0;
         let mut acc_d_pv = 0.0;
         let mut acc_d_qav = 0.0;
         let mut acc_d_qpvv = 0.0;
+        // Stage value of a scalar state under this integrator's staging
+        // (previous stage's derivative, half or full step).
+        let stage = |base: f64, k_prev: f64, s: usize| -> f64 {
+            if s == 0 {
+                base
+            } else {
+                base + k_prev * h * if s == 3 { 1.0 } else { 0.5 }
+            }
+        };
         for s in 0..4 {
             let mut vs = self.v;
             if s > 0 {
@@ -440,15 +549,17 @@ impl Engine {
                     vs[i] += k_v[s - 1][i] * h * if s == 3 { 1.0 } else { 0.5 };
                 }
             }
-            let map_s = if s == 0 {
-                self.map_lp
-            } else {
-                self.map_lp + k_m[s - 1] * h * if s == 3 { 1.0 } else { 0.5 }
-            };
+            let map_s = stage(self.map_lp, k_m[s.saturating_sub(1)], s);
+            let cap_s = stage(self.cap_lp, k_c[s.saturating_sub(1)], s);
+            let veno_s = stage(self.veno_ml, k_vn[s.saturating_sub(1)], s);
+            let refill_s = stage(self.refill_ml, k_rf[s.saturating_sub(1)], s);
             let tau_s = self.tau + stage_frac[s] * h;
-            let ev = self.evaluate(&vs, map_s, tau_s, period, tv);
+            let ev = self.evaluate(&vs, map_s, cap_s, veno_s, refill_s, tau_s, period, tv);
             k_v[s] = ev.derivs;
             k_m[s] = ev.d_map_lp;
+            k_c[s] = ev.d_cap_lp;
+            k_vn[s] = ev.d_veno;
+            k_rf[s] = ev.d_refill;
             let w = weights[s];
             acc_d_sa += w * ev.pressures.sa;
             acc_d_pa += w * ev.pressures.pa;
@@ -464,7 +575,11 @@ impl Engine {
         for i in 0..8 {
             self.v[i] += h * (k_v[0][i] + 2.0 * k_v[1][i] + 2.0 * k_v[2][i] + k_v[3][i]) / 6.0;
         }
-        self.map_lp += h * (k_m[0] + 2.0 * k_m[1] + 2.0 * k_m[2] + k_m[3]) / 6.0;
+        let rk4 = |k: [f64; 4]| h * (k[0] + 2.0 * k[1] + 2.0 * k[2] + k[3]) / 6.0;
+        self.map_lp += rk4(k_m);
+        self.cap_lp += rk4(k_c);
+        self.veno_ml += rk4(k_vn);
+        self.refill_ml += rk4(k_rf);
         self.ext_integral_ml += self.ext_flow_ml_s * h;
         // Beat accumulators (RK-weighted stage means x h).
         self.acc.time += h;
@@ -553,6 +668,9 @@ impl Engine {
         }
         h = fnv_fold(h, &self.tau.to_bits().to_le_bytes());
         h = fnv_fold(h, &self.map_lp.to_bits().to_le_bytes());
+        h = fnv_fold(h, &self.cap_lp.to_bits().to_le_bytes());
+        h = fnv_fold(h, &self.veno_ml.to_bits().to_le_bytes());
+        h = fnv_fold(h, &self.refill_ml.to_bits().to_le_bytes());
         self.hash = h;
     }
 
@@ -579,7 +697,23 @@ impl Engine {
     }
 
     pub fn total_volume_ml(&self) -> f64 {
-        self.v.iter().sum::<f64>() - self.ext_integral_ml
+        // Conserved quantity: compartment sum minus BOTH external
+        // inflows — the event channel (ext_integral_ml) and the
+        // transcapillary refill state (Milestone 18), which is an
+        // inflow from the unmodelled interstitium.
+        self.v.iter().sum::<f64>() - self.ext_integral_ml - self.refill_ml
+    }
+
+    /// Net cumulative transcapillary transfer into the circulation
+    /// (mL, Milestone 18): positive = refill, negative = net escape.
+    pub fn net_refill_ml(&self) -> f64 {
+        self.refill_ml
+    }
+
+    /// Currently recruited venous volume (mL, Milestone 18):
+    /// positive = unstressed volume shifted into stressed volume.
+    pub fn recruited_ml(&self) -> f64 {
+        self.veno_ml
     }
 
     pub fn volume_conservation_error_ml(&self) -> f64 {
@@ -604,6 +738,10 @@ impl Engine {
             "pa_diastolic" => (b.pa_diastolic, "mmHg"),
             "pa_mean" => (b.pa_mean, "mmHg"),
             "pcwp_proxy_mean_pv_pressure" => (b.pv_mean, "mmHg"),
+            // Milestone 18 mechanism states (instantaneous state, not
+            // beat-window statistics like the outputs above).
+            "net_transcapillary_refill" => (self.refill_ml, "mL"),
+            "recruited_venous_volume" => (self.veno_ml, "mL"),
             _ => return None,
         };
         Some((val, unit))
