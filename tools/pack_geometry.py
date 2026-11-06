@@ -45,16 +45,30 @@ the unique-edge set is built in 256 key-ordered buckets, so peak
 memory stays bounded (the Milestone-6 tool held whole layers in
 RAM). Stdlib only.
 
-Usage: python3 tools/pack_geometry.py [--check]
+Usage: python3 tools/pack_geometry.py [--check] [--compress]
   --check re-derives every manifest range from the assembled JSONs
   and the pack headers and compares (no packing).
+  --compress (Milestone 27) reads the canonical packs already on
+  disk and writes the web tier's delivery encoding: one gzip file
+  per layer (<system>.bin.gz, zlib level 6 — level 9 measured
+  <= 0.4% smaller at ~3x the encode time, deflate differs from
+  gzip only by the 12-byte header/trailer; see MILESTONE-27.md)
+  plus web/data/delivery.json carrying both files' sizes and
+  SHA-256 hashes and the progressive load order. Compression is a
+  delivery encoding only: the canonical .bin packs are untouched,
+  and the mode proves byte-exact reversibility by decompressing
+  every .gz it wrote and hash-comparing against the canonical
+  pack before recording it. The web shell decodes with the
+  platform DecompressionStream('gzip') — no new dependency.
 """
 import gc
+import hashlib
 import json
 import math
 import os
 import struct
 import sys
+import zlib
 from array import array
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -242,6 +256,109 @@ def pack_layer(key, assembled):
     }
 
 
+# ---- Milestone 27: compressed delivery variants ----
+# The two default-visible layers load first (skeletal is the shells'
+# framing/reference layer; muscular completes the default view); the
+# remaining systems follow in manifest order (innermost -> outermost),
+# which puts the default-off, occluding integumentary shell last.
+# The web viewer's LOAD_ORDER literal must equal this list;
+# tools/verify_web.js W9 asserts the three agree.
+LOAD_PRIORITY_FIRST = ("skeletal", "muscular")
+GZIP_LEVEL = 6
+
+
+def _sha256_file(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        while True:
+            chunk = fh.read(1 << 22)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def compress_packs():
+    manifest = json.load(open(os.path.join(WEB_DATA, "manifest.json")))
+    order = [k for k in LOAD_PRIORITY_FIRST if k in manifest["layers"]] + \
+            [k for k in manifest["layer_order"] if k not in LOAD_PRIORITY_FIRST]
+    layers = {}
+    tot_c = tot_g = 0
+    for key in order:
+        info = manifest["layers"][key]
+        src = os.path.join(WEB_DATA, info["file"])
+        dst = src + ".gz"
+        assert os.path.getsize(src) == info["bytes"], f"{key}: canonical size drifted"
+        comp = zlib.compressobj(GZIP_LEVEL, zlib.DEFLATED, 31)
+        h_src = hashlib.sha256()
+        with open(src, "rb") as fin, open(dst, "wb") as fout:
+            while True:
+                chunk = fin.read(1 << 22)
+                if not chunk:
+                    break
+                h_src.update(chunk)
+                out = comp.compress(chunk)
+                if out:
+                    fout.write(out)
+            fout.write(comp.flush())
+        # Byte-exact reversibility, proven at production time: decode
+        # the file just written and hash-compare with the canonical.
+        dec = zlib.decompressobj(31)
+        h_dec = hashlib.sha256()
+        n_dec = 0
+        with open(dst, "rb") as fin:
+            while True:
+                chunk = fin.read(1 << 22)
+                if not chunk:
+                    break
+                out = dec.decompress(chunk)
+                h_dec.update(out)
+                n_dec += len(out)
+        assert dec.eof and n_dec == info["bytes"] \
+            and h_dec.hexdigest() == h_src.hexdigest(), f"DECODE MISMATCH {key}"
+        gz_bytes = os.path.getsize(dst)
+        layers[key] = {
+            "file": info["file"], "bytes": info["bytes"],
+            "sha256": h_src.hexdigest(),
+            "compressed_file": info["file"] + ".gz",
+            "compressed_bytes": gz_bytes,
+            "compressed_sha256": _sha256_file(dst),
+        }
+        tot_c += info["bytes"]
+        tot_g += gz_bytes
+        print(f"compressed {key}: {info['bytes']} -> {gz_bytes} B "
+              f"({gz_bytes / info['bytes']:.4f}x), decode-verified byte-identical")
+    delivery = {
+        "title": "ANATOMICA web delivery — Milestone 27 (compressed pack variants, progressive load order)",
+        "generated_by": "tools/pack_geometry.py --compress",
+        "canonical_manifest": "manifest.json (canonical packs are the artifacts of record; "
+                              "this file describes a delivery encoding of them)",
+        "codec": {
+            "name": "gzip", "level": GZIP_LEVEL,
+            "decode_api": "DecompressionStream('gzip') — platform API, zero dependencies",
+            "detection": "a file is the compressed variant iff delivery.json names it as "
+                         "compressed_file for its layer; the gzip magic bytes 1f 8b at "
+                         "offset 0 corroborate (canonical packs begin with 'ANW1'). "
+                         "After decoding, a buffer is a pack iff it begins with 'ANW1' "
+                         "and passes the pack header checks — the viewer asserts the "
+                         "decoded byte length equals the canonical byte count first.",
+        },
+        "load_order": order,
+        "load_order_rationale": "skeletal first (default-visible framing/reference layer), "
+                                "muscular second (completes the default view); remaining "
+                                "systems in manifest order (innermost -> outermost), the "
+                                "default-off occluding integumentary shell last",
+        "canonical_total_bytes": tot_c,
+        "compressed_total_bytes": tot_g,
+        "layers": layers,
+    }
+    with open(os.path.join(WEB_DATA, "delivery.json"), "w") as fh:
+        json.dump(delivery, fh, indent=1)
+    print(f"delivery.json: canonical {tot_c} B -> compressed {tot_g} B "
+          f"({tot_g / tot_c:.4f}x overall)")
+    return 0
+
+
 def load_json(rel):
     with open(os.path.join(ROOT, rel)) as fh:
         return json.load(fh)
@@ -284,6 +401,8 @@ def clinical_links(clin_file):
 
 
 def main():
+    if "--compress" in sys.argv:
+        return compress_packs()
     check_only = "--check" in sys.argv
     assembled = {}
     for key, _label, _bit, _color, asm_rel, _clin, _ms in LAYERS:

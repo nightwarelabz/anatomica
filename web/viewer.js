@@ -13,7 +13,16 @@
    uOpacity) so a focus view can make the integumentary shell
    genuinely translucent instead of merely dimmed (Milestone-16
    defect 1). Opacity is shading state only: the id pass never
-   reads it, and tools/verify_web.js W8 asserts that separation. */
+   reads it, and tools/verify_web.js W8 asserts that separation.
+   Milestone 27: delivery — layers load progressively in
+   LOAD_ORDER (skeletal first) and render as each arrives instead
+   of waiting for all eleven; each pack is fetched in its gzip
+   delivery encoding (data/delivery.json, produced by
+   tools/pack_geometry.py --compress) and decoded with the
+   platform DecompressionStream, falling back to the canonical
+   pack on any failure. Zero dependencies, as ever; the pick
+   codec and the id pass are untouched (verify_web.js W9 gates
+   the delivery encoding's byte-identity and this wiring). */
 
 const $ = id => document.getElementById(id);
 const statusEl = $("status"), stripEl = $("strip"), panelEl = $("panel"), listEl = $("list");
@@ -29,6 +38,17 @@ let selected = null;    // record entry or null
 let hovered = null;
 let drawCallsLastFrame = 0, frameMs = 0, loadMs = 0;
 let visDirty = true, drawnStats = { records: 0, meshes: 0, tris: 0 };
+let manifestData = null;  // manifest.json, kept for the layer loader
+let delivery = null;      // delivery.json (Milestone 27) or null when absent
+/* Progressive load priority (Milestone 27): skeletal first (the
+   default-visible framing/reference layer), muscular second (it
+   completes the default view); the remaining systems follow in
+   manifest order (innermost -> outermost), which puts the
+   default-off, occluding integumentary shell last. Must equal
+   delivery.json's load_order — verify_web.js W9 asserts it. */
+const LOAD_ORDER = ["skeletal", "muscular", "cardiovascular", "nervous", "respiratory", "digestive", "urinary", "lymphatic", "endocrine", "reproductive", "integumentary"];
+const layerState = {};    // key -> { state: "queued"|"loading"|"ready"|"error", pct, encoding }
+let firstLayerMs = 0;     // boot -> first layer ready (Milestone 27)
 
 const LAYER_STYLE = {
   skeletal: { color: [0.78, 0.72, 0.60], label: "Skeletal" },
@@ -154,7 +174,7 @@ function program(vs, fs) {
 }
 
 // ---------- data loading ----------
-async function fetchBin(url, label) {
+async function fetchBytes(url, label, onProgress) {
   const resp = await fetch(url);
   if (!resp.ok) throw new Error(`${url}: HTTP ${resp.status}`);
   const total = +resp.headers.get("Content-Length") || 0;
@@ -164,12 +184,77 @@ async function fetchBin(url, label) {
     const { done, value } = await reader.read();
     if (done) break;
     chunks.push(value); got += value.length;
-    statusEl.textContent = `loading ${label}… ${(got / 1048576).toFixed(1)} MB` +
+    if (onProgress) onProgress(got, total);
+    else statusEl.textContent = `loading ${label}… ${(got / 1048576).toFixed(1)} MB` +
       (total ? ` / ${(total / 1048576).toFixed(1)} MB` : "");
   }
   const buf = new Uint8Array(got); let off = 0;
   for (const c of chunks) { buf.set(c, off); off += c.length; }
   return buf.buffer;
+}
+
+/* Milestone 27 delivery: fetch one layer's pack, preferring the
+   gzip delivery encoding named by delivery.json and decoding it
+   with the platform DecompressionStream (zero dependencies). The
+   decoded buffer must be exactly the canonical pack's byte count
+   and begin with the ANW1 magic; any failure at any step falls
+   back to the canonical pack, so a data directory without .gz
+   files — or a browser without DecompressionStream — behaves
+   exactly as the pre-Milestone-27 shell did. */
+async function fetchPack(key, onProgress) {
+  const ent = delivery && delivery.layers && delivery.layers[key];
+  if (ent && ent.compressed_file && typeof DecompressionStream === "function") {
+    try {
+      const gz = await fetchBytes("data/" + ent.compressed_file, key,
+        got => onProgress(got, ent.compressed_bytes));
+      const buf = await new Response(
+        new Blob([gz]).stream().pipeThrough(new DecompressionStream("gzip"))
+      ).arrayBuffer();
+      if (buf.byteLength !== ent.bytes)
+        throw new Error(`decoded ${buf.byteLength} B, canonical is ${ent.bytes} B`);
+      if (String.fromCharCode(...new Uint8Array(buf, 0, 4)) !== "ANW1")
+        throw new Error("decoded buffer lacks ANW1 magic");
+      return { buf, encoding: "gzip" };
+    } catch (e) {
+      console.warn(`ANATOMICA: compressed ${key} unusable (${e.message}); using canonical pack`);
+    }
+  }
+  const buf = await fetchBytes("data/" + manifestData.layers[key].file, key, onProgress);
+  return { buf, encoding: "identity" };
+}
+
+/* Milestone 27: progressive per-layer loading. Layers arrive in
+   LOAD_ORDER; each is uploaded to the GPU the moment it lands and
+   is drawable and pickable from that moment, while the rest keep
+   loading. Toggling a layer that has not arrived yet records
+   intent in its checkbox only: draw() and pick() skip layers with
+   no GPU buffers, and the layer appears when it lands if its box
+   is on. Per-layer progress rides in the layer's count span; the
+   strip reports how many layers are ready. */
+async function loadLayersProgressive(t0) {
+  for (const key of LOAD_ORDER) {
+    const st = layerState[key] = { state: "loading", pct: 0, encoding: "" };
+    const cnt = $("cnt-" + key);
+    try {
+      const { buf, encoding } = await fetchPack(key, (got, total) => {
+        st.pct = total ? Math.floor(100 * got / total) : 0;
+        if (cnt) cnt.textContent = `loading… ${st.pct}%`;
+      });
+      layers[key] = uploadLayer(key, buf);
+      layers[key].ranges = manifestData.layers[key].ranges;
+      st.state = "ready"; st.pct = 100; st.encoding = encoding;
+      if (!firstLayerMs) firstLayerMs = performance.now() - t0;
+      const lay = manifestData.layers[key];
+      if (cnt) cnt.textContent = `${lay.records} with geometry · ${(lay.faces).toLocaleString()} faces`;
+      visDirty = true;
+    } catch (e) {
+      st.state = "error";
+      if (cnt) cnt.textContent = "failed to load — " + e.message;
+      console.error(e);
+    }
+  }
+  loadMs = performance.now() - t0;
+  visDirty = true;
 }
 
 function uploadLayer(name, arrayBuffer) {
@@ -483,7 +568,7 @@ function drawLayerRanges(name, forPick = false) {
 function computeDrawnStats() {
   let recs = 0, meshes = 0, tris = 0;
   for (const r of records) {
-    if (!r.has_geometry || !recVisible(r)) continue;
+    if (!r.has_geometry || !layers[r.layer] || !recVisible(r)) continue;
     const rng = rangeByKey.get(r.layer + ":" + r.id);
     recs++; meshes += rng.mesh_files; tris += rng.index_count / 3;
   }
@@ -570,7 +655,7 @@ function drawLabels(mvp) {
   };
   const items = [];
   for (const r of records) {
-    if (!r.has_geometry || !recVisible(r)) continue;
+    if (!r.has_geometry || !layers[r.layer] || !recVisible(r)) continue;
     const b = r.bbox_canonical_cm;
     const c = proj([(b.min[0] + b.max[0]) / 2, (b.min[1] + b.max[1]) / 2, (b.min[2] + b.max[2]) / 2]);
     if (!c || c[0] < 0 || c[0] > W || c[1] < 0 || c[1] > H) continue;
@@ -597,11 +682,14 @@ function updateStrip() {
   if (++stripTick % 20) return;
   const withGeo = records.filter(r => r.has_geometry).length;
   const on = layerOrder.filter(k => layerVisible(k)).length;
+  const ready = layerOrder.filter(k => layers[k]).length;
   stripEl.innerHTML =
     `listed <b>${records.length}</b> records across <b>${layerOrder.length}</b> systems (${on} layers on) · ` +
     `with geometry <b>${withGeo}</b> · drawn <b>${drawnStats.records}</b> records · <b>${drawnStats.meshes}</b> meshes · ` +
     `<b>${drawnStats.tris.toLocaleString()}</b> triangles · draw calls (last frame) <b>${drawCallsLastFrame}</b> · ` +
-    `frame <b>${frameMs.toFixed(1)} ms</b> · load <b>${loadMs.toFixed(0)} ms</b>`;
+    `frame <b>${frameMs.toFixed(1)} ms</b> · layers loaded <b>${ready}/${layerOrder.length}</b>` +
+    (firstLayerMs ? ` · first layer <b>${firstLayerMs.toFixed(0)} ms</b>` : "") +
+    (loadMs ? ` · full load <b>${loadMs.toFixed(0)} ms</b>` : ` · loading…`);
 }
 
 // ---------- interaction ----------
@@ -684,6 +772,12 @@ async function boot() {
     fetch("data/manifest.json").then(r => r.json()),
     fetch("data/records.json").then(r => r.json()),
   ]);
+  manifestData = manifest;
+  // Milestone 27: the delivery manifest is optional by design —
+  // without it (or without gzip entries in it) every layer falls
+  // back to its canonical pack in fetchPack().
+  delivery = await fetch("data/delivery.json")
+    .then(r => (r.ok ? r.json() : null)).catch(() => null);
   layerOrder = manifest.layer_order;
   records = recs.records; clinical = recs.clinical;
   for (const r of records) byId.set(r.layer + ":" + r.id, r);
@@ -699,7 +793,8 @@ async function boot() {
     toggles.insertAdjacentHTML("beforeend",
       `<label class="chk"><input type="checkbox" id="lay-${key}"${DEFAULT_VISIBLE.has(key) ? " checked" : ""}> ${esc(lay.label)} <span class="cnt" id="cnt-${key}"></span></label>` +
       `<label class="chk op">opacity <input type="range" id="op-${key}" min="10" max="100" step="5" value="100" title="${esc(lay.label)} opacity"> <span id="opv-${key}">100%</span></label>`);
-    $(`cnt-${key}`).textContent = `${lay.records} with geometry · ${(lay.faces).toLocaleString()} faces`;
+    layerState[key] = { state: "queued", pct: 0, encoding: "" };
+    $(`cnt-${key}`).textContent = "queued";
   }
   // Milestone 21 presets: the glass-shell focus view (all layers on,
   // integumentary at 15% — the native shell's verified focus state)
@@ -726,14 +821,6 @@ async function boot() {
       if (v) v.textContent = e.target.value + "%";
     }
   });
-
-  for (const key of layerOrder) {
-    statusEl.textContent = `loading ${key}…`;
-    const buf = await fetchBin("data/" + manifest.layers[key].file, key);
-    layers[key] = uploadLayer(key, buf);
-    layers[key].ranges = manifest.layers[key].ranges;
-  }
-  loadMs = performance.now() - t0;
 
   // region options (union over all layers, with counts)
   const counts = new Map();
@@ -776,5 +863,8 @@ async function boot() {
   };
   visDirty = true;
   loop();
+  // Milestone 27: the render loop is already running; layers stream
+  // in behind it in LOAD_ORDER and appear as each one lands.
+  loadLayersProgressive(t0).catch(e => console.error(e));
 }
 boot().catch(e => { statusEl.textContent = "error: " + e.message; console.error(e); });

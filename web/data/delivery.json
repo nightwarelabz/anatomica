@@ -1,0 +1,117 @@
+{
+ "title": "ANATOMICA web delivery \u2014 Milestone 27 (compressed pack variants, progressive load order)",
+ "generated_by": "tools/pack_geometry.py --compress",
+ "canonical_manifest": "manifest.json (canonical packs are the artifacts of record; this file describes a delivery encoding of them)",
+ "codec": {
+  "name": "gzip",
+  "level": 6,
+  "decode_api": "DecompressionStream('gzip') \u2014 platform API, zero dependencies",
+  "detection": "a file is the compressed variant iff delivery.json names it as compressed_file for its layer; the gzip magic bytes 1f 8b at offset 0 corroborate (canonical packs begin with 'ANW1'). After decoding, a buffer is a pack iff it begins with 'ANW1' and passes the pack header checks \u2014 the viewer asserts the decoded byte length equals the canonical byte count first."
+ },
+ "load_order": [
+  "skeletal",
+  "muscular",
+  "cardiovascular",
+  "nervous",
+  "respiratory",
+  "digestive",
+  "urinary",
+  "lymphatic",
+  "endocrine",
+  "reproductive",
+  "integumentary"
+ ],
+ "load_order_rationale": "skeletal first (default-visible framing/reference layer), muscular second (completes the default view); remaining systems in manifest order (innermost -> outermost), the default-off occluding integumentary shell last",
+ "canonical_total_bytes": 304367896,
+ "compressed_total_bytes": 123352401,
+ "layers": {
+  "skeletal": {
+   "file": "skeletal.bin",
+   "bytes": 18190236,
+   "sha256": "e4ef4cf8cc63f1b8e54860c133a705864ec2b933808f10159d1936317ab9ba3d",
+   "compressed_file": "skeletal.bin.gz",
+   "compressed_bytes": 7439450,
+   "compressed_sha256": "568f56830019a47ca844ad2339c1b99c14afa2b1b324b4d1a65803e46de65dbb"
+  },
+  "muscular": {
+   "file": "muscular.bin",
+   "bytes": 94585848,
+   "sha256": "7d04536b807ab460ae2897cf213d705abc39bb875008d82ae8754273126d743f",
+   "compressed_file": "muscular.bin.gz",
+   "compressed_bytes": 39061425,
+   "compressed_sha256": "76bf395dfbeef2785787767b7069c0b580ed2457a355c26bbe94e41aa0053bc0"
+  },
+  "cardiovascular": {
+   "file": "cardiovascular.bin",
+   "bytes": 74688188,
+   "sha256": "c5b74eb92a12eb5c37a85e98c0cdd647e6b55081289339a380e1370e9fe13f70",
+   "compressed_file": "cardiovascular.bin.gz",
+   "compressed_bytes": 29378946,
+   "compressed_sha256": "49f08c9e9e8bd427e06fecbd1b4569b7594d0fd17898ea859cb5d6681f785333"
+  },
+  "nervous": {
+   "file": "nervous.bin",
+   "bytes": 40059000,
+   "sha256": "c8ff8916a617da9bce00f38202b7d199ab6abba4baaf6d640225a98bee8d3f59",
+   "compressed_file": "nervous.bin.gz",
+   "compressed_bytes": 16520336,
+   "compressed_sha256": "efc7957ef872814b6b69d689fc05e505b627168485dd11ff20fddb90dc94b7fd"
+  },
+  "respiratory": {
+   "file": "respiratory.bin",
+   "bytes": 19199216,
+   "sha256": "7aff696280007a126fbc87f4652534e025bed5ce7ac9aea18796b754563ceda7",
+   "compressed_file": "respiratory.bin.gz",
+   "compressed_bytes": 7526001,
+   "compressed_sha256": "77e9342e30c1bafc0d8026f56a83618026ee3bec5cb5226469741aeb80524f82"
+  },
+  "digestive": {
+   "file": "digestive.bin",
+   "bytes": 46780860,
+   "sha256": "a420327b1798e52a2a472b97d517442ff57ac43d3f30cff13ee552a9ddaee730",
+   "compressed_file": "digestive.bin.gz",
+   "compressed_bytes": 18883522,
+   "compressed_sha256": "baf4ddb1bfb8d67c80de1b9f3010826bae9d13ecca2e3d97c6bc4ecbd993d94c"
+  },
+  "urinary": {
+   "file": "urinary.bin",
+   "bytes": 350920,
+   "sha256": "9f37ae6c997b3fbf51b8dc392e594f69e5457d3013c8e70827338167c95d8d6d",
+   "compressed_file": "urinary.bin.gz",
+   "compressed_bytes": 145839,
+   "compressed_sha256": "f99c5b5e95316bfc617a7b96b1982e04e379537a9fbecaa639a1d6d0cfffc2ca"
+  },
+  "lymphatic": {
+   "file": "lymphatic.bin",
+   "bytes": 197044,
+   "sha256": "63fa1a29f2d69550fe3443ccc4daeaac69463ee79e1eadaf1e668cc192ca59d1",
+   "compressed_file": "lymphatic.bin.gz",
+   "compressed_bytes": 66586,
+   "compressed_sha256": "e6ca95e9784dfc3450af186f8840c4796a0204acf1fad5a1aff1e7a8c72e0185"
+  },
+  "endocrine": {
+   "file": "endocrine.bin",
+   "bytes": 254368,
+   "sha256": "e01d5e3066f66867ffd79b3356bc737bdb520d6ca1f27e9bfcfe3d9898ae272d",
+   "compressed_file": "endocrine.bin.gz",
+   "compressed_bytes": 103460,
+   "compressed_sha256": "7cc77286b26997f83a3c52b3d9d44740a8a068d763d5c9a4f00b8767f3c87d04"
+  },
+  "reproductive": {
+   "file": "reproductive.bin",
+   "bytes": 511644,
+   "sha256": "1b873af7467b714884df1e1f3ee74562c1d5c3caecb581cf793f4823c2478a36",
+   "compressed_file": "reproductive.bin.gz",
+   "compressed_bytes": 184609,
+   "compressed_sha256": "91dcc6011018d1de73e7abc0140a2632d270e5e1b7d013810227a21963086a4e"
+  },
+  "integumentary": {
+   "file": "integumentary.bin",
+   "bytes": 9550572,
+   "sha256": "f4e5c585038e55f80946bfa9de7f5b7354ec5d139d2641c0b9d0f647ead8762d",
+   "compressed_file": "integumentary.bin.gz",
+   "compressed_bytes": 4042227,
+   "compressed_sha256": "d3e48986e00b0e13196450d3ff9296953a7b7102a3b442e5e78aa7f70e881507"
+  }
+ }
+}

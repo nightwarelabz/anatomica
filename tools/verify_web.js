@@ -70,6 +70,23 @@
        blending or depth masking — opacity cannot corrupt picking
        by construction (the pixel-level proof is the native
        shell's; no browser exists on this VM, as at W6/W7).
+   W9  delivery (Milestone 27): web/data/delivery.json names a
+       gzip delivery encoding for every layer; both files' sizes
+       and SHA-256 hashes are recomputed from disk and compared;
+       each .gz is gunzipped (node zlib) and the decoded bytes
+       must hash identically to the canonical pack — byte-identity
+       of the delivery encoding, proven per layer — and the
+       largest layer is additionally decoded through the platform
+       DecompressionStream, the exact API the viewer uses. The
+       viewer's LOAD_ORDER literal must equal delivery.json's
+       load_order (a permutation of the 11 systems, skeletal and
+       muscular first, integumentary last); the progressive
+       wiring is asserted in the viewer source (loop started
+       before the un-awaited loader; fetchPack prefers the
+       compressed file, guards the decoded byte count, and falls
+       back to the canonical pack), and pick()'s absent-layer
+       skip — the line that makes picking degrade gracefully
+       while a layer is still in flight — is asserted present.
 
    Run: node tools/verify_web.js   (exit 0 iff all checks pass)
 */
@@ -82,6 +99,7 @@ const WEB = path.join(ROOT, "web", "data");
 const APP_DATA = path.join(ROOT, "..", "anatomica-app", "data");
 const VIEWER = process.env.VIEWER_JS || path.join(ROOT, "web", "viewer.js");
 let failures = 0;
+const pendingAsync = [];  // W9's DecompressionStream proof registers here
 function check(ok, label, detail = "") {
   console.log(`[${ok ? "PASS" : "FAIL"}] ${label}${detail ? " — " + detail : ""}`);
   if (!ok) failures++;
@@ -542,5 +560,74 @@ for (const key of KEYS) {
         "W8 pick() id pass contains no opacity/blend/depth-mask reference — picking is opacity-blind by construction");
 }
 
-console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASS");
-process.exit(failures ? 1 : 0);
+// ---------- W9: delivery encoding + progressive loading (Milestone 27) ----------
+{
+  const crypto = require("crypto");
+  const zlib = require("zlib");
+  const shaFile = p => crypto.createHash("sha256").update(fs.readFileSync(p)).digest("hex");
+  let del = null;
+  try { del = loadJSON(path.join(WEB, "delivery.json")); } catch (e) { /* reported below */ }
+  check(!!del && del.codec && del.codec.name === "gzip" &&
+        JSON.stringify(Object.keys(del.layers || {}).sort()) === JSON.stringify([...KEYS].sort()),
+        "W9 delivery.json present, codec gzip, covers exactly the 11 layers");
+  if (del) {
+    let identOk = true, metaOk = true; const det = [];
+    let totC = 0, totG = 0;
+    for (const key of KEYS) {
+      const e = del.layers[key], lay = manifest.layers[key];
+      const cPath = path.join(WEB, e.file), gPath = path.join(WEB, e.compressed_file);
+      if (e.file !== lay.file || e.bytes !== lay.bytes ||
+          fs.statSync(cPath).size !== e.bytes || fs.statSync(gPath).size !== e.compressed_bytes ||
+          shaFile(cPath) !== e.sha256 || shaFile(gPath) !== e.compressed_sha256) {
+        metaOk = false; det.push(`${key} metadata`);
+      }
+      const gz = fs.readFileSync(gPath);
+      if (gz[0] !== 0x1f || gz[1] !== 0x8b) { identOk = false; det.push(`${key} gzip magic`); }
+      const out = zlib.gunzipSync(gz);
+      const h = crypto.createHash("sha256").update(out).digest("hex");
+      if (out.length !== e.bytes || h !== e.sha256) { identOk = false; det.push(`${key} decode`); }
+      totC += e.bytes; totG += e.compressed_bytes;
+    }
+    check(metaOk, "W9 delivery metadata == files on disk (names, sizes, SHA-256 of both encodings)",
+          det.join("; ") || "11 layers");
+    check(identOk && totC === del.canonical_total_bytes && totG === del.compressed_total_bytes,
+          "W9 byte-identity: gunzip(.gz) is byte-identical to the canonical pack, every layer",
+          det.join("; ") || `${totC} B canonical -> ${totG} B delivered (${(totG / totC).toFixed(4)}x)`);
+    // the exact API the shipped viewer decodes with, on the largest layer
+    pendingAsync.push((async () => {
+      const e = del.layers.muscular;
+      const gz = fs.readFileSync(path.join(WEB, e.compressed_file));
+      const buf = await new Response(
+        new Blob([gz]).stream().pipeThrough(new DecompressionStream("gzip"))).arrayBuffer();
+      const h = crypto.createHash("sha256").update(new Uint8Array(buf)).digest("hex");
+      check(buf.byteLength === e.bytes && h === e.sha256,
+            "W9 DecompressionStream('gzip') decode of muscular == canonical pack (browser API path)");
+    })());
+    const loMatch = viewerSrc.match(/const LOAD_ORDER = \[([^\]]*)\]/);
+    const viewerOrder = loMatch ? [...loMatch[1].matchAll(/"(\w+)"/g)].map(m => m[1]) : [];
+    check(JSON.stringify(viewerOrder) === JSON.stringify(del.load_order) &&
+          JSON.stringify([...del.load_order].sort()) === JSON.stringify([...KEYS].sort()) &&
+          del.load_order[0] === "skeletal" && del.load_order[1] === "muscular" &&
+          del.load_order[del.load_order.length - 1] === "integumentary",
+          "W9 viewer LOAD_ORDER == delivery.json load_order (permutation; skeletal, muscular first; integumentary last)",
+          del.load_order.join(" -> "));
+  }
+  const iLoop = viewerSrc.indexOf("loop();");
+  const iLoad = viewerSrc.indexOf("loadLayersProgressive(t0).catch");
+  check(iLoop >= 0 && iLoad > iLoop && !viewerSrc.includes("await loadLayersProgressive") &&
+        viewerSrc.includes('fetch("data/delivery.json")') &&
+        viewerSrc.includes('new DecompressionStream("gzip")') &&
+        viewerSrc.includes("buf.byteLength !== ent.bytes") &&
+        viewerSrc.includes("manifestData.layers[key].file"),
+        "W9 progressive wiring: render loop starts before the un-awaited loader; fetchPack prefers .gz, guards decoded size, falls back to canonical");
+  const pkStart = viewerSrc.indexOf("function pick(x, y, mvp) {");
+  const pkEnd = viewerSrc.indexOf("\n}\n", pkStart);
+  const pkSrc = pkStart >= 0 ? viewerSrc.slice(pkStart, pkEnd) : "";
+  check(pkSrc.includes("if (!lay || !layerVisible(name)) continue;"),
+        "W9 pick() skips layers with no GPU buffers — picking degrades gracefully while a layer is in flight");
+}
+
+Promise.all(pendingAsync).then(() => {
+  console.log(failures ? `\n${failures} CHECK(S) FAILED` : "\nALL CHECKS PASS");
+  process.exit(failures ? 1 : 0);
+});
