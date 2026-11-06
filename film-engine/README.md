@@ -28,13 +28,16 @@ datasets below — is 626,296,988 bytes uncompressed, over GitHub's
 100 MB per-file repository limit. It is therefore stored in this
 directory compressed:
 
-- `patient.blend.xz` — XZ (-6) archive of the scene, 99,927,280 bytes.
-- Restore with `./restore_patient.sh`, which decompresses it and
-  verifies the result byte-for-byte:
-  SHA-256 of the restored `patient.blend` must equal
-  `10fd128418624492e00773621eefa4da069658198594a4c3ed8674618793fe0a`.
-  (If the archive is ever transported as split parts,
-  `patient.blend.xz.part-*`, the same script reassembles them first.)
+- `patient.blend.xz` — the scene as a single XZ (-6, multithreaded)
+  archive: 99,927,280 bytes, under both the 100 MB decimal and the
+  100 MiB (104,857,600) per-file limits.
+- Restore with `./restore_patient.sh`: it decompresses the archive
+  and verifies the result byte-for-byte — the SHA-256 of the restored
+  `patient.blend` must equal
+  `10fd128418624492e00773621eefa4da069658198594a4c3ed8674618793fe0a`,
+  and the script fails loudly if it does not. (If the archive is ever
+  transported as split parts, `patient.blend.xz.part-*`, the same
+  script reassembles them first.)
 
 Place the restored `patient.blend` beside these scripts (the
 directory `patient.py` writes and `plates.py` opens) before rendering
