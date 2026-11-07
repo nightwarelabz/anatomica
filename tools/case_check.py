@@ -1075,11 +1075,13 @@ def profile_case4(case, ctx, boards, attempt):
     for p in glob.glob(os.path.join(ROOT, "theatre", "procedures", "*.json")):
         proc_ids.add(load(p)["procedure"]["id"])
     ok(proc_ids == {"proc.chole.lap", "proc.appy.lap", "proc.carpal-release",
-                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia"},
+                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia",
+                    "proc.thyroidectomy.total"},
        f"case4: the Theatre holds exactly {sorted(proc_ids)} — the carpal "
        "tunnel release authored at Milestone 42 is the handoff target (the "
        "ulnar decompression joined it at Milestone 44; the inguinal hernia "
-       "repair joined at Milestone 49 — set assertion updated in the "
+       "repair joined at Milestone 49; the total thyroidectomy joined at "
+       "Milestone 56 — set assertion updated in the "
        "Milestone 44 maintenance pattern, the handoff itself unchanged)")
     ho = case["management"]["handoff"]
     ok(ho["procedure_id"] == "proc.carpal-release"
@@ -1322,10 +1324,12 @@ def profile_case5(case, ctx, boards, attempt):
     for p in glob.glob(os.path.join(ROOT, "theatre", "procedures", "*.json")):
         proc_ids.add(load(p)["procedure"]["id"])
     ok(proc_ids == {"proc.chole.lap", "proc.appy.lap", "proc.carpal-release",
-                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia"},
+                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia",
+                    "proc.thyroidectomy.total"},
        f"case5: the Theatre holds exactly {sorted(proc_ids)} — the ulnar "
        "decompression authored at Milestone 44 is the handoff target (the "
-       "inguinal hernia repair joined at Milestone 49 — set assertion "
+       "inguinal hernia repair joined at Milestone 49; the total "
+       "thyroidectomy joined at Milestone 56 — set assertion "
        "updated in the Milestone 44 maintenance pattern, the handoff "
        "itself unchanged)")
     ho = case["management"]["handoff"]
@@ -1716,10 +1720,11 @@ def profile_case6(case, ctx, boards, attempt):
         proc_ids.add(load(p)["procedure"]["id"])
     ok(proc_ids == {"proc.chole.lap", "proc.appy.lap",
                     "proc.carpal-release", "proc.ulnar-decompression",
-                    "proc.lap-inguinal-hernia"},
-       f"case6: the Theatre still holds exactly its five procedures "
+                    "proc.lap-inguinal-hernia", "proc.thyroidectomy.total"},
+       f"case6: the Theatre still holds exactly its six procedures "
        f"{sorted(proc_ids)} — none is an embolectomy (the inguinal hernia "
-       "repair joined at Milestone 49 — set assertion updated in the "
+       "repair joined at Milestone 49; the total thyroidectomy joined at "
+       "Milestone 56 — set assertion updated in the "
        "Milestone 44 maintenance pattern; the no-handoff fact this "
        "assertion guards is unchanged)")
     ok("no Theatre handoff exists" in case["management"]["theatre_note"],
@@ -1986,9 +1991,11 @@ def profile_case7(case, ctx, boards, attempt):
         proc_ids.add(load(p)["procedure"]["id"])
     ok(proc_ids == {"proc.chole.lap", "proc.appy.lap",
                     "proc.carpal-release", "proc.ulnar-decompression",
-                    "proc.lap-inguinal-hernia"},
-       f"case7: the Theatre still holds exactly its five procedures "
-       f"{sorted(proc_ids)} - none is named by this disposition")
+                    "proc.lap-inguinal-hernia", "proc.thyroidectomy.total"},
+       f"case7: the Theatre still holds exactly its six procedures "
+       f"{sorted(proc_ids)} - none is named by this disposition (the "
+       "total thyroidectomy joined at Milestone 56 - set assertion "
+       "updated in the Milestone 44 maintenance pattern)")
     ok("no Theatre handoff exists" in case["management"]["theatre_note"],
        "case7: the absence of a handoff is stated in the case, per "
        "the module's discipline, not left silent")

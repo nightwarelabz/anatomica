@@ -320,8 +320,12 @@ impl TheatreParams {
     pub fn load(path: &std::path::Path) -> Result<TheatreParams, String> {
         let text = std::fs::read_to_string(path)
             .map_err(|e| format!("cannot read {}: {e}", path.display()))?;
+        TheatreParams::from_str(&text)
+    }
+
+    pub fn from_str(text: &str) -> Result<TheatreParams, String> {
         let file: TheatreParameterFile =
-            serde_json::from_str(&text).map_err(|e| format!("theatre parameters do not parse: {e}"))?;
+            serde_json::from_str(text).map_err(|e| format!("theatre parameters do not parse: {e}"))?;
         let source_ids: HashSet<&str> = file.sources.iter().map(|s| s.id.as_str()).collect();
         let mut index = HashMap::new();
         for (i, p) in file.parameters.iter().enumerate() {
@@ -405,6 +409,14 @@ pub struct CaseSpec {
     /// fixation rules score the fixation decision against it.
     #[serde(default)]
     pub defect: Option<String>,
+    /// Side whose parathyroid gland the scenario declares
+    /// devascularised (Milestone 56: total thyroidectomy, "right"
+    /// | "left"). The required set gains that side's
+    /// autotransplant microstep and the scoring-time hypocalcemia
+    /// rules key on it — the Milestone 28 severity mechanism
+    /// applied to the parathyroid pathway.
+    #[serde(default)]
+    pub parathyroid_devascularized: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize)]

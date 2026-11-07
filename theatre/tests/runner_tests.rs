@@ -187,6 +187,7 @@ fn shipped_traces_meet_their_expectations() {
     let (carpal, _, _) = load_carpal();
     let (ulnar, _, _) = load_ulnar();
     let (hernia, _, _) = load_hernia();
+    let (thyroid, _, _) = load_thyroid();
     let dir = root().join("traces");
     let mut paths: Vec<PathBuf> = std::fs::read_dir(&dir)
         .unwrap()
@@ -194,7 +195,7 @@ fn shipped_traces_meet_their_expectations() {
         .filter(|p| p.extension().map(|x| x == "json").unwrap_or(false))
         .collect();
     paths.sort();
-    assert_eq!(paths.len(), 25, "twenty-five shipped traces (five per procedure)");
+    assert_eq!(paths.len(), 30, "thirty shipped traces (five per procedure)");
     for p in &paths {
         let tr = Trace::load(p).unwrap();
         let proc = match tr.procedure.as_deref() {
@@ -202,6 +203,7 @@ fn shipped_traces_meet_their_expectations() {
             Some("proc.carpal-release") => &carpal,
             Some("proc.ulnar-decompression") => &ulnar,
             Some("proc.lap-inguinal-hernia") => &hernia,
+            Some("proc.thyroidectomy.total") => &thyroid,
             _ => &chole,
         };
         let d = run_attempt(proc, &tp, &phys, &tr).unwrap();
@@ -405,6 +407,55 @@ fn shipped_traces_meet_their_expectations() {
             assert_eq!(ad.resolved_structure.as_deref(), Some("peritoneum.peritoneum"));
             assert_eq!(d.management.as_ref().unwrap().points, 5);
         }
+        // Milestone 56: total thyroidectomy traces.
+        if tr.id == "trace-26-thyroid-clean" {
+            assert_eq!(d.checklist.pct, 100.0);
+            assert_eq!(d.checklist.required, 43);
+            assert_eq!(d.safety_gate.points, 4);
+            // Antibiotic prophylaxis is withheld by design for this
+            // operation (T44): the process ceiling is 4 of 5.
+            assert_eq!(d.process.points, 4);
+            assert!(d.errors.is_empty(), "clean thyroid trace carries no errors: {:?}", d.errors);
+            assert!(d.complications.is_empty(), "clean thyroid trace computes no complications");
+        }
+        if tr.id == "trace-27-thyroid-divide-before-id" {
+            let inj = d
+                .complications
+                .iter()
+                .find(|c| c.kind == "recurrent-laryngeal-nerve-injury")
+                .expect("trace-27 computes the recurrent laryngeal nerve injury");
+            assert_eq!(inj.resolved_structure.as_deref(), Some("nerve.right-recurrent-laryngeal-nerve"));
+            assert_eq!(d.failed_at_s, Some(1380.0));
+            assert_eq!(d.management.as_ref().unwrap().points, 5);
+            assert_eq!(d.complications.len(), 1, "the failed attempt declares the injury only");
+        }
+        if tr.id == "trace-28-thyroid-variant-branching" {
+            assert_eq!(d.checklist.required, 44); // + branch survey
+            assert_eq!(d.checklist.pct, 100.0);
+            assert!(d.errors.is_empty(), "branching trace carries no errors: {:?}", d.errors);
+        }
+        if tr.id == "trace-29-thyroid-parathyroid-devascularized" {
+            assert_eq!(d.checklist.required, 44); // + scenario-inserted autotransplant
+            assert_eq!(d.checklist.pct, 100.0);
+            assert!(d.errors.is_empty(), "autotransplant trace carries no errors: {:?}", d.errors);
+            assert!(
+                !d.complications.iter().any(|c| c.kind == "hypocalcemia"),
+                "an autotransplanted devascularised gland computes no hypocalcemia"
+            );
+        }
+        if tr.id == "trace-30-thyroid-parathyroid-unaccounted" {
+            assert_eq!(d.checklist.required, 43);
+            assert_eq!(d.checklist.missing, vec!["m3.2".to_string()]);
+            assert!(d.errors.iter().any(|e| e.id == "err.parathyroid-unaccounted"));
+            let hc = d
+                .complications
+                .iter()
+                .find(|c| c.kind == "hypocalcemia")
+                .expect("trace-30 computes hypocalcemia at scoring");
+            assert_eq!(hc.resolved_structure.as_deref(), Some("gland.parathyroid-glands"));
+            assert_eq!(d.verdict, "PASS");
+            assert_eq!(d.management.as_ref().unwrap().points, 5);
+        }
     }
 }
 
@@ -437,6 +488,9 @@ fn procedure_validates_clean() {
     let hernia = Procedure::load(&r.join("procedures/proc.lap-inguinal-hernia.json")).unwrap();
     let problems = hernia.validate(&instruments.ids());
     assert!(problems.is_empty(), "inguinal hernia repair validation problems: {problems:?}");
+    let thyroid = Procedure::load(&r.join("procedures/proc.thyroidectomy.total.json")).unwrap();
+    let problems = thyroid.validate(&instruments.ids());
+    assert!(problems.is_empty(), "total thyroidectomy validation problems: {problems:?}");
 }
 
 // ---------------------------------------------------------------------------
@@ -1171,4 +1225,350 @@ fn hernia_dp2_continue_dissection_scores_the_no_bailout_error() {
     assert_eq!(d.verdict, "FAIL");
     assert!(d.errors.iter().any(|e| e.id == "err.no-bailout"), "dp2 arm fires: {:?}", d.errors);
     assert!(d.errors.iter().any(|e| e.id == "err.divide-unidentified"));
+}
+
+// ---------------------------------------------------------------------------
+// Milestone 56: total thyroidectomy probes — the computation rules
+// the five shipped thyroid traces do not exercise: the per-side
+// gate enforcement, the monitoring-adjunct rule (monitoring alone
+// satisfies nothing), the crit3 collateral boundary both ways, the
+// bilateral catastrophe, the branching variant's master-rule
+// failure, the devascularised-gland pathway both ways, the
+// division-keying of the parathyroid computation, the hematoma
+// pathway, and the repair/referral management asymmetry.
+// ---------------------------------------------------------------------------
+
+fn load_thyroid() -> (Procedure, TheatreParams, PhysParams) {
+    let r = root();
+    let proc = Procedure::load(&r.join("procedures/proc.thyroidectomy.total.json")).unwrap();
+    let tp = TheatreParams::load(&r.join("parameters.json")).unwrap();
+    let phys = PhysParams::load().unwrap();
+    (proc, tp, phys)
+}
+
+fn thyroid_trace(
+    id: &str,
+    variant: Option<&str>,
+    devascularized: Option<&str>,
+    actions: Vec<Action>,
+) -> Trace {
+    Trace {
+        id: id.into(),
+        name: id.into(),
+        procedure: Some("proc.thyroidectomy.total".into()),
+        case: CaseSpec {
+            variant: variant.map(|s| s.to_string()),
+            parathyroid_devascularized: devascularized.map(|s| s.to_string()),
+            ..Default::default()
+        },
+        expect_verdict: String::new(),
+        actions,
+    }
+}
+
+fn run_thyroid(tr: &Trace) -> Debrief {
+    let (proc, tp, phys) = load_thyroid();
+    run_attempt(&proc, &tp, &phys, tr).unwrap()
+}
+
+/// Both sides' divisions completed cleanly (all six demonstrations,
+/// both Berry ligaments divided): the shared prefix of the
+/// scoring-time probes.
+fn thyroid_divisions_prefix() -> Vec<Action> {
+    vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"),
+        ms(300.0, "m3.2"),
+        ms(360.0, "m3.3"),
+        ms(420.0, "m4.2"),
+        ms(480.0, "m4.4"),
+        ms(540.0, "m4.5"),
+        ms(600.0, "m5.2"),
+        ms(660.0, "m5.3"),
+        ms(720.0, "m5.4"),
+        ms(780.0, "m6.2"),
+        ms(840.0, "m6.3"),
+    ]
+}
+
+#[test]
+fn thyroid_berry_division_with_only_right_crit1_missing_fails_on_the_nerve() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.2"), // crit2
+        ms(300.0, "m3.3"), // crit3
+        // no m3.1: crit1 (the nerve account) never demonstrated
+        ms(360.0, "m4.2"), // pause
+        ms(420.0, "m4.5"), // Berry division
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-crit1", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    assert!(d.errors.iter().any(|e| e.id == "err.divide-unidentified"));
+    let inj = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "recurrent-laryngeal-nerve-injury")
+        .expect("the division resolves onto the unaccounted nerve");
+    assert_eq!(inj.resolved_structure.as_deref(), Some("nerve.right-recurrent-laryngeal-nerve"));
+    assert_eq!(d.failed_at_s, Some(420.0));
+}
+
+#[test]
+fn thyroid_monitoring_alone_does_not_satisfy_the_gate() {
+    // The monitoring microsteps are all performed — NIM tube placed
+    // (m0.4), vagal baseline obtained (m0.6) — and the parathyroid
+    // and external-branch accounts are made. Only the visual
+    // identification (m3.1) is missing. The gate must still fail:
+    // monitoring is an adjunct to identification, never its
+    // substitute (T42, Recommendations 42A-42B; T43; T48).
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m0.4"),
+        ms(240.0, "m0.6"),
+        ms(300.0, "m1.1"),
+        ms(360.0, "m3.2"),
+        ms(420.0, "m3.3"),
+        ms(480.0, "m4.2"),
+        ms(540.0, "m4.5"),
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-ionm", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    assert!(d.errors.iter().any(|e| e.id == "err.divide-unidentified"));
+    assert!(d
+        .complications
+        .iter()
+        .any(|c| c.kind == "recurrent-laryngeal-nerve-injury"));
+}
+
+#[test]
+fn thyroid_superior_pedicle_with_crit3_missing_injures_the_ebsln_without_failing() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"), // crit1
+        ms(300.0, "m3.2"), // crit2
+        // no m3.3: crit3 (the external-branch account) never demonstrated
+        ms(360.0, "m4.2"),
+        ms(420.0, "m4.3"), // superior pedicle division
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-ebsln", None, None, a));
+    assert_eq!(d.verdict, "PASS"); // collateral injury, not the master-rule fail
+    assert!(d.errors.iter().any(|e| e.id == "err.ebsln-unaccounted"));
+    let inj = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "external-laryngeal-nerve-injury")
+        .expect("the division computes the external branch injury");
+    assert_eq!(inj.resolved_structure.as_deref(), Some("nerve.right-external-laryngeal-branch"));
+}
+
+#[test]
+fn thyroid_superior_pedicle_with_crit3_demonstrated_is_clean() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"),
+        ms(300.0, "m3.2"),
+        ms(360.0, "m3.3"), // crit3 demonstrated
+        ms(420.0, "m4.2"),
+        ms(480.0, "m4.3"),
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-ebsln-ok", None, None, a));
+    assert_eq!(d.verdict, "PASS");
+    assert!(!d.errors.iter().any(|e| e.id == "err.ebsln-unaccounted"));
+    assert!(d.complications.is_empty(), "an accounted superior pole computes no injury");
+}
+
+#[test]
+fn thyroid_bilateral_injury_is_the_computed_catastrophe() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.2"),
+        ms(300.0, "m3.3"),
+        ms(360.0, "m4.2"),
+        ms(420.0, "m4.5"), // right Berry with crit1-R missing: FAIL, attempt continues
+        ms(480.0, "m5.3"),
+        ms(540.0, "m5.4"),
+        // no m5.2: crit1-L never demonstrated either
+        ms(600.0, "m6.3"), // left Berry: the second nerve falls
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-bilateral", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    assert_eq!(d.failed_at_s, Some(420.0), "the attempt fails at the first side's division");
+    let sides: Vec<&str> = d
+        .complications
+        .iter()
+        .filter(|c| c.kind == "recurrent-laryngeal-nerve-injury")
+        .filter_map(|c| c.resolved_structure.as_deref())
+        .collect();
+    assert_eq!(sides.len(), 2, "both nerves carry the injury: {sides:?}");
+    let bil = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "bilateral-recurrent-laryngeal-nerve-injury")
+        .expect("the second side's injury computes the bilateral catastrophe");
+    assert_eq!(bil.resolved_structure.as_deref(), Some("nerve.left-recurrent-laryngeal-nerve"));
+}
+
+#[test]
+fn thyroid_gate_is_enforced_per_side() {
+    // The right account is complete and the right Berry division is
+    // clean; the left account omits only crit1. The left division
+    // must fail on the LEFT nerve — the right side's demonstrations
+    // do not transfer.
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"),
+        ms(300.0, "m3.2"),
+        ms(360.0, "m3.3"),
+        ms(420.0, "m4.2"),
+        ms(480.0, "m4.5"), // right Berry: clean
+        ms(540.0, "m5.3"),
+        ms(600.0, "m5.4"),
+        // no m5.2
+        ms(660.0, "m6.3"), // left Berry
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-perside", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    assert_eq!(d.failed_at_s, Some(660.0));
+    let inj = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "recurrent-laryngeal-nerve-injury")
+        .expect("the left division resolves onto the left nerve");
+    assert_eq!(inj.resolved_structure.as_deref(), Some("nerve.left-recurrent-laryngeal-nerve"));
+    assert_eq!(d.complications.len(), 1, "the right nerve is uninjured: no bilateral computation");
+}
+
+#[test]
+fn thyroid_branching_division_without_survey_fails_on_the_motor_branch() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"), // the trunk account is made
+        ms(300.0, "m3.2"),
+        ms(360.0, "m3.3"),
+        // no m3.5: the branch survey never performed
+        ms(420.0, "m4.2"),
+        ms(480.0, "m4.4"), // inferior pedicle division
+    ];
+    let d = run_thyroid(&thyroid_trace(
+        "probe-thyroid-branching",
+        Some("variant.rln-extralaryngeal-branching"),
+        None,
+        a,
+    ));
+    assert_eq!(d.verdict, "FAIL");
+    assert!(d.errors.iter().any(|e| e.id == "err.missed-variant"));
+    assert!(!d.errors.iter().any(|e| e.id == "err.divide-unidentified"),
+        "the variant resolution fires before the plain crit1 resolution");
+    assert!(d
+        .complications
+        .iter()
+        .any(|c| c.kind == "recurrent-laryngeal-nerve-injury"
+            && c.resolved_structure.as_deref() == Some("nerve.right-recurrent-laryngeal-nerve")));
+    assert_eq!(d.failed_at_s, Some(480.0));
+}
+
+#[test]
+fn thyroid_devascularized_gland_without_autotransplant_computes_hypocalcemia() {
+    let mut a = thyroid_divisions_prefix();
+    a.push(ms(900.0, "m7.4")); // haemostasis confirmed: isolates the parathyroid pathway
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-devasc", None, Some("right"), a));
+    assert_eq!(d.verdict, "PASS");
+    assert!(d.errors.iter().any(|e| e.id == "err.devascularized-gland-not-autotransplanted"));
+    assert!(d.complications.iter().any(|c| c.kind == "hypocalcemia"));
+    assert!(d.checklist.missing.contains(&"m7.1".to_string()),
+        "the scenario made the autotransplant required, and it is missing: {:?}", d.checklist.missing);
+}
+
+#[test]
+fn thyroid_crit2_unaccounted_without_division_computes_nothing() {
+    // The parathyroid computation is keyed on the side's gated work
+    // actually being done: an account omitted on a side that is
+    // never divided computes no hypocalcemia.
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.1"),
+        ms(300.0, "m3.3"),
+        ms(360.0, "m4.2"),
+        // no m3.2, and no division on either side
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-nodiv", None, None, a));
+    assert_eq!(d.verdict, "PASS");
+    assert!(!d.errors.iter().any(|e| e.id == "err.parathyroid-unaccounted"));
+    assert!(d.complications.is_empty());
+}
+
+#[test]
+fn thyroid_unconfirmed_haemostasis_computes_neck_hematoma() {
+    let mut a = thyroid_divisions_prefix();
+    // no m7.4: the field is never confirmed dry
+    a.push(Action { complication: Some("neck-hematoma".into()), ..act(900.0, "recognise") });
+    a.push(Action { id: Some("dp6".into()), choice: Some("return-theatre".into()), ..act(960.0, "decision") });
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-hematoma", None, None, a));
+    assert_eq!(d.verdict, "PASS");
+    assert!(d.errors.iter().any(|e| e.id == "err.unconfirmed-haemostasis"));
+    let h = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "neck-hematoma")
+        .expect("the unconfirmed field computes the hematoma");
+    assert_eq!(h.resolved_structure.as_deref(), Some("airway.trachea"));
+    assert_eq!(d.management.as_ref().unwrap().points, 5,
+        "recognised, escalated at dp6 and planned by return to theatre");
+}
+
+#[test]
+fn thyroid_dp2_continue_dissection_scores_the_no_bailout_error() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.2"),
+        ms(300.0, "m3.3"),
+        ms(360.0, "m4.1"),
+        Action { id: Some("dp2".into()), choice: Some("continue-dissection".into()), ..act(420.0, "decision") },
+        ms(480.0, "m4.5"), // divide with crit1 still undemonstrated
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-nobailout", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    assert!(d.errors.iter().any(|e| e.id == "err.no-bailout"), "dp2 arm fires: {:?}", d.errors);
+    assert!(d.errors.iter().any(|e| e.id == "err.divide-unidentified"));
+}
+
+#[test]
+fn thyroid_rln_repair_by_referral_plans_without_control() {
+    let a = vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.1"),
+        ms(240.0, "m3.2"),
+        ms(300.0, "m3.3"),
+        ms(360.0, "m4.2"),
+        ms(420.0, "m4.5"), // FAIL: the nerve is divided unaccounted
+        Action { complication: Some("recurrent-laryngeal-nerve-injury".into()), ..act(480.0, "recognise") },
+        Action { id: Some("dp3".into()), choice: Some("repair-refer".into()), ..act(540.0, "decision") },
+        // no m7.3: the repair itself is never performed here
+    ];
+    let d = run_thyroid(&thyroid_trace("probe-thyroid-refer", None, None, a));
+    assert_eq!(d.verdict, "FAIL");
+    let mg = d.management.as_ref().unwrap();
+    assert_eq!(mg.control, 0, "referral is not control: the repair microstep was not performed");
+    assert_eq!(mg.plan, 1, "immediate referral is a definitive plan");
+    assert_eq!(mg.points, 4);
 }

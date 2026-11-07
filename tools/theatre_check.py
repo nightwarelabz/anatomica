@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""ANATOMICA theatre checker (Milestones 17 + 28 + 42 + 44 + 49) —
-independent validation of the theatre module's five procedures.
+"""ANATOMICA theatre checker (Milestones 17 + 28 + 42 + 44 + 49 + 56) —
+independent validation of the theatre module's six procedures.
 
 Recomputes, from the data files alone (never from the Rust code):
   1. procedure census (phases / steps / microsteps / required set)
@@ -19,7 +19,7 @@ Recomputes, from the data files alone (never from the Rust code):
   7. scoring arithmetic in every emitted debrief JSON, recomputed
      from the debrief's own components; verdict/fail consistency;
      engine loss vs event-integral cross-check agreement
-  8. trace-specific expectations for the five procedures (the Stewart-Way
+  8. trace-specific expectations for the six procedures (the Stewart-Way
      class III injury in chole trace-02, the 67-microstep required
      set in trace-04, the bailout in 05; the cecal injury in appy
      trace-08, the configuration required sets in 06/07/09/10; the
@@ -27,7 +27,10 @@ Recomputes, from the data files alone (never from the Rust code):
      sets in 13/14, the incomplete release in 15; the ulnar injuries
      and configuration sets in 16-20; the vascular injury in hernia
      trace-22, the variant required sets in 23/24, the unconfirmed
-     peritoneal closure in 25)
+     peritoneal closure in 25; the recurrent laryngeal nerve injury
+     in thyroid trace-27, the variant and scenario required sets in
+     28/29, the computed hypocalcemia in 30, and the absence
+     discipline the thyroid gate resolutions rely on)
   9. parameter discipline: cited/calibrated parameters name a source
      that exists; verify-flagged parameters are counted and listed
 
@@ -80,6 +83,7 @@ PROCEDURES = [
     ("proc.carpal-release.json", 9),
     ("proc.ulnar-decompression.json", 9),
     ("proc.lap-inguinal-hernia.json", 9),
+    ("proc.thyroidectomy.total.json", 9),
 ]
 
 
@@ -127,11 +131,19 @@ def check_procedure(proc, expected_phases, params, instrument_ids, source_ids, d
     print("== 4. gate reachability ==")
     phase_index = {p["id"]: n for n, p in enumerate(phases)}
     step_phase = {s["id"]: phase_index[p["id"]] for p in phases for s in p["steps"]}
+    # First demonstration wins: a criterion demonstrated on both
+    # sides of a bilateral procedure (Milestone 56: the thyroidectomy
+    # accounts are made per side, right in phase.3 and left in
+    # phase.5) is reachable from its FIRST demonstration; recording
+    # the last would read the left side's phase as the criterion's
+    # phase and fail a gate whose first gated division is phase.4.
+    # For the five earlier procedures each criterion is demonstrated
+    # exactly once, so first-wins changes nothing there.
     demon = {}
     for p in phases:
         for s in p["steps"]:
             for m in s["microsteps"]:
-                if m.get("demonstrates"):
+                if m.get("demonstrates") and m["demonstrates"] not in demon:
                     demon[m["demonstrates"]] = phase_index[p["id"]]
     for g in proc["safety_gates"]:
         if g["kind"] != "safety_gate":
@@ -215,7 +227,7 @@ def main():
     for fn in all_names:
         d = load(os.path.join(debriefs_dir, fn))
         debriefs_by_proc.setdefault(d["procedure_id"], []).append((fn, d))
-    ok(len(all_names) == 25, f"twenty-five debriefs emitted, five per procedure (found {len(all_names)})")
+    ok(len(all_names) == 30, f"thirty debriefs emitted, five per procedure (found {len(all_names)})")
 
     by_trace = {}
     for fname, expected_phases in PROCEDURES:
@@ -453,6 +465,70 @@ def main():
        "trace-25: the only omission is the closure confirmation, and it is scored")
     ok(t25.get("verdict") == "PASS" and t25.get("management", {}).get("points") == 5,
        "trace-25: a postoperative consequence, managed at dp6 — not a failed attempt")
+
+    # -- total thyroidectomy (Milestone 56) --
+    # The register's absences, probed against the Body Model data:
+    # neither the recurrent laryngeal nerve nor the external branch
+    # of the superior laryngeal nerve has a record anywhere in the
+    # inventory (the M39 major-nerve tranche covers the vagus trunk,
+    # not its laryngeal branches), and neither do the superior
+    # thyroid artery, the ligament of Berry or the middle thyroid
+    # vein — the gate's injuries resolve onto documented absences,
+    # never onto invented records. The gland, its lobes, the
+    # parathyroids, the inferior thyroid arteries and the vagus
+    # nerves the gate protects genuinely do have records.
+    ok(not any("recurrent-laryngeal" in i for i in all_data_ids),
+       "no recurrent laryngeal nerve record exists in the Body Model data (the absence notes are honest)")
+    ok(not any("external-laryngeal" in i or "superior-laryngeal" in i for i in all_data_ids),
+       "no external branch / superior laryngeal nerve record exists in the Body Model data")
+    ok(not any("superior-thyroid" in i for i in all_data_ids),
+       "no superior thyroid artery record exists in the Body Model data")
+    ok(not any("berry" in i or "middle-thyroid" in i for i in all_data_ids),
+       "no ligament of Berry and no middle thyroid vein record exists in the Body Model data")
+    ok("gland.thyroid-gland" in all_data_ids
+       and "gland.parathyroid-glands" in all_data_ids
+       and "endo.right-lobe-of-thyroid-gland" in all_data_ids
+       and "endo.left-inferior-parathyroid-gland" in all_data_ids
+       and "artery.right-inferior-thyroid-artery" in all_data_ids
+       and "artery.left-inferior-thyroid-artery" in all_data_ids
+       and "nerve.right-vagus-nerve" in all_data_ids
+       and "major.cn-10-vagus" in all_data_ids,
+       "thyroid, parathyroids, inferior thyroid arteries and vagus nerves genuinely present (register records resolve)")
+
+    t26 = by_trace.get("trace-26-thyroid-clean", {})
+    ok(t26.get("checklist", {}).get("pct") == 100.0 and t26.get("checklist", {}).get("required") == 43
+       and t26.get("safety_gate", {}).get("points") == 4,
+       "trace-26: full checklist (43 required) and full gate score")
+    ok(t26.get("process", {}).get("points") == 4,
+       "trace-26: process 4/5 — postoperative antibiotics are not indicated for this operation (T44), the ceiling is by design")
+    ok(t26.get("errors") == [] and t26.get("complications") == [],
+       "trace-26: the clean attempt carries no errors and computes no complications")
+    t27 = by_trace.get("trace-27-thyroid-divide-before-id", {})
+    ri = [c for c in t27.get("complications", []) if c["kind"] == "recurrent-laryngeal-nerve-injury"]
+    ok(len(ri) == 1 and ri[0]["resolved_structure"] == "nerve.right-recurrent-laryngeal-nerve",
+       "trace-27: the division resolves onto the unaccounted right recurrent laryngeal nerve (a documented absence)")
+    ok(t27.get("failed_at_s") == 1380.0, "trace-27: fails at the inferior pedicle division (t=1380s)")
+    ok(t27.get("management", {}).get("points") == 5 and len(t27.get("complications", [])) == 1,
+       "trace-27: exemplary management (5/5) does not rescue the verdict, and the failed attempt declares the injury only")
+    t28 = by_trace.get("trace-28-thyroid-variant-branching", {})
+    ok(t28.get("checklist", {}).get("required") == 44 and t28.get("checklist", {}).get("pct") == 100.0
+       and t28.get("verdict") == "PASS" and t28.get("errors") == [],
+       "trace-28: branching configuration requires 44 (branch survey added) at 100% and passes clean")
+    t29 = by_trace.get("trace-29-thyroid-parathyroid-devascularized", {})
+    ok(t29.get("checklist", {}).get("required") == 44 and t29.get("checklist", {}).get("pct") == 100.0
+       and t29.get("verdict") == "PASS" and t29.get("errors") == [],
+       "trace-29: devascularised configuration requires 44 (autotransplant inserted) at 100% and passes clean")
+    ok(not any(c["kind"] == "hypocalcemia" for c in t29.get("complications", [])),
+       "trace-29: an autotransplanted devascularised gland computes no hypocalcemia")
+    t30 = by_trace.get("trace-30-thyroid-parathyroid-unaccounted", {})
+    hc = [c for c in t30.get("complications", []) if c["kind"] == "hypocalcemia"]
+    ok(len(hc) == 1 and hc[0]["resolved_structure"] == "gland.parathyroid-glands",
+       "trace-30: the unaccounted side computes hypocalcemia on the parathyroid glands at scoring")
+    ok(t30.get("checklist", {}).get("missing") == ["m3.2"]
+       and any(e["id"] == "err.parathyroid-unaccounted" for e in t30.get("errors", [])),
+       "trace-30: the only omission is the right parathyroid account, and it is scored")
+    ok(t30.get("verdict") == "PASS" and t30.get("management", {}).get("points") == 5,
+       "trace-30: a postoperative consequence, managed at dp6 — not a failed attempt")
 
     print("\n== 9. parameter discipline ==")
     verify = []

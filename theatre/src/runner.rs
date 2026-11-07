@@ -217,6 +217,10 @@ struct Attempt<'a> {
     /// Inguinal hernia repair (Milestone 49): defect characterisation
     /// from the trace's case spec — the fixation rules key on it.
     defect: Option<String>,
+    /// Total thyroidectomy (Milestone 56): the side whose
+    /// parathyroid gland the scenario declares devascularised
+    /// ("right" | "left") — the autotransplant rules key on it.
+    parathyroid_devascularized: Option<String>,
     /// Appendicectomy: the closure method applied at the base
     /// ("endoloop" | "stapler" | "polymeric-clips"), once applied.
     closure_method: Option<String>,
@@ -481,7 +485,16 @@ impl<'a> Attempt<'a> {
                 };
                 self.log(t_s, "note", why.into());
             } else {
-                self.criteria.insert(c.clone(), t_s);
+                // First demonstration wins (Milestone 56): a
+                // criterion demonstrated on both sides of a
+                // bilateral procedure keeps its FIRST time, so the
+                // end-of-run safety scoring measures the criteria
+                // against the first gated division rather than
+                // against the second side's later demonstration.
+                // Every earlier procedure demonstrates each
+                // criterion exactly once, so this changes nothing
+                // there — the 25 prior debriefs stay byte-identical.
+                self.criteria.entry(c.clone()).or_insert(t_s);
                 if self.gate_at(t_s) {
                     self.log_gate_achieved(t_s);
                 }
@@ -517,17 +530,28 @@ impl<'a> Attempt<'a> {
         // appendicectomy's is the appendix and its artery; the
         // carpal tunnel release's is the transverse carpal ligament
         // (Milestone 42); the ulnar decompression's is the fascial
-        // set of the release (Milestone 44).
+        // set of the release (Milestone 44); total thyroidectomy's
+        // is the six gated pedicle/Berry targets (Milestone 56).
         let appy = self.proc.id == "proc.appy.lap";
         let carpal = self.proc.id == "proc.carpal-release";
         let ulnar = self.proc.id == "proc.ulnar-decompression";
         let hernia = self.proc.id == "proc.lap-inguinal-hernia";
+        let thyroid = self.proc.id == "proc.thyroidectomy.total";
         let critical: &[&str] = if appy {
             &["canal.appendix", "artery.appendicular-artery"]
         } else if carpal {
             &["ligament.transverse-carpal"]
         } else if hernia {
             &["sac.inguinal-hernia", "fascia.transversalis"]
+        } else if thyroid {
+            &[
+                "artery.right-superior-thyroid-artery",
+                "artery.left-superior-thyroid-artery",
+                "artery.right-inferior-thyroid-artery",
+                "artery.left-inferior-thyroid-artery",
+                "ligament.right-ligament-of-berry",
+                "ligament.left-ligament-of-berry",
+            ]
         } else if ulnar {
             &[
                 "fascia.arcade-of-struthers",
@@ -556,6 +580,8 @@ impl<'a> Attempt<'a> {
                     self.on_divide_ulnar(t_s, &m, &target);
                 } else if hernia {
                     self.on_divide_hernia(t_s, &m, &target);
+                } else if thyroid {
+                    self.on_divide_thyroid(t_s, &m, &target);
                 } else {
                     self.on_divide(t_s, &m, &target);
                 }
@@ -588,6 +614,9 @@ impl<'a> Attempt<'a> {
         }
         if hernia {
             self.hernia_microstep_rules(t_s, &m);
+        }
+        if thyroid {
+            self.thyroid_microstep_rules(t_s, &m);
         }
 
         // Liver-bed dissection with an uncontrolled second arterial
@@ -1469,6 +1498,166 @@ impl<'a> Attempt<'a> {
             _ => {}
         }
     }
+
+    // -- Total thyroidectomy (Milestone 56) -------------------------------
+    //
+    // The gate is demonstrated and enforced PER SIDE: the criteria
+    // register records the demonstrations generically, but the
+    // divide handler checks the performed set for the side being
+    // divided (right accounts m3.1-m3.3, left accounts m5.2-m5.4) —
+    // neither side's account is inherited from the other, because
+    // the catastrophe the gate exists to prevent is a second-side
+    // injury added to a first (T42; T44).
+
+    /// Push this side's recurrent laryngeal nerve injury (once per
+    /// side), and compute the bilateral injury when the second
+    /// side's nerve falls after the first.
+    fn thyroid_rln_injury(&mut self, t_s: f64, side: &str, mechanism: &str) {
+        let rln = format!("nerve.{side}-recurrent-laryngeal-nerve");
+        if self
+            .complications
+            .iter()
+            .any(|c| c.kind == "recurrent-laryngeal-nerve-injury" && c.resolved_structure.as_deref() == Some(rln.as_str()))
+        {
+            return;
+        }
+        self.complications.push(Complication {
+            kind: "recurrent-laryngeal-nerve-injury".to_string(),
+            t_onset_s: t_s,
+            detail: format!(
+                "{mechanism} — the {side} recurrent laryngeal nerve, whose injury produces vocal fold dysfunction on that side (temporary in 0.5-10% and permanent in 0-5% of thyroidectomies in most series, T44)"
+            ),
+            resolved_structure: Some(rln.clone()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+        self.log(t_s, "complication", format!("recurrent laryngeal nerve injury: the {side} nerve was divided unaccounted"));
+        let other = if side == "right" { "left" } else { "right" };
+        let other_rln = format!("nerve.{other}-recurrent-laryngeal-nerve");
+        let other_injured = self.complications.iter().any(|c| {
+            c.kind == "recurrent-laryngeal-nerve-injury" && c.resolved_structure.as_deref() == Some(other_rln.as_str())
+        });
+        let bilateral_already = self
+            .complications
+            .iter()
+            .any(|c| c.kind == "bilateral-recurrent-laryngeal-nerve-injury");
+        if other_injured && !bilateral_already {
+            self.complications.push(Complication {
+                kind: "bilateral-recurrent-laryngeal-nerve-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "bilateral recurrent laryngeal nerve injury computed: both vocal folds dysfunctional — bilateral vocal fold dysfunction is a life-threatening condition in the immediate postoperative period, a rare event reported in 0.1-0.4% of cases, with reintubation and/or tracheostomy the prepared contingency (T44; the preoperative warning of the same progression, T42)".to_string(),
+                resolved_structure: Some(rln),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "bilateral recurrent laryngeal nerve injury computed: the second side's nerve has fallen after the first".into());
+        }
+    }
+
+    fn on_divide_thyroid(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        let side = if target.contains(".right-") { "right" } else { "left" };
+        let crit1_demo = if side == "right" { "m3.1" } else { "m5.2" };
+        let crit3_demo = if side == "right" { "m3.3" } else { "m5.4" };
+
+        // The superior pedicle is crit3-gated only: the divided
+        // structure is the intended pedicle, and the injury the
+        // unaccounted division computes is collateral — the
+        // external branch, taken by a pedicle line that was never
+        // established on the capsule (the carpal
+        // persistent-median-artery pattern: major, not a fail).
+        if target.contains("superior-thyroid") {
+            if !self.performed.contains_key(crit3_demo) {
+                self.error(
+                    t_s,
+                    "err.ebsln-unaccounted",
+                    format!(
+                        "superior thyroid pedicle divided ({}) with the external branch of the superior laryngeal nerve unaccounted on the {side} side (crit3 undemonstrated: microstep {crit3_demo} not performed); the superior pole vessels should be ligated close to the thyroid capsule to avoid potential EBSLN injury (T44)",
+                        m.id
+                    ),
+                );
+                self.complications.push(Complication {
+                    kind: "external-laryngeal-nerve-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the pedicle line crosses the external branch's course on the inferior constrictor: cricothyroid paralysis degrading voice pitch and projection without vocal fold paralysis — the branch most surgeons avoid rather than expose, which is why its account here is the capsular line itself (T48; T44)".to_string(),
+                    resolved_structure: Some(format!("nerve.{side}-external-laryngeal-branch")),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", format!("external laryngeal nerve injury: the {side} superior pedicle was divided with the branch unaccounted"));
+            } else {
+                self.log(t_s, "divide", format!("{} divided on the capsule with the external branch accounted for", m.id));
+            }
+            self.divided.insert(target.to_string());
+            return;
+        }
+
+        // Inferior pedicle and ligament of Berry. Variant
+        // resolution first (the replaced-RHA pattern): in the
+        // branching configuration the account the division needed
+        // is the branch survey, and its absence resolves onto the
+        // unaccounted anterior motor branch.
+        if side == "right"
+            && self.variant_active("variant.rln-extralaryngeal-branching")
+            && !self.performed.contains_key("m3.5")
+        {
+            self.error(
+                t_s,
+                "err.missed-variant",
+                format!(
+                    "{} divided ({}) in an extralaryngeal-branching field without the branch survey (microstep m3.5 not performed): the nerve's branches were never all accounted for to the laryngeal entry (T45)",
+                    target, m.id
+                ),
+            );
+            self.thyroid_rln_injury(t_s, side, "the division takes the unaccounted anterior motor branch of the branched right recurrent laryngeal nerve — the branch carrying the motor fibres (T45)");
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                "an unaccounted critical structure — the anterior motor branch of the branched recurrent laryngeal nerve — was divided (err.missed-variant)".into(),
+            );
+            return;
+        }
+        if !self.performed.contains_key(crit1_demo) {
+            self.error(
+                t_s,
+                "err.divide-unidentified",
+                format!(
+                    "{} divided ({}) before the {side} recurrent laryngeal nerve was identified and traced (crit1 undemonstrated on this side: microstep {crit1_demo} not performed); visual identification of the RLN is required in all cases (T42)",
+                    target, m.id
+                ),
+            );
+            self.thyroid_rln_injury(t_s, side, "the division takes the unidentified recurrent laryngeal nerve where it lies against the pedicle and the ligament of Berry — the ligament is the most common site of RLN injury in this operation (T44)");
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                format!("an unaccounted critical structure — the {side} recurrent laryngeal nerve — was divided (err.divide-unidentified)"),
+            );
+            return;
+        }
+        self.divided.insert(target.to_string());
+        self.log(t_s, "divide", format!("{} divided with the {side} nerve and parathyroid account demonstrated", m.id));
+    }
+
+    /// Thyroid microstep rules that are not gate resolution: the
+    /// magnified repair of a transected recurrent laryngeal nerve
+    /// (m7.3) is the definitive control the management score
+    /// credits after a computed nerve injury — the carpal/ulnar
+    /// repair rule (Milestones 42/44), on this operation's repair
+    /// microstep.
+    fn thyroid_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        if m.id == "m7.3" && !self.repair_done {
+            self.repair_done = true;
+            self.log(t_s, "control", "recurrent laryngeal nerve repair performed under magnification (m7.3)".into());
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1512,6 +1701,24 @@ pub fn run_attempt(
             Some("perforated") => {
                 required.insert("m7.2".to_string());
                 required.insert("m8.4".to_string());
+            }
+            _ => {}
+        }
+    }
+    // Total thyroidectomy (Milestone 56): a scenario-declared
+    // devascularised parathyroid gland makes that side's
+    // autotransplant microstep required for the attempt — the
+    // appendicectomy severity mechanism applied to the
+    // parathyroid pathway (the consulted standard for a gland
+    // that cannot be preserved is autotransplantation, T44
+    // Recommendation 27b; T42 Recommendation 43).
+    if proc.id == "proc.thyroidectomy.total" {
+        match trace.case.parathyroid_devascularized.as_deref() {
+            Some("right") => {
+                required.insert("m7.1".to_string());
+            }
+            Some("left") => {
+                required.insert("m7.2".to_string());
             }
             _ => {}
         }
@@ -1563,6 +1770,7 @@ pub fn run_attempt(
         severity: trace.case.severity.clone(),
         base_condition: trace.case.base_condition.clone(),
         defect: trace.case.defect.clone(),
+        parathyroid_devascularized: trace.case.parathyroid_devascularized.clone(),
         closure_method: None,
         deferred_criteria: Vec::new(),
         errors: Vec::new(),
@@ -1686,6 +1894,13 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                             t,
                             "err.no-bailout",
                             "at dp2 the danger anatomy was declared unaccountable and division/fixation continued instead of altering strategy (design/05)".into(),
+                        );
+                    }
+                    ("dp2", "continue-dissection") if at.proc.id == "proc.thyroidectomy.total" => {
+                        at.error(
+                            t,
+                            "err.no-bailout",
+                            "at dp2 the second look found a nerve or parathyroid account incomplete and dissection continued toward division instead of altering strategy (design/05)".into(),
                         );
                     }
                     ("dp5", "fixation") if at.proc.id == "proc.lap-inguinal-hernia" => {
@@ -2387,6 +2602,79 @@ fn score(
         }
     }
 
+    // Total thyroidectomy (Milestone 56): this operation's
+    // scoring-time consequences, on the same treatment. A failed
+    // attempt is excluded throughout: its declared outcome is the
+    // nerve injury, not the parathyroid or field consequences.
+    if proc.id == "proc.thyroidectomy.total" && at.failed.is_none() {
+        let mut hypocalcemia = false;
+        // (a) The per-side parathyroid account: a side whose gated
+        // work was completed with crit2 undemonstrated on that side
+        // never had its glands under the operation's control.
+        for (side, demo, divs) in [
+            ("right", "m3.2", ["artery.right-inferior-thyroid-artery", "ligament.right-ligament-of-berry"]),
+            ("left", "m5.3", ["artery.left-inferior-thyroid-artery", "ligament.left-ligament-of-berry"]),
+        ] {
+            let divided_side = divs.iter().any(|d| at.divided.contains(*d));
+            if divided_side && !at.performed.contains_key(demo) {
+                at.errors.push(ErrorEvent {
+                    t_s: end_t,
+                    id: "err.parathyroid-unaccounted".to_string(),
+                    detail: format!("the {side} side's pedicle and Berry work was completed with its parathyroid account undemonstrated (microstep {demo} not performed); the parathyroid glands and their blood supply should be preserved during thyroid surgery (T42), and identification of fewer than two parathyroid glands at surgery is an independent predictor of permanent hypocalcemia (T47)"),
+                });
+                hypocalcemia = true;
+            }
+        }
+        // (b) A scenario-declared devascularised gland completed
+        // without its autotransplant: the gland's function is lost
+        // either way; the transplant is what gives the tissue a
+        // second blood supply (T44, Recommendation 27b).
+        if let Some(side) = at.parathyroid_devascularized.as_deref() {
+            let auto = if side == "right" { "m7.1" } else { "m7.2" };
+            if !at.performed.contains_key(auto) {
+                at.errors.push(ErrorEvent {
+                    t_s: end_t,
+                    id: "err.devascularized-gland-not-autotransplanted".to_string(),
+                    detail: format!("the scenario's devascularised {side} parathyroid gland was completed without autotransplantation (microstep {auto} not performed); if a parathyroid gland cannot be preserved, parathyroid autotransplantation should be performed (T44)"),
+                });
+                hypocalcemia = true;
+            }
+        }
+        if hypocalcemia {
+            at.complications.push(Complication {
+                kind: "hypocalcemia".to_string(),
+                t_onset_s: end_t,
+                detail: "postoperative hypocalcemia declared as a consequence of parathyroid failure: transient hypocalcemia is the commonest complication of total thyroidectomy (median incidence 27%, range 19-38%, across 115 studies; permanent hypoparathyroidism median 1%, range 0-3%) (T47), treated by oral calcium first-line, calcitriol as necessary, intravenous calcium if severe or refractory (T44) (structural outcome; the physiology engine has no calcium axis, so no biochemical trajectory is computed)".into(),
+                resolved_structure: Some("gland.parathyroid-glands".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+        }
+        // (c) An unconfirmed haemostasis after Berry work: the
+        // closed neck collects blood against the trachea.
+        let berry_divided = at.divided.contains("ligament.right-ligament-of-berry")
+            || at.divided.contains("ligament.left-ligament-of-berry");
+        if berry_divided && !at.performed.contains_key("m7.4") {
+            at.errors.push(ErrorEvent {
+                t_s: end_t,
+                id: "err.unconfirmed-haemostasis".to_string(),
+                detail: "neck closed without the haemostasis confirmation (m7.4 not performed); prior to closure a dry, bloodless field should be verified, with positive-pressure ventilation to assess for venous bleeding (T44)".to_string(),
+            });
+            at.complications.push(Complication {
+                kind: "neck-hematoma".to_string(),
+                t_onset_s: end_t,
+                detail: "postoperative neck hematoma declared as a consequence of the unconfirmed field: collected blood in the closed neck compresses the cervical trachea and impairs laryngeal venous return, with rapid airway edema and stridor; nonoperative management is not recommended and untreated hematoma is life-threatening — the standard is immediate bedside evaluation and a low threshold for cervical exploration (T44) (structural outcome; no bleed volume is computed, because no consulted rate exists for this field and none is invented)".into(),
+                resolved_structure: Some("airway.trachea".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+        }
+    }
+
     // Management score (only when a complication was computed).
     let management = if at.complications.is_empty() {
         None
@@ -2414,11 +2702,17 @@ fn score(
         // of drainage for the biliary and caecal injuries.
         // Milestone 44 adds the ulnar decompression's injury kinds
         // to the same rule (its repair microstep is also m7.3).
+        // Milestone 56 adds total thyroidectomy's recurrent
+        // laryngeal nerve injury kinds (its repair microstep is
+        // also m7.3); the bilateral kind rides with the unilateral
+        // one — the repair obligation is the same.
         let has_nerve_injury = at.complications.iter().any(|c| {
             c.kind == "median-nerve-injury"
                 || c.kind == "recurrent-branch-injury"
                 || c.kind == "ulnar-nerve-injury"
                 || c.kind == "mabc-injury"
+                || c.kind == "recurrent-laryngeal-nerve-injury"
+                || c.kind == "bilateral-recurrent-laryngeal-nerve-injury"
         });
         let has_incomplete = at.complications.iter().any(|c| c.kind == "incomplete-release");
         // Milestone 44: the ulnar decompression's other two
@@ -2444,6 +2738,18 @@ fn score(
         let has_hernia_postop = at.complications.iter().any(|c| {
             c.kind == "recurrence" || c.kind == "bowel-adhesion"
         });
+        // Milestone 56 (total thyroidectomy): the external branch
+        // injury is deliberately NOT in has_nerve_injury above —
+        // this operation carries no repair microstep for that
+        // branch, so its definitive plan is the dp3 referral (the
+        // hernia nerve-injury precedent). The two postoperative
+        // consequences take their plans at dp6, each by its own
+        // standard (return to theatre for hematoma, T44
+        // Recommendation 58; the calcium replacement protocol for
+        // hypocalcemia, T44 Recommendation 61).
+        let has_ebsln_injury = at.complications.iter().any(|c| c.kind == "external-laryngeal-nerve-injury");
+        let has_hypocalcemia = at.complications.iter().any(|c| c.kind == "hypocalcemia");
+        let has_neck_hematoma = at.complications.iter().any(|c| c.kind == "neck-hematoma");
         let control_pts = if all_bleeds_controlled
             && (!has_bdi || at.drain_placed)
             && (!has_cecal || at.drain_placed)
@@ -2457,6 +2763,7 @@ fn score(
             || at.decisions.iter().any(|d| {
                 d.id == "dp3" || d.id == "dp4" || (proc.id == "proc.appy.lap" && (d.id == "dp2" || d.id == "dp5"))
                     || (proc.id == "proc.lap-inguinal-hernia" && d.id == "dp6")
+                    || (proc.id == "proc.thyroidectomy.total" && d.id == "dp6")
             })
         {
             1
@@ -2531,6 +2838,40 @@ fn score(
             } else {
                 0
             }
+        } else if has_ebsln_injury {
+            // Milestone 56: the external branch's injury has no
+            // repair microstep in this operation; its definitive
+            // plan is the dp3 referral to the repair / laryngology
+            // service.
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp3" && d.choice == "repair-refer")
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_hypocalcemia || has_neck_hematoma {
+            // Milestone 56: the postoperative consequences are
+            // planned at dp6, each by its own standard — return to
+            // theatre for the hematoma, the calcium replacement
+            // protocol for the hypocalcemia.
+            if (has_neck_hematoma
+                && at
+                    .decisions
+                    .iter()
+                    .any(|d| d.id == "dp6" && d.choice == "return-theatre"))
+                || (has_hypocalcemia
+                    && at
+                        .decisions
+                        .iter()
+                        .any(|d| d.id == "dp6" && d.choice == "calcium-replacement-protocol"))
+            {
+                1
+            } else {
+                0
+            }
         } else if has_incomplete || has_instability || has_new_compression {
             // Milestone 42: persistent symptoms from an incomplete
             // release are definitively treated by completing the
@@ -2576,6 +2917,8 @@ fn score(
         build_pearls_ulnar(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     } else if proc.id == "proc.lap-inguinal-hernia" {
         build_pearls_hernia(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else if proc.id == "proc.thyroidectomy.total" {
+        build_pearls_thyroid(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     } else {
         build_pearls(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     };
@@ -3169,6 +3512,118 @@ fn build_pearls_hernia(
     }
     if at.errors.iter().any(|e| e.id == "err.no-bailout") {
         directive.push("When the danger anatomy cannot be accounted for, alter the strategy: extend the dissection, call for senior help, or abort and refer — never divide or fixate on presumption (design/05).".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+fn build_pearls_thyroid(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 {
+        plus.push("The nerve and parathyroid account was demonstrated before the first gated division — nerve identified and traced, parathyroids accounted on the capsule, external branch accounted at the pole: visual identification required in all cases (T42, Recommendation 42A), the parathyroids and their blood supply preserved (T42, Recommendation 43), the superior pole taken on the capsule (T44, Recommendation 25).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-division pause performed and the accounts confirmed with the team before the pedicle and Berry divisions (module safety culture, T20).".to_string());
+    }
+    if at.performed.contains_key("m3.5") && at.variant_active("variant.rln-extralaryngeal-branching") {
+        plus.push("The branched nerve — extralaryngeal branching in 39.2% of nerves intraoperatively (T45) — was surveyed branch by branch to the laryngeal entry before division, the anterior motor branch accounted by name.".to_string());
+    }
+    if at.parathyroid_devascularized.is_some()
+        && (at.performed.contains_key("m7.1") || at.performed.contains_key("m7.2"))
+    {
+        plus.push("The devascularised parathyroid gland was autotransplanted into a marked intramuscular pocket — the consulted standard for a gland that cannot be preserved (T44, Recommendation 27b; T42).".to_string());
+    }
+    if at.complications.iter().any(|c| (c.kind == "recurrent-laryngeal-nerve-injury" || c.kind == "external-laryngeal-nerve-injury") && c.recognised) {
+        plus.push("The nerve injury was recognised during the index operation and a definitive plan was made.".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.divide-unidentified") {
+        directive.push("Never divide the inferior pedicle or the ligament of Berry on a side whose nerve you have not seen traced to its laryngeal entry: visual identification is required in all cases (T42, Recommendation 42A), the nerve's course should be visualised through the entire operative field (T44), and the Berry ligament — divided as close to the trachea as possible — is the commonest injury site (T44). Monitoring confirms an identified nerve; it does not identify one (T42, Recommendation 42B; T43).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.missed-variant") {
+        directive.push("In a branched nerve, account for every branch to the entry point: the motor fibres run in the anterior branch and posterior branches can carry motor fibres too, so no branch is expendable — and branched nerves are the higher-risk configuration (T45).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.ebsln-unaccounted") {
+        directive.push("Take the superior pole on the capsule, vessel by vessel: ligating close to the capsule is the external branch's protection (T44, Recommendation 25), and where the branch cannot be seen, the capsular line is its account (T42; T48).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.parathyroid-unaccounted") {
+        directive.push("Account for the glands on the capsule before the pedicle work, and take the inferior pedicle at the capsule — the glands are supplied from that artery (T42, Recommendation 43; T44, Recommendation 27a). Fewer than two glands identified at surgery predicts permanent hypocalcemia (T47).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.devascularized-gland-not-autotransplanted") {
+        directive.push("A gland that cannot be preserved is transplanted, not watched: mince it into a marked sternocleidomastoid or strap-muscle pocket (T44, Recommendation 27b; T42) — monitoring calcium detects the hypocalcemia the transplant exists to prevent.".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unconfirmed-haemostasis") {
+        directive.push("Verify a dry, bloodless field before closure, with positive-pressure ventilation to unmask venous bleeding (T44): a hematoma in the closed neck compresses the trachea, and the standard is immediate evaluation with a low threshold for exploration (T44, Recommendation 58).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-bailout") {
+        directive.push("When the second look finds an account incomplete, alter the strategy: extend the exposure, call for senior help, or abort and refer — never divide on presumption (design/05).".to_string());
     }
     if directive.is_empty() {
         directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
