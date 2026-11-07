@@ -1,0 +1,985 @@
+{
+ "region_box_bp3d_mm": {
+  "lo": [
+   -79.2,
+   -155.5,
+   1456.5
+  ],
+  "hi": [
+   77.9,
+   -13.0,
+   1618.7
+  ]
+ },
+ "region_margin_mm": 50.0,
+ "assembly_held_out": {
+  "fit_objects": 14,
+  "test_objects": 13,
+  "scale": 1030.746370817442,
+  "residual_mean_mm": 0.2738925710370518,
+  "residual_median_mm": 0.2639339813038022,
+  "residual_p95_mm": 0.4997698941786947
+ },
+ "tier_counts": {
+  "A": 34,
+  "B": 236,
+  "C": 285,
+  "D": 32
+ },
+ "tiers": {
+  "A": [
+   "Anterior commissure",
+   "Aqueduct of midbrain",
+   "Caudate nucleus.l",
+   "Caudate nucleus.r",
+   "Corpus callosum",
+   "Fourth ventricle",
+   "Globus pallidus.l",
+   "Globus pallidus.r",
+   "Habenula",
+   "Hippocampus.l",
+   "Hippocampus.r",
+   "Hypothalamus",
+   "Lateral geniculate body.l",
+   "Lateral geniculate body.r",
+   "Lateral ventricle.l",
+   "Lateral ventricle.r",
+   "Medial geniculate body.l",
+   "Medial geniculate body.r",
+   "Medulla oblongata.l",
+   "Medulla oblongata.r",
+   "Midbrain.l",
+   "Midbrain.r",
+   "Optic chiasm.l",
+   "Optic chiasm.r",
+   "Optic tract.l",
+   "Optic tract.r",
+   "Pons.l",
+   "Pons.r",
+   "Posterior commissure",
+   "Putamen.l",
+   "Putamen.r",
+   "Thalamus.l",
+   "Thalamus.r",
+   "Third ventricle"
+  ],
+  "B": [
+   " Posterior transverse collateral sulcus.l",
+   " Posterior transverse collateral sulcus.r",
+   "Abducens nerve (VI).l",
+   "Abducens nerve (VI).r",
+   "Accessory nucleus of oculomotor nerve.l",
+   "Accessory nucleus of oculomotor nerve.r",
+   "Amygdaloid body.l",
+   "Amygdaloid body.r",
+   "Anterior cochlear nucleus.l",
+   "Anterior cochlear nucleus.r",
+   "Anterior division of mandibular nerve.l",
+   "Anterior division of mandibular nerve.r",
+   "Anterior occipital sulcus*.l",
+   "Anterior occipital sulcus*.r",
+   "Anterior quadrangular lobule.l",
+   "Anterior quadrangular lobule.r",
+   "Auditory tube.l",
+   "Auditory tube.r",
+   "Base of peduncle.l",
+   "Base of peduncle.r",
+   "Biventral lobule.l",
+   "Biventral lobule.r",
+   "Buccal nerve.l",
+   "Buccal nerve.r",
+   "Calcarine sulcus.l",
+   "Calcarine sulcus.r",
+   "Central canal'",
+   "Central lobule",
+   "Central sulcus.l",
+   "Central sulcus.r",
+   "Chorda tympani.l",
+   "Chorda tympani.r",
+   "Choroid plexus.l",
+   "Choroid plexus.r",
+   "Cingulate gyrus (Posteroventral part*).l",
+   "Cingulate gyrus (Posteroventral part*).r",
+   "Cingulate gyrus and sulcus (Middle anterior part).l",
+   "Cingulate gyrus and sulcus (Middle anterior part).r",
+   "Cingulate gyrus and sulcus (Middle posterior part).l",
+   "Cingulate gyrus and sulcus (Middle posterior part).r",
+   "Cingulate gyrus and sulcus (Posterior dorsal part).l",
+   "Cingulate gyrus and sulcus (Posterior dorsal part).r",
+   "Cingulate sulcus (Marginal part*).l",
+   "Cingulate sulcus (Marginal part*).r",
+   "Circular sulcus of insula.l",
+   "Circular sulcus of insula.r",
+   "Cochlear nerve.l",
+   "Collateral sulcus.l",
+   "Collateral sulcus.r",
+   "Culmen",
+   "Declive",
+   "Equator of eyeball.r",
+   "External axis of eyeball",
+   "Facial nerve (VII).l",
+   "Facial nerve (VII).r",
+   "Falx cerebri",
+   "Flocculus.l",
+   "Flocculus.r",
+   "Folium of vermis",
+   "Fornix.l",
+   "Fornix.r",
+   "Glossopharyngeal nerve (IX).l",
+   "Glossopharyngeal nerve (IX).r",
+   "Gracile lobule.l",
+   "Gracile lobule.r",
+   "Hippocampal commissure",
+   "Hypoglossal nerve (XII).l",
+   "Hypoglossal nerve (XII).r",
+   "Inferior frontal sulcus.l",
+   "Inferior frontal sulcus.r",
+   "Inferior occipital gyrus and sulcus*.l",
+   "Inferior occipital gyrus and sulcus*.r",
+   "Inferior salivatory nucleus.l",
+   "Inferior salivatory nucleus.r",
+   "Inferior semilunar lobule.l",
+   "Inferior semilunar lobule.r",
+   "Inferior temporal sulcus.l",
+   "Inferior temporal sulcus.r",
+   "Insula (Subcentral gyrus and ant. and post. sulci*).l",
+   "Insula (Subcentral gyrus and ant. and post. sulci*).r",
+   "Interpeduncular fossa.l",
+   "Interpeduncular fossa.r",
+   "Intraparietal sulcus.l",
+   "Intraparietal sulcus.r",
+   "Lacrimal gland.l",
+   "Lacrimal gland.r",
+   "Lat_Fis-ant-Horizont.l",
+   "Lat_Fis-ant-Horizont.r",
+   "Lat_Fis-ant-Vertical.l",
+   "Lat_Fis-ant-Vertical.r",
+   "Lat_Fis-post.l",
+   "Lat_Fis-post.r",
+   "Lateral occipitotemporal gyrus.l",
+   "Lateral occipitotemporal gyrus.r",
+   "Lentiform nucleus.l",
+   "Lentiform nucleus.r",
+   "Lingual gyrus.l",
+   "Lingual gyrus.r",
+   "Lingual nerve.l",
+   "Lingual nerve.r",
+   "Lingula of cerebellum",
+   "Mamillary body.l",
+   "Mamillary body.r",
+   "Maxillary nerve.l",
+   "Maxillary nerve.r",
+   "Medial occipitotemporal gyrus (Parahippocampal*).l",
+   "Medial occipitotemporal gyrus (Parahippocampal*).r",
+   "Meningeal branch of maxillary nerve.l",
+   "Meningeal branch of maxillary nerve.r",
+   "Motor nucleus of facial nerve.l",
+   "Motor nucleus of facial nerve.r",
+   "Motor root of trigeminal nerve.l",
+   "Motor root of trigeminal nerve.r",
+   "Nodule of vermis",
+   "Nucleus ambiguus.l",
+   "Nucleus ambiguus.r",
+   "Nucleus of abducens nerve.l",
+   "Nucleus of abducens nerve.r",
+   "Nucleus of accessory nerve.l",
+   "Nucleus of accessory nerve.r",
+   "Nucleus of hypoglossal nerve.l",
+   "Nucleus of hypoglossal nerve.r",
+   "Nucleus of oculomotor nerve.l",
+   "Nucleus of oculomotor nerve.r",
+   "Nucleus of solitary tract.l",
+   "Nucleus of solitary tract.r",
+   "Nucleus of trochlear nerve.l",
+   "Nucleus of trochlear nerve.r",
+   "Occipitotemporal sulcus (Lateral part*).l",
+   "Occipitotemporal sulcus (Lateral part*).r",
+   "Oculomotor nerve (III).l",
+   "Oculomotor nerve (III).r",
+   "Olfactory nerve (I).l",
+   "Olfactory nerve (I).r",
+   "Olfactory sulcus.l",
+   "Olfactory sulcus.r",
+   "Olive.l",
+   "Olive.r",
+   "Opercular part of inferior frontal gyrus.l",
+   "Opercular part of inferior frontal gyrus.r",
+   "Optic nerve (II).l",
+   "Optic nerve (II).r",
+   "Orbital gyri.l",
+   "Orbital gyri.r",
+   "Orbital part of  inferior frontal gyrus.l",
+   "Orbital part of  inferior frontal gyrus.r",
+   "Orbital sulci (H-shaped orbital sulci*).l",
+   "Orbital sulci (H-shaped orbital sulci*).r",
+   "Orbital sulci (Lateral Orbital sulcus*).l",
+   "Orbital sulci (Lateral Orbital sulcus*).r",
+   "Paracentral gyrus and sulcus*.l",
+   "Paracentral gyrus and sulcus*.r",
+   "Paracentral sulcus.l",
+   "Paracentral sulcus.r",
+   "Parieto-occipital sulcus.l",
+   "Parieto-occipital sulcus.r",
+   "Peduncle of flocculus.l",
+   "Peduncle of flocculus.r",
+   "Postcentral sulcus.l",
+   "Postcentral sulcus.r",
+   "Posterior cochlear nucleus.l",
+   "Posterior cochlear nucleus.r",
+   "Posterior division of mandibular nerve.l",
+   "Posterior division of mandibular nerve.r",
+   "Posterior nucleus of vagus nerve.l",
+   "Posterior nucleus of vagus nerve.r",
+   "Posterior quadrangular lobule.l",
+   "Posterior quadrangular lobule.r",
+   "Posterior segment of eyeball.l",
+   "Posterior segment of eyeball.r",
+   "Precentral sulcus (Superior part)*.l",
+   "Precentral sulcus (Superior part)*.r",
+   "Precentral sulcus (inferior part)*.l",
+   "Precentral sulcus (inferior part)*.r",
+   "Precuneus.l",
+   "Precuneus.r",
+   "Pyramid of medulla oblongata.l",
+   "Pyramid of medulla oblongata.r",
+   "Pyramis of vermis",
+   "Red nucleus.l",
+   "Red nucleus.r",
+   "Retina.l",
+   "Retina.r",
+   "Sensory root of trigeminal nerve.l",
+   "Sensory root of trigeminal nerve.r",
+   "Septal nuclei",
+   "Septum pellucidum",
+   "Straight gyrus (Gyrus rectus).l",
+   "Straight gyrus (Gyrus rectus).r",
+   "Stria medullaris thalami.l",
+   "Stria medullaris thalami.r",
+   "Stria terminalis.r",
+   "Subparietal sulcus.l",
+   "Subparietal sulcus.r",
+   "Sulcus interm_prim-Jensen.l",
+   "Sulcus interm_prim-Jensen.r",
+   "Superior cerebellar peduncle.l",
+   "Superior cerebellar peduncle.r",
+   "Superior frontal sulcus.l",
+   "Superior frontal sulcus.r",
+   "Superior salivatory nucleus.l",
+   "Superior salivatory nucleus.r",
+   "Superior semilunar lobule.l",
+   "Superior semilunar lobule.r",
+   "Superior temporal gyrus (Lateral part).l",
+   "Superior temporal gyrus (Lateral part).r",
+   "Superior temporal sulcus.l",
+   "Superior temporal sulcus.r",
+   "Suspensory ligament of eyeball.l",
+   "Suspensory ligament of eyeball.r",
+   "Temporal plane.l",
+   "Temporal plane.r",
+   "Temporal pole.l",
+   "Temporal pole.r",
+   "Tonsil of cerebellum.l",
+   "Tonsil of cerebellum.r",
+   "Transverse temporal gyri.l",
+   "Transverse temporal gyri.r",
+   "Triangular part of inferior frontal gyrus.l",
+   "Triangular part of inferior frontal gyrus.r",
+   "Trigeminal nerve (V).l",
+   "Trigeminal nerve (V).r",
+   "Trochlear nerve (IV).l",
+   "Trochlear nerve (IV).r",
+   "Tuber of vermis",
+   "Tympanic membrane.l",
+   "Tympanic membrane.r",
+   "Uvula of vermis",
+   "Vestibular nerve.l",
+   "Vestibular nerve.r",
+   "Vestibular nuclei.l",
+   "Vestibular nuclei.r",
+   "Vestibulocochlear nerve (VIII).l",
+   "Vestibulocochlear nerve (VIII).r",
+   "Wing of central lobule.l",
+   "Wing of central lobule.r"
+  ],
+  "C": [
+   "(Communicating branch of median nerve with ulnar nerve).l",
+   "(Communicating branch of median nerve with ulnar nerve).r",
+   "Accessory nerve (XI).l",
+   "Accessory nerve (XI).r",
+   "Ampulla of lacrimal canaliculus.l",
+   "Ampulla of lacrimal canaliculus.r",
+   "Anterior branch of medial antebrachial cutaneous nerve.l",
+   "Anterior branch of medial antebrachial cutaneous nerve.r",
+   "Anterior branch of obturator nerve.l",
+   "Anterior branch of obturator nerve.r",
+   "Anterior chamber of eyeball.l",
+   "Anterior chamber of eyeball.r",
+   "Anterior corticospinal tract",
+   "Anterior cutaneous branches of femoral nerve.l",
+   "Anterior cutaneous branches of femoral nerve.r",
+   "Anterior division of inferior trunk of brachial plexus.l",
+   "Anterior division of inferior trunk of brachial plexus.r",
+   "Anterior division of middle trunk of brachial plexus.l",
+   "Anterior division of middle trunk of brachial plexus.r",
+   "Anterior division of superior trunk of brachial plexus.l",
+   "Anterior division of superior trunk of brachial plexus.r",
+   "Anterior fasciculus proprius",
+   "Anterior horn of spinal cord",
+   "Anterior interosseous nerve of forearm.l",
+   "Anterior interosseous nerve of forearm.r",
+   "Anterior root of posterior femoral cutaneous nerve.l",
+   "Anterior root of posterior femoral cutaneous nerve.r",
+   "Anterior root of spinal nerve.l",
+   "Anterior root of spinal nerve.r",
+   "Anterior segment of eyeball.l",
+   "Anterior segment of eyeball.r",
+   "Anterior spinocerebellar tract",
+   "Anterior spinothalamic tract",
+   "Axillary nerve.l",
+   "Axillary nerve.r",
+   "Cauda equina",
+   "Central canal",
+   "Ciliary body-curve.l",
+   "Ciliary body-curve.r",
+   "Common fibular nerve.l",
+   "Common fibular nerve.r",
+   "Common palmar digital branches of median nerve.l",
+   "Common palmar digital branches of median nerve.r",
+   "Common palmar digital branches of ulnar nerve.l",
+   "Common palmar digital branches of ulnar nerve.r",
+   "Common plantar digital branches of lateral plantar nerve.l",
+   "Common plantar digital branches of lateral plantar nerve.r",
+   "Common plantar digital branches of medial plantar nerve",
+   "Common plantar digital branches of medial plantar nerve.l",
+   "Cornea.l",
+   "Cornea.r",
+   "Cuneate fasciculus",
+   "Cuneus.l",
+   "Cuneus.r",
+   "Deep branch of radial nerve.l",
+   "Deep branch of radial nerve.r",
+   "Deep branch of ulnar nerve.l",
+   "Deep branch of ulnar nerve.r",
+   "Deep fibular nerve.l",
+   "Deep fibular nerve.r",
+   "Dorsal branch of ulnar nerve.l",
+   "Dorsal branch of ulnar nerve.r",
+   "Dorsal digital branches of deep fibular nerve.l",
+   "Dorsal digital branches of deep fibular nerve.r",
+   "Dorsal digital branches of radial nerve.l",
+   "Dorsal digital branches of radial nerve.r",
+   "Dorsal digital branches of superficial fibular nerve.l",
+   "Dorsal digital branches of superficial fibular nerve.r",
+   "Dorsal digital branches of ulnar nerve.l",
+   "Dorsal digital branches of ulnar nerve.r",
+   "Dorsal scapular nerve.l",
+   "Dorsal scapular nerve.r",
+   "Femoral branch of genitofemoral nerve.l",
+   "Femoral branch of genitofemoral nerve.r",
+   "Femoral nerve.l",
+   "Femoral nerve.r",
+   "Ganglia of sympathetic trunk.l",
+   "Ganglia of sympathetic trunk.r",
+   "Genital branch of genitofemoral nerve.l",
+   "Genital branch of genitofemoral nerve.r",
+   "Genitofemoral nerve.l",
+   "Genitofemoral nerve.r",
+   "Gracile fasciculus",
+   "Ilio-inguinal nerve.l",
+   "Ilio-inguinal nerve.r",
+   "Iliohypogastric nerve.l",
+   "Iliohypogastric nerve.r",
+   "Inferior alveolar nerve.l",
+   "Inferior alveolar nerve.r",
+   "Inferior lateral brachial cutaneous nerve.l",
+   "Inferior lateral brachial cutaneous nerve.r",
+   "Inferior subscapular nerve.l",
+   "Inferior subscapular nerve.r",
+   "Inferior trunk of brachial plexus.l",
+   "Inferior trunk of brachial plexus.r",
+   "Infrapatellar branch of saphenous nerve.l",
+   "Infrapatellar branch of saphenous nerve.r",
+   "Intercostal nerves.l",
+   "Intercostal nerves.r",
+   "Intermediate dorsal cutaneous nerve of foot.l",
+   "Intermediate dorsal cutaneous nerve of foot.r",
+   "Intermediolateral nucleus",
+   "Intermediomedial nucleus",
+   "Iris.l",
+   "Iris.r",
+   "Lacrimal canaliculus.l",
+   "Lacrimal canaliculus.r",
+   "Lacrimal sac.l",
+   "Lacrimal sac.r",
+   "Lateral antebrachial cutaneous nerve.l",
+   "Lateral antebrachial cutaneous nerve.r",
+   "Lateral corticospinal tract",
+   "Lateral fasciculus proprius",
+   "Lateral femoral cutaneous nerve.l",
+   "Lateral femoral cutaneous nerve.r",
+   "Lateral intermediate substance",
+   "Lateral occipital gyrus (Middle occipital gyrus*).l",
+   "Lateral occipital gyrus (Middle occipital gyrus*).r",
+   "Lateral pectoral nerve.l",
+   "Lateral pectoral nerve.r",
+   "Lateral plantar nerve.l",
+   "Lateral plantar nerve.r",
+   "Lateral reticulospinal tract",
+   "Lateral spinothalamic tract",
+   "Lateral vestibulospinal tract",
+   "Lens.l",
+   "Lens.r",
+   "Long thoracic nerve.l",
+   "Long thoracic nerve.r",
+   "Lunate sulcus.l",
+   "Lunate sulcus.r",
+   "Medial antebrachial cutaneous nerve.l",
+   "Medial antebrachial cutaneous nerve.r",
+   "Medial brachial cutaneous nerve.l",
+   "Medial brachial cutaneous nerve.r",
+   "Medial crural cutaneous branches of saphenous nerve.l",
+   "Medial crural cutaneous branches of saphenous nerve.r",
+   "Medial dorsal cutaneous nerve of foot.l",
+   "Medial dorsal cutaneous nerve of foot.r",
+   "Medial pectoral nerve.l",
+   "Medial pectoral nerve.r",
+   "Medial plantar nerve.l",
+   "Medial plantar nerve.r",
+   "Medial reticulospinal tract",
+   "Medial sural cutaneous nerve.l",
+   "Medial sural cutaneous nerve.r",
+   "Medial vestibulospinal tract",
+   "Median nerve.l",
+   "Median nerve.r",
+   "Mental nerve.l",
+   "Mental nerve.r",
+   "Meridians of eyeball.r",
+   "Middle trunk of brachial plexus.l",
+   "Middle trunk of brachial plexus.r",
+   "Muscular branches of axillary nerve.l",
+   "Muscular branches of axillary nerve.r",
+   "Muscular branches of deep fibular nerve.l",
+   "Muscular branches of deep fibular nerve.r",
+   "Muscular branches of median nerve.l",
+   "Muscular branches of median nerve.r",
+   "Muscular branches of radial nerve.l",
+   "Muscular branches of radial nerve.r",
+   "Muscular branches of ulnar nerve.l",
+   "Muscular branches of ulnar nerve.r",
+   "Musculocutaneous nerve.l",
+   "Musculocutaneous nerve.r",
+   "Nasolacrimal duct.l",
+   "Nasolacrimal duct.r",
+   "Nerve to mylohyoid muscle.l",
+   "Nerve to mylohyoid muscle.r",
+   "Nerve to piriformis muscle.l",
+   "Nerve to piriformis muscle.r",
+   "Nerve to quadratus femoris muscle.l",
+   "Nerve to quadratus femoris muscle.r",
+   "Nucleus proprius",
+   "Obturator nerve.l",
+   "Obturator nerve.r",
+   "Occipital pole.l",
+   "Occipital pole.r",
+   "Ophthalmic nerve.l",
+   "Ophthalmic nerve.r",
+   "Orbital gyri (Frontomarginal gyrus and sulcus*).l",
+   "Orbital gyri (Frontomarginal gyrus and sulcus*).r",
+   "Palmar branch of median nerve.l",
+   "Palmar branch of median nerve.r",
+   "Palmar branch of ulnar nerve.l",
+   "Palmar branch of ulnar nerve.r",
+   "Posterior antebrachial cutaneous nerve.l",
+   "Posterior antebrachial cutaneous nerve.r",
+   "Posterior branch of medial antebrachial cutaneous nerve.l",
+   "Posterior branch of medial antebrachial cutaneous nerve.r",
+   "Posterior branch of obturator nerve.l",
+   "Posterior branch of obturator nerve.r",
+   "Posterior cord of brachial plexus.l",
+   "Posterior cord of brachial plexus.r",
+   "Posterior division of inferior trunk of brachial plexus.l",
+   "Posterior division of inferior trunk of brachial plexus.r",
+   "Posterior division of middle trunk of brachial plexus.l",
+   "Posterior division of middle trunk of brachial plexus.r",
+   "Posterior division of superior trunk of brachial plexus.l",
+   "Posterior division of superior trunk of brachial plexus.r",
+   "Posterior fasciculus proprius",
+   "Posterior femoral cutaneous nerve.l",
+   "Posterior femoral cutaneous nerve.r",
+   "Posterior horn of spinal cord",
+   "Posterior interosseous nerve of forearm.l",
+   "Posterior interosseous nerve of forearm.r",
+   "Posterior root of posterior femoral cutaneous nerve.l",
+   "Posterior root of posterior femoral cutaneous nerve.r",
+   "Posterior root of spinal nerve.l",
+   "Posterior root of spinal nerve.r",
+   "Posterior spinocerebellar tract",
+   "Posterolateral tract",
+   "Proper palmar digital branches of median nerve.l",
+   "Proper palmar digital branches of median nerve.r",
+   "Proper palmar digital branches of ulnar nerve.l",
+   "Proper palmar digital branches of ulnar nerve.r",
+   "Proper plantar digital branches of lateral plantar nerve.l",
+   "Proper plantar digital branches of lateral plantar nerve.r",
+   "Proper plantar digital branches of medial plantar nerve.l",
+   "Proper plantar digital branches of medial plantar nerve.r",
+   "Pudendal nerve.l",
+   "Pudendal nerve.r",
+   "Radial nerve.l",
+   "Radial nerve.r",
+   "Roots of brachial plexus.l",
+   "Roots of brachial plexus.r",
+   "Rubrospinal tract",
+   "Saphenous nerve.l",
+   "Saphenous nerve.r",
+   "Sciatic nerve.l",
+   "Sciatic nerve.r",
+   "Sclera.l",
+   "Sclera.r",
+   "Spinal dura",
+   "Spinal ganglion.l",
+   "Spinal ganglion.r",
+   "Spinal reticular process",
+   "Spinotectal tract",
+   "Subclavian nerve.l",
+   "Subclavian nerve.r",
+   "Superficial branch of radial nerve.l",
+   "Superficial branch of radial nerve.r",
+   "Superficial branch of ulnar nerve.l",
+   "Superficial branch of ulnar nerve.r",
+   "Superficial fibular nerve.l",
+   "Superficial fibular nerve.r",
+   "Superior gluteal nerve.l",
+   "Superior gluteal nerve.r",
+   "Superior lateral brachial cutaneous nerve.l",
+   "Superior lateral brachial cutaneous nerve.r",
+   "Superior occipital gyri.l",
+   "Superior occipital gyri.r",
+   "Superior subscapular nerve.l",
+   "Superior subscapular nerve.r",
+   "Superior trunk of brachial plexus.l",
+   "Superior trunk of brachial plexus.r",
+   "Suprascapular nerve.l",
+   "Suprascapular nerve.r",
+   "Sural communicating branch of common fibular nerve.l",
+   "Sural communicating branch of common fibular nerve.r",
+   "Sural nerve.l",
+   "Sural nerve.r",
+   "Sympathetic nerves.l",
+   "Sympathetic nerves.r",
+   "Sympathetic trunk.l",
+   "Sympathetic trunk.r",
+   "Tectospinal tract",
+   "Thoracodorsal nerve.l",
+   "Thoracodorsal nerve.r",
+   "Tibial nerve.l",
+   "Tibial nerve.r",
+   "Transverse frontopolar gyrus and sulcus*.l",
+   "Transverse frontopolar gyrus and sulcus*.r",
+   "Transverse occipital sulcus.l",
+   "Transverse occipital sulcus.r",
+   "Ulnar nerve.l",
+   "Ulnar nerve.r",
+   "Vagus nerve (X).l",
+   "Vagus nerve (X).r",
+   "Vitreous body.l",
+   "Vitreous body.r",
+   "White matter of spinal cord",
+   "Zonular fibres.l",
+   "Zonular fibres.r"
+  ],
+  "D": [
+   "Angular gyrus.l",
+   "Angular gyrus.r",
+   "Cochlea.l",
+   "Cochlea.r",
+   "Cochlear nerve",
+   "Inferior colliculus.l",
+   "Inferior colliculus.r",
+   "Inferior temporal gyrus.l",
+   "Inferior temporal gyrus.r",
+   "Middle frontal gyrus.l",
+   "Middle frontal gyrus.r",
+   "Middle temporal gyrus.l",
+   "Middle temporal gyrus.r",
+   "Postcentral gyrus.l",
+   "Postcentral gyrus.r",
+   "Precentral gyrus.l",
+   "Precentral gyrus.r",
+   "Stria terminalis.l",
+   "Superior colliculus.l",
+   "Superior colliculus.r",
+   "Superior frontal gyrus.l",
+   "Superior frontal gyrus.r",
+   "Superior parietal lobule.l",
+   "Superior parietal lobule.r",
+   "Supramarginal gyrus.l",
+   "Supramarginal gyrus.r",
+   "Tentorium cerebelli.l",
+   "Tentorium cerebelli.r",
+   "Vestibule.l",
+   "Vestibule.r",
+   "White matter of telencephalon.l",
+   "White matter of telencephalon.r"
+  ]
+ },
+ "fma_absent_records": 286,
+ "fma_coverage_by_tier": {
+  "A": 0,
+  "B": 19,
+  "C": 67,
+  "D": 0
+ },
+ "fma_hits": {
+  "A": [],
+  "B": [
+   {
+    "object": "Abducens nerve (VI).l",
+    "fma_record": "nerve.left-abducens-nerve"
+   },
+   {
+    "object": "Abducens nerve (VI).r",
+    "fma_record": "nerve.right-abducens-nerve"
+   },
+   {
+    "object": "Facial nerve (VII).l",
+    "fma_record": "nerve.left-facial-nerve"
+   },
+   {
+    "object": "Facial nerve (VII).r",
+    "fma_record": "nerve.right-facial-nerve"
+   },
+   {
+    "object": "Falx cerebri",
+    "fma_record": "nerve.falx-cerebri"
+   },
+   {
+    "object": "Glossopharyngeal nerve (IX).l",
+    "fma_record": "nerve.left-glossopharyngeal-nerve"
+   },
+   {
+    "object": "Glossopharyngeal nerve (IX).r",
+    "fma_record": "nerve.right-glossopharyngeal-nerve"
+   },
+   {
+    "object": "Hypoglossal nerve (XII).l",
+    "fma_record": "nerve.left-hypoglossal-nerve"
+   },
+   {
+    "object": "Hypoglossal nerve (XII).r",
+    "fma_record": "nerve.right-hypoglossal-nerve"
+   },
+   {
+    "object": "Maxillary nerve.l",
+    "fma_record": "nerve.left-maxillary-nerve"
+   },
+   {
+    "object": "Maxillary nerve.r",
+    "fma_record": "nerve.right-maxillary-nerve"
+   },
+   {
+    "object": "Oculomotor nerve (III).l",
+    "fma_record": "nerve.left-oculomotor-nerve"
+   },
+   {
+    "object": "Oculomotor nerve (III).r",
+    "fma_record": "nerve.right-oculomotor-nerve"
+   },
+   {
+    "object": "Olfactory nerve (I).l",
+    "fma_record": "nerve.left-olfactory-nerve"
+   },
+   {
+    "object": "Olfactory nerve (I).r",
+    "fma_record": "nerve.right-olfactory-nerve"
+   },
+   {
+    "object": "Trigeminal nerve (V).l",
+    "fma_record": "nerve.left-trigeminal-nerve"
+   },
+   {
+    "object": "Trigeminal nerve (V).r",
+    "fma_record": "nerve.right-trigeminal-nerve"
+   },
+   {
+    "object": "Vestibulocochlear nerve (VIII).l",
+    "fma_record": "nerve.left-vestibulocochlear-nerve"
+   },
+   {
+    "object": "Vestibulocochlear nerve (VIII).r",
+    "fma_record": "nerve.right-vestibulocochlear-nerve"
+   }
+  ],
+  "C": [
+   {
+    "object": "Anterior root of spinal nerve.l",
+    "fma_record": "nerve.anterior-root-of-spinal-nerve"
+   },
+   {
+    "object": "Anterior root of spinal nerve.r",
+    "fma_record": "nerve.anterior-root-of-spinal-nerve"
+   },
+   {
+    "object": "Axillary nerve.l",
+    "fma_record": "nerve.left-axillary-nerve"
+   },
+   {
+    "object": "Axillary nerve.r",
+    "fma_record": "nerve.right-axillary-nerve"
+   },
+   {
+    "object": "Cauda equina",
+    "fma_record": "nerve.cauda-equina"
+   },
+   {
+    "object": "Common fibular nerve.l",
+    "fma_record": "nerve.left-common-fibular-nerve"
+   },
+   {
+    "object": "Common fibular nerve.r",
+    "fma_record": "nerve.right-common-fibular-nerve"
+   },
+   {
+    "object": "Deep fibular nerve.l",
+    "fma_record": "nerve.left-deep-fibular-nerve"
+   },
+   {
+    "object": "Deep fibular nerve.r",
+    "fma_record": "nerve.right-deep-fibular-nerve"
+   },
+   {
+    "object": "Femoral nerve.l",
+    "fma_record": "nerve.left-femoral-nerve"
+   },
+   {
+    "object": "Femoral nerve.r",
+    "fma_record": "nerve.right-femoral-nerve"
+   },
+   {
+    "object": "Genitofemoral nerve.l",
+    "fma_record": "nerve.left-genitofemoral-nerve"
+   },
+   {
+    "object": "Genitofemoral nerve.r",
+    "fma_record": "nerve.right-genitofemoral-nerve"
+   },
+   {
+    "object": "Iliohypogastric nerve.l",
+    "fma_record": "nerve.left-iliohypogastric-nerve"
+   },
+   {
+    "object": "Iliohypogastric nerve.r",
+    "fma_record": "nerve.right-iliohypogastric-nerve"
+   },
+   {
+    "object": "Inferior subscapular nerve.l",
+    "fma_record": "nerve.left-inferior-subscapular-nerve"
+   },
+   {
+    "object": "Inferior subscapular nerve.r",
+    "fma_record": "nerve.right-inferior-subscapular-nerve"
+   },
+   {
+    "object": "Lateral femoral cutaneous nerve.l",
+    "fma_record": "nerve.left-lateral-femoral-cutaneous-nerve"
+   },
+   {
+    "object": "Lateral femoral cutaneous nerve.r",
+    "fma_record": "nerve.right-lateral-femoral-cutaneous-nerve"
+   },
+   {
+    "object": "Lateral pectoral nerve.l",
+    "fma_record": "nerve.left-lateral-pectoral-nerve"
+   },
+   {
+    "object": "Lateral pectoral nerve.r",
+    "fma_record": "nerve.right-lateral-pectoral-nerve"
+   },
+   {
+    "object": "Lateral plantar nerve.l",
+    "fma_record": "nerve.left-lateral-plantar-nerve"
+   },
+   {
+    "object": "Lateral plantar nerve.r",
+    "fma_record": "nerve.right-lateral-plantar-nerve"
+   },
+   {
+    "object": "Long thoracic nerve.l",
+    "fma_record": "nerve.left-long-thoracic-nerve"
+   },
+   {
+    "object": "Long thoracic nerve.r",
+    "fma_record": "nerve.right-long-thoracic-nerve"
+   },
+   {
+    "object": "Medial pectoral nerve.l",
+    "fma_record": "nerve.left-medial-pectoral-nerve"
+   },
+   {
+    "object": "Medial pectoral nerve.r",
+    "fma_record": "nerve.right-medial-pectoral-nerve"
+   },
+   {
+    "object": "Medial plantar nerve.l",
+    "fma_record": "nerve.left-medial-plantar-nerve"
+   },
+   {
+    "object": "Medial plantar nerve.r",
+    "fma_record": "nerve.right-medial-plantar-nerve"
+   },
+   {
+    "object": "Median nerve.l",
+    "fma_record": "nerve.left-median-nerve"
+   },
+   {
+    "object": "Median nerve.r",
+    "fma_record": "nerve.right-median-nerve"
+   },
+   {
+    "object": "Musculocutaneous nerve.l",
+    "fma_record": "nerve.left-musculocutaneous-nerve"
+   },
+   {
+    "object": "Musculocutaneous nerve.r",
+    "fma_record": "nerve.right-musculocutaneous-nerve"
+   },
+   {
+    "object": "Obturator nerve.l",
+    "fma_record": "nerve.left-obturator-nerve"
+   },
+   {
+    "object": "Obturator nerve.r",
+    "fma_record": "nerve.right-obturator-nerve"
+   },
+   {
+    "object": "Posterior root of spinal nerve.l",
+    "fma_record": "nerve.posterior-root-of-spinal-nerve"
+   },
+   {
+    "object": "Posterior root of spinal nerve.r",
+    "fma_record": "nerve.posterior-root-of-spinal-nerve"
+   },
+   {
+    "object": "Pudendal nerve.l",
+    "fma_record": "nerve.left-pudendal-nerve"
+   },
+   {
+    "object": "Pudendal nerve.r",
+    "fma_record": "nerve.right-pudendal-nerve"
+   },
+   {
+    "object": "Radial nerve.l",
+    "fma_record": "nerve.left-radial-nerve"
+   },
+   {
+    "object": "Radial nerve.r",
+    "fma_record": "nerve.right-radial-nerve"
+   },
+   {
+    "object": "Saphenous nerve.l",
+    "fma_record": "nerve.left-saphenous-nerve"
+   },
+   {
+    "object": "Saphenous nerve.r",
+    "fma_record": "nerve.right-saphenous-nerve"
+   },
+   {
+    "object": "Sciatic nerve.l",
+    "fma_record": "nerve.left-sciatic-nerve"
+   },
+   {
+    "object": "Sciatic nerve.r",
+    "fma_record": "nerve.right-sciatic-nerve"
+   },
+   {
+    "object": "Spinal ganglion.l",
+    "fma_record": "nerve.spinal-ganglion"
+   },
+   {
+    "object": "Spinal ganglion.r",
+    "fma_record": "nerve.spinal-ganglion"
+   },
+   {
+    "object": "Superficial fibular nerve.l",
+    "fma_record": "nerve.left-superficial-fibular-nerve"
+   },
+   {
+    "object": "Superficial fibular nerve.r",
+    "fma_record": "nerve.right-superficial-fibular-nerve"
+   },
+   {
+    "object": "Superior gluteal nerve.l",
+    "fma_record": "nerve.left-superior-gluteal-nerve"
+   },
+   {
+    "object": "Superior gluteal nerve.r",
+    "fma_record": "nerve.right-superior-gluteal-nerve"
+   },
+   {
+    "object": "Superior subscapular nerve.l",
+    "fma_record": "nerve.left-superior-subscapular-nerve"
+   },
+   {
+    "object": "Superior subscapular nerve.r",
+    "fma_record": "nerve.right-superior-subscapular-nerve"
+   },
+   {
+    "object": "Suprascapular nerve.l",
+    "fma_record": "nerve.left-suprascapular-nerve"
+   },
+   {
+    "object": "Suprascapular nerve.r",
+    "fma_record": "nerve.right-suprascapular-nerve"
+   },
+   {
+    "object": "Sural nerve.l",
+    "fma_record": "nerve.left-sural-nerve"
+   },
+   {
+    "object": "Sural nerve.r",
+    "fma_record": "nerve.right-sural-nerve"
+   },
+   {
+    "object": "Sympathetic trunk.l",
+    "fma_record": "nerve.left-sympathetic-trunk"
+   },
+   {
+    "object": "Sympathetic trunk.r",
+    "fma_record": "nerve.right-sympathetic-trunk"
+   },
+   {
+    "object": "Thoracodorsal nerve.l",
+    "fma_record": "nerve.left-thoracodorsal-nerve"
+   },
+   {
+    "object": "Thoracodorsal nerve.r",
+    "fma_record": "nerve.right-thoracodorsal-nerve"
+   },
+   {
+    "object": "Tibial nerve.l",
+    "fma_record": "nerve.left-tibial-nerve"
+   },
+   {
+    "object": "Tibial nerve.r",
+    "fma_record": "nerve.right-tibial-nerve"
+   },
+   {
+    "object": "Ulnar nerve.l",
+    "fma_record": "nerve.left-ulnar-nerve"
+   },
+   {
+    "object": "Ulnar nerve.r",
+    "fma_record": "nerve.right-ulnar-nerve"
+   },
+   {
+    "object": "Vagus nerve (X).l",
+    "fma_record": "nerve.left-vagus-nerve"
+   },
+   {
+    "object": "Vagus nerve (X).r",
+    "fma_record": "nerve.right-vagus-nerve"
+   }
+  ],
+  "D": []
+ }
+}

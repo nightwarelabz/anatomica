@@ -1,0 +1,304 @@
+{
+ "scale_za_to_bp3d": 980.3611229749341,
+ "rotation": [
+  [
+   0.9999877908670903,
+   -0.004916975901516744,
+   -0.0004913906191802825
+  ],
+  [
+   0.004918348213364822,
+   0.9999838956665118,
+   0.00283165295877179
+  ],
+  [
+   0.00047745953630215173,
+   -0.0028340352169185117,
+   0.9999958701298625
+  ]
+ ],
+ "translation_mm": [
+  0.12190527745239788,
+  -91.63237113892963,
+  -37.80699916625326
+ ],
+ "threshold": {
+  "centroid_rms_mm": 2.0,
+  "surface_mean_mm": 1.0,
+  "surface_p95_mm": 3.0
+ },
+ "landmarks": {
+  "Frontal bone": {
+   "group": "train",
+   "bp3d_concept": "frontal bone",
+   "centroid_residual_mm": 1.0790896042094995,
+   "surface": {
+    "n": 3902,
+    "mean": 2.327345307920742,
+    "median": 2.259497941033075,
+    "p95": 4.385622859641108,
+    "max": 6.71917086843441
+   }
+  },
+  "Parietal bone.r": {
+   "group": "train",
+   "bp3d_concept": "right parietal bone",
+   "centroid_residual_mm": 3.2497287089474347
+  },
+  "Parietal bone.l": {
+   "group": "train",
+   "bp3d_concept": "left parietal bone",
+   "centroid_residual_mm": 3.6689414005193903
+  },
+  "Occipital bone": {
+   "group": "train",
+   "bp3d_concept": "occipital bone",
+   "centroid_residual_mm": 11.723818051709067
+  },
+  "Temporal bone.r": {
+   "group": "train",
+   "bp3d_concept": "right temporal bone",
+   "centroid_residual_mm": 8.761806987406446
+  },
+  "Temporal bone.l": {
+   "group": "train",
+   "bp3d_concept": "left temporal bone",
+   "centroid_residual_mm": 8.91301913265331
+  },
+  "Mandible": {
+   "group": "train",
+   "bp3d_concept": "mandible",
+   "centroid_residual_mm": 13.898695992973416
+  },
+  "Sphenoid bone": {
+   "group": "train",
+   "bp3d_concept": "sphenoid bone",
+   "centroid_residual_mm": 5.191921618175183
+  },
+  "Atlas (C1)": {
+   "group": "train",
+   "bp3d_concept": "atlas",
+   "centroid_residual_mm": 3.1462910726568407
+  },
+  "Axis (C2)": {
+   "group": "train",
+   "bp3d_concept": "axis",
+   "centroid_residual_mm": 5.285273734726518
+  },
+  "Vertebra C4": {
+   "group": "train",
+   "bp3d_concept": "fourth cervical vertebra",
+   "centroid_residual_mm": 6.038084639241668
+  },
+  "Vertebra T6": {
+   "group": "train",
+   "bp3d_concept": "sixth thoracic vertebra",
+   "centroid_residual_mm": 14.538977751783888
+  },
+  "Vertebra L3": {
+   "group": "train",
+   "bp3d_concept": "third lumbar vertebra",
+   "centroid_residual_mm": 8.930393682247777
+  },
+  "Sacrum": {
+   "group": "train",
+   "bp3d_concept": "sacrum",
+   "centroid_residual_mm": 2.078901996862314,
+   "surface": {
+    "n": 5832,
+    "mean": 3.567612631429569,
+    "median": 3.16888434353913,
+    "p95": 6.904116316621959,
+    "max": 11.457185632985782
+   }
+  },
+  "Hip bone.r": {
+   "group": "train",
+   "bp3d_concept": "right hip bone",
+   "centroid_residual_mm": 6.019403245046146
+  },
+  "Hip bone.l": {
+   "group": "train",
+   "bp3d_concept": "left hip bone",
+   "centroid_residual_mm": 6.942703119639505
+  },
+  "Femur.r": {
+   "group": "held_out",
+   "bp3d_concept": "right femur",
+   "centroid_residual_mm": 4.866453100569432,
+   "surface": {
+    "n": 1899,
+    "mean": 9.182587951416814,
+    "median": 7.15400390299365,
+    "p95": 21.046796823687508,
+    "max": 25.03773226954245
+   }
+  },
+  "Femur.l": {
+   "group": "held_out",
+   "bp3d_concept": "left femur",
+   "centroid_residual_mm": 8.120264333746158,
+   "surface": {
+    "n": 1899,
+    "mean": 9.494249183539072,
+    "median": 7.5512629153696516,
+    "p95": 21.508689472800732,
+    "max": 25.8292230207316
+   }
+  },
+  "Humerus.r": {
+   "group": "held_out",
+   "bp3d_concept": "right humerus",
+   "centroid_residual_mm": 23.290070398238477,
+   "surface": {
+    "n": 2143,
+    "mean": 8.231379150337323,
+    "median": 8.317343897225305,
+    "p95": 14.066527392952427,
+    "max": 15.648287321897397
+   }
+  },
+  "Humerus.l": {
+   "group": "held_out",
+   "bp3d_concept": "left humerus",
+   "centroid_residual_mm": 17.905171450171057,
+   "surface": {
+    "n": 2143,
+    "mean": 9.183870415762506,
+    "median": 9.587686307644999,
+    "p95": 15.929690637129184,
+    "max": 18.41258922401655
+   }
+  },
+  "Tibia.r": {
+   "group": "held_out",
+   "bp3d_concept": "right tibia",
+   "centroid_residual_mm": 45.593377107075135,
+   "surface": {
+    "n": 837,
+    "mean": 17.024710163315394,
+    "median": 17.230764641210246,
+    "p95": 28.961333384889038,
+    "max": 36.02794945604568
+   }
+  },
+  "Fibula.r": {
+   "group": "held_out",
+   "bp3d_concept": "right fibula",
+   "centroid_residual_mm": 53.074022675621784,
+   "surface": {
+    "n": 653,
+    "mean": 11.006128807853303,
+    "median": 11.855241042377983,
+    "p95": 18.23022431388399,
+    "max": 21.883514571772153
+   }
+  },
+  "Radius.r": {
+   "group": "held_out",
+   "bp3d_concept": "right radius",
+   "centroid_residual_mm": 14.854807235464548,
+   "surface": {
+    "n": 394,
+    "mean": 7.413525988800178,
+    "median": 7.843977408573577,
+    "p95": 12.650914852804382,
+    "max": 21.59966464130755
+   }
+  },
+  "Ulna.r": {
+   "group": "held_out",
+   "bp3d_concept": "right ulna",
+   "centroid_residual_mm": 14.118663991789438,
+   "surface": {
+    "n": 454,
+    "mean": 7.090561797588211,
+    "median": 6.2604430542452025,
+    "p95": 13.773277806736479,
+    "max": 15.016486409754267
+   }
+  },
+  "Scapula.r": {
+   "group": "held_out",
+   "bp3d_concept": "right scapula",
+   "centroid_residual_mm": 17.17272029141802,
+   "surface": {
+    "n": 12690,
+    "mean": 9.450023956548586,
+    "median": 8.77843814444469,
+    "p95": 19.491885655344756,
+    "max": 21.587529022773005
+   }
+  },
+  "Clavicle.r": {
+   "group": "held_out",
+   "bp3d_concept": "right clavicle",
+   "centroid_residual_mm": 14.692083294523949,
+   "surface": {
+    "n": 789,
+    "mean": 8.611722899036177,
+    "median": 7.533175746568528,
+    "p95": 17.762689021543498,
+    "max": 21.483367497161282
+   }
+  },
+  "Calcaneus.r": {
+   "group": "held_out",
+   "bp3d_concept": "right calcaneus",
+   "centroid_residual_mm": 45.19155898655397,
+   "surface": {
+    "n": 726,
+    "mean": 29.88188586921215,
+    "median": 32.63037972474479,
+    "p95": 45.665953154938464,
+    "max": 49.667634179534275
+   }
+  },
+  "Calcaneus.l": {
+   "group": "held_out",
+   "bp3d_concept": "left calcaneus",
+   "centroid_residual_mm": 45.61093719459624,
+   "surface": {
+    "n": 726,
+    "mean": 29.99881103755034,
+    "median": 32.6441374574204,
+    "p95": 45.92118715985318,
+    "max": 49.73853519868291
+   }
+  },
+  "Patella.r": {
+   "group": "held_out",
+   "bp3d_concept": "right patella",
+   "centroid_residual_mm": 20.972748519334225,
+   "surface": {
+    "n": 140,
+    "mean": 14.163790357037223,
+    "median": 15.123923126448734,
+    "p95": 20.91076881449335,
+    "max": 22.00066436631435
+   }
+  },
+  "First rib.r": {
+   "group": "held_out",
+   "bp3d_concept": "right first rib",
+   "centroid_residual_mm": 12.616398311636798,
+   "surface": {
+    "n": 1607,
+    "mean": 6.84532950852009,
+    "median": 6.38651087280543,
+    "p95": 12.792504901073032,
+    "max": 13.708728579498846
+   }
+  }
+ },
+ "train_centroid_rms_mm": 7.8785979753398605,
+ "held_out_centroid_rms_mm": 28.661419325237446,
+ "held_out_surface_mean_of_means_mm": 12.684184077608384,
+ "held_out_surface_worst_p95_mm": 45.92118715985318,
+ "verdict": {
+  "centroid_rms_pass": false,
+  "surface_mean_pass": false,
+  "surface_p95_pass": false,
+  "registration_clears": false
+ }
+}
