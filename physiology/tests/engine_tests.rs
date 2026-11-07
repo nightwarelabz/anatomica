@@ -1267,3 +1267,190 @@ fn metabolic_feedback_raises_hr_and_do2_in_hemorrhage() {
         armed.window_post.hr
     );
 }
+
+// ---------------------------------------------------------------------
+// Milestone 58: the calcium–PTH axis. The resting-zero law, the
+// pinned circulation hash, the secretion sigmoid's shape, and the
+// PTH-loss A/B pair at 24 h (the full 72 h arms gate in
+// `validate`; the pair here proves the same identities at the
+// horizon the Case #8 consonance turns on).
+// ---------------------------------------------------------------------
+
+#[test]
+fn calcium_axis_resting_zero_and_pinned_hash() {
+    use anatomica_physiology::engine::{pth_secretion_pg_ml, Model};
+    let p = params();
+    let m = Model::from_params(&p);
+    let m = &m;
+    // The sigmoid's three checkable points (S75's form, the
+    // frozen construction): at the set-point the secretion is the
+    // midpoint (A + D)/2 = 46.5 exactly; at the resting calcium
+    // it is the resting PTH the state initialises at; at Case
+    // #8's ionized calcium it is the value her remnant fraction
+    // was derived from.
+    assert!((pth_secretion_pg_ml(1.15, 1.0, m) - 46.5).abs() < 1e-9);
+    assert!(
+        (pth_secretion_pg_ml(1.20, 1.0, m) - m.resting_pth_pg_ml()).abs() < 1e-9,
+        "sigmoid at rest {} vs construction {}",
+        pth_secretion_pg_ml(1.20, 1.0, m),
+        m.resting_pth_pg_ml()
+    );
+    assert!(
+        (pth_secretion_pg_ml(0.94, 1.0, m) - 89.78).abs() < 0.05,
+        "sigmoid at 0.94 mmol/L: {:.2} (solver 89.78)",
+        pth_secretion_pg_ml(0.94, 1.0, m)
+    );
+    // Construction: the states sit exactly on the equilibrium.
+    let e = Engine::new(&p);
+    assert_eq!(e.pth_pg_ml(), m.resting_pth_pg_ml());
+    assert_eq!(e.bone_resorption_state(), 1.0);
+    assert_eq!(e.bone_formation_state(), 1.0);
+    assert_eq!(e.vitamin_d_state(), 1.0);
+    assert!(
+        (e.ionized_calcium_mmol_l() - 1.20).abs() < 1e-9,
+        "resting ionized {:.12}",
+        e.ionized_calcium_mmol_l()
+    );
+    assert!((e.total_calcium_mmol_l() - 2.50).abs() < 1e-9);
+    // The corrected value passes through the albumin readout,
+    // whose protein-state construction carries ~3e-7 of rounding
+    // (45.00000028 g/L measured) — a 1e-6 tolerance is the honest
+    // one for the derived readout; ionized and total above are
+    // exact.
+    assert!(
+        (e.corrected_calcium_mmol_l() - 2.40).abs() < 1e-6,
+        "resting corrected {:.9}",
+        e.corrected_calcium_mmol_l()
+    );
+    assert!((e.albumin_g_l() - 45.0).abs() < 1e-6);
+    // The resting validation ranges carry the axis lines inside
+    // their cited normals (ionized/total/corrected S76, PTH S77).
+    let resting = run_case(&p, CaseKind::Resting);
+    for line in evaluate_resting(&p, &resting) {
+        if ["ionized_calcium", "total_calcium", "corrected_calcium", "plasma_pth"]
+            .contains(&line.output.as_str())
+        {
+            assert!(line.pass, "resting {} = {} outside {}", line.output, line.value, line.range_text);
+        }
+    }
+    // THE pinned assertion: with the axis live, the resting
+    // circulation trace hash is the case-pinned constant,
+    // bit-identical (the axis folds into resp_hash only).
+    assert_eq!(
+        resting.trace_hash, 0x6369b10e9a71c872,
+        "the pinned circulation hash must not move"
+    );
+}
+
+#[test]
+fn calcium_pth_loss_ab_pair_24h() {
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let engage = |p: &Params| {
+        let mut e = Engine::new(p);
+        e.tick_n(4500);
+        let b0 = e.beats.len();
+        e.tick_n(1500);
+        let b1 = e.beats.len();
+        let map = anatomica_physiology::cases::window_stats(&e.beats[b0..b1]).map;
+        e.set_reflex_setpoint(map);
+        e
+    };
+    // Live arm: capacity cut to the Case #8 remnant at engagement.
+    let mut live = engage(&p);
+    live.apply(
+        6000,
+        Event::SetPTHSecretion {
+            capacity: 0.09,
+            label: "test: PTH loss".to_string(),
+        },
+    );
+    // Control: identical events, axis disabled.
+    let mut pure = engage(&p);
+    pure.apply(
+        6000,
+        Event::SetCalciumAxis {
+            enabled: false,
+            label: "test: axis disabled".to_string(),
+        },
+    );
+    pure.apply(
+        6000,
+        Event::SetPTHSecretion {
+            capacity: 0.09,
+            label: "test: PTH loss".to_string(),
+        },
+    );
+    let rest_content = pure.calcium_content_mmol();
+    let rest_ionized = pure.ionized_calcium_mmol_l();
+    let rest_pth = pure.pth_pg_ml();
+    live.tick_n(4_320_000); // +24 h
+    pure.tick_n(4_320_000);
+    // The disabled axis's STATES are frozen exactly: the content
+    // state, PTH, and the three effect states are bit-identical
+    // to their resting values (zero derivatives integrate to
+    // exactly zero). The ionized READOUT is not frozen — it is
+    // the frozen content over the live extracellular volume,
+    // which drifts ~0.2% over a protocol day (+0.0023 mmol/L
+    // measured) — asserted as a small drift, not hidden.
+    assert_eq!(pure.calcium_content_mmol(), rest_content);
+    assert_eq!(pure.pth_pg_ml(), rest_pth);
+    assert_eq!(pure.bone_resorption_state(), 1.0);
+    assert_eq!(pure.bone_formation_state(), 1.0);
+    assert_eq!(pure.vitamin_d_state(), 1.0);
+    assert!(
+        (pure.ionized_calcium_mmol_l() - rest_ionized).abs() < 5e-3,
+        "disabled-arm ionized drift {:+.5} mmol/L over 24 h (volume drift only)",
+        pure.ionized_calcium_mmol_l() - rest_ionized
+    );
+    // The live arm falls into the independent solver's frozen
+    // 24 h band (solver 1.0596 mmol/L).
+    assert!(
+        (1.00..=1.12).contains(&live.ionized_calcium_mmol_l()),
+        "PTH-loss ionized at +24 h: {:.4} (solver 1.0596)",
+        live.ionized_calcium_mmol_l()
+    );
+    // The axis never enters a circulation derivative: at the
+    // identical horizon the circulation hashes are identical and
+    // the respiratory hashes differ (the axis folds there).
+    assert_eq!(live.hash(), pure.hash(), "circulation hash must be axis-blind");
+    assert_ne!(live.resp_hash(), pure.resp_hash(), "the axis must fold into resp_hash");
+}
+
+#[test]
+fn calcium_infusion_peak_band() {
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let mut e = Engine::new(&p);
+    e.tick_n(4500);
+    let b0 = e.beats.len();
+    e.tick_n(1500);
+    let b1 = e.beats.len();
+    let map = anatomica_physiology::cases::window_stats(&e.beats[b0..b1]).map;
+    e.set_reflex_setpoint(map);
+    e.apply(
+        6000,
+        Event::SetCalciumFlow {
+            rate_mmol_min: 0.225,
+            label: "test: infusion begins".to_string(),
+        },
+    );
+    e.apply(
+        66000,
+        Event::SetCalciumFlow {
+            rate_mmol_min: 0.0,
+            label: "test: infusion ends".to_string(),
+        },
+    );
+    e.tick_n(60000); // to +20 min (the infusion's end)
+    assert!(
+        (1.47..=1.58).contains(&e.ionized_calcium_mmol_l()),
+        "infusion peak ionized: {:.4} (solver 1.5254)",
+        e.ionized_calcium_mmol_l()
+    );
+    assert!(
+        e.pth_pg_ml() < 4.0,
+        "PTH at the peak must be suppressed to the sigmoid's floor: {:.2} (solver 3.26)",
+        e.pth_pg_ml()
+    );
+}

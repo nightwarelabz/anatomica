@@ -1365,6 +1365,213 @@
       "status": "calibrated",
       "unit": "seconds",
       "value": 86400.0
+    },
+    {
+      "cited_range": [
+        1.1,
+        1.3
+      ],
+      "name": "ionized_calcium_resting_mmol_l",
+      "note": "Milestone 58: the extracellular ionized calcium the axis is constructed at - the regulated variable's resting value, mid-low in S76's consulted normal span for ionized calcium (1.10-1.30 mmol/L), where healthy resting values sit. The calcium content state is initialised at this concentration over the engine's resting extracellular volume (13,750 mL: plasma 2,750 + interstitial 11,000, the Milestone 25/30 construction), i.e. 16.5 mmol of ionized calcium; S76's fractions put the ECF total-calcium content at about 34 mmol on the same volume. CALIBRATED inside the cited range: the resting construction's fixed point, chosen once; no arm is tuned against it.",
+      "source": "S76",
+      "status": "calibrated",
+      "unit": "mmol/L",
+      "value": 1.2
+    },
+    {
+      "cited_range": [
+        1.0,
+        1.25
+      ],
+      "name": "pth_setpoint_mmol_l",
+      "note": "Milestone 58: the set-point of the PTH secretion sigmoid - Brown's parameter C (S75): the extracellular calcium concentration causing half-maximal inhibition of secretion. Placed 0.05 mmol/L below the resting ionized calcium, so the resting gland sits on the curve's upper steep limb (resting secretion about 22% of the A-to-D span), as in-vivo glands do; at this placement the construction's resting PTH is 19.8 pg/mL (see pth_max_pg_ml). CALIBRATED: S75 defines the parameter but its abstract reports no human numeric value; the cited range brackets the resting ionized span's lower half, and the value is fixed by the resting-PTH construction it produces, disclosed here - it is not a measurement.",
+      "source": "S75",
+      "status": "calibrated",
+      "unit": "mmol/L",
+      "value": 1.15
+    },
+    {
+      "cited_range": null,
+      "name": "pth_max_pg_ml",
+      "note": "Milestone 58: Brown's parameter A (S75): the secretion sigmoid's maximum - the plasma PTH the gland's output approaches as ionized calcium falls well below the set-point, before the secretion--clearance state's scaling. VERIFY-FLAGGED: no consulted source states a lumped in-vivo maximum plasma PTH for the intact gland in this form (assay ranges, S77, are population reference intervals, not secretory maxima), so the value carries no citation and must not be read as one. Its observable consequences are bounded and checked: with the set-point placement it sets the resting PTH to 19.8 pg/mL (inside S77's 10-65), the vitamin-D arm's secondary rise to about 29 pg/mL, and the PTH-loss arm's residual-gland saturation to 0.09 x 89.8 = 8.1 pg/mL at the case's calcium (the capacity fraction, an arm definition in cases.rs, is what Case #8's measured 8 pg/mL fixes - not this parameter).",
+      "source": null,
+      "status": "verify",
+      "unit": "pg/mL",
+      "value": 90.0
+    },
+    {
+      "cited_range": null,
+      "name": "pth_min_pg_ml",
+      "note": "Milestone 58: Brown's parameter D (S75): the nonsuppressible minimum of PTH release - the sigmoid's floor at high calcium. VERIFY-FLAGGED like pth_max_pg_ml (no lumped in-vivo value was read in a consulted source); kept small and positive, as Brown's fits require (secretion is suppressible, not abolishable). The infusion arm reads it directly: at the peak calcium the model's PTH sits at 3.0-3.3 pg/mL, i.e. on this floor.",
+      "source": null,
+      "status": "verify",
+      "unit": "pg/mL",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "pth_sigmoid_width_mmol_l",
+      "note": "Milestone 58: the logistic width w of the secretion sigmoid, PTH = D + (A - D)/(1 + exp((Ca - C)/w)); Brown's slope at the set-point is B = -(A - D)/(4w), here -621 pg/mL per mmol/L. At w = 0.035 the curve runs from 90% to 10% of its span over 2 x w x ln(9) = 0.154 mmol/L of ionized calcium, centred on the set-point. VERIFY-FLAGGED: Brown's paper (S75) establishes the sigmoidal form and that the steep portion lies in the physiological range, but no consulted source tabulates a width in this parameterisation; the value is an engineering choice inside that qualitative constraint, and the resting loop gain it produces (with the renal limb, a resting calcium time constant of minutes) is reported in MILESTONE-58.md, not gated.",
+      "source": null,
+      "status": "verify",
+      "unit": "mmol/L",
+      "value": 0.035
+    },
+    {
+      "cited_range": [
+        173.0,
+        346.0
+      ],
+      "name": "pth_tau_seconds",
+      "note": "Milestone 58: the PTH state's first-order time constant (secretion--clearance lump). Intact PTH's plasma half-life is two to four minutes (S78, dual-stated there and in Garrett et al. 2013); a first-order state's time constant is t1/2 / ln 2, so the cited half-life span converts to tau in [173, 346] s. CALIBRATED at 240 s (the conversion at t1/2 = 2.8 min, inside the span): the hormone state tracks its secretion target with the hormone's own plasma kinetics - fast against every other axis timescale, which is what makes the PTH-loss arm's early PTH readouts (3.2 pg/mL at 6 h, while calcium is still near the set-point) a property of the sigmoid, not of this lag.",
+      "source": "S78",
+      "status": "calibrated",
+      "unit": "seconds",
+      "value": 240.0
+    },
+    {
+      "cited_range": [
+        2.5,
+        7.5
+      ],
+      "name": "urine_calcium_resting_mmol_day",
+      "note": "Milestone 58: resting urinary calcium excretion, the renal limb's baseline flux. S76: of 10,000 mg filtered daily about 200 mg is excreted, equalling net intestinal absorption; the consulted excretion span across sources is 100-300 mg/day. CALIBRATED at 5.0 mmol/day (200 mg/day, S76's own figure) inside the [2.5, 7.5] mmol/day (100-300 mg) span: at this value the resting construction closes exactly against net gut absorption (calcium_intake_mmol_day x calcium_net_absorption_fraction = 5.0), as S76's balance statement requires.",
+      "source": "S76",
+      "status": "calibrated",
+      "unit": "mmol/day",
+      "value": 5.0
+    },
+    {
+      "cited_range": null,
+      "name": "calcium_intake_mmol_day",
+      "note": "Milestone 58: dietary calcium intake, the gut limb's input scale. S76: 'the average daily intake of Ca is about 1,000 mg' = 25 mmol/day; S79 states the same 25 mmol ingested. CITED value, carried so the absorption fraction's basis is explicit; the engine's gut flux is intake x net fraction x the vitamin-D state's active share (see calcium_net_absorption_fraction and gut_passive_fraction).",
+      "source": "S76",
+      "status": "cited",
+      "unit": "mmol/day",
+      "value": 25.0
+    },
+    {
+      "cited_range": [
+        0.15,
+        0.25
+      ],
+      "name": "calcium_net_absorption_fraction",
+      "note": "Milestone 58: the NET intestinal absorption fraction: the share of dietary intake the extracellular pool actually gains, after intestinal secretion. S76: 400 mg of 1,000 mg is absorbed gross and about 200 mg is re-secreted, 'therefore, net absorption is 200 mg (about 20%)'. CALIBRATED at exactly S76's 0.20; the cited range brackets the consulted net figures. At 0.20 the resting gut influx is 5.0 mmol/day, equalling resting urinary excretion - the balance S76 states - so the resting calcium derivative vanishes by construction. The fraction multiplies the vitamin-D-modulated active share only in part: see gut_passive_fraction.",
+      "source": "S76",
+      "status": "calibrated",
+      "unit": "fraction",
+      "value": 0.2
+    },
+    {
+      "cited_range": null,
+      "name": "gut_passive_fraction",
+      "note": "Milestone 58: the vitamin-D-INDEPENDENT (passive, paracellular) share of net intestinal absorption: gut influx = intake x net fraction x (passive + (1 - passive) x vitd_state). VERIFY-FLAGGED: that a passive, vitamin-D-independent absorption pathway exists is standard physiology in the consulted reviews (S76 describes absorption as calcitriol-dependent active transport plus passive movement), but no consulted source quantifies the split as a single fraction, so 0.40 is an engineering value, never to be read as a measured share. It is load-bearing in exactly one place: it floors the gut influx in the PTH-loss and vitamin-D arms (without it, both arms' gut influx falls the full vitamin-D factor and their equilibria drop below the consulted clinical range - the solver comparison is in MILESTONE-58.md).",
+      "source": null,
+      "status": "verify",
+      "unit": "fraction",
+      "value": 0.4
+    },
+    {
+      "cited_range": [
+        10.0,
+        12.5
+      ],
+      "name": "bone_calcium_flux_mmol_day",
+      "note": "Milestone 58: the resting bone calcium exchange flux in EACH direction (resorption out of bone, formation into bone - equal at the resting equilibrium, so the resting bone net is zero). Consulted figures: S79 states bone turnover of 10 mmol per day; S76 states approximately 500 mg of calcium exchanged daily between bone and ECF (12.5 mmol/day). CALIBRATED at S79's 10.0, the lower consulted figure; the cited range spans both. The PTH-sensitive share of this flux is bone_pth_sensitive_fraction; the resorption and formation responses run on different time constants (bone_resorption_tau_seconds, bone_formation_tau_seconds), which is what makes their transient difference - the post-PTH-loss net uptake - possible at all.",
+      "source": "S79",
+      "status": "calibrated",
+      "unit": "mmol/day",
+      "value": 10.0
+    },
+    {
+      "cited_range": null,
+      "name": "bone_pth_sensitive_fraction",
+      "note": "Milestone 58: the share of the bone exchange flux that answers to the PTH effect states: resorption = flux x (1 + sens x (bone_state - 1)), formation likewise on form_state. VERIFY-FLAGGED: basal (PTH-independent) remodelling plainly exists in the consulted physiology, but no consulted source quantifies the PTH-sensitive share of the lumped daily flux, so 0.35 is an engineering value. Calibration disclosure (MILESTONE-58.md): at sens = 1.0 the independent solver's PTH-loss arm fell to ionized 0.27 mmol/L at 7 days - a non-physiological runaway driven by the formation lag; at 0.35 the same arm reproduces Case #8's measured 48-hour ionized calcium (0.94) to 0.006 mmol/L. The value is frozen from the solver, before the engine ran.",
+      "source": null,
+      "status": "verify",
+      "unit": "fraction",
+      "value": 0.35
+    },
+    {
+      "cited_range": [
+        43200.0,
+        259200.0
+      ],
+      "name": "bone_resorption_tau_seconds",
+      "note": "Milestone 58: the resorption effect state's first-order time constant - how fast PTH's osteoclast-mediated resorption signal develops or withdraws. No consulted source states this tau; the sources state the CLINICAL time course it must reproduce: after total thyroidectomy the serum calcium falls over one to two days, the lowest level at 48 h, the monitoring window 24-96 h (S80). CALIBRATED at 36 h: with the formation lag below, the PTH-loss arm's nadir region and its 48-hour value land on the case's measured course (MILESTONE-58.md); the cited range [12 h, 72 h] brackets the tau values whose approach spans the consulted 24-96 h window's development. A calibrated conversion of cited windows, in the Milestone 53 pattern - not itself a cited number.",
+      "source": "S80",
+      "status": "calibrated",
+      "unit": "seconds",
+      "value": 129600.0
+    },
+    {
+      "cited_range": [
+        432000.0,
+        1814400.0
+      ],
+      "name": "bone_formation_tau_seconds",
+      "note": "Milestone 58: the formation effect state's first-order time constant - the remodelling coupling lag: formation follows a changed resorption signal over weeks, not hours, so a step change in PTH leaves a transient net bone flux (uptake after PTH loss, release after PTH excess) that closes as formation catches up. No consulted source states this lag in first-order form; it is CALIBRATED at 10 days inside [5, 21] days, the bracket whose 3-tau completion (15-63 days) spans the remodelling-coupling timescale and the multi-week normalisation courses in the consulted post-thyroidectomy literature (S80: most transient cases normalise in 5-6 days on recovering gland function - a different, faster mechanism the arm does not model; the formation lag governs the model's own untreated tail, disclosed in MILESTONE-58.md). Both bone states share one target (the clamped PTH ratio); only their time constants differ.",
+      "source": "S80",
+      "status": "calibrated",
+      "unit": "seconds",
+      "value": 864000.0
+    },
+    {
+      "cited_range": [
+        43200.0,
+        172800.0
+      ],
+      "name": "vitamin_d_tau_seconds",
+      "note": "Milestone 58: the vitamin-D (calcitriol-effect) state's first-order time constant. The mechanism is cited (S76 and Garrett et al. 2013, consulted with S78: PTH stimulates the renal synthesis of calcitriol, which raises intestinal calcium absorption; the effect is genomic - new transport protein - and so runs on a day scale, not the hormone's minute scale). No consulted source states a lumped tau; CALIBRATED at 24 h inside [12, 48] h, the bracket consistent with a day-scale genomic effect developing inside the PTH-loss arm's 24-96 h clinical window (S80). A calibrated conversion in the Milestone 53 pattern.",
+      "source": "S76",
+      "status": "calibrated",
+      "unit": "seconds",
+      "value": 86400.0
+    },
+    {
+      "cited_range": null,
+      "name": "vitamin_d_pth_exponent",
+      "note": "Milestone 58: the exponent on the clamped PTH ratio in the vitamin-D state's target: target = vitd_scale x clamp(PTH/PTH_rest, 0, ceiling)^0.25. The DIRECTION is cited (PTH stimulates calcitriol synthesis, S76); the quarter-power form - a strongly saturating drive, so a fourfold PTH rise raises the target only about 1.4x - is an engineering shape with no lumped citation: VERIFY-FLAGGED. It is what lets the vitamin-D-deficiency arm partially compensate (rising PTH squeezes more calcitriol from a deficient substrate), a stated property of the arm, not a hidden one.",
+      "source": null,
+      "status": "verify",
+      "unit": "exponent",
+      "value": 0.25
+    },
+    {
+      "cited_range": null,
+      "name": "renal_calcium_pth_amplitude",
+      "note": "Milestone 58: the renal limb's PTH sensitivity: urinary excretion = resting excretion x (ionized Ca / resting Ca) x clamp(1 + amp x (1 - PTH/PTH_rest), 0.2, 1.35). The first factor is the filtered load (excretion proportional to the concentration the glomerulus filters, at the engine's fixed lumped filtration); the second is PTH's cited distal-reabsorption action (S76: high PTH decreases calcium excretion, low PTH increases it) as a lumped amplitude on excretion. VERIFY-FLAGGED: the filtered load it modulates is about 250 mmol/day against a 5 mmol/day excretion, so no consulted fractional-reabsorption figure converts to this amplitude without a tubular model this engine deliberately lacks. Calibration disclosure (MILESTONE-58.md): the solver ran 0.25 / 0.35 / 0.70 - 0.25 left the PTH-loss arm's first day too shallow against Case #8's course, 0.70 forced the arm's untreated equilibrium to a non-physiological 0.5 mmol/L; 0.35 is the frozen value, at which the arm's 48-hour ionized calcium matches the case's measured 0.94 mmol/L.",
+      "source": null,
+      "status": "verify",
+      "unit": "fraction",
+      "value": 0.35
+    },
+    {
+      "cited_range": null,
+      "name": "calcium_effect_state_ceiling",
+      "note": "Milestone 58: the clamp on the normalised PTH ratio that drives the bone and vitamin-D effect states' targets: clamp(PTH/PTH_rest, 0, 3.0). VERIFY-FLAGGED engineering bound (the reflex-bound pattern): it keeps a saturated sigmoid (PTH at its verify-flagged maximum, ratio about 4.5) from driving the slow effect states to the same multiple; at the ceiling the bone states target 3.0, i.e. resorption up to flux x (1 + 0.35 x 2) = 1.7x resting at full development. No shipped arm reaches the ceiling except the vitamin-D arm's bone state, which approaches it (1.53 at 14 days, still rising) - reported there, not hidden.",
+      "source": null,
+      "status": "verify",
+      "unit": "ratio",
+      "value": 3.0
+    },
+    {
+      "cited_range": null,
+      "name": "ionized_calcium_fraction",
+      "note": "Milestone 58: the ionized (free) fraction of total serum calcium, the total-calcium readout's divisor: total = ionized / fraction. CITED: S76 states the serum fractions directly - ionized (free) 48%, protein-bound 45%, complexed 7%. At the resting ionized 1.20 mmol/L the resting total reads 2.50 mmol/L, inside S76's 2.2-2.6 span. The fraction is held constant across arms (the lump carries no pH- or albumin-dependent binding shift - S76 notes ionized calcium changes with pH; that coupling is a named limit in MILESTONE-58.md, and Case #8's own numbers imply 0.51 in her hypoalbuminaemic state against the model's 0.48, a disclosed 0.03 mmol/L-class difference).",
+      "source": "S76",
+      "status": "cited",
+      "unit": "fraction",
+      "value": 0.48
+    },
+    {
+      "cited_range": null,
+      "name": "albumin_correction_mmol_l_per_g_l",
+      "note": "Milestone 58: the albumin correction of total calcium, in SI form: corrected = total + 0.02 x (40 - albumin g/L). CITED: S76's formula, corrected (mg/dL) = measured + 0.8 x (4.0 - albumin g/dL), is the same relation (0.8 mg/dL per g/dL = 0.02 mmol/L per g/L) - and the same correction the Case module applied to Case #8 under its register's C54. The engine's albumin is derived, not asserted: plasma protein concentration (Milestone 26 state) x the albumin fraction (S29) = 7.3 x 0.6164 = 4.50 g/dL at rest, so the resting corrected calcium reads 2.40 mmol/L against the resting total 2.50 - the correction working in its less familiar direction (albumin above the 40 g/L reference), stated wherever the readout is printed.",
+      "source": "S76",
+      "status": "cited",
+      "unit": "mmol/L per g/L",
+      "value": 0.02
     }
   ],
   "perturbation_cases": [
@@ -2294,6 +2501,132 @@
         }
       ],
       "id": "chronic_hyperventilation_uncompensated"
+    },
+    {
+      "description": "PTH LOSS - the post-thyroidectomy arm (Milestone 58): the standard settle/baseline/engage protocol, then the secretion capacity is cut to 0.09 of the sigmoid's output at engagement (Event::SetPTHSecretion) and the axis runs untreated for 72 h, sampled at +6, +12, +24, +48 and +72 h. The capacity fraction is an arm definition fixed by the Case module's data, not a fitted parameter: Case #8 (the trace-30 patient on POD2) measured intact PTH 8 pg/mL at ionized calcium 0.94 mmol/L, and the model's sigmoid at 0.94 is 89.8 pg/mL, so the remnant capacity the case implies is 8/89.8 = 0.089. Expectations are the independent solver's values (work/m58/predict.py, frozen before the engine ran) in stated bands; the case's own measured course is reported against them in MILESTONE-58.md (agreement at 48 h, a disclosed first-day gap), and Case #8 is NOT edited by this milestone. The axis-disabled A/B arm (SetCalciumAxis off) holds every calcium readout at its resting value exactly, asserted in the validator.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            1.0,
+            1.12
+          ],
+          "output": "ionized_calcium_24h",
+          "source": "S75 (Solver 1.060 mmol/L at +24 h. Case #8's POD1 corrected calcium was 1.95 mmol/L against the model's albumin-corrected 2.11 at this mark - the disclosed first-day gap, analysed in MILESTONE-58.md; the band is the solver's, not the case's.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.88,
+            0.99
+          ],
+          "output": "ionized_calcium_48h",
+          "source": "S80 (Solver 0.935 mmol/L at +48 h; Case #8's measured POD2 ionized calcium is 0.94 mmol/L - the mark this arm is calibrated to agree with, and does, inside 0.006 mmol/L.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            1.78,
+            1.92
+          ],
+          "output": "corrected_calcium_48h",
+          "source": "S76 (Solver 1.847 mmol/L corrected to the 40 g/L albumin reference; Case #8's POD2 corrected calcium is 1.83 mmol/L at her albumin of 3.6 g/dL - the correction makes the two albumins comparable.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.0,
+            9.2
+          ],
+          "output": "pth_48h",
+          "source": "S77 (Solver 8.08 pg/mL at +48 h; Case #8's measured intact PTH is 8 pg/mL. The remnant gland is saturated at this calcium - the sigmoid is on its plateau - so the value reads the capacity fraction directly.)"
+        },
+        {
+          "direction": "falls",
+          "magnitude_range": [
+            0.78,
+            0.9
+          ],
+          "output": "ionized_calcium_72h",
+          "source": "S80 (Solver 0.840 mmol/L at +72 h, still falling toward the arm's solver-computed untreated course (nadir about 0.70 near day 7, recovering toward about 0.87 by week 4 as formation catches down - solver-only horizons, reported in MILESTONE-58.md, not engine-gated). The cited clinical window for the fall is 24-96 h.)"
+        }
+      ],
+      "id": "pth_loss_post_thyroidectomy"
+    },
+    {
+      "description": "CALCIUM INFUSION (Milestone 58): the standard protocol, then +4.5 mmol of calcium enters the extracellular content state over 20 min from engagement (Event::SetCalciumFlow) - the elemental content of 2 g of calcium gluconate (the Case #8 management input, C52/C53's intravenous calcium, at the conventional 1-2 g dose), sampled at +10, +20 (end of infusion), +30 and +60 min, +3, +6 and +24 h. Expectations are the independent solver's frozen values. The arm's decay is renal-only and slow by construction: the lump has no rapidly-exchangeable bone-surface pool, so the +24 h value is reported still elevated (a named limit, MILESTONE-58.md) - the gated marks are the peak, the PTH suppression at the peak, and the +6 h value.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            1.47,
+            1.58
+          ],
+          "output": "ionized_calcium_peak",
+          "source": "S76 (Solver 1.525 mmol/L at the end of the 20-minute infusion: the resting content plus 4.5 mmol over the 13.75 L extracellular volume, less the infusion window's small excretion.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            2.5,
+            4.0
+          ],
+          "output": "pth_at_peak",
+          "source": "S75 (Solver 3.26 pg/mL at the peak: the sigmoid suppressed onto its minimum (pth_min_pg_ml) by the peak calcium - the feedback's high-side action, on Brown's form.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            1.4,
+            1.53
+          ],
+          "output": "ionized_calcium_6h",
+          "source": "S76 (Solver 1.467 mmol/L at +6 h: renal excretion at the suppressed-PTH factor is the only exit in this lump, so the decay is slow - disclosed, not tuned away.)"
+        },
+        {
+          "direction": "falls",
+          "magnitude_range": [
+            1.2,
+            1.34
+          ],
+          "output": "ionized_calcium_24h",
+          "source": "S76 (Solver 1.268 mmol/L at +24 h - fallen from the peak, still above the resting 1.20: the missing bone-surface buffer's signature, reported as such.)"
+        }
+      ],
+      "id": "calcium_infusion_gluconate"
+    },
+    {
+      "description": "VITAMIN D DEFICIENCY, CHRONIC (Milestone 58): the standard protocol, then the vitamin-D state's target scale is cut to 0.40 at engagement (Event::SetVitaminD - a 60% cut in the calcitriol-effect target, modelling substrate deficiency; the scale is a scenario input, not a sourced rate) and the axis runs 7 days, sampled at +1, +3 and +7 days (the independent solver's extension to +14 days - ionized 1.177 mmol/L, PTH 30.8 pg/mL, a compensated steady creep - is reported in MILESTONE-58.md as solver-only evidence). The expected picture is the consulted mechanism's (S76: calcitriol mediates intestinal absorption; its deficiency is a named hypocalcemia cause): absorption falls, ionized calcium dips only slightly because PTH rises (secondary hyperparathyroidism) and defends it at bone's expense - the bone resorption effect state runs ahead of formation for the whole horizon. Expectations are the independent solver's frozen values.",
+      "expectations": [
+        {
+          "direction": "falls",
+          "magnitude_range": [
+            1.15,
+            1.21
+          ],
+          "output": "ionized_calcium_7d",
+          "source": "S76 (Solver 1.180 mmol/L at +7 days - defended near the resting 1.20 by the PTH rise, the secondary-hyperparathyroidism pattern: the calcium is nearly normal, the hormone and the bone pay for it.)"
+        },
+        {
+          "direction": "rises",
+          "magnitude_range": [
+            24.0,
+            35.0
+          ],
+          "output": "pth_7d",
+          "source": "S77 (Solver 28.9 pg/mL at +7 days, from the resting 19.8 - still inside the S77 reference interval, as early secondary hyperparathyroidism is; the direction and the bone states carry the finding, not a range violation.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            1.3,
+            1.55
+          ],
+          "output": "bone_resorption_state_7d",
+          "source": "S76 (Solver 1.431 at +7 days against formation's 1.201 - the sustained net bone release that holds the calcium; both states still rising toward the clamped PTH ratio's target, reported in the arm table.)"
+        }
+      ],
+      "id": "vitamin_d_deficiency_chronic"
     }
   ],
   "schema": "anatomica-physiology-parameters/v1",
@@ -2741,6 +3074,42 @@
       "citation": "eClinpath (Cornell University College of Veterinary Medicine) - 'Acid-base: Response to disturbances', acid-base module (consulted in full in-session).",
       "id": "S74",
       "locator": "On respiratory disturbances: 'The kidneys compensate for a chronic respiratory acid-base disturbance by increasing (respiratory acidosis) or decreasing (respiratory alkalosis) bicarbonate reabsorption. This response begins within hours but takes 3-5 days to have a full effect.' The page's expected-bicarbonate-change formulas use, for chronic respiratory acidosis, 0.35 mmol/L per mmHg PaCO2 change (HCO3 = 24 + 0.35 x (PaCO2 - 40), +/-2 mmol/L), and for chronic respiratory alkalosis 0.55 per mmHg - the consulted spread against S73's 0.4 / 0.5 bedside rules, disclosed in the chronic-slope parameters' notes. Consulted as the independent second source for the days-scale of full renal compensation in both directions and for the direction-split form of the relations."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (PubMed abstract, PMID 6822654)",
+      "citation": "Brown EM. Four-parameter model of the sigmoidal relationship between parathyroid hormone release and extracellular calcium concentration in normal and abnormal parathyroid tissue. J Clin Endocrinol Metab. 1983;56(3):572-581 (doi:10.1210/jcem-56-3-572).",
+      "id": "S75",
+      "locator": "Abstract: data relating PTH release to extracellular calcium 'were successfully fitted to symmetrical sigmoidal curves. Such curves were defined by four parameters [A = maximum PTH release, B = slope of the curve at the setpoint, C = set-point (calcium concentration causing half-maximal inhibition of secretion), and D = minimum PTH release]'. The Milestone 58 secretion function is this four-parameter sigmoid in logistic form: PTH = D + (A - D) / (1 + exp((Ca - C)/w)), whose slope at the set-point C is -(A - D)/(4w) (Brown's B)."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (full text opened: PMC7849212)",
+      "citation": "Tinawi M. Disorders of Calcium Metabolism: Hypocalcemia and Hypercalcemia. Cureus. 2021;13(1):e12420 (doi:10.7759/cureus.12420).",
+      "id": "S76",
+      "locator": "Normal total serum calcium 2.2-2.6 mmol/L (8.8-10.4 mg/dL); normal ionized calcium 1.10-1.30 mmol/L, 'about half of total serum Ca'; serum calcium fractions: ionized (free) 48%, protein-bound 45%, complexed 7%. Corrected total calcium (mg/dL) = measured + 0.8 x (4.0 - albumin g/dL) (SI form: +0.02 mmol/L per g/L of albumin below 40 g/L). Calcium homeostasis: average daily intake about 1,000 mg, of which 400 mg is absorbed in the small intestine and about 200 mg is excreted with intestinal secretions, so net absorption is 200 mg (about 20%); approximately 500 mg of calcium are exchanged daily between the bone and the ECF; of the 10,000 mg filtered through the kidneys 9,800 mg (98%) are reabsorbed and approximately 200 mg are excreted, equalling net intestinal absorption. PTH raises calcium by bone resorption, renal reabsorption and (via calcitriol) intestinal absorption; hypocalcemia causes include hypoparathyroidism and vitamin D deficiency."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (MedlinePlus Medical Encyclopedia, article 003690)",
+      "citation": "MedlinePlus (U.S. National Library of Medicine). Parathyroid hormone (PTH) blood test. MedlinePlus Medical Encyclopedia.",
+      "id": "S77",
+      "locator": "'Normal values are 10 to 65 picograms per milliliter (pg/mL).' Release of PTH is controlled by the level of calcium in the blood; PTH controls calcium, phosphorus, and vitamin D levels in the blood. The same range the Case module's register carries as C56 (consulted there at Milestone 57); registered here for the physiology validation table."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (full text opened: PMC8751400)",
+      "citation": "Is It True Hypoparathyroidism? A Root Cause Analysis of Unusually Low Intact Parathyroid Hormone (iPTH) at a Clinical Laboratory. J Appl Lab Med / PMC8751400 (2021).",
+      "id": "S78",
+      "locator": "Introduction: 'Intact Parathyroid Hormone (iPTH) has a short half-life i.e. two to four minutes therefore the sampling regimen has to pass through a stringent pre-analytical process control'; the same half-life (two to four minutes) is stated for endogenous PTH by Garrett et al., PTH - A Particularly Tricky Hormone, Clin J Am Soc Nephrol 2013;8:299-312, consulted in-session in the same search."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (chapter text opened: Cambridge Core)",
+      "citation": "Calcium metabolism and its disorders. Chapter 17 in: Reproductive Endocrinology for the MRCOG and Beyond (Cambridge University Press, Core).",
+      "id": "S79",
+      "locator": "'The daily turnover of calcium is 25 mmol (25 mmol ingested in the diet, 20 mmol lost in the gut and 5 mmol lost in the urine). The turnover in bone calcium alone is 10 mmol per day from a total bone content of 25 mol.' The chapter's 10 mmol/day bone turnover is the lower of the two consulted bone-flux figures (S76 states approximately 500 mg/day, i.e. 12.5 mmol/day); the bone flux parameter's cited range spans both."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (abstract and results text opened: Korea Science)",
+      "citation": "Postthyroidectomy Hypocalcemia. Korean Journal of Head & Neck Oncology (193-patient series, 1991-1998 admissions: lobectomy, subtotal and total thyroidectomy).",
+      "id": "S80",
+      "locator": "'All patients revealed postoperative decline in serum calcium and ionized calcium, especially, the lowest serum calcium level was seen in 48 hours after surgery. Serum calcium level was returned to normal in five to six postoperative days in most patients... the important period for monitoring of serum calcium level was 24 to 96 hours after surgery.' Consulted as the time-course source for the PTH-loss arm's shape: the fall develops over one to two days (not minutes), with the nadir classically at 24-48 h (the same statement in the J Clin Diagn Res review consulted in the same search)."
     }
   ],
   "validation_ranges": [
@@ -3004,6 +3373,42 @@
       "output": "oxygen_delivery",
       "source": "S61",
       "unit": "mL/min"
+    },
+    {
+      "gated": true,
+      "high": 1.3,
+      "low": 1.1,
+      "note": "Milestone 58: resting ionized calcium, gated on S76's consulted normal span 1.10-1.30 mmol/L. The model's resting value is the construction's 1.20 mmol/L.",
+      "output": "ionized_calcium",
+      "source": "S76",
+      "unit": "mmol/L"
+    },
+    {
+      "gated": true,
+      "high": 2.6,
+      "low": 2.2,
+      "note": "Milestone 58: resting total calcium, gated on S76's consulted normal span 2.2-2.6 mmol/L. The model's value is the resting ionized over S76's ionized fraction: 1.20 / 0.48 = 2.50 mmol/L.",
+      "output": "total_calcium",
+      "source": "S76",
+      "unit": "mmol/L"
+    },
+    {
+      "gated": true,
+      "high": 2.6,
+      "low": 2.2,
+      "note": "Milestone 58: resting albumin-corrected total calcium (S76's correction, to the 40 g/L reference), gated on the same span. The engine's resting albumin is 4.50 g/dL (derived from the Milestone 26 protein state), above the reference, so the resting corrected value reads 2.40 mmol/L - below the resting total 2.50 by the correction's own arithmetic; Case #8's values ran the other way (her albumin was 3.6 g/dL).",
+      "output": "corrected_calcium",
+      "source": "S76",
+      "unit": "mmol/L"
+    },
+    {
+      "gated": true,
+      "high": 65.0,
+      "low": 10.0,
+      "note": "Milestone 58: resting plasma intact PTH, gated on S77's reference interval 10-65 pg/mL. The model's resting value is the secretion sigmoid's value at the resting ionized calcium (19.8 pg/mL) - a derived operating point, not a parameter (see pth_setpoint_mmol_l and pth_max_pg_ml).",
+      "output": "plasma_pth",
+      "source": "S77",
+      "unit": "pg/mL"
     }
   ]
 }

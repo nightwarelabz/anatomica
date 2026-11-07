@@ -297,6 +297,52 @@
 //! disturbances only: no metabolic acid–base disorder and no
 //! respiratory response to one is modelled (named limits). See
 //! MILESTONE-53.md.
+//!
+//! Milestone 58 adds the calcium–PTH axis the Theatre and Case
+//! modules disclosed as missing (Milestones 56/57: "the physiology
+//! engine has no calcium axis"). Five lumped states join the
+//! integration on the respiratory side: the extracellular IONIZED
+//! CALCIUM CONTENT (mmol — the regulated variable; its
+//! concentration is the content over the live extracellular
+//! volume, plasma + interstitial, exactly as sodium's is), plasma
+//! PTH (pg/mL — a secretion–clearance state whose target is Brown's
+//! four-parameter sigmoid of ionized calcium, S75, in the
+//! Milestone 30 hormone-state pattern), and three normalised
+//! PTH-effect states in the same pattern: a bone-RESORPTION effect
+//! state (time constant 36 h), a bone-FORMATION effect state (the
+//! same target at a 10-day time constant — the remodelling
+//! coupling lag whose transient difference from resorption is the
+//! post-PTH-loss net bone uptake), and a VITAMIN-D (calcitriol-
+//! effect) state acting on intestinal absorption (24 h). PTH acts
+//! through the three lumped fluxes the consulted sources support
+//! (S76): renal excretion (the filtered-load factor times a
+//! PTH-reabsorption amplitude — a modulation of the renal side's
+//! own output quantity, urine calcium, not a fork of the renal
+//! module: no circulation or urine-water quantity is touched),
+//! bone resorption/formation, and gut absorption. RESTING-ZERO IS
+//! THE LAW, as for every axis since Milestone 30: the content
+//! state is initialised at the resting concentration over the
+//! resting ECF, PTH at its sigmoid's value there, the effect
+//! states at their normalised 1.0, and every flux is constructed
+//! to cancel there, so every new derivative is exactly zero at the
+//! resting equilibrium; and no calcium/PTH quantity enters any
+//! circulation derivative (the axis READS the stage ECF volume,
+//! as the respiratory module reads cardiac output — a one-way
+//! readout), so the pinned circulation hash cannot move. The five
+//! states fold into resp_hash after the compensation state. A
+//! scenario event (SetCalciumAxis) can disable the axis — the
+//! states freeze — reproducing the pre-Milestone 58 picture
+//! exactly; the arm events are SetPTHSecretion (a capacity
+//! fraction on the sigmoid — the post-thyroidectomy remnant),
+//! SetCalciumFlow (an intravenous calcium input, mmol/min) and
+//! SetVitaminD (a scale on the vitamin-D state's target —
+//! substrate deficiency). Named limits: the ionized fraction of
+//! total calcium is constant (no pH/albumin binding shift), there
+//! is no rapidly-exchangeable bone-surface pool (the infusion
+//! arm's decay is therefore renal-only and slow), no phosphate,
+//! magnesium, FGF23 or calcitonin anywhere, and the gland's
+//! recovery after injury is not modelled (the PTH-loss arm is the
+//! untreated course). See MILESTONE-58.md.
 
 use crate::params::Params;
 
@@ -474,6 +520,42 @@ pub struct Model {
     pub hco3_chronic_rise_per_mmhg: f64,
     pub hco3_chronic_fall_per_mmhg: f64,
     pub comp_tau_s: f64,
+    // Calcium–PTH axis (Milestone 58): the resting construction
+    // (S76 ranges and balance), the secretion sigmoid (S75's form;
+    // maximum, minimum and width VERIFY-flagged, set-point
+    // calibrated), the hormone kinetics (S78 half-life), and the
+    // three effector limbs — renal (resting excretion cited-scale,
+    // PTH amplitude VERIFY-flagged), bone (flux cited-range, PTH-
+    // sensitive share VERIFY-flagged, two time constants calibrated
+    // from the post-thyroidectomy course, S80), gut (intake and net
+    // fraction cited/calibrated, passive share VERIFY-flagged,
+    // vitamin-D state calibrated) — and the readout constants
+    // (ionized fraction and albumin correction, S76).
+    pub ca_rest_mmol_l: f64,
+    pub pth_setpoint_mmol_l: f64,
+    pub pth_max_pg_ml: f64,
+    pub pth_min_pg_ml: f64,
+    pub pth_width_mmol_l: f64,
+    pub pth_tau_s: f64,
+    /// The resting plasma PTH implied by the construction
+    /// (Milestone 58): the secretion sigmoid at the resting ionized
+    /// calcium — the value the PTH state is initialised at, so its
+    /// derivative vanishes at the operating point (the Milestone
+    /// 30 resting_adh_pg_ml pattern).
+    pub pth_rest_pg_ml: f64,
+    pub urine_ca0_mmol_min: f64,
+    pub gut_ca0_mmol_min: f64,
+    pub gut_passive_fraction: f64,
+    pub bone_ca0_mmol_min: f64,
+    pub bone_sens: f64,
+    pub bone_tau_s: f64,
+    pub form_tau_s: f64,
+    pub vitd_tau_s: f64,
+    pub vitd_exponent: f64,
+    pub renal_ca_amp: f64,
+    pub ca_effect_ceiling: f64,
+    pub ionized_fraction: f64,
+    pub albumin_corr_mmol_l_per_g_l: f64,
     /// Inspired (tracheal) oxygen partial pressure at the resting
     /// gas constants: FiO2 x (PB - PH2O) (S52/S53).
     pub pio2_mmhg: f64,
@@ -586,6 +668,98 @@ pub fn chronic_bicarbonate_meq_l_at(paco2_mmhg: f64, m: &Model) -> f64 {
 /// the resting-zero property the state's construction rests on.
 pub fn renal_comp_target_meq_l_at(paco2_mmhg: f64, m: &Model) -> f64 {
     chronic_bicarbonate_meq_l_at(paco2_mmhg, m) - bicarbonate_meq_l_at(paco2_mmhg, m)
+}
+
+/// PTH secretion (pg/mL) at an ionized calcium (Milestone 58):
+/// Brown's four-parameter sigmoid (S75) in logistic form,
+///   PTH = D + (A − D) / (1 + exp((Ca − C)/w)),
+/// with A the maximal release, D the nonsuppressible minimum and
+/// C the set-point (the calcium of half-maximal inhibition); its
+/// slope at C is −(A − D)/(4w), Brown's B. `capacity` is the
+/// scenario's surviving-gland fraction (1.0 intact; the PTH-loss
+/// arm's 0.09 is the remnant Case #8's measured PTH implies).
+/// Pure function of calcium and the model, shared by the engine,
+/// the readouts and the dossier's independent solver — all three
+/// evaluate the identical relation.
+pub fn pth_secretion_pg_ml(ca_mmol_l: f64, capacity: f64, m: &Model) -> f64 {
+    capacity
+        * (m.pth_min_pg_ml
+            + (m.pth_max_pg_ml - m.pth_min_pg_ml)
+                / (1.0 + ((ca_mmol_l - m.pth_setpoint_mmol_l) / m.pth_width_mmol_l).exp()))
+}
+
+/// The clamped normalised PTH drive (Milestone 58): the ratio of
+/// plasma PTH to its resting value, clamped to [0, ceiling] —
+/// the target the bone and vitamin-D effect states relax toward.
+/// Exactly 1.0 at the resting equilibrium.
+pub fn calcium_effect_target(pth_pg_ml: f64, m: &Model) -> f64 {
+    (pth_pg_ml / m.pth_rest_pg_ml).clamp(0.0, m.ca_effect_ceiling)
+}
+
+/// The renal limb's PTH factor (Milestone 58): PTH's distal-
+/// reabsorption action (S76: high PTH decreases calcium
+/// excretion) as a lumped amplitude on excretion —
+/// clamp(1 + amp × (1 − PTH/PTH_rest), 0.2, 1.35). Exactly 1.0 at
+/// the resting PTH; 1 + amp with the gland absent; below 1 under
+/// a raised PTH.
+pub fn calcium_renal_factor(pth_pg_ml: f64, m: &Model) -> f64 {
+    (1.0 + m.renal_ca_amp * (1.0 - pth_pg_ml / m.pth_rest_pg_ml)).clamp(0.2, 1.35)
+}
+
+/// Urinary calcium excretion (mmol/min, Milestone 58): the
+/// resting excretion scaled by the filtered load (the ionized
+/// concentration the glomerulus sees, over its resting value)
+/// and by the PTH factor. At the resting state this is the
+/// resting excretion bit-for-bit, so the resting calcium balance
+/// closes exactly (gut influx equals it by construction).
+pub fn urine_calcium_mmol_min(ca_mmol_l: f64, pth_pg_ml: f64, m: &Model) -> f64 {
+    m.urine_ca0_mmol_min * (ca_mmol_l / m.ca_rest_mmol_l) * calcium_renal_factor(pth_pg_ml, m)
+}
+
+/// Net intestinal calcium absorption (mmol/min, Milestone 58):
+/// the resting net influx scaled by the vitamin-D state's ACTIVE
+/// share — the passive (vitamin-D-independent) share is unscaled:
+/// passive + (1 − passive) × vitd_state. At the resting state
+/// (vitd_state 1.0) this is the resting influx bit-for-bit.
+pub fn gut_calcium_mmol_min(vitd_state: f64, m: &Model) -> f64 {
+    m.gut_ca0_mmol_min * (m.gut_passive_fraction + (1.0 - m.gut_passive_fraction) * vitd_state)
+}
+
+/// Bone calcium resorption (mmol/min, Milestone 58): the resting
+/// exchange flux scaled by the resorption effect state's
+/// PTH-sensitive share — flux × (1 + sens × (state − 1)). At the
+/// resting state this is the resting flux bit-for-bit.
+pub fn bone_resorption_mmol_min(bone_state: f64, m: &Model) -> f64 {
+    m.bone_ca0_mmol_min * (1.0 + m.bone_sens * (bone_state - 1.0))
+}
+
+/// Bone calcium formation (mmol/min, Milestone 58): the same
+/// construction on the formation effect state. The two states
+/// share a target and differ only in time constant (36 h vs
+/// 10 days), so their transient difference — the net bone flux
+/// after a PTH step — is the remodelling coupling transient, and
+/// the chronic net is zero at any PTH, as remodelling requires.
+pub fn bone_formation_mmol_min(form_state: f64, m: &Model) -> f64 {
+    m.bone_ca0_mmol_min * (1.0 + m.bone_sens * (form_state - 1.0))
+}
+
+/// Total calcium (mmol/L) at an ionized calcium (Milestone 58):
+/// the ionized value over S76's ionized fraction (48%). The
+/// fraction is constant in this lump (no pH/albumin binding
+/// shift — a named limit).
+pub fn total_calcium_from_ionized(ionized_mmol_l: f64, m: &Model) -> f64 {
+    ionized_mmol_l / m.ionized_fraction
+}
+
+/// Albumin-corrected total calcium (mmol/L, Milestone 58): S76's
+/// correction to the 40 g/L albumin reference,
+/// corrected = total + k × (40 − albumin_g_L), applied exactly as
+/// the Case module applied it to Case #8 (its register's C54
+/// formula). At the engine's resting albumin (45 g/L, derived
+/// from the Milestone 26 protein state) the correction SUBTRACTS
+/// 0.10 mmol/L — the reference sits below the model's albumin.
+pub fn corrected_calcium_from_total(total_mmol_l: f64, albumin_g_l: f64, m: &Model) -> f64 {
+    total_mmol_l + m.albumin_corr_mmol_l_per_g_l * (40.0 - albumin_g_l)
 }
 
 /// Arterial pH at a PaCO2 and a renal compensation state
@@ -854,6 +1028,18 @@ impl Model {
             + (p.f64("bicarbonate_resting_meq_l")
                 / (p.f64("co2_solubility_hh_mmol_l_mmhg") * paco2_rest_mmhg))
                 .log10();
+        // Milestone 58: the resting PTH — the secretion sigmoid
+        // (S75) at the resting ionized calcium, evaluated with the
+        // identical operations pth_secretion_pg_ml performs there
+        // at capacity 1.0, so the PTH state's initial value is its
+        // target bit-for-bit and its derivative vanishes at the
+        // operating point (the resting_adh_pg_ml pattern).
+        let pth_rest_pg_ml = p.f64("pth_min_pg_ml")
+            + (p.f64("pth_max_pg_ml") - p.f64("pth_min_pg_ml"))
+                / (1.0
+                    + ((p.f64("ionized_calcium_resting_mmol_l") - p.f64("pth_setpoint_mmol_l"))
+                        / p.f64("pth_sigmoid_width_mmol_l"))
+                    .exp());
         Model {
             substep: p.f64("substep_seconds"),
             hr0: p.f64("heart_rate_baseline_bpm"),
@@ -1016,6 +1202,28 @@ impl Model {
             hco3_chronic_rise_per_mmhg: p.f64("chronic_hco3_rise_per_mmhg"),
             hco3_chronic_fall_per_mmhg: p.f64("chronic_hco3_fall_per_mmhg"),
             comp_tau_s: p.f64("chronic_compensation_tau_seconds"),
+            ca_rest_mmol_l: p.f64("ionized_calcium_resting_mmol_l"),
+            pth_setpoint_mmol_l: p.f64("pth_setpoint_mmol_l"),
+            pth_max_pg_ml: p.f64("pth_max_pg_ml"),
+            pth_min_pg_ml: p.f64("pth_min_pg_ml"),
+            pth_width_mmol_l: p.f64("pth_sigmoid_width_mmol_l"),
+            pth_tau_s: p.f64("pth_tau_seconds"),
+            pth_rest_pg_ml,
+            urine_ca0_mmol_min: p.f64("urine_calcium_resting_mmol_day") / 1440.0,
+            gut_ca0_mmol_min: p.f64("calcium_intake_mmol_day")
+                * p.f64("calcium_net_absorption_fraction")
+                / 1440.0,
+            gut_passive_fraction: p.f64("gut_passive_fraction"),
+            bone_ca0_mmol_min: p.f64("bone_calcium_flux_mmol_day") / 1440.0,
+            bone_sens: p.f64("bone_pth_sensitive_fraction"),
+            bone_tau_s: p.f64("bone_resorption_tau_seconds"),
+            form_tau_s: p.f64("bone_formation_tau_seconds"),
+            vitd_tau_s: p.f64("vitamin_d_tau_seconds"),
+            vitd_exponent: p.f64("vitamin_d_pth_exponent"),
+            renal_ca_amp: p.f64("renal_calcium_pth_amplitude"),
+            ca_effect_ceiling: p.f64("calcium_effect_state_ceiling"),
+            ionized_fraction: p.f64("ionized_calcium_fraction"),
+            albumin_corr_mmol_l_per_g_l: p.f64("albumin_correction_mmol_l_per_g_l"),
             pio2_mmhg,
             paco2_rest_mmhg,
         }
@@ -1035,6 +1243,14 @@ impl Model {
     pub fn resting_adh_pg_ml(&self) -> f64 {
         self.adh_slope_pg_ml_mosm
             * (self.resting_osmolality_mosm_kg() - self.adh_threshold_mosm_kg).max(0.0)
+    }
+
+    /// Resting plasma PTH (pg/mL) implied by the construction
+    /// (Milestone 58): the secretion sigmoid (S75) at the resting
+    /// ionized calcium, capacity 1.0 — computed in from_params so
+    /// the state's initial value is its target bit-for-bit.
+    pub fn resting_pth_pg_ml(&self) -> f64 {
+        self.pth_rest_pg_ml
     }
 
     /// A blood product's composition by scenario key (Milestone 26):
@@ -1211,6 +1427,41 @@ pub enum Event {
     /// or the circulation — only the bicarbonate the
     /// Henderson–Hasselbalch readout sees.
     SetChronicCompensation { enabled: bool, label: String },
+    /// Enable or disable the whole calcium–PTH axis (Milestone
+    /// 58): live by default; disabling it freezes all five states
+    /// (their derivatives are zero), so states initialised at the
+    /// resting equilibrium stay exactly there and the
+    /// pre-Milestone 58 picture is reproduced at any horizon (the
+    /// calcium A/B arms). The axis reads the circulation (the ECF
+    /// volume) but never writes it, so disabling changes nothing
+    /// outside the axis either.
+    SetCalciumAxis { enabled: bool, label: String },
+    /// Set the parathyroid secretion capacity fraction (Milestone
+    /// 58): the share of the sigmoid's output the surviving gland
+    /// tissue produces — 1.0 intact; the post-thyroidectomy
+    /// PTH-loss arm's 0.09 is the remnant fraction Case #8's
+    /// measured POD2 PTH implies at her calcium (an arm
+    /// definition, derived in parameters.json's case description,
+    /// not a fitted physiological rate). Gland recovery is not
+    /// modelled: the fraction is constant within a run unless an
+    /// event changes it.
+    SetPTHSecretion { capacity: f64, label: String },
+    /// Set the intravenous calcium input rate (mmol/min,
+    /// Milestone 58): elemental calcium entering the extracellular
+    /// content state directly — the calcium-gluconate input of the
+    /// infusion arm (and of Case #8's management). A rate of 0
+    /// stops the infusion. The channel carries calcium only: no
+    /// volume, sodium or protein rides on it (a gluconate infusion
+    /// is not a volume load in this lump — disclosed).
+    SetCalciumFlow { rate_mmol_min: f64, label: String },
+    /// Set the vitamin-D state's target scale (Milestone 58): 1.0
+    /// is substrate-replete; the chronic arm's 0.40 models vitamin
+    /// D deficiency as a 60% cut in the calcitriol-effect target.
+    /// The scale multiplies the PTH-driven target, so a rising
+    /// PTH still squeezes more effect from a deficient substrate —
+    /// the partial compensation the arm reports. The scale is a
+    /// scenario input, not a sourced rate.
+    SetVitaminD { scale: f64, label: String },
 }
 
 #[derive(Debug, Clone)]
@@ -1416,6 +1667,46 @@ pub struct Engine {
     /// 0.0, reproducing the acute-only (Milestones 47/52) picture
     /// at any horizon.
     comp_enabled: bool,
+    /// Extracellular ionized calcium CONTENT (mmol, Milestone
+    /// 58): the axis's regulated-variable state. Its concentration
+    /// is the content over the live extracellular volume (plasma +
+    /// interstitial), exactly as the sodium state's is.
+    /// Initialised at the resting concentration over the resting
+    /// ECF, where every calcium flux cancels by construction.
+    /// Folded into resp_hash only — never into the circulation
+    /// trace hash.
+    ca_mmol: f64,
+    /// Plasma PTH concentration (pg/mL, Milestone 58): the
+    /// secretion–clearance state, initialised at the sigmoid's
+    /// value at the resting calcium (Model::pth_rest_pg_ml).
+    pth_pg_ml: f64,
+    /// Bone-resorption effect state (normalised; 1.0 at rest,
+    /// Milestone 58): relaxes toward the clamped PTH ratio at the
+    /// 36 h resorption time constant.
+    bone_state: f64,
+    /// Bone-formation effect state (normalised; 1.0 at rest,
+    /// Milestone 58): the SAME target as the resorption state at
+    /// the 10-day formation time constant — the remodelling
+    /// coupling lag. The two states' transient difference is the
+    /// net bone calcium flux.
+    form_state: f64,
+    /// Vitamin-D (calcitriol-effect) state (normalised; 1.0 at
+    /// rest, Milestone 58): relaxes toward the scenario scale
+    /// times the clamped PTH ratio's quarter power at the 24 h
+    /// time constant; scales the gut flux's active share.
+    vitd_state: f64,
+    /// Whether the calcium axis is live (Milestone 58): default
+    /// true; Event::SetCalciumAxis toggles it for the A/B arms.
+    /// When disabled all five derivatives are zero.
+    ca_enabled: bool,
+    /// The axis's scenario inputs (Milestone 58): the secretion
+    /// capacity fraction (1.0 intact), the intravenous calcium
+    /// input rate (mmol/min; 0.0 none), and the vitamin-D target
+    /// scale (1.0 replete). Set by events; initialised to the
+    /// intact/replete defaults at which the equilibrium holds.
+    pth_capacity: f64,
+    ca_flow_mmol_min: f64,
+    vitd_scale: f64,
     pao2_set: Option<f64>,
     do2_set: Option<f64>,
     /// Per-tick samples of the two couplings' terms (Milestone
@@ -1430,7 +1721,8 @@ pub struct Engine {
     o2_mult_tick: f64,
     /// The respiratory module's own trace hash (Milestone 47): an
     /// FNV-1a chain over (tick, paco2, resp_rate, hco3_comp) per
-    /// tick (Milestone 53 adds the compensation state), kept
+    /// tick (Milestone 53 adds the compensation state; Milestone
+    /// 58 adds the five calcium-axis states after it), kept
     /// separate so the circulation hash stays bit-identical.
     resp_hash: u64,
     tau: f64,
@@ -1508,6 +1800,16 @@ struct Eval {
     // Milestone 53: the renal compensation state's derivative
     // (mEq/L per s). Respiratory-side only, like the two above.
     d_hco3_comp: f64,
+    // Milestone 58: the calcium-axis derivatives — content
+    // (mmol/s), PTH (pg/mL per s), and the three normalised
+    // effect states (1/s). Respiratory-side only, like the three
+    // above: none of them feeds any circulation derivative (the
+    // block READS the stage ECF volume, never writes it).
+    d_ca: f64,
+    d_pth: f64,
+    d_bone: f64,
+    d_form: f64,
+    d_vitd: f64,
 }
 
 impl Engine {
@@ -1563,6 +1865,18 @@ impl Engine {
         let vt_0 = model.vt0_ml;
         let vd_0 = model.vd0_ml;
         let admixture_0 = model.admixture0;
+        // Milestone 58 calcium-axis initial conditions, by the
+        // same equilibrium construction as Milestones 26/30/47:
+        // the content state at the resting ionized concentration
+        // over the resting extracellular volume (the ecf0_ml
+        // local above — plasma + interstitial), PTH at its
+        // sigmoid's resting value, the three effect states at
+        // their normalised 1.0, and the scenario inputs at their
+        // intact defaults. Every calcium derivative therefore
+        // vanishes at the resting operating point and the settle
+        // is undisturbed.
+        let ca0_mmol = model.ca_rest_mmol_l * ecf0_ml / 1000.0;
+        let pth0 = model.pth_rest_pg_ml;
         let icf0_ml = model.icf_volume_ml;
         let intake0_ml_s = model.intake_ml_s;
         let na_intake0_mmol_s = model.na_intake0_mmol_s;
@@ -1618,6 +1932,15 @@ impl Engine {
             bohr_enabled: true,
             hco3_comp_meq_l: 0.0,
             comp_enabled: true,
+            ca_mmol: ca0_mmol,
+            pth_pg_ml: pth0,
+            bone_state: 1.0,
+            form_state: 1.0,
+            vitd_state: 1.0,
+            ca_enabled: true,
+            pth_capacity: 1.0,
+            ca_flow_mmol_min: 0.0,
+            vitd_scale: 1.0,
             pao2_set: None,
             do2_set: None,
             hypoxic_tick_term: 0.0,
@@ -1967,6 +2290,11 @@ impl Engine {
         paco2: f64,
         rr: f64,
         hco3_comp: f64,
+        ca: f64,
+        pth: f64,
+        bone: f64,
+        form: f64,
+        vitd: f64,
         tau: f64,
         period: f64,
         tv: f64,
@@ -2283,6 +2611,41 @@ impl Engine {
         } else {
             0.0
         };
+        // Calcium–PTH axis (Milestone 58) at this stage. The
+        // stage ionized calcium is the content state over the
+        // stage extracellular volume (v_ecf_s, computed above for
+        // the sodium lump — the axis reads it, exactly as the
+        // respiratory sensors read cardiac output; nothing here
+        // writes any circulation quantity). PTH relaxes toward
+        // its secretion sigmoid at the hormone's own time
+        // constant; the effect states relax toward the clamped
+        // PTH ratio (the vitamin-D target through its saturating
+        // exponent and the scenario scale); the content state
+        // integrates gut + bone − formation − renal + the
+        // intravenous input. At the resting stage values every
+        // term cancels exactly: content at its resting value,
+        // PTH at its target, effect states at 1.0 with target
+        // 1.0, gut influx equal to renal excretion (the balance
+        // construction), bone fluxes equal. Disabled, all five
+        // derivatives are exactly 0.0 (the A/B instrument).
+        let (d_ca, d_pth, d_bone, d_form, d_vitd) = if self.ca_enabled {
+            let ca_s = ca * 1000.0 / v_ecf_s.max(1.0);
+            let ratio_target = calcium_effect_target(pth, m);
+            let d_pth = (pth_secretion_pg_ml(ca_s, self.pth_capacity, m) - pth) / m.pth_tau_s;
+            let d_bone = (ratio_target - bone) / m.bone_tau_s;
+            let d_form = (ratio_target - form) / m.form_tau_s;
+            let d_vitd = (self.vitd_scale * ratio_target.powf(m.vitd_exponent) - vitd)
+                / m.vitd_tau_s;
+            let d_ca = (gut_calcium_mmol_min(vitd, m)
+                + bone_resorption_mmol_min(bone, m)
+                - bone_formation_mmol_min(form, m)
+                - urine_calcium_mmol_min(ca_s, pth, m)
+                + self.ca_flow_mmol_min)
+                / 60.0;
+            (d_ca, d_pth, d_bone, d_form, d_vitd)
+        } else {
+            (0.0, 0.0, 0.0, 0.0, 0.0)
+        };
         Eval {
             pressures: Pressures {
                 lv: p_lv,
@@ -2322,6 +2685,11 @@ impl Engine {
             d_paco2,
             d_rr,
             d_hco3_comp,
+            d_ca,
+            d_pth,
+            d_bone,
+            d_form,
+            d_vitd,
         }
     }
 
@@ -2352,6 +2720,11 @@ impl Engine {
         let mut k_pa: [f64; 4] = [0.0; 4];
         let mut k_rr: [f64; 4] = [0.0; 4];
         let mut k_hc: [f64; 4] = [0.0; 4];
+        let mut k_ca: [f64; 4] = [0.0; 4];
+        let mut k_ph: [f64; 4] = [0.0; 4];
+        let mut k_bo: [f64; 4] = [0.0; 4];
+        let mut k_fo: [f64; 4] = [0.0; 4];
+        let mut k_vd: [f64; 4] = [0.0; 4];
         let mut acc_d_sa = 0.0;
         let mut acc_d_pa = 0.0;
         let mut acc_d_sv = 0.0;
@@ -2393,10 +2766,15 @@ impl Engine {
             let paco2_s = stage(self.paco2_mmhg, k_pa[s.saturating_sub(1)], s);
             let rr_s = stage(self.resp_rate, k_rr[s.saturating_sub(1)], s);
             let hc_s = stage(self.hco3_comp_meq_l, k_hc[s.saturating_sub(1)], s);
+            let ca_s = stage(self.ca_mmol, k_ca[s.saturating_sub(1)], s);
+            let pth_s = stage(self.pth_pg_ml, k_ph[s.saturating_sub(1)], s);
+            let bone_s = stage(self.bone_state, k_bo[s.saturating_sub(1)], s);
+            let form_s = stage(self.form_state, k_fo[s.saturating_sub(1)], s);
+            let vitd_s = stage(self.vitd_state, k_vd[s.saturating_sub(1)], s);
             let tau_s = self.tau + stage_frac[s] * h;
             let ev = self.evaluate(
                 &vs, map_s, cap_s, veno_s, refill_s, ino_s, rbc_s, pp_s, pi_s, na_s, icf_s, adh_s,
-                aldo_s, paco2_s, rr_s, hc_s, tau_s, period, tv,
+                aldo_s, paco2_s, rr_s, hc_s, ca_s, pth_s, bone_s, form_s, vitd_s, tau_s, period, tv,
             );
             k_v[s] = ev.derivs;
             k_m[s] = ev.d_map_lp;
@@ -2416,6 +2794,11 @@ impl Engine {
             k_pa[s] = ev.d_paco2;
             k_rr[s] = ev.d_rr;
             k_hc[s] = ev.d_hco3_comp;
+            k_ca[s] = ev.d_ca;
+            k_ph[s] = ev.d_pth;
+            k_bo[s] = ev.d_bone;
+            k_fo[s] = ev.d_form;
+            k_vd[s] = ev.d_vitd;
             let w = weights[s];
             acc_d_sa += w * ev.pressures.sa;
             acc_d_pa += w * ev.pressures.pa;
@@ -2484,6 +2867,17 @@ impl Engine {
         // is a relaxation toward a bounded target, so no stage
         // value can run away.
         self.hco3_comp_meq_l += rk4(k_hc);
+        // Milestone 58 calcium-axis states: RK4-integrated like
+        // every other state, with the same class of numeric floor
+        // guards as the hormone and protein states (no flux can
+        // drive any of them negative at these rates and step
+        // sizes; the guards keep a pathological stage value from
+        // doing so).
+        self.ca_mmol = (self.ca_mmol + rk4(k_ca)).max(0.0);
+        self.pth_pg_ml = (self.pth_pg_ml + rk4(k_ph)).max(0.0);
+        self.bone_state = (self.bone_state + rk4(k_bo)).max(0.0);
+        self.form_state = (self.form_state + rk4(k_fo)).max(0.0);
+        self.vitd_state = (self.vitd_state + rk4(k_vd)).max(0.0);
         self.intake_na_mmol += self.intake_na_rate_mmol_s * h;
         self.water_integral_ml += self.water_flow_ml_s * h;
         // Beat accumulators (RK-weighted stage means x h).
@@ -2710,6 +3104,44 @@ impl Engine {
                         ),
                     });
                 }
+                Event::SetCalciumAxis { enabled, label } => {
+                    self.ca_enabled = enabled;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: calcium-PTH axis {}",
+                            if enabled { "enabled" } else { "disabled" }
+                        ),
+                    });
+                }
+                Event::SetPTHSecretion { capacity, label } => {
+                    self.pth_capacity = capacity;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: parathyroid secretion capacity set to {:.0}% of the \
+                             sigmoid output",
+                            capacity * 100.0
+                        ),
+                    });
+                }
+                Event::SetCalciumFlow { rate_mmol_min, label } => {
+                    self.ca_flow_mmol_min = rate_mmol_min.max(0.0);
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: intravenous calcium input set to {rate_mmol_min:.3} \
+                             mmol/min"
+                        ),
+                    });
+                }
+                Event::SetVitaminD { scale, label } => {
+                    self.vitd_scale = scale.max(0.0);
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!("{label}: vitamin-D effect target scale set to {scale:.2}"),
+                    });
+                }
             }
         }
         // Milestone 51: sample the couplings' terms once for this
@@ -2772,6 +3204,16 @@ impl Engine {
         // hashes differ from Milestone 52's even where the
         // trajectories agree — accounted in MILESTONE-53.md).
         rh = fnv_fold(rh, &self.hco3_comp_meq_l.to_bits().to_le_bytes());
+        // Milestone 58: the five calcium-axis states join the
+        // respiratory chain (after hco3_comp; the fold order is
+        // part of the trace format, so all Milestone 58 resp
+        // hashes differ from Milestone 53's even where the
+        // trajectories agree — accounted in MILESTONE-58.md).
+        rh = fnv_fold(rh, &self.ca_mmol.to_bits().to_le_bytes());
+        rh = fnv_fold(rh, &self.pth_pg_ml.to_bits().to_le_bytes());
+        rh = fnv_fold(rh, &self.bone_state.to_bits().to_le_bytes());
+        rh = fnv_fold(rh, &self.form_state.to_bits().to_le_bytes());
+        rh = fnv_fold(rh, &self.vitd_state.to_bits().to_le_bytes());
         self.resp_hash = rh;
     }
 
@@ -3045,6 +3487,96 @@ impl Engine {
     /// Whether the renal compensation state is live (Milestone 53).
     pub fn chronic_compensation_enabled(&self) -> bool {
         self.comp_enabled
+    }
+
+    /// The extracellular ionized calcium concentration (mmol/L,
+    /// Milestone 58): the content state over the live
+    /// extracellular volume (plasma + interstitial) — the axis's
+    /// regulated variable, and the quantity PTH secretion senses.
+    /// Exactly Model::ca_rest_mmol_l at the resting equilibrium.
+    pub fn ionized_calcium_mmol_l(&self) -> f64 {
+        self.ca_mmol * 1000.0 / self.ecf_volume_ml().max(1.0)
+    }
+
+    /// Total calcium (mmol/L, Milestone 58): the ionized value
+    /// over S76's ionized fraction (48%). The fraction is
+    /// constant in this lump (no pH/albumin binding shift — a
+    /// named limit), so this is a pure readout of the ionized
+    /// state.
+    pub fn total_calcium_mmol_l(&self) -> f64 {
+        total_calcium_from_ionized(self.ionized_calcium_mmol_l(), &self.model)
+    }
+
+    /// Plasma albumin (g/L, Milestone 58): derived from the
+    /// Milestone 26 protein state — the plasma protein
+    /// concentration times the albumin fraction. 45.0 g/L at the
+    /// resting equilibrium (7.3 g/dL protein x 61.6%).
+    pub fn albumin_g_l(&self) -> f64 {
+        self.protein_concentrations_g_ml().0 * 100.0 * self.model.albumin_fraction * 10.0
+    }
+
+    /// Albumin-corrected total calcium (mmol/L, Milestone 58):
+    /// S76's correction to the 40 g/L albumin reference, the same
+    /// arithmetic the Case module applied to Case #8. At the
+    /// resting albumin (45 g/L) the correction SUBTRACTS
+    /// 0.10 mmol/L, so the resting corrected value (2.40) sits
+    /// below the total (2.50) — both inside S76's range, and both
+    /// are gated validation outputs.
+    pub fn corrected_calcium_mmol_l(&self) -> f64 {
+        corrected_calcium_from_total(
+            self.total_calcium_mmol_l(),
+            self.albumin_g_l(),
+            &self.model,
+        )
+    }
+
+    /// Plasma PTH concentration (pg/mL, Milestone 58): the
+    /// secretion–clearance state. Exactly
+    /// Model::resting_pth_pg_ml at the resting equilibrium.
+    pub fn pth_pg_ml(&self) -> f64 {
+        self.pth_pg_ml
+    }
+
+    /// The bone-resorption effect state (normalised; 1.0 at
+    /// rest, Milestone 58).
+    pub fn bone_resorption_state(&self) -> f64 {
+        self.bone_state
+    }
+
+    /// The bone-formation effect state (normalised; 1.0 at rest,
+    /// Milestone 58): the same target as the resorption state at
+    /// a ~28x longer time constant; the two states' transient
+    /// difference is the net bone calcium flux.
+    pub fn bone_formation_state(&self) -> f64 {
+        self.form_state
+    }
+
+    /// The vitamin-D (calcitriol-effect) state (normalised; 1.0
+    /// at rest, Milestone 58).
+    pub fn vitamin_d_state(&self) -> f64 {
+        self.vitd_state
+    }
+
+    /// The urinary calcium excretion rate (mmol/min, Milestone
+    /// 58) at the current state — the renal limb's output:
+    /// resting excretion x filtered-load factor x PTH factor.
+    pub fn urine_calcium_rate_mmol_min(&self) -> f64 {
+        urine_calcium_mmol_min(self.ionized_calcium_mmol_l(), self.pth_pg_ml, &self.model)
+    }
+
+    /// Whether the calcium–PTH axis is live (Milestone 58).
+    pub fn calcium_axis_enabled(&self) -> bool {
+        self.ca_enabled
+    }
+
+    /// The extracellular ionized calcium CONTENT state itself
+    /// (mmol, Milestone 58): exposed so the A/B assertions can
+    /// distinguish the state (bit-frozen when the axis is
+    /// disabled) from its concentration readout, which also
+    /// moves with the extracellular volume the circulation
+    /// carries.
+    pub fn calcium_content_mmol(&self) -> f64 {
+        self.ca_mmol
     }
 
     /// Arterial pH: Henderson-Hasselbalch (S66) at the current
@@ -3479,6 +4011,17 @@ impl Engine {
             "renal_compensation" => (self.hco3_comp_meq_l, "mEq/L"),
             "renal_compensation_target" => (self.renal_comp_target_meq_l(), "mEq/L"),
             "bicarbonate_acute" => (self.bicarbonate_acute_meq_l(), "mEq/L"),
+            // Milestone 58 calcium–PTH axis (instantaneous, like
+            // the mechanism states above).
+            "ionized_calcium" => (self.ionized_calcium_mmol_l(), "mmol/L"),
+            "total_calcium" => (self.total_calcium_mmol_l(), "mmol/L"),
+            "corrected_calcium" => (self.corrected_calcium_mmol_l(), "mmol/L"),
+            "albumin" => (self.albumin_g_l(), "g/L"),
+            "plasma_pth" => (self.pth_pg_ml, "pg/mL"),
+            "bone_resorption_state" => (self.bone_state, "ratio"),
+            "bone_formation_state" => (self.form_state, "ratio"),
+            "vitamin_d_state" => (self.vitd_state, "ratio"),
+            "urine_calcium_rate" => (self.urine_calcium_rate_mmol_min(), "mmol/min"),
             _ => return None,
         };
         Some((val, unit))

@@ -45,12 +45,20 @@
 //! the hyperventilation protocol held for three, each in
 //! compensation-live and compensation-disabled forms,
 //! cross-asserted at identical PaCO2 and circulation state.
+//! Milestone 58 adds the resting calcium-axis lines (through the
+//! resting validation ranges: ionized/total/corrected calcium
+//! and PTH, all cited normals) and the calcium section: the
+//! PTH-loss arm against its disabled-axis twin (frozen readouts
+//! exactly, circulation hash identical at the shared horizon),
+//! the calcium-infusion arm, and the chronic vitamin-D arm —
+//! each gated on the independent solver's frozen bands.
 
 use anatomica_physiology::cases::{
-    evaluate_course, evaluate_hormones, evaluate_perturbation, evaluate_refill,
-    evaluate_respiratory, evaluate_resting, run_case, run_course_arm, run_hormone_set,
-    run_long_rest, run_refill_observation, run_respiratory_case, CaseKind, CourseArm,
-    CourseOutcome, CourseSet, HormoneArmOutcome, LongRestOutcome, RespCaseKind, WindowStats,
+    evaluate_calcium, evaluate_course, evaluate_hormones, evaluate_perturbation, evaluate_refill,
+    evaluate_respiratory, evaluate_resting, run_calcium_set, run_case, run_course_arm,
+    run_hormone_set, run_long_rest, run_refill_observation, run_respiratory_case, CaseKind,
+    CourseArm, CourseOutcome, CourseSet, HormoneArmOutcome, LongRestOutcome, RespCaseKind,
+    WindowStats,
 };
 use anatomica_physiology::params::Params;
 use std::process::ExitCode;
@@ -882,6 +890,106 @@ fn validate(params: &Params) -> bool {
         println!("    {entry}");
     }
 
+    // ---------------------------------------------------------------
+    // Milestone 58: the calcium–PTH axis arms. Three perturbation
+    // cases gate on the independent solver's frozen bands
+    // (work/m58/predict.py, computed from parameters.json
+    // constants before the engine ran): PTH loss after
+    // thyroidectomy (the Case #8 picture — secretion capacity
+    // 0.09, the remnant her measured POD2 PTH implies),
+    // calcium-gluconate infusion, and chronic vitamin-D
+    // deficiency. The PTH-loss arm runs against its disabled-axis
+    // twin at the identical horizon: the twin's five STATES must
+    // sit bit-exactly on the resting equilibrium at every mark
+    // (frozen derivatives — its concentration readouts still
+    // move with the circulation's volume drift, which the A/B
+    // line prints), the two circulation trace hashes must be
+    // IDENTICAL (the axis never enters a circulation derivative),
+    // and the respiratory hashes must DIFFER (the axis states
+    // fold there — the one hash family that is supposed to move).
+    // ---------------------------------------------------------------
+    println!("\n=== CALCIUM–PTH AXIS (Milestone 58) ===");
+    let calcium = run_calcium_set(params);
+    {
+        let r = &calcium.pth_loss.resting;
+        println!(
+            "  resting axis at engagement: ionized {:.4} mmol/L  total {:.3}  corrected {:.3}  PTH {:.2} pg/mL  urine Ca {:.2} mmol/day  bone/form/vitD states {:.3}/{:.3}/{:.3}",
+            r.ionized_calcium, r.total_calcium, r.corrected_calcium, r.pth,
+            r.urine_calcium_mmol_day, r.bone_resorption_state, r.bone_formation_state,
+            r.vitamin_d_state
+        );
+    }
+    for (arm, title) in [
+        (&calcium.pth_loss, "PTH LOSS — secretion capacity 9% (post-thyroidectomy)"),
+        (&calcium.pth_loss_pure, "PTH LOSS — axis DISABLED (A/B control)"),
+        (&calcium.infusion, "CALCIUM INFUSION — 4.5 mmol over 20 min"),
+        (&calcium.vitamin_d, "VITAMIN D DEFICIENCY — effect target scale 0.40"),
+    ] {
+        println!("  {title}:");
+        for s in &arm.samples {
+            println!(
+                "    +{:>7.0} min: ionized {:.4} mmol/L  total {:.3}  corrected {:.3}  PTH {:6.2} pg/mL  bone {:.3}  form {:.3}  vitD {:.3}  urine Ca {:.2} mmol/day",
+                s.minutes, s.ionized_calcium, s.total_calcium, s.corrected_calcium, s.pth,
+                s.bone_resorption_state, s.bone_formation_state, s.vitamin_d_state,
+                s.urine_calcium_mmol_day
+            );
+        }
+        println!(
+            "    circulation trace hash: {:#018x}   respiratory trace hash: {:#018x}   conservation error: {:.2e} mL",
+            arm.trace_hash, arm.resp_hash, arm.conservation_error_ml
+        );
+    }
+    for line in evaluate_calcium(params, &calcium) {
+        if !line.pass && !line.soft {
+            ok = false;
+        }
+        let band = match line.magnitude_range {
+            Some([lo, hi]) => format!("  band [{lo:.2} .. {hi:.2}]"),
+            None => String::new(),
+        };
+        let verdict = if line.pass { "PASS" } else { "FAIL" };
+        println!(
+            "  {:<52} {:>8.3} -> {:>8.3}  (delta {:+.3})  expected {:<8}{} [{}] {}",
+            line.output, line.baseline, line.post, line.delta, line.expected, band, line.source,
+            verdict
+        );
+    }
+    {
+        let pure = &calcium.pth_loss_pure;
+        // The STATES are bit-frozen (content, PTH, the three
+        // effect states — zero derivatives integrate to exactly
+        // zero). The concentration READOUTS are not asserted
+        // frozen: ionized calcium is the content over the live
+        // extracellular volume, and the circulation's volume
+        // drifts ~0.2% over a protocol day, carrying the
+        // concentration with it — the drift is printed, not
+        // hidden.
+        let frozen = pure.samples.iter().all(|s| {
+            s.content_mmol == pure.resting.content_mmol
+                && s.pth == pure.resting.pth
+                && s.bone_resorption_state == pure.resting.bone_resorption_state
+                && s.bone_formation_state == pure.resting.bone_formation_state
+                && s.vitamin_d_state == pure.resting.vitamin_d_state
+        });
+        let circ_ok = calcium.pth_loss.trace_hash == pure.trace_hash;
+        let resp_ok = calcium.pth_loss.resp_hash != pure.resp_hash;
+        if !(frozen && circ_ok && resp_ok) {
+            ok = false;
+        }
+        let drift = pure
+            .samples
+            .last()
+            .map(|s| s.ionized_calcium - pure.resting.ionized_calcium)
+            .unwrap_or(0.0);
+        println!(
+            "  A/B axis identity: disabled-axis states frozen exactly at rest at every mark: {}; circulation trace hash identical to the live arm at +72 h: {}; respiratory hashes differ (the axis folds there): {}; disabled-arm ionized readout drift {:+.4} mmol/L over 72 h (extracellular-volume drift on a frozen content state)",
+            if frozen { "HOLDS" } else { "BROKEN" },
+            if circ_ok { "HOLDS" } else { "BROKEN" },
+            if resp_ok { "HOLDS" } else { "BROKEN" },
+            drift
+        );
+    }
+
     println!("\n=== TRANSCAPILLARY REFILL OBSERVATION — 750 mL loss, 30 min horizon ===");
     let refill = run_refill_observation(params);
     for (m, rf, vn) in &refill.samples {
@@ -1392,6 +1500,41 @@ fn main() -> ExitCode {
             }
             ExitCode::SUCCESS
         }
+        Some("run") if args.get(2).map(|s| s.as_str()) == Some("calcium") => {
+            // Milestone 58: the calcium arms standalone. Like the
+            // respiratory listing, but the arms' horizons run to
+            // simulated days (the PTH-loss and vitamin-D arms), so
+            // this listing is slow by design; nothing re-runs it
+            // under a timeout (the case workbench re-runs
+            // `run respiratory`, not this command).
+            let set = run_calcium_set(&params);
+            for (arm, title) in [
+                (&set.pth_loss, "PTH LOSS — secretion capacity 9% (post-thyroidectomy)"),
+                (&set.pth_loss_pure, "PTH LOSS — axis DISABLED (A/B control)"),
+                (&set.infusion, "CALCIUM INFUSION — 4.5 mmol over 20 min"),
+                (&set.vitamin_d, "VITAMIN D DEFICIENCY — effect target scale 0.40"),
+            ] {
+                println!("\n{title}:");
+                let r = &arm.resting;
+                println!(
+                    "  rest: ionized {:.4} mmol/L  total {:.3}  corrected {:.3}  PTH {:.2} pg/mL",
+                    r.ionized_calcium, r.total_calcium, r.corrected_calcium, r.pth
+                );
+                for s in &arm.samples {
+                    println!(
+                        "  +{:>7.0} min: ionized {:.4} mmol/L  total {:.3}  corrected {:.3}  PTH {:6.2} pg/mL  bone {:.3}  form {:.3}  vitD {:.3}  urine Ca {:.2} mmol/day",
+                        s.minutes, s.ionized_calcium, s.total_calcium, s.corrected_calcium,
+                        s.pth, s.bone_resorption_state, s.bone_formation_state, s.vitamin_d_state,
+                        s.urine_calcium_mmol_day
+                    );
+                }
+                println!(
+                    "  circulation trace hash: {:#018x}   respiratory trace hash: {:#018x}",
+                    arm.trace_hash, arm.resp_hash
+                );
+            }
+            ExitCode::SUCCESS
+        }
         Some("run") if args.get(2).map(|s| s.as_str()) == Some("refill") => {
             let outcome = run_refill_observation(&params);
             for (m, rf, vn) in &outcome.samples {
@@ -1443,7 +1586,7 @@ fn main() -> ExitCode {
             }
         }
         _ => {
-            eprintln!("usage: anatomica-physiology validate | run resting|hemorrhage|infusion|hemorrhage1500|refill|course|longrest|hormones|respiratory | determinism");
+            eprintln!("usage: anatomica-physiology validate | run resting|hemorrhage|infusion|hemorrhage1500|refill|course|longrest|hormones|respiratory|calcium | determinism");
             ExitCode::FAILURE
         }
     }
