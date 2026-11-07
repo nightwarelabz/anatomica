@@ -959,6 +959,830 @@ def profile_case3(case, ctx, boards, attempt):
        "case3: attempt commit matches adjudication and names the handoff procedure")
 
 
+def profile_case4(case, ctx, boards, attempt):
+    print(f"\n=== {case['id']} profile: CTS-6 / anchoring / imaging "
+          f"absence / links / theatre handoff (M42) ===")
+    labs = ctx.labs
+    ok(labs["lab.hba1c"]["value"] == 6.8 and 6.5 <= 6.8 < 7.0,
+       "case4: HbA1c 6.8% at/above the C29 diabetes threshold (6.5%) and "
+       "below the 7% goal C29 states — consistent with known diabetes, "
+       "settles nothing about neuropathy")
+
+    cts6 = [b for b in ctx.blocks if b["id"] == "cts6"][0]
+    e1 = ctx.block_eval(cts6, 1)
+    e2 = ctx.block_eval(cts6, 2)
+    e4 = ctx.block_eval(cts6, 4)
+    ok(e1["total"] == 7.5 and e1["partial"] is True
+       and e1["not_assessed"] == ["thenar_atrophy_or_weakness", "phalen",
+                                  "two_point_discrimination_loss", "tinel"],
+       f"case4: CTS-6 stage-1 partial = 7.5, not-assessed {e1['not_assessed']}")
+    ok(e2["total"] == 16.5 and e2["partial"] is False
+       and e2["status"].startswith("positive"),
+       "case4: CTS-6 complete at stage 2 = 16.5/26, positive band")
+    ok(e4["total"] == 16.5 and e4["status"] == e2["status"],
+       "case4: CTS-6 unchanged by stages 3-4 (it is an examination instrument)")
+    cmp_ = case["adjudication"]["score_comparison"]
+    ok(cmp_["cts6_final"]["total"] == e4["total"]
+       and cmp_["cts6_final"]["status"] == e4["status"]
+       and cmp_["cts6_stage1_partial"]["total"] == e1["total"],
+       "case4: adjudication's stated CTS-6 comparison matches the computed scores")
+
+    ok([round(boards[s]["hyp.carpal-tunnel-syndrome"], 4) for s in (1, 2, 3, 4)]
+       == [0.7778, 0.6364, 0.9114, 0.9943],
+       "case4: workbench CTS trajectory 0.7778 -> 0.6364 (the LR- dip) "
+       "-> 0.9114 -> 0.9943")
+    ok(boards[3]["hyp.cervical-radiculopathy"] >= RULE_OUT
+       and boards[4]["hyp.cervical-radiculopathy"] < RULE_OUT,
+       "case4: cervical radiculopathy live at stage 3 (0.0234), ruled out "
+       "only at stage 4 by the electrodiagnostic protocol")
+    ok(all(boards[3][h] < RULE_OUT and boards[2][h] >= RULE_OUT for h in
+           ("hyp.pronator-syndrome", "hyp.diabetic-polyneuropathy",
+            "hyp.brachial-plexopathy")),
+       "case4: pronator / polyneuropathy / plexopathy first ruled out at "
+       "stage 3 (the ultrasound stage)")
+    ruled = {}
+    for s in (1, 2, 3, 4):
+        for h, p in boards[s].items():
+            if p < RULE_OUT and h not in ruled:
+                ruled[h] = s
+    events = []
+    for st in attempt["stages"]:
+        s = st["stage"]
+        for h, lp in st["board"].items():
+            if lp >= ANCHOR and h in ruled and ruled[h] <= s:
+                events.append((s, h))
+    ok(events == [(4, "hyp.cervical-radiculopathy")],
+       f"case4: exactly one anchoring event, recomputed: {events}")
+    ok(attempt["stages"][3]["board"]["hyp.cervical-radiculopathy"] == 0.15,
+       "case4: the anchored residue is 0.15 at stage 4")
+
+    # ---- imaging: the recorded absence, re-verified ------------------
+    ok("imaging_link" not in case and "imaging_assessment" in case,
+       "case4: no imaging_link declared — the assessment block records "
+       "why none can be")
+    label_sets = {}
+    for sid in ("s0778", "s1090"):
+        cw = load(os.path.join(ROOT, "data", "imaging", sid, "crosswalk.json"))
+        names = sorted(l["label"] for l in cw["labels"])
+        label_sets[sid] = names
+        ok(len(names) == 104,
+           f"case4: {sid} label set recounted at 104 labels")
+        ok(not any(any(w in n for w in
+                       ("nerve", "median", "carpal", "wrist", "hand"))
+                   for n in names),
+           f"case4: {sid} label set contains no nerve / median / carpal / "
+           "wrist / hand label")
+        ser = load(os.path.join(ROOT, "data", "imaging", sid, "series.json"))
+        ok(ser["subject"]["meta_csv_row"]["study_type"]
+           == "ct thorax-abdomen-pelvis",
+           f"case4: {sid} is a thorax-abdomen-pelvis study — the wrist is "
+           "outside the imaged volume")
+    ok(label_sets["s0778"] == label_sets["s1090"],
+       "case4: the two subjects' label sets are identical")
+
+    # ---- links: median nerve records + the M35 honesty claim ---------
+    ok("nerve.right-median-nerve" in INVS and "nerve.left-median-nerve" in INVS,
+       "case4: Body Model inventory holds both median nerve records (M33)")
+    mn = load(os.path.join(ROOT, "data", "nervous", "major-nerves.json"))
+    med = next(r for r in mn["records"] if r["id"] == "major.median")
+    ok(sorted(med["geometry_record_ids"]) ==
+       ["nerve.left-median-nerve", "nerve.right-median-nerve"],
+       "case4: M39 record major.median links exactly the two inventory nerves")
+    mus = load(os.path.join(ROOT, "data", "muscular", "muscles.json"))
+    ok(any(r.get("record_id") == "muscle.abductor-pollicis-brevis"
+           for r in mus["records"]),
+       "case4: thenar muscle record muscle.abductor-pollicis-brevis exists")
+    pas = load(os.path.join(ROOT, "data", "innervation-link-pass.json"))
+    phrase = next(p for p in pas["phrases"]
+                  if p["phrase"] == "recurrent branch of the median nerve")
+    ok(phrase["status"] == "unresolved"
+       and phrase["components"][0]["status"] == "absent",
+       "case4: M35 pass indeed leaves the recurrent branch unresolved / "
+       "absent — the case's thenar link honesty claim is true")
+
+    # ---- no physiology link; the Milestone 42 theatre handoff --------
+    ok("physiology_link" not in case
+       and case["ground_truth"]["engine_state"].startswith("No physiology link"),
+       "case4: no physiology link declared (case-2 precedent), gap stated")
+    proc_ids = set()
+    for p in glob.glob(os.path.join(ROOT, "theatre", "procedures", "*.json")):
+        proc_ids.add(load(p)["procedure"]["id"])
+    ok(proc_ids == {"proc.chole.lap", "proc.appy.lap", "proc.carpal-release",
+                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia"},
+       f"case4: the Theatre holds exactly {sorted(proc_ids)} — the carpal "
+       "tunnel release authored at Milestone 42 is the handoff target (the "
+       "ulnar decompression joined it at Milestone 44; the inguinal hernia "
+       "repair joined at Milestone 49 — set assertion updated in the "
+       "Milestone 44 maintenance pattern, the handoff itself unchanged)")
+    ho = case["management"]["handoff"]
+    ok(ho["procedure_id"] == "proc.carpal-release"
+       and ho["module"] == "theatre" and ho["from_case_stage"] == 4
+       and ho["procedure_configuration"] == "standard",
+       "case4: handoff names proc.carpal-release, standard (open) "
+       "configuration, from stage 4")
+    ctp = load(os.path.join(
+        ROOT, "theatre", "procedures", "proc.carpal-release.json"))["procedure"]
+    ok(ctp["id"] == ho["procedure_id"],
+       "case4: handoff procedure id matches the theatre file "
+       "(proc.carpal-release)")
+    reg = {s["id"]: s for s in ctp["structures"]}
+    ok(reg["major.median"]["kind"] == "record"
+       and reg["major.median"]["resolves_to"]
+       == "data/nervous/major-nerves.json",
+       "case4: theatre register resolves major.median — the case's own "
+       "clinical link is the procedure's decompressed structure")
+    ok(reg["nerve.recurrent-branch-median"]["kind"] == "absence",
+       "case4: the register carries the recurrent branch as an absence — "
+       "the M35 honesty claim, inherited by the procedure's safety gate")
+    ok("proc.carpal-release" in case["management"]["theatre_link_verified"]
+       and "Milestone 42" in case["management"]["theatre_note"],
+       "case4: management carries the link-verification note and the "
+       "dated record of the handoff's arrival")
+
+    # ---- ontology discipline ------------------------------------------
+    hyps = {h["id"]: h for h in case["hypotheses"]}
+    ok(hyps["hyp.carpal-tunnel-syndrome"]["mondo"] == "MONDO:0007275"
+       and case["ground_truth"]["mondo"] == "MONDO:0007275",
+       "case4: diagnosis coded MONDO:0007275 on hypothesis and ground truth")
+    ok(hyps["hyp.pronator-syndrome"]["mondo"] is None
+       and "MONDO:0003598" in hyps["hyp.pronator-syndrome"]["mondo_note"],
+       "case4: pronator syndrome unclassed, with the near-miss class named "
+       "and refused in its note")
+    ok(hyps["hyp.cervical-radiculopathy"]["mondo"] == "MONDO:0002959"
+       and "mondo_note" in hyps["hyp.cervical-radiculopathy"],
+       "case4: cervical hypothesis coded to the generic radiculopathy class "
+       "with the absence of a cervical-specific class stated")
+    ok(hyps["hyp.diabetic-polyneuropathy"]["mondo"] == "MONDO:0001583"
+       and hyps["hyp.brachial-plexopathy"]["mondo"] == "MONDO:0006683",
+       "case4: polyneuropathy / plexopathy Mondo ids as verified (C10 addendum)")
+
+    # ---- debrief: classifications + tally ------------------------------
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    cls = {o["test_id"]: o["classification"] for o in deb["orders"]}
+    ok(cls == {"test.hand-exam-battery": "discriminating",
+               "test.hba1c": "safety-net",
+               "test.wrist-ultrasound": "discriminating",
+               "test.cervical-mri": "non-contributory",
+               "test.ncs-emg": "discriminating"},
+       f"case4: order classifications {cls}")
+    ok(deb["resource_tally"]["total_time_min"] == 170
+       and deb["resource_tally"]["total_cost_units"] == 21,
+       "case4: resource tally 170 min / 21 units")
+    ok(deb["ruled_out_by_workbench"] ==
+       {"hyp.pronator-syndrome": 3, "hyp.diabetic-polyneuropathy": 3,
+        "hyp.brachial-plexopathy": 3, "hyp.cervical-radiculopathy": 4,
+        "hyp.other-unspecified": 4},
+       "case4: rule-out stages as designed (neck and residual last, at 4)")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"]
+       == case["adjudication"]["diagnosis_hypothesis"]
+       and "carpal tunnel release" in commit["management"]
+       and "proc.carpal-release" in commit["management"],
+       "case4: attempt commit matches adjudication and names the theatre "
+       "procedure the handoff targets (Milestone 42)")
+
+
+# =====================================================================
+# Case 5 profile (Milestone 43): McGowan block / branch anatomy /
+# anchoring / imaging absence / links / theatre handoff (M44)
+# =====================================================================
+def profile_case5(case, ctx, boards, attempt):
+    print(f"\n=== {case['id']} profile: McGowan / trajectory / anchoring / "
+          f"imaging absence / links / theatre handoff (M44) ===")
+    ok(len(case["findings"]) == 30 and len(case["labs"]) == 0
+       and len(case.get("measurements", [])) == 5
+       and len(case["available_tests"]) == 4,
+       "case5: 30 findings, 0 labs, 5 measurements, 4 orderable tests")
+
+    # ---- LR discipline: exactly three, all computed, all sourced ----
+    lrs = {f["id"]: f["lr"] for f in case["findings"] if f.get("lr")}
+    ok(set(lrs) == {"f.tinel-elbow", "f.elbow-us-csa-enlarged",
+                    "f.edx-across-elbow-slowing"},
+       f"case5: exactly three findings carry a board LR {sorted(lrs)}")
+    ok(lrs["f.tinel-elbow"]["lr_plus"] == 35.0
+       and lrs["f.tinel-elbow"]["source"] == "C33"
+       and lrs["f.tinel-elbow"]["status"] == "computed",
+       "case5: Tinel LR+ 35.0 computed from the C33 pair (0.70 / 0.02), "
+       "spectrum caveat carried in its note")
+    ok(abs(lrs["f.elbow-us-csa-enlarged"]["lr_plus"] - 9.4444) < 1e-9
+       and lrs["f.elbow-us-csa-enlarged"]["source"] == "C32",
+       "case5: elbow ultrasound LR+ 9.4444 computed from the C32 pooled pair")
+    ok(lrs["f.edx-across-elbow-slowing"]["lr_plus"] == 7.4
+       and lrs["f.edx-across-elbow-slowing"]["source"] == "C31",
+       "case5: EDX LR+ 7.4 computed at the C31 parameter's least "
+       "favourable supported combination (a disclosed floor)")
+    ok(ctx.findings["f.dorsal-ulnar-sensory-loss"].get("lr") is None
+       and ctx.findings["f.pressure-flexion-positive"].get("lr") is None,
+       "case5: the decisive dorsal-branch finding and the combined "
+       "pressure-flexion test carry NO LR — no consulted source quantifies "
+       "the one, and the other's specificity is unstated in its source")
+
+    # ---- McGowan block: pending at 1, grade II from 2 ----------------
+    ok("classification" not in case["adjudication"],
+       "case5: no adjudication 'classification' key — the McGowan block "
+       "is a criteria block, not a Strasberg-style classification")
+    mg = [b for b in ctx.blocks if b["id"] == "mcgowan"][0]
+    e1 = ctx.block_eval(mg, 1)
+    ok(e1["status"] != "classified" and e1["result"] is None
+       and e1["inputs"]["motor_weakness"] == "unknown",
+       "case5: McGowan not yet classifiable at stage 1 (motor "
+       "examination unrevealed — the grade is not a history product)")
+    for s in (2, 3, 4):
+        ev = ctx.block_eval(mg, s)
+        ok(ev["status"] == "classified"
+           and ev["result"]["mcgowan_grade"] == "II"
+           and ev["result"]["grade_label"] == "intermediate",
+           f"case5: McGowan grade II (intermediate) at stage {s}")
+    ok(ctx.findings["f.interosseous-paralysis"]["presence"] == "absent",
+       "case5: the grade-III boundary is an examined absence (no "
+       "interosseous paralysis on record), not missing data")
+    cmp_ = case["adjudication"]["criteria_comparison"]
+    ok(cmp_["mcgowan_final"]["grade"] == "II"
+       and cmp_["mcgowan_stage1"]["grade"] is None,
+       "case5: adjudication's stated McGowan comparison matches the "
+       "computed block (II final, unclassifiable at stage 1)")
+
+    # ---- trajectory + rule-out structure ------------------------------
+    ok([round(boards[s]["hyp.ulnar-neuropathy-elbow"], 4)
+        for s in (1, 2, 3, 4)] == [0.22, 0.908, 0.9894, 0.9986],
+       "case5: workbench elbow trajectory 0.22 -> 0.9080 (Tinel) "
+       "-> 0.9894 (elbow US) -> 0.9986 (EDX floor)")
+    ok(boards[2]["hyp.ulnar-neuropathy-wrist"] >= RULE_OUT
+       and boards[3]["hyp.ulnar-neuropathy-wrist"] < RULE_OUT,
+       "case5: the wrist hypothesis survives stage 2 (0.0212 — the "
+       "Tinel weight cannot retire it) and is ruled out at stage 3")
+    ok(all(boards[2][h] < RULE_OUT and boards[1][h] >= RULE_OUT for h in
+           ("hyp.c8-radiculopathy", "hyp.lower-trunk-plexopathy",
+            "hyp.neurogenic-thoracic-outlet")),
+       "case5: C8 / plexopathy / thoracic outlet first ruled out at "
+       "stage 2")
+    ok(boards[3]["hyp.other-unspecified"] < RULE_OUT
+       and boards[2]["hyp.other-unspecified"] >= RULE_OUT,
+       "case5: the residual retires at stage 3, arithmetically")
+
+    # ---- anchoring: exactly one, self-installed, at stage 3 -----------
+    ruled = {}
+    for s in (1, 2, 3, 4):
+        for h, p in boards[s].items():
+            if p < RULE_OUT and h not in ruled:
+                ruled[h] = s
+    events = []
+    for st in attempt["stages"]:
+        s = st["stage"]
+        for h, lp in st["board"].items():
+            if lp >= ANCHOR and h in ruled and ruled[h] <= s:
+                events.append((s, h))
+    ok(events == [(3, "hyp.ulnar-neuropathy-wrist")],
+       f"case5: exactly one anchoring event, recomputed: {events}")
+    ok(attempt["stages"][2]["board"]["hyp.ulnar-neuropathy-wrist"] == 0.16
+       and attempt["stages"][0]["board"]["hyp.ulnar-neuropathy-wrist"]
+       == 0.34,
+       "case5: the anchor's arc — wrist led the learner's board at "
+       "stage 1 (0.34, the cycling frame) and was still held at 0.16 "
+       "at stage 3, after the dorsal finding excluded it at stage 2")
+
+    # ---- EDX / ultrasound internal consistency ------------------------
+    meas = ctx.meas
+    ok(meas["meas.ae-be-motor-cv"]["value"] < 50
+       and meas["meas.be-w-motor-cv"]["value"]
+       - meas["meas.ae-be-motor-cv"]["value"] > 10
+       and meas["meas.cmap-amplitude-drop-pct"]["value"] > 20,
+       "case5: the patient's EDX numbers meet the C31 focal criteria "
+       "they are weighed with (38 < 50 m/s; 18 > 10 m/s slower; 28% > 20%)")
+    ok(meas["meas.elbow-ulnar-csa"]["value"] >= 10
+       and meas["meas.elbow-ulnar-csa"]["value"]
+       > meas["meas.wrist-ulnar-csa"]["value"],
+       "case5: elbow CSA 14 mm2 above the C32 cutoff and above the "
+       "same patient's wrist CSA (5 mm2) — enlargement at the elbow")
+
+    # ---- imaging: the recorded absence, re-verified -------------------
+    ok("imaging_link" not in case and "imaging_assessment" in case,
+       "case5: no imaging_link declared — the assessment block records "
+       "why none can be")
+    label_sets = {}
+    for sid in ("s0778", "s1090"):
+        cw = load(os.path.join(ROOT, "data", "imaging", sid, "crosswalk.json"))
+        names = sorted(l["label"] for l in cw["labels"])
+        label_sets[sid] = names
+        ok(len(names) == 104, f"case5: {sid} label set recounted at 104")
+        ok(not any(any(w in n for w in ("nerve", "ulnar", "elbow"))
+                   for n in names),
+           f"case5: {sid} label set contains no nerve / ulnar / elbow label")
+        ser = load(os.path.join(ROOT, "data", "imaging", sid, "series.json"))
+        ok(ser["subject"]["meta_csv_row"]["study_type"]
+           == "ct thorax-abdomen-pelvis",
+           f"case5: {sid} is a thorax-abdomen-pelvis study — neither the "
+           "elbow nor the wrist is in the imaged volume")
+    ok(label_sets["s0778"] == label_sets["s1090"],
+       "case5: the two subjects' label sets are identical")
+
+    # ---- links: ulnar records + the M35 honesty claims -----------------
+    ok("nerve.right-ulnar-nerve" in INVS and "nerve.left-ulnar-nerve" in INVS,
+       "case5: Body Model inventory holds both ulnar nerve records (M33)")
+    mn = load(os.path.join(ROOT, "data", "nervous", "major-nerves.json"))
+    uln = next(r for r in mn["records"] if r["id"] == "major.ulnar")
+    ok(sorted(uln["geometry_record_ids"]) ==
+       ["nerve.left-ulnar-nerve", "nerve.right-ulnar-nerve"],
+       "case5: M39 record major.ulnar links exactly the two inventory nerves")
+    ok("dorsal cutaneous branch is spared" in uln["clinical_testing"]
+       and "Guyon" in uln["course"],
+       "case5: major.ulnar states the wrist pattern the case's dorsal "
+       "finding contradicts (dorsal branch spared in wrist lesions)")
+    mus = load(os.path.join(ROOT, "data", "muscular", "muscles.json"))
+    fcu = next(r for r in mus["records"]
+               if (r.get("record_id") or r.get("id"))
+               == "muscle.flexor-carpi-ulnaris")
+    ok(sorted(fcu["innervation"]["nerve_record_ids"]) ==
+       ["nerve.left-ulnar-nerve", "nerve.right-ulnar-nerve"],
+       "case5: flexor carpi ulnaris carries M35 nerve_record_ids for "
+       "both ulnar nerves (its phrase resolves)")
+    pas = load(os.path.join(ROOT, "data", "innervation-link-pass.json"))
+    deep = next(p for p in pas["phrases"]
+                if p["phrase"] == "deep branch of the ulnar nerve")
+    ok(deep["status"] == "unresolved"
+       and deep["components"][0]["status"] == "absent",
+       "case5: M35 pass leaves the deep branch of the ulnar nerve "
+       "unresolved / absent — the intrinsic findings' honesty claim is true")
+
+    # ---- no physiology link; the Milestone 44 theatre handoff --------
+    ok("physiology_link" not in case
+       and case["ground_truth"]["engine_state"].startswith(
+           "No physiology link"),
+       "case5: no physiology link declared (case-2 precedent), gap stated")
+    proc_ids = set()
+    for p in glob.glob(os.path.join(ROOT, "theatre", "procedures", "*.json")):
+        proc_ids.add(load(p)["procedure"]["id"])
+    ok(proc_ids == {"proc.chole.lap", "proc.appy.lap", "proc.carpal-release",
+                    "proc.ulnar-decompression", "proc.lap-inguinal-hernia"},
+       f"case5: the Theatre holds exactly {sorted(proc_ids)} — the ulnar "
+       "decompression authored at Milestone 44 is the handoff target (the "
+       "inguinal hernia repair joined at Milestone 49 — set assertion "
+       "updated in the Milestone 44 maintenance pattern, the handoff "
+       "itself unchanged)")
+    ho = case["management"]["handoff"]
+    ok(ho["procedure_id"] == "proc.ulnar-decompression"
+       and ho["module"] == "theatre" and ho["from_case_stage"] == 4
+       and ho["procedure_configuration"] == "standard",
+       "case5: handoff names proc.ulnar-decompression, standard "
+       "(in-situ) configuration, from stage 4")
+    udp = load(os.path.join(
+        ROOT, "theatre", "procedures", "proc.ulnar-decompression.json"))["procedure"]
+    ok(udp["id"] == ho["procedure_id"],
+       "case5: handoff procedure id matches the theatre file "
+       "(proc.ulnar-decompression)")
+    reg = {s["id"]: s for s in udp["structures"]}
+    ok(reg["major.ulnar"]["kind"] == "record"
+       and reg["major.ulnar"]["resolves_to"]
+       == "data/nervous/major-nerves.json",
+       "case5: theatre register resolves major.ulnar — the case's own "
+       "clinical link is the procedure's decompressed structure")
+    ok(reg["nerve.medial-cutaneous-nerve-of-forearm"]["kind"] == "record"
+       and reg["nerve.medial-cutaneous-nerve-of-forearm"]["resolves_to"]
+       == "data/nervous/nervous-inventory.json",
+       "case5: theatre register resolves the medial antebrachial "
+       "cutaneous nerve — the gate's second protected structure is a "
+       "real Body Model record")
+    ok("proc.ulnar-decompression" in case["management"]["theatre_link_verified"]
+       and "Milestone 44" in case["management"]["theatre_note"],
+       "case5: management carries the link-verification note and the "
+       "dated record of the handoff's arrival")
+
+    # ---- ontology discipline -------------------------------------------
+    hyps = {h["id"]: h for h in case["hypotheses"]}
+    ok(hyps["hyp.ulnar-neuropathy-elbow"]["mondo"] == "MONDO:0043982"
+       and case["ground_truth"]["mondo"] == "MONDO:0043982",
+       "case5: diagnosis coded MONDO:0043982 (cubital tunnel syndrome) "
+       "on hypothesis and ground truth")
+    ok(hyps["hyp.ulnar-neuropathy-wrist"]["mondo"] == "MONDO:0007006"
+       and "MONDO:0007006" in hyps["hyp.ulnar-neuropathy-wrist"]["mondo_note"]
+       and "No Guyon" in hyps["hyp.ulnar-neuropathy-wrist"]["mondo_note"],
+       "case5: wrist hypothesis coded to the generic ulnar neuropathy "
+       "class with the absent Guyon-specific class stated, not fabricated")
+    ok(hyps["hyp.neurogenic-thoracic-outlet"]["mondo"] == "MONDO:0015061"
+       and hyps["hyp.c8-radiculopathy"]["mondo"] == "MONDO:0002959"
+       and "mondo_note" in hyps["hyp.c8-radiculopathy"]
+       and hyps["hyp.lower-trunk-plexopathy"]["mondo"] == "MONDO:0006683"
+       and hyps["hyp.other-unspecified"]["mondo"] is None
+       and hyps["hyp.other-unspecified"].get("mondo_note"),
+       "case5: NTOS / generic-radiculopathy / plexopathy / residual "
+       "Mondo coding as verified in the C10 Milestone 43 addendum")
+
+    # ---- debrief: classifications + tally -------------------------------
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    cls = {o["test_id"]: o["classification"] for o in deb["orders"]}
+    ok(cls == {"test.targeted-exam-battery": "discriminating",
+               "test.wrist-ultrasound": "non-contributory",
+               "test.elbow-ultrasound": "discriminating",
+               "test.edx-ulnar-protocol": "safety-net"},
+       f"case5: order classifications {cls}")
+    ok(deb["resource_tally"]["total_time_min"] == 125
+       and deb["resource_tally"]["total_cost_units"] == 14,
+       "case5: resource tally 125 min / 14 units")
+    ok(deb["ruled_out_by_workbench"] ==
+       {"hyp.c8-radiculopathy": 2, "hyp.lower-trunk-plexopathy": 2,
+        "hyp.neurogenic-thoracic-outlet": 2,
+        "hyp.ulnar-neuropathy-wrist": 3, "hyp.other-unspecified": 3},
+       "case5: rule-out stages as designed (proximal rivals at 2, the "
+       "anchored wrist and the residual at 3)")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"]
+       == case["adjudication"]["diagnosis_hypothesis"]
+       and "proc.ulnar-decompression" in commit["management"],
+       "case5: attempt commit matches adjudication and names the theatre "
+       "procedure the handoff targets (Milestone 44)")
+
+
+def profile_case6(case, ctx, boards, attempt):
+    print(f"\n=== {case['id']} profile: Wells / PERC / CURB-65 / A-a "
+          f"arithmetic / ESC class / trajectory / anchoring / physiology "
+          f"+ imaging links / no theatre handoff (M48) ===")
+    ok(len(case["findings"]) == 37 and len(case["labs"]) == 10
+       and len(case.get("measurements", [])) == 10
+       and len(case["available_tests"]) == 10,
+       "case6: 37 findings, 10 labs, 10 measurements, 10 orderable tests")
+
+    # ---- LR discipline: exactly four, all computed, all sourced ----
+    lrs = {f["id"]: f["lr"] for f in case["findings"] if f.get("lr")}
+    ok(set(lrs) == {"f.bnp-elevated", "f.ddimer-positive",
+                    "f.ctpa-pe-positive", "f.lus-no-blines"},
+       f"case6: exactly four findings carry a board LR {sorted(lrs)}")
+    ok(lrs["f.bnp-elevated"]["lr_plus"] == 3.75
+       and lrs["f.bnp-elevated"]["source"] == "C36"
+       and lrs["f.bnp-elevated"]["status"] == "computed",
+       "case6: BNP LR+ 3.75 computed from the C36 pair (0.90 / 0.24)")
+    ok(abs(lrs["f.ddimer-positive"]["lr_plus"] - 1.6441) < 1e-9
+       and lrs["f.ddimer-positive"]["source"] == "C39"
+       and "lr_minus" not in lrs["f.ddimer-positive"],
+       "case6: D-dimer LR+ 1.6441 computed from the C39 pooled pair "
+       "(0.97 / 0.59), and deliberately NO lr_minus — in a "
+       "post-surgical patient a below-cutoff result was never going "
+       "to be allowed to exclude, so no exclusion weight is registered")
+    ok(lrs["f.ctpa-pe-positive"]["lr_plus"] == 20.75
+       and lrs["f.ctpa-pe-positive"]["source"] == "C40",
+       "case6: CTPA LR+ 20.75 computed from the conservative PIOPED II "
+       "pair (0.83 / 0.04), not the larger pooled pair in C39")
+    ok(abs(lrs["f.lus-no-blines"]["lr_minus"] - 0.1176) < 1e-9
+       and lrs["f.lus-no-blines"]["source"] == "C43",
+       "case6: absent-B-lines LR- 0.1176 computed from the C43 pooled "
+       "pair (0.104 / 0.884); the review's published pooled 0.13 is "
+       "recorded in the derivation")
+    ok(ctx.findings["f.troponin-elevated"].get("lr") is None,
+       "case6: the troponin finding carries NO LR — myocardial injury "
+       "is not infarction, and no consulted source quantifies it for "
+       "either hypothesis in this differential")
+
+    # ---- the five blocks, stage by stage ------------------------------
+    ok("classification" not in case["adjudication"],
+       "case6: no adjudication 'classification' key — the blocks are "
+       "criteria blocks (case-5 discipline)")
+    blocks = {b["id"]: b for b in ctx.blocks}
+    w = ctx.block_eval(blocks["wells_score"], 1)
+    ok(w["total"] == 3.0 and w["partial"]
+       and w["not_assessed"] == ["dvt_signs"]
+       and w["status"] == "PE unlikely (two-tier)",
+       "case6: Wells at stage 1 is a PARTIAL 3.0 (PE unlikely) with "
+       "the DVT-signs item not yet assessed — the calves unmeasured")
+    w2 = ctx.block_eval(blocks["wells_score"], 2)
+    ok(w2["total"] == 6.0 and not w2["partial"]
+       and w2["status"] == "PE likely (two-tier)",
+       "case6: Wells completes at 6.0 (PE likely) at stage 2 — "
+       "DVT signs 3 + tachycardia 1.5 + surgery 1.5")
+    ok(all(i["id"] != "pe_is_top_diagnosis"
+           for i in blocks["wells_score"]["items"]),
+       "case6: the Wells clinician-judgment item is NOT a block item "
+       "— a self-scored item cannot be both evidence and verdict; "
+       "its exclusion and sensitivity are stated in the block note")
+    p1 = ctx.block_eval(blocks["perc_rule"], 1)
+    p2 = ctx.block_eval(blocks["perc_rule"], 2)
+    ok(p1["total"] == 4 and p1["partial"]
+       and p1["not_assessed"] == ["unilateral_leg_swelling"]
+       and p2["total"] == 5 and not p2["partial"]
+       and p2["status"].startswith("PERC positive"),
+       "case6: PERC counts 4 (partial) at stage 1 and 5 complete at "
+       "stage 2 — positive either way, and its < 15% gestalt "
+       "precondition is stated unmet in the block note")
+    c1 = ctx.block_eval(blocks["curb65"], 1)
+    c2 = ctx.block_eval(blocks["curb65"], 2)
+    ok(c1["total"] == 1 and c1["partial"]
+       and c1["not_assessed"] == ["urea_over_7"]
+       and c2["total"] == 1 and not c2["partial"]
+       and "low severity band" in c2["status"],
+       "case6: CURB-65 totals 1 (the age item alone) from stage 2 — "
+       "a severity statement about a pneumonia this patient does "
+       "not have, recorded as such")
+    aa1 = ctx.block_eval(blocks["aa_assessment"], 1)
+    ok(aa1["status"] != "classified" and aa1["result"] is None,
+       "case6: the gas classification is pending at stage 1 — it is "
+       "not a history product")
+    for s in (2, 3, 4):
+        ev = ctx.block_eval(blocks["aa_assessment"], s)
+        ok(ev["status"] == "classified"
+           and ev["result"]["pattern"] == "ventilation/perfusion mismatch",
+           f"case6: A-a classification is V/Q mismatch at stage {s}")
+    for s in (1, 2):
+        ev = ctx.block_eval(blocks["esc_pe_risk"], s)
+        ok(ev["status"] != "classified" and ev["result"] is None
+           and ev["inputs"]["rv_dysfunction"] == "unknown",
+           f"case6: ESC risk class pending at stage {s} — the RV "
+           "input is unmeasured until the CTPA, by design")
+    for s in (3, 4):
+        ev = ctx.block_eval(blocks["esc_pe_risk"], s)
+        ok(ev["status"] == "classified"
+           and ev["result"]["esc_category"] == "intermediate-high",
+           f"case6: ESC class intermediate-high at stage {s} "
+           "(stable, sPESI >= 1 via HR 112, RV/LV 1.1, troponin 34)")
+    cmp_ = case["adjudication"]["criteria_comparison"]
+    ok(cmp_["wells_final"]["total"] == 6.0
+       and cmp_["wells_stage1"]["total"] == 3.0
+       and cmp_["perc_final"]["total"] == 5
+       and cmp_["curb65_final"]["total"] == 1
+       and cmp_["aa_final"]["pattern"] == "ventilation/perfusion mismatch"
+       and cmp_["esc_risk_final"]["category"] == "intermediate-high",
+       "case6: adjudication's stated criteria comparison matches the "
+       "computed blocks at every stage")
+
+    # ---- the A-a arithmetic, verified from the case's own numbers ----
+    import math as _math
+    pao2 = ctx.labs["lab.pao2"]["value"]
+    paco2 = ctx.labs["lab.paco2"]["value"]
+    ph = ctx.labs["lab.ph"]["value"]
+    hco3 = ctx.labs["lab.hco3"]["value"]
+    pao2_alv = 0.21 * (760 - 47) - paco2 * (0.21 + (1 - 0.21) / 0.8)
+    aa = pao2_alv - pao2
+    ok(abs(aa - ctx.meas["meas.aa-gradient"]["value"]) < 0.15,
+       f"case6: the engine's alveolar gas equation on the case's own "
+       f"gas gives A-a {aa:.1f} mmHg, matching the recorded "
+       "measurement (51.8) — PAO2 113.8 at PaCO2 30, FiO2 0.21")
+    ok(abs(6.1 + _math.log10(hco3 / (0.03 * paco2)) - ph) < 0.01,
+       "case6: the authored gas is Henderson-Hasselbalch consistent "
+       "(HCO3 22, PaCO2 30 -> pH 7.49)")
+    ok(abs((2.5 + 0.21 * 71) - 17.41) < 0.01
+       and ctx.meas["meas.aa-gradient"]["value"] > 17.41,
+       "case6: the age-expected gradient (Mellemgaard, C46) is 17.41 "
+       "mmHg at 71 and the patient's 51.8 exceeds it threefold")
+    ok(case["physiology_link"]["respiratory_recorded_outputs"]
+       ["aa_gradient_mmhg"] < ctx.meas["meas.aa-gradient"]["value"],
+       "case6: the engine's resting gradient (9.3 mmHg) is the "
+       "yardstick the patient's 51.8 is read against")
+
+    # ---- trajectory + rule-out structure ------------------------------
+    ok([round(boards[s]["hyp.pulmonary-embolism"], 4)
+        for s in (1, 2, 3, 4)] == [0.36, 0.379, 0.9554, 0.9554],
+       "case6: workbench PE trajectory 0.36 -> 0.3790 (the BNP stage: "
+       "HF rises to 0.2881 and PE still leads) -> 0.9554 (CTPA) ")
+    ok(round(boards[2]["hyp.heart-failure"], 4) == 0.2881
+       and round(boards[1]["hyp.heart-failure"], 4) == 0.12,
+       "case6: the stage-2 BNP effect is in the machinery itself — "
+       "the workbench's HF posterior more than doubles (0.12 -> "
+       "0.2881) on the honestly weighed LR+ 3.75")
+    ok(boards[2]["hyp.asthma-exacerbation"] < RULE_OUT
+       and boards[1]["hyp.asthma-exacerbation"] >= RULE_OUT,
+       "case6: asthma is the first retirement (stage 2, by "
+       "renormalisation alone — no finding addresses it)")
+    ok(all(boards[3][h] < RULE_OUT and boards[2][h] >= RULE_OUT for h in
+           ("hyp.heart-failure", "hyp.pneumonia", "hyp.pneumothorax",
+            "hyp.acute-coronary-syndrome", "hyp.copd-exacerbation",
+            "hyp.other-unspecified")),
+       "case6: every remaining rival is ruled out at stage 3, when "
+       "the CTPA weight lands")
+
+    # ---- anchoring: exactly one, result-installed, at stage 3 ---------
+    ruled = {}
+    for s in (1, 2, 3, 4):
+        for h, p in boards[s].items():
+            if p < RULE_OUT and h not in ruled:
+                ruled[h] = s
+    events = []
+    for st in attempt["stages"]:
+        s = st["stage"]
+        for h, lp in st["board"].items():
+            if lp >= ANCHOR and h in ruled and ruled[h] <= s:
+                events.append((s, h))
+    ok(events == [(3, "hyp.heart-failure")],
+       f"case6: exactly one anchoring event, recomputed: {events}")
+    lb = {st["stage"]: st["board"] for st in attempt["stages"]}
+    ok(lb[1]["hyp.heart-failure"] == 0.20
+       and lb[2]["hyp.heart-failure"] == 0.42
+       and lb[3]["hyp.heart-failure"] == 0.16,
+       "case6: the anchor's arc — HF second at stage 1 (0.20), "
+       "installed as the lead at stage 2 by the BNP result (0.42), "
+       "still held at 0.16 at stage 3 after the CTPA and the "
+       "learner's own B-line-negative ultrasound")
+
+    # ---- physiology link: hash + both readouts re-run ------------------
+    link = case["physiology_link"]
+    c1 = load(os.path.join(CASES, "case.ruq-pain.001.json"))["case"]
+    ok(link["trace_hash"] == c1["physiology_link"]["trace_hash"]
+       == "0x6369b10e9a71c872",
+       "case6: physiology link records the same pinned circulation "
+       "trace hash as cases 1 and 3 — the M47 respiratory module did "
+       "not move the circulation chain")
+    ok(link["baseline_recorded_outputs"]
+       == c1["physiology_link"]["baseline_recorded_outputs"],
+       "case6: recorded circulation baseline outputs identical to "
+       "case 1's link")
+    resp = link["respiratory_recorded_outputs"]
+    ok(len(resp) == 17,
+       "case6: the link records the full 17-value respiratory "
+       "resting readout (the resting protocol prints no resp hash; "
+       "the state is pinned by its readout, as the link states)")
+    import re as _re
+    try:
+        env = dict(os.environ)
+        env["PATH"] = os.path.expanduser("~/.cargo/bin") + ":" + env["PATH"]
+        r = subprocess.run(["cargo", "run", "--release", "--quiet", "--",
+                            "run", "respiratory"],
+                           cwd=os.path.join(ROOT, "physiology"),
+                           capture_output=True, text=True, timeout=900,
+                           env=env)
+        m = _re.search(
+            r"resting: PaCO2 ([\d.]+) mmHg  PAO2 ([\d.]+)  PaO2 ([\d.]+)  "
+            r"pH ([\d.]+)  SaO2 ([\d.]+)  CaO2 ([\d.]+) mL/dL  "
+            r"CvO2 ([\d.]+)  DO2 ([\d.]+) mL/min  O2ER ([\d.]+)  "
+            r"VE ([\d.]+) L/min  VA ([\d.]+) L/min  RR ([\d.]+) /min  "
+            r"VO2 ([\d.]+)  VCO2 ([\d.]+)  Hb ([\d.]+) g/dL  "
+            r"HCO3 ([\d.]+) mEq/L  A-a ([\d.]+) mmHg", r.stdout)
+        keys = ["pa_co2_mmhg", "alveolar_po2_mmhg", "pa_o2_mmhg", "ph",
+                "sa_o2", "ca_o2_ml_dl", "cv_o2_ml_dl", "do2_ml_min",
+                "o2er", "ve_l_min", "va_l_min", "rr_per_min",
+                "vo2_ml_min", "vco2_ml_min", "hb_g_dl", "hco3_meq_l",
+                "aa_gradient_mmhg"]
+        tol = {"ph": 0.0006, "sa_o2": 0.0006, "o2er": 0.0006,
+               "ca_o2_ml_dl": 0.0051, "cv_o2_ml_dl": 0.0051,
+               "ve_l_min": 0.0051, "va_l_min": 0.0051,
+               "hb_g_dl": 0.0051, "hco3_meq_l": 0.0051,
+               "do2_ml_min": 0.51, "vo2_ml_min": 0.51,
+               "vco2_ml_min": 0.51}
+        got = ({k: float(g) for k, g in zip(keys, m.groups())}
+               if m else {})
+        ok(m is not None and all(
+            abs(got[k] - resp[k]) < tol.get(k, 0.051) for k in keys),
+           f"case6: engine respiratory resting readout reproduces "
+           f"all 17 recorded values ({got.get('pa_o2_mmhg', 'none')})")
+    except Exception as e:  # pragma: no cover
+        ok(False, f"case6: respiratory engine re-run failed: {e}")
+    ok("no thromboembolic state" in link["gap_statement"]
+       or "thrombus" in link["gap_statement"],
+       "case6: the link's gap statement is explicit — the engine "
+       "has no thromboembolic state and the patient's gases are "
+       "authored case data, not simulation")
+
+    # ---- imaging link: localisation only, recounted --------------------
+    il = case["imaging_link"]
+    ok(il["label"]["record_id"] in INVS
+       and all(r in INVS for r in il["label"]["record_ids"]),
+       "case6: imaging link's pulmonary artery records are Body "
+       "Model records (both lateralised instances carried)")
+    cw = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                           "crosswalk.json"))
+    lab48 = next(l for l in cw["labels"] if l["index"] == 48)
+    ok(lab48["label"] == "pulmonary_artery"
+       and lab48["voxels"] == il["label"]["hu_statistics_from_crosswalk"]["voxels"]
+       == 23547
+       and sorted(r["id"] for r in lab48["records"])
+       == sorted(il["label"]["record_ids"]),
+       "case6: crosswalk label 48 is pulmonary_artery, 23,547 "
+       "voxels, mapped to exactly the two records the link carries")
+    hu = il["label"]["hu_statistics_from_crosswalk"]
+    ok(all(lab48["hu"][k] == hu[k]
+           for k in ("mean", "median", "p5", "p95", "min", "max")),
+       "case6: case HU statistics equal crosswalk values")
+    ok(lab48["geometry_lps"]["bbox_lps_mm"] == il["measures"]["bbox_lps_mm"],
+       "case6: link bbox equals the crosswalk geometry")
+    # recount the label from the shipped web bins
+    counts = {}
+    bdir = os.path.join(ROOT, "web", "data", "imaging", "s0778")
+    for fn in sorted(os.listdir(bdir)):
+        if fn.startswith("lbl-"):
+            idx = int(fn[4:8])
+            with open(os.path.join(bdir, fn), "rb") as fh:
+                counts[idx] = fh.read().count(48)
+    hit = {i: n for i, n in counts.items() if n}
+    ok(min(hit) == il["measures"]["slice_files_0based"][0]
+       and max(hit) == il["measures"]["slice_files_0based"][1]
+       and len(hit) == il["measures"]["slices_with_label"] == 42
+       and sum(hit.values()) == 23547
+       and hit[il["measures"]["max_cross_section"]["file_index_0based"]]
+       == il["measures"]["max_cross_section"]["voxels"] == 1278,
+       "case6: label-48 recount from the shipped bins reproduces "
+       "the link (files 302-343, 42 slices, 23,547 voxels, max "
+       "file 327 at 1,278)")
+    series = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                               "series.json"))
+    z0 = series["geometry"]["ipp_first_slice_lps_mm"][2]
+    ok(abs((z0 + 302 * 1.5) - il["measures"]["z_range_lps_mm"][0]) < 0.01
+       and abs((z0 + 343 * 1.5) - il["measures"]["z_range_lps_mm"][1])
+       < 0.01,
+       "case6: slice z-arithmetic reproduces the link's z range")
+    ok(abs(23547 * 3.375 / 1000 - 79.47) < 0.01,
+       "case6: volume arithmetic (23,547 x 3.375 mm3 = 79.47 mL)")
+    for sid in ("s0778", "s1090"):
+        cwx = load(os.path.join(ROOT, "data", "imaging", sid,
+                                "crosswalk.json"))
+        names = sorted(l["label"] for l in cwx["labels"])
+        ok(len(names) == 104, f"case6: {sid} label set recounted at 104")
+        ok(not any(any(wd in n for wd in
+                       ("embol", "consolid", "pleura", "effusion"))
+                   for n in names),
+           f"case6: {sid} label set contains NO embolus, "
+           "consolidation, pleura or effusion label — the series "
+           "cannot show this case's pathology, as the link states")
+        ok("pulmonary_artery" in names
+           and sum(1 for n in names if n.startswith("lung_")) == 5,
+           f"case6: {sid} DOES carry pulmonary_artery and all five "
+           "lung lobes — the lungs are in the field; the embolus "
+           "is not a label")
+    ok("conflated" in il["honesty_block"] and "NOT s0778" in il["honesty_block"],
+       "case6: imaging honesty block present (three individuals, "
+       "never conflated)")
+
+    # ---- no theatre handoff, stated -------------------------------------
+    ok("handoff" not in case["management"],
+       "case6: management carries NO handoff key — PE management "
+       "here is medical, and no Theatre procedure treats it")
+    proc_ids = set()
+    for p in glob.glob(os.path.join(ROOT, "theatre", "procedures", "*.json")):
+        proc_ids.add(load(p)["procedure"]["id"])
+    ok(proc_ids == {"proc.chole.lap", "proc.appy.lap",
+                    "proc.carpal-release", "proc.ulnar-decompression",
+                    "proc.lap-inguinal-hernia"},
+       f"case6: the Theatre still holds exactly its five procedures "
+       f"{sorted(proc_ids)} — none is an embolectomy (the inguinal hernia "
+       "repair joined at Milestone 49 — set assertion updated in the "
+       "Milestone 44 maintenance pattern; the no-handoff fact this "
+       "assertion guards is unchanged)")
+    ok("no Theatre handoff exists" in case["management"]["theatre_note"],
+       "case6: the absence of a handoff is stated in the case, per "
+       "the module's discipline, not left silent")
+
+    # ---- ontology discipline --------------------------------------------
+    hyps = {h["id"]: h for h in case["hypotheses"]}
+    ok(hyps["hyp.pulmonary-embolism"]["mondo"] == "MONDO:0005279"
+       and case["ground_truth"]["mondo"] == "MONDO:0005279"
+       and case["adjudication"]["mondo"] == "MONDO:0005279",
+       "case6: diagnosis coded MONDO:0005279 (pulmonary embolism) "
+       "on hypothesis, adjudication and ground truth")
+    ok(hyps["hyp.heart-failure"]["mondo"] == "MONDO:0005252"
+       and "acute heart failure" in
+       hyps["hyp.heart-failure"]["mondo_note"],
+       "case6: heart failure coded to the generic MONDO:0005252 — "
+       "the OLS search for an acute class returned only non-human "
+       "classes, and the note says so rather than fabricating one")
+    ok(hyps["hyp.pneumonia"]["mondo"] == "MONDO:0005249"
+       and "community-acquired" in hyps["hyp.pneumonia"]["mondo_note"],
+       "case6: pneumonia coded to MONDO:0005249 — no "
+       "community-acquired class exists in Mondo (numFound 0), "
+       "recorded in the note")
+    ok(hyps["hyp.pneumothorax"]["mondo"] == "MONDO:0002076"
+       and hyps["hyp.acute-coronary-syndrome"]["mondo"] == "MONDO:0005542"
+       and hyps["hyp.copd-exacerbation"]["mondo"] == "MONDO:0005002"
+       and hyps["hyp.asthma-exacerbation"]["mondo"] == "MONDO:0004979"
+       and hyps["hyp.other-unspecified"]["mondo"] is None
+       and hyps["hyp.other-unspecified"].get("mondo_note"),
+       "case6: pneumothorax / ACS / COPD / asthma / residual Mondo "
+       "coding as verified in the C10 Milestone 48 addendum")
+
+    # ---- debrief: classifications + tally --------------------------------
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    cls = {o["test_id"]: o["classification"] for o in deb["orders"]}
+    ok(cls == {"test.ecg": "safety-net",
+               "test.troponin": "criteria-completing",
+               "test.abg": "criteria-completing",
+               "test.bnp": "discriminating",
+               "test.d-dimer": "discriminating",
+               "test.bloods": "criteria-completing",
+               "test.chest-xray": "criteria-completing",
+               "test.exam-battery": "criteria-completing",
+               "test.ctpa": "discriminating",
+               "test.lung-ultrasound": "discriminating"},
+       f"case6: order classifications {cls} — the BNP is "
+       "discriminating in the WRONG direction (it moves the lead "
+       "away from the truth), and the troponin ordered as a "
+       "safety-net lands criteria-completing via the ESC block")
+    ok(deb["resource_tally"]["total_time_min"] == 215
+       and deb["resource_tally"]["total_cost_units"] == 27,
+       "case6: resource tally 215 min / 27 units")
+    ok(deb["ruled_out_by_workbench"] ==
+       {"hyp.asthma-exacerbation": 2, "hyp.heart-failure": 3,
+        "hyp.pneumonia": 3, "hyp.pneumothorax": 3,
+        "hyp.acute-coronary-syndrome": 3, "hyp.copd-exacerbation": 3,
+        "hyp.other-unspecified": 3},
+       "case6: rule-out stages as designed (asthma at 2, all other "
+       "rivals at 3)")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"]
+       == case["adjudication"]["diagnosis_hypothesis"]
+       and "no Theatre handoff" in commit["management"],
+       "case6: attempt commit matches adjudication and states the "
+       "absent Theatre handoff")
+
+
 def main():
     attempts = {}
     for p in glob.glob(os.path.join(CASES, "attempts", "*.json")):
@@ -987,6 +1811,15 @@ def main():
     if "case.appendicitis.003" in profiles:
         c, ctx, boards = profiles["case.appendicitis.003"]
         profile_case3(c, ctx, boards, attempts["case.appendicitis.003"])
+    if "case.carpal-tunnel.004" in profiles:
+        c, ctx, boards = profiles["case.carpal-tunnel.004"]
+        profile_case4(c, ctx, boards, attempts["case.carpal-tunnel.004"])
+    if "case.ulnar-neuropathy.005" in profiles:
+        c, ctx, boards = profiles["case.ulnar-neuropathy.005"]
+        profile_case5(c, ctx, boards, attempts["case.ulnar-neuropathy.005"])
+    if "case.acute-dyspnea.006" in profiles:
+        c, ctx, boards = profiles["case.acute-dyspnea.006"]
+        profile_case6(c, ctx, boards, attempts["case.acute-dyspnea.006"])
 
     print(f"\n{'ALL CHECKS PASS' if FAIL == 0 else 'FAILURES PRESENT'}: "
           f"{PASS} passed, {FAIL} failed")

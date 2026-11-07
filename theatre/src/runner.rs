@@ -214,6 +214,9 @@ struct Attempt<'a> {
     /// contamination rules key on them.
     severity: Option<String>,
     base_condition: Option<String>,
+    /// Inguinal hernia repair (Milestone 49): defect characterisation
+    /// from the trace's case spec — the fixation rules key on it.
+    defect: Option<String>,
     /// Appendicectomy: the closure method applied at the base
     /// ("endoloop" | "stapler" | "polymeric-clips"), once applied.
     closure_method: Option<String>,
@@ -236,6 +239,11 @@ struct Attempt<'a> {
     help_calls: Vec<String>,
     recognised_kinds: HashSet<String>,
     drain_placed: bool,
+    /// Carpal tunnel release (Milestone 42): the epineurial repair
+    /// microstep was performed — the definitive control the
+    /// management score credits after a computed nerve injury, the
+    /// parallel of drain_placed for the biliary/caecal injuries.
+    repair_done: bool,
     bailout_chosen: bool,
     // flows
     bleeds: Vec<Bleed>,
@@ -448,15 +456,30 @@ impl<'a> Attempt<'a> {
             // lies behind an unmobilized cecum, so crit1 demonstrated
             // before the cecum is mobilized (m3.5) is deferred and
             // registers only once mobilization happens.
-            let defer = self.proc.id == "proc.appy.lap"
+            // Milestone 42 (transligamentous carpal release): the
+            // recurrent branch's course cannot be accounted for
+            // while the branch lies inside the unopened ligament, so
+            // crit2 demonstrated before the branch is identified
+            // where it pierces the retinaculum (m5.5) is deferred the
+            // same way.
+            let defer = (self.proc.id == "proc.appy.lap"
                 && c == "crit1"
                 && self.variant_active("variant.retrocecal")
-                && !self.performed.contains_key("m3.5");
+                && !self.performed.contains_key("m3.5"))
+                || (self.proc.id == "proc.carpal-release"
+                    && c == "crit2"
+                    && self.variant_active("variant.transligamentous-recurrent-branch")
+                    && !self.performed.contains_key("m5.5"));
             if defer {
                 if !self.deferred_criteria.iter().any(|x| x == c) {
                     self.deferred_criteria.push(c.clone());
                 }
-                self.log(t_s, "note", "criterion deferred: the taeniae convergence cannot be confirmed while the appendix lies behind the unmobilized cecum".into());
+                let why = if self.proc.id == "proc.carpal-release" {
+                    "criterion deferred: the recurrent branch's course cannot be accounted for while the branch lies inside the unopened ligament"
+                } else {
+                    "criterion deferred: the taeniae convergence cannot be confirmed while the appendix lies behind the unmobilized cecum"
+                };
+                self.log(t_s, "note", why.into());
             } else {
                 self.criteria.insert(c.clone(), t_s);
                 if self.gate_at(t_s) {
@@ -474,6 +497,16 @@ impl<'a> Attempt<'a> {
                 self.log_gate_achieved(t_s);
             }
         }
+        if self.proc.id == "proc.carpal-release" && id == "m5.5" {
+            let deferred = std::mem::take(&mut self.deferred_criteria);
+            for c in deferred {
+                self.criteria.insert(c, t_s);
+                self.log(t_s, "note", "deferred recurrent-branch criterion registers now that the branch is identified where it pierces the retinaculum".into());
+            }
+            if !self.criteria.is_empty() && self.gate_at(t_s) {
+                self.log_gate_achieved(t_s);
+            }
+        }
         if id == "m7.6" || id == "m6b.6" {
             self.drain_placed = true;
         }
@@ -481,13 +514,31 @@ impl<'a> Attempt<'a> {
         let target = m.targets.first().cloned().unwrap_or_default();
         // The critical-structure set is per procedure: the
         // cholecystectomy's lives in CRITICAL (Milestone 17); the
-        // appendicectomy's is the appendix and its artery.
-        let critical: &[&str] = if self.proc.id == "proc.appy.lap" {
+        // appendicectomy's is the appendix and its artery; the
+        // carpal tunnel release's is the transverse carpal ligament
+        // (Milestone 42); the ulnar decompression's is the fascial
+        // set of the release (Milestone 44).
+        let appy = self.proc.id == "proc.appy.lap";
+        let carpal = self.proc.id == "proc.carpal-release";
+        let ulnar = self.proc.id == "proc.ulnar-decompression";
+        let hernia = self.proc.id == "proc.lap-inguinal-hernia";
+        let critical: &[&str] = if appy {
             &["canal.appendix", "artery.appendicular-artery"]
+        } else if carpal {
+            &["ligament.transverse-carpal"]
+        } else if hernia {
+            &["sac.inguinal-hernia", "fascia.transversalis"]
+        } else if ulnar {
+            &[
+                "fascia.arcade-of-struthers",
+                "ligament.cubital-tunnel-retinaculum",
+                "fascia.fcu-aponeurosis",
+                "fascia.deep-flexor-pronator-aponeurosis",
+                "ligament.medial-intermuscular-septum",
+            ]
         } else {
             &CRITICAL
         };
-        let appy = self.proc.id == "proc.appy.lap";
         match m.verb.as_str() {
             "clip" if critical.contains(&target.as_str()) => {
                 if appy {
@@ -499,9 +550,21 @@ impl<'a> Attempt<'a> {
             "divide" if critical.contains(&target.as_str()) => {
                 if appy {
                     self.on_divide_appy(t_s, &m, &target);
+                } else if carpal {
+                    self.on_divide_carpal(t_s, &m, &target);
+                } else if ulnar {
+                    self.on_divide_ulnar(t_s, &m, &target);
+                } else if hernia {
+                    self.on_divide_hernia(t_s, &m, &target);
                 } else {
                     self.on_divide(t_s, &m, &target);
                 }
+            }
+            // Milestone 49: fixation is this operation's second
+            // gated verb — a tack placed before the danger anatomy
+            // is accounted for resolves exactly as a division does.
+            "fixate" if hernia => {
+                self.on_fixate_hernia(t_s, &m, &target);
             }
             "close" if appy && target == "canal.appendix" => {
                 let method = match id {
@@ -516,6 +579,15 @@ impl<'a> Attempt<'a> {
 
         if appy {
             self.appy_microstep_rules(t_s, &m);
+        }
+        if carpal {
+            self.carpal_microstep_rules(t_s, &m);
+        }
+        if ulnar {
+            self.ulnar_microstep_rules(t_s, &m);
+        }
+        if hernia {
+            self.hernia_microstep_rules(t_s, &m);
         }
 
         // Liver-bed dissection with an uncontrolled second arterial
@@ -907,6 +979,496 @@ impl<'a> Attempt<'a> {
             _ => {}
         }
     }
+
+    // -- carpal tunnel release rules (Milestone 42) --------------------
+    //
+    // The parallel of the handlers above, under the same master rule
+    // with the anatomy of this operation: what is divided before the
+    // nerve gate is the median nerve, which lies immediately deep to
+    // the ligament along the whole tunnel.
+
+    fn on_divide_carpal(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        if !self.gate_at(t_s) {
+            // Variant resolution inside the master rule: in the
+            // transligamentous field, if the ONLY undemonstrated
+            // criterion is the branch account (crit2), the division
+            // resolves onto the branch where it pierces the
+            // ligament — the structure the variant puts inside the
+            // structure being divided.
+            let missing: Vec<String> = self
+                .gate_criteria()
+                .into_iter()
+                .filter(|c| !self.criteria.contains_key(c))
+                .collect();
+            if self.variant_active("variant.transligamentous-recurrent-branch")
+                && missing.len() == 1
+                && missing[0] == "crit2"
+            {
+                self.error(
+                    t_s,
+                    "err.missed-variant",
+                    "transverse carpal ligament divided with the transligamentous recurrent motor branch unaccounted for (crit2 undemonstrated: microstep m5.5 not performed)".into(),
+                );
+                self.complications.push(Complication {
+                    kind: "recurrent-branch-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the division crosses the recurrent motor branch where it pierces the ligament: the branch was inside the structure being divided, and its course had never been accounted for - thenar motor loss is the computed consequence (Lanz group I variant, T23; pooled transligamentous prevalence 11.3%, T24)".into(),
+                    resolved_structure: Some("nerve.recurrent-branch-median".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "recurrent motor branch injury: the branch was divided within the ligament".into());
+                self.divided.insert(target.to_string());
+                self.fail(
+                    t_s,
+                    "an unaccounted critical structure — the transligamentous recurrent motor branch — was divided within the ligament (err.missed-variant)".into(),
+                );
+                return;
+            }
+            // The master rule, with this operation's anatomy.
+            self.error(
+                t_s,
+                "err.divide-unidentified",
+                format!(
+                    "{} divided before the structures at risk were identified and protected ({} of 3 criteria met)",
+                    target,
+                    self.crit_count_at(t_s)
+                ),
+            );
+            self.complications.push(Complication {
+                kind: "median-nerve-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the division passes through the unvisualised tunnel and divides the median nerve, which lies immediately deep to the ligament along its whole length - the catastrophic iatrogenic injury of this operation (the median nerve is among the structures the revision literature lists as injured at release, T27)".into(),
+                resolved_structure: Some("major.median".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "median nerve injury: the nerve was divided beneath the unopened ligament".into());
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                format!("an unidentified critical structure ({target}) was divided before the structures at risk were identified and protected (err.divide-unidentified)"),
+            );
+            return;
+        }
+
+        // Gate demonstrated: division resolves as intended, with
+        // the variant-vessel consequence computed — in the
+        // persistent-median-artery field, dividing with the artery
+        // unprotected bleeds from the artery until it is controlled.
+        // The attempt does not fail: the divided structure is the
+        // intended one; the injury is collateral.
+        if self.variant_active("variant.persistent-median-artery")
+            && !self.performed.contains_key("m5.6")
+        {
+            self.error(
+                t_s,
+                "err.unprotected-variant-vessel",
+                "ligament divided in a persistent-median-artery field without identifying and protecting the artery (Lanz group III; microstep m5.6 not performed)".into(),
+            );
+            let rate = self.params.get("bleed_rate_persistent_median_artery_ml_s");
+            self.start_bleed(
+                t_s,
+                "artery.persistent-median",
+                rate,
+                format!("haemorrhage from the divided persistent median artery (rate {rate} mL/s — verify-flagged engineering parameter)"),
+            );
+        }
+        self.divided.insert(target.to_string());
+        self.log(t_s, "divide", format!("{} divided with the structures at risk identified and protected", m.id));
+    }
+
+    /// Carpal microstep rules that are not division resolution: the
+    /// scored departures (radial dissection across the palmar
+    /// cutaneous branch; routine neurolysis) and the repair state.
+    fn carpal_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        match m.id.as_str() {
+            "m6.4" => {
+                self.error(
+                    t_s,
+                    "err.palmar-cutaneous-injury",
+                    "dissection extended radially across the palmar cutaneous branch's territory; the approach stays ulnar precisely to avoid this branch (T21, T22)".into(),
+                );
+                self.complications.push(Complication {
+                    kind: "palmar-cutaneous-branch-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "palmar cutaneous branch injury: the revision literature's named iatrogenic injury of this approach (T27) - its presentation is a painful neuroma and new palmar sensory symptoms, declared as a postoperative structural consequence; no volume effect is computed".into(),
+                    resolved_structure: Some("nerve.palmar-cutaneous-branch".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "palmar cutaneous branch injury computed from the radial dissection (postoperative consequence)".into());
+            }
+            "m6.5" => {
+                self.error(
+                    t_s,
+                    "err.unnecessary-neurolysis",
+                    "internal neurolysis / epineurotomy performed as part of a primary release; such additional procedures are rarely indicated and are not routine in primary carpal tunnel release (T21)".into(),
+                );
+            }
+            "m7.3" => {
+                self.repair_done = true;
+                self.log(t_s, "control", "epineurial repair of the divided nerve performed under magnification".into());
+            }
+            _ => {}
+        }
+    }
+
+    /// Division resolution for the ulnar decompression (Milestone
+    /// 44): the divided structures are the fascial structures of
+    /// the release, and the gate is the identification-and-
+    /// protection gate (gate.nerve-protection). The resolution
+    /// follows the gate's own anatomy, exactly as the carpal
+    /// release's variant resolution did: which structure the
+    /// division resolves onto depends on which criterion is unmet.
+    /// With the nerve itself unaccounted for, the division passes
+    /// through the nerve in the tunnel. With the nerve protected
+    /// and only the cutaneous-branch account missing, the division
+    /// and its dissection cross the medial antebrachial cutaneous
+    /// branches that were never accounted for — the operation's
+    /// named iatrogenic injury, and a gate failure in its own
+    /// right (the specialty's failure taxonomy names injury to the
+    /// cutaneous nerves among the technical causes of a failed
+    /// release, T34). Both fail the attempt.
+    fn on_divide_ulnar(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        if !self.gate_at(t_s) {
+            let missing: Vec<String> = self
+                .gate_criteria()
+                .into_iter()
+                .filter(|c| !self.criteria.contains_key(c))
+                .collect();
+            if missing.len() == 1 && missing[0] == "crit2" {
+                self.error(
+                    t_s,
+                    "err.mabc-unaccounted",
+                    format!(
+                        "{} divided with the medial antebrachial cutaneous nerve unaccounted for (crit2 undemonstrated: microstep m1.3 not performed)",
+                        target
+                    ),
+                );
+                self.complications.push(Complication {
+                    kind: "mabc-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the dissection and division cross the medial antebrachial cutaneous branches that were never identified or protected in the subcutaneous plane: numbness in the nerve's distribution and, where a neuroma forms, causalgia-type pain at the elbow is the computed consequence (among the most frequent complications of open decompression, T29; a named technical cause of a failed release, T34)".into(),
+                    resolved_structure: Some("nerve.medial-cutaneous-nerve-of-forearm".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "medial antebrachial cutaneous nerve injury: the unaccounted branches were divided in the field".into());
+                self.divided.insert(target.to_string());
+                self.fail(
+                    t_s,
+                    "a critical structure the gate protects by name — the medial antebrachial cutaneous nerve — was injured with its branches unaccounted for (err.mabc-unaccounted)".into(),
+                );
+                return;
+            }
+            // The master rule, with this operation's anatomy.
+            self.error(
+                t_s,
+                "err.divide-unidentified",
+                format!(
+                    "{} divided before the nerves at risk were identified and protected ({} of 3 criteria met)",
+                    target,
+                    self.crit_count_at(t_s)
+                ),
+            );
+            self.complications.push(Complication {
+                kind: "ulnar-nerve-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the division passes through the unvisualised fascia and divides the ulnar nerve, which lies in and beyond the tunnel along the whole release length - the catastrophic iatrogenic injury of this operation (the ulnar nerve is among the structures the failed-release literature lists as injured at this operation, T34)".into(),
+                resolved_structure: Some("major.ulnar".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "ulnar nerve injury: the nerve was divided within the unopened fascia".into());
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                format!("an unidentified critical structure ({target}) was divided before the nerves at risk were identified and protected (err.divide-unidentified)"),
+            );
+            return;
+        }
+
+        self.divided.insert(target.to_string());
+        self.log(t_s, "divide", format!("{} divided with the nerves at risk identified and protected", m.id));
+    }
+
+    /// Ulnar decompression microstep rules that are not division
+    /// resolution (Milestone 44): the repair state. The operation's
+    /// configuration and completeness consequences are decision and
+    /// scoring rules, not microstep rules — they live in the dp5
+    /// decision arm and in score(), beside the carpal tunnel
+    /// release's incomplete-release rule.
+    fn ulnar_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        if m.id == "m7.3" {
+            self.repair_done = true;
+            self.log(t_s, "control", "epineurial repair of the injured nerve performed under magnification".into());
+        }
+    }
+
+    // -- inguinal hernia repair rules (Milestone 49) ------------------
+    //
+    // The parallel of the handlers above, under the same master rule
+    // with the anatomy of this operation: the gated acts are division
+    // of the sac / transversalis fascia and placement of mesh
+    // fixation, and the gate is the danger-anatomy account (the
+    // critical view of the myopectineal orifice). Which structure an
+    // unaccounted act resolves onto follows the gate's stated
+    // priority: crit1 (the doom account) protects the external iliac
+    // vessels; with crit1 met, crit2 (the pain account) protects the
+    // lateral nerves; with both met, crit3 (the cord account)
+    // protects the deferent duct. The total order is stated in the
+    // procedure file's gate enforcement text and in MILESTONE-49.
+
+    /// The gate-resolution shared by division and fixation: returns
+    /// true when the act was resolved as a gate failure (the caller
+    /// must not proceed with its normal path).
+    fn hernia_gate_resolution(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) -> bool {
+        if self.gate_at(t_s) {
+            return false;
+        }
+        let missing: Vec<String> = self
+            .gate_criteria()
+            .into_iter()
+            .filter(|c| !self.criteria.contains_key(c))
+            .collect();
+        if missing.iter().any(|c| c == "crit1") {
+            self.error(
+                t_s,
+                "err.divide-unidentified",
+                format!(
+                    "{} acted on ({} {}) before the triangle of doom was delimited and the external iliac vessels identified ({} of 3 criteria met)",
+                    target,
+                    m.verb,
+                    m.id,
+                    self.crit_count_at(t_s)
+                ),
+            );
+            self.complications.push(Complication {
+                kind: "vascular-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the act crosses the external iliac vessels inside the unaccounted triangle of doom — the preperitoneal vascular injury HerniaSurge names for dissection and mesh fixation in this space (T36); the vessels lie within the triangle bounded by the vas deferens, the testicular vessels and the peritoneal fold (T39)".into(),
+                resolved_structure: Some("artery.right-external-iliac-artery".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            let rate = self.params.get("bleed_rate_external_iliac_ml_s");
+            self.start_bleed(
+                t_s,
+                "artery.right-external-iliac-artery",
+                rate,
+                format!("haemorrhage from the injured external iliac artery (rate {rate} mL/s — verify-flagged engineering parameter)"),
+            );
+            self.log(t_s, "complication", "vascular injury: the external iliac artery was injured inside the unaccounted triangle of doom".into());
+            self.fail(
+                t_s,
+                "an unaccounted critical structure — the external iliac artery, inside the undelimited triangle of doom — was injured (err.divide-unidentified)".into(),
+            );
+        } else if missing.iter().any(|c| c == "crit2") {
+            self.error(
+                t_s,
+                "err.pain-triangle-injury",
+                format!(
+                    "{} acted on ({} {}) with the triangle of pain undelimited (crit2 undemonstrated: microstep m4.2 not performed)",
+                    target, m.verb, m.id
+                ),
+            );
+            self.complications.push(Complication {
+                kind: "nerve-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the act crosses the lateral nerves of the undelimited triangle of pain — the femoral branch of the genitofemoral nerve and its neighbours, damaged at separation or fixation in this territory, with chronic neuropathic pain as the named consequence (T39)".into(),
+                resolved_structure: Some("nerve.genitofemoral".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "nerve injury: the pain-triangle nerves were injured with their territory undelimited".into());
+            self.fail(
+                t_s,
+                "a critical territory the gate protects by name — the triangle of pain — was acted on undelimited, injuring its nerves (err.pain-triangle-injury)".into(),
+            );
+        } else {
+            self.error(
+                t_s,
+                "err.vas-injury",
+                format!(
+                    "{} acted on ({} {}) with the cord structures unaccounted for (crit3 undemonstrated: microstep m4.3 not performed)",
+                    target, m.verb, m.id
+                ),
+            );
+            self.complications.push(Complication {
+                kind: "vas-deferens-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the act divides the unparietalized deferent duct where it lies against the sac — the cord injury the parietalization discipline (T38, Rules 5-6) exists to prevent".into(),
+                resolved_structure: Some("repro.right-deferent-duct".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "vas deferens injury: the unaccounted duct was divided against the sac".into());
+            self.fail(
+                t_s,
+                "an unaccounted critical structure — the deferent duct — was divided (err.vas-injury)".into(),
+            );
+        }
+        true
+    }
+
+    fn on_divide_hernia(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        if self.hernia_gate_resolution(t_s, m, target) {
+            self.divided.insert(target.to_string());
+            return;
+        }
+        // Gate achieved: the sliding configuration's own rule — the
+        // sac wall is partly a viscus, and dividing it without the
+        // survey is the variant's master-rule failure (the
+        // replaced-RHA identify-before-divide pattern).
+        if self.variant_active("variant.sliding-hernia") && !self.performed.contains_key("m4.5") {
+            self.error(
+                t_s,
+                "err.missed-variant",
+                "sac divided in a sliding-hernia field without the sliding survey (microstep m4.5 not performed): part of the sac wall is formed by a viscus (T41)".into(),
+            );
+            self.complications.push(Complication {
+                kind: "visceral-injury".to_string(),
+                t_onset_s: t_s,
+                detail: "the division cuts the viscus forming part of the sac wall — on this right side the cecum — the defining hazard of the sliding hernia, present in 2-5% of indirect inguinal hernias (T41)".into(),
+                resolved_structure: Some("canal.cecum".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "visceral injury: the viscus forming the sliding sac wall was divided".into());
+            self.divided.insert(target.to_string());
+            self.fail(
+                t_s,
+                "the sliding sac wall — a viscus — was divided without the sliding survey (err.missed-variant)".into(),
+            );
+            return;
+        }
+        self.divided.insert(target.to_string());
+        self.log(t_s, "divide", format!("{} divided with the danger anatomy accounted for", m.id));
+    }
+
+    fn on_fixate_hernia(&mut self, t_s: f64, m: &crate::model::Microstep, target: &str) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        // The two authored prohibited placements are departures of a
+        // gated act, handled by hernia_microstep_rules when the gate
+        // is achieved; before the gate they are gate failures like
+        // any other fixation, so they fall through to the resolution.
+        let departure = (m.id == "m6.7" || m.id == "m6.8") && self.gate_at(t_s);
+        if departure {
+            return;
+        }
+        if self.hernia_gate_resolution(t_s, m, target) {
+            return;
+        }
+        // Gate achieved: the corona configuration's collateral rule —
+        // medial fixation into Cooper's ligament without protecting
+        // the anastomotic vessel bleeds from it (the carpal
+        // persistent-median-artery pattern: major, not a fail).
+        if m.id == "m6.4"
+            && self.variant_active("variant.corona-mortis")
+            && !self.performed.contains_key("m4.4")
+        {
+            self.error(
+                t_s,
+                "err.corona-unprotected",
+                "medial fixation placed into Cooper's ligament in a corona mortis field without protecting the anastomotic vessel (microstep m4.4 not performed)".into(),
+            );
+            let rate = self.params.get("bleed_rate_corona_mortis_ml_s");
+            self.start_bleed(
+                t_s,
+                "artery.corona-mortis",
+                rate,
+                format!("haemorrhage from the unprotected corona mortis (rate {rate} mL/s — verify-flagged engineering parameter)"),
+            );
+            self.log(t_s, "complication", "corona mortis haemorrhage: the unprotected anastomotic vessel was struck by the medial fixation".into());
+            return;
+        }
+        self.log(t_s, "fixate", format!("{} fixation placed with the danger anatomy accounted for", m.id));
+    }
+
+    /// Hernia microstep rules that are not gate resolution: the two
+    /// authored prohibited placements, performed WITH the gate
+    /// achieved — the account was made and then violated, so each is
+    /// a scored major departure with a computed injury and
+    /// management, not a failed attempt (the carpal release's
+    /// radial-dissection pattern, Milestone 42).
+    fn hernia_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        match m.id.as_str() {
+            "m6.7" if self.gate_at(t_s) => {
+                self.error(
+                    t_s,
+                    "err.fixation-in-pain-triangle",
+                    "traumatic fixation placed below the iliopubic tract inside the triangle of pain; traumatic fixation should not be placed below the iliopubic tract, and 2 cm above it is the extra-safety line (T38)".into(),
+                );
+                self.complications.push(Complication {
+                    kind: "nerve-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the fixation entraps the lateral nerves of the triangle of pain — the chronic-neuropathic-pain mechanism named for fixation in this territory (T39)".into(),
+                    resolved_structure: Some("nerve.genitofemoral".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                self.log(t_s, "complication", "nerve injury computed from fixation inside the triangle of pain (postoperative consequence)".into());
+            }
+            "m6.8" if self.gate_at(t_s) => {
+                self.error(
+                    t_s,
+                    "err.fixation-in-doom-triangle",
+                    "traumatic fixation placed inside the triangle of doom; the vessels of the preperitoneal space are the fixation injuries of this operation (T36, T39)".into(),
+                );
+                self.complications.push(Complication {
+                    kind: "vascular-injury".to_string(),
+                    t_onset_s: t_s,
+                    detail: "the fixation strikes the external iliac vessels inside the triangle of doom (T39)".into(),
+                    resolved_structure: Some("artery.right-external-iliac-artery".to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+                let rate = self.params.get("bleed_rate_external_iliac_ml_s");
+                self.start_bleed(
+                    t_s,
+                    "artery.right-external-iliac-artery",
+                    rate,
+                    format!("haemorrhage from the external iliac artery struck by fixation (rate {rate} mL/s — verify-flagged engineering parameter)"),
+                );
+                self.log(t_s, "complication", "vascular injury computed from fixation inside the triangle of doom".into());
+            }
+            _ => {}
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1000,6 +1562,7 @@ pub fn run_attempt(
         required,
         severity: trace.case.severity.clone(),
         base_condition: trace.case.base_condition.clone(),
+        defect: trace.case.defect.clone(),
         closure_method: None,
         deferred_criteria: Vec::new(),
         errors: Vec::new(),
@@ -1014,6 +1577,7 @@ pub fn run_attempt(
         help_calls: Vec::new(),
         recognised_kinds: HashSet::new(),
         drain_placed: false,
+        repair_done: false,
         bailout_chosen: false,
         bleeds: Vec::new(),
         flow_sources: Vec::new(),
@@ -1096,12 +1660,59 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                 at.decisions.push(DecisionMade { t_s: t, id: id.clone(), choice: choice.clone() });
                 at.log(t, "decision", format!("{id} -> {choice}"));
                 match (id.as_str(), choice.as_str()) {
+                    ("dp2", "continue-dissection") if at.proc.id == "proc.carpal-release" => {
+                        at.error(
+                            t,
+                            "err.no-bailout",
+                            "at dp2 the structures at risk were declared unidentifiable and division continued instead of altering strategy (design/05)".into(),
+                        );
+                    }
                     ("dp2", "continue-dissection") if at.proc.id == "proc.appy.lap" => {
                         at.error(
                             t,
                             "err.no-bailout",
                             "at dp2 the appendiceal base was declared unidentifiable and dissection continued instead of altering strategy (design/05)".into(),
                         );
+                    }
+                    ("dp2", "continue-dissection") if at.proc.id == "proc.ulnar-decompression" => {
+                        at.error(
+                            t,
+                            "err.no-bailout",
+                            "at dp2 the nerves at risk were declared unidentifiable and division continued instead of altering strategy (design/05)".into(),
+                        );
+                    }
+                    ("dp2", "continue-dissection") if at.proc.id == "proc.lap-inguinal-hernia" => {
+                        at.error(
+                            t,
+                            "err.no-bailout",
+                            "at dp2 the danger anatomy was declared unaccountable and division/fixation continued instead of altering strategy (design/05)".into(),
+                        );
+                    }
+                    ("dp5", "fixation") if at.proc.id == "proc.lap-inguinal-hernia" => {
+                        // The fixation decision makes the zonal
+                        // fixation microsteps required for this
+                        // attempt — the ulnar transposition
+                        // mechanism (Milestone 44) applied to a
+                        // fixation configuration (Milestone 49).
+                        for m in ["m6.4", "m6.5", "m6.6"] {
+                            at.required.insert(m.to_string());
+                        }
+                        at.log(t, "config", "fixation configuration: zonal fixation microsteps m6.4-m6.6 become required".into());
+                    }
+                    ("dp5", "anterior-transposition") if at.proc.id == "proc.ulnar-decompression" => {
+                        // The configuration decision makes the
+                        // transposition microsteps required for this
+                        // attempt and drops the in-situ completion —
+                        // the appendicectomy closure mechanism
+                        // (Milestone 28) generalised to a whole
+                        // configuration (Milestone 44).
+                        if !at.performed.contains_key("m6.2") {
+                            at.required.remove("m6.2");
+                        }
+                        for m in ["m6.3", "m6.4", "m6.5", "m6.6"] {
+                            at.required.insert(m.to_string());
+                        }
+                        at.log(t, "config", "anterior transposition configuration: transposition microsteps m6.3-m6.6 become required, in-situ completion m6.2 dropped".into());
                     }
                     ("dp2", "continue-dissection") => {
                         at.error(
@@ -1588,6 +2199,194 @@ fn score(
         });
     }
 
+    // Carpal tunnel release (Milestone 42): a ligament divided
+    // without the completeness confirmation computes its
+    // postoperative consequence here, at scoring — an unconfirmed
+    // release declares as persistent symptoms, the same
+    // "postoperative consequence in the debrief" treatment as the
+    // stump leak and the abscess. The revision literature is
+    // explicit that incomplete release is the most common reason
+    // for persistent symptoms after this operation (T27). A failed
+    // attempt is excluded: its division resolved onto the nerve,
+    // and its declared outcome is the injury, not the release's
+    // completeness.
+    if proc.id == "proc.carpal-release"
+        && at.failed.is_none()
+        && at.divided.contains("ligament.transverse-carpal")
+        && !at.performed.contains_key("m6.2")
+    {
+        at.errors.push(ErrorEvent {
+            t_s: end_t,
+            id: "err.incomplete-release".to_string(),
+            detail: "release completed without confirming its completeness (m6.2 not performed); the most common reason for persistent symptoms after carpal tunnel release is incomplete release of the transverse carpal ligament, distally at the palmar arch or proximally at the antebrachial fascia (T27)".to_string(),
+        });
+        at.complications.push(Complication {
+            kind: "incomplete-release".to_string(),
+            t_onset_s: end_t,
+            detail: "persistent symptoms declared as a postoperative consequence of the unconfirmed (incomplete) release (structural outcome; no physiology representation of entrapment exists in the engine, so no volume effect is computed)".into(),
+            resolved_structure: Some("ligament.transverse-carpal".to_string()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+    }
+
+    // Ulnar nerve decompression (Milestone 44): the same
+    // scoring-time treatment for this operation's three computed
+    // postoperative consequences. Each is a named technical
+    // failure in the specialty's own failure taxonomy (T34), and
+    // each is declared here, at scoring — none fails the attempt;
+    // all are managed at dp4 by return to theatre.
+    //
+    // (a) An unconfirmed release: the retinaculum was divided but
+    // the completeness confirmation (m5.4) was omitted. The
+    // revision series quantifies what an unconfirmed release
+    // leaves behind (arcade of Struthers 71.4%, deep
+    // flexor-pronator aponeurosis 38%, T35).
+    if proc.id == "proc.ulnar-decompression"
+        && at.failed.is_none()
+        && at.divided.contains("ligament.cubital-tunnel-retinaculum")
+        && !at.performed.contains_key("m5.4")
+    {
+        at.errors.push(ErrorEvent {
+            t_s: end_t,
+            id: "err.incomplete-release".to_string(),
+            detail: "release completed without confirming its completeness along the full length (m5.4 not performed); incomplete decompression is a named technical cause of failure after this operation (T34), and the sites an unconfirmed release leaves behind are the revision series' findings — arcade of Struthers 71.4%, deep flexor-pronator aponeurosis 38% (T35)".to_string(),
+        });
+        at.complications.push(Complication {
+            kind: "incomplete-release".to_string(),
+            t_onset_s: end_t,
+            detail: "persistent symptoms declared as a postoperative consequence of the unconfirmed (incomplete) release (structural outcome; no physiology representation of entrapment exists in the engine, so no volume effect is computed)".into(),
+            resolved_structure: Some("ligament.cubital-tunnel-retinaculum".to_string()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+    }
+
+    // (b) An unstable nerve completed in situ: the subluxating
+    // variant's nerve was assessed at m6.1 and the attempt did
+    // not take the transposition branch at dp5. The specialty
+    // consensus routes instability to transposition (T29, T31);
+    // leaving the nerve unstable is the taxonomy's "persistent or
+    // new subluxation/instability" technical failure (T34).
+    if proc.id == "proc.ulnar-decompression"
+        && at.failed.is_none()
+        && at.variant.as_deref() == Some("variant.subluxating-nerve")
+        && !at
+            .decisions
+            .iter()
+            .any(|d| d.id == "dp5" && d.choice == "anterior-transposition")
+    {
+        at.errors.push(ErrorEvent {
+            t_s: end_t,
+            id: "err.subluxation-unaddressed".to_string(),
+            detail: "the released nerve was unstable at the stability assessment and the operation was completed in situ (no anterior-transposition decision at dp5); persistent subluxation/instability is a named technical cause of failure after this operation (T34), and transposition is the consensus configuration for the unstable nerve (T29, T31)".to_string(),
+        });
+        at.complications.push(Complication {
+            kind: "nerve-instability".to_string(),
+            t_onset_s: end_t,
+            detail: "postoperative nerve instability declared as a consequence of completing the decompression in situ over an unstable nerve: the nerve continues to subluxate over the medial epicondyle with flexion, the chronic irritation the transposition configuration exists to relieve (T29) (structural outcome; no volume effect is computed)".into(),
+            resolved_structure: Some("major.ulnar".to_string()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+    }
+
+    // (c) A transposition performed over an intact medial
+    // intermuscular septum: the transposed nerve (m6.5) kinks
+    // over the septum's edge — the creation of a new compression
+    // site (T34), and the single commonest residual finding at
+    // revision of failed transposition (intact septum 76.2%, T35).
+    if proc.id == "proc.ulnar-decompression"
+        && at.failed.is_none()
+        && at.performed.contains_key("m6.5")
+        && !at.performed.contains_key("m6.4")
+    {
+        at.errors.push(ErrorEvent {
+            t_s: end_t,
+            id: "err.new-compression-site".to_string(),
+            detail: "anterior transposition performed without releasing the medial intermuscular septum (m6.4 not performed); an intact septum was found in 76.2% of revisions of failed transposition (T35), and creating a new area of compression is a named technical cause of failure (T34)".to_string(),
+        });
+        at.complications.push(Complication {
+            kind: "new-compression".to_string(),
+            t_onset_s: end_t,
+            detail: "a new compression site at the intact medial intermuscular septum declared as a postoperative consequence of the transposition (structural outcome; no volume effect is computed)".into(),
+            resolved_structure: Some("ligament.medial-intermuscular-septum".to_string()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+    }
+
+    // Inguinal hernia repair (Milestone 49): this operation's
+    // scoring-time rules, on the same treatment as the earlier
+    // procedures' postoperative consequences. A failed attempt is
+    // excluded from both: its declared outcome is the injury.
+    //
+    // (a) The fixation judgment pair, keyed on the scenario's defect
+    // characterisation: fixation of a defect that is not a large
+    // medial (M3) defect is a judgment error (non-fixation is the
+    // guideline default, T36/T38); a large medial defect completed
+    // WITHOUT fixation computes the recurrence consequence (T36;
+    // T37's reported recurrence signal runs the same way).
+    if proc.id == "proc.lap-inguinal-hernia" && at.failed.is_none() {
+        let fixation_performed = ["m6.4", "m6.5", "m6.6"]
+            .iter()
+            .any(|m| at.performed.contains_key(*m));
+        let large_medial = at.defect.as_deref() == Some("large-medial-m3");
+        if fixation_performed && !large_medial {
+            at.errors.push(ErrorEvent {
+                t_s: end_t,
+                id: "err.unnecessary-fixation".to_string(),
+                detail: "mesh fixated for a defect that is not a large medial (M3) defect; non-fixation is recommended in almost all hernia types except large medial defects (T36), and fixation is unnecessary in most minimally invasive repairs (T38)".to_string(),
+            });
+        }
+        if large_medial && !fixation_performed && at.performed.contains_key("m6.2") {
+            at.errors.push(ErrorEvent {
+                t_s: end_t,
+                id: "err.no-fixation-large-defect".to_string(),
+                detail: "large medial (M3 EHS) defect completed without mesh fixation; fixation of large medial defects in TEP/TAPP is the HerniaSurge recommendation (T36) and the golden rules recommend fixation in large, especially direct, hernias (T38)".to_string(),
+            });
+            at.complications.push(Complication {
+                kind: "recurrence".to_string(),
+                t_onset_s: end_t,
+                detail: "recurrence declared as a postoperative consequence of the unfixed large medial defect: the mesh over a dilated direct floor without fixation is the configuration the fixation recommendation exists for (T36; recurrence after non-fixated mesh in direct repairs markedly increased in the meta-analysis the 2023 update reports, T37) (structural outcome; no volume effect is computed)".into(),
+                resolved_structure: Some("sac.inguinal-hernia".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+        }
+        // (b) An unconfirmed peritoneal closure: the flap was closed
+        // (m7.1) but its completeness was never confirmed (m7.2) —
+        // exposed mesh is the adhesion/obstruction mechanism (T36,
+        // T38 Rule 10).
+        if at.performed.contains_key("m7.1") && !at.performed.contains_key("m7.2") {
+            at.errors.push(ErrorEvent {
+                t_s: end_t,
+                id: "err.incomplete-peritoneal-closure".to_string(),
+                detail: "peritoneal closure completed without confirming its completeness (m7.2 not performed); gaps, holes or tears of the peritoneum should be closed to reduce the risk of early bowel obstruction or mesh exposure (T38), and exposed mesh may cause bowel adhesions resulting in obstruction (T36)".to_string(),
+            });
+            at.complications.push(Complication {
+                kind: "bowel-adhesion".to_string(),
+                t_onset_s: end_t,
+                detail: "bowel adhesion to exposed mesh declared as a postoperative consequence of the unconfirmed peritoneal closure (structural outcome; the physiology engine has no peritoneal compartment, so no volume effect is computed)".into(),
+                resolved_structure: Some("peritoneum.peritoneum".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+        }
+    }
+
     // Management score (only when a complication was computed).
     let management = if at.complications.is_empty() {
         None
@@ -1610,9 +2409,45 @@ fn score(
         let has_cecal = at.complications.iter().any(|c| c.kind == "cecal-injury");
         let has_leak = at.complications.iter().any(|c| c.kind == "stump-leak");
         let has_abscess = at.complications.iter().any(|c| c.kind == "intra-abdominal-abscess");
+        // Milestone 42 (carpal tunnel release): a nerve injury's
+        // definitive control is the epineurial repair, the parallel
+        // of drainage for the biliary and caecal injuries.
+        // Milestone 44 adds the ulnar decompression's injury kinds
+        // to the same rule (its repair microstep is also m7.3).
+        let has_nerve_injury = at.complications.iter().any(|c| {
+            c.kind == "median-nerve-injury"
+                || c.kind == "recurrent-branch-injury"
+                || c.kind == "ulnar-nerve-injury"
+                || c.kind == "mabc-injury"
+        });
+        let has_incomplete = at.complications.iter().any(|c| c.kind == "incomplete-release");
+        // Milestone 44: the ulnar decompression's other two
+        // postoperative consequences share the incomplete release's
+        // definitive plan — return to theatre to complete the
+        // correction (T34).
+        let has_instability = at.complications.iter().any(|c| c.kind == "nerve-instability");
+        let has_new_compression = at.complications.iter().any(|c| c.kind == "new-compression");
+        // Milestone 49 (inguinal hernia repair): the structural
+        // injuries take their definitive plan at dp4; the
+        // postoperative consequences at dp6. The hernia nerve kind
+        // ("nerve-injury") is deliberately NOT in has_nerve_injury
+        // above: that rule demands the epineurial repair microstep,
+        // which this operation does not carry — its injuries are
+        // planned at dp4, and a haemorrhage's control is the
+        // all-bleeds-controlled condition already in control_pts.
+        let has_hernia_injury = at.complications.iter().any(|c| {
+            c.kind == "vascular-injury"
+                || c.kind == "nerve-injury"
+                || c.kind == "vas-deferens-injury"
+                || c.kind == "visceral-injury"
+        });
+        let has_hernia_postop = at.complications.iter().any(|c| {
+            c.kind == "recurrence" || c.kind == "bowel-adhesion"
+        });
         let control_pts = if all_bleeds_controlled
             && (!has_bdi || at.drain_placed)
             && (!has_cecal || at.drain_placed)
+            && (!has_nerve_injury || at.repair_done)
         {
             1
         } else {
@@ -1621,13 +2456,39 @@ fn score(
         let escalation_pts = if !at.help_calls.is_empty()
             || at.decisions.iter().any(|d| {
                 d.id == "dp3" || d.id == "dp4" || (proc.id == "proc.appy.lap" && (d.id == "dp2" || d.id == "dp5"))
+                    || (proc.id == "proc.lap-inguinal-hernia" && d.id == "dp6")
             })
         {
             1
         } else {
             0
         };
-        let plan_pts = if has_bdi {
+        let plan_pts = if has_hernia_injury {
+            // Milestone 49: the hernia injuries' definitive plans
+            // are taken at dp4 — convert and repair, or immediate
+            // referral to the repair service.
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp4" && (d.choice == "convert-to-repair" || d.choice == "repair-refer"))
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_hernia_postop {
+            // Milestone 49: recurrence and bowel adhesion are
+            // definitively treated by return to theatre (dp6).
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp6" && d.choice == "return-theatre")
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_bdi {
             if at
                 .decisions
                 .iter()
@@ -1657,6 +2518,35 @@ fn score(
             } else {
                 0
             }
+        } else if has_nerve_injury {
+            // Milestone 42: the injury decision point is dp3, and
+            // the definitive plans are immediate magnified repair or
+            // immediate referral to the repair service.
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp3" && (d.choice == "convert-microscope-repair" || d.choice == "repair-refer"))
+            {
+                1
+            } else {
+                0
+            }
+        } else if has_incomplete || has_instability || has_new_compression {
+            // Milestone 42: persistent symptoms from an incomplete
+            // release are definitively treated by completing the
+            // release at re-operation (dp4). Milestone 44: the
+            // ulnar consequences take the same definitive plan —
+            // complete the release, transpose the unstable nerve,
+            // or release the septum, at re-operation (T34).
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp4" && d.choice == "return-theatre")
+            {
+                1
+            } else {
+                0
+            }
         } else if at.infused_ml > 0.0 || loss_engine <= loss_full {
             1
         } else {
@@ -1680,6 +2570,12 @@ fn score(
 
     let debrief = if proc.id == "proc.appy.lap" {
         build_pearls_appy(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else if proc.id == "proc.carpal-release" {
+        build_pearls_carpal(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else if proc.id == "proc.ulnar-decompression" {
+        build_pearls_ulnar(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else if proc.id == "proc.lap-inguinal-hernia" {
+        build_pearls_hernia(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     } else {
         build_pearls(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     };
@@ -1928,6 +2824,351 @@ fn build_pearls_appy(
     }
     if at.errors.iter().any(|e| e.id == "err.prophylaxis-window") {
         directive.push("Prophylaxis timing is a system step, not a detail: the single broad-spectrum dose inside the window before incision (T14; window per T7).".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+/// PEARLS debrief for the carpal tunnel release (Milestone 42):
+/// same structure and state-derived discipline as build_pearls,
+/// with this procedure's gate, variants and literature points.
+fn build_pearls_carpal(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 {
+        plus.push("The structures at risk were identified and protected before the ligament was divided — median nerve demonstrated and protected, recurrent branch accounted for, division limits established (T21, T22).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-division pause performed and the identification confirmed with the team before division (module safety culture, T20).".to_string());
+    }
+    if at.performed.contains_key("m5.5") && at.variant_active("variant.transligamentous-recurrent-branch") {
+        plus.push("The transligamentous recurrent branch — 11.3% pooled prevalence (T24) — was identified where it pierces the retinaculum and carefully released from the ligament before division (T21).".to_string());
+    }
+    if at.performed.contains_key("m5.6") && at.variant_active("variant.persistent-median-artery") {
+        plus.push("The persistent median artery (7.5% of wrists, T25) was identified between the trunks of the high-division nerve and protected before division.".to_string());
+    }
+    if at.complications.iter().any(|c| (c.kind == "median-nerve-injury" || c.kind == "recurrent-branch-injury") && c.recognised) {
+        plus.push("The nerve injury was recognised during the index operation and a definitive plan was made.".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+    if physiology.blood_loss_ml > 0.5 && physiology.seconds_below_threshold == 0.0 {
+        plus.push("Haemorrhage was controlled without the mean arterial pressure ever falling below threshold.".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.divide-unidentified") {
+        directive.push("Never divide the transverse carpal ligament until the nerve is seen and protected: the ligament must be clearly visible and exposed, and the nerve identified at the proximal edge of the retinaculum, before any division (T21). The injury this gate prevents is the operation's catastrophic one (T27).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.missed-variant") {
+        directive.push("In the transligamentous configuration the branch is inside the ligament being divided: identify it where it pierces the retinaculum and free it from the ligament before division (T21; Lanz group I, T23).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unprotected-variant-vessel") {
+        directive.push("A persistent median artery (7.5% of wrists, T25) runs between the trunks of a high-division nerve: find it and protect it before division — that is the Lanz group III field (T23).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.palmar-cutaneous-injury") {
+        directive.push("Keep the dissection on the ulnar side of the field: the palmar cutaneous branch is injured by radial dissection, and its painful neuroma is the approach's named complication (T27; its course and protection, T22).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.incomplete-release") {
+        directive.push("Confirm the release before closing: the elevator must pass freely on both sides of the nerve and the fascia release must be confirmed — an unconfirmed release is the most common cause of persistent symptoms after this operation (T27; the completeness check, T21).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unnecessary-neurolysis") {
+        directive.push("Neurolysis is not part of a primary release: internal neurolysis, epineurotomy and tenosynovectomy are rarely indicated here (T21).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-bailout") {
+        directive.push("When the structures at risk cannot be identified, alter the strategy: extend the exposure, call for senior help, or abort and refer — never divide on presumption (design/05).".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+fn build_pearls_ulnar(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 {
+        plus.push("The nerves at risk were identified and protected before any fascia was divided — ulnar nerve demonstrated and protected, medial antebrachial cutaneous branches accounted for, full release extent established (T29, T31, T34).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-division pause performed and the identification confirmed with the team before division (module safety culture, T20).".to_string());
+    }
+    if at.performed.contains_key("m6.5") {
+        plus.push("The unstable nerve was transposed anteriorly with its perineural vessels preserved and its gliding re-confirmed through the full range (T31) — the configuration the specialty consensus assigns to the subluxating nerve (T29).".to_string());
+    }
+    if at.complications.iter().any(|c| (c.kind == "ulnar-nerve-injury" || c.kind == "mabc-injury") && c.recognised) {
+        plus.push("The nerve injury was recognised during the index operation and a definitive plan was made.".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+    if physiology.blood_loss_ml > 0.5 && physiology.seconds_below_threshold == 0.0 {
+        plus.push("Haemorrhage was controlled without the mean arterial pressure ever falling below threshold.".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.divide-unidentified") {
+        directive.push("Never divide the fascia of this release until the ulnar nerve is seen and protected: identify it proximal to the tunnel, in undisected tissue, and keep it under vision along the whole length to be released (T31). The injury this gate prevents is the operation's catastrophic one (T34).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.mabc-unaccounted") {
+        directive.push("Account for the medial antebrachial cutaneous nerve before dividing anything: its branches cross the incision in the subcutaneous plane, numbness in its distribution is among the most frequent complications of this operation, and its neuroma is the painful one (T29; the injury, T34).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.incomplete-release") {
+        directive.push("Confirm the release before closing: the elevator must pass freely and the nerve must glide from the arcade of Struthers to the flexor-pronator aponeurosis — incomplete decompression is a named technical cause of failure, and the revision series finds the missed sites in most failed cases (T34; T35).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.subluxation-unaddressed") {
+        directive.push("An unstable nerve does not stay treated in its sulcus: when the stability assessment finds subluxation, transpose — the specialty's one consensus in this operation (T29), implemented as protocol in the consulted cohort (T31); persistent instability is a named technical failure (T34).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.new-compression-site") {
+        directive.push("A transposition that leaves the medial intermuscular septum intact trades one compression for another: the septum was intact in 76.2% of revised failed transpositions (T35). Release it, and re-range the elbow before closing (T31).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-bailout") {
+        directive.push("When the nerves at risk cannot be identified, alter the strategy: extend the exposure, call for senior help, or abort and refer — never divide on presumption (design/05).".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+/// PEARLS debrief for the inguinal hernia repair (Milestone 49):
+/// same structure and state-derived discipline as build_pearls,
+/// with this procedure's gate, variants and guideline points.
+fn build_pearls_hernia(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 {
+        plus.push("The danger anatomy was accounted for before any division or fixation — triangle of doom delimited with the external iliac vessels identified, triangle of pain delimited, cord parietalized: the critical view of the myopectineal orifice (T38, T39).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-division pause performed and the account confirmed with the team before dividing or fixating (module safety culture, T20).".to_string());
+    }
+    if at.performed.contains_key("m4.4") && at.variant_active("variant.corona-mortis") {
+        plus.push("The corona mortis — present in 49.3% of the population (T40) — was found on the survey and protected before medial fixation (T39).".to_string());
+    }
+    if at.performed.contains_key("m4.5") && at.variant_active("variant.sliding-hernia") {
+        plus.push("The sliding configuration (2-5% of indirect hernias, T41) was surveyed before any sac division, and the visceral sac wall was not divided.".to_string());
+    }
+    if at.complications.iter().any(|c| (c.kind == "vascular-injury" || c.kind == "nerve-injury" || c.kind == "vas-deferens-injury" || c.kind == "visceral-injury") && c.recognised) {
+        plus.push("The structural injury was recognised during the index operation and a definitive plan was made.".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+    if physiology.blood_loss_ml > 0.5 && physiology.seconds_below_threshold == 0.0 {
+        plus.push("Haemorrhage was controlled without the mean arterial pressure ever falling below threshold.".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.divide-unidentified") {
+        directive.push("Never divide or fixate in the preperitoneal space until the triangle of doom is delimited and the external iliac vessels are seen inside it: only when all anatomical elements have been recognized, the dissection completed and haemostasis achieved should mesh placement proceed (T38; the triangle's definition, T39).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.pain-triangle-injury" || e.id == "err.fixation-in-pain-triangle") {
+        directive.push("The triangle of pain is protected territorially, not by dissection: the nerves are not systematically exposed in this approach (T38, Rule 2) — establish the iliopubic tract line and keep every fixation point at least 2 cm above it (T38, Rule 9; the nerves and their chronic-pain consequence, T39).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.vas-injury") {
+        directive.push("Parietalize before dividing: the duct and gonadal vessels are completely exposed only when the internal spermatic fascia is incised and the sac separated cephalad, and parietalization is sufficient when the vas crosses the external iliac vein (T39; T38, Rule 5).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.missed-variant") {
+        directive.push("Survey the sac wall before dividing it: in 2-5% of indirect hernias part of the wall is a viscus (T41), and a sliding sac is reduced, not divided.".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.corona-unprotected") {
+        directive.push("Survey Cooper's ligament before fixating into it: the corona mortis arches over it in about half the population (T40), and a cut corona retracts into the obturator canal, where haemostasis is difficult (T39).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unnecessary-fixation") {
+        directive.push("Non-fixation is the default: fixation is recommended only for large medial (M3) defects (T36), and is unnecessary in most minimally invasive repairs (T38, Rule 9).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-fixation-large-defect") {
+        directive.push("A large medial (M3) defect is the exception that takes fixation: the HerniaSurge recommendation (T36), with adequate mesh size, overlap and dead-space reduction — the recurrence evidence runs against the unfixed direct repair (T37).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.incomplete-peritoneal-closure") {
+        directive.push("Confirm the flap closure before deflating: every gap leaves mesh exposed, and exposed mesh is the adhesion and obstruction mechanism (T36; T38, Rule 10).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.no-bailout") {
+        directive.push("When the danger anatomy cannot be accounted for, alter the strategy: extend the dissection, call for senior help, or abort and refer — never divide or fixate on presumption (design/05).".to_string());
     }
     if directive.is_empty() {
         directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());

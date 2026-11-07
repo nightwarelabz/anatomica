@@ -1,0 +1,311 @@
+{
+  "trace_id": "trace-22-hernia-fixate-before-account",
+  "trace_name": "TAPP repair: fixation placed before the danger anatomy was accounted for",
+  "procedure_id": "proc.lap-inguinal-hernia",
+  "case_variant": null,
+  "verdict": "FAIL",
+  "failed_at_s": 1200.0,
+  "fail_reason": "an unaccounted critical structure — the external iliac artery, inside the undelimited triangle of doom — was injured (err.divide-unidentified)",
+  "validity_label": "formative-only",
+  "duration_s": 1860.0,
+  "checklist": {
+    "completed": 19,
+    "required": 33,
+    "pct": 57.57575757575758,
+    "missing": [
+      "m4.1",
+      "m4.2",
+      "m4.3",
+      "m5.1",
+      "m5.2",
+      "m5.3",
+      "m6.1",
+      "m6.2",
+      "m6.3",
+      "m7.1",
+      "m7.2",
+      "m8.1",
+      "m8.2",
+      "m8.3"
+    ]
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 0,
+    "pause_before_first_clip": false,
+    "points": 0,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 4,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": false,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 0,
+    "max": 7,
+    "time_points": 0,
+    "nadir_points": 0,
+    "loss_points": 0,
+    "map_nadir_mmhg": 39.67374893350711,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 470.62399999999315,
+    "blood_loss_ml": 1500.0000000011037,
+    "blood_loss_crosscheck_ml": 1500.0,
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
+  },
+  "management": {
+    "points": 5,
+    "max": 5,
+    "recognised": 2,
+    "control": 1,
+    "escalation": 1,
+    "plan": 1
+  },
+  "errors": [
+    {
+      "t_s": 1200.0,
+      "id": "err.divide-unidentified",
+      "detail": "ligament.pectineal acted on (fixate m6.4) before the triangle of doom was delimited and the external iliac vessels identified (0 of 3 criteria met)"
+    }
+  ],
+  "complications": [
+    {
+      "kind": "vascular-injury",
+      "t_onset_s": 1200.0,
+      "detail": "the act crosses the external iliac vessels inside the unaccounted triangle of doom — the preperitoneal vascular injury HerniaSurge names for dissection and mesh fixation in this space (T36); the vessels lie within the triangle bounded by the vas deferens, the testicular vessels and the peritoneal fold (T39)",
+      "resolved_structure": "artery.right-external-iliac-artery",
+      "stewart_way_class": null,
+      "recognised": true,
+      "controlled_s": null,
+      "loss_ml": null
+    },
+    {
+      "kind": "hemorrhage",
+      "t_onset_s": 1200.0,
+      "detail": "haemorrhage from the injured external iliac artery (rate 5 mL/s — verify-flagged engineering parameter)",
+      "resolved_structure": "artery.right-external-iliac-artery",
+      "stewart_way_class": null,
+      "recognised": true,
+      "controlled_s": 1500.0,
+      "loss_ml": 1500.0
+    }
+  ],
+  "decisions": [
+    {
+      "t_s": 900.0,
+      "id": "dp1",
+      "choice": "proceed-tapp"
+    },
+    {
+      "t_s": 1680.0,
+      "id": "dp4",
+      "choice": "convert-to-repair"
+    }
+  ],
+  "engine_trace_hash": "0xf727d9842d1d18f0",
+  "engine_beats": 2818,
+  "engine_conservation_error_ml": 2.0099832909181714e-8,
+  "debrief": {
+    "description": [
+      "[t=60s] m0.1: Review the referral, the hernia examination and imaging; confirm a right inguinal hernia, its direct/indirect character as far as it is known, and the indication for repair",
+      "[t=120s] m0.2: Confirm consent and the operative plan: TAPP repair with mesh; consent covers the fixation decision (fixation only for a large medial defect), vascular and cord injury, nerve injury and chronic pain, and inspection of the contralateral side",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan, including vascular-control capability should a preperitoneal vessel be injured",
+      "[t=240s] m0.4: Establish general anaesthesia for the transabdominal repair",
+      "[t=300s] m0.5: Position the patient supine, both arms tucked, monitors set for lower-abdominal access",
+      "[t=360s] m0.6: Empty the bladder before the operation (a catheter is not used routinely)",
+      "[t=420s] m0.7: WHO Sign In completed before induction of anaesthesia",
+      "[t=480s] m0.8: Confirm that antibiotic prophylaxis is withheld: prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in elective laparo-endoscopic repair in any patient or risk environment (T37), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design",
+      "[t=540s] m0.9: WHO Time Out completed immediately before skin incision",
+      "[t=600s] m1.1: Make the umbilical camera port (open Hasson entry), establish pneumoperitoneum at the theatre's insufflation pressure and place the camera",
+      "[t=660s] m1.2: Place the two 5 mm working ports under direct vision",
+      "[t=720s] m1.3: Incise the peritoneal flap at least 4 cm above the deep inguinal ring, from the anterior superior iliac spine to the medial umbilical fold (Rule 1)",
+      "[t=780s] m2.1: Survey the myopectineal orifice from within: classify the hernia (indirect, direct, femoral components) and state the defect's size and medial extent - the EHS characterisation the fixation rule will key on",
+      "[t=840s] m2.2: Inspect the femoral canal (the external iliac vein kept in view is what avoids a missed femoral hernia, Rule 4) and inspect the contralateral orifice as consented",
+      "[t=900s] dp1 -> proceed-tapp",
+      "[t=960s] m2.3: Identify the retropubic space of Retzius and the bladder's position before medial dissection (the bladder is posterior in Retzius; in direct dissection, remain in the correct plane to avoid injuring the bladder if it forms part of the hernia)",
+      "[t=1020s] m3.1: Develop the space of Retzius medially to the pubic symphysis and at least 2 cm below the pubis (Rule 3 dissection extent)",
+      "[t=1080s] m3.2: Develop the space of Bogros laterally, keeping dissection fat on the inguinal floor and following the peritoneal plane (Rule 2)",
+      "[t=1140s] m3.3: Reduce the hernia sac and its contents; explore for and reduce any cord lipoma (a missed lipoma is a major cause of recurrence, Rule 7; the lipoma is placed on top of the mesh later)",
+      "[t=1200s] m6.4: Fixate medially: a tack above the pubic bone into Cooper's ligament (avoiding the epigastric vessels; bimanual palpation while placing penetrating fixation)",
+      "[t=1200s] err.divide-unidentified: ligament.pectineal acted on (fixate m6.4) before the triangle of doom was delimited and the external iliac vessels identified (0 of 3 criteria met)",
+      "[t=1200s] vascular injury: the external iliac artery was injured inside the unaccounted triangle of doom",
+      "[t=1200s] an unaccounted critical structure — the external iliac artery, inside the undelimited triangle of doom — was injured (err.divide-unidentified)",
+      "[t=1260s] complication recognised: vascular-injury",
+      "[t=1500s] haemorrhage from artery.right-external-iliac-artery controlled (control action)",
+      "[t=1560s] help called: vascular surgery",
+      "[t=1620s] m7.3: Control and repair the injured structure: haemostasis of the injured vessel (which may require conversion), or repair of the injured duct or viscus, as the injury demands",
+      "[t=1680s] dp4 -> convert-to-repair",
+      "[t=1740s] m8.4: WHO Sign Out completed before the patient leaves the operating room"
+    ],
+    "plus": [
+      "The structural injury was recognised during the index operation and a definitive plan was made.",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [
+      "err.divide-unidentified — ligament.pectineal acted on (fixate m6.4) before the triangle of doom was delimited and the external iliac vessels identified (0 of 3 criteria met)",
+      "required microsteps not performed: m4.1, m4.2, m4.3, m5.1, m5.2, m5.3, m6.1, m6.2, m6.3, m7.1, m7.2, m8.1, m8.2, m8.3"
+    ],
+    "directive": [
+      "Never divide or fixate in the preperitoneal space until the triangle of doom is delimited and the external iliac vessels are seen inside it: only when all anatomical elements have been recognized, the dissection completed and haemostasis achieved should mesh placement proceed (T38; the triangle's definition, T39)."
+    ],
+    "summary": [
+      "Verdict: FAIL (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 57.6% (19/33), safety gate 0/4, process 4/5, physiology 0/7, management 5/5.",
+      "Attempt failed at t=1200s: an unaccounted critical structure — the external iliac artery, inside the undelimited triangle of doom — was injured (err.divide-unidentified)",
+      "Next focus: err.divide-unidentified — ligament.pectineal acted on (fixate m6.4) before the triangle of doom was delimited and the external iliac vessels identified (0 of 3 criteria met)"
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review the referral, the hernia examination and imaging; confirm a right inguinal hernia, its direct/indirect character as far as it is known, and the indication for repair"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and the operative plan: TAPP repair with mesh; consent covers the fixation decision (fixation only for a large medial defect), vascular and cord injury, nerve injury and chronic pain, and inspection of the contralateral side"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan, including vascular-control capability should a preperitoneal vessel be injured"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.4: Establish general anaesthesia for the transabdominal repair"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.5: Position the patient supine, both arms tucked, monitors set for lower-abdominal access"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.6: Empty the bladder before the operation (a catheter is not used routinely)"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.7: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 480.0,
+      "kind": "step",
+      "text": "m0.8: Confirm that antibiotic prophylaxis is withheld: prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in elective laparo-endoscopic repair in any patient or risk environment (T37), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design"
+    },
+    {
+      "t_s": 540.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed immediately before skin incision"
+    },
+    {
+      "t_s": 600.0,
+      "kind": "step",
+      "text": "m1.1: Make the umbilical camera port (open Hasson entry), establish pneumoperitoneum at the theatre's insufflation pressure and place the camera"
+    },
+    {
+      "t_s": 660.0,
+      "kind": "step",
+      "text": "m1.2: Place the two 5 mm working ports under direct vision"
+    },
+    {
+      "t_s": 720.0,
+      "kind": "step",
+      "text": "m1.3: Incise the peritoneal flap at least 4 cm above the deep inguinal ring, from the anterior superior iliac spine to the medial umbilical fold (Rule 1)"
+    },
+    {
+      "t_s": 780.0,
+      "kind": "step",
+      "text": "m2.1: Survey the myopectineal orifice from within: classify the hernia (indirect, direct, femoral components) and state the defect's size and medial extent - the EHS characterisation the fixation rule will key on"
+    },
+    {
+      "t_s": 840.0,
+      "kind": "step",
+      "text": "m2.2: Inspect the femoral canal (the external iliac vein kept in view is what avoids a missed femoral hernia, Rule 4) and inspect the contralateral orifice as consented"
+    },
+    {
+      "t_s": 900.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed-tapp"
+    },
+    {
+      "t_s": 960.0,
+      "kind": "step",
+      "text": "m2.3: Identify the retropubic space of Retzius and the bladder's position before medial dissection (the bladder is posterior in Retzius; in direct dissection, remain in the correct plane to avoid injuring the bladder if it forms part of the hernia)"
+    },
+    {
+      "t_s": 1020.0,
+      "kind": "step",
+      "text": "m3.1: Develop the space of Retzius medially to the pubic symphysis and at least 2 cm below the pubis (Rule 3 dissection extent)"
+    },
+    {
+      "t_s": 1080.0,
+      "kind": "step",
+      "text": "m3.2: Develop the space of Bogros laterally, keeping dissection fat on the inguinal floor and following the peritoneal plane (Rule 2)"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "step",
+      "text": "m3.3: Reduce the hernia sac and its contents; explore for and reduce any cord lipoma (a missed lipoma is a major cause of recurrence, Rule 7; the lipoma is placed on top of the mesh later)"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "step",
+      "text": "m6.4: Fixate medially: a tack above the pubic bone into Cooper's ligament (avoiding the epigastric vessels; bimanual palpation while placing penetrating fixation)"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "error",
+      "text": "err.divide-unidentified: ligament.pectineal acted on (fixate m6.4) before the triangle of doom was delimited and the external iliac vessels identified (0 of 3 criteria met)"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "complication",
+      "text": "vascular injury: the external iliac artery was injured inside the unaccounted triangle of doom"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "fail",
+      "text": "an unaccounted critical structure — the external iliac artery, inside the undelimited triangle of doom — was injured (err.divide-unidentified)"
+    },
+    {
+      "t_s": 1260.0,
+      "kind": "recognise",
+      "text": "complication recognised: vascular-injury"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "control",
+      "text": "haemorrhage from artery.right-external-iliac-artery controlled (control action)"
+    },
+    {
+      "t_s": 1560.0,
+      "kind": "help",
+      "text": "help called: vascular surgery"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "step",
+      "text": "m7.3: Control and repair the injured structure: haemostasis of the injured vessel (which may require conversion), or repair of the injured duct or viscus, as the injury demands"
+    },
+    {
+      "t_s": 1680.0,
+      "kind": "decision",
+      "text": "dp4 -> convert-to-repair"
+    },
+    {
+      "t_s": 1740.0,
+      "kind": "step",
+      "text": "m8.4: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}

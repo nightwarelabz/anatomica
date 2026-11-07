@@ -398,6 +398,13 @@ pub struct CaseSpec {
     /// stump-closure rules score the chosen method against it.
     #[serde(default)]
     pub base_condition: Option<String>,
+    /// Defect characterisation in the scenario (Milestone 49:
+    /// inguinal hernia repair "large-medial-m3" for a large medial
+    /// defect in the EHS classification as the HerniaSurge
+    /// guidelines use it, T36/T38; absent for other defects). The
+    /// fixation rules score the fixation decision against it.
+    #[serde(default)]
+    pub defect: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize)]

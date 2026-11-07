@@ -1,0 +1,312 @@
+{
+  "trace_id": "trace-23-hernia-variant-corona-mortis",
+  "trace_name": "TAPP repair: corona mortis found and protected",
+  "procedure_id": "proc.lap-inguinal-hernia",
+  "case_variant": "variant.corona-mortis",
+  "verdict": "PASS",
+  "failed_at_s": null,
+  "fail_reason": null,
+  "validity_label": "formative-only",
+  "duration_s": 2280.0,
+  "checklist": {
+    "completed": 34,
+    "required": 34,
+    "pct": 100.0,
+    "missing": []
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 3,
+    "pause_before_first_clip": true,
+    "points": 4,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 4,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": false,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.9113712137776,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
+  },
+  "management": null,
+  "errors": [],
+  "complications": [],
+  "decisions": [
+    {
+      "t_s": 900.0,
+      "id": "dp1",
+      "choice": "proceed-tapp"
+    },
+    {
+      "t_s": 1800.0,
+      "id": "dp5",
+      "choice": "non-fixation"
+    }
+  ],
+  "engine_trace_hash": "0xb6e7d5bdbeb4d57e",
+  "engine_beats": 2532,
+  "engine_conservation_error_ml": 1.4724719221703708e-9,
+  "debrief": {
+    "description": [
+      "[t=60s] m0.1: Review the referral, the hernia examination and imaging; confirm a right inguinal hernia, its direct/indirect character as far as it is known, and the indication for repair",
+      "[t=120s] m0.2: Confirm consent and the operative plan: TAPP repair with mesh; consent covers the fixation decision (fixation only for a large medial defect), vascular and cord injury, nerve injury and chronic pain, and inspection of the contralateral side",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan, including vascular-control capability should a preperitoneal vessel be injured",
+      "[t=240s] m0.4: Establish general anaesthesia for the transabdominal repair",
+      "[t=300s] m0.5: Position the patient supine, both arms tucked, monitors set for lower-abdominal access",
+      "[t=360s] m0.6: Empty the bladder before the operation (a catheter is not used routinely)",
+      "[t=420s] m0.7: WHO Sign In completed before induction of anaesthesia",
+      "[t=480s] m0.8: Confirm that antibiotic prophylaxis is withheld: prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in elective laparo-endoscopic repair in any patient or risk environment (T37), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design",
+      "[t=540s] m0.9: WHO Time Out completed immediately before skin incision",
+      "[t=600s] m1.1: Make the umbilical camera port (open Hasson entry), establish pneumoperitoneum at the theatre's insufflation pressure and place the camera",
+      "[t=660s] m1.2: Place the two 5 mm working ports under direct vision",
+      "[t=720s] m1.3: Incise the peritoneal flap at least 4 cm above the deep inguinal ring, from the anterior superior iliac spine to the medial umbilical fold (Rule 1)",
+      "[t=780s] m2.1: Survey the myopectineal orifice from within: classify the hernia (indirect, direct, femoral components) and state the defect's size and medial extent - the EHS characterisation the fixation rule will key on",
+      "[t=840s] m2.2: Inspect the femoral canal (the external iliac vein kept in view is what avoids a missed femoral hernia, Rule 4) and inspect the contralateral orifice as consented",
+      "[t=900s] dp1 -> proceed-tapp",
+      "[t=960s] m2.3: Identify the retropubic space of Retzius and the bladder's position before medial dissection (the bladder is posterior in Retzius; in direct dissection, remain in the correct plane to avoid injuring the bladder if it forms part of the hernia)",
+      "[t=1020s] m3.1: Develop the space of Retzius medially to the pubic symphysis and at least 2 cm below the pubis (Rule 3 dissection extent)",
+      "[t=1080s] m3.2: Develop the space of Bogros laterally, keeping dissection fat on the inguinal floor and following the peritoneal plane (Rule 2)",
+      "[t=1140s] m3.3: Reduce the hernia sac and its contents; explore for and reduce any cord lipoma (a missed lipoma is a major cause of recurrence, Rule 7; the lipoma is placed on top of the mesh later)",
+      "[t=1200s] m4.1: Demonstrate the triangle of doom delimited - vas deferens medially, gonadal vessels laterally, peritoneal fold - with the external iliac artery and vein identified within it, and the superior pubic ramus surveyed for a corona mortis anastomosis arching over Cooper's ligament",
+      "[t=1260s] m4.2: Demonstrate the triangle of pain delimited - iliopubic tract line established lateral to the gonadal vessels, the lateral cutaneous and genitofemoral territory accounted for WITHOUT dissecting the nerves out (Rule 2), and every planned fixation point at least 2 cm above the tract",
+      "[t=1320s] m4.3: Demonstrate the cord structures accounted for and parietalized: deferent duct and gonadal vessels identified as the inverted Y's arms, the internal spermatic fascia incised, the sac separated cephalad, and the peritoneum dissected inferiorly until the vas deferens crosses the external iliac vein, iliopsoas identified posteriorly",
+      "[t=1320s] Critical view of the myopectineal orifice: danger anatomy accounted for before mesh placement, division or fixation achieved: all three criteria demonstrated",
+      "[t=1380s] m4.4: Protect the corona mortis: the anastomotic vessel found on the crit1 survey is dissected clear of the medial fixation line and protected before any medial fixation (variant configuration)",
+      "[t=1440s] m5.1: Confirm the critical view of the myopectineal orifice is complete: all anatomical elements recognized, the dissection steps completed and haemostasis achieved - the specialty's precondition for mesh placement",
+      "[t=1500s] m5.2: Second look: re-confirm the doom account, the pain account and the cord account before division or fixation",
+      "[t=1560s] m5.3: Pre-division pause: the danger-anatomy account is confirmed aloud before any structure is divided or any fixation placed",
+      "[t=1620s] m6.1: Divide the sac at its neck (for a large or inguinoscrotal sac, transect and abandon the distal sac - and only after the cord elements have been safely identified, Rule 6) and divide the transversalis fascia of the direct floor as required",
+      "[t=1680s] m6.2: Position the mesh - at least 10 cm craniocaudal by 15 cm mediolateral, heavyweight for a large direct defect - covering the whole myopectineal orifice with at least 3-4 cm overlap, at least 3 cm medial overlap from a direct defect, 1-2 cm crossover, 1-2 cm below the pubis, no wrinkles or folds, not split (Rule 8)",
+      "[t=1740s] m6.3: Assess the defect for the fixation decision: state whether this is a large medial (M3 EHS) defect - the single class for which fixation is recommended - with adequate mesh size and overlap and the direct dead space reduced",
+      "[t=1800s] dp5 -> non-fixation",
+      "[t=1860s] m7.1: Close the peritoneal flap with suture (suture closure is recommended instead of tacking, which risks nerve injury, Rule 10)",
+      "[t=1920s] m7.2: Confirm the peritoneal closure is complete: no gap, hole or tear leaves mesh exposed to the abdominal cavity (omission of this confirmation computes the bowel-adhesion consequence at scoring)",
+      "[t=1980s] m8.1: Deflate the pneumoperitoneum under direct visualisation, confirming the mesh stays flat and undisplaced (Rule 10)",
+      "[t=2040s] m8.2: Close the fascia at port sites of 1 cm or more (port-site hernias occur mostly after TAPP, 0-3.7% in the Cochrane data HerniaSurge reports)",
+      "[t=2100s] m8.3: Confirm the postoperative plan: pain assessment with chronic-pain follow-up (clinically significant chronic postoperative inguinal pain runs at 10-12%), recurrence surveillance, and the plan for any declared consequence",
+      "[t=2160s] m8.4: WHO Sign Out completed before the patient leaves the operating room"
+    ],
+    "plus": [
+      "The danger anatomy was accounted for before any division or fixation — triangle of doom delimited with the external iliac vessels identified, triangle of pain delimited, cord parietalized: the critical view of the myopectineal orifice (T38, T39).",
+      "Pre-division pause performed and the account confirmed with the team before dividing or fixating (module safety culture, T20).",
+      "The corona mortis — present in 49.3% of the population (T40) — was found on the survey and protected before medial fixation (T39).",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [],
+    "directive": [
+      "Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it."
+    ],
+    "summary": [
+      "Verdict: PASS (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 100.0% (34/34), safety gate 4/4, process 4/5, physiology 7/7, management n/a (no complication)."
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review the referral, the hernia examination and imaging; confirm a right inguinal hernia, its direct/indirect character as far as it is known, and the indication for repair"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and the operative plan: TAPP repair with mesh; consent covers the fixation decision (fixation only for a large medial defect), vascular and cord injury, nerve injury and chronic pain, and inspection of the contralateral side"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan, including vascular-control capability should a preperitoneal vessel be injured"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.4: Establish general anaesthesia for the transabdominal repair"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.5: Position the patient supine, both arms tucked, monitors set for lower-abdominal access"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.6: Empty the bladder before the operation (a catheter is not used routinely)"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.7: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 480.0,
+      "kind": "step",
+      "text": "m0.8: Confirm that antibiotic prophylaxis is withheld: prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in elective laparo-endoscopic repair in any patient or risk environment (T37), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design"
+    },
+    {
+      "t_s": 540.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed immediately before skin incision"
+    },
+    {
+      "t_s": 600.0,
+      "kind": "step",
+      "text": "m1.1: Make the umbilical camera port (open Hasson entry), establish pneumoperitoneum at the theatre's insufflation pressure and place the camera"
+    },
+    {
+      "t_s": 660.0,
+      "kind": "step",
+      "text": "m1.2: Place the two 5 mm working ports under direct vision"
+    },
+    {
+      "t_s": 720.0,
+      "kind": "step",
+      "text": "m1.3: Incise the peritoneal flap at least 4 cm above the deep inguinal ring, from the anterior superior iliac spine to the medial umbilical fold (Rule 1)"
+    },
+    {
+      "t_s": 780.0,
+      "kind": "step",
+      "text": "m2.1: Survey the myopectineal orifice from within: classify the hernia (indirect, direct, femoral components) and state the defect's size and medial extent - the EHS characterisation the fixation rule will key on"
+    },
+    {
+      "t_s": 840.0,
+      "kind": "step",
+      "text": "m2.2: Inspect the femoral canal (the external iliac vein kept in view is what avoids a missed femoral hernia, Rule 4) and inspect the contralateral orifice as consented"
+    },
+    {
+      "t_s": 900.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed-tapp"
+    },
+    {
+      "t_s": 960.0,
+      "kind": "step",
+      "text": "m2.3: Identify the retropubic space of Retzius and the bladder's position before medial dissection (the bladder is posterior in Retzius; in direct dissection, remain in the correct plane to avoid injuring the bladder if it forms part of the hernia)"
+    },
+    {
+      "t_s": 1020.0,
+      "kind": "step",
+      "text": "m3.1: Develop the space of Retzius medially to the pubic symphysis and at least 2 cm below the pubis (Rule 3 dissection extent)"
+    },
+    {
+      "t_s": 1080.0,
+      "kind": "step",
+      "text": "m3.2: Develop the space of Bogros laterally, keeping dissection fat on the inguinal floor and following the peritoneal plane (Rule 2)"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "step",
+      "text": "m3.3: Reduce the hernia sac and its contents; explore for and reduce any cord lipoma (a missed lipoma is a major cause of recurrence, Rule 7; the lipoma is placed on top of the mesh later)"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "step",
+      "text": "m4.1: Demonstrate the triangle of doom delimited - vas deferens medially, gonadal vessels laterally, peritoneal fold - with the external iliac artery and vein identified within it, and the superior pubic ramus surveyed for a corona mortis anastomosis arching over Cooper's ligament"
+    },
+    {
+      "t_s": 1260.0,
+      "kind": "step",
+      "text": "m4.2: Demonstrate the triangle of pain delimited - iliopubic tract line established lateral to the gonadal vessels, the lateral cutaneous and genitofemoral territory accounted for WITHOUT dissecting the nerves out (Rule 2), and every planned fixation point at least 2 cm above the tract"
+    },
+    {
+      "t_s": 1320.0,
+      "kind": "step",
+      "text": "m4.3: Demonstrate the cord structures accounted for and parietalized: deferent duct and gonadal vessels identified as the inverted Y's arms, the internal spermatic fascia incised, the sac separated cephalad, and the peritoneum dissected inferiorly until the vas deferens crosses the external iliac vein, iliopsoas identified posteriorly"
+    },
+    {
+      "t_s": 1320.0,
+      "kind": "gate",
+      "text": "Critical view of the myopectineal orifice: danger anatomy accounted for before mesh placement, division or fixation achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "step",
+      "text": "m4.4: Protect the corona mortis: the anastomotic vessel found on the crit1 survey is dissected clear of the medial fixation line and protected before any medial fixation (variant configuration)"
+    },
+    {
+      "t_s": 1440.0,
+      "kind": "step",
+      "text": "m5.1: Confirm the critical view of the myopectineal orifice is complete: all anatomical elements recognized, the dissection steps completed and haemostasis achieved - the specialty's precondition for mesh placement"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m5.2: Second look: re-confirm the doom account, the pain account and the cord account before division or fixation"
+    },
+    {
+      "t_s": 1560.0,
+      "kind": "step",
+      "text": "m5.3: Pre-division pause: the danger-anatomy account is confirmed aloud before any structure is divided or any fixation placed"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "step",
+      "text": "m6.1: Divide the sac at its neck (for a large or inguinoscrotal sac, transect and abandon the distal sac - and only after the cord elements have been safely identified, Rule 6) and divide the transversalis fascia of the direct floor as required"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "divide",
+      "text": "m6.1 divided with the danger anatomy accounted for"
+    },
+    {
+      "t_s": 1680.0,
+      "kind": "step",
+      "text": "m6.2: Position the mesh - at least 10 cm craniocaudal by 15 cm mediolateral, heavyweight for a large direct defect - covering the whole myopectineal orifice with at least 3-4 cm overlap, at least 3 cm medial overlap from a direct defect, 1-2 cm crossover, 1-2 cm below the pubis, no wrinkles or folds, not split (Rule 8)"
+    },
+    {
+      "t_s": 1740.0,
+      "kind": "step",
+      "text": "m6.3: Assess the defect for the fixation decision: state whether this is a large medial (M3 EHS) defect - the single class for which fixation is recommended - with adequate mesh size and overlap and the direct dead space reduced"
+    },
+    {
+      "t_s": 1800.0,
+      "kind": "decision",
+      "text": "dp5 -> non-fixation"
+    },
+    {
+      "t_s": 1860.0,
+      "kind": "step",
+      "text": "m7.1: Close the peritoneal flap with suture (suture closure is recommended instead of tacking, which risks nerve injury, Rule 10)"
+    },
+    {
+      "t_s": 1920.0,
+      "kind": "step",
+      "text": "m7.2: Confirm the peritoneal closure is complete: no gap, hole or tear leaves mesh exposed to the abdominal cavity (omission of this confirmation computes the bowel-adhesion consequence at scoring)"
+    },
+    {
+      "t_s": 1980.0,
+      "kind": "step",
+      "text": "m8.1: Deflate the pneumoperitoneum under direct visualisation, confirming the mesh stays flat and undisplaced (Rule 10)"
+    },
+    {
+      "t_s": 2040.0,
+      "kind": "step",
+      "text": "m8.2: Close the fascia at port sites of 1 cm or more (port-site hernias occur mostly after TAPP, 0-3.7% in the Cochrane data HerniaSurge reports)"
+    },
+    {
+      "t_s": 2100.0,
+      "kind": "step",
+      "text": "m8.3: Confirm the postoperative plan: pain assessment with chronic-pain follow-up (clinically significant chronic postoperative inguinal pain runs at 10-12%), recurrence surveillance, and the plan for any declared consequence"
+    },
+    {
+      "t_s": 2160.0,
+      "kind": "step",
+      "text": "m8.4: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""ANATOMICA theatre checker (Milestones 17 + 28) — independent
-validation of the theatre module's two procedures.
+"""ANATOMICA theatre checker (Milestones 17 + 28 + 42 + 44 + 49) —
+independent validation of the theatre module's five procedures.
 
 Recomputes, from the data files alone (never from the Rust code):
   1. procedure census (phases / steps / microsteps / required set)
@@ -19,10 +19,15 @@ Recomputes, from the data files alone (never from the Rust code):
   7. scoring arithmetic in every emitted debrief JSON, recomputed
      from the debrief's own components; verdict/fail consistency;
      engine loss vs event-integral cross-check agreement
-  8. trace-specific expectations for both procedures (the Stewart-Way
+  8. trace-specific expectations for the five procedures (the Stewart-Way
      class III injury in chole trace-02, the 67-microstep required
      set in trace-04, the bailout in 05; the cecal injury in appy
-     trace-08, the configuration required sets in 06/07/09/10)
+     trace-08, the configuration required sets in 06/07/09/10; the
+     median nerve injury in carpal trace-12, the variant required
+     sets in 13/14, the incomplete release in 15; the ulnar injuries
+     and configuration sets in 16-20; the vascular injury in hernia
+     trace-22, the variant required sets in 23/24, the unconfirmed
+     peritoneal closure in 25)
   9. parameter discipline: cited/calibrated parameters name a source
      that exists; verify-flagged parameters are counted and listed
 
@@ -72,6 +77,9 @@ def collect_ids(node, acc):
 PROCEDURES = [
     ("proc.lap-cholecystectomy.json", 9),
     ("proc.lap-appendectomy.json", 9),
+    ("proc.carpal-release.json", 9),
+    ("proc.ulnar-decompression.json", 9),
+    ("proc.lap-inguinal-hernia.json", 9),
 ]
 
 
@@ -207,7 +215,7 @@ def main():
     for fn in all_names:
         d = load(os.path.join(debriefs_dir, fn))
         debriefs_by_proc.setdefault(d["procedure_id"], []).append((fn, d))
-    ok(len(all_names) == 10, f"ten debriefs emitted, five per procedure (found {len(all_names)})")
+    ok(len(all_names) == 25, f"twenty-five debriefs emitted, five per procedure (found {len(all_names)})")
 
     by_trace = {}
     for fname, expected_phases in PROCEDURES:
@@ -278,6 +286,173 @@ def main():
     t10 = by_trace.get("trace-10-appy-variant-pelvic", {})
     ok(t10.get("checklist", {}).get("required") == 38 and t10.get("verdict") == "PASS",
        "trace-10: pelvic configuration requires 38 and passes")
+
+    # -- carpal tunnel release (Milestone 42) --
+    # The register's absences, probed against the Body Model data:
+    # the ligament divided, the branch the gate protects, the arch,
+    # the persistent artery and Guyon's canal have no records.
+    import glob as _glob
+    all_data_ids = set()
+    for path in _glob.glob(os.path.join(ROOT, "data", "*", "*.json")):
+        all_data_ids |= collect_ids(load(path), set())
+    ok(not any("transverse-carpal" in i or "retinaculum" in i for i in all_data_ids),
+       "transverse carpal ligament genuinely absent from the Body Model data (absence note is honest)")
+    ok(not any("recurrent" in i and "branch" in i for i in all_data_ids),
+       "recurrent branch of the median nerve genuinely absent (the M35/M39/M41 honesty claim)")
+    ok(not any("palmar-cutaneous" in i for i in all_data_ids),
+       "palmar cutaneous branch genuinely absent from the Body Model data")
+    ok(not any("palmar-arch" in i or "persistent-median" in i for i in all_data_ids),
+       "superficial palmar arch and persistent median artery genuinely absent")
+    ok(not any("guyon" in i or "kaplan" in i for i in all_data_ids),
+       "Guyon's canal and Kaplan's line carry no records (landmark/absence register is honest)")
+    ok("major.median" in all_data_ids and "major.ulnar" in all_data_ids,
+       "median and ulnar nerve clinical records genuinely present (M39)")
+
+    t11 = by_trace.get("trace-11-carpal-clean", {})
+    ok(t11.get("checklist", {}).get("pct") == 100.0 and t11.get("safety_gate", {}).get("points") == 4,
+       "trace-11: full checklist and full gate score")
+    ok(t11.get("process", {}).get("points") == 4,
+       "trace-11: process 4/5 — no prophylaxis exists for this operation (T26, T28), the ceiling is by design")
+    ok(t11.get("errors") == [], "trace-11: the clean attempt carries no errors")
+    t12 = by_trace.get("trace-12-carpal-divide-before-id", {})
+    ni = [c for c in t12.get("complications", []) if c["kind"] == "median-nerve-injury"]
+    ok(len(ni) == 1 and ni[0]["resolved_structure"] == "major.median",
+       "trace-12: the injury is a median nerve injury, resolved onto major.median")
+    ok(t12.get("failed_at_s") == 1020.0, "trace-12: fails at the division (t=1020s)")
+    ok(t12.get("management", {}).get("points") == 5,
+       "trace-12: exemplary management (5/5) does not rescue the verdict")
+    ok(len(t12.get("complications", [])) == 1,
+       "trace-12: the failed attempt declares the injury only (no incomplete-release noise)")
+    t13 = by_trace.get("trace-13-carpal-variant-transligamentous", {})
+    ok(t13.get("checklist", {}).get("required") == 30 and t13.get("checklist", {}).get("pct") == 100.0
+       and t13.get("verdict") == "PASS",
+       "trace-13: transligamentous configuration requires 30 at 100% and passes")
+    t14 = by_trace.get("trace-14-carpal-variant-persistent-median-artery", {})
+    ok(t14.get("checklist", {}).get("required") == 30 and t14.get("verdict") == "PASS",
+       "trace-14: persistent-median-artery configuration requires 30 and passes")
+    t15 = by_trace.get("trace-15-carpal-incomplete-release", {})
+    inc = [c for c in t15.get("complications", []) if c["kind"] == "incomplete-release"]
+    ok(len(inc) == 1 and inc[0]["resolved_structure"] == "ligament.transverse-carpal",
+       "trace-15: the unconfirmed release computes persistent symptoms on the ligament")
+    ok(t15.get("checklist", {}).get("missing") == ["m6.2"]
+       and any(e["id"] == "err.incomplete-release" for e in t15.get("errors", [])),
+       "trace-15: the only omission is the completeness confirmation, and it is scored")
+    ok(t15.get("verdict") == "PASS" and t15.get("management", {}).get("points") == 5,
+       "trace-15: a postoperative consequence, managed at dp4 — not a failed attempt")
+
+    # -- ulnar nerve decompression (Milestone 44) --
+    # The register's absences, probed against the Body Model data
+    # (all_data_ids was collected for the carpal block above): the
+    # divided fascial structures have no records; the two nerves
+    # the gate protects, the flexor carpi ulnaris and the humerus
+    # genuinely do.
+    ok(not any("osborne" in i or "struthers" in i for i in all_data_ids),
+       "Osborne's ligament and the arcade of Struthers genuinely absent from the Body Model data (absence notes are honest)")
+    ok(not any("aponeurosis" in i for i in all_data_ids),
+       "no aponeurosis record exists in the Body Model data (the FCU and flexor-pronator absence notes are honest)")
+    ok(not any("intermuscular" in i for i in all_data_ids)
+       and sorted(i for i in all_data_ids if "septum" in i)
+           == ["nose.nasal-septum", "repro.left-septum-of-testis", "repro.right-septum-of-testis"],
+       "no medial intermuscular septum record exists — the only septum records are the nasal septum and the testis septa")
+    ok("nerve.medial-cutaneous-nerve-of-forearm" in all_data_ids,
+       "the medial antebrachial cutaneous nerve genuinely present as an M33 inventory record (the gate's crit2 protects a real record)")
+    ok("muscle.flexor-carpi-ulnaris" in all_data_ids and "humerus_right" in all_data_ids,
+       "flexor carpi ulnaris and the right humerus genuinely present (register records resolve)")
+
+    t16 = by_trace.get("trace-16-ulnar-clean", {})
+    ok(t16.get("checklist", {}).get("pct") == 100.0 and t16.get("safety_gate", {}).get("points") == 4,
+       "trace-16: full checklist and full gate score")
+    ok(t16.get("process", {}).get("points") == 4,
+       "trace-16: process 4/5 — no prophylaxis exists for this operation (T33), the ceiling is by design")
+    ok(t16.get("errors") == [], "trace-16: the clean attempt carries no errors")
+    t17 = by_trace.get("trace-17-ulnar-divide-before-id", {})
+    ni = [c for c in t17.get("complications", []) if c["kind"] == "ulnar-nerve-injury"]
+    ok(len(ni) == 1 and ni[0]["resolved_structure"] == "major.ulnar",
+       "trace-17: the injury is an ulnar nerve injury, resolved onto major.ulnar")
+    ok(t17.get("failed_at_s") == 1140.0, "trace-17: fails at the division (t=1140s)")
+    ok(t17.get("management", {}).get("points") == 5,
+       "trace-17: exemplary management (5/5) does not rescue the verdict")
+    ok(len(t17.get("complications", [])) == 1,
+       "trace-17: the failed attempt declares the injury only (no scoring-time noise)")
+    t18 = by_trace.get("trace-18-ulnar-variant-subluxating", {})
+    ok(t18.get("checklist", {}).get("required") == 33 and t18.get("checklist", {}).get("pct") == 100.0
+       and t18.get("verdict") == "PASS",
+       "trace-18: transposition configuration requires 33 (dp5 drops m6.2, inserts m6.3-m6.6) at 100% and passes")
+    ok(t18.get("complications") == [],
+       "trace-18: a transposed unstable nerve computes no instability consequence")
+    t19 = by_trace.get("trace-19-ulnar-subluxation-unaddressed", {})
+    inst = [c for c in t19.get("complications", []) if c["kind"] == "nerve-instability"]
+    ok(len(inst) == 1 and inst[0]["resolved_structure"] == "major.ulnar",
+       "trace-19: the unaddressed instability computes onto major.ulnar")
+    ok(any(e["id"] == "err.subluxation-unaddressed" for e in t19.get("errors", []))
+       and t19.get("verdict") == "PASS" and t19.get("management", {}).get("points") == 5,
+       "trace-19: scored as the configuration error, a postoperative consequence managed at dp4 — not a failed attempt")
+    t20 = by_trace.get("trace-20-ulnar-incomplete-release", {})
+    inc = [c for c in t20.get("complications", []) if c["kind"] == "incomplete-release"]
+    ok(len(inc) == 1 and inc[0]["resolved_structure"] == "ligament.cubital-tunnel-retinaculum",
+       "trace-20: the unconfirmed release computes persistent symptoms on the retinaculum")
+    ok(t20.get("checklist", {}).get("missing") == ["m5.4"]
+       and any(e["id"] == "err.incomplete-release" for e in t20.get("errors", [])),
+       "trace-20: the only omission is the completeness confirmation, and it is scored")
+    ok(t20.get("verdict") == "PASS" and t20.get("management", {}).get("points") == 5,
+       "trace-20: a postoperative consequence, managed at dp4 — not a failed attempt")
+
+    # -- inguinal hernia repair (Milestone 49) --
+    # The register's absences, probed against the Body Model data
+    # (all_data_ids was collected for the carpal block above): the
+    # two triangles, the orifice, Cooper's ligament, the sac, the
+    # transversalis fascia, the inguinal canal and the corona
+    # mortis have no records; the vessels, nerves, cord and duct
+    # the gate protects genuinely do.
+    ok(not any("triangle" in i for i in all_data_ids),
+       "no triangle record exists in the Body Model data (the doom/pain region absence notes are honest)")
+    ok(not any("transversalis" in i or "myopectineal" in i or "pectineal" in i
+               or "cooper" in i or "hernia" in i for i in all_data_ids),
+       "transversalis fascia, myopectineal orifice, Cooper's ligament and hernia sac genuinely absent")
+    ok("canal.inguinal" not in all_data_ids,
+       "the inguinal canal genuinely absent from the Body Model data (absence note is honest)")
+    ok(not any(i.startswith("artery.") and "obturator" in i for i in all_data_ids)
+       and not any("corona" in i and "mortis" in i for i in all_data_ids),
+       "no obturator artery and no corona mortis record exists (the corona absence is doubly honest)")
+    ok("repro.right-deferent-duct" in all_data_ids
+       and "artery.right-external-iliac-artery" in all_data_ids
+       and "nerve.genitofemoral" in all_data_ids
+       and "major.lateral-femoral-cutaneous" in all_data_ids,
+       "deferent duct, external iliac artery and the pain-territory nerves genuinely present (register records resolve)")
+
+    t21 = by_trace.get("trace-21-hernia-clean", {})
+    ok(t21.get("checklist", {}).get("pct") == 100.0 and t21.get("safety_gate", {}).get("points") == 4,
+       "trace-21: full checklist and full gate score")
+    ok(t21.get("process", {}).get("points") == 4,
+       "trace-21: process 4/5 — no prophylaxis exists for this operation (T36, T37), the ceiling is by design")
+    ok(t21.get("errors") == [], "trace-21: the clean attempt carries no errors")
+    t22 = by_trace.get("trace-22-hernia-fixate-before-account", {})
+    vi = [c for c in t22.get("complications", []) if c["kind"] == "vascular-injury"]
+    ok(len(vi) == 1 and vi[0]["resolved_structure"] == "artery.right-external-iliac-artery",
+       "trace-22: the injury is a vascular injury, resolved onto the external iliac artery")
+    ok(t22.get("failed_at_s") == 1200.0, "trace-22: fails at the fixation (t=1200s)")
+    ok(t22.get("management", {}).get("points") == 5,
+       "trace-22: exemplary management (5/5) does not rescue the verdict")
+    hem = [c for c in t22.get("complications", []) if c["kind"] == "hemorrhage"]
+    ok(len(hem) == 1 and abs(hem[0].get("loss_ml", 0) - 1500.0) < 5.0,
+       "trace-22: the haemorrhage is 300 s at the 5.0 mL/s placeholder rate (1500 mL)")
+    t23 = by_trace.get("trace-23-hernia-variant-corona-mortis", {})
+    ok(t23.get("checklist", {}).get("required") == 34 and t23.get("checklist", {}).get("pct") == 100.0
+       and t23.get("verdict") == "PASS",
+       "trace-23: corona configuration requires 34 (survey protection added) at 100% and passes")
+    t24 = by_trace.get("trace-24-hernia-variant-sliding", {})
+    ok(t24.get("checklist", {}).get("required") == 34 and t24.get("checklist", {}).get("pct") == 100.0
+       and t24.get("verdict") == "PASS",
+       "trace-24: sliding configuration requires 34 (sliding survey added) at 100% and passes")
+    t25 = by_trace.get("trace-25-hernia-incomplete-closure", {})
+    ad = [c for c in t25.get("complications", []) if c["kind"] == "bowel-adhesion"]
+    ok(len(ad) == 1 and ad[0]["resolved_structure"] == "peritoneum.peritoneum",
+       "trace-25: the unconfirmed closure computes bowel adhesion on the peritoneum")
+    ok(t25.get("checklist", {}).get("missing") == ["m7.2"]
+       and any(e["id"] == "err.incomplete-peritoneal-closure" for e in t25.get("errors", [])),
+       "trace-25: the only omission is the closure confirmation, and it is scored")
+    ok(t25.get("verdict") == "PASS" and t25.get("management", {}).get("points") == 5,
+       "trace-25: a postoperative consequence, managed at dp6 — not a failed attempt")
 
     print("\n== 9. parameter discipline ==")
     verify = []
