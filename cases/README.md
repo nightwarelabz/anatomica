@@ -342,8 +342,16 @@ debrief scored by stated rules.
   inherited by the learner, absorbed a below-range day-1
   calcium filed unactioned, and delayed the panel by a
   stage. The physiology link is data-identity with case 1
-  plus the stated gap: the engine has no calcium axis, and
-  the calcium course is authored data. No imaging link: an
+  for the baseline, and since Milestone 60 it carries the
+  calcium-axis link that closes the gap stated at Milestone
+  57: the Milestone 58 PTH-loss arm (secretion capacity
+  9 percent, untreated) reproduces the authored course at
+  POD2 (corrected 1.830 against 1.83 mmol/L; ionized
+  0.9357 against 0.94; PTH 8.08 against 8) with a disclosed
+  +0.146 mmol/L disagreement at POD1 (2.096 against 1.95),
+  pinned by the checker against the Milestone 58 dossier's
+  measured tables and the case's own labs. The course
+  itself remains authored data. No imaging link: an
   `imaging_assessment` records that neither subject's
   104-label set contains a thyroid or parathyroid label.
   Ontology: MONDO:0001220 verified for the truth; the

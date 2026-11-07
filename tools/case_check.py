@@ -2066,7 +2066,8 @@ def profile_case8(case, ctx, boards, attempt):
     print("\n=== case.post-thyroid-hypocalcemia.008 profile: management "
           "tier / correction arithmetic / ATA conjunction / Trousseau "
           "derivation / anchoring (premature closure) / physiology + "
-          "imaging links / the LOOP to trace 30 (M57) ===")
+          "imaging links / the LOOP to trace 30 (M57) / the calcium "
+          "link closed (M60) ===")
     slug = case["id"].replace(".", "-")
     deb = load(os.path.join(
         CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
@@ -2236,18 +2237,68 @@ def profile_case8(case, ctx, boards, attempt):
        "case8: attempt commit matches adjudication and names the "
        "dp6 protocol it executes")
 
-    # ---- physiology link: data-identity + the stated gap --------------
+    # ---- physiology link: baseline identity + calcium link (M60) ------
     c1 = load(os.path.join(CASES, "case.ruq-pain.001.json"))["case"]
     pl = case["physiology_link"]
     ok(pl["trace_hash"] == c1["physiology_link"]["trace_hash"]
        == "0x6369b10e9a71c872"
        and pl["baseline_recorded_outputs"]
-       == c1["physiology_link"]["baseline_recorded_outputs"]
-       and "no calcium axis" in pl["gap_statement"],
-       "case8: physiology link by data-identity with case 1 (the "
-       "pinned hash, the same seven resting outputs); the gap stated "
-       "in-case -- the engine has no calcium axis, so the calcium "
-       "course is authored data, not simulation")
+       == c1["physiology_link"]["baseline_recorded_outputs"],
+       "case8: physiology baseline link by data-identity with case 1 "
+       "(the pinned hash, the same seven resting outputs) -- "
+       "unchanged by the calcium link")
+    ok("CLOSED AT MILESTONE 60" in pl["gap_statement"]
+       and "+0.146" in pl["gap_statement"],
+       "case8 M60: the gap statement records the closure -- the "
+       "Milestone 58 calcium axis exists, the link pins the patient "
+       "to its PTH-loss arm, and the POD1 disagreement (+0.146 "
+       "mmol/L) is stated in-case, not smoothed")
+    co = pl["calcium_recorded_outputs"]
+    ok(set(co) == {"resting", "pod1_24h", "pod2_48h"}
+       and co["resting"]["ionized_calcium_mmol_l"] == 1.2
+       and co["resting"]["corrected_calcium_mmol_l"] == 2.4
+       and co["resting"]["pth_pg_ml"] == 19.82,
+       "case8 M60: the link records the arm's engagement sample and "
+       "the POD1/POD2 marks; the resting sample sits on the axis's "
+       "gated resting values (ionized 1.20, corrected 2.40 mmol/L, "
+       "PTH 19.82 pg/mL)")
+    doss58 = open(os.path.join(ROOT, "milestones", "MILESTONE-58.md"),
+                  encoding="utf-8").read()
+    ok("0.9357 mmol/L" in doss58 and "1.830 mmol/L" in doss58
+       and "8.08 pg/mL" in doss58 and "2.096" in doss58
+       and "+0.146" in doss58
+       and co["pod2_48h"]["ionized_calcium_mmol_l"] == 0.9357
+       and co["pod2_48h"]["corrected_calcium_mmol_l"] == 1.83
+       and co["pod2_48h"]["pth_pg_ml"] == 8.08
+       and co["pod1_24h"]["corrected_calcium_mmol_l"] == 2.096
+       and pl["calcium_arm_trace_hash"] == "0x4a8b2abf3b82eb43"
+       and "0x4a8b2abf3b82eb43" in doss58,
+       "case8 M60: the recorded calcium outputs and the arm's "
+       "circulation hash are pinned by identity with the Milestone "
+       "58 dossier's measured tables -- the pin of record, because "
+       "the four-arm command runs ~75 min by design and the "
+       "workbench does not re-run it (physiology/src/main.rs); the "
+       "values were measured by running it at Milestone 60")
+    ok(abs(co["pod2_48h"]["corrected_calcium_mmol_l"]
+           - case["adjudication"]["criteria_comparison"]
+           ["correction_arithmetic"]["pod2"]["corrected_mmol_l"])
+       < 0.005
+       and abs(co["pod2_48h"]["ionized_calcium_mmol_l"]
+               - labs["lab.ionized-calcium"]["value"]) < 0.0051
+       and abs(co["pod2_48h"]["pth_pg_ml"]
+               - labs["lab.pth"]["value"]) < 0.1,
+       "case8 M60 CONSONANCE at POD2: the engine arm against the "
+       "case's own atoms -- corrected 1.830 vs 1.83 mmol/L, ionized "
+       "0.9357 vs 0.94, PTH 8.08 vs 8 pg/mL")
+    pod1_gap = (co["pod1_24h"]["corrected_calcium_mmol_l"]
+                - case["adjudication"]["criteria_comparison"]
+                ["correction_arithmetic"]["pod1"]["corrected_mg_dl"]
+                * 0.25)
+    ok(0.10 < pod1_gap < 0.20,
+       f"case8 M60 DISAGREEMENT at POD1, checked not hidden: the "
+       f"arm's corrected 2.096 runs {pod1_gap:+.3f} mmol/L above "
+       "the case's 1.95 (7.8 mg/dL) -- the Milestone 58 gap, in "
+       "its stated band")
 
     # ---- imaging assessment: correctly absent -------------------------
     ok("imaging_link" not in case and "imaging_assessment" in case,
