@@ -799,3 +799,471 @@ fn urine_output_follows_the_renal_curve_directionally() {
         rest.post.urine_ml_min
     );
 }
+
+
+// ---------------------------------------------------------------------
+// Milestone 47: the respiratory module. The pinned resting baseline
+// must not move (cases #1/#3 record this hash), the respiratory
+// states must be deterministic in their own chain, and a lumped
+// shunt must widen the A-a gradient without moving PaCO2.
+// ---------------------------------------------------------------------
+
+#[test]
+fn resting_trace_hash_pinned_with_respiratory_module() {
+    use anatomica_physiology::cases::CaseKind;
+    let p = params();
+    let rest = run_case(&p, CaseKind::Resting);
+    assert_eq!(
+        rest.trace_hash, 0x6369b10e9a71c872,
+        "the resting circulation trace hash is pinned by the case workbench \
+         (cases #1/#3); the respiratory module is one-way coupled and must \
+         not move it"
+    );
+}
+
+#[test]
+fn respiratory_states_deterministic_and_resting() {
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let mut a = Engine::new(&p);
+    let mut b = Engine::new(&p);
+    for e in [&mut a, &mut b] {
+        e.tick_n(6000);
+        e.set_reflex_setpoint(72.91);
+        e.apply(
+            6000,
+            Event::SetVenousAdmixture {
+                fraction: 0.20,
+                label: "test shunt".to_string(),
+            },
+        );
+        e.tick_n(3000);
+    }
+    assert_eq!(a.resp_hash(), b.resp_hash(), "respiratory states must be deterministic");
+    assert_eq!(a.hash(), b.hash(), "circulation states must be deterministic");
+    // The shunt widens the A-a gradient and lowers PaO2 at the same
+    // cardiac output, while PaCO2 stays at the chemoreflex point.
+    let co = 4.2;
+    let mut rest = Engine::new(&p);
+    rest.tick_n(6000);
+    assert!(
+        a.aa_gradient_mmhg(co) > rest.aa_gradient_mmhg(co) + 20.0,
+        "shunt A-a {:.1} vs resting {:.1}",
+        a.aa_gradient_mmhg(co),
+        rest.aa_gradient_mmhg(co)
+    );
+    assert!(a.arterial_po2_mmhg(co) < rest.arterial_po2_mmhg(co));
+    assert!(
+        (a.paco2_mmhg() - rest.paco2_mmhg()).abs() < 1.0,
+        "PaCO2 must hold under a pure shunt: {:.1} vs {:.1}",
+        a.paco2_mmhg(),
+        rest.paco2_mmhg()
+    );
+}
+
+// ---------------------------------------------------------------------
+// Milestone 51: the two-way couplings. The hypoxic drive is zero at
+// the resting operating point and, live in the shunt arm, lowers
+// PaCO2 against the drive-disabled A/B arm by the coupled
+// equilibrium's amount; the metabolic feedback, ARMED at rest, must
+// still reproduce the pinned circulation hash (its term is exactly
+// zero inside its deadband), and armed in the haemorrhage arm it
+// must raise heart rate and oxygen delivery against the unarmed
+// arm at the same mark (the cited compensatory direction, S70/S71).
+// ---------------------------------------------------------------------
+
+#[test]
+fn hypoxic_drive_zero_at_rest_and_coupled_shunt_lowers_paco2() {
+    use anatomica_physiology::cases::{run_respiratory_case, RespCaseKind};
+    let p = params();
+    // At rest the term is zero at the operating point (residual is
+    // sensor beat noise, asserted two orders below any gate).
+    let rest = run_case(&p, CaseKind::Resting);
+    assert!(
+        rest.resp_post.hypoxic_drive.abs() < 0.05,
+        "hypoxic drive at rest: {:.4} L/min",
+        rest.resp_post.hypoxic_drive
+    );
+    assert!(
+        (rest.resp_post.paco2 - 41.095).abs() < 0.05,
+        "resting PaCO2 with the drive live: {:.3} (M47 value 41.095)",
+        rest.resp_post.paco2
+    );
+    // A/B in the shunt arm: pure (drive disabled) reproduces the
+    // Milestone 47 normocapnia; coupled (drive live) settles below
+    // it, inside the computed-equilibrium band of the coupled case.
+    let pure = run_respiratory_case(&p, RespCaseKind::ShuntPure);
+    let coupled = run_respiratory_case(&p, RespCaseKind::Shunt);
+    assert!(
+        (pure.post.paco2 - 41.095).abs() < 0.1,
+        "pure shunt PaCO2 {:.2} (M47: 41.10)",
+        pure.post.paco2
+    );
+    assert_eq!(pure.post.hypoxic_drive, 0.0);
+    assert!(
+        coupled.post.paco2 < pure.post.paco2 - 0.3,
+        "coupled PaCO2 {:.2} must fall below pure {:.2}",
+        coupled.post.paco2,
+        pure.post.paco2
+    );
+    assert!(
+        (38.5..=42.0).contains(&coupled.post.paco2),
+        "coupled PaCO2 {:.2} outside the computed band [38.5, 42.0]",
+        coupled.post.paco2
+    );
+    assert!(
+        coupled.post.minute_ventilation > pure.post.minute_ventilation,
+        "coupled VE {:.2} must exceed pure {:.2}",
+        coupled.post.minute_ventilation,
+        pure.post.minute_ventilation
+    );
+    assert!(coupled.post.hypoxic_drive > 0.5, "drive term at the mark: {:.2} L/min", coupled.post.hypoxic_drive);
+}
+
+#[test]
+fn metabolic_feedback_armed_at_rest_keeps_pinned_hash() {
+    use anatomica_physiology::cases::window_stats;
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let mut e = Engine::new(&p);
+    e.tick_n(4500);
+    let b0 = e.beats.len();
+    e.tick_n(1500);
+    let b1 = e.beats.len();
+    let baseline = window_stats(&e.beats[b0..b1]);
+    e.set_reflex_setpoint(baseline.map);
+    e.apply(
+        6000,
+        Event::SetOxygenFeedback {
+            armed: true,
+            label: "test arming".to_string(),
+        },
+    );
+    e.tick_n(6000);
+    assert_eq!(
+        e.hash(),
+        0x6369b10e9a71c872,
+        "armed at rest, the feedback's term is exactly zero inside its \
+         deadband, so the pinned resting hash must not move"
+    );
+    assert_eq!(e.oxygen_feedback_multiplier(), 1.0);
+}
+
+// ---------------------------------------------------------------------
+// Milestone 52: the Bohr shift. The anchored construction must be
+// exactly the Milestone 47 curve at the resting pH; the loading
+// side and the bisection inversion must use the SAME effective
+// P50 (a mismatched inversion is detectable and excluded); and
+// the two override arms (hypoventilation acidosis,
+// hyperventilation alkalosis) must reproduce, live vs disabled at
+// identical states, the deltas the cited Bohr relation (S72)
+// computes — the shift trades loading for unloading and changes
+// delivery only through the content term.
+// ---------------------------------------------------------------------
+
+#[test]
+fn bohr_anchor_is_exact_at_the_resting_ph() {
+    use anatomica_physiology::engine::bohr_p50_effective_mmhg;
+    let p = params();
+    let e = Engine::new(&p);
+    // A fresh engine sits exactly on the constructed resting
+    // state: its pH is the anchor pH bit-for-bit, and the
+    // effective P50 there is the resting P50 bit-for-bit.
+    assert_eq!(e.arterial_ph(), e.model.ph_rest);
+    assert_eq!(bohr_p50_effective_mmhg(e.model.ph_rest, &e.model), e.model.hill_p50_mmhg);
+    assert_eq!(e.effective_p50_mmhg(), e.model.hill_p50_mmhg);
+    // Direction and magnitude off the anchor (S72: -0.48 per pH):
+    // -0.23 pH (the hypoventilation arm's acidosis) raises P50 by
+    // 10^(0.48 x 0.23) = x1.29; +0.22 raises affinity (x0.78).
+    let acid = bohr_p50_effective_mmhg(e.model.ph_rest - 0.23, &e.model);
+    assert!((acid / e.model.hill_p50_mmhg - 1.29).abs() < 0.01, "acidotic P50 {acid:.2}");
+    let alk = bohr_p50_effective_mmhg(e.model.ph_rest + 0.22, &e.model);
+    assert!((alk / e.model.hill_p50_mmhg - 0.785).abs() < 0.01, "alkalotic P50 {alk:.2}");
+    // The resting protocol's readout carries the anchor: the
+    // M47 resting oxygen readouts are bit-identical at print
+    // precision with the shift live.
+    let rest = run_case(&p, CaseKind::Resting);
+    assert!((rest.resp_post.p50_eff - e.model.hill_p50_mmhg).abs() < 0.01);
+    assert_eq!(format!("{:.2}", rest.resp_post.pao2), "91.24");
+    assert_eq!(format!("{:.3}", rest.resp_post.sao2), "0.965");
+    assert_eq!(format!("{:.2}", rest.resp_post.cao2), "19.66");
+    assert_eq!(format!("{:.0}", rest.resp_post.do2), "828");
+    assert_eq!(rest.trace_hash, 0x6369b10e9a71c872);
+}
+
+#[test]
+fn bohr_loading_and_inversion_use_the_same_effective_p50() {
+    use anatomica_physiology::engine::{
+        o2_content_ml_dl, o2_content_ml_dl_at_ph, po2_from_content_ml_dl,
+        po2_from_content_ml_dl_at_ph,
+    };
+    let p = params();
+    let e = Engine::new(&p);
+    let m = &e.model;
+    let hb = 14.985;
+    for ph in [7.16, 7.3893, 7.61] {
+        for pao2 in [40.0, 52.2, 100.5, 125.1] {
+            let c = o2_content_ml_dl_at_ph(pao2, hb, ph, m);
+            let back = po2_from_content_ml_dl_at_ph(c, hb, ph, m);
+            assert!(
+                (back - pao2).abs() < 1e-6,
+                "consistent inversion at pH {ph}: content at {pao2} inverts to {back}"
+            );
+            if (ph - m.ph_rest).abs() > 0.1 {
+                // The inconsistent pairing (shifted content read
+                // on the unshifted curve, or the reverse) is off
+                // by millimetres of mercury — the test can tell
+                // the two apart, so the identity above is a real
+                // consistency proof, not a tautology.
+                let wrong = po2_from_content_ml_dl(c, hb, m);
+                assert!(
+                    (wrong - pao2).abs() > 1.0,
+                    "mismatched inversion at pH {ph} should be detectable: {wrong} vs {pao2}"
+                );
+                let c_un = o2_content_ml_dl(pao2, hb, m);
+                assert!((c - c_un).abs() > 0.05, "shift must move content at pH {ph}");
+            }
+        }
+    }
+}
+
+#[test]
+fn bohr_shift_hypoventilation_ab_at_identical_state() {
+    use anatomica_physiology::cases::{run_respiratory_case, RespCaseKind};
+    let p = params();
+    let live = run_respiratory_case(&p, RespCaseKind::Hypoventilation);
+    let pure = run_respiratory_case(&p, RespCaseKind::HypoventilationPure);
+    // Identical states: the override suspends every path by which
+    // the shift could reach the CO2 store.
+    assert_eq!(live.post.paco2, pure.post.paco2);
+    assert_eq!(live.post.ph, pure.post.ph);
+    assert_eq!(live.resp_hash, pure.resp_hash);
+    assert_eq!(live.hash_at_standard_end, pure.hash_at_standard_end);
+    // The disabled arm is the Milestone 47 picture (measured then:
+    // PaO2 50.85, SaO2 0.852, CaO2 17.30) and sits exactly on the
+    // resting P50.
+    assert_eq!(pure.post.p50_eff, pure.baseline.p50_eff);
+    assert!((pure.post.p50_eff - 26.6).abs() < 1e-12);
+    assert!((pure.post.pao2 - 50.85).abs() < 0.15, "pure PaO2 {:.2}", pure.post.pao2);
+    // The live arm is right-shifted by the computed amount.
+    assert!(
+        (33.5..=35.0).contains(&live.post.p50_eff),
+        "live P50eff {:.2} (computed ~34.3)",
+        live.post.p50_eff
+    );
+    let d_cao2 = pure.post.cao2 - live.post.cao2;
+    let d_sao2 = pure.post.sao2 - live.post.sao2;
+    let d_do2 = pure.post.do2 - live.post.do2;
+    assert!((1.5..=2.8).contains(&d_cao2), "dCaO2 {d_cao2:.2} (computed ~2.1)");
+    assert!((0.07..=0.14).contains(&d_sao2), "dSaO2 {d_sao2:.3} (computed ~0.104)");
+    assert!((60.0..=120.0).contains(&d_do2), "dDO2 {d_do2:.0} (computed ~88)");
+    // Delivery moves only through content: the two runs share
+    // their final-window cardiac output bit-for-bit, so the DO2
+    // delta is the content delta times that shared flow.
+    assert_eq!(live.final_window.co, pure.final_window.co);
+    assert!((d_do2 - d_cao2 * live.final_window.co * 10.0).abs() < 1e-6);
+}
+
+#[test]
+fn bohr_shift_hyperventilation_ab_at_identical_state() {
+    use anatomica_physiology::cases::{run_respiratory_case, RespCaseKind};
+    let p = params();
+    let live = run_respiratory_case(&p, RespCaseKind::Hyperventilation);
+    let pure = run_respiratory_case(&p, RespCaseKind::HyperventilationPure);
+    assert_eq!(live.post.paco2, pure.post.paco2);
+    assert_eq!(live.post.ph, pure.post.ph);
+    assert_eq!(live.resp_hash, pure.resp_hash);
+    assert_eq!(live.hash_at_standard_end, pure.hash_at_standard_end);
+    // Alkalosis at the computed steady state (S51/S66).
+    assert!((19.0..=22.0).contains(&live.post.paco2), "PaCO2 {:.2}", live.post.paco2);
+    assert!((7.55..=7.66).contains(&live.post.ph), "pH {:.3}", live.post.ph);
+    // Left shift by the computed amount.
+    assert!(
+        (20.3..=21.5).contains(&live.post.p50_eff),
+        "live P50eff {:.2} (computed ~20.9)",
+        live.post.p50_eff
+    );
+    assert_eq!(pure.post.p50_eff, 26.6);
+    let d_cao2 = live.post.cao2 - pure.post.cao2;
+    let d_sao2 = live.post.sao2 - pure.post.sao2;
+    let d_pao2 = pure.post.pao2 - live.post.pao2;
+    assert!((0.05..=0.30).contains(&d_cao2), "dCaO2 {d_cao2:.2} (computed ~0.14)");
+    assert!((0.004..=0.013).contains(&d_sao2), "dSaO2 {d_sao2:.3} (computed ~0.008)");
+    assert!(
+        (3.0..=10.0).contains(&d_pao2),
+        "dPaO2 {d_pao2:.1} (computed ~6.8: the same content at a lower PO2)"
+    );
+}
+
+// ---------------------------------------------------------------------
+// Milestone 53: chronic (renal) acid–base compensation. The state
+// must be exactly zero at the resting equilibrium (state, target
+// and derivative), the chronic target must be the direction-
+// specific cited relations' difference from the acute totals
+// (S73 Rules 2/4 against S66 Rules 1/3), the Bohr anchor must not
+// drift when compensation moves the pH in a sustained arm, the
+// acute hypoventilation window must move only by the computed
+// few-percent approach, and the multi-day picture must match the
+// independent solver (work/m53/predict.py). The full five-day /
+// three-day arms are gated in the validator against their
+// parameters.json cases; the tests run the one-day horizon.
+// ---------------------------------------------------------------------
+
+#[test]
+fn chronic_compensation_is_exactly_zero_at_rest() {
+    use anatomica_physiology::engine::{
+        chronic_bicarbonate_meq_l_at, renal_comp_target_meq_l_at,
+    };
+    let p = params();
+    let e = Engine::new(&p);
+    let m = &e.model;
+    // State, target and total at the resting equilibrium.
+    assert_eq!(e.renal_compensation_meq_l(), 0.0);
+    assert_eq!(e.renal_comp_target_meq_l(), 0.0);
+    assert_eq!(renal_comp_target_meq_l_at(m.paco2_rest_mmhg, m), 0.0);
+    assert_eq!(e.bicarbonate_meq_l(), m.hco3_0_meq_l);
+    assert_eq!(e.bicarbonate_acute_meq_l(), m.hco3_0_meq_l);
+    // The chronic totals are the direction-specific relations
+    // (S73): +0.4 per mmHg in acidosis, -0.5 per mmHg in
+    // alkalosis, about the model's own operating point.
+    let rest = m.paco2_rest_mmhg;
+    assert!((chronic_bicarbonate_meq_l_at(rest + 40.0, m) - (24.0 + 16.0)).abs() < 1e-9);
+    assert!((chronic_bicarbonate_meq_l_at(rest - 20.0, m) - (24.0 - 10.0)).abs() < 1e-9);
+    // The renal target is chronic-minus-acute per direction:
+    // (0.4-0.1) x d in acidosis, (0.5-0.2) x d in alkalosis — the
+    // same 0.3 increment derived from the source's four rules,
+    // not a symmetric rule imposed on the totals.
+    assert!((renal_comp_target_meq_l_at(rest + 40.0, m) - 12.0).abs() < 1e-9);
+    assert!((renal_comp_target_meq_l_at(rest - 20.0, m) + 6.0).abs() < 1e-9);
+    // The resting protocol's readout carries the zero, and the
+    // pinned resting hash holds with the state live.
+    let rest_run = run_case(&p, CaseKind::Resting);
+    assert_eq!(rest_run.resp_post.hco3_comp, 0.0);
+    assert_eq!(rest_run.trace_hash, 0x6369b10e9a71c872);
+}
+
+#[test]
+fn chronic_compensation_one_day_and_anchor_holds() {
+    use anatomica_physiology::engine::Event;
+    let p = params();
+    let mut live = Engine::new(&p);
+    live.apply(0, Event::SetVentilationOverride {
+        rate_per_min: Some(6.0),
+        label: "test: sustained hypoventilation, compensation live".to_string(),
+    });
+    let mut pure = Engine::new(&p);
+    pure.apply(0, Event::SetChronicCompensation {
+        enabled: false,
+        label: "test: compensation disabled".to_string(),
+    });
+    pure.apply(0, Event::SetVentilationOverride {
+        rate_per_min: Some(6.0),
+        label: "test: sustained hypoventilation, compensation disabled".to_string(),
+    });
+    // One simulated day (tick = 0.02 s).
+    live.tick_n(4_320_000);
+    pure.tick_n(4_320_000);
+    // The state cannot touch the CO2 store or the circulation:
+    // PaCO2 and the circulation hash are identical across the pair.
+    assert_eq!(live.paco2_mmhg(), pure.paco2_mmhg());
+    assert_eq!(live.hash(), pure.hash());
+    // The disabled state is exactly zero and its pH is the acute
+    // picture (independent solver: PaCO2 82.19, pH 7.157).
+    assert_eq!(pure.renal_compensation_meq_l(), 0.0);
+    assert!((pure.arterial_ph() - 7.157).abs() < 0.01, "pure pH {:.3}", pure.arterial_ph());
+    // At one day the live state has made 63% of its approach to
+    // the +12.33 target (solver: +7.73, pH 7.262, P50eff 30.6).
+    let comp = live.renal_compensation_meq_l();
+    assert!((7.0..=8.5).contains(&comp), "renal comp at +1 d: {comp:.2} (computed +7.73)");
+    assert!((live.renal_comp_target_meq_l() - 12.33).abs() < 0.1);
+    assert!(
+        (7.23..=7.29).contains(&live.arterial_ph()),
+        "compensated pH at +1 d: {:.3} (computed 7.262)",
+        live.arterial_ph()
+    );
+    assert!(
+        (29.5..=31.7).contains(&live.effective_p50_mmhg()),
+        "P50eff at +1 d: {:.2} (computed 30.6 — the Bohr right shift partly unwound)",
+        live.effective_p50_mmhg()
+    );
+    // THE ANCHOR DOES NOT DRIFT: Model::ph_rest is the captured
+    // construction constant — identical in both engines, and a
+    // fresh engine's pH still equals it bit-for-bit even though
+    // the compensated arm's pH has moved 0.105 toward it.
+    let fresh = Engine::new(&p);
+    assert_eq!(live.model.ph_rest, fresh.model.ph_rest);
+    assert_eq!(pure.model.ph_rest, fresh.model.ph_rest);
+    assert_eq!(fresh.arterial_ph(), fresh.model.ph_rest);
+    assert!((live.arterial_ph() - live.model.ph_rest).abs() > 0.05);
+    assert_eq!(
+        anatomica_physiology::engine::arterial_ph_total_at(
+            live.model.paco2_rest_mmhg, 0.0, &live.model),
+        live.model.ph_rest,
+        "at zero compensation the total-pH function is the anchor value bit-for-bit"
+    );
+}
+
+#[test]
+fn chronic_compensation_acute_window_moves_only_by_the_computed_amount() {
+    use anatomica_physiology::cases::{run_respiratory_case, RespCaseKind};
+    let p = params();
+    // The acute hypoventilation arm (+75 min): the solver computes
+    // the state at +0.46 mEq/L there (3.8% of its target), moving
+    // pH from 7.160 to 7.167 and P50eff from 34.3 to 34.0 — inside
+    // every pre-M53 band the arm is gated on (MILESTONE-53.md
+    // accounts the movement line by line).
+    let hypo = run_respiratory_case(&p, RespCaseKind::Hypoventilation);
+    assert!(
+        (0.30..=0.65).contains(&hypo.post.hco3_comp),
+        "renal comp at +75 min: {:.3} (computed +0.464)",
+        hypo.post.hco3_comp
+    );
+    assert!(
+        (7.15..=7.18).contains(&hypo.post.ph),
+        "pH at +75 min: {:.3} (pre-M53 7.160, computed with compensation 7.167)",
+        hypo.post.ph
+    );
+    assert!(
+        (33.5..=35.0).contains(&hypo.post.p50_eff),
+        "P50eff at +75 min: {:.2} (the Milestone 52 band; computed 34.0)",
+        hypo.post.p50_eff
+    );
+    // The acute hyperventilation arm (+30 min): computed state
+    // -0.10, pH 7.606 against the pre-M53 7.609.
+    let hyper = run_respiratory_case(&p, RespCaseKind::Hyperventilation);
+    assert!(
+        (-0.20..=-0.03).contains(&hyper.post.hco3_comp),
+        "renal comp at +30 min: {:.3} (computed -0.102)",
+        hyper.post.hco3_comp
+    );
+    assert!(
+        (7.59..=7.62).contains(&hyper.post.ph),
+        "pH at +30 min: {:.3} (pre-M53 7.609, computed with compensation 7.606)",
+        hyper.post.ph
+    );
+}
+
+#[test]
+fn metabolic_feedback_raises_hr_and_do2_in_hemorrhage() {
+    use anatomica_physiology::cases::{run_respiratory_case, RespCaseKind};
+    let p = params();
+    let unarmed = run_respiratory_case(&p, RespCaseKind::HemorrhageResp);
+    let armed = run_respiratory_case(&p, RespCaseKind::HemorrhageFeedback);
+    assert!(
+        armed.post.do2 > unarmed.post.do2,
+        "armed DO2 {:.0} must exceed unarmed {:.0} mL/min at +30 min",
+        armed.post.do2,
+        unarmed.post.do2
+    );
+    assert!(
+        armed.final_window.hr > unarmed.final_window.hr,
+        "armed HR {:.1} must exceed unarmed {:.1} /min at +30 min",
+        armed.final_window.hr,
+        unarmed.final_window.hr
+    );
+    assert!(
+        (100.0..=120.0).contains(&armed.window_post.hr),
+        "armed standard-window HR {:.1} must stay in the M18 Class II band",
+        armed.window_post.hr
+    );
+}

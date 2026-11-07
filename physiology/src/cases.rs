@@ -35,6 +35,44 @@
 //! (evaluate_hormones) against the cases parameters.json declares
 //! for them — each axis exercised in its own regime and on its own
 //! timescale.
+//!
+//! Milestone 47 additions: the resting evaluation gains the
+//! respiratory lines (arterial PCO2/PO2/pH, saturation, content,
+//! minute and alveolar ventilation, oxygen delivery — end-of-run
+//! engine readouts on CaseOutcome evaluated at the post window's
+//! cardiac output, like the Milestone 26/30 state lines), and a
+//! dedicated respiratory runner (run_respiratory_case) executes
+//! the four respiratory arms — controlled hypoventilation, a
+//! lumped venous-admixture (shunt) disturbance, a doubled
+//! metabolic rate, and the Milestone 18 haemorrhage with the
+//! module live — under evaluate_respiratory against the cases
+//! parameters.json declares for them. The arms share run_case's
+//! settle/baseline/engage protocol and read their post states at
+//! steady-state marks (the Milestone 24 sampling rule), and the
+//! haemorrhage arm records the circulation trace hash at the
+//! standard protocol endpoint so validation can assert it equals
+//! the standard haemorrhage outcome's — the module's presence
+//! provably does not move the circulation.
+//!
+//! Milestone 51 additions: the respiratory readout gains the
+//! couplings' sensor/effector lines (sensed arterial PO2 and the
+//! hypoxic drive term, evaluated at the readout's cardiac output
+//! like the other transport quantities), and two coupled arms join
+//! the runner — the shunt with the hypoxic drive DISABLED (the
+//! Milestone 47 pure-shunt picture, reproduced exactly for the
+//! A/B contrast) and the −750 mL haemorrhage with the metabolic-
+//! circulatory feedback ARMED. The drive-live shunt is the
+//! Milestone 47 Shunt kind itself, now evaluated against both its
+//! legacy case and the coupled case in parameters.json.
+//!
+//! Milestone 52 additions: the respiratory readout gains the
+//! effective P50 (the Bohr-shifted curve position at the readout's
+//! state), and three arms join the runner — the hypoventilation
+//! arm with the Bohr shift DISABLED (the Milestone 47 fixed-curve
+//! picture at the acidotic state, for the A/B contrast with the
+//! shift-live Hypoventilation kind), and a controlled
+//! hyperventilation arm (rate held at 24 /min, the alkalosis arm)
+//! in both shift-live and shift-disabled forms.
 
 use crate::engine::{BeatRecord, Engine, Event};
 use crate::params::Params;
@@ -96,6 +134,76 @@ fn drift(xs: &[f64]) -> f64 {
         0.0
     } else {
         (m2 - m1).abs() / m
+    }
+}
+
+/// A respiratory readout at a moment (Milestone 47): the module's
+/// state quantities (PaCO2, pH, ventilation, metabolic rates) plus
+/// the oxygen-transport quantities evaluated at a supplied cardiac
+/// output (a beat-window mean in this harness — steady-state
+/// quantities in the Milestone 24 sense).
+#[derive(Debug, Clone)]
+pub struct RespReadout {
+    pub paco2: f64,
+    pub pao2: f64,
+    pub ph: f64,
+    pub bicarbonate: f64,
+    pub alveolar_po2: f64,
+    pub aa_gradient: f64,
+    pub sao2: f64,
+    pub cao2: f64,
+    pub cvo2: f64,
+    pub do2: f64,
+    pub o2er: f64,
+    pub minute_ventilation: f64,
+    pub alveolar_ventilation: f64,
+    pub resp_rate: f64,
+    pub vo2: f64,
+    pub vco2: f64,
+    pub hemoglobin: f64,
+    /// Milestone 51: the sensed arterial PO2 (the hypoxic drive's
+    /// input, at the readout's cardiac output) and the hypoxic
+    /// drive term itself (L/min of minute ventilation).
+    pub sensed_pao2: f64,
+    pub hypoxic_drive: f64,
+    /// Milestone 52: the effective P50 (mm Hg) at the readout's
+    /// state — the Bohr-shifted curve position the readout's
+    /// oxygen quantities were evaluated on (the resting P50
+    /// bit-for-bit at the resting pH, or whenever the shift is
+    /// disabled).
+    pub p50_eff: f64,
+    /// Milestone 53: the renal compensation state (mEq/L) at the
+    /// readout's moment — the kidney's bicarbonate increment
+    /// beyond acute buffering. `bicarbonate` above is the TOTAL
+    /// (acute + this state) from Milestone 53 on.
+    pub hco3_comp: f64,
+}
+
+/// Read the respiratory module's outputs off an engine, evaluating
+/// the oxygen-transport quantities at `co_l_min`.
+pub fn resp_readout(e: &Engine, co_l_min: f64) -> RespReadout {
+    RespReadout {
+        paco2: e.paco2_mmhg(),
+        pao2: e.arterial_po2_mmhg(co_l_min),
+        ph: e.arterial_ph(),
+        bicarbonate: e.bicarbonate_meq_l(),
+        alveolar_po2: e.alveolar_po2_mmhg(),
+        aa_gradient: e.aa_gradient_mmhg(co_l_min),
+        sao2: e.arterial_saturation(co_l_min),
+        cao2: e.arterial_o2_content_ml_dl(co_l_min),
+        cvo2: e.mixed_venous_o2_content_ml_dl(co_l_min),
+        do2: e.oxygen_delivery_ml_min(co_l_min),
+        o2er: e.oxygen_extraction_ratio(co_l_min),
+        minute_ventilation: e.minute_ventilation_l_min(),
+        alveolar_ventilation: e.alveolar_ventilation_l_min(),
+        resp_rate: e.resp_rate_per_min(),
+        vo2: e.vo2_ml_min(),
+        vco2: e.vco2_ml_min(),
+        hemoglobin: e.hemoglobin_g_dl(),
+        sensed_pao2: e.sensed_pao2_mmhg_at(co_l_min),
+        hypoxic_drive: e.hypoxic_drive_l_min_at(co_l_min),
+        p50_eff: e.effective_p50_mmhg(),
+        hco3_comp: e.renal_compensation_meq_l(),
     }
 }
 
@@ -167,6 +275,14 @@ pub struct CaseOutcome {
     pub sodium_end: f64,
     pub adh_end: f64,
     pub urine_osm_end: f64,
+    /// Respiratory readouts (Milestone 47): at the baseline window
+    /// (state at engagement, oxygen transport at the baseline
+    /// window's cardiac output) and at the end of the run (oxygen
+    /// transport at the post window's cardiac output) — gated by
+    /// evaluate_resting against the respiratory validation ranges
+    /// in parameters.json, like the oncotic/hormonal lines.
+    pub resp_baseline: RespReadout,
+    pub resp_post: RespReadout,
 }
 
 pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
@@ -177,6 +293,9 @@ pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
     e.tick_n(1500);
     let b1 = e.beats.len();
     let baseline = window_stats(&e.beats[b0..b1]);
+    // Milestone 47: the baseline respiratory readout — state at
+    // engagement, oxygen transport at the baseline cardiac output.
+    let resp_baseline = resp_readout(&e, baseline.co);
     // Phase 3: reflex on, setpoint = own resting MAP.
     e.set_reflex_setpoint(baseline.map);
     // Phase 4: perturbation events on ticks, run to tick 12000.
@@ -245,6 +364,10 @@ pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
     let mut post = window_stats(&e.beats[b2..b3]);
     post.urine_ml_min = (urine_b - urine_a) * 2.0;
     post.urine_na_ml_min = (una_b - una_a) * 2.0;
+    // Milestone 47: the post respiratory readout, at the post
+    // window's cardiac output (computed before `post` moves into
+    // the outcome).
+    let resp_post = resp_readout(&e, post.co);
     let q_post = post.co * 1000.0 / 60.0;
     let rvr_empirical = (e.mean_systemic_filling_pressure() - post.rap) / q_post;
     let rvr_formula = e.resistance_to_venous_return_formula().unwrap_or(f64::NAN);
@@ -268,6 +391,8 @@ pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
         sodium_end: e.plasma_sodium_mmol_l(),
         adh_end: e.adh_pg_ml(),
         urine_osm_end: e.urine_osmolality_mosm_kg(),
+        resp_baseline,
+        resp_post,
     }
 }
 
@@ -326,6 +451,16 @@ pub fn evaluate_resting(params: &Params, outcome: &CaseOutcome) -> Vec<Validatio
             "plasma_sodium" => outcome.sodium_end,
             "plasma_adh" => outcome.adh_end,
             "urine_osmolality" => outcome.urine_osm_end,
+            // Milestone 47: the respiratory resting lines read the
+            // post respiratory readout on CaseOutcome.
+            "arterial_pco2" => outcome.resp_post.paco2,
+            "arterial_po2" => outcome.resp_post.pao2,
+            "arterial_ph" => outcome.resp_post.ph,
+            "arterial_oxygen_saturation" => outcome.resp_post.sao2,
+            "arterial_oxygen_content" => outcome.resp_post.cao2,
+            "minute_ventilation" => outcome.resp_post.minute_ventilation,
+            "alveolar_ventilation" => outcome.resp_post.alveolar_ventilation,
+            "oxygen_delivery" => outcome.resp_post.do2,
             _ => stat_for(stats, &r.output),
         };
         let pass = value >= r.low && r.high.map(|h| value <= h).unwrap_or(true);
@@ -1434,3 +1569,431 @@ pub fn evaluate_hormones(params: &Params, set: &HormoneSet) -> Vec<PerturbationL
     lines
 }
 
+
+// ---------------------------------------------------------------------
+// Milestone 47: the respiratory arms. Same protocol skeleton as
+// run_case (settle 120 s reflex-off, 30 s baseline window, engage,
+// events at tick 6000), then the standard span to tick 12000 (whose
+// windows and endpoint circulation hash are recorded), then a
+// continuation to the arm's steady-state mark, where the post
+// respiratory readout is taken over the final 30 s window (the
+// Milestone 24 sampling rule: states are read at steady state,
+// never at a reflex transient).
+// ---------------------------------------------------------------------
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RespCaseKind {
+    /// Rate held at 6 /min (alveolar ventilation halved), the
+    /// chemoreflex suspended by the override.
+    Hypoventilation,
+    /// Venous admixture fraction raised to 0.20.
+    Shunt,
+    /// Metabolic rate doubled (VO2 500 mL/min), chemoreflex live.
+    Metabolic,
+    /// The Milestone 18 -750 mL haemorrhage, module live.
+    HemorrhageResp,
+    /// Milestone 51: the shunt arm with the hypoxic drive DISABLED
+    /// — the Milestone 47 pure-shunt picture (CO2-only controller),
+    /// run for the A/B contrast with Shunt (drive live).
+    ShuntPure,
+    /// Milestone 51: the -750 mL haemorrhage with the metabolic-
+    /// circulatory feedback ARMED at engagement.
+    HemorrhageFeedback,
+    /// Milestone 52: the hypoventilation arm with the Bohr shift
+    /// DISABLED — the Milestone 47 fixed-curve picture at the
+    /// acidotic state, run for the A/B contrast with
+    /// Hypoventilation (shift live).
+    HypoventilationPure,
+    /// Milestone 52: controlled hyperventilation — rate held at
+    /// 24 /min (alveolar ventilation doubled), the alkalosis arm,
+    /// Bohr shift live.
+    Hyperventilation,
+    /// Milestone 52: the hyperventilation arm with the Bohr shift
+    /// DISABLED — the unshifted curve at the alkalotic state.
+    HyperventilationPure,
+    /// Milestone 53: the hypoventilation protocol held for five
+    /// simulated days — the chronic respiratory-acidosis arm,
+    /// renal compensation live, read at +5 d.
+    ChronicHypoventilation,
+    /// Milestone 53: the five-day hypoventilation protocol with
+    /// the renal compensation state DISABLED — the acute-only
+    /// picture held for five days (the A/B contrast).
+    ChronicHypoventilationPure,
+    /// Milestone 53: the hyperventilation protocol held for three
+    /// simulated days — the chronic respiratory-alkalosis arm,
+    /// renal compensation live, read at +3 d (the cited maximal-
+    /// compensation horizon for this direction, S73).
+    ChronicHyperventilation,
+    /// Milestone 53: the three-day hyperventilation protocol with
+    /// the renal compensation state DISABLED.
+    ChronicHyperventilationPure,
+}
+
+#[derive(Debug, Clone)]
+pub struct RespOutcome {
+    pub kind: RespCaseKind,
+    pub baseline: RespReadout,
+    pub post: RespReadout,
+    /// The standard protocol's windows (ticks 4500-6000 and
+    /// 10500-12000), as in run_case.
+    pub window_baseline: WindowStats,
+    pub window_post: WindowStats,
+    /// The final 30 s window ending at the arm's mark — the post
+    /// readout's cardiac output comes from it.
+    pub final_window: WindowStats,
+    /// Circulation trace hash at the standard endpoint (tick
+    /// 12000). For the haemorrhage arm this must equal the standard
+    /// run_case Hemorrhage750 outcome's hash.
+    pub hash_at_standard_end: u64,
+    /// Respiratory trace hash at the end of the run.
+    pub resp_hash: u64,
+    pub conservation_error_ml: f64,
+    pub causal_chain: Vec<String>,
+}
+
+/// The arm's read mark: minutes after the tick-6000 events (for the
+/// haemorrhage arm, after the bleed ends at tick 9000 the mark is
+/// +30 min, i.e. 33 min after the events begin — the runner
+/// computes the absolute tick per kind below).
+fn resp_final_tick(kind: RespCaseKind) -> u64 {
+    let min = |m: f64| (m * 60.0 / crate::engine::TICK_SECONDS) as u64;
+    match kind {
+        // +75 min after the override: the CO2 store's time constant
+        // at the halved ventilation is ~18.5 min, so the state is
+        // within ~2% of the equation's steady state.
+        RespCaseKind::Hypoventilation => 6000 + min(75.0),
+        RespCaseKind::HypoventilationPure => 6000 + min(75.0),
+        // The CO2 store's time constant at the doubled ventilation
+        // is ~5 min, so +30 min is steady state several times over.
+        RespCaseKind::Hyperventilation => 6000 + min(30.0),
+        RespCaseKind::HyperventilationPure => 6000 + min(30.0),
+        // Oxygen transport is algebraic (fast); +30 min puts the
+        // read well clear of the engagement transient.
+        RespCaseKind::Shunt => 6000 + min(30.0),
+        RespCaseKind::ShuntPure => 6000 + min(30.0),
+        // Controller (90 s) plus store (~5 min at the raised
+        // ventilation): +45 min is steady state.
+        RespCaseKind::Metabolic => 6000 + min(45.0),
+        // +30 min after the bleed ends (tick 9000), the Milestone
+        // 18 refill observation's own horizon.
+        RespCaseKind::HemorrhageResp => 9000 + min(30.0),
+        RespCaseKind::HemorrhageFeedback => 9000 + min(30.0),
+        // Milestone 53 chronic arms: multi-day horizons under the
+        // Milestone 24 long-course precedent (the run continues
+        // past the standard tick-12000 endpoint to the mark). +5 d
+        // for acidosis is past both cited maximal windows (3-4 d,
+        // S73; 3-5 d, S74) and is 99.3% of the state's first-order
+        // approach at the calibrated tau; +3 d for alkalosis is
+        // S73's cited 2-3 d maximal horizon, 95.0% of the approach.
+        RespCaseKind::ChronicHypoventilation => 6000 + min(5.0 * 24.0 * 60.0),
+        RespCaseKind::ChronicHypoventilationPure => 6000 + min(5.0 * 24.0 * 60.0),
+        RespCaseKind::ChronicHyperventilation => 6000 + min(3.0 * 24.0 * 60.0),
+        RespCaseKind::ChronicHyperventilationPure => 6000 + min(3.0 * 24.0 * 60.0),
+    }
+}
+
+pub fn run_respiratory_case(params: &Params, kind: RespCaseKind) -> RespOutcome {
+    let mut e = Engine::new(params);
+    e.tick_n(4500);
+    let b0 = e.beats.len();
+    e.tick_n(1500);
+    let b1 = e.beats.len();
+    let window_baseline = window_stats(&e.beats[b0..b1]);
+    let baseline = resp_readout(&e, window_baseline.co);
+    e.set_reflex_setpoint(window_baseline.map);
+    match kind {
+        RespCaseKind::Hypoventilation => {
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(6.0),
+                    label: "controlled hypoventilation: rate held at 6 /min, alveolar ventilation halved".to_string(),
+                },
+            );
+        }
+        RespCaseKind::Shunt => {
+            e.apply(
+                6000,
+                Event::SetVenousAdmixture {
+                    fraction: 0.20,
+                    label: "lumped shunt disturbance: venous admixture 0.03 -> 0.20".to_string(),
+                },
+            );
+        }
+        RespCaseKind::Metabolic => {
+            e.apply(
+                6000,
+                Event::SetMetabolicRate {
+                    vo2_ml_min: 500.0,
+                    label: "metabolic rate doubled".to_string(),
+                },
+            );
+        }
+        RespCaseKind::HemorrhageResp => {
+            e.apply(
+                6000,
+                Event::SetExtFlow {
+                    rate_ml_s: -750.0 / 60.0,
+                    label: "haemorrhage 750 mL over 60 s begins".to_string(),
+                },
+            );
+            e.apply(
+                9000,
+                Event::SetExtFlow {
+                    rate_ml_s: 0.0,
+                    label: "haemorrhage ends (750 mL removed)".to_string(),
+                },
+            );
+        }
+        RespCaseKind::ShuntPure => {
+            e.apply(
+                6000,
+                Event::SetHypoxicDrive {
+                    enabled: false,
+                    label: "hypoxic drive disabled for the pure-shunt A/B arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetVenousAdmixture {
+                    fraction: 0.20,
+                    label: "lumped shunt disturbance: venous admixture 0.03 -> 0.20".to_string(),
+                },
+            );
+        }
+        RespCaseKind::HypoventilationPure => {
+            e.apply(
+                6000,
+                Event::SetBohrShift {
+                    enabled: false,
+                    label: "Bohr shift disabled for the fixed-curve A/B arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(6.0),
+                    label: "controlled hypoventilation: rate held at 6 /min, alveolar ventilation halved".to_string(),
+                },
+            );
+        }
+        RespCaseKind::Hyperventilation => {
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(24.0),
+                    label: "controlled hyperventilation: rate held at 24 /min, alveolar ventilation doubled".to_string(),
+                },
+            );
+        }
+        RespCaseKind::HyperventilationPure => {
+            e.apply(
+                6000,
+                Event::SetBohrShift {
+                    enabled: false,
+                    label: "Bohr shift disabled for the fixed-curve A/B arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(24.0),
+                    label: "controlled hyperventilation: rate held at 24 /min, alveolar ventilation doubled".to_string(),
+                },
+            );
+        }
+        RespCaseKind::ChronicHypoventilation => {
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(6.0),
+                    label: "sustained hypoventilation for chronic compensation: rate held at 6 /min for five days".to_string(),
+                },
+            );
+        }
+        RespCaseKind::ChronicHypoventilationPure => {
+            e.apply(
+                6000,
+                Event::SetChronicCompensation {
+                    enabled: false,
+                    label: "renal compensation disabled for the chronic A/B arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(6.0),
+                    label: "sustained hypoventilation, compensation disabled: rate held at 6 /min for five days".to_string(),
+                },
+            );
+        }
+        RespCaseKind::ChronicHyperventilation => {
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(24.0),
+                    label: "sustained hyperventilation for chronic compensation: rate held at 24 /min for three days".to_string(),
+                },
+            );
+        }
+        RespCaseKind::ChronicHyperventilationPure => {
+            e.apply(
+                6000,
+                Event::SetChronicCompensation {
+                    enabled: false,
+                    label: "renal compensation disabled for the chronic A/B arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetVentilationOverride {
+                    rate_per_min: Some(24.0),
+                    label: "sustained hyperventilation, compensation disabled: rate held at 24 /min for three days".to_string(),
+                },
+            );
+        }
+        RespCaseKind::HemorrhageFeedback => {
+            e.apply(
+                6000,
+                Event::SetOxygenFeedback {
+                    armed: true,
+                    label: "metabolic-circulatory feedback armed for this arm".to_string(),
+                },
+            );
+            e.apply(
+                6000,
+                Event::SetExtFlow {
+                    rate_ml_s: -750.0 / 60.0,
+                    label: "haemorrhage 750 mL over 60 s begins".to_string(),
+                },
+            );
+            e.apply(
+                9000,
+                Event::SetExtFlow {
+                    rate_ml_s: 0.0,
+                    label: "haemorrhage ends (750 mL removed)".to_string(),
+                },
+            );
+        }
+    }
+    // The standard span, sliced exactly as run_case slices it.
+    e.tick_n(4500);
+    let urine_a = e.cumulative_urine_ml();
+    let una_a = e.cumulative_urine_sodium_mmol();
+    let b2 = e.beats.len();
+    e.tick_n(1500);
+    let b3 = e.beats.len();
+    let urine_b = e.cumulative_urine_ml();
+    let una_b = e.cumulative_urine_sodium_mmol();
+    let mut window_post = window_stats(&e.beats[b2..b3]);
+    window_post.urine_ml_min = (urine_b - urine_a) * 2.0;
+    window_post.urine_na_ml_min = (una_b - una_a) * 2.0;
+    let hash_at_standard_end = e.hash();
+    // Continuation to the arm's mark, with the course runner's
+    // beat-end bookkeeping for an exact final 30 s window.
+    let mut beat_ends: Vec<f64> = Vec::new();
+    let mut t_acc = 0.0;
+    let mut seen = 0usize;
+    let sync_beats = |e: &Engine, beat_ends: &mut Vec<f64>, t_acc: &mut f64, seen: &mut usize| {
+        while *seen < e.beats.len() {
+            *t_acc += e.beats[*seen].duration_s;
+            beat_ends.push(*t_acc);
+            *seen += 1;
+        }
+    };
+    sync_beats(&e, &mut beat_ends, &mut t_acc, &mut seen);
+    let final_tick = resp_final_tick(kind);
+    e.tick_n(final_tick - 12000);
+    sync_beats(&e, &mut beat_ends, &mut t_acc, &mut seen);
+    let t_end = final_tick as f64 * crate::engine::TICK_SECONDS;
+    let lo = beat_ends.partition_point(|&x| x <= t_end - 30.0);
+    let hi = beat_ends.partition_point(|&x| x <= t_end);
+    let final_window = window_stats(&e.beats[lo..hi.max(lo)]);
+    let post = resp_readout(&e, final_window.co);
+    RespOutcome {
+        kind,
+        baseline,
+        post,
+        window_baseline,
+        window_post,
+        final_window,
+        hash_at_standard_end,
+        resp_hash: e.resp_hash(),
+        conservation_error_ml: e.volume_conservation_error_ml(),
+        causal_chain: e.causal_chain(),
+    }
+}
+
+fn resp_stat_for(r: &RespReadout, output: &str) -> f64 {
+    match output {
+        "arterial_pco2" => r.paco2,
+        "arterial_po2" => r.pao2,
+        "arterial_ph" => r.ph,
+        "aa_gradient" => r.aa_gradient,
+        "minute_ventilation" => r.minute_ventilation,
+        "alveolar_ventilation" => r.alveolar_ventilation,
+        "oxygen_delivery" => r.do2,
+        "arterial_oxygen_content" => r.cao2,
+        // Milestone 52: the Bohr cases gate saturation and the
+        // curve position itself.
+        "arterial_oxygen_saturation" => r.sao2,
+        "effective_p50" => r.p50_eff,
+        // Milestone 53: the chronic cases gate the total
+        // bicarbonate and the renal compensation state itself.
+        "bicarbonate" => r.bicarbonate,
+        "renal_compensation" => r.hco3_comp,
+        _ => f64::NAN,
+    }
+}
+
+/// Evaluate a respiratory arm against its parameters.json case —
+/// the same direction + magnitude semantics as
+/// evaluate_perturbation, over RespReadout quantities.
+pub fn evaluate_respiratory(
+    params: &Params,
+    case_id: &str,
+    outcome: &RespOutcome,
+) -> Vec<PerturbationLine> {
+    let case = params
+        .perturbation_case(case_id)
+        .unwrap_or_else(|| panic!("perturbation case '{case_id}' missing from parameters.json"));
+    case.expectations
+        .iter()
+        .map(|x| {
+            // Milestone 51: "heart_rate" reads the run's windows
+            // (baseline window vs the final 30 s window), not a
+            // RespReadout field — the metabolic-feedback arm gates
+            // the circulatory course it changes.
+            let (b, p) = if x.output == "heart_rate" {
+                (outcome.window_baseline.hr, outcome.final_window.hr)
+            } else {
+                (
+                    resp_stat_for(&outcome.baseline, &x.output),
+                    resp_stat_for(&outcome.post, &x.output),
+                )
+            };
+            let direction_pass = match x.direction.as_str() {
+                "rises" => p > b,
+                "falls" => p < b,
+                "narrows" => p < b,
+                "in_range" => true,
+                _ => false,
+            };
+            let range_pass = match x.magnitude_range {
+                Some([lo, hi]) => p >= lo && p <= hi,
+                None => true,
+            };
+            PerturbationLine {
+                output: x.output.clone(),
+                baseline: b,
+                post: p,
+                delta: p - b,
+                expected: x.direction.clone(),
+                magnitude_range: x.magnitude_range,
+                soft: x.soft,
+                source: x.source.clone(),
+                pass: direction_pass && range_pass,
+            }
+        })
+        .collect()
+}

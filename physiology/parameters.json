@@ -1043,6 +1043,328 @@
       "status": "calibrated",
       "unit": "factor",
       "value": 5.0
+    },
+    {
+      "name": "barometric_pressure_mmhg",
+      "note": "Milestone 47: sea-level barometric pressure, the alveolar gas equation's Patm (S53). A scenario constant of this module: altitude is not modelled.",
+      "source": "S53",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 760.0
+    },
+    {
+      "name": "water_vapor_pressure_mmhg",
+      "note": "Milestone 47: saturated water vapour pressure at body temperature. S53's worked example uses 47 (one line of the article prints approximately 45); 47 taken, as in S52's PIO2 = (Pb - PH2O) x FiO2 at the same value.",
+      "source": "S53",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 47.0
+    },
+    {
+      "name": "body_temperature_c",
+      "note": "Milestone 47: the module is isothermal at 37 C (S53's sample values are given at 37 C). Used only in the STPD-to-BTPS conversion of the CO2 production term (310.15 K over 273.15 K; the Kelvin offsets are the SI definition, not physiology). Temperature effects on the dissociation curve are not modelled (named limit, MILESTONE-47.md).",
+      "source": "S53",
+      "status": "cited",
+      "unit": "degC",
+      "value": 37.0
+    },
+    {
+      "name": "inspired_o2_fraction",
+      "note": "Milestone 47: FiO2 breathing air (S52: 'Fio2 = fractional concentration of oxygen in inspired gas = 0.21 breathing air'). Supplemental oxygen is a scenario input the module does not yet expose (named limit).",
+      "source": "S52",
+      "status": "cited",
+      "unit": "fraction",
+      "value": 0.21
+    },
+    {
+      "name": "tidal_volume_ml",
+      "note": "Milestone 47: resting tidal volume. S52's worked examples use Vt 0.5 L; S64's resting span is 400-600 mL with 500 mL the standard worked value. A scenario input (Event::SetVentilation) in the respiratory module.",
+      "source": "S52",
+      "status": "cited",
+      "unit": "mL",
+      "value": 500.0
+    },
+    {
+      "name": "dead_space_ml",
+      "note": "Milestone 47: resting (physiological) dead space per breath. S51's companion chapter states the normal VD/VT as approximately 150 mL / 500 mL = 0.3. Consulted alternative disclosed: S52's worked examples use Vd 0.2 L (VD/VT 0.4 at Vt 0.5 L); 150 mL taken from S51's explicit normal-ratio statement. A scenario input (Event::SetVentilation).",
+      "source": "S51",
+      "status": "cited",
+      "unit": "mL",
+      "value": 150.0
+    },
+    {
+      "name": "respiratory_rate_resting_per_min",
+      "note": "Milestone 47: resting respiratory rate. S64's resting span is 12-20 /min; the standard worked examples of S64 and S65 both use 12 /min with VT 500 mL (VE 6.0 L/min, VA 4.2 L/min).",
+      "source": "S64",
+      "status": "cited",
+      "unit": "breaths/min",
+      "value": 12.0
+    },
+    {
+      "name": "vo2_resting_ml_min",
+      "note": "Milestone 47: resting oxygen consumption of the model subject (S54's normal-respiration value; S55's Fick baseline agrees at 250 mL/min). A scenario input (Event::SetMetabolicRate); CO2 production follows as RQ x VO2.",
+      "source": "S54",
+      "status": "cited",
+      "unit": "mL/min STPD",
+      "value": 250.0
+    },
+    {
+      "name": "respiratory_quotient",
+      "note": "Milestone 47: resting respiratory quotient on a mixed diet (S54); S52 uses the same R = 0.8 in the alveolar gas equation. VCO2 = RQ x VO2 by identity in this module.",
+      "source": "S54",
+      "status": "cited",
+      "unit": "ratio",
+      "value": 0.8
+    },
+    {
+      "name": "alveolar_ventilation_constant",
+      "note": "Milestone 47: the PCO2 equation's constant (S51): PaCO2 = 0.863 x VCO2 / VA. S52 states the same factor as 863 with VA in L/min BTPS. The CO2 store's dynamics are integrated in this equation's own units, so its steady state is the equation exactly.",
+      "source": "S51",
+      "status": "cited",
+      "unit": "mmHg / ((mL/min STPD) / (L/min))",
+      "value": 0.863
+    },
+    {
+      "name": "venous_admixture_resting_fraction",
+      "note": "Milestone 47: the lumped venous-admixture fraction (Berggren sense, S57): the fraction of cardiac output treated as mixed-venous blood admixed with ideal end-capillary blood. It integrates true shunt, V/Q scatter and the Thebesian/bronchial drainage in one number - the module's only V/Q structure (named simplification). The resting value is S57's measured normal venous admixture, about 3%; it is NOT the 0.4-1% true-shunt figure, which excludes the scatter this lump must carry to reproduce the resting A-a gradient. A scenario input (Event::SetVenousAdmixture).",
+      "source": "S57",
+      "status": "cited",
+      "unit": "fraction of cardiac output",
+      "value": 0.03
+    },
+    {
+      "cited_range": [
+        33.3,
+        95.2
+      ],
+      "name": "co2_store_capacitance_ml_mmhg",
+      "note": "Milestone 47: the effective fast capacitance of the lumped CO2 store, identified from the apneic PaCO2 rise (S60): with ventilation zero the store's pressure rises at VCO2 / C, so the consulted sustained-rise span 2.1-6.0 mmHg/min at VCO2 200 mL/min STPD corresponds to C in [33, 95] mL/mmHg. Taken 45 (rise 4.4 mmHg/min). This is the fast (blood and well-perfused tissue) capacitance only; the body's slow CO2 stores are far larger and are not modelled (named limit). Identification, not measurement - stated in the Milestone 18 refill pattern.",
+      "source": "S60",
+      "status": "calibrated",
+      "unit": "mL STPD / mmHg",
+      "value": 45.0
+    },
+    {
+      "cited_range": [
+        25.0,
+        29.0
+      ],
+      "name": "hill_p50_mmhg",
+      "note": "Milestone 47: P50 of the Hill-form dissociation curve. S63 (Baynes) gives 27 +/- 2 mm Hg; 26.6 is the commonly tabulated point value inside that span. The curve is held at its standard position: Bohr shift, 2,3-BPG and temperature effects on P50 are not modelled (named limit).",
+      "source": "S63",
+      "status": "calibrated",
+      "unit": "mmHg",
+      "value": 26.6
+    },
+    {
+      "name": "hill_coefficient",
+      "note": "Milestone 47: Hill coefficient of the oxygen-haemoglobin dissociation curve (S63: the normal value for adult Hb is n = 2.7; Ferrell's fit agrees). Saturation S(P) = P^n / (P^n + P50^n).",
+      "source": "S63",
+      "status": "cited",
+      "unit": "exponent",
+      "value": 2.7
+    },
+    {
+      "name": "hufner_constant_ml_g",
+      "note": "Milestone 47: Hufner's constant in the oxygen content equation (S61's worked equations; S67's table agrees). Consulted variant disclosed: S56 uses 1.39 mL/g. 1.34 taken as the clinical-calculation value both consulted content references use.",
+      "source": "S61",
+      "status": "cited",
+      "unit": "mL O2 / g Hb",
+      "value": 1.34
+    },
+    {
+      "name": "o2_solubility_ml_dl_mmhg",
+      "note": "Milestone 47: dissolved-oxygen coefficient of the content equation (S61: 0.003 mL O2/100 cc/mmHg; S67's table agrees).",
+      "source": "S61",
+      "status": "cited",
+      "unit": "mL O2 / dL / mmHg",
+      "value": 0.003
+    },
+    {
+      "cited_range": [
+        32.0,
+        36.0
+      ],
+      "name": "mchc_g_dl",
+      "note": "Milestone 47: mean corpuscular haemoglobin concentration, the identity that carries the engine's hematocrit state into a haemoglobin concentration: Hb (g/dL) = MCHC x hematocrit. S62's reference span is 32-36 g/dL; 33.3 taken (its Hgb/Hct ratio ~0.33), giving Hb 15.0 g/dL at the engine's resting hematocrit 0.45. MCHC is held constant: the coupling transmits hematocrit changes (bleeding, dilution) into content, it does not model red-cell indices changing.",
+      "source": "S62",
+      "status": "calibrated",
+      "unit": "g/dL",
+      "value": 33.3
+    },
+    {
+      "name": "bicarbonate_resting_meq_l",
+      "note": "Milestone 47: resting plasma bicarbonate (S52's PaCO2/pH table: 24 mmol/L at PaCO2 40 mm Hg, pH 7.4, marked as the normal value).",
+      "source": "S52",
+      "status": "cited",
+      "unit": "mEq/L",
+      "value": 24.0
+    },
+    {
+      "name": "henderson_hasselbalch_pk",
+      "note": "Milestone 47: the Henderson-Hasselbalch pKa for the bicarbonate/CO2 system (S66).",
+      "source": "S66",
+      "status": "cited",
+      "unit": "pK",
+      "value": 6.1
+    },
+    {
+      "name": "co2_solubility_hh_mmol_l_mmhg",
+      "note": "Milestone 47: the CO2 solubility coefficient in the Henderson-Hasselbalch denominator, [dissolved CO2] = 0.03 x pCO2 (S66).",
+      "source": "S66",
+      "status": "cited",
+      "unit": "mmol/L per mmHg",
+      "value": 0.03
+    },
+    {
+      "name": "acute_hco3_rise_per_mmhg",
+      "note": "Milestone 47: acute buffering slope above the operating point - S66's Rule 1: in acute respiratory acidosis [HCO3-] rises 1 mmol/L per 10 mmHg rise in pCO2. Applied about the model's own resting operating point (the house setpoint pattern), not about the textbook's 40 mmHg reference; the offset is 1.1 mmHg and moves bicarbonate by 0.11 mEq/L at most. Renal (chronic) compensation is NOT modelled (named limit): all module scenarios are acute.",
+      "source": "S66",
+      "status": "cited",
+      "unit": "mEq/L per mmHg",
+      "value": 0.1
+    },
+    {
+      "name": "acute_hco3_fall_per_mmhg",
+      "note": "Milestone 47: acute buffering slope below the operating point - S66's Rule 3: in acute respiratory alkalosis [HCO3-] falls 2 mmol/L per 10 mmHg fall in pCO2. The asymmetry with the rise slope is the source's, kept.",
+      "source": "S66",
+      "status": "cited",
+      "unit": "mEq/L per mmHg",
+      "value": 0.2
+    },
+    {
+      "cited_range": [
+        1.0,
+        4.0
+      ],
+      "name": "chemoreflex_slope_l_min_mmhg",
+      "note": "Milestone 47: slope of the lumped ventilatory CO2 response, acting on minute ventilation about the model's own resting operating point (captured at engagement, like the baroreflex MAP setpoint). S58's consulted span is 1-4 L/min per mmHg (S59's steady-state texts give 1-2); 2.5 taken mid-span. The alveolar-ventilation gain is this slope scaled by (VT - VD)/VT = 0.7 at the resting anatomy. The controller allocates the response to respiratory rate alone (tidal volume held), a disclosed lumping.",
+      "source": "S58",
+      "status": "calibrated",
+      "unit": "L/min VE per mmHg PaCO2",
+      "value": 2.5
+    },
+    {
+      "cited_range": [
+        60.0,
+        150.0
+      ],
+      "name": "chemoreflex_tau_seconds",
+      "note": "Milestone 47: lumped time constant of the ventilatory response, taken inside the central chemoreflex's cited span (S59: 60-150 s, carrying 70-80% of the response). The fast peripheral limb (10-30 s, 20-30%) is merged into this single time constant - a disclosed lumping; it shapes transients only, never steady states.",
+      "source": "S59",
+      "status": "calibrated",
+      "unit": "s",
+      "value": 90.0
+    },
+    {
+      "name": "resp_rate_min_per_min",
+      "note": "VERIFY - engineering placeholder, no literature source claimed: the lumped controller's lower actuator bound on respiratory rate. It binds only in deep hypocapnia, which no module scenario reaches.",
+      "source": null,
+      "status": "verify",
+      "unit": "breaths/min",
+      "value": 4.0
+    },
+    {
+      "name": "resp_rate_max_per_min",
+      "note": "VERIFY - engineering placeholder, no literature source claimed: the lumped controller's upper actuator bound on respiratory rate. It binds only at roughly tripled metabolic rate, beyond every module scenario.",
+      "source": null,
+      "status": "verify",
+      "unit": "breaths/min",
+      "value": 40.0
+    },
+    {
+      "name": "hypoxic_shape_a_l_min_mmhg",
+      "note": "Milestone 51: shape parameter A of Weil et al.'s hyperbolic hypoxic ventilatory response (S68): VE = VE0 + A / (PAO2 - 32), measured isocapnically in 10 normal subjects at their resting PACO2: A = 180.2 +/- 14.5 (SEM). This engine applies the curve INCREMENTALLY about its own captured resting operating point (the M47 chemoreflex construction): the hypoxic term is A_eff x [1/(PaO2_sensed - asymptote) - 1/(PaO2_resting - asymptote)], clamped at zero when the sensed PaO2 is at or above the resting value, so the term is zero at the resting equilibrium by construction. Weil's subjects' alveolar PO2 is read here as the arterial sensor value (the peripheral chemoreceptors sense arterial PaO2, S69); the sensor in this engine is the module's own arterial PO2 construction at the last completed beat's cardiac output (see engine.rs).",
+      "source": "S68",
+      "status": "cited",
+      "unit": "L/min x mmHg",
+      "value": 180.2
+    },
+    {
+      "name": "hypoxic_shape_a_at_paco2_plus5",
+      "note": "Milestone 51: Weil et al.'s shape parameter when PACO2 was held 5 mm Hg ABOVE the resting control (S68): A = 453.4 +/- 103 in six subjects, against 180.2 at control - the cited quantification of the hypoxia-CO2 interaction (raised CO2 potentiates the hypoxic response more than additively, S69's synergy statement). The engine interpolates A log-linearly between Weil's three anchor points (at PaCO2_set - 5, PaCO2_set, PaCO2_set + 5) and clamps it to the anchors' span outside them; in the shipped shunt arm PaCO2 falls, so the interpolation runs toward the minus-5 anchor and the effective A falls as ventilation succeeds - the interaction operating in its cited direction.",
+      "source": "S68",
+      "status": "cited",
+      "unit": "L/min x mmHg",
+      "value": 453.4
+    },
+    {
+      "name": "hypoxic_shape_a_at_paco2_minus5",
+      "note": "Milestone 51: Weil et al.'s shape parameter when PACO2 was held 5 mm Hg BELOW the resting control (S68): A = 30.2 +/- 6.8 in six subjects, against 180.2 at control - hypocapnia nearly abolishes the hypoxic response in the source data, which is the mechanism that self-limits the poikilocapnic (free-breathing) hypoxic response in this engine's shunt arm: as the drive lowers PaCO2, its own gain collapses toward this anchor.",
+      "source": "S68",
+      "status": "cited",
+      "unit": "L/min x mmHg",
+      "value": 30.2
+    },
+    {
+      "name": "hypoxic_asymptote_mmhg",
+      "note": "Milestone 51: the PO2 asymptote of Weil et al.'s hyperbolic fit (S68): the constant 32 in VE = VE0 + A / (PAO2 - 32), 'the PAO2 at which the slope of the VE-PAO2 curve approaches infinity', fitted values spanning 30-40 mm Hg across subjects; 32 is the paper's own quantitation constant.",
+      "source": "S68",
+      "status": "cited",
+      "unit": "mmHg",
+      "value": 32.0
+    },
+    {
+      "name": "do2_critical_ml_min",
+      "note": "Milestone 51: the critical oxygen delivery (DO2crit) - the delivery level below which oxygen consumption becomes supply-dependent and anaerobic metabolism begins (S70's mechanism review; S71's consulted value about 300 mL/min in adults). Used ONLY as the normalising anchor of the metabolic-circulatory feedback's deficit scale: the feedback's error is (DO2_set - DO2) / (DO2_set - DO2crit), so the error reaches 1.0 when delivery falls to the critical level. The resting delivery (about 828 mL/min) and the -750 mL arm's (about 690 unarmed) both sit far above it; no scenario claims supply dependence itself, which this engine does not model (VO2 is a scenario input, never delivery-limited).",
+      "source": "S71",
+      "status": "cited",
+      "unit": "mL/min",
+      "value": 300.0
+    },
+    {
+      "name": "metabolic_feedback_deadband",
+      "note": "Milestone 51: deadband on the metabolic-circulatory feedback's normalised DO2 error, in units of that error (see do2_critical_ml_min). Engineering placeholder of the same class as the reflex gains, chosen so the feedback is EXACTLY zero at the resting operating point and under the sensor's beat-to-beat noise (the sensed delivery at rest fluctuates by well under 1% of the normalised scale): the term is gain x max(0, error - deadband), which is identically zero for any error at or below the deadband. VERIFY - no literature source is claimed for a lumped deadband value; the cited quantities are the operating-point construction and the critical-delivery anchor (S70/S71).",
+      "source": null,
+      "status": "verify",
+      "unit": "fraction of normalised DO2 error",
+      "value": 0.05
+    },
+    {
+      "name": "metabolic_feedback_hr_gain",
+      "note": "Milestone 51: gain of the metabolic-circulatory feedback on the baroreflex heart-rate multiplier: hr_multiplier_total = hr_multiplier_baroreflex x (1 + gain x max(0, normalised DO2 error - deadband)), the product clamped to the existing reflex_hr_mult_bounds. Engineering placeholder of the same class as reflex_gain_hr / venomotor_gain / contractility_gain (all VERIFY); NO literature source states a lumped gain for a delivery-error heart-rate limb, and none is claimed. The mechanism it lumps - a delivery shortfall answered by increased cardiac output (S70) through sympathetic drive - is cited; this number is not. The limb is ARMED per scenario (Event::SetOxygenFeedback, default disarmed): see MILESTONE-51.md for the measured reason an always-on circulatory coupling cannot preserve the pinned baselines.",
+      "source": null,
+      "status": "verify",
+      "unit": "dimensionless",
+      "value": 0.6
+    },
+    {
+      "name": "bohr_coefficient_logp50_per_ph",
+      "note": "Milestone 52: the Bohr coefficient, delta log10 P50 / delta pH = -0.48 for human adult haemoglobin under physiological conditions (S72, opened in full in-session). The engine applies it ANCHORED on its own resting operating point: P50_effective = hill_p50_mmhg x 10^(coefficient x (pH - pH_rest)), where pH_rest is the model's own resting pH (Henderson-Hasselbalch, S66, at the PCO2 equation's resting PaCO2 and the resting bicarbonate: 7.389), so at the resting pH the multiplier is exactly 1 and the curve is exactly the Milestone 47 curve. Sign: the coefficient is negative, so acidosis (pH below rest) RAISES P50 (right shift, unloading favoured) and alkalosis lowers it (left shift, loading favoured). Consulted spread, disclosed: the same -0.48 appears in a consulted review table for human Hb (S72 locator); rounded textbook statements give about -0.5 (fresh red cells measured -0.5 in a consulted storage study); stripped human HbA is reported at -0.56 (a different preparation - no 2,3-BPG/chloride environment); a consulted comparative review spans -0.35 to -0.5 for air-breathing animals. The whole-blood physiological value -0.48 is taken, as this engine's curve (hill_p50_mmhg, S63) is a whole-blood curve. The coefficient is a FIXED constant in this engine: no temperature term and no 2,3-BPG state modify it (named limits, MILESTONE-52.md).",
+      "source": "S72",
+      "status": "cited",
+      "unit": "log10(mmHg) per pH unit",
+      "value": -0.48
+    },
+    {
+      "cited_range": null,
+      "name": "chronic_hco3_rise_per_mmhg",
+      "note": "Milestone 53: the CHRONIC respiratory-acidosis compensation slope - in chronic respiratory acidosis the plasma bicarbonate rises 4 mmol/L for each 10 mmHg rise in PaCO2 (S73, Brandis Bedside Rule 2, the chronic companion to S66's acute Rule 1 already in this file). The renal compensation state targets the chronic TOTAL bicarbonate - the resting bicarbonate plus this slope times the PaCO2 deviation from the model's own operating point, exactly as the acute rules are applied about that point (Milestone 47) rather than about the source's 40 mmHg reference - and the state itself is the chronic total less the acute total at the current PaCO2, i.e. a renal increment of (0.4 - 0.1) = 0.3 mmol/L per mmHg beyond acute buffering. Consulted spread, disclosed: S74's expected-bicarbonate formula uses 0.35 per mmHg for chronic respiratory acidosis (with a +/-2 mmol/L band), and S73's own compensation chapter cites a measured 5.1 per 10 mmHg (0.51) in stable chronic hypercapnic patients (Martinu et al. 2003); secondary reviews also state 3.5 per 10. The S73 bedside-rule value 0.4 is taken: it is the chronic rule of the SAME source text as this engine's Henderson-Hasselbalch form and acute Rules 1 and 3 (S66), so the acute and chronic relations form one consistent rule set, and it sits inside the consulted 0.35-0.51 span.",
+      "source": "S73",
+      "status": "cited",
+      "unit": "mmol/L per mmHg PaCO2",
+      "value": 0.4
+    },
+    {
+      "cited_range": null,
+      "name": "chronic_hco3_fall_per_mmhg",
+      "note": "Milestone 53: the CHRONIC respiratory-alkalosis compensation slope - in chronic respiratory alkalosis the plasma bicarbonate falls 5 mmol/L for each 10 mmHg fall in PaCO2 (S73, Brandis Bedside Rule 4, the chronic companion to S66's acute Rule 3). Applied about the model's own operating point like the other rules. The renal increment beyond acute buffering is (0.5 - 0.2) = 0.3 mmol/L per mmHg - numerically the same increment as the acidosis direction, a derived coincidence of the consulted rule set (0.4-0.1 up, 0.5-0.2 down), NOT a symmetric rule imposed on the model: the two chronic totals are carried as separate parameters, as the sources state them, so a revision of either direction's relation revises that direction alone. S73 also states the limit of compensation in this direction: the bicarbonate does not fall below about 12-15 mmol/L. The shipped chronic-alkalosis arm's chronic total is 13.7 mmol/L, inside that limit, and no shipped scenario drives the formula below it, so no clamp is built (disclosed in MILESTONE-53.md). Consulted spread, disclosed: S74's formula uses 0.55 per mmHg for chronic respiratory alkalosis; secondary reviews span 0.4-0.5 per mmHg. The S73 value is taken on the same single-rule-set grounds as the acidosis slope.",
+      "source": "S73",
+      "status": "cited",
+      "unit": "mmol/L per mmHg PaCO2",
+      "value": 0.5
+    },
+    {
+      "cited_range": [
+        43200.0,
+        129600.0
+      ],
+      "name": "chronic_compensation_tau_seconds",
+      "note": "Milestone 53: the renal compensation state's first-order time constant. NO consulted source states a time constant in this form - the sources state TIMES TO MAXIMAL compensation: 3-4 days for chronic respiratory acidosis and 2-3 days for chronic respiratory alkalosis (S73), 3-5 days for the renal response in either direction (S74), with the response 'underway by 6 to 12 hours' (S73). This value is a CALIBRATED conversion of those cited windows: at tau = 24 h the state reaches 63% of its target at 1 day, 86% at 2 days, 95% at 3 days and 99% at 5 days, so the cited maximal windows read as the approach's 95-99% span. The cited range [12 h, 36 h] brackets the tau values whose 3-tau (95%) completion lands anywhere inside the consulted 1.5-4.5 day span. A single tau serves both directions: the sources' windows overlap (2-3 d vs 3-4 d, and 3-5 d stated for both directions), and no consulted source supports resolving the difference into two constants. Stated plainly: the TARGET relations are cited (S73); this time constant is calibrated from cited maximal-effect windows, not itself a cited number.",
+      "source": "S73",
+      "status": "calibrated",
+      "unit": "seconds",
+      "value": 86400.0
     }
   ],
   "perturbation_cases": [
@@ -1430,6 +1752,548 @@
           "source": "Milestone 26's comparative construction extended to the hormonal horizon: at +6 h the crystalloid arm must sit above the untreated arm's MAP (S2's volume-pressure relation applied comparatively). Directional hard gate."
         }
       ]
+    },
+    {
+      "description": "Milestone 47 respiratory arm: controlled hypoventilation. The respiratory rate is held at 6 /min by scenario override (the chemoreflex suspended - the scenario's point: an unopposed ventilatory failure, the class of S51's causes 1: not enough total ventilation). Tidal and dead-space volumes unchanged, so alveolar ventilation halves from 4.2 to 2.1 L/min at unchanged VCO2 200 mL/min. Read at +75 min, steady state on the store's timescale (the M24 sampling rule). The alveolar ventilation equation (S51) predicts the new steady PaCO2 exactly: 0.863 x 200 / 2.1 = 82.2 mm Hg.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            70.0,
+            95.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed prediction 82.2 mm Hg from the PCO2 equation at the halved alveolar ventilation; the band is a project tolerance of about +/-15% around the computed value, in the Milestone 24 MSFP pattern - it gates the module's agreement with its own cited governing equation, not a published clinical range.)"
+        },
+        {
+          "direction": "falls",
+          "output": "arterial_po2",
+          "source": "S53 (the alveolar gas equation: as PaCO2 rises, PAO2 falls by PaCO2/RQ, and PaO2 with it)"
+        },
+        {
+          "direction": "falls",
+          "output": "arterial_ph",
+          "source": "S52/S66 (acute respiratory acidosis: the Henderson-Hasselbalch ratio falls as PaCO2 rises; buffering only, S66 Rule 1)"
+        }
+      ],
+      "id": "hypoventilation_halved"
+    },
+    {
+      "description": "Milestone 47 respiratory arm: a lumped shunt disturbance - the venous admixture fraction is raised from its resting 0.03 to 0.20 (Event::SetVenousAdmixture), the module's only V/Q structure. Ventilation, metabolic rate and the circulation are untouched. Read at +30 min. The Berggren mixing relation (S57) at the model's resting contents predicts the arterial content and, through the dissociation curve, an A-a gradient of about 39 mm Hg (from about 9 at rest).",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            28.0,
+            50.0
+          ],
+          "output": "aa_gradient",
+          "source": "S57 (Computed prediction about 39 mm Hg from S57's mixing relation at admixture 0.20 with the model's resting end-capillary and venous contents; the band is a project tolerance around the computed value (Milestone 24 pattern), gating the module's agreement with the cited relation at the stated input.)"
+        },
+        {
+          "direction": "falls",
+          "output": "arterial_po2",
+          "source": "S57 (venous admixture lowers arterial PO2 and widens the A-a gradient)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            35.0,
+            45.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (CO2 elimination in this lump is set by alveolar ventilation against production (S51); admixture carries no CO2 term (alveolar and arterial PCO2 are taken equal, S51/S52), and the chemoreflex sees no CO2 error, so PaCO2 holds its resting value while oxygenation fails - the classic pure-shunt picture.)"
+        }
+      ],
+      "id": "shunt_20pct"
+    },
+    {
+      "description": "Milestone 47 respiratory arm: metabolic rate doubled (Event::SetMetabolicRate, VO2 250 -> 500 mL/min, VCO2 200 -> 400 mL/min at the cited RQ). The chemoreflex is live. Read at +45 min, steady state. S51's mechanism: alveolar ventilation rises in proportion to VCO2 and PaCO2 stays near its set-point; with the calibrated slope (2.5 L/min VE per mmHg, S58) the computed equilibrium is PaCO2 about 43 mm Hg, VE about 11.9 L/min. The circulation has no metabolic coupling in this engine (named limit): cardiac output does not rise, so oxygen delivery is not an expectation of this arm.",
+      "expectations": [
+        {
+          "direction": "rises",
+          "magnitude_range": [
+            9.5,
+            15.0
+          ],
+          "output": "minute_ventilation",
+          "source": "S51/S58 (Computed prediction about 11.9 L/min: alveolar ventilation must reach 0.863 x 400 / 43 ~ 8.0 L/min, which at the resting VD/VT is VE ~11.5-12. The band also spans the equilibria of the cited slope range's ends (S58: slope 1 gives VE ~13.4, slope 4 gives VE ~11.2).)"
+        },
+        {
+          "direction": "rises",
+          "magnitude_range": [
+            7.0,
+            10.5
+          ],
+          "output": "alveolar_ventilation",
+          "source": "S51 (Computed prediction about 8.0-8.4 L/min (the PCO2 equation at the doubled VCO2 and the near-held PaCO2).)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            38.0,
+            47.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Held near the 41.1 mm Hg set-point by the chemoreflex: the computed equilibrium at the calibrated slope is about 43; the cited slope span (S58) gives equilibria from about 42.5 (slope 4) to about 45.9 (slope 1). The band covers the cited span with margin and excludes both failure modes (no response: 82; perfect hold: 41.1 exactly is inside, an overshoot below 38 is not physiological for this controller).)"
+        }
+      ],
+      "id": "metabolic_doubled"
+    },
+    {
+      "description": "Milestone 47 respiratory arm: the Milestone 18 haemorrhage (-750 mL over 60 s, identical event schedule and protocol to run_case's Hemorrhage750) with the respiratory module live, read at +30 min after the bleed ends (presentation timescale, the M24 rule). The circulation expectations are NOT restated here: they are the standard hemorrhage_750 case's, evaluated on the standard outcome in the same validate run, and this runner's circulation trace hash at the standard endpoint is asserted equal to that outcome's. The respiratory expectations gate what the module adds: delivery falls as the product of the two falling factors (cardiac output on the circulation's own recovery course; arterial content as refill dilutes the hematocrit state the content equation reads), while ventilation and gas tensions hold.",
+      "expectations": [
+        {
+          "direction": "falls",
+          "output": "oxygen_delivery",
+          "source": "S55 (DO2 = flow x content; both factors fall in this arm)"
+        },
+        {
+          "direction": "falls",
+          "output": "arterial_oxygen_content",
+          "source": "S61 (the content equation reads haemoglobin, which the M26 hematocrit state carries down as cell-free refill replaces whole-blood loss)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            70.0,
+            100.0
+          ],
+          "output": "arterial_po2",
+          "source": "S52 (Ventilation is intact and alveolar gas is unchanged; PaO2 stays in the normal span (it eases down a few mm Hg through the wider venous admixture effect of a larger arteriovenous content difference at the lower cardiac output - the S57 mechanism at an unchanged fraction).)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            35.0,
+            45.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51"
+        }
+      ],
+      "id": "hemorrhage_750_respiratory"
+    },
+    {
+      "description": "Milestone 51 coupled arm: the Milestone 47 shunt arm (venous admixture 0.03 -> 0.20) re-run with the hypoxic ventilatory drive LIVE (the M47 module was CO2-only, so its shunt held PaCO2 at the resting value). The drive is Weil et al.'s hyperbolic peripheral-chemoreflex term (S68) applied incrementally about the captured resting operating point, its shape parameter interpolated between Weil's cited PaCO2 anchors (S68) - evaluated on the same RespOutcome as shunt_20pct, whose legacy bands must also still pass. Independent prediction (solver over the module's own cited equations - the PCO2 equation S51, the alveolar gas equation S52/S53, the content equation S61/S67 with the Hill curve S63, the Berggren relation S57 at the resting cardiac output, and Weil's curve with its PaCO2-dependent A): PaCO2 settles about 0.9 mm Hg BELOW the pure-shunt value, near 40.2 mm Hg, with minute ventilation risen to about 6.1-6.2 L/min and PaO2 essentially unchanged (the drive buys CO2 elimination, not oxygenation, at an unchanged admixture fraction). The bands below are project tolerances around that computed equilibrium (Milestone 24 pattern), not published ranges.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            38.5,
+            42.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S68/S51 (Computed coupled equilibrium about 40.2 mm Hg: the hypoxic term (Weil A interpolated toward its hypocapnia anchor as PaCO2 falls) adds roughly 1.5-2.3 L/min of ventilatory drive at the arm's PaO2 near 62 mm Hg, and the CO2 chemoreflex (S58) withdraws 2.5 L/min per mm Hg of PaCO2 fall, so the equilibrium sits only modestly below the pure-shunt 41.1 - the poikilocapnic self-limiting the source data predict. The band gates agreement with the computed equilibrium and excludes both failure modes: no drive (41.1 is inside, but the minute_ventilation line below excludes it jointly) and an unopposed drive (PaCO2 in the low 30s).)"
+        },
+        {
+          "direction": "rises",
+          "magnitude_range": [
+            6.05,
+            6.6
+          ],
+          "output": "minute_ventilation",
+          "source": "S68 (Computed prediction about 6.1-6.2 L/min at the coupled equilibrium: alveolar ventilation must satisfy the PCO2 equation at the settled PaCO2 (0.863 x 200 / 40.2 / 0.7). The lower edge excludes the pure-shunt value 6.00 - this line is what makes the case a coupled case and not a restatement of shunt_20pct.)"
+        },
+        {
+          "direction": "falls",
+          "output": "arterial_po2",
+          "source": "S57 (venous admixture lowers arterial PO2 exactly as in the pure-shunt arm; the hypoxic drive does not repair oxygenation at a fixed admixture fraction - it trades PaCO2 for it)"
+        }
+      ],
+      "id": "shunt_hypoxic_coupled"
+    },
+    {
+      "description": "Milestone 51 coupled arm: the Milestone 47 haemorrhage-with-module-live arm (-750 mL over 60 s, read at +30 min after the bleed ends) re-run with the metabolic-circulatory feedback ARMED (Event::SetOxygenFeedback at engagement; disarmed in every other shipped run - see MILESTONE-51.md). The feedback adds a DO2-error term (operating point captured at engagement; error normalised by the cited critical delivery, S70/S71; deadband and gain VERIFY-flagged) to the baroreflex heart-rate multiplier. Expectations gate this arm on its own terms; the comparative content (delivery and heart rate both HIGHER than the unarmed M47 arm at the same mark, the cited compensatory direction, S70/S71) is asserted cross-run in the validator and the test suite, and the standard (unarmed) haemorrhage run's Milestone 18 gates are evaluated on the standard outcome in the same validate run, unchanged.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            95.0,
+            135.0
+          ],
+          "output": "heart_rate",
+          "source": "Final-window heart rate of the armed arm: the baroreflex course (unarmed about 90 /min at +30 min) raised by the feedback's delivery-error term. The band is a project tolerance around the armed run's expected course, set from the feedback's stated gain and the arm's delivery deficit (normalised error about 0.26 at the mark); it excludes both the unarmed value's neighbourhood below 95 and a runaway above the ATLS Class II ceiling's region."
+        },
+        {
+          "direction": "falls",
+          "output": "oxygen_delivery",
+          "source": "S55/S70 (delivery still falls against the resting baseline - the feedback is a partial compensation that raises cardiac output toward the deficit, not a volume source; a rise above baseline would indict the construction)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            35.0,
+            45.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (ventilation is intact and the sensed PaO2 stays far above the hypoxic drive's effective range in this arm, so PaCO2 holds its resting band as in the unarmed arm)"
+        }
+      ],
+      "id": "hemorrhage_750_metabolic_feedback"
+    },
+    {
+      "description": "Milestone 52 Bohr arm (acidosis): the Milestone 47 hypoventilation arm (rate held at 6 /min, alveolar ventilation halved, read at +75 min) evaluated with the Bohr shift LIVE. The CO2 store, the held rate and the circulation are untouched by the shift (the override suspends the chemoreflex and the hypoxic drive, and oxygen transport is a readout), so the arm's state (PaCO2 about 81.4, pH about 7.16) is the M47 state exactly; only the dissociation curve's position moves: P50_effective = 26.6 x 10^(-0.48 x (7.160 - 7.389)) = about 34.3 mm Hg (S72 anchored on the model's resting pH). Independent prediction (work/m52/predict.py: the PCO2 equation S51, Henderson-Hasselbalch S66, the alveolar gas equation S52/S53, the content equation S61/S67 with the Hill curve S63 at the shifted P50, Berggren mixing S57, at the arm's measured PaCO2 and the resting cardiac output): CaO2 about 15.2 mL/dL (unshifted 17.3), SaO2 about 0.748 (unshifted 0.852), PaO2 about 51.3 (unshifted 50.9 - the arterial PO2 barely moves: the content the blood carries falls almost exactly as much as the PO2 needed to hold a given content rises; the shift trades loading for unloading, it does not create oxygen), DO2 about 639 mL/min (unshifted about 727). The bands are project tolerances around the computed values (Milestone 24 pattern), gating the module's agreement with the cited Bohr relation at the stated input, not published clinical ranges.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            14.5,
+            15.9
+          ],
+          "output": "arterial_oxygen_content",
+          "source": "S72/S61 (Computed shifted prediction about 15.2 mL/dL at the arm's state; the unshifted M47-curve prediction is 17.3 - the band excludes it, so this line is what makes the case a Bohr case.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.71,
+            0.79
+          ],
+          "output": "arterial_oxygen_saturation",
+          "source": "S72/S63 (Computed shifted prediction about 0.748; at the SAME PaO2 the shifted curve's saturation is 0.113 below the unshifted curve's - the fixed-PaO2 comparison the dossier reports.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            48.0,
+            54.5
+          ],
+          "output": "arterial_po2",
+          "source": "S72 (Computed shifted prediction about 51.3 mm Hg, against 50.9 unshifted: at FIXED content the shifted curve's PaO2 is about 14 mm Hg higher (the dossier's fixed-content comparison), but the content itself falls through the end-capillary term, so the arm's own arterial PO2 is nearly unchanged. The band gates the bisection inversion's consistency with the same effective P50 the loading side used - an inconsistent inversion lands far outside it.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            600.0,
+            680.0
+          ],
+          "output": "oxygen_delivery",
+          "source": "S55/S72 (DO2 = CO x CaO2 x 10 at the arm's unchanged cardiac output: delivery changes ONLY through the content term, by the computed amount - predicted about 639 against about 727 unshifted.)"
+        }
+      ],
+      "id": "hypoventilation_bohr"
+    },
+    {
+      "description": "Milestone 52 Bohr A/B arm: the identical hypoventilation protocol with the Bohr shift DISABLED (Event::SetBohrShift) - the Milestone 47 picture reproduced on the M52 binary. State lines are not restated: PaCO2, pH, the held rate, the respiratory trace hash and the circulation are identical to the shift-live arm by construction (asserted in the validator's cross-run section). The expectations below pin the UNSHIFTED oxygen readouts at the arm's state (independent prediction: CaO2 about 17.3 mL/dL, SaO2 about 0.852, PaO2 about 50.9), so the live-vs-disabled contrast is an A/B on one binary, not a comparison across versions.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            16.6,
+            17.9
+          ],
+          "output": "arterial_oxygen_content",
+          "source": "S61/S67 (Computed unshifted prediction about 17.3 mL/dL - the M47 curve at the arm's state.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.82,
+            0.88
+          ],
+          "output": "arterial_oxygen_saturation",
+          "source": "S63 (Computed unshifted prediction about 0.852.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            48.0,
+            53.5
+          ],
+          "output": "arterial_po2",
+          "source": "S52/S57 (Computed unshifted prediction about 50.9 mm Hg; the M47 measured value on this arm was 50.85.)"
+        }
+      ],
+      "id": "hypoventilation_bohr_pure"
+    },
+    {
+      "description": "Milestone 52 Bohr arm (alkalosis): controlled hyperventilation - the respiratory rate is held at 24 /min by scenario override (alveolar ventilation doubled 4.2 -> 8.4 L/min at unchanged anatomy and VCO2), read at +30 min (the CO2 store's time constant at the doubled ventilation is about 5 min, so the read is at steady state). The PCO2 equation (S51) predicts the new steady PaCO2 exactly: 0.863 x 200 / 8.4 = 20.5 mm Hg; Henderson-Hasselbalch with acute buffering (S66 Rule 3) gives pH about 7.61, and the anchored Bohr relation (S72) LEFT-shifts the curve: P50_effective = 26.6 x 10^(-0.48 x (7.609 - 7.389)) = about 20.9 mm Hg. Independent prediction (work/m52/predict.py, at the resting cardiac output - the override arm does not touch the circulation): CaO2 about 20.11 mL/dL (unshifted 19.97), SaO2 about 0.986 (unshifted 0.978), PaO2 about 102.1 (unshifted 108.9 - at fixed content the left-shifted curve holds the same content at about 19 mm Hg LOWER PO2, so the arm's arterial PO2 falls even though its content rises: the inversion-consistency signature). Bands are project tolerances around the computed values (Milestone 24 pattern).",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.0,
+            22.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed prediction 20.5 mm Hg from the PCO2 equation at the doubled alveolar ventilation.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.55,
+            7.66
+          ],
+          "output": "arterial_ph",
+          "source": "S66 (Computed prediction about 7.61: acute respiratory alkalosis, Henderson-Hasselbalch at the predicted PaCO2 with Rule 3 buffering.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.85,
+            20.35
+          ],
+          "output": "arterial_oxygen_content",
+          "source": "S72/S61 (Computed shifted prediction about 20.11 mL/dL; the unshifted prediction 19.97 sits inside this band too - the content effect at this arm's high alveolar PO2 is small because the curve is near saturation on both positions; the case's discriminating lines are saturation and PaO2 below, and the cross-run content delta asserted in the validator.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.981,
+            0.991
+          ],
+          "output": "arterial_oxygen_saturation",
+          "source": "S72/S63 (Computed shifted prediction about 0.986; the unshifted 0.978 falls below the band, so this line discriminates the shift.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            98.5,
+            105.5
+          ],
+          "output": "arterial_po2",
+          "source": "S72 (Computed shifted prediction about 102.1 mm Hg against 108.9 unshifted - the band excludes the unshifted value: a left shift must LOWER the PaO2 at which the arm's (higher) content sits, or the inversion is not using the shifted curve.)"
+        }
+      ],
+      "id": "hyperventilation_alkalosis"
+    },
+    {
+      "description": "Milestone 52 Bohr A/B arm: the identical hyperventilation protocol with the Bohr shift DISABLED (Event::SetBohrShift) - the unshifted curve at the alkalotic state. PaCO2, pH, the held rate, both trace hashes and the circulation are identical to the shift-live arm by construction (asserted cross-run in the validator). Independent prediction: CaO2 about 19.97 mL/dL, SaO2 about 0.978, PaO2 about 108.9 mm Hg.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.7,
+            20.25
+          ],
+          "output": "arterial_oxygen_content",
+          "source": "S61/S67 (Computed unshifted prediction about 19.97 mL/dL.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            0.973,
+            0.983
+          ],
+          "output": "arterial_oxygen_saturation",
+          "source": "S63 (Computed unshifted prediction about 0.978.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            105.0,
+            112.0
+          ],
+          "output": "arterial_po2",
+          "source": "S52/S57 (Computed unshifted prediction about 108.9 mm Hg.)"
+        }
+      ],
+      "id": "hyperventilation_bohr_pure"
+    },
+    {
+      "description": "Milestone 53 chronic arm (acidosis): the Milestone 47 hypoventilation protocol (rate held at 6 /min by scenario override, alveolar ventilation halved, chemoreflex suspended) held for a simulated FIVE DAYS past the tick-6000 events, read at +5 d under the standard respiratory protocol's final-30 s window rule (the Milestone 24 long-course precedent). The renal compensation state (S73 chronic Rule 2, calibrated tau 24 h) has reached 99.3% of its approach: independent prediction (work/m53/predict.py - the PCO2 equation S51, Henderson-Hasselbalch with acute buffering S66 and the chronic total S73, the first-order approach at tau, the anchored Bohr relation S72 for the curve position): PaCO2 82.19 mm Hg (the PCO2 equation's steady state at VA 2.1 L/min), renal compensation +12.24 mmol/L against a chronic-target increment of +12.33, total bicarbonate 40.35 mmol/L (chronic steady total 40.44), pH 7.314 - recovered from the acute 7.157 TOWARD the resting 7.389 but not to it, exactly as S73 states ('usually NOT sufficient to return the pH to normal'), and P50_eff 28.9 (the compensated pH pulls Milestone 52's Bohr right shift most of the way back). The bands are project tolerances around the computed values (Milestone 24 pattern), gating the engine's agreement with the cited chronic relation at the stated horizon, not published clinical ranges.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            80.5,
+            84.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed steady PaCO2 82.19 mm Hg at the held alveolar ventilation 2.1 L/min - unchanged from the acute arm: compensation does not touch the CO2 store.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            38.8,
+            41.8
+          ],
+          "output": "bicarbonate",
+          "source": "S73/S66 (Computed total bicarbonate 40.35 mmol/L at +5 d: acute 28.11 plus renal compensation 12.24; the chronic steady total is 40.44.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            10.8,
+            13.6
+          ],
+          "output": "renal_compensation",
+          "source": "S73 (Computed renal compensation state +12.24 mmol/L at +5 d, 99.3% of its +12.33 target increment - the chronic total less the acute total at PaCO2 82.19.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.28,
+            7.35
+          ],
+          "output": "arterial_ph",
+          "source": "S66/S73 (Computed compensated pH 7.314: recovered from the acute 7.157 toward, not to, the resting 7.389 - S73: compensation is 'usually NOT sufficient to return the pH to normal'.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            27.6,
+            30.2
+          ],
+          "output": "effective_p50",
+          "source": "S72 (Computed P50_eff 28.9 mm Hg at the compensated pH 7.314 through Milestone 52's anchored Bohr term - the anchor is the resting pH and does not move; the arm's pH recovery pulls the curve position back toward the resting 26.6.)"
+        }
+      ],
+      "id": "chronic_hypoventilation_compensated"
+    },
+    {
+      "description": "Milestone 53 A/B arm: the identical five-day hypoventilation protocol with the renal compensation state DISABLED (Event::SetChronicCompensation) - the Milestone 47/52 acute-only picture held for five days. PaCO2, the held rate and the circulation are identical to the compensated arm by construction (asserted in the validator's cross-run section; the two runs' PaCO2 and circulation hashes are compared there); only the bicarbonate the Henderson-Hasselbalch readout sees differs - it stays at the acute total for the whole five days. Independent prediction: PaCO2 82.19, bicarbonate 28.11, renal compensation exactly 0, pH 7.157, P50_eff 34.4. The contrast with the compensated arm is the milestone's measured quantity: five days of renal response are worth +12.2 mmol/L of bicarbonate and +0.157 of pH at this disturbance.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            80.5,
+            84.0
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed steady PaCO2 82.19 mm Hg - identical to the compensated arm by construction.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            26.8,
+            29.4
+          ],
+          "output": "bicarbonate",
+          "source": "S66 (Computed acute-only total 28.11 mmol/L: with the compensation state disabled, five days change nothing - the Milestone 47 picture.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            -0.01,
+            0.01
+          ],
+          "output": "renal_compensation",
+          "source": "S73 (The disabled state is exactly 0.0 by construction - this line pins the A/B instrument itself.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.12,
+            7.19
+          ],
+          "output": "arterial_ph",
+          "source": "S66 (Computed acute-only pH 7.157, the Milestone 47 arm's value held for five days.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            33.0,
+            35.8
+          ],
+          "output": "effective_p50",
+          "source": "S72 (Computed P50_eff 34.4 mm Hg at the uncompensated pH - the full Bohr right shift persists without compensation.)"
+        }
+      ],
+      "id": "chronic_hypoventilation_uncompensated"
+    },
+    {
+      "description": "Milestone 53 chronic arm (alkalosis): the Milestone 52 hyperventilation protocol (rate held at 24 /min, alveolar ventilation doubled) held for a simulated THREE DAYS past the tick-6000 events, read at +3 d under the standard final-30 s window rule. Three days is the cited maximal-compensation horizon for this direction (S73: 2-3 days; S74: 3-5 days) and 95.0% of the state's first-order approach at the calibrated tau. Independent prediction (work/m53/predict.py): PaCO2 20.55 mm Hg, renal compensation -5.86 mmol/L against a target increment of -6.16, total bicarbonate 14.03 mmol/L (chronic steady total 13.73 - inside S73's stated 12-15 mmol/L limit of compensation for this direction), pH 7.457 - recovered from the acute 7.609 toward the resting 7.389, and P50_eff 24.7 (the left shift largely unwound). Bands are project tolerances around the computed values (Milestone 24 pattern).",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.5,
+            21.6
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed steady PaCO2 20.55 mm Hg at the held alveolar ventilation 8.4 L/min.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            12.7,
+            15.4
+          ],
+          "output": "bicarbonate",
+          "source": "S73/S66 (Computed total bicarbonate 14.03 mmol/L at +3 d: acute 19.89 plus renal compensation -5.86; the chronic steady total 13.73 sits inside S73's 12-15 limit of compensation.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            -6.7,
+            -5.0
+          ],
+          "output": "renal_compensation",
+          "source": "S73 (Computed renal compensation state -5.86 mmol/L at +3 d, 95.0% of its -6.16 target increment - the chronic total (Rule 4, 0.5 per mmHg) less the acute total (Rule 3, 0.2 per mmHg) at PaCO2 20.55.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.42,
+            7.5
+          ],
+          "output": "arterial_ph",
+          "source": "S66/S73 (Computed compensated pH 7.457: recovered from the acute 7.609 toward, not to, the resting 7.389.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            23.4,
+            26.0
+          ],
+          "output": "effective_p50",
+          "source": "S72 (Computed P50_eff 24.7 mm Hg at the compensated pH through the anchored Bohr term.)"
+        }
+      ],
+      "id": "chronic_hyperventilation_compensated"
+    },
+    {
+      "description": "Milestone 53 A/B arm: the identical three-day hyperventilation protocol with the renal compensation state DISABLED (Event::SetChronicCompensation) - the acute-only picture held for three days. PaCO2, the held rate and the circulation are identical to the compensated arm by construction (asserted cross-run in the validator). Independent prediction: PaCO2 20.55, bicarbonate 19.89, renal compensation exactly 0, pH 7.609, P50_eff 20.9. The contrast: three days of renal response are worth -5.9 mmol/L of bicarbonate and -0.152 of pH at this disturbance.",
+      "expectations": [
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.5,
+            21.6
+          ],
+          "output": "arterial_pco2",
+          "source": "S51 (Computed steady PaCO2 20.55 mm Hg - identical to the compensated arm by construction.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            18.8,
+            21.0
+          ],
+          "output": "bicarbonate",
+          "source": "S66 (Computed acute-only total 19.89 mmol/L held for three days.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            -0.01,
+            0.01
+          ],
+          "output": "renal_compensation",
+          "source": "S73 (The disabled state is exactly 0.0 by construction - this line pins the A/B instrument itself.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            7.57,
+            7.64
+          ],
+          "output": "arterial_ph",
+          "source": "S66 (Computed acute-only pH 7.609, the Milestone 52 arm's value held for three days.)"
+        },
+        {
+          "direction": "in_range",
+          "magnitude_range": [
+            19.8,
+            22.0
+          ],
+          "output": "effective_p50",
+          "source": "S72 (Computed P50_eff 20.9 mm Hg at the uncompensated pH - the full Bohr left shift persists without compensation.)"
+        }
+      ],
+      "id": "chronic_hyperventilation_uncompensated"
     }
   ],
   "schema": "anatomica-physiology-parameters/v1",
@@ -1733,6 +2597,150 @@
       "citation": "Crystalloid composition corpus consulted in-session (StatPearls, 'Crystalloid Solutions in Intravenous Fluid Therapy', updated 2025-09-28, read in-session; NICE guideline CG174 composition table; wikidoc 'Intravenous fluid' composition table).",
       "id": "S50",
       "locator": "Sodium content: 0.9% NaCl 154 mmol/L (osmolarity 308); lactated Ringer 130 mmol/L (273); Plasma-Lyte 140 mmol/L (294); normal plasma sodium 135-145 mmol/L, plasma osmolarity 275-295 mOsm/L. Dual-sourced across the three consulted tables."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Martin L. The Four Most Important Equations in Clinical Practice - Equation 1: The PCO2 Equation; companion textbook chapter 'PCO2 and Alveolar Ventilation' (Chapter 4). lakesidepress.com.",
+      "id": "S51",
+      "locator": "PaCO2 = 0.863 x VCO2 / VA (the constant equates VCO2 in mL/min and VA in L/min to mm Hg); VA = VE - VD (minute ventilation minus dead-space ventilation); normal PaCO2 35-45 mm Hg; hypercapnia is always a level of VA inadequate for the amount of CO2 produced; during exercise VA rises in proportion to VCO2 so PaCO2 stays in the normal range. Companion chapter: normal VD/VT is approximately 150 mL VD / 500 mL VT, or 0.3 (range 0.28-0.33)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Williams AJ. Assessing and interpreting arterial blood gases and acid-base balance. BMJ 1998;317(7167):1213-1216 (PMC1114160).",
+      "id": "S52",
+      "locator": "Normal values table: pH mean 7.4, 2 SD 7.35-7.45; PaCO2 mean 5.3 kPa, 2 SD 4.7-6.0 kPa (= 35-45 mm Hg); PaO2 normal 13 kPa, normal range >= 10.7 kPa (= 80 mm Hg); SaO2 normal 95-100%. The alveolar-ventilation conversion factor is 863 (Va in L/min BTPS). Alveolar gas equation PAO2 = PIO2 - PaCO2/R, R = 0.8 for a normal diet; PIO2 = (Pb - PH2O) x FiO2 with FiO2 = 0.21 breathing air. Worked examples use Vt 0.5 L and Vd 0.2 L and a typical VCO2 of 0.2 L/min; the PaCO2/pH table gives plasma bicarbonate 24 mmol/L at PaCO2 40 mm Hg, pH 7.4."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Hendrix JM, Burns B. Alveolar Gas Equation. StatPearls (NCBI Bookshelf NBK482268), updated 2024-09-11.",
+      "id": "S53",
+      "locator": "PAO2 = FiO2 x (Patm - PH2O) - PaCO2/RQ; Patm is 760 mm Hg at sea level; PH2O approximately 47 mm Hg at body temperature (the article's worked example uses 47); at sea level on air with PaCO2 40 and RQ 0.8, PAO2 = 99.7 mm Hg. Sample values are given for air at sea level at 37 C."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Physiology, Respiratory Quotient. StatPearls (NCBI Bookshelf NBK531494), updated 2023-02-13.",
+      "id": "S54",
+      "locator": "Normal respiration: Vol CO2 = 200 mL/min and Vol O2 = 250 mL/min, resulting in 0.8 respiratory ratio. RQ for a mixture of substrates (the resting mixed diet) is 0.8; carbohydrate 1.0, fat 0.7, protein 0.8."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Pittman RN. Regulation of Tissue Oxygenation, Chapter 7: Oxygen Transport in Normal and Pathological Situations (NCBI Bookshelf NBK54113).",
+      "id": "S55",
+      "locator": "Fick-principle baseline values for a typical adult human: (1) O2 delivery Q[O2]a = 5 L/min x 200 mL/L = 1,000 mL/min; (2) O2 extraction is 0.25 (25%), with arterial content [O2]a = 20 vol% (corresponding to PaO2 = 100 mm Hg) and venous content [O2]v = 15 vol% (PvO2 = 40 mm Hg); (3) O2 consumption VO2 is 250 mL/min."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "McLellan SA. Oxygen delivery and haemoglobin. Continuing Education in Anaesthesia, Critical Care & Pain (BJA) 2004;4(4):117-120.",
+      "id": "S56",
+      "locator": "DO2 = CO x CaO2, CaO2 = (k1 x Hb x SaO2) + (k2 x PaO2); the normal oxygen extraction ratio O2ER is 0.2 to 0.3; each gram of Hb binds 1.39 mL of oxygen (the Hufner-constant variant this text uses); the inspired-oxygen table notes physiological shunt < 2% when breathing air."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Deranged Physiology. The concepts of venous admixture and shunt (CICM Primary Syllabus chapter F6(v)/(vi)), derangedphysiology.com.",
+      "id": "S57",
+      "locator": "The shunt (Berggren) equation Qs/Qt = (CcO2 - CaO2) / (CcO2 - CvO2). Venous admixture, as measured in normal subjects breathing room air, is usually about 3% of the cardiac output (value from Said & Banerjee 1963). Normal shunt fraction proper in healthy adults breathing room air is said to be close to 0% (probably 0.4-1%). Venous admixture integrates true shunt, V/Q scatter, Thebesian and bronchial venous drainage."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Physiology, Carbon Dioxide Response Curve. StatPearls (article text consulted in-session).",
+      "id": "S58",
+      "locator": "The carbon dioxide response curve is the nearly linear relationship between PaCO2 and minute ventilation: roughly 1 to 4 L/min increase in minute ventilation for each 1 mm Hg increase in PaCO2 (Miller's Anesthesia, as cited). Central chemoreceptors (medullary, H+-sensing) provide the majority of the response; peripheral chemoreceptors (carotid and aortic bodies) respond faster and also sense PaO2 and pH."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Hypercapnic ventilatory response - textbook summaries consulted in-session via ScienceDirect Topics (Kendig's Disorders of the Respiratory Tract in Children, 7th ed.; Chronic Respiratory Failure chapter).",
+      "id": "S59",
+      "locator": "VE = S x (PETCO2 - B). The carotid body provides about 20% to 30% of the total hypercapnic response, with a time constant of 10 to 30 seconds. The central chemoreceptor response accounts for about 70% to 80% of the total but is slower, with a time constant in the range of 60 to 150 seconds; steady-state ventilation has an apparently linear relationship to increasing PaCO2 (normal values for the hypercapnic ventilatory response slope range between 1 and 2 L/min per mm Hg of PCO2)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Apneic CO2-rise studies: (a) Stock MC et al. The carbon dioxide rate of rise in awake apneic humans. J Clin Anesth 1988 (abstract consulted in-session). (b) Carbon dioxide and cardiac output as major contributors to cerebral oxygenation during apnoeic oxygenation. Sci Rep 2024;14:3617 (PMC10864331).",
+      "id": "S60",
+      "locator": "(a) Awake breath-holding at functional residual capacity: PaCO2 rise about 7 mm Hg in the first 10 s and 2 mm Hg in the next 10 s (vascular equilibration), then about 6 mm Hg/min thereafter. (b) Apnoeic oxygenation under anaesthesia with high-flow nasal oxygen (which itself provides ventilatory exchange): mean PaCO2 rise 2.1 mm Hg/min over 15 min. The sustained unassisted rise therefore spans roughly 2-6 mm Hg/min across the consulted reports."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Phillips BP. Oxygen Transport: A Clinical Review. Boston Medical Center / Boston University School of Medicine, Critical Care Medicine teaching deck (consulted in-session).",
+      "id": "S61",
+      "locator": "DO2 = CO x CaO2 x 10, with CaO2 = (1.34 x Hb x SaO2) + (0.003 x PaO2); normal range (CO) for DO2: 800-1,000 mL/min; normal range (CI): 520-720 mL/min/m2; normal extraction ratio 22-32%; normal VO2 (indexed) 110-160 mL/min/m2."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Mean corpuscular hemoglobin concentration - reference-range corpus consulted in-session (Wikipedia 'Mean corpuscular hemoglobin concentration' and standard laboratory references).",
+      "id": "S62",
+      "locator": "MCHC reference range 32 to 36 g/dL (320 to 360 g/L). MCHC = hemoglobin / hematocrit; equivalently hemoglobin (g/dL) = MCHC x hematocrit (as a fraction). The Hgb/Hct ratio in healthy blood is close to 0.33."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Baynes JW, Dominiczak MH. Medical Biochemistry (oxygen-transport chapter; Student Consult text consulted in-session). Ferrell JE Jr. What is cooperativity? J Biol 2009;8:53.",
+      "id": "S63",
+      "locator": "Hill equation for hemoglobin saturation: Y = pO2^n / (P50^n + pO2^n). The normal value for adult Hb is n = 2.7 (Baynes); Ferrell: hemoglobin's binding 'is in fact fit by a Hill equation with a Hill coefficient of approximately 2.7'. Hb P50 = 27 +/- 2 mm Hg (Baynes); the commonly tabulated point value for a healthy person is 26.6 mm Hg."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Alveolar Minute Volume - reference table and worked examples (cal67 reference corpus, consulted in-session).",
+      "id": "S64",
+      "locator": "Alveolar minute volume (alveolar ventilation) = (tidal volume - dead space volume) x respiratory rate. Typical resting adult values: tidal volume 400-600 mL; respiratory rate 12-20 breaths/min; alveolar minute volume 4-6 L/min. Worked example: VT 500 mL, VD 150 mL, RR 12 gives (500 - 150) x 12 = 4.2 L/min."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Minute Ventilation - reference text (pulmolearn calculator reference, consulted in-session).",
+      "id": "S65",
+      "locator": "Minute ventilation VE = respiratory rate x tidal volume. Resting adult: about 5-8 L/min is the common resting range. Worked example: RR 12 breaths/min and VT 500 mL gives VE = 6 L/min."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Brandis K. Acid-Base Physiology (online text; Henderson-Hasselbalch relation and the respiratory compensation rules, consulted in-session).",
+      "id": "S66",
+      "locator": "Henderson-Hasselbalch: pH = pKa + log([HCO3-] / (0.03 x pCO2)), pKa 6.1. Rule 1, acute respiratory acidosis: [HCO3-] rises by 1 mmol/L for every 10 mmHg increase in pCO2 above its reference value of 40 mmHg (the increase is buffering only; there is no time for a renal response). Rule 3, acute respiratory alkalosis: [HCO3-] decreases by 2 mmol/L for every 10 mmHg decrease in pCO2 below 40 mmHg."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (see locator)",
+      "citation": "Arterial Oxygen Content - formula and reference table (cal67 reference corpus, consulted in-session).",
+      "id": "S67",
+      "locator": "CaO2 = (Hb x 1.34 x SaO2) + (PaO2 x 0.003), CaO2 in mL O2/dL blood. Reference table: CaO2 17-20 mL O2/dL blood; SaO2 95-100%; 1.34 is Hufner's constant (mL O2/g Hb; some sources use 1.36 or 1.39); 0.003 is the solubility coefficient of oxygen in plasma (mL O2/dL blood/mmHg)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (abstract and full-text PDF via the publisher's JCI archive)",
+      "citation": "Weil JV, Byrne-Quinn E, Sodal IE, Friesen WO, Underhill B, Filley GF, Grover RF. Hypoxic ventilatory drive in normal man. J Clin Invest 1970;49(6):1061-1072 (PMID 5422012).",
+      "id": "S68",
+      "locator": "Isocapnic VE-PAO2 curves are hyperbolic: falling PAO2 produces only slight rises in VE until a critical PAO2 range of 50-60 mm Hg is reached, below which VE rises steeply, the slope approaching infinity at a tension of 30-40 mm Hg. Quantitation by the hyperbolic function VE = VE0 + A / (PAO2 - 32): the constant 32 is the fitted asymptote. In 10 normal subjects at resting PACO2, A = 180.2 +/- 14.5 (SEM); when PACO2 was adjusted 5 mm Hg above and below control in six subjects, A = 453.4 +/- 103 and 30.2 +/- 6.8 respectively (the hypoxia-CO2 interaction in the paper's own numbers). Ventilatory adjustment to a PAO2 change is complete in 18-23 s. The paper also reports ventilation as a linear function of arterial oxygen saturation/content in four subjects - noted, not used: this engine's cited sensor quantity is PaO2 (S69)."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (textbook chapter reproduction read in-session)",
+      "citation": "Control of Breathing I: Chemical Mechanisms - textbook chapter on the chemical control of ventilation (consulted in-session via its web reproduction).",
+      "id": "S69",
+      "locator": "Peripheral chemoreceptors (carotid and aortic bodies) respond to decreased PO2 (not blood O2 content), increased PCO2 and [H+]; they are entirely responsible for the ventilatory response to hypoxia. At constant PACO2 there is little increase in ventilation until PAO2 falls below approximately 8 kPa (about 60 mm Hg). Reducing PAO2 steepens the slope of the CO2-ventilation relationship, and the effect of reducing PAO2 is potentiated if PACO2 is raised - 'a synergistic (more than additive) relationship between the effects of PAO2 and PACO2'. Central chemoreceptors account for about 80% of the CO2 response in humans."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (review text via Medscape)",
+      "citation": "Perioperative Optimization of Oxygen Delivery - review of oxygen-transport physiology and critical oxygen delivery (consulted in-session).",
+      "id": "S70",
+      "locator": "Under physiological conditions VO2 is independent of DO2: as DO2 falls the body maintains VO2 by increasing oxygen extraction and/or by increasing cardiac output. In the presence of a marked reduction of DO2 the extraction compensation is no longer sufficient, VO2 decreases in proportion to DO2, and the level below which this dependence appears is the critical oxygen delivery (DO2crit); below it the anaerobic pathway is used and lactic acid forms (tissue oxygen debt). Resting VO2 is 250-300 mL/min."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (revision corpus)",
+      "citation": "Oxygen delivery and consumption - Final FRCA revision corpus (consulted in-session).",
+      "id": "S71",
+      "locator": "Critical DO2 is the point below which VO2 becomes dependent on DO2, leading to anaerobic metabolism; its approximate value is about 300 mL/min in adults. Oxygen debt is the accumulated oxygen deficit during hypoxia, repaid during recovery. DO2 falls with low cardiac output, anaemia, or hypoxaemia; compensation for anaemia-class delivery falls is increased cardiac output and extraction."
+    },
+    {
+      "accessed": "2026-11-06, consulted in-session (full text opened: BioOne / Zoological Science journal archive)",
+      "citation": "Imai K et al. A New Look on the Position of the Oxygen Equilibrium Curve of Human Adult Hemoglobin at Rest and during Exercise with Special Reference to the Effectiveness of the Bohr Shift. Zoological Science 2001;18(7):905-918 (doi:10.2108/zsj.18.905).",
+      "id": "S72",
+      "locator": "Introduction: 'The magnitude of the Bohr effect is given by the change in log P50 (P50 is the O2 pressure at which Hb is 50% saturated with O2) per unit change in pH and is expressed as delta log P50 / delta pH (the Bohr coefficient). Under the physiological conditions, the Bohr coefficient for human adult Hb is -0.48.' The same paper's standard curve is whole blood at 37 C, pH 7.4, PCO2 40 torr, P50 26.7 torr. Consulted spread in-session: a review table of haemoglobins (Therapeutic Potential of Hemoglobin Derived from Arenicola marina, J Clin Med / PMC 2021) lists the human Hb Bohr coefficient as -0.48; a red-cell storage study (Front Physiol 2024) measures fresh red cells at -0.5 (per Hb tetramer); a comparative haemoglobin study (J Exp Biol 2013, citing Weber 1992) reports stripped human HbA at -0.56; a fish/human comparative review (J Appl Physiol 2017, citing Lapennas) spans air-breathing animals at -0.35 to -0.5. The whole-blood physiological value -0.48 is the one this engine takes (its Hill P50, S63, is a whole-blood value)."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (full text opened: LibreTexts reproduction and the author's site)",
+      "citation": "Brandis K. Acid-Base Physiology: Chapter 4.5 'Compensation', Chapter 6.5 'Respiratory Alkalosis - Compensation', and Chapter 9.3 'Bedside Rules' (the author's text, consulted via the Medicine LibreTexts reproduction and anaesthesiamcq.com).",
+      "id": "S73",
+      "locator": "Ch. 4.5: 'the average increase in plasma [HCO3-] in chronic respiratory acidosis is 4 mmol/l per 10 mmHg increase in PaCO2'; the renal response to a sustained PaCO2 rise 'is underway by 6 to 12 hours and usually takes a few days to reach its maximal value... the maximal effect is usually reached by 3 to 4 days'; the increased bicarbonate 'is usually NOT sufficient to return the pH to normal... typically, the pH will still be slightly acidotic'; the same chapter cites Martinu et al. (2003), who found an average rise of 5.1 mmol/l per 10 mmHg in stable chronic hypercapnic patients. Bedside Rule 2 (Ch. 9.3): 'For a chronic respiratory acidosis, the average change in [HCO3-] is 4 mmol/l for each 10 mmHg change in PaCO2 (from 40 mmHg)'; the renal compensation 'takes a few days to reach its maximal value'. Bedside Rule 4 / Ch. 6.5 (chronic respiratory alkalosis): the [HCO3-] falls 5 mmol/l for each 10 mmHg decrease in PaCO2; 'It takes 2 to 3 days to reach maximal renal compensation'; 'the limit of compensation is reached when the [HCO3-] falls to 12 to 15 mmol/l'. This is the same Brandis text as S66 (Henderson-Hasselbalch and the acute rules); S66 registered the acute rules only, and this entry registers the chronic rules consulted for Milestone 53."
+    },
+    {
+      "accessed": "2026-11-07, consulted in-session (full text opened)",
+      "citation": "eClinpath (Cornell University College of Veterinary Medicine) - 'Acid-base: Response to disturbances', acid-base module (consulted in full in-session).",
+      "id": "S74",
+      "locator": "On respiratory disturbances: 'The kidneys compensate for a chronic respiratory acid-base disturbance by increasing (respiratory acidosis) or decreasing (respiratory alkalosis) bicarbonate reabsorption. This response begins within hours but takes 3-5 days to have a full effect.' The page's expected-bicarbonate-change formulas use, for chronic respiratory acidosis, 0.35 mmol/L per mmHg PaCO2 change (HCO3 = 24 + 0.35 x (PaCO2 - 40), +/-2 mmol/L), and for chronic respiratory alkalosis 0.55 per mmHg - the consulted spread against S73's 0.4 / 0.5 bedside rules, disclosed in the chronic-slope parameters' notes. Consulted as the independent second source for the days-scale of full renal compensation in both directions and for the direction-split form of the relations."
     }
   ],
   "validation_ranges": [
@@ -1924,6 +2932,78 @@
       "output": "plasma_adh",
       "source": "S49",
       "unit": "pg/mL"
+    },
+    {
+      "gated": true,
+      "high": 45.0,
+      "low": 35.0,
+      "note": "Milestone 47: resting arterial PCO2. S51's normal range 35-45 mm Hg; S52's 2 SD band 4.7-6.0 kPa is the same span. The model's resting value is set by the PCO2 equation at the cited resting VCO2 and alveolar ventilation (0.863 x 200 / 4.2 = 41.1 mm Hg).",
+      "output": "arterial_pco2",
+      "source": "S51",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 100.0,
+      "low": 80.0,
+      "note": "Milestone 47: resting arterial PO2. S52: normal PaO2 13 kPa with the normal range >= 10.7 kPa; 10.7 kPa = 80 mm Hg and 13.3 kPa ~ 100 mm Hg. The model's value follows from the alveolar gas equation less the resting venous-admixture effect (S57) at the engine's cardiac output.",
+      "output": "arterial_po2",
+      "source": "S52",
+      "unit": "mmHg"
+    },
+    {
+      "gated": true,
+      "high": 7.45,
+      "low": 7.35,
+      "note": "Milestone 47: resting arterial pH, S52's 2 SD band about the 7.4 mean. The model's value follows from Henderson-Hasselbalch (S66) at the resting PaCO2 and bicarbonate.",
+      "output": "arterial_ph",
+      "source": "S52",
+      "unit": "pH"
+    },
+    {
+      "gated": true,
+      "high": 1.0,
+      "low": 0.95,
+      "note": "Milestone 47: resting arterial oxygen saturation, S52's normal 95-100%. The model's value is the Hill curve (S63) at the model's PaO2.",
+      "output": "arterial_oxygen_saturation",
+      "source": "S52",
+      "unit": "fraction"
+    },
+    {
+      "gated": true,
+      "high": 20.0,
+      "low": 17.0,
+      "note": "Milestone 47: resting arterial oxygen content, S67's reference span 17-20 mL O2/dL. S55's Fick baseline point (20 vol% at PaO2 100, Hb-derived) sits at the span's top; the model's value sits below it by its resting admixture and its PaO2 of ~91 mm Hg.",
+      "output": "arterial_oxygen_content",
+      "source": "S67",
+      "unit": "mL/dL"
+    },
+    {
+      "gated": true,
+      "high": 8.0,
+      "low": 5.0,
+      "note": "Milestone 47: resting minute ventilation, S65's common resting span 5-8 L/min. The model's value is RR x VT at the cited resting pattern (12 x 500 mL = 6.0 L/min).",
+      "output": "minute_ventilation",
+      "source": "S65",
+      "unit": "L/min"
+    },
+    {
+      "gated": true,
+      "high": 6.0,
+      "low": 4.0,
+      "note": "Milestone 47: resting alveolar ventilation, S64's typical span 4-6 L/min. The model's value is RR x (VT - VD) = 12 x 350 mL = 4.2 L/min, S64's own worked example.",
+      "output": "alveolar_ventilation",
+      "source": "S64",
+      "unit": "L/min"
+    },
+    {
+      "gated": true,
+      "high": 1000.0,
+      "low": 800.0,
+      "note": "Milestone 47: resting oxygen delivery, DO2 = CO x CaO2 x 10, gated on S61's stated normal range 800-1,000 mL/min. Consulted spread disclosed: S55's worked normal is the point 1,000 mL/min at a cardiac output of 5.0 L/min and content 200 mL/L; other consulted statements span wider (600-1,100). The engine's resting cardiac output is 4.21 L/min - inside its own cited band (4-8, S10) but below S55's assumed 5.0 - so the model's delivery rests at this band's low end by arithmetic, not by tuning; the decomposition is reported in MILESTONE-47.md.",
+      "output": "oxygen_delivery",
+      "source": "S61",
+      "unit": "mL/min"
     }
   ]
 }

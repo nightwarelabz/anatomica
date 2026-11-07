@@ -160,6 +160,143 @@
 //! MILESTONE-30.md. Intake becomes an event-settable pair of rates
 //! (Event::SetIntake); at their defaults the equilibrium
 //! construction holds exactly as before.
+//!
+//! Milestone 47 adds the respiratory module: ventilation and gas
+//! exchange, coupled ONE-WAY to the circulation. Two lumped states
+//! join the RK4 integration — arterial PCO2 (mm Hg), carried by a
+//! single effective CO2 store whose steady state is the PCO2
+//! equation exactly (S51: PaCO2 = 0.863 x VCO2 / VA), and the
+//! respiratory rate (breaths/min), driven by a lumped ventilatory
+//! CO2 chemoreflex (slope S58, time constant S59) about the model's
+//! own resting operating point, captured when the reflex engages
+//! exactly as the MAP setpoint is. Alveolar ventilation is
+//! RR x (VT - VD) at scenario-set anatomy (S51/S52/S64); the oxygen
+//! side is algebraic (its stores equilibrate fast against the CO2
+//! store's minutes-long time constant, disclosed): alveolar PO2 by
+//! the alveolar gas equation (S52/S53), end-capillary content by
+//! the Hill dissociation curve (S63) and the content equation
+//! (S61/S67), arterial content by Berggren venous-admixture mixing
+//! (S57) against the Fick arteriovenous difference at the current
+//! cardiac output, arterial PO2 by inverting the content equation,
+//! and oxygen delivery as CO x CaO2 (S55/S61). Haemoglobin comes
+//! from the Milestone 26 hematocrit state through the MCHC identity
+//! (S62) — hematocrit is tracked-but-inert no longer: it now also
+//! carries oxygen content (viscosity coupling remains refused, as
+//! before). pH is Henderson–Hasselbalch (S66) on an acutely
+//! buffered bicarbonate (S66 Rules 1 and 3, applied about the
+//! operating point); renal acid–base compensation is not modelled.
+//! One-way coupling is the design's load-bearing wall: no
+//! respiratory quantity enters any circulation derivative, so the
+//! circulation's trace hash — pinned by the case workbench — is
+//! bit-identical with the module present, and the respiratory
+//! states fold into a SEPARATE hash chain (Engine::resp_hash) that
+//! pins this module's own determinism. Named simplifications: a
+//! single-compartment lung (no regional V/Q distribution beyond
+//! the lumped admixture fraction), no hypoxic ventilatory drive,
+//! no Bohr shift of the dissociation curve, no intrathoracic-
+//! pressure effect on venous return, metabolic rate as a scenario
+//! input with no circulatory coupling. See MILESTONE-47.md.
+//!
+//! Milestone 51 adds the two couplings Milestone 47 deferred, each
+//! constructed to be exactly zero at the resting equilibrium so
+//! the pinned resting baseline (trace hash 0x6369b10e9a71c872)
+//! holds bit-identically. (1) The hypoxic ventilatory drive: a
+//! peripheral-chemoreflex term on sensed arterial PO2 — Weil et
+//! al.'s hyperbolic response (S68: VE = VE0 + A/(PO2 − 32))
+//! applied INCREMENTALLY about the operating point captured at
+//! engagement (the sensed resting PaO2, computed by the module's
+//! own gas-exchange construction at the last completed beat's
+//! cardiac output), so the term vanishes at the operating point by
+//! construction; its shape parameter A is interpolated log-
+//! linearly between Weil's cited PaCO2 anchors (180.2 at the
+//! resting PaCO2, 453.4 at +5 mmHg, 30.2 at −5 mmHg) — the cited
+//! hypoxia–CO2 potentiation (S69: synergistic, more than
+//! additive) — and the term is clamped to add drive only. It acts
+//! on the respiratory rate target alone, so it is still one-way
+//! with respect to the circulation: no circulation derivative
+//! reads it, and the pinned hash cannot move. A scenario event
+//! (SetHypoxicDrive) can disable it to reproduce the Milestone 47
+//! CO2-only picture exactly. (2) The metabolic–circulatory
+//! feedback: a DO2-error term into the baroreflex heart-rate
+//! multiplier — the delivery shortfall answered by increased
+//! cardiac output (S70/S71) — with its operating point (the sensed
+//! resting DO2) captured at engagement, its error normalised by
+//! the cited critical delivery (S71), and a VERIFY-flagged
+//! deadband and gain (the reflex-gain pattern). It is ARMED per
+//! scenario (Event::SetOxygenFeedback, default disarmed) because
+//! an always-on circulatory limb measurably cannot preserve the
+//! byte-identical consumer baselines (MILESTONE-51.md §2); when
+//! disarmed, or when its error sits inside the deadband — which
+//! includes the resting operating point — its multiplier is
+//! exactly 1.0, so an armed resting run still reproduces the
+//! pinned hash. See MILESTONE-51.md.
+//!
+//! Milestone 52 adds the last of Milestone 47's deferred
+//! couplings: the Bohr shift of the dissociation curve. The
+//! effective P50 is the resting P50 scaled by the cited Bohr
+//! coefficient (S72: Δlog₁₀P50/ΔpH = −0.48 for human adult
+//! haemoglobin under physiological conditions) applied to the
+//! deviation of the current arterial pH from the model's own
+//! resting pH — P50_eff = P50_rest × 10^(−0.48 × (pH − pH_rest)),
+//! with pH_rest the Henderson–Hasselbalch pH at the construction's
+//! resting PaCO2 (7.389, the engine's own resting readout). At the
+//! resting pH the exponent is exactly zero and the multiplier is
+//! exactly 1.0, so the resting curve is the Milestone 47 curve
+//! bit-for-bit and every resting readout and hash holds by
+//! construction — the Milestone 51 operating-point discipline.
+//! The SAME effective P50 is used on both sides of the oxygen
+//! algebra — the end-capillary (loading) content and the bisection
+//! inversion that recovers arterial PO2 from arterial content —
+//! and in the Milestone 51 chemoreflex sensor, so the inversion is
+//! consistent with the loading side by construction. pH in this
+//! engine is a pure function of the PaCO2 state (acute buffering,
+//! S66), so the shift introduces no new state, no derivative, and
+//! no path into the circulation: the circulation hash cannot move.
+//! A scenario event (SetBohrShift) can disable the shift to
+//! reproduce the Milestone 47 fixed-curve picture exactly — the
+//! A/B instrument of MILESTONE-52.md. The coefficient is fixed:
+//! no temperature term and no 2,3-BPG state modify it (named
+//! limits). See MILESTONE-52.md.
+//!
+//! Milestone 53 adds the slow axis Milestones 47/52 deferred:
+//! chronic (renal) acid–base compensation, a slow bicarbonate
+//! state beside the Milestone 30 hormonal axes. The state is the
+//! RENAL INCREMENT of bicarbonate (mEq/L): the difference between
+//! the chronic compensated total and the acute buffered total at
+//! the current PaCO2, the chronic totals being S73's direction-
+//! specific rules (chronic respiratory acidosis +0.4 mEq/L per
+//! mmHg, Rule 2; chronic respiratory alkalosis −0.5 per mmHg,
+//! Rule 4 — the chronic companions of S66's acute Rules 1 and 3),
+//! each applied about the model's own operating point. The state
+//! relaxes toward that target first-order at the calibrated time
+//! constant chronic_compensation_tau_seconds (24 h; no source
+//! states a tau — the sources state times to maximal compensation
+//! of 2–4 days by direction, S73, and 3–5 days, S74, and the value
+//! is the calibrated conversion disclosed in parameters.json).
+//! The state is initialised at exactly 0.0 and its target at the
+//! resting PaCO2 is exactly 0.0 (the chronic and acute totals
+//! coincide at the operating point), so its derivative vanishes
+//! at the resting equilibrium: every resting readout and the
+//! pinned circulation hash hold bit-identically, and inside the
+//! acute arms' windows the state has moved only a few percent of
+//! its target (measured in MILESTONE-53.md). The total
+//! bicarbonate the Henderson–Hasselbalch readout sees is the
+//! acute total plus this state, so pH — and through Milestone
+//! 52's anchored Bohr term, P50_eff and the chemoreflex sensor —
+//! carries the compensation in sustained arms; the Bohr ANCHOR
+//! (Model::ph_rest, a construction constant) does not move: the
+//! compensation moves the pH the anchor is compared against,
+//! never the anchor. The state is respiratory-side only: it
+//! feeds no circulation derivative, and it folds into resp_hash
+//! (after resp_rate; the fold order is part of that chain's
+//! format, so Milestone 53 resp hashes differ from Milestone
+//! 52's even where trajectories agree). A scenario event
+//! (SetChronicCompensation) can disable the state to reproduce
+//! the acute-only picture at any horizon — the A/B instrument of
+//! MILESTONE-53.md. The state compensates RESPIRATORY
+//! disturbances only: no metabolic acid–base disorder and no
+//! respiratory response to one is modelled (named limits). See
+//! MILESTONE-53.md.
 
 use crate::params::Params;
 
@@ -278,6 +415,72 @@ pub struct Model {
     pub aldo_ceiling: f64,
     pub aldo_shift_mmhg_per_unit: f64,
     pub renal_chronic_steep: f64,
+    // respiratory module (Milestone 47): gas constants and anatomy
+    // (S51-S54, S64), the CO2 store (S51 equation; capacitance
+    // calibrated from S60), the dissociation curve and content
+    // equation (S61-S63, S67), acute acid-base (S52, S66), and the
+    // ventilatory CO2 chemoreflex (slope S58, time constant S59;
+    // rate bounds VERIFY-flagged actuator limits).
+    pub pb_mmhg: f64,
+    pub ph2o_mmhg: f64,
+    pub fio2: f64,
+    pub vt0_ml: f64,
+    pub vd0_ml: f64,
+    pub rr0_per_min: f64,
+    pub vo2_0_ml_min: f64,
+    pub rq: f64,
+    pub k_alv: f64,
+    pub admixture0: f64,
+    pub co2_capacitance_ml_mmhg: f64,
+    pub hill_p50_mmhg: f64,
+    pub hill_n: f64,
+    pub hufner_ml_g: f64,
+    pub o2_solubility_ml_dl_mmhg: f64,
+    pub mchc_g_dl: f64,
+    pub hco3_0_meq_l: f64,
+    pub hh_pk: f64,
+    pub hh_co2_solubility: f64,
+    pub hco3_rise_per_mmhg: f64,
+    pub hco3_fall_per_mmhg: f64,
+    pub chemo_slope_l_min_mmhg: f64,
+    pub chemo_tau_s: f64,
+    pub rr_bounds: [f64; 2],
+    // two-way couplings (Milestone 51): the hypoxic ventilatory
+    // drive (Weil hyperbolic shape and its PaCO2 anchors, S68; the
+    // asymptote, S68) and the metabolic-circulatory feedback (the
+    // cited critical delivery, S71; deadband and gain VERIFY-flagged
+    // like the reflex gains).
+    pub hyp_a: f64,
+    pub hyp_a_lo: f64,
+    pub hyp_a_hi: f64,
+    pub hyp_asymptote_mmhg: f64,
+    pub do2_crit_ml_min: f64,
+    pub metab_deadband: f64,
+    pub metab_gain: f64,
+    // Bohr shift (Milestone 52): the cited coefficient
+    // Δlog₁₀P50/ΔpH (S72) and the resting pH it is anchored on —
+    // the Henderson–Hasselbalch pH at the resting PaCO2, derived
+    // in from_params exactly as arterial_ph() evaluates it at the
+    // resting state, so the anchored multiplier at rest is
+    // exactly 1.0 (see bohr_p50_effective_mmhg).
+    pub bohr_coefficient: f64,
+    pub ph_rest: f64,
+    // Chronic acid–base compensation (Milestone 53): the chronic
+    // bicarbonate slopes by direction (S73 Rules 2 and 4 — the
+    // chronic totals the renal state targets, carried separately
+    // as the source states them) and the state's time constant
+    // (calibrated from the sources' maximal-compensation windows;
+    // see parameters.json).
+    pub hco3_chronic_rise_per_mmhg: f64,
+    pub hco3_chronic_fall_per_mmhg: f64,
+    pub comp_tau_s: f64,
+    /// Inspired (tracheal) oxygen partial pressure at the resting
+    /// gas constants: FiO2 x (PB - PH2O) (S52/S53).
+    pub pio2_mmhg: f64,
+    /// The resting PaCO2 implied by the construction: the PCO2
+    /// equation (S51) at the cited resting VCO2 and alveolar
+    /// ventilation — the CO2 store's equilibrium, by construction.
+    pub paco2_rest_mmhg: f64,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -324,6 +527,297 @@ pub fn oncotic_pressure_mmhg(c_g_per_dl: f64, m: &Model) -> f64 {
     alb + glob
 }
 
+/// Plasma bicarbonate (mEq/L) at a PaCO2 (Milestone 47): the
+/// resting value plus the acute buffering slope (S66 Rules 1 and
+/// 3, asymmetric as the source states them) applied to the PaCO2
+/// deviation from the model's own operating point. The ACUTE
+/// component of the bicarbonate: Milestone 53's total adds the
+/// renal compensation state to this value. A pure function of
+/// PaCO2 and the model, shared by the engine's readout and by
+/// the Bohr-shift construction below (Milestone 52), so both
+/// evaluate the identical pH at a given PaCO2.
+pub fn bicarbonate_meq_l_at(paco2_mmhg: f64, m: &Model) -> f64 {
+    let d = paco2_mmhg - m.paco2_rest_mmhg;
+    let slope = if d >= 0.0 {
+        m.hco3_rise_per_mmhg
+    } else {
+        m.hco3_fall_per_mmhg
+    };
+    m.hco3_0_meq_l + slope * d
+}
+
+/// Arterial pH at a PaCO2 (Milestone 47): Henderson–Hasselbalch
+/// (S66) at that PaCO2 and its acutely buffered bicarbonate. At
+/// the resting PaCO2 this evaluates, operation for operation, to
+/// Model::ph_rest — the Bohr anchor (Milestone 52).
+pub fn arterial_ph_at(paco2_mmhg: f64, m: &Model) -> f64 {
+    m.hh_pk
+        + (bicarbonate_meq_l_at(paco2_mmhg, m) / (m.hh_co2_solubility * paco2_mmhg)).log10()
+}
+
+/// The CHRONIC compensated bicarbonate (mEq/L) at a PaCO2
+/// (Milestone 53): the resting value plus the chronic slope
+/// (S73 Rules 2 and 4, asymmetric as the source states them —
+/// +0.4 per mmHg in acidosis, −0.5 per mmHg in alkalosis)
+/// applied to the PaCO2 deviation from the model's own operating
+/// point, exactly as the acute rules are applied there. This is
+/// the total the renal compensation state drives the plasma
+/// bicarbonate toward over days.
+pub fn chronic_bicarbonate_meq_l_at(paco2_mmhg: f64, m: &Model) -> f64 {
+    let d = paco2_mmhg - m.paco2_rest_mmhg;
+    let slope = if d >= 0.0 {
+        m.hco3_chronic_rise_per_mmhg
+    } else {
+        m.hco3_chronic_fall_per_mmhg
+    };
+    m.hco3_0_meq_l + slope * d
+}
+
+/// The renal compensation TARGET (mEq/L, Milestone 53): the
+/// chronic total less the acute total at a PaCO2 — the increment
+/// the kidney adds beyond acute buffering. On the consulted rule
+/// set this is (0.4 − 0.1) = +0.3 per mmHg in acidosis and
+/// (0.5 − 0.2) = 0.3 per mmHg in alkalosis: the same increment in
+/// both directions, a derived property of the source's four
+/// rules, not a symmetric rule imposed on the model — the two
+/// chronic totals above are what is parameterised, so either
+/// direction's relation can be revised alone. At the resting
+/// PaCO2 the two totals coincide and the target is exactly 0.0 —
+/// the resting-zero property the state's construction rests on.
+pub fn renal_comp_target_meq_l_at(paco2_mmhg: f64, m: &Model) -> f64 {
+    chronic_bicarbonate_meq_l_at(paco2_mmhg, m) - bicarbonate_meq_l_at(paco2_mmhg, m)
+}
+
+/// Arterial pH at a PaCO2 and a renal compensation state
+/// (Milestone 53): Henderson–Hasselbalch (S66) at the TOTAL
+/// bicarbonate (acute total plus the compensation state). At a
+/// zero compensation state this evaluates, operation for
+/// operation, to arterial_ph_at — in particular at the resting
+/// state it is Model::ph_rest bit-for-bit: the Bohr anchor is
+/// this function's zero-compensation value and cannot drift,
+/// because the anchor is a construction constant (Model::ph_rest)
+/// and the state is exactly zero at the resting equilibrium.
+pub fn arterial_ph_total_at(paco2_mmhg: f64, comp_meq_l: f64, m: &Model) -> f64 {
+    m.hh_pk
+        + ((bicarbonate_meq_l_at(paco2_mmhg, m) + comp_meq_l)
+            / (m.hh_co2_solubility * paco2_mmhg))
+            .log10()
+}
+
+/// The Bohr-shifted effective P50 (mm Hg, Milestone 52): the
+/// resting P50 scaled by the cited Bohr coefficient (S72,
+/// Δlog₁₀P50/ΔpH = −0.48) applied to the pH deviation from the
+/// model's own resting pH,
+///   P50_eff = P50_rest × 10^(coefficient × (pH − pH_rest)).
+/// At pH == pH_rest the exponent is exactly 0.0, 10^0 is exactly
+/// 1.0, and the result is the resting P50 bit-for-bit — the
+/// resting curve is the Milestone 47 curve by construction.
+/// Acidosis (pH below rest) raises P50 (right shift); alkalosis
+/// lowers it (left shift).
+pub fn bohr_p50_effective_mmhg(ph: f64, m: &Model) -> f64 {
+    m.hill_p50_mmhg * 10f64.powf(m.bohr_coefficient * (ph - m.ph_rest))
+}
+
+/// Haemoglobin oxygen saturation at a partial pressure and an
+/// explicit P50 (Milestone 47's Hill form, S63, generalised at
+/// Milestone 52): S(P) = P^n / (P^n + P50^n). Every caller passes
+/// the position its computation is on — the resting P50 for the
+/// unshifted curve, the Bohr-effective P50 for the shifted one —
+/// so loading and inversion can never silently mix positions.
+pub fn hill_saturation_p50(po2_mmhg: f64, p50_mmhg: f64, m: &Model) -> f64 {
+    if po2_mmhg <= 0.0 {
+        return 0.0;
+    }
+    let pn = po2_mmhg.powf(m.hill_n);
+    pn / (pn + p50_mmhg.powf(m.hill_n))
+}
+
+/// Haemoglobin oxygen saturation at a partial pressure (Milestone
+/// 47): the Hill form of the dissociation curve (S63) at the
+/// curve's RESTING position (the unshifted curve — with the Bohr
+/// shift disabled, or at the resting pH, this is the curve).
+pub fn hill_saturation(po2_mmhg: f64, m: &Model) -> f64 {
+    hill_saturation_p50(po2_mmhg, m.hill_p50_mmhg, m)
+}
+
+/// Haemoglobin oxygen saturation at a partial pressure on the
+/// Bohr-shifted curve at a pH (Milestone 52).
+pub fn hill_saturation_at_ph(po2_mmhg: f64, ph: f64, m: &Model) -> f64 {
+    hill_saturation_p50(po2_mmhg, bohr_p50_effective_mmhg(ph, m), m)
+}
+
+/// Oxygen content of blood (mL/dL) at a partial pressure, a
+/// haemoglobin concentration and an explicit P50 (Milestone 47):
+/// the content equation (S61/S67) — Hufner-bound oxygen at the
+/// Hill saturation plus the dissolved term.
+pub fn o2_content_ml_dl_p50(po2_mmhg: f64, hb_g_dl: f64, p50_mmhg: f64, m: &Model) -> f64 {
+    m.hufner_ml_g * hb_g_dl * hill_saturation_p50(po2_mmhg, p50_mmhg, m)
+        + m.o2_solubility_ml_dl_mmhg * po2_mmhg
+}
+
+/// Oxygen content of blood (mL/dL) at a partial pressure and
+/// haemoglobin concentration (Milestone 47): the content equation
+/// at the curve's RESTING position (the unshifted curve).
+pub fn o2_content_ml_dl(po2_mmhg: f64, hb_g_dl: f64, m: &Model) -> f64 {
+    o2_content_ml_dl_p50(po2_mmhg, hb_g_dl, m.hill_p50_mmhg, m)
+}
+
+/// Oxygen content of blood (mL/dL) on the Bohr-shifted curve at a
+/// pH (Milestone 52): the content equation at the effective P50.
+pub fn o2_content_ml_dl_at_ph(po2_mmhg: f64, hb_g_dl: f64, ph: f64, m: &Model) -> f64 {
+    o2_content_ml_dl_p50(po2_mmhg, hb_g_dl, bohr_p50_effective_mmhg(ph, m), m)
+}
+
+/// Invert the content equation at an explicit P50 (Milestone 47):
+/// the partial pressure whose content is `content_ml_dl`, by
+/// fixed-iteration bisection (200 halvings of [0, PB], the house
+/// style of the MCFP stop-flow solve — fixed count, no
+/// data-dependent termination, so the result is a deterministic
+/// function of the inputs). The P50 is the caller's, explicit:
+/// inverting a shifted content on the unshifted curve (or the
+/// reverse) is the inconsistency Milestone 52's tests exclude.
+pub fn po2_from_content_ml_dl_p50(
+    content_ml_dl: f64,
+    hb_g_dl: f64,
+    p50_mmhg: f64,
+    m: &Model,
+) -> f64 {
+    if !(content_ml_dl > 0.0) || hb_g_dl <= 0.0 {
+        return 0.0;
+    }
+    let (mut lo, mut hi) = (0.0f64, m.pb_mmhg);
+    for _ in 0..200 {
+        let mid = 0.5 * (lo + hi);
+        if o2_content_ml_dl_p50(mid, hb_g_dl, p50_mmhg, m) < content_ml_dl {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    0.5 * (lo + hi)
+}
+
+/// Invert the content equation (Milestone 47) at the curve's
+/// RESTING position (the unshifted curve).
+pub fn po2_from_content_ml_dl(content_ml_dl: f64, hb_g_dl: f64, m: &Model) -> f64 {
+    po2_from_content_ml_dl_p50(content_ml_dl, hb_g_dl, m.hill_p50_mmhg, m)
+}
+
+/// Invert the content equation on the Bohr-shifted curve at a pH
+/// (Milestone 52): the same effective P50 the loading side used.
+pub fn po2_from_content_ml_dl_at_ph(content_ml_dl: f64, hb_g_dl: f64, ph: f64, m: &Model) -> f64 {
+    po2_from_content_ml_dl_p50(content_ml_dl, hb_g_dl, bohr_p50_effective_mmhg(ph, m), m)
+}
+
+/// Sensed arterial PO2 (mm Hg, Milestone 51): the module's own
+/// gas-exchange construction — alveolar gas equation at the given
+/// PaCO2, end-capillary content by the content equation, arterial
+/// content by the Berggren mixing relation (S57) at the given
+/// cardiac output, inverted through the content equation — with
+/// every quantity explicit, so the chemoreflex sensor, the
+/// readouts and the dossier's independent solver all evaluate the
+/// identical function. The peripheral chemoreceptors sense
+/// arterial PO2, not content (S69); this is the arterial value.
+pub fn sensed_arterial_po2_mmhg(
+    paco2_mmhg: f64,
+    hb_g_dl: f64,
+    co_l_min: f64,
+    admixture_frac: f64,
+    vo2_ml_min: f64,
+    m: &Model,
+) -> f64 {
+    sensed_arterial_po2_mmhg_p50(
+        paco2_mmhg,
+        hb_g_dl,
+        co_l_min,
+        admixture_frac,
+        vo2_ml_min,
+        m.hill_p50_mmhg,
+        m,
+    )
+}
+
+/// Sensed arterial PO2 at an explicit P50 (Milestone 52): the
+/// sensor construction with BOTH its content evaluation and its
+/// inversion on the given curve position — the loading side and
+/// the inversion side of one computation, on one P50.
+pub fn sensed_arterial_po2_mmhg_p50(
+    paco2_mmhg: f64,
+    hb_g_dl: f64,
+    co_l_min: f64,
+    admixture_frac: f64,
+    vo2_ml_min: f64,
+    p50_mmhg: f64,
+    m: &Model,
+) -> f64 {
+    let pao2_alv = m.pio2_mmhg - paco2_mmhg * (m.fio2 + (1.0 - m.fio2) / m.rq);
+    let cc = o2_content_ml_dl_p50(pao2_alv, hb_g_dl, p50_mmhg, m);
+    let av = vo2_ml_min / (co_l_min * 10.0);
+    let ca = cc - (admixture_frac / (1.0 - admixture_frac)) * av;
+    po2_from_content_ml_dl_p50(ca, hb_g_dl, p50_mmhg, m)
+}
+
+/// Sensed arterial PO2 on the Bohr-shifted curve (Milestone 52):
+/// the effective P50 at the pH the given PaCO2 implies (S66) —
+/// the sensor the chemoreflex sees when the shift is live.
+pub fn sensed_arterial_po2_mmhg_bohr(
+    paco2_mmhg: f64,
+    hb_g_dl: f64,
+    co_l_min: f64,
+    admixture_frac: f64,
+    vo2_ml_min: f64,
+    m: &Model,
+) -> f64 {
+    let p50 = bohr_p50_effective_mmhg(arterial_ph_at(paco2_mmhg, m), m);
+    sensed_arterial_po2_mmhg_p50(paco2_mmhg, hb_g_dl, co_l_min, admixture_frac, vo2_ml_min, p50, m)
+}
+
+/// Weil et al.'s hypoxic shape parameter A at a PaCO2 (Milestone
+/// 51): log-linear interpolation between the paper's three cited
+/// anchors (S68) — A = 30.2 at PaCO2_set − 5 mmHg, 180.2 at
+/// PaCO2_set, 453.4 at PaCO2_set + 5 mmHg — clamped to the
+/// anchors' span outside them. This PaCO2-dependence IS the cited
+/// hypoxia–CO2 interaction (S69: synergistic, more than
+/// additive): hypercapnia potentiates the hypoxic response,
+/// hypocapnia nearly abolishes it.
+pub fn weil_shape_a(paco2_mmhg: f64, paco2_set_mmhg: f64, m: &Model) -> f64 {
+    let d = paco2_mmhg - paco2_set_mmhg;
+    if d >= 0.0 {
+        let t = (d / 5.0).min(1.0);
+        (m.hyp_a.ln() + t * (m.hyp_a_hi.ln() - m.hyp_a.ln())).exp()
+    } else {
+        let t = (-d / 5.0).min(1.0);
+        (m.hyp_a.ln() + t * (m.hyp_a_lo.ln() - m.hyp_a.ln())).exp()
+    }
+}
+
+/// The hypoxic ventilatory drive term (L/min of minute
+/// ventilation, Milestone 51): Weil's hyperbola (S68) applied
+/// incrementally about the captured resting operating point —
+/// A_eff × [1/(PaO2_sensed − asymptote) − 1/(PaO2_rest −
+/// asymptote)] — clamped to add drive only (a sensed PaO2 at or
+/// above the resting value contributes exactly zero) and
+/// saturated at 40 L/min (the term binds only as the sensed PO2
+/// approaches the asymptote, where the respiratory-rate clamp
+/// binds first in every shipped scenario). Zero at the resting
+/// equilibrium by construction: at the operating point the two
+/// reciprocals are the same number.
+pub fn hypoxic_drive_l_min(
+    paco2_mmhg: f64,
+    pao2_sensed_mmhg: f64,
+    paco2_set_mmhg: f64,
+    pao2_set_mmhg: f64,
+    m: &Model,
+) -> f64 {
+    let denom_s = pao2_sensed_mmhg - m.hyp_asymptote_mmhg;
+    let denom_set = pao2_set_mmhg - m.hyp_asymptote_mmhg;
+    if denom_s <= 0.5 || denom_set <= 0.5 {
+        return 40.0;
+    }
+    let a = weil_shape_a(paco2_mmhg, paco2_set_mmhg, m);
+    (a * (1.0 / denom_s - 1.0 / denom_set)).clamp(0.0, 40.0)
+}
+
 fn bernoulli_b(rho_kg_m3: f64, area_cm2: f64) -> f64 {
     // deltaP[mmHg] = B * Q[mL/s]^2, from deltaP = rho/(2 A^2) * Q^2 (SI),
     // Q_SI = Q_mL * 1e-6 m^3/s, 1 mmHg = 133.322 Pa.
@@ -334,6 +828,32 @@ fn bernoulli_b(rho_kg_m3: f64, area_cm2: f64) -> f64 {
 impl Model {
     pub fn from_params(p: &Params) -> Model {
         let rho = p.f64("blood_density_kg_m3");
+        // Milestone 47 resting respiratory construction: inspired
+        // PO2 from the gas constants (S52/S53), and the resting
+        // PaCO2 from the PCO2 equation at the cited resting VCO2
+        // (= RQ x VO2, S54) and alveolar ventilation
+        // (= RR x (VT - VD), S51/S64) — the equilibrium the CO2
+        // store is initialised on, so its derivative vanishes at
+        // the operating point exactly.
+        let pio2_mmhg = p.f64("inspired_o2_fraction")
+            * (p.f64("barometric_pressure_mmhg") - p.f64("water_vapor_pressure_mmhg"));
+        let paco2_rest_mmhg = p.f64("alveolar_ventilation_constant")
+            * (p.f64("respiratory_quotient") * p.f64("vo2_resting_ml_min"))
+            / (p.f64("respiratory_rate_resting_per_min")
+                * (p.f64("tidal_volume_ml") - p.f64("dead_space_ml"))
+                / 1000.0);
+        // Milestone 52: the Bohr anchor — the resting pH the
+        // Henderson–Hasselbalch relation (S66) takes at the resting
+        // PaCO2 and bicarbonate, evaluated with the identical
+        // operations arterial_ph_at() performs at that PaCO2 (at
+        // the resting PaCO2 the acute-buffering deviation is zero,
+        // so the bicarbonate there is the resting value), so the
+        // resting pH the engine reads out IS this value bit-for-bit
+        // and the Bohr multiplier there is exactly 1.0.
+        let ph_rest = p.f64("henderson_hasselbalch_pk")
+            + (p.f64("bicarbonate_resting_meq_l")
+                / (p.f64("co2_solubility_hh_mmol_l_mmhg") * paco2_rest_mmhg))
+                .log10();
         Model {
             substep: p.f64("substep_seconds"),
             hr0: p.f64("heart_rate_baseline_bpm"),
@@ -457,6 +977,47 @@ impl Model {
             aldo_ceiling: p.f64("aldosterone_target_ceiling"),
             aldo_shift_mmhg_per_unit: p.f64("renal_curve_shift_per_aldosterone_mmhg"),
             renal_chronic_steep: p.f64("renal_chronic_steepening"),
+            pb_mmhg: p.f64("barometric_pressure_mmhg"),
+            ph2o_mmhg: p.f64("water_vapor_pressure_mmhg"),
+            fio2: p.f64("inspired_o2_fraction"),
+            vt0_ml: p.f64("tidal_volume_ml"),
+            vd0_ml: p.f64("dead_space_ml"),
+            rr0_per_min: p.f64("respiratory_rate_resting_per_min"),
+            vo2_0_ml_min: p.f64("vo2_resting_ml_min"),
+            rq: p.f64("respiratory_quotient"),
+            k_alv: p.f64("alveolar_ventilation_constant"),
+            admixture0: p.f64("venous_admixture_resting_fraction"),
+            co2_capacitance_ml_mmhg: p.f64("co2_store_capacitance_ml_mmhg"),
+            hill_p50_mmhg: p.f64("hill_p50_mmhg"),
+            hill_n: p.f64("hill_coefficient"),
+            hufner_ml_g: p.f64("hufner_constant_ml_g"),
+            o2_solubility_ml_dl_mmhg: p.f64("o2_solubility_ml_dl_mmhg"),
+            mchc_g_dl: p.f64("mchc_g_dl"),
+            hco3_0_meq_l: p.f64("bicarbonate_resting_meq_l"),
+            hh_pk: p.f64("henderson_hasselbalch_pk"),
+            hh_co2_solubility: p.f64("co2_solubility_hh_mmol_l_mmhg"),
+            hco3_rise_per_mmhg: p.f64("acute_hco3_rise_per_mmhg"),
+            hco3_fall_per_mmhg: p.f64("acute_hco3_fall_per_mmhg"),
+            chemo_slope_l_min_mmhg: p.f64("chemoreflex_slope_l_min_mmhg"),
+            chemo_tau_s: p.f64("chemoreflex_tau_seconds"),
+            rr_bounds: [
+                p.f64("resp_rate_min_per_min"),
+                p.f64("resp_rate_max_per_min"),
+            ],
+            hyp_a: p.f64("hypoxic_shape_a_l_min_mmhg"),
+            hyp_a_lo: p.f64("hypoxic_shape_a_at_paco2_minus5"),
+            hyp_a_hi: p.f64("hypoxic_shape_a_at_paco2_plus5"),
+            hyp_asymptote_mmhg: p.f64("hypoxic_asymptote_mmhg"),
+            do2_crit_ml_min: p.f64("do2_critical_ml_min"),
+            metab_deadband: p.f64("metabolic_feedback_deadband"),
+            metab_gain: p.f64("metabolic_feedback_hr_gain"),
+            bohr_coefficient: p.f64("bohr_coefficient_logp50_per_ph"),
+            ph_rest,
+            hco3_chronic_rise_per_mmhg: p.f64("chronic_hco3_rise_per_mmhg"),
+            hco3_chronic_fall_per_mmhg: p.f64("chronic_hco3_fall_per_mmhg"),
+            comp_tau_s: p.f64("chronic_compensation_tau_seconds"),
+            pio2_mmhg,
+            paco2_rest_mmhg,
         }
     }
 
@@ -590,6 +1151,66 @@ pub enum Event {
     /// the osmolality axis at all (measured and recorded in
     /// MILESTONE-30.md). A rate of 0 stops the flow.
     SetWaterFlow { rate_ml_s: f64, label: String },
+    /// Set the metabolic rate (Milestone 47): oxygen consumption
+    /// in mL/min STPD; CO2 production follows as RQ x VO2 (S54).
+    /// The resting default is the parameters.json resting value.
+    /// A scenario input only — the module models no circulatory
+    /// response to metabolic rate (named limit, MILESTONE-47.md).
+    SetMetabolicRate { vo2_ml_min: f64, label: String },
+    /// Set the ventilatory anatomy inputs (Milestone 47): tidal
+    /// volume and/or dead space in mL; a None field leaves that
+    /// input unchanged. These are the lung's scenario anatomy
+    /// (S51/S52/S64), e.g. a raised dead space.
+    SetVentilation {
+        tidal_ml: Option<f64>,
+        dead_space_ml: Option<f64>,
+        label: String,
+    },
+    /// Override the respiratory rate (Milestone 47): Some(rate)
+    /// holds the rate at the given value with the chemoreflex
+    /// suspended (controlled hypoventilation or ventilation);
+    /// None releases the override and returns control to the
+    /// chemoreflex. The rate state still approaches the held value
+    /// at the chemoreflex time constant — the pattern does not jump.
+    SetVentilationOverride {
+        rate_per_min: Option<f64>,
+        label: String,
+    },
+    /// Set the lumped venous admixture fraction (Milestone 47):
+    /// the module's only V/Q structure (S57) — a shunt/dead-space-
+    /// class disturbance enters through this fraction (shunt) or
+    /// through SetVentilation's dead space (dead-space class).
+    SetVenousAdmixture { fraction: f64, label: String },
+    /// Enable or disable the hypoxic ventilatory drive (Milestone
+    /// 51): the drive is live by default; disabling it reproduces
+    /// the Milestone 47 CO2-only controller exactly (the pure-shunt
+    /// picture). Suspending it does not suspend the CO2 chemoreflex
+    /// — the rate override (SetVentilationOverride) suspends both.
+    SetHypoxicDrive { enabled: bool, label: String },
+    /// Arm or disarm the metabolic-circulatory feedback (Milestone
+    /// 51): the DO2-error term into the baroreflex heart-rate
+    /// multiplier. Disarmed by default in every shipped protocol;
+    /// a scenario arms it explicitly. Arming changes nothing at the
+    /// resting operating point (the term is exactly zero inside
+    /// its deadband — see oxygen_feedback_multiplier).
+    SetOxygenFeedback { armed: bool, label: String },
+    /// Enable or disable the Bohr shift (Milestone 52): the
+    /// pH-dependence of the dissociation curve's P50. Live by
+    /// default; disabling it reproduces the Milestone 47
+    /// fixed-curve picture exactly (the Bohr A/B arms). Disabling
+    /// it does not touch the CO2 chemoreflex, the hypoxic drive's
+    /// structure, or acid–base — only the curve's position.
+    SetBohrShift { enabled: bool, label: String },
+    /// Enable or disable the renal (chronic) acid–base
+    /// compensation state (Milestone 53): live by default;
+    /// disabling it freezes the state (its derivative is zero),
+    /// so a state initialised at 0.0 stays exactly 0.0 and the
+    /// acute-only acid–base picture of Milestones 47/52 is
+    /// reproduced at any horizon (the chronic A/B arms).
+    /// Disabling it does not touch the CO2 store, the chemoreflex
+    /// or the circulation — only the bicarbonate the
+    /// Henderson–Hasselbalch readout sees.
+    SetChronicCompensation { enabled: bool, label: String },
 }
 
 #[derive(Debug, Clone)]
@@ -739,6 +1360,79 @@ pub struct Engine {
     /// hash-folded — event-determined).
     water_flow_ml_s: f64,
     water_integral_ml: f64,
+    /// Arterial PCO2 (mm Hg, Milestone 47): the lumped CO2 store's
+    /// pressure. Initialised at the PCO2 equation's resting value
+    /// (Model::paco2_rest_mmhg), where its derivative vanishes by
+    /// construction. Folded into resp_hash only — never into the
+    /// circulation trace hash (see the module header).
+    paco2_mmhg: f64,
+    /// Respiratory rate (breaths/min, Milestone 47): the ventilatory
+    /// actuator state, driven by the chemoreflex (or held by a
+    /// scenario override) at the chemoreflex time constant.
+    resp_rate: f64,
+    /// Respiratory scenario inputs (Milestone 47): the current
+    /// metabolic rate (VO2, mL/min STPD), tidal volume and dead
+    /// space (mL), venous admixture fraction, and the rate override
+    /// (Some = chemoreflex suspended). Initialised to the
+    /// parameters.json resting values; the Set* respiratory events
+    /// replace them.
+    vo2_ml_min: f64,
+    vt_ml: f64,
+    vd_ml: f64,
+    admixture_frac: f64,
+    rr_override: Option<f64>,
+    /// Chemoreflex operating point captured when the reflex engages
+    /// (Milestone 47): (resting PaCO2, resting minute ventilation)
+    /// — the model's own, exactly as setpoint_map is for pressure.
+    resp_setpoint: Option<(f64, f64)>,
+    /// Two-way coupling state (Milestone 51): whether the hypoxic
+    /// drive is live (default true; Event::SetHypoxicDrive toggles
+    /// it), whether the metabolic-circulatory feedback is armed
+    /// (default false; Event::SetOxygenFeedback), and the sensed
+    /// resting PaO2 / DO2 captured at engagement through the
+    /// module's own sensor construction at the last completed
+    /// beat's cardiac output — the two couplings' operating points,
+    /// captured exactly as resp_setpoint is.
+    hypoxic_enabled: bool,
+    o2_feedback_armed: bool,
+    /// Whether the Bohr shift is live (Milestone 52): default
+    /// true; Event::SetBohrShift toggles it for the A/B arms.
+    /// Read only by the oxygen-transport readouts and the
+    /// chemoreflex sensor — never by a derivative — so toggling
+    /// it cannot move the circulation or the CO2 store.
+    bohr_enabled: bool,
+    /// Renal (chronic) acid–base compensation state (mEq/L,
+    /// Milestone 53): the kidney's bicarbonate increment beyond
+    /// acute buffering. Initialised at exactly 0.0 — its target
+    /// at the resting PaCO2 is exactly 0.0, so its derivative
+    /// vanishes at the resting equilibrium and the settle is
+    /// undisturbed. Folded into resp_hash only — never into the
+    /// circulation trace hash.
+    hco3_comp_meq_l: f64,
+    /// Whether the renal compensation state is live (Milestone
+    /// 53): default true; Event::SetChronicCompensation toggles
+    /// it for the A/B arms. When disabled the state's derivative
+    /// is zero — a state initialised at 0.0 then stays exactly
+    /// 0.0, reproducing the acute-only (Milestones 47/52) picture
+    /// at any horizon.
+    comp_enabled: bool,
+    pao2_set: Option<f64>,
+    do2_set: Option<f64>,
+    /// Per-tick samples of the two couplings' terms (Milestone
+    /// 51): refreshed once per tick in tick() from the base state
+    /// and read by evaluate()/reflex() across the tick's substeps
+    /// and RK4 stages — both sensors are slow control signals
+    /// (chemoreflex response 18–23 s, S68; the baroreflex itself
+    /// is low-passed), so a 20 ms sample is far inside their
+    /// bandwidth, and sampling per stage would put two content
+    /// inversions inside the integrator's inner loop.
+    hypoxic_tick_term: f64,
+    o2_mult_tick: f64,
+    /// The respiratory module's own trace hash (Milestone 47): an
+    /// FNV-1a chain over (tick, paco2, resp_rate, hco3_comp) per
+    /// tick (Milestone 53 adds the compensation state), kept
+    /// separate so the circulation hash stays bit-identical.
+    resp_hash: u64,
     tau: f64,
     ext_flow_ml_s: f64,
     ext_integral_ml: f64,
@@ -806,6 +1500,14 @@ struct Eval {
     d_adh: f64,
     d_aldo: f64,
     d_una: f64,
+    // Milestone 47 respiratory derivatives: arterial PCO2
+    // (mmHg/s) and respiratory rate (breaths/min per s). Neither
+    // feeds any circulation derivative — the coupling is one-way.
+    d_paco2: f64,
+    d_rr: f64,
+    // Milestone 53: the renal compensation state's derivative
+    // (mEq/L per s). Respiratory-side only, like the two above.
+    d_hco3_comp: f64,
 }
 
 impl Engine {
@@ -852,6 +1554,15 @@ impl Engine {
         let na0_mmol = model.na_resting_mmol_l * ecf0_ml / 1000.0;
         let icf_solute_mosm = model.resting_osmolality_mosm_kg() * model.icf_volume_ml / 1000.0;
         let adh0 = model.resting_adh_pg_ml();
+        // Milestone 47 respiratory initial values (locals, like the
+        // Milestone 26/30 constructions above): the CO2 store's
+        // equilibrium pressure and the cited resting pattern.
+        let paco2_0 = model.paco2_rest_mmhg;
+        let rr_0 = model.rr0_per_min;
+        let vo2_0 = model.vo2_0_ml_min;
+        let vt_0 = model.vt0_ml;
+        let vd_0 = model.vd0_ml;
+        let admixture_0 = model.admixture0;
         let icf0_ml = model.icf_volume_ml;
         let intake0_ml_s = model.intake_ml_s;
         let na_intake0_mmol_s = model.na_intake0_mmol_s;
@@ -887,6 +1598,31 @@ impl Engine {
             intake_na_rate_mmol_s: na_intake0_mmol_s,
             water_flow_ml_s: 0.0,
             water_integral_ml: 0.0,
+            // Milestone 47 respiratory initial conditions, by the
+            // same equilibrium construction as Milestones 25/26/30:
+            // the CO2 store starts at the PCO2 equation's resting
+            // value (its derivative vanishes there), the rate at the
+            // cited resting pattern, and the scenario inputs at
+            // their parameter defaults. Nothing respiratory feeds a
+            // circulation derivative, so the settle is undisturbed.
+            paco2_mmhg: paco2_0,
+            resp_rate: rr_0,
+            vo2_ml_min: vo2_0,
+            vt_ml: vt_0,
+            vd_ml: vd_0,
+            admixture_frac: admixture_0,
+            rr_override: None,
+            resp_setpoint: None,
+            hypoxic_enabled: true,
+            o2_feedback_armed: false,
+            bohr_enabled: true,
+            hco3_comp_meq_l: 0.0,
+            comp_enabled: true,
+            pao2_set: None,
+            do2_set: None,
+            hypoxic_tick_term: 0.0,
+            o2_mult_tick: 1.0,
+            resp_hash: FNV_OFFSET,
             tau: 0.0,
             ext_flow_ml_s: 0.0,
             ext_integral_ml: 0.0,
@@ -906,6 +1642,120 @@ impl Engine {
         }
     }
 
+    /// The sensor cardiac output (L/min, Milestone 51): the last
+    /// completed beat's cardiac output — the beat-window quantity
+    /// the module's oxygen-transport readouts are evaluated at
+    /// (the M24 steady-state sense), and therefore the flow the
+    /// two couplings' sensors see. None before the first beat
+    /// closes, in which case both couplings are inert.
+    fn sensor_co_l_min(&self) -> Option<f64> {
+        self.beats
+            .last()
+            .map(|b| b.co_l_min)
+            .filter(|c| *c > 0.0)
+    }
+
+    /// The effective P50 (mm Hg) the oxygen algebra is currently
+    /// on (Milestone 52): the Bohr-shifted P50 at the current
+    /// arterial pH when the shift is live, the resting P50 when it
+    /// is disabled. At the resting state this is the resting P50
+    /// bit-for-bit (the anchored multiplier there is exactly 1.0).
+    /// This is the ONLY curve position the engine's oxygen
+    /// computations use — loading, mixing, inversion and the
+    /// chemoreflex sensor all read it — so the two sides of the
+    /// algebra cannot disagree about the curve's position.
+    pub fn effective_p50_mmhg(&self) -> f64 {
+        if self.bohr_enabled {
+            bohr_p50_effective_mmhg(self.arterial_ph(), &self.model)
+        } else {
+            self.model.hill_p50_mmhg
+        }
+    }
+
+    /// Whether the Bohr shift is live (Milestone 52).
+    pub fn bohr_enabled(&self) -> bool {
+        self.bohr_enabled
+    }
+
+    /// Sensed arterial PO2 (mm Hg) at a cardiac output, from the
+    /// CURRENT state (Milestone 51): the sensor construction
+    /// (sensed_arterial_po2_mmhg) at the state's PaCO2, haemoglobin,
+    /// admixture and metabolic rate. Milestone 52: the sensor
+    /// evaluates on the engine's effective P50, like every other
+    /// oxygen computation — with the shift live, the chemoreflex
+    /// senses the PO2 of the shifted curve's blood, and with the
+    /// shift disabled it reproduces the Milestone 51 sensor
+    /// exactly (the resting anchor makes the two coincide at the
+    /// operating point in any case).
+    pub fn sensed_pao2_mmhg_at(&self, co_l_min: f64) -> f64 {
+        sensed_arterial_po2_mmhg_p50(
+            self.paco2_mmhg,
+            self.hemoglobin_g_dl(),
+            co_l_min,
+            self.admixture_frac,
+            self.vo2_ml_min,
+            self.effective_p50_mmhg(),
+            &self.model,
+        )
+    }
+
+    /// The hypoxic drive term (L/min, Milestone 51) the controller
+    /// would add at a cardiac output, from the current state and
+    /// the captured operating point; 0.0 when the drive is
+    /// disabled, unengaged, or the sensed PaO2 is at/above rest.
+    pub fn hypoxic_drive_l_min_at(&self, co_l_min: f64) -> f64 {
+        if !self.hypoxic_enabled {
+            return 0.0;
+        }
+        match (self.resp_setpoint, self.pao2_set) {
+            (Some((p_set, _)), Some(pao2_set)) => hypoxic_drive_l_min(
+                self.paco2_mmhg,
+                self.sensed_pao2_mmhg_at(co_l_min),
+                p_set,
+                pao2_set,
+                &self.model,
+            ),
+            _ => 0.0,
+        }
+    }
+
+    /// The metabolic-circulatory feedback's heart-rate multiplier
+    /// (Milestone 51): 1 + gain × max(0, normalised DO2 error −
+    /// deadband), the error being (DO2_set − DO2_sensed) /
+    /// (DO2_set − DO2crit) at the sensor cardiac output. EXACTLY
+    /// 1.0 — bitwise, so every trajectory it touches is unchanged —
+    /// when the feedback is disarmed, unengaged, or the error sits
+    /// inside the deadband, which the resting operating point does
+    /// by construction (its error is 0 there, up to the sensor's
+    /// sub-1% beat noise, inside the 5% deadband).
+    pub fn oxygen_feedback_multiplier(&self) -> f64 {
+        if !self.o2_feedback_armed {
+            return 1.0;
+        }
+        let (Some(do2_set), Some(co)) = (self.do2_set, self.sensor_co_l_min()) else {
+            return 1.0;
+        };
+        let scale = do2_set - self.model.do2_crit_ml_min;
+        if scale <= 0.0 {
+            return 1.0;
+        }
+        let err = (do2_set - self.oxygen_delivery_ml_min(co)) / scale;
+        1.0 + self.model.metab_gain * (err - self.model.metab_deadband).max(0.0)
+    }
+
+    /// Refresh the per-tick coupling samples (Milestone 51):
+    /// called once per tick, after events land and before the
+    /// substeps run. The hypoxic term is the same function the
+    /// readout path evaluates live (hypoxic_drive_l_min_at), at the
+    /// tick's base state; the feedback multiplier likewise.
+    fn refresh_coupling_terms(&mut self) {
+        self.hypoxic_tick_term = match self.sensor_co_l_min() {
+            Some(co) => self.hypoxic_drive_l_min_at(co),
+            None => 0.0,
+        };
+        self.o2_mult_tick = self.oxygen_feedback_multiplier();
+    }
+
     /// Baroreflex: returns (heart rate bpm, peripheral-resistance
     /// multiplier, venomotor recruitment target in mL, contractility
     /// multiplier target) for a given sensed (low-passed) MAP. With
@@ -917,8 +1767,15 @@ impl Engine {
             None => (self.model.hr0, 1.0, 0.0, 1.0),
             Some(sp) => {
                 let err = (sp - map_lp) / sp;
-                let hr_mult = (1.0 + self.model.reflex_gain_hr * err)
-                    .clamp(self.model.reflex_hr_bounds[0], self.model.reflex_hr_bounds[1]);
+                // Milestone 51: the metabolic-circulatory feedback
+                // multiplies the baroreflex heart-rate term, via
+                // the per-tick sample (o2_mult_tick — exactly 1.0
+                // whenever the feedback is disarmed or inside its
+                // deadband, so the product is bitwise the Milestone
+                // 47 value in every unarmed run).
+                let hr_mult = ((1.0 + self.model.reflex_gain_hr * err)
+                    * self.o2_mult_tick)
+                .clamp(self.model.reflex_hr_bounds[0], self.model.reflex_hr_bounds[1]);
                 let r_mult = (1.0 + self.model.reflex_gain_r * err)
                     .clamp(self.model.reflex_r_bounds[0], self.model.reflex_r_bounds[1]);
                 // Venomotor target: the cited swing capacity (S13)
@@ -953,6 +1810,23 @@ impl Engine {
             oncotic_pressure_mmhg(cp * 100.0, &self.model),
             oncotic_pressure_mmhg(ci * 100.0, &self.model),
         ));
+        // Milestone 47: the chemoreflex's operating point is
+        // captured at the same moment — the model's own resting
+        // PaCO2 and minute ventilation. The CO2 store sits exactly
+        // at its equilibrium here, so the captured PaCO2 is the
+        // PCO2 equation's resting value by construction.
+        self.resp_setpoint = Some((self.paco2_mmhg, self.minute_ventilation_l_min()));
+        // Milestone 51: the two couplings' operating points are
+        // captured at the same moment, through the sensor
+        // construction at the last completed beat's cardiac output
+        // (the baseline window's final beat in every shipped
+        // protocol): the sensed resting PaO2 (the hypoxic drive's
+        // zero) and the sensed resting oxygen delivery (the
+        // metabolic feedback's zero).
+        if let Some(co) = self.sensor_co_l_min() {
+            self.pao2_set = Some(self.sensed_pao2_mmhg_at(co));
+            self.do2_set = Some(self.oxygen_delivery_ml_min(co));
+        }
         self.log.push(LogEntry {
             tick: self.tick,
             text: format!("baroreflex engaged, setpoint MAP = {map:.2} mmHg (model's own resting operating point)"),
@@ -1090,12 +1964,19 @@ impl Engine {
         icf: f64,
         adh: f64,
         aldo: f64,
+        paco2: f64,
+        rr: f64,
+        hco3_comp: f64,
         tau: f64,
         period: f64,
         tv: f64,
     ) -> Eval {
         let m = &self.model;
         let (_, r_mult, veno_target, ino_target) = self.reflex(map_lp);
+        // Milestone 51: the hypoxic drive term for this tick —
+        // the per-tick sample refreshed in tick() (see
+        // refresh_coupling_terms); evaluate() only reads it.
+        let hypoxic_base = self.hypoxic_tick_term;
         let p_sa = (v[SA] - m.sa.1) / m.sa.0;
         let p_sc = (v[SC] - m.sc.1) / m.sc.0;
         // Venomotor recruitment acts on the venous unstressed volume:
@@ -1342,6 +2223,66 @@ impl Engine {
             q_pa - q_pc,
             q_pc - q_mv,
         ];
+        // Milestone 47 respiratory module at this stage. The
+        // ventilatory target: a scenario override holds the rate
+        // (chemoreflex suspended); otherwise, once the reflex has
+        // engaged, the lumped CO2 chemoreflex drives minute
+        // ventilation linearly on the PaCO2 error against the
+        // captured operating point (S58), allocated to rate alone
+        // at the current tidal volume and clamped to the flagged
+        // actuator bounds; before engagement the target is the
+        // cited resting rate. The rate state approaches its target
+        // at the lumped chemoreflex time constant (S59).
+        let rr_target = match self.rr_override {
+            Some(o) => o,
+            None => match self.resp_setpoint {
+                Some((p_set, ve_set)) => {
+                    // Milestone 51: the hypoxic drive term sampled
+                    // at the tick's base state (hypoxic_base, above)
+                    // adds to the CO2 chemoreflex's target; the
+                    // interaction is carried inside the term (its
+                    // shape parameter follows Weil's PaCO2 anchors,
+                    // S68/S69). Respiratory-side only: nothing here
+                    // feeds a circulation derivative.
+                    let ve_target = ve_set
+                        + m.chemo_slope_l_min_mmhg * (paco2 - p_set)
+                        + hypoxic_base;
+                    (ve_target * 1000.0 / self.vt_ml).clamp(m.rr_bounds[0], m.rr_bounds[1])
+                }
+                None => m.rr0_per_min,
+            },
+        };
+        let d_rr = (rr_target - rr) / m.chemo_tau_s;
+        // CO2 store: metabolic production (STPD) less alveolar
+        // elimination, over the effective capacitance (S60). The
+        // elimination term is the PCO2 equation rearranged —
+        // VCO2_elim = PaCO2 x VA / 0.863 with VA in L/min — so the
+        // store's steady state IS the cited equation (S51).
+        // Per second.
+        let va_ml_min = rr * (self.vt_ml - self.vd_ml);
+        let vco2_ml_min = m.rq * self.vo2_ml_min;
+        let d_paco2 = (vco2_ml_min - paco2 * va_ml_min / (1000.0 * m.k_alv))
+            / m.co2_capacitance_ml_mmhg
+            / 60.0;
+        // Renal (chronic) compensation (Milestone 53): the
+        // bicarbonate increment state relaxes first-order toward
+        // the chronic-minus-acute target at the stage PaCO2
+        // (renal_comp_target_meq_l_at), at the calibrated time
+        // constant. At the resting PaCO2 the target is exactly
+        // 0.0 and the state is exactly 0.0, so this derivative is
+        // exactly 0.0 at the resting equilibrium. Disabled, the
+        // derivative is exactly 0.0 at every state (the A/B
+        // instrument). The state reads the PaCO2 stage value
+        // only — it feeds no circulation derivative and not even
+        // the CO2 store; its only downstream is the bicarbonate
+        // readout (and through pH, the Bohr curve position and
+        // the chemoreflex sensor, both readouts/sensors, not
+        // derivatives of the circulation).
+        let d_hco3_comp = if self.comp_enabled {
+            (renal_comp_target_meq_l_at(paco2, m) - hco3_comp) / m.comp_tau_s
+        } else {
+            0.0
+        };
         Eval {
             pressures: Pressures {
                 lv: p_lv,
@@ -1378,6 +2319,9 @@ impl Engine {
             d_adh,
             d_aldo,
             d_una: u_na,
+            d_paco2,
+            d_rr,
+            d_hco3_comp,
         }
     }
 
@@ -1405,6 +2349,9 @@ impl Engine {
         let mut k_ad: [f64; 4] = [0.0; 4];
         let mut k_al: [f64; 4] = [0.0; 4];
         let mut k_un: [f64; 4] = [0.0; 4];
+        let mut k_pa: [f64; 4] = [0.0; 4];
+        let mut k_rr: [f64; 4] = [0.0; 4];
+        let mut k_hc: [f64; 4] = [0.0; 4];
         let mut acc_d_sa = 0.0;
         let mut acc_d_pa = 0.0;
         let mut acc_d_sv = 0.0;
@@ -1443,10 +2390,13 @@ impl Engine {
             let icf_s = stage(self.icf_ml, k_ic[s.saturating_sub(1)], s);
             let adh_s = stage(self.adh_pg_ml, k_ad[s.saturating_sub(1)], s);
             let aldo_s = stage(self.aldo_state, k_al[s.saturating_sub(1)], s);
+            let paco2_s = stage(self.paco2_mmhg, k_pa[s.saturating_sub(1)], s);
+            let rr_s = stage(self.resp_rate, k_rr[s.saturating_sub(1)], s);
+            let hc_s = stage(self.hco3_comp_meq_l, k_hc[s.saturating_sub(1)], s);
             let tau_s = self.tau + stage_frac[s] * h;
             let ev = self.evaluate(
                 &vs, map_s, cap_s, veno_s, refill_s, ino_s, rbc_s, pp_s, pi_s, na_s, icf_s, adh_s,
-                aldo_s, tau_s, period, tv,
+                aldo_s, paco2_s, rr_s, hc_s, tau_s, period, tv,
             );
             k_v[s] = ev.derivs;
             k_m[s] = ev.d_map_lp;
@@ -1463,6 +2413,9 @@ impl Engine {
             k_ad[s] = ev.d_adh;
             k_al[s] = ev.d_aldo;
             k_un[s] = ev.d_una;
+            k_pa[s] = ev.d_paco2;
+            k_rr[s] = ev.d_rr;
+            k_hc[s] = ev.d_hco3_comp;
             let w = weights[s];
             acc_d_sa += w * ev.pressures.sa;
             acc_d_pa += w * ev.pressures.pa;
@@ -1517,6 +2470,20 @@ impl Engine {
         self.adh_pg_ml = (self.adh_pg_ml + rk4(k_ad)).max(0.0);
         self.aldo_state = (self.aldo_state + rk4(k_al)).max(0.0);
         self.urine_na_mmol += rk4(k_un);
+        // Milestone 47 respiratory states: RK4-integrated like
+        // every other state, with the same class of numeric floor
+        // guard (neither flux can drive its state negative at these
+        // rates and step sizes; the guards keep a pathological
+        // stage value from doing so).
+        self.paco2_mmhg = (self.paco2_mmhg + rk4(k_pa)).max(0.0);
+        self.resp_rate = (self.resp_rate + rk4(k_rr)).max(0.0);
+        // Milestone 53: the renal compensation state is
+        // RK4-integrated like every other state, WITHOUT a floor
+        // guard: the state is legitimately negative in alkalosis
+        // (the kidney withdraws bicarbonate), and its derivative
+        // is a relaxation toward a bounded target, so no stage
+        // value can run away.
+        self.hco3_comp_meq_l += rk4(k_hc);
         self.intake_na_mmol += self.intake_na_rate_mmol_s * h;
         self.water_integral_ml += self.water_flow_ml_s * h;
         // Beat accumulators (RK-weighted stage means x h).
@@ -1650,8 +2617,104 @@ impl Engine {
                         ),
                     });
                 }
+                Event::SetMetabolicRate { vo2_ml_min, label } => {
+                    self.vo2_ml_min = vo2_ml_min;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: metabolic rate set to VO2 {vo2_ml_min:.1} mL/min (VCO2 {:.1} mL/min at RQ {:.2})",
+                            self.model.rq * vo2_ml_min,
+                            self.model.rq
+                        ),
+                    });
+                }
+                Event::SetVentilation {
+                    tidal_ml,
+                    dead_space_ml,
+                    label,
+                } => {
+                    if let Some(v) = tidal_ml {
+                        self.vt_ml = v;
+                    }
+                    if let Some(v) = dead_space_ml {
+                        self.vd_ml = v;
+                    }
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: ventilation anatomy set to VT {:.0} mL, VD {:.0} mL",
+                            self.vt_ml, self.vd_ml
+                        ),
+                    });
+                }
+                Event::SetVentilationOverride { rate_per_min, label } => {
+                    self.rr_override = rate_per_min;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: match rate_per_min {
+                            Some(r) => format!(
+                                "{label}: respiratory rate held at {r:.1} /min (chemoreflex suspended)"
+                            ),
+                            None => format!(
+                                "{label}: rate override released (chemoreflex in control)"
+                            ),
+                        },
+                    });
+                }
+                Event::SetVenousAdmixture { fraction, label } => {
+                    self.admixture_frac = fraction;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: venous admixture fraction set to {fraction:.3}"
+                        ),
+                    });
+                }
+                Event::SetHypoxicDrive { enabled, label } => {
+                    self.hypoxic_enabled = enabled;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: hypoxic ventilatory drive {}",
+                            if enabled { "enabled" } else { "disabled (CO2-only controller)" }
+                        ),
+                    });
+                }
+                Event::SetOxygenFeedback { armed, label } => {
+                    self.o2_feedback_armed = armed;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: metabolic-circulatory feedback {}",
+                            if armed { "ARMED" } else { "disarmed" }
+                        ),
+                    });
+                }
+                Event::SetBohrShift { enabled, label } => {
+                    self.bohr_enabled = enabled;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: Bohr shift {}",
+                            if enabled { "enabled" } else { "disabled (fixed Milestone 47 curve)" }
+                        ),
+                    });
+                }
+                Event::SetChronicCompensation { enabled, label } => {
+                    self.comp_enabled = enabled;
+                    self.log.push(LogEntry {
+                        tick: self.tick,
+                        text: format!(
+                            "{label}: renal (chronic) compensation {}",
+                            if enabled { "enabled" } else { "disabled (acute-only acid-base)" }
+                        ),
+                    });
+                }
             }
         }
+        // Milestone 51: sample the couplings' terms once for this
+        // tick (after this tick's events have landed).
+        self.refresh_coupling_terms();
         let n = (TICK_SECONDS / self.model.substep).round() as usize;
         for _ in 0..n {
             self.substep(self.model.substep);
@@ -1695,6 +2758,21 @@ impl Engine {
         h = fnv_fold(h, &self.aldo_state.to_bits().to_le_bytes());
         h = fnv_fold(h, &self.urine_na_mmol.to_bits().to_le_bytes());
         self.hash = h;
+        // Milestone 47: the respiratory states fold into their OWN
+        // chain (same FNV-1a, same offset basis), never into the
+        // circulation hash above — the case workbench pins that
+        // hash, and the module is a one-way readout of the
+        // circulation, so its presence must not move it.
+        let mut rh = fnv_fold(self.resp_hash, &self.tick.to_le_bytes());
+        rh = fnv_fold(rh, &self.paco2_mmhg.to_bits().to_le_bytes());
+        rh = fnv_fold(rh, &self.resp_rate.to_bits().to_le_bytes());
+        // Milestone 53: the renal compensation state joins the
+        // respiratory chain (after resp_rate; the fold order is
+        // part of the trace format, so all Milestone 53 resp
+        // hashes differ from Milestone 52's even where the
+        // trajectories agree — accounted in MILESTONE-53.md).
+        rh = fnv_fold(rh, &self.hco3_comp_meq_l.to_bits().to_le_bytes());
+        self.resp_hash = rh;
     }
 
     pub fn tick_n(&mut self, n: u64) {
@@ -1705,6 +2783,31 @@ impl Engine {
 
     pub fn hash(&self) -> u64 {
         self.hash
+    }
+
+    /// The respiratory module's own trace hash (Milestone 47):
+    /// pins the respiratory states' determinism without touching
+    /// the circulation hash the case workbench pins.
+    pub fn resp_hash(&self) -> u64 {
+        self.resp_hash
+    }
+
+    /// The sensed resting PaO2 captured at engagement (Milestone
+    /// 51): the hypoxic drive's operating point.
+    pub fn pao2_setpoint(&self) -> Option<f64> {
+        self.pao2_set
+    }
+
+    /// The sensed resting oxygen delivery captured at engagement
+    /// (Milestone 51): the metabolic feedback's operating point.
+    pub fn do2_setpoint(&self) -> Option<f64> {
+        self.do2_set
+    }
+
+    /// Whether the metabolic-circulatory feedback is armed
+    /// (Milestone 51).
+    pub fn o2_feedback_armed(&self) -> bool {
+        self.o2_feedback_armed
     }
 
     pub fn snapshot(&self) -> Engine {
@@ -1763,8 +2866,11 @@ impl Engine {
     }
 
     /// Hematocrit (Milestone 26): red-cell volume over total blood
-    /// volume. TRACKED-BUT-INERT — reported and used by the
-    /// plasma-volume identity; it drives no resistance or elastance.
+    /// volume. TRACKED-BUT-INERT in the circulation — reported and
+    /// used by the plasma-volume identity; it drives no resistance
+    /// or elastance. Milestone 47: it additionally carries oxygen
+    /// content, through the MCHC identity into haemoglobin
+    /// (hemoglobin_g_dl) — a readout coupling, still no mechanics.
     pub fn hematocrit(&self) -> f64 {
         let vb: f64 = self.v.iter().sum();
         if vb > 0.0 {
@@ -1772,6 +2878,196 @@ impl Engine {
         } else {
             0.0
         }
+    }
+
+    // ---- Milestone 47: respiratory readouts ----
+    // Pure functions of the respiratory states/inputs and (for the
+    // oxygen-transport quantities) of a cardiac output the caller
+    // supplies — a beat-window mean in the case harness, so the
+    // readouts are steady-state quantities in the M24 sense, never
+    // samples of a transient. None of them feeds a derivative.
+
+    /// Arterial PCO2 (mm Hg): the CO2 store's state.
+    pub fn paco2_mmhg(&self) -> f64 {
+        self.paco2_mmhg
+    }
+
+    /// Respiratory rate (breaths/min): the actuator state.
+    pub fn resp_rate_per_min(&self) -> f64 {
+        self.resp_rate
+    }
+
+    /// Minute ventilation (L/min): rate x tidal volume.
+    pub fn minute_ventilation_l_min(&self) -> f64 {
+        self.resp_rate * self.vt_ml / 1000.0
+    }
+
+    /// Alveolar ventilation (L/min): rate x (tidal - dead space).
+    pub fn alveolar_ventilation_l_min(&self) -> f64 {
+        self.resp_rate * (self.vt_ml - self.vd_ml) / 1000.0
+    }
+
+    /// Oxygen consumption (mL/min STPD): the metabolic input.
+    pub fn vo2_ml_min(&self) -> f64 {
+        self.vo2_ml_min
+    }
+
+    /// CO2 production (mL/min STPD): RQ x VO2 (S54 identity).
+    pub fn vco2_ml_min(&self) -> f64 {
+        self.model.rq * self.vo2_ml_min
+    }
+
+    /// Haemoglobin concentration (g/dL): the MCHC identity (S62)
+    /// on the Milestone 26 hematocrit state — the coupling that
+    /// carries bleeding and dilution into oxygen content.
+    pub fn hemoglobin_g_dl(&self) -> f64 {
+        self.model.mchc_g_dl * self.hematocrit()
+    }
+
+    /// Alveolar PO2 (mm Hg): the alveolar gas equation in its full
+    /// form (S52/S53 with the standard correction factor),
+    /// PAO2 = PIO2 - PaCO2 x (FiO2 + (1 - FiO2)/RQ).
+    pub fn alveolar_po2_mmhg(&self) -> f64 {
+        let m = &self.model;
+        m.pio2_mmhg - self.paco2_mmhg * (m.fio2 + (1.0 - m.fio2) / m.rq)
+    }
+
+    /// Ideal end-capillary oxygen content (mL/dL): the content
+    /// equation at alveolar PO2 (S57's CcO2), on the engine's
+    /// effective P50 (Milestone 52) — the loading side of the
+    /// Bohr shift: end-capillary blood equilibrates at alveolar
+    /// PO2 on the curve positioned by the (single, lumped)
+    /// arterial pH of this model.
+    pub fn end_capillary_o2_content_ml_dl(&self) -> f64 {
+        o2_content_ml_dl_p50(
+            self.alveolar_po2_mmhg(),
+            self.hemoglobin_g_dl(),
+            self.effective_p50_mmhg(),
+            &self.model,
+        )
+    }
+
+    /// The Fick arteriovenous content difference (mL/dL) at a
+    /// cardiac output (L/min): VO2 / CO. NaN at non-positive flow,
+    /// in the house style of the other computed readouts.
+    fn av_o2_difference_ml_dl(&self, co_l_min: f64) -> f64 {
+        if co_l_min > 0.0 {
+            self.vo2_ml_min / (co_l_min * 10.0)
+        } else {
+            f64::NAN
+        }
+    }
+
+    /// Arterial oxygen content (mL/dL) at a cardiac output: the
+    /// Berggren mixing relation (S57) — end-capillary content less
+    /// the admixture-weighted arteriovenous difference,
+    /// CaO2 = CcO2 - (fs / (1 - fs)) x (VO2 / CO).
+    pub fn arterial_o2_content_ml_dl(&self, co_l_min: f64) -> f64 {
+        let fs = self.admixture_frac;
+        self.end_capillary_o2_content_ml_dl()
+            - (fs / (1.0 - fs)) * self.av_o2_difference_ml_dl(co_l_min)
+    }
+
+    /// Mixed venous oxygen content (mL/dL) at a cardiac output:
+    /// arterial content less the Fick difference (S55).
+    pub fn mixed_venous_o2_content_ml_dl(&self, co_l_min: f64) -> f64 {
+        self.arterial_o2_content_ml_dl(co_l_min) - self.av_o2_difference_ml_dl(co_l_min)
+    }
+
+    /// Arterial PO2 (mm Hg) at a cardiac output: the content
+    /// equation inverted at the arterial content, on the SAME
+    /// effective P50 the loading side used (Milestone 52) — the
+    /// inversion is consistent with the content computation by
+    /// construction (inverting the end-capillary content returns
+    /// the alveolar PO2 exactly, on either curve position).
+    pub fn arterial_po2_mmhg(&self, co_l_min: f64) -> f64 {
+        po2_from_content_ml_dl_p50(
+            self.arterial_o2_content_ml_dl(co_l_min),
+            self.hemoglobin_g_dl(),
+            self.effective_p50_mmhg(),
+            &self.model,
+        )
+    }
+
+    /// Arterial oxygen saturation (fraction) at a cardiac output:
+    /// the Hill curve at the arterial PO2 (S63), on the engine's
+    /// effective P50 (Milestone 52) — the same position the
+    /// content and its inversion used.
+    pub fn arterial_saturation(&self, co_l_min: f64) -> f64 {
+        hill_saturation_p50(
+            self.arterial_po2_mmhg(co_l_min),
+            self.effective_p50_mmhg(),
+            &self.model,
+        )
+    }
+
+    /// Alveolar-arterial oxygen gradient (mm Hg) at a cardiac
+    /// output: PAO2 - PaO2 (S52).
+    pub fn aa_gradient_mmhg(&self, co_l_min: f64) -> f64 {
+        self.alveolar_po2_mmhg() - self.arterial_po2_mmhg(co_l_min)
+    }
+
+    /// Plasma bicarbonate (mEq/L): the TOTAL the
+    /// Henderson–Hasselbalch readout sees — the acute buffered
+    /// value (S66 Rules 1 and 3, asymmetric as the source states
+    /// them, applied to the PaCO2 deviation from the model's own
+    /// operating point) plus the renal compensation state
+    /// (Milestone 53). At the resting state the compensation state
+    /// is exactly 0.0 and this is the Milestone 47 value.
+    pub fn bicarbonate_meq_l(&self) -> f64 {
+        bicarbonate_meq_l_at(self.paco2_mmhg, &self.model) + self.hco3_comp_meq_l
+    }
+
+    /// The ACUTE bicarbonate component (mEq/L, Milestone 53): the
+    /// Milestone 47 acute-buffering value at the current PaCO2,
+    /// without the renal compensation state — the decomposition
+    /// the chronic arms report (total = acute + renal).
+    pub fn bicarbonate_acute_meq_l(&self) -> f64 {
+        bicarbonate_meq_l_at(self.paco2_mmhg, &self.model)
+    }
+
+    /// The renal compensation state itself (mEq/L, Milestone 53):
+    /// the kidney's bicarbonate increment beyond acute buffering
+    /// (positive in sustained acidosis, negative in sustained
+    /// alkalosis, exactly 0.0 at the resting equilibrium and
+    /// whenever the state is disabled from rest).
+    pub fn renal_compensation_meq_l(&self) -> f64 {
+        self.hco3_comp_meq_l
+    }
+
+    /// The renal compensation TARGET (mEq/L, Milestone 53) at the
+    /// current PaCO2: the chronic total (S73) less the acute
+    /// total (S66) — the value the state is relaxing toward.
+    pub fn renal_comp_target_meq_l(&self) -> f64 {
+        renal_comp_target_meq_l_at(self.paco2_mmhg, &self.model)
+    }
+
+    /// Whether the renal compensation state is live (Milestone 53).
+    pub fn chronic_compensation_enabled(&self) -> bool {
+        self.comp_enabled
+    }
+
+    /// Arterial pH: Henderson-Hasselbalch (S66) at the current
+    /// PaCO2 and the TOTAL bicarbonate (acute plus the renal
+    /// compensation state, Milestone 53). At the resting state the
+    /// compensation state is exactly 0.0 and this is
+    /// Model::ph_rest bit-for-bit — the Bohr anchor (Milestone
+    /// 52), which is a construction constant and does not drift
+    /// when compensation moves this readout in sustained arms.
+    pub fn arterial_ph(&self) -> f64 {
+        arterial_ph_total_at(self.paco2_mmhg, self.hco3_comp_meq_l, &self.model)
+    }
+
+    /// Oxygen delivery (mL/min) at a cardiac output:
+    /// DO2 = CO x CaO2 x 10 (S55/S61).
+    pub fn oxygen_delivery_ml_min(&self, co_l_min: f64) -> f64 {
+        co_l_min * 10.0 * self.arterial_o2_content_ml_dl(co_l_min)
+    }
+
+    /// Oxygen extraction ratio (fraction) at a cardiac output:
+    /// VO2 / DO2 (S55/S56). Reported, not gated (MILESTONE-47.md).
+    pub fn oxygen_extraction_ratio(&self, co_l_min: f64) -> f64 {
+        self.vo2_ml_min / self.oxygen_delivery_ml_min(co_l_min)
     }
 
     /// Plasma volume (mL, Milestone 26): total blood volume minus
@@ -2147,6 +3443,42 @@ impl Engine {
             "total_body_water" => (self.total_body_water_ml(), "mL"),
             "cumulative_urine_sodium" => (self.urine_na_mmol, "mmol"),
             "cumulative_sodium_intake" => (self.intake_na_mmol, "mmol"),
+            // Milestone 47 respiratory states and readouts. The
+            // state quantities are instantaneous; the oxygen-
+            // transport quantities are evaluated at the last
+            // completed beat's cardiac output (a beat statistic,
+            // like the outputs at the top of this match).
+            "arterial_pco2" => (self.paco2_mmhg, "mmHg"),
+            "respiratory_rate" => (self.resp_rate, "breaths/min"),
+            "minute_ventilation" => (self.minute_ventilation_l_min(), "L/min"),
+            "alveolar_ventilation" => (self.alveolar_ventilation_l_min(), "L/min"),
+            "oxygen_consumption" => (self.vo2_ml_min, "mL/min"),
+            "co2_production" => (self.vco2_ml_min(), "mL/min"),
+            "hemoglobin" => (self.hemoglobin_g_dl(), "g/dL"),
+            "alveolar_po2" => (self.alveolar_po2_mmhg(), "mmHg"),
+            "arterial_po2" => (self.arterial_po2_mmhg(b.co_l_min), "mmHg"),
+            "arterial_oxygen_saturation" => (self.arterial_saturation(b.co_l_min), "fraction"),
+            "arterial_oxygen_content" => (self.arterial_o2_content_ml_dl(b.co_l_min), "mL/dL"),
+            "oxygen_delivery" => (self.oxygen_delivery_ml_min(b.co_l_min), "mL/min"),
+            "aa_gradient" => (self.aa_gradient_mmhg(b.co_l_min), "mmHg"),
+            "arterial_ph" => (self.arterial_ph(), "pH"),
+            "bicarbonate" => (self.bicarbonate_meq_l(), "mEq/L"),
+            // Milestone 51 coupling sensors and effectors
+            // (instantaneous, at the last beat's cardiac output —
+            // the same evaluation point as the oxygen-transport
+            // readouts above).
+            "sensed_arterial_po2" => (self.sensed_pao2_mmhg_at(b.co_l_min), "mmHg"),
+            "hypoxic_ventilatory_drive" => (self.hypoxic_drive_l_min_at(b.co_l_min), "L/min"),
+            "oxygen_feedback_multiplier" => (self.oxygen_feedback_multiplier(), "ratio"),
+            // Milestone 52: the Bohr shift's curve position
+            // (instantaneous, like the mechanism states above).
+            "effective_p50" => (self.effective_p50_mmhg(), "mmHg"),
+            // Milestone 53: the renal compensation state and its
+            // target (instantaneous). "bicarbonate" above is the
+            // TOTAL (acute + renal) from this milestone on.
+            "renal_compensation" => (self.hco3_comp_meq_l, "mEq/L"),
+            "renal_compensation_target" => (self.renal_comp_target_meq_l(), "mEq/L"),
+            "bicarbonate_acute" => (self.bicarbonate_acute_meq_l(), "mEq/L"),
             _ => return None,
         };
         Some((val, unit))
