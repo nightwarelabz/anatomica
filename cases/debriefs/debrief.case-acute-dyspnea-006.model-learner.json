@@ -1,0 +1,1473 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "aa_assessment": {
+     "inputs": {
+      "aa_widened": true,
+      "hypoxaemia": true,
+      "infiltrate": false
+     },
+     "result": {
+      "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+      "pattern": "ventilation/perfusion mismatch"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "curb65": {
+     "items": {
+      "age_65_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "blood_pressure_low": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "confusion": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "respiratory_rate_30": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "urea_over_7": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "low severity band (CURB-65 0-1)",
+     "total": 1
+    },
+    "esc_pe_risk": {
+     "inputs": {
+      "haemodynamic_instability": false,
+      "rv_dysfunction": true,
+      "spesi_positive": true,
+      "troponin_elevated": true
+     },
+     "result": {
+      "esc_category": "intermediate-high",
+      "statement": "No instability; sPESI >= 1 with BOTH right-ventricular dysfunction and myocardial injury: the intermediate-high category \u2014 anticoagulate and monitor, rescue reperfusion on deterioration (C41)."
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "spo2_under_95": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 5
+    },
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 3,
+       "state": "satisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE likely (two-tier)",
+     "total": 6.0
+    }
+   },
+   "hypothesis": "hyp.pulmonary-embolism",
+   "mondo": "MONDO:0005279"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.heart-failure",
+    "learner_probability": 0.16,
+    "ruled_out_at_stage": 3,
+    "stage": 3,
+    "workbench_probability": 0.004116895241741957
+   }
+  ],
+  "attempt_id": "attempt.case-acute-dyspnea-006.model-learner",
+  "case_id": "case.acute-dyspnea.006",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "excludes must-not-miss hyp.acute-coronary-syndrome (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.ecg",
+    "time_min": 10
+   },
+   {
+    "basis": "settles guideline item(s): esc_pe_risk.troponin_elevated",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.troponin",
+    "time_min": 20
+   },
+   {
+    "basis": "settles guideline item(s): aa_assessment.aa_widened, aa_assessment.hypoxaemia",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.abg",
+    "time_min": 15
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.4805 -> 0.3790",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.bnp",
+    "time_min": 20
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.2707 -> 0.3790",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.d-dimer",
+    "time_min": 30
+   },
+   {
+    "basis": "settles guideline item(s): curb65.urea_over_7",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.bloods",
+    "time_min": 20
+   },
+   {
+    "basis": "settles guideline item(s): aa_assessment.infiltrate",
+    "classification": "criteria-completing",
+    "cost_units": 3,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.chest-xray",
+    "time_min": 20
+   },
+   {
+    "basis": "settles guideline item(s): perc_rule.unilateral_leg_swelling, wells_score.dvt_signs",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.exam-battery",
+    "time_min": 20
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.5081 -> 0.9554",
+    "classification": "discriminating",
+    "cost_units": 8,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.ctpa",
+    "time_min": 45
+   },
+   {
+    "basis": "hyp.heart-failure crosses the rule-out line (0.0340 -> 0.0041)",
+    "classification": "discriminating",
+    "cost_units": 3,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.lung-ultrasound",
+    "time_min": 15
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchor's mechanics are new to this module, and the difference is the lesson. Case 4's anchor was installed by another clinician before the learner arrived; case 5's was installed by the learner's own true history at stage 1. This one is installed MID-CASE, by a test result: the BNP returns at stage 2 \u2014 a true number, honestly weighed by the workbench itself, which also moves heart failure up (0.12 to 0.2881) \u2014 and the learner converts a rising differential into a settled diagnosis ('the BNP is up, the legs are swollen, it's her heart'), then reads every later result inside the frame: the wide A-a gradient becomes 'fluid', the measured calf becomes 'post-op swelling' (on the un-operated side), the troponin becomes 'demand'. Note what the frame survives: a completed Wells score of 6.0 on the case's own declared block, and a CTPA showing bilateral emboli \u2014 the learner still holds heart failure at 0.16 at stage 3, the stage the workbench rules it out at 0.0041. The counterweights were all mechanical, which is the case's thesis: a score completed from atoms cannot be argued with the way a gestalt can, a tape measure outranks an impression of 'swollen legs', and a peptide that rises in right-sided strain cannot arbitrate between the ventricles. The closing symmetry is deliberate: the test that ends the anchor is the one the learner ordered to confirm it.",
+   "description": "Stage 1: a post-operative dyspnoea with a board led, reasonably, by embolism (0.22) over heart failure (0.20) \u2014 the two frames are both alive and the learner's numbers are defensible. Stage 2: the BNP returns at 385 and the learner's board inverts \u2014 heart failure 0.42, embolism down to 0.18 \u2014 while the workbench, applying the same BNP weight, keeps embolism ahead (0.3790 to 0.2881) because it also weighs the D-dimer and cannot un-measure the calf. Stage 3: the CTPA is decisive for the workbench (0.9554) and nearly so for the learner (0.78), but heart failure is still held at 0.16 \u2014 the anchoring event the machinery records, the only one in the attempt. Stage 4: the commit is correct and the residual heart-failure mass (0.05) is below the anchoring line: the frame is released, a stage late and after its own test refuted it.",
+   "reactions": "The learner's stage-2 inversion is the most human board in this module so far: a single famous number arriving in a batch of quieter ones. Nothing he ordered was wrong \u2014 the stage-1 panel is the right panel, the CTPA is placed the moment the score completes, and the lung ultrasound is a genuinely good test. The failure is purely interpretive, and it is scored as such.",
+   "summary": "Acute dyspnoea twelve days after joint replacement is a vascular presentation until the evidence retires it. Complete the score from atoms before weighing the biomarkers; measure the calves; remember that BNP reports ventricular strain, not ventricular identity; and when your own confirmatory test contradicts your frame, believe the test."
+  },
+  "per_stage": [
+   {
+    "aa_assessment": {
+     "inputs": {
+      "aa_widened": "unknown",
+      "hypoxaemia": "unknown",
+      "infiltrate": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "awaiting the arterial gas and the chest film"
+    },
+    "criteria": {
+     "aa_assessment": {
+      "inputs": {
+       "aa_widened": "unknown",
+       "hypoxaemia": "unknown",
+       "infiltrate": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "awaiting the arterial gas and the chest film"
+     },
+     "curb65": {
+      "items": {
+       "age_65_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "blood_pressure_low": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "confusion": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "respiratory_rate_30": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "urea_over_7": {
+        "points": 0,
+        "state": "unknown"
+       }
+      },
+      "max_total": 5,
+      "not_assessed": [
+       "urea_over_7"
+      ],
+      "partial": true,
+      "status": "low severity band (CURB-65 0-1)",
+      "total": 1
+     },
+     "esc_pe_risk": {
+      "inputs": {
+       "haemodynamic_instability": false,
+       "rv_dysfunction": "unknown",
+       "spesi_positive": true,
+       "troponin_elevated": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "awaiting confirmed PE and its RV assessment"
+     },
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "spo2_under_95": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 0,
+        "state": "unknown"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [
+       "unilateral_leg_swelling"
+      ],
+      "partial": true,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 4
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [
+       "dvt_signs"
+      ],
+      "partial": true,
+      "status": "PE unlikely (two-tier)",
+      "total": 3.0
+     }
+    },
+    "curb65": {
+     "items": {
+      "age_65_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "blood_pressure_low": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "confusion": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "respiratory_rate_30": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "urea_over_7": {
+       "points": 0,
+       "state": "unknown"
+      }
+     },
+     "max_total": 5,
+     "not_assessed": [
+      "urea_over_7"
+     ],
+     "partial": true,
+     "status": "low severity band (CURB-65 0-1)",
+     "total": 1
+    },
+    "esc_pe_risk": {
+     "inputs": {
+      "haemodynamic_instability": false,
+      "rv_dysfunction": "unknown",
+      "spesi_positive": true,
+      "troponin_elevated": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "awaiting confirmed PE and its RV assessment"
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.1,
+     "hyp.asthma-exacerbation": 0.04,
+     "hyp.copd-exacerbation": 0.06,
+     "hyp.heart-failure": 0.2,
+     "hyp.other-unspecified": 0.15,
+     "hyp.pneumonia": 0.18,
+     "hyp.pneumothorax": 0.05,
+     "hyp.pulmonary-embolism": 0.22
+    },
+    "learner_brier": 0.721,
+    "learner_probability_on_truth": 0.22,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.pulmonary-embolism",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "spo2_under_95": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unknown"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [
+      "unilateral_leg_swelling"
+     ],
+     "partial": true,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 4
+    },
+    "stage": 1,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [
+      "dvt_signs"
+     ],
+     "partial": true,
+     "status": "PE unlikely (two-tier)",
+     "total": 3.0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.08,
+     "hyp.asthma-exacerbation": 0.03,
+     "hyp.copd-exacerbation": 0.04,
+     "hyp.heart-failure": 0.12,
+     "hyp.other-unspecified": 0.17,
+     "hyp.pneumonia": 0.15,
+     "hyp.pneumothorax": 0.05,
+     "hyp.pulmonary-embolism": 0.36
+    },
+    "workbench_brier": 0.4868,
+    "workbench_probability_on_truth": 0.36,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.pulmonary-embolism"
+   },
+   {
+    "aa_assessment": {
+     "inputs": {
+      "aa_widened": true,
+      "hypoxaemia": true,
+      "infiltrate": false
+     },
+     "result": {
+      "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+      "pattern": "ventilation/perfusion mismatch"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "criteria": {
+     "aa_assessment": {
+      "inputs": {
+       "aa_widened": true,
+       "hypoxaemia": true,
+       "infiltrate": false
+      },
+      "result": {
+       "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+       "pattern": "ventilation/perfusion mismatch"
+      },
+      "rule_index": 0,
+      "status": "classified"
+     },
+     "curb65": {
+      "items": {
+       "age_65_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "blood_pressure_low": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "confusion": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "respiratory_rate_30": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "urea_over_7": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "low severity band (CURB-65 0-1)",
+      "total": 1
+     },
+     "esc_pe_risk": {
+      "inputs": {
+       "haemodynamic_instability": false,
+       "rv_dysfunction": "unknown",
+       "spesi_positive": true,
+       "troponin_elevated": true
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "awaiting confirmed PE and its RV assessment"
+     },
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "spo2_under_95": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 5
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 3,
+        "state": "satisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE likely (two-tier)",
+      "total": 6.0
+     }
+    },
+    "curb65": {
+     "items": {
+      "age_65_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "blood_pressure_low": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "confusion": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "respiratory_rate_30": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "urea_over_7": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "low severity band (CURB-65 0-1)",
+     "total": 1
+    },
+    "esc_pe_risk": {
+     "inputs": {
+      "haemodynamic_instability": false,
+      "rv_dysfunction": "unknown",
+      "spesi_positive": true,
+      "troponin_elevated": true
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "awaiting confirmed PE and its RV assessment"
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.1,
+     "hyp.asthma-exacerbation": 0.02,
+     "hyp.copd-exacerbation": 0.04,
+     "hyp.heart-failure": 0.42,
+     "hyp.other-unspecified": 0.09,
+     "hyp.pneumonia": 0.12,
+     "hyp.pneumothorax": 0.03,
+     "hyp.pulmonary-embolism": 0.18
+    },
+    "learner_brier": 0.8842,
+    "learner_probability_on_truth": 0.18,
+    "learner_rank_of_truth": 2,
+    "learner_top": "hyp.heart-failure",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "spo2_under_95": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 5
+    },
+    "stage": 2,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 3,
+       "state": "satisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE likely (two-tier)",
+     "total": 6.0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.0512,
+     "hyp.asthma-exacerbation": 0.0192,
+     "hyp.copd-exacerbation": 0.0256,
+     "hyp.heart-failure": 0.2881,
+     "hyp.other-unspecified": 0.1088,
+     "hyp.pneumonia": 0.096,
+     "hyp.pneumothorax": 0.032,
+     "hyp.pulmonary-embolism": 0.379
+    },
+    "workbench_brier": 0.4945,
+    "workbench_probability_on_truth": 0.379,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.pulmonary-embolism"
+   },
+   {
+    "aa_assessment": {
+     "inputs": {
+      "aa_widened": true,
+      "hypoxaemia": true,
+      "infiltrate": false
+     },
+     "result": {
+      "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+      "pattern": "ventilation/perfusion mismatch"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "criteria": {
+     "aa_assessment": {
+      "inputs": {
+       "aa_widened": true,
+       "hypoxaemia": true,
+       "infiltrate": false
+      },
+      "result": {
+       "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+       "pattern": "ventilation/perfusion mismatch"
+      },
+      "rule_index": 0,
+      "status": "classified"
+     },
+     "curb65": {
+      "items": {
+       "age_65_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "blood_pressure_low": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "confusion": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "respiratory_rate_30": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "urea_over_7": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "low severity band (CURB-65 0-1)",
+      "total": 1
+     },
+     "esc_pe_risk": {
+      "inputs": {
+       "haemodynamic_instability": false,
+       "rv_dysfunction": true,
+       "spesi_positive": true,
+       "troponin_elevated": true
+      },
+      "result": {
+       "esc_category": "intermediate-high",
+       "statement": "No instability; sPESI >= 1 with BOTH right-ventricular dysfunction and myocardial injury: the intermediate-high category \u2014 anticoagulate and monitor, rescue reperfusion on deterioration (C41)."
+      },
+      "rule_index": 1,
+      "status": "classified"
+     },
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "spo2_under_95": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 5
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 3,
+        "state": "satisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE likely (two-tier)",
+      "total": 6.0
+     }
+    },
+    "curb65": {
+     "items": {
+      "age_65_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "blood_pressure_low": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "confusion": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "respiratory_rate_30": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "urea_over_7": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "low severity band (CURB-65 0-1)",
+     "total": 1
+    },
+    "esc_pe_risk": {
+     "inputs": {
+      "haemodynamic_instability": false,
+      "rv_dysfunction": true,
+      "spesi_positive": true,
+      "troponin_elevated": true
+     },
+     "result": {
+      "esc_category": "intermediate-high",
+      "statement": "No instability; sPESI >= 1 with BOTH right-ventricular dysfunction and myocardial injury: the intermediate-high category \u2014 anticoagulate and monitor, rescue reperfusion on deterioration (C41)."
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.02,
+     "hyp.asthma-exacerbation": 0.002,
+     "hyp.copd-exacerbation": 0.005,
+     "hyp.heart-failure": 0.16,
+     "hyp.other-unspecified": 0.008,
+     "hyp.pneumonia": 0.02,
+     "hyp.pneumothorax": 0.005,
+     "hyp.pulmonary-embolism": 0.78
+    },
+    "learner_brier": 0.0749,
+    "learner_probability_on_truth": 0.78,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.pulmonary-embolism",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "spo2_under_95": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 5
+    },
+    "stage": 3,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 3,
+       "state": "satisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE likely (two-tier)",
+     "total": 6.0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.0062,
+     "hyp.asthma-exacerbation": 0.0023,
+     "hyp.copd-exacerbation": 0.0031,
+     "hyp.heart-failure": 0.0041,
+     "hyp.other-unspecified": 0.0132,
+     "hyp.pneumonia": 0.0117,
+     "hyp.pneumothorax": 0.0039,
+     "hyp.pulmonary-embolism": 0.9554
+    },
+    "workbench_brier": 0.0024,
+    "workbench_probability_on_truth": 0.9554,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.pulmonary-embolism"
+   },
+   {
+    "aa_assessment": {
+     "inputs": {
+      "aa_widened": true,
+      "hypoxaemia": true,
+      "infiltrate": false
+     },
+     "result": {
+      "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+      "pattern": "ventilation/perfusion mismatch"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "criteria": {
+     "aa_assessment": {
+      "inputs": {
+       "aa_widened": true,
+       "hypoxaemia": true,
+       "infiltrate": false
+      },
+      "result": {
+       "basis": "PaO2 62 mmHg with an A-a gradient of 51.8 mmHg (age-expected ~17.4) and clear lung fields: alveoli are ventilated but under-perfused \u2014 the gas-exchange signature of pulmonary vascular obstruction, and the pattern the embolism produces.",
+       "pattern": "ventilation/perfusion mismatch"
+      },
+      "rule_index": 0,
+      "status": "classified"
+     },
+     "curb65": {
+      "items": {
+       "age_65_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "blood_pressure_low": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "confusion": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "respiratory_rate_30": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "urea_over_7": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "low severity band (CURB-65 0-1)",
+      "total": 1
+     },
+     "esc_pe_risk": {
+      "inputs": {
+       "haemodynamic_instability": false,
+       "rv_dysfunction": true,
+       "spesi_positive": true,
+       "troponin_elevated": true
+      },
+      "result": {
+       "esc_category": "intermediate-high",
+       "statement": "No instability; sPESI >= 1 with BOTH right-ventricular dysfunction and myocardial injury: the intermediate-high category \u2014 anticoagulate and monitor, rescue reperfusion on deterioration (C41)."
+      },
+      "rule_index": 1,
+      "status": "classified"
+     },
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "spo2_under_95": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 1,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 5
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 3,
+        "state": "satisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 1.5,
+        "state": "satisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE likely (two-tier)",
+      "total": 6.0
+     }
+    },
+    "curb65": {
+     "items": {
+      "age_65_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "blood_pressure_low": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "confusion": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "respiratory_rate_30": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "urea_over_7": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "low severity band (CURB-65 0-1)",
+     "total": 1
+    },
+    "esc_pe_risk": {
+     "inputs": {
+      "haemodynamic_instability": false,
+      "rv_dysfunction": true,
+      "spesi_positive": true,
+      "troponin_elevated": true
+     },
+     "result": {
+      "esc_category": "intermediate-high",
+      "statement": "No instability; sPESI >= 1 with BOTH right-ventricular dysfunction and myocardial injury: the intermediate-high category \u2014 anticoagulate and monitor, rescue reperfusion on deterioration (C41)."
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.015,
+     "hyp.asthma-exacerbation": 0.002,
+     "hyp.copd-exacerbation": 0.003,
+     "hyp.heart-failure": 0.05,
+     "hyp.other-unspecified": 0.01,
+     "hyp.pneumonia": 0.015,
+     "hyp.pneumothorax": 0.005,
+     "hyp.pulmonary-embolism": 0.9
+    },
+    "learner_brier": 0.0131,
+    "learner_probability_on_truth": 0.9,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.pulmonary-embolism",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "spo2_under_95": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 1,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 5
+    },
+    "stage": 4,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 3,
+       "state": "satisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 1.5,
+       "state": "satisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE likely (two-tier)",
+     "total": 6.0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.0062,
+     "hyp.asthma-exacerbation": 0.0023,
+     "hyp.copd-exacerbation": 0.0031,
+     "hyp.heart-failure": 0.0041,
+     "hyp.other-unspecified": 0.0132,
+     "hyp.pneumonia": 0.0117,
+     "hyp.pneumothorax": 0.0039,
+     "hyp.pulmonary-embolism": 0.9554
+    },
+    "workbench_brier": 0.0024,
+    "workbench_probability_on_truth": 0.9554,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.pulmonary-embolism"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 27,
+   "total_time_min": 215
+  },
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestones 17, 20, 29, 41 and 43 recorded it; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.acute-coronary-syndrome": 3,
+   "hyp.asthma-exacerbation": 2,
+   "hyp.copd-exacerbation": 3,
+   "hyp.heart-failure": 3,
+   "hyp.other-unspecified": 3,
+   "hyp.pneumonia": 3,
+   "hyp.pneumothorax": 3
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.721,
+    "2": 0.8842,
+    "3": 0.0749,
+    "4": 0.0131
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.22,
+    "2": 0.18,
+    "3": 0.78,
+    "4": 0.9
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 5,
+    "discriminating": 4,
+    "non-contributory": 0,
+    "safety-net": 1
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.4868,
+    "2": 0.4945,
+    "3": 0.0024,
+    "4": 0.0024
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights \u2014 inventing weights would violate the precision law. Calibration proper needs a case series; six cases now exist and are still not a calibration series \u2014 the debrief says so."
+  }
+ }
+}

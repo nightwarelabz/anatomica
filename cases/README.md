@@ -1,4 +1,4 @@
-# cases/ — the Case Workbench module (Milestones 20 + 22 + 29)
+# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48)
 
 Diagnosis practiced as explicit reasoning (design/07): a staged
 presentation, a differential board the learner must commit numbers
@@ -13,7 +13,7 @@ debrief scored by stated rules.
   or anywhere in ANATOMICA (education-only scope, master plan §8).
 - **Facts are cited; fiction is labelled.** Clinical facts (criteria,
   likelihood ratios, reference ranges, test characteristics) trace
-  to the sources registered in `parameters.json` (C1–C22), consulted
+  to the sources registered in `parameters.json` (C1–C47), consulted
   in-session. The patient's particulars are *case data* and are
   labelled as such wherever they appear. Anything that could not be
   sourced carries a verify flag — never a quietly invented value.
@@ -44,7 +44,7 @@ debrief scored by stated rules.
 
 ## Contents
 
-- `parameters.json` — source register (C1–C22), the workbench's
+- `parameters.json` — source register (C1–C47), the workbench's
   scoring-rule constants (all flagged project conventions), and the
   likelihood-ratio derivations. Extended at Milestone 22 with C14
   (WSES bile-duct-injury guidelines), C15 (MRCP test characteristics),
@@ -54,7 +54,36 @@ debrief scored by stated rules.
   review — the Wagner LR lineage and the Kinner CT accuracy pair),
   C20 (WSES Jerusalem 2020), C21 (urinary hCG test characteristics),
   and C22 (project outputs: the appendicectomy procedure, the Body
-  Model appendix records, the s0778 label set).
+  Model appendix records, the s0778 label set). Extended at
+  Milestone 41 with C23 (the Rational Clinical Examination for carpal
+  tunnel syndrome), C24 (the AAOS 2024 carpal tunnel guideline), C25
+  (the AANEM/AAN electrodiagnostic practice parameter), C26 (the
+  CTS-6 evaluation tool), C27 (the Fowler ultrasound meta-analysis),
+  C28 (project outputs: the M39 median-nerve record, the M35
+  innervation pass, both imaging subjects' label sets), and C29
+  (MedlinePlus HbA1c ranges). Extended at Milestone 43 with C30
+  (project outputs: the M39 ulnar-nerve record, the M35 innervation
+  pass, both imaging subjects' label sets), C31 (the AAEM
+  electrodiagnostic practice parameter for ulnar neuropathy at the
+  elbow), C32 (the Chang et al. ultrasound meta-analysis), C33
+  (Novak et al. provocative testing, with the Physio-pedia Tinel
+  evidence table), and C34 (the McGowan grading, as reproduced in
+  the consulted classification summary); the C10/C11 ontology
+  registers carry dated Milestone 43 addenda. Extended at
+  Milestone 48 with C35 (the Wells score, Wells 2000, with the
+  Christopher Study two-tier cut), C36 (Maisel 2002 — BNP test
+  characteristics), C37 (the PERC rule, Kline 2004/2008, with its
+  low-gestalt use condition), C38 (ADJUST-PE — the age-adjusted
+  D-dimer cutoff), C39 (Patel 2020 — pooled D-dimer and CTPA
+  accuracy), C40 (PIOPED II — the CTPA pair this case weighs),
+  C41 (the ESC/ERS 2019 pulmonary embolism guideline), C42
+  (CURB-65, Lim 2003), C43 (the lung-ultrasound systematic
+  review), C44 (MedlinePlus arterial blood gas ranges), C45 (CRP
+  reference), C46 (the Mellemgaard age-expected A–a gradient)
+  and C47 (MedlinePlus urea range); the C10/C11 ontology
+  registers carry dated Milestone 48 addenda, including two
+  recorded refusals (no Mondo class for community-acquired
+  pneumonia; no human class for acute heart failure).
 - `case.ruq-pain.001.json` — the first worked case: acute calculous
   cholecystitis as a staged RUQ-pain presentation, 4 stages, 29
   findings, 9 labs, 8 orderable tests, 7 hypotheses, mechanical
@@ -92,6 +121,111 @@ debrief scored by stated rules.
   hands off to Theatre `proc.appy.lap` in its standard
   configuration, with the branch consistency (uncomplicated,
   standard position) carried by recorded findings.
+- `case.carpal-tunnel.004.json` — the localization case (Milestone
+  41): eight months of nocturnal median-distribution paresthesias in
+  a 47-year-old woman with type 2 diabetes, against the neck
+  hypothesis another clinician installed before the case begins.
+  4 stages, 24 findings, 1 lab, 3 measurements, 5 orderable tests,
+  6 hypotheses. The CTS-6 score block (new instrument, same `score`
+  machinery) totals 16.5/26 — positive at stage 2 — while the board
+  honestly dips there (normal thumb abduction, LR 0.5, C23) before
+  ultrasound (LR+ 5.8788 computed, C27) and the AANEM-protocol
+  electrodiagnosis (LR+ 17.0 computed at the parameter's stated
+  bounds, C25) localize the lesion to the wrist. Phalen and Tinel
+  carry no board LR at all (C23 pools them at 1.3/1.4 — little or no
+  diagnostic value); they act through the CTS-6 only. No imaging
+  link is declared: both subjects' identical 104-label sets contain
+  no nerve label of any kind, and both series are
+  thorax-abdomen-pelvis studies — the wrist is not even in the field
+  of view; an `imaging_assessment` block records the double absence
+  instead. No physiology link (no peripheral-nerve engine state) —
+  the absence stated, not fabricated. At Milestone 41 there was
+  likewise no Theatre handoff, the Theatre then holding no carpal
+  tunnel release; Milestone 42 authored `proc.carpal-release`, and
+  the case now hands off to it in its standard (open) configuration,
+  checker-verified — the endoscopic configuration is a named
+  non-goal of that milestone. The case links the M39
+  clinical record `major.median` and the M33 inventory median
+  nerves, and records that the recurrent branch those nerves' thenar
+  muscles name has no Body Model record (M35 pass: unresolved).
+- `case.ulnar-neuropathy.005.json` — the second localization case
+  (Milestone 43): six months of ulnar-distribution paresthesias in a
+  58-year-old man whose lesion SITE is the question — cubital tunnel
+  (elbow) against Guyon's canal (wrist), C8 radiculopathy,
+  lower-trunk/medial-cord plexopathy and neurogenic thoracic outlet
+  syndrome. 4 stages, 30 findings, 0 labs, 5 measurements,
+  4 orderable tests, 6 hypotheses. The discriminating content is
+  branch anatomy: dorsal ulnar cutaneous involvement (the branch
+  leaves the nerve in the forearm — a wrist lesion spares it, the
+  pattern the M39 record `major.ulnar` states verbatim) and forearm
+  motor involvement exclude the wrist level without any likelihood
+  ratio, because no consulted source quantifies them; the board is
+  moved by Tinel's sign at the elbow (LR+ 35.0 computed, C33, with
+  its healthy-control spectrum caveat stated), elbow ultrasound
+  (LR+ 9.4444 computed at the meta-analysis's 10 mm² cutoff, C32)
+  and the AAEM-parameter electrodiagnostic protocol (LR+ 7.4
+  computed at the parameter's least favourable supported
+  combination — a disclosed floor, C31): 0.22 → 0.9080 → 0.9894 →
+  0.9986. The McGowan grade is mechanically evaluated by a
+  `classification` block (pending at stage 1, grade II from stage 2)
+  and grades severity only — it never localizes, and the case says
+  so. No imaging link (both subjects' identical 104-label sets hold
+  no nerve, ulnar or elbow label, and both TAP fields of view
+  exclude elbow AND wrist; an `imaging_assessment` block records
+  the double absence), no physiology link (case-2 precedent). At
+  Milestone 43 there was likewise no Theatre handoff — the Theatre
+  held no ulnar-nerve procedure, the absence was stated, and none
+  was authored there; Milestone 44 authored
+  `proc.ulnar-decompression`, and the case now hands off to it in
+  its standard (in-situ) configuration, checker-verified — the
+  transposition configuration is the operation's own stability-
+  assessment decision, not the case's. Ontology:
+  cubital tunnel syndrome has its own Mondo class (MONDO:0043982);
+  the wrist hypothesis is coded to the generic ulnar neuropathy
+  class (MONDO:0007006) with the absent Guyon-specific class stated
+  and refused, never fabricated.
+- `case.acute-dyspnea.006.json` — the first cardiopulmonary case
+  (Milestone 48): acute dyspnoea and pleuritic pain twelve days
+  after a total knee arthroplasty. 4 stages, 37 findings, 10 labs,
+  10 measurements, 10 orderable tests, 8 hypotheses. The PE arm is
+  mechanically complete: a Wells `score` block (partial 3.0 at
+  stage 1 with the DVT-signs item unassessed, completing at 6.0 —
+  PE likely — when the examination battery measures a 2.5 cm calf
+  asymmetry on the un-operated side; the subjective
+  clinician-judgment item is excluded from the block, with its
+  sensitivity stated), a PERC `score` block (positive at 5, its
+  < 15% gestalt precondition stated unmet), a CURB-65 `score`
+  block (1 — age alone; a severity statement, never a diagnosis),
+  an A–a `classification` block (ventilation/perfusion mismatch:
+  PaO2 62 with a gradient of 51.8 mmHg against an age-expected
+  17.4, the checker re-deriving the gradient from the case's own
+  gas with the physiology module's alveolar gas equation), and an
+  ESC-2019 severity `classification` block (pending until the
+  CTPA supplies its RV input, then intermediate-high). Four
+  likelihood ratios, all computed from consulted pairs: BNP
+  LR+ 3.75 (C36), D-dimer LR+ 1.6441 with deliberately no LR−
+  registered (C39), CTPA LR+ 20.75 from the conservative PIOPED II
+  pair (C40), absent B-lines LR− 0.1176 (C43): the board runs
+  0.36 → 0.3790 (the stage where the BNP honestly lifts heart
+  failure to 0.2881 and embolism still leads) → 0.9554. The
+  physiology link is the module's first to record the respiratory
+  resting readout (Milestone 47) beside the pinned circulation
+  hash, with the gap stated: the engine has no thromboembolic
+  state, and the patient's gases are authored data checked
+  against the module's equations, not simulation. The imaging
+  link is localisation only — the pulmonary artery label in
+  s0778 (recounted from the shipped bins: files 302–343, 23,547
+  voxels) — with the absence stated in the link itself: neither
+  subject's 104-label set holds an embolus, consolidation, pleura
+  or effusion label, so the series cannot show this pathology and
+  the case's CTPA is an authored report. No Theatre handoff: PE
+  management here is medical, the Theatre holds no embolectomy
+  procedure, and the absence is stated in the case rather than a
+  handoff being fabricated. Ontology carries two recorded
+  refusals: no Mondo class exists for community-acquired
+  pneumonia (coded to pneumonia, MONDO:0005249) and none for
+  acute heart failure in humans (coded to heart failure,
+  MONDO:0005252), both stated in the hypotheses' notes.
 - `attempts/` — learner attempts (boards + orders per stage). Case
   2's model learner is deliberately imperfect in one documented way:
   it anchors on a retained CBD stone (ERCP ordered as therapy at
@@ -99,11 +233,32 @@ debrief scored by stated rules.
   after the workbench rules it out — one scored anchoring event.
   Case 3's model learner anchors on ectopic pregnancy at stage 2 —
   holding it at 0.15 at the very stage the negative pregnancy test
-  retires it — also exactly one scored event.
+  retires it — also exactly one scored event. Case 4's model learner
+  anchors on cervical radiculopathy — an anchor installed before the
+  case begins, fed by a renormalization rise at stage 2 and by a
+  degenerative cervical MRI the learner ordered against guideline
+  advice (classified non-contributory) — and still holds it at 0.15
+  at stage 4, after the electrodiagnostic protocol retires it: one
+  scored event. Case 5's model learner anchors on Guyon's canal —
+  an anchor he installs himself from a true exposure history (the
+  patient is a weekend cyclist), holds through his own stage-2
+  examination finding that excludes the wrist anatomically, and is
+  still holding at 0.16 at stage 3 when the elbow ultrasound
+  retires it on the board — one scored event, structurally the
+  inverse of case 4's: self-installed, and surviving a refutation
+  the learner personally elicited. Case 6's model learner anchors
+  on heart failure — an anchor installed mid-case by a test
+  result: the stage-2 BNP (385 pg/mL, honestly weighed by the
+  workbench itself) converts his differential into a diagnosis,
+  and he still holds heart failure at 0.16 at stage 3, after the
+  CTPA and after his own B-line-negative lung ultrasound — ordered
+  to confirm the frame — retires it on the board: one scored
+  event, a third installation shape (result-installed, after case
+  4's other-clinician and case 5's self-installed anchors).
 - `debriefs/` — generated by `tools/case_run.py` (one generic runner
   for every case since Milestone 22); independently recomputed by
   `tools/case_check.py` (parameterised over all cases, with per-case
-  profile sections; 5,145 checks at Milestone 29).
+  profile sections; 10,298 checks at Milestone 48).
 - `fhir/` — FHIR-shaped interchange export of the case (design/07);
   the case JSON is the source of truth and the checker fails the
   build if the export disagrees with it.

@@ -1,5 +1,5 @@
 {
- "extended_at_milestone": 29,
+ "extended_at_milestone": 48,
  "lr_derivations": [
   {
    "derivation": "computed from C4: LR+ = sensitivity / (1 - specificity) = 0.81 / (1 - 0.83) = 0.81 / 0.17 = 4.7647. LR- = (1 - 0.81) / 0.83 = 0.2289 (defined for completeness; this case's ultrasound is positive, so LR- is unused).",
@@ -56,11 +56,95 @@
    "lr_plus": 16.421,
    "status": "computed",
    "target_hypothesis": "hyp.acute-appendicitis"
+  },
+  {
+   "derivation": "cited directly from C23 (95% CI 2.0-5.1): diminished pinprick sensation (hypalgesia) in the median nerve territory, against electrodiagnostic confirmation in the review's underlying studies.",
+   "finding": "f.median-hypalgesia",
+   "lr_plus": 3.1,
+   "status": "cited",
+   "target_hypothesis": "hyp.carpal-tunnel-syndrome"
+  },
+  {
+   "derivation": "cited from C23 (95% CI 1.6-3.5): a Katz hand diagram shaded in the classic or probable pattern. The DARE appraisal of C23 counts one included study (145 hands) for this figure; it is flagged single-study wherever case 4 uses it.",
+   "finding": "f.katz-classic-diagram",
+   "lr_plus": 2.4,
+   "status": "cited",
+   "target_hypothesis": "hyp.carpal-tunnel-syndrome"
+  },
+  {
+   "derivation": "cited from C23 (95% CI 0.4-0.7): NORMAL thumb abduction strength carries LR 0.5 against the diagnosis, in the same review that gives weak thumb abduction LR+ 1.8 — the negative branch of the same examination finding, entered as an lr_minus on the positive observation 'strength is normal'. The board takes the hit at stage 2 (carpal tunnel syndrome 0.7778 -> 0.6364); a workbench that only multiplied favourable evidence would not be honest machinery.",
+   "finding": "f.thumb-abduction-normal",
+   "lr_minus": 0.5,
+   "status": "cited",
+   "target_hypothesis": "hyp.carpal-tunnel-syndrome"
+  },
+  {
+   "derivation": "computed from C27: LR+ = sensitivity / (1 - specificity) = 0.776 / (1 - 0.868) = 0.776 / 0.132 = 5.8788. The pair is a pooled estimate over 19 studies (3,131 wrists) with heterogeneous cross-sectional-area cutoffs and reference standards; case 4's patient measures 13 mm2, above the consulted cutoff range, and the derivation inherits the pooling, labelled as such.",
+   "finding": "f.us-csa-enlarged",
+   "lr_plus": 5.8788,
+   "status": "computed",
+   "target_hypothesis": "hyp.carpal-tunnel-syndrome"
+  },
+  {
+   "derivation": "computed from C25: LR+ = sensitivity / (1 - specificity) evaluated AT the practice parameter's stated bounds = 0.85 / (1 - 0.95) = 0.85 / 0.05 = 17.0. C25 states the pair as inequalities (sensitivity greater than 85%, specificity greater than 95%), so 17.0 is a FLOOR for the parameter's LR+, used as the point value with the direction of the approximation disclosed here and in the case file.",
+   "finding": "f.ncs-median-neuropathy",
+   "lr_plus": 17.0,
+   "status": "computed",
+   "target_hypothesis": "hyp.carpal-tunnel-syndrome"
+  },
+  {
+   "derivation": "computed from C33: LR+ = sensitivity / (1 - specificity) = 0.70 / (1 - 0.98) = 0.70 / 0.02 = 35.0. The sensitivity is the primary study's own count — Tinel's sign present in 31 of 44 extremities with electrodiagnostically proven cubital tunnel syndrome (Novak et al. 1994, abstract consulted); the specificity is the figure the consulted evidence summary (Physio-pedia, Tinel's sign) tabulates for the sign in cubital tunnel syndrome. Spectrum caveat: the primary study's controls were asymptomatic volunteers, so the pair measures separation from health rather than from case 5's live differential; the value is entered as computed from the cited pair, the caveat is carried in the finding's own note, and the case's localization rests on three further legs that do not depend on it.",
+   "finding": "f.tinel-elbow",
+   "lr_plus": 35.0,
+   "status": "computed",
+   "target_hypothesis": "hyp.ulnar-neuropathy-elbow"
+  },
+  {
+   "derivation": "computed from C32: LR+ = sensitivity / (1 - specificity) = 0.85 / (1 - 0.91) = 0.85 / 0.09 = 9.4444, from the meta-analysis's pooled pair at the 10 mm2 cross-sectional-area cutoff (Chang et al. 2018; the cutoff analysis pooled five studies of the review's fourteen trials). The case patient's measured 14 mm2 at the medial epicondyle is above the cutoff; the meta-analysis reports the largest case-control CSA difference at the medial epicondyle level.",
+   "finding": "f.elbow-us-csa-enlarged",
+   "lr_plus": 9.4444,
+   "status": "computed",
+   "target_hypothesis": "hyp.ulnar-neuropathy-elbow"
+  },
+  {
+   "derivation": "computed from C31: LR+ = sensitivity / (1 - specificity) evaluated at the LEAST favourable combination the practice parameter's review supports = 0.37 / (1 - 0.95) = 0.37 / 0.05 = 7.4. The parameter reports sensitivities of electrodiagnostic studies for ulnar neuropathy at the elbow ranging from 37% to 86% across its 13 qualifying studies and specificities of 95% or greater, so 7.4 is a FLOOR for the parameter's LR+, used as the point value with the direction of the approximation disclosed here and in the case file — the construction case 4 applied to its own practice parameter (C25). The finding it weights is the parameter's focal-lesion criteria set applied to the case patient's studies: across-elbow motor velocity below 50 m/s, an across-elbow segment more than 10 m/s slower than the below-elbow-to-wrist segment, and a CMAP amplitude decrease greater than 20%.",
+   "finding": "f.edx-across-elbow-slowing",
+   "lr_plus": 7.4,
+   "status": "computed",
+   "target_hypothesis": "hyp.ulnar-neuropathy-elbow"
+  },
+  {
+   "derivation": "Computed from C36 (Breathing Not Properly, Maisel 2002): sensitivity 0.90, specificity 0.76 at the 100 pg/mL cutoff. LR+ = sensitivity / (1 - specificity) = 0.90 / 0.24 = 3.75. The consulted review table for the same study tabulates LR+ 3.75 independently, and LR- 0.13 for the pair (not used: this finding fires only when the peptide is raised).",
+   "finding": "f.bnp-elevated",
+   "lr_plus": 3.75,
+   "status": "computed",
+   "target_hypothesis": "hyp.heart-failure"
+  },
+  {
+   "derivation": "Computed from C39 (Patel 2020 pooled estimates, 61 studies): D-dimer sensitivity 0.97, specificity 0.41. LR+ = 0.97 / (1 - 0.41) = 0.97 / 0.59 = 1.6441. The companion systematic review (Stein 2004, in C39) places D-dimer positive likelihood ratios in the general range 1.5-2.5, consistent. The finding's negative direction is deliberately NOT registered: in a post-surgical patient the assay's exclusion power is spent before it is drawn (see the finding's note).",
+   "finding": "f.ddimer-positive",
+   "lr_plus": 1.6441,
+   "status": "computed",
+   "target_hypothesis": "hyp.pulmonary-embolism"
+  },
+  {
+   "derivation": "Computed from C40 (PIOPED II, Stein 2006): CT angiography sensitivity 0.83 (150 of 181), specificity 0.96 (567 of 592). LR+ = 0.83 / (1 - 0.96) = 0.83 / 0.04 = 20.75. The CTA+CTV pair (0.90 / 0.95, LR+ 18) and the pooled contemporary pair in C39 (0.94 / 0.98, LR+ 47) were both consulted; the deliberately conservative primary-study figure is the one registered.",
+   "finding": "f.ctpa-pe-positive",
+   "lr_plus": 20.75,
+   "status": "computed",
+   "target_hypothesis": "hyp.pulmonary-embolism"
+  },
+  {
+   "derivation": "Computed from C43 (CJEM systematic review of lung ultrasound in undifferentiated dyspnoea, 6 studies, n = 1,911): pooled sensitivity 0.896, specificity 0.884 for B-lines diagnosing acute decompensated heart failure. LR- = (1 - sensitivity) / specificity = 0.104 / 0.884 = 0.1176. The review's published pooled LR- is 0.13 (95% CI 0.06-0.30); the pair-computed value is registered per this register's derivation discipline and sits inside that interval.",
+   "finding": "f.lus-no-blines",
+   "lr_minus": 0.1176,
+   "status": "computed",
+   "target_hypothesis": "hyp.heart-failure"
   }
  ],
  "milestone": 20,
  "module": "cases",
- "note": "Case Workbench parameters and sources. Same discipline as the physiology engine (Milestone 8) and the theatre (Milestone 17): every number carries a status \u2014 cited (traceable to a source consulted during this build session, listed below), computed (arithmetic on cited values, derivation shown), calibrated (chosen inside a cited range, disclosed), or verify / project-convention (an authoring or workbench constant, visibly flagged, never presented as clinical fact). Sources C1-C9 and C12 are clinical literature consulted in-session; C10/C11 are ontology lookups performed in-session against the EBI Ontology Lookup Service; C13 collects the project's own module outputs this module links to. SNOMED CT appears nowhere in this module (design/07: excluded from the public repository entirely). LOINC codes likewise do not appear: design/07 fences LOINC into a separately-licensed data pack that is not in this repository, so labs carry local codes only. Milestone 22 addendum: sources C14-C16 and one further LR derivation (MRCP for retained common bile duct stone) were added for case 2 (case.post-op-jaundice.002), and the C10/C11 registers carry dated Milestone 22 addenda from the same in-session OLS queries. The workbench constants are unchanged. Milestone 29 addendum: sources C17-C22 and three further LR derivations (migration of pain; negative urine beta-hCG against ectopic pregnancy; CT composite against appendicitis) were added for case 3 (case.appendicitis.003), and the C10/C11 registers carry dated Milestone 29 addenda from the same in-session OLS queries. The workbench constants are unchanged.",
+ "note": "Case Workbench parameters and sources. Same discipline as the physiology engine (Milestone 8) and the theatre (Milestone 17): every number carries a status \u2014 cited (traceable to a source consulted during this build session, listed below), computed (arithmetic on cited values, derivation shown), calibrated (chosen inside a cited range, disclosed), or verify / project-convention (an authoring or workbench constant, visibly flagged, never presented as clinical fact). Sources C1-C9 and C12 are clinical literature consulted in-session; C10/C11 are ontology lookups performed in-session against the EBI Ontology Lookup Service; C13 collects the project's own module outputs this module links to. SNOMED CT appears nowhere in this module (design/07: excluded from the public repository entirely). LOINC codes likewise do not appear: design/07 fences LOINC into a separately-licensed data pack that is not in this repository, so labs carry local codes only. Milestone 22 addendum: sources C14-C16 and one further LR derivation (MRCP for retained common bile duct stone) were added for case 2 (case.post-op-jaundice.002), and the C10/C11 registers carry dated Milestone 22 addenda from the same in-session OLS queries. The workbench constants are unchanged. Milestone 29 addendum: sources C17-C22 and three further LR derivations (migration of pain; negative urine beta-hCG against ectopic pregnancy; CT composite against appendicitis) were added for case 3 (case.appendicitis.003), and the C10/C11 registers carry dated Milestone 29 addenda from the same in-session OLS queries. The workbench constants are unchanged. Milestone 41 addendum: sources C23-C29 and five further LR derivations (median-territory hypalgesia; classic Katz hand diagram; normal thumb abduction strength; ultrasound computed from the Fowler pooled pair; electrodiagnosis computed at the Jablecki parameter's stated bounds) were added for case 4 (case.carpal-tunnel.004), and the C10/C11 registers carry dated Milestone 41 addenda from the same in-session OLS queries. The workbench constants are unchanged.",
  "parameters": [
   {
    "key": "rule_out_threshold",
@@ -135,12 +219,12 @@
   },
   {
    "citation": "Mondo Disease Ontology, queried via the EBI Ontology Lookup Service (ols4 API), 2026-11-06",
-   "consulted": "Verified in-session, label and description read from the returned classes: acute cholecystitis MONDO:0043994 ('Acute inflammation of the gallbladder'); acute cholangitis MONDO:0001930; acute pancreatitis MONDO:0006515; peptic ulcer disease MONDO:0004247; peptic ulcer perforation MONDO:0004260 ('Penetration of a peptic ulcer through the wall of duodenum or stomach...'); pneumonia MONDO:0005249; myocardial infarction MONDO:0005068. Mondo is CC BY 4.0 (master plan section 7). Milestone 22 addendum (OLS re-queried 2026-11-06): choledocholithiasis MONDO:0006699 ('Presence or formation of gallstones in the common bile duct') verified. Searches for a Mondo class for bile duct injury, bile duct stricture, and bile leak returned no class; MONDO:0001710 (perforation of bile duct) exists but is not this injury and is not used. Case 2's biliary-injury, stricture, and leak hypotheses therefore carry mondo: null with an explanatory note, exactly as case 1's residual does. Milestone 29 addendum (OLS re-queried 2026-11-06): appendicitis MONDO:0005649 verified (label 'appendicitis'; description 'Acute inflammation of the vermiform appendix'; 'acute appendicitis' is a narrow synonym of the class); ectopic pregnancy MONDO:0000755 ('An abnormal pregnancy in which the conception is implanted outside the endometrial cavity'); ovarian cyst MONDO:0003282; acute pyelonephritis MONDO:0003529 (child of pyelonephritis MONDO:0006939); ureterolithiasis MONDO:0007009 ('The presence of a calculus in the ureter of the kidney'; exact synonyms 'calculus of ureter', 'ureteric stone'); pelvic inflammatory disease MONDO:0000922. Searches for a Mondo class for ovarian (adnexal) torsion returned no class: the full 'torsion' result set (39 classes, both result pages read) contains torsion dystonias, spermatic cord torsion, and non-human animal torsions only. Case 3's ovarian torsion hypothesis therefore carries mondo: null with the absence stated, exactly as case 2's biliary hypotheses do. No separate 'ruptured ovarian cyst' class was found either; the rupture hypothesis is coded to the cyst class MONDO:0003282 with that stated.",
+   "consulted": "Verified in-session, label and description read from the returned classes: acute cholecystitis MONDO:0043994 ('Acute inflammation of the gallbladder'); acute cholangitis MONDO:0001930; acute pancreatitis MONDO:0006515; peptic ulcer disease MONDO:0004247; peptic ulcer perforation MONDO:0004260 ('Penetration of a peptic ulcer through the wall of duodenum or stomach...'); pneumonia MONDO:0005249; myocardial infarction MONDO:0005068. Mondo is CC BY 4.0 (master plan section 7). Milestone 22 addendum (OLS re-queried 2026-11-06): choledocholithiasis MONDO:0006699 ('Presence or formation of gallstones in the common bile duct') verified. Searches for a Mondo class for bile duct injury, bile duct stricture, and bile leak returned no class; MONDO:0001710 (perforation of bile duct) exists but is not this injury and is not used. Case 2's biliary-injury, stricture, and leak hypotheses therefore carry mondo: null with an explanatory note, exactly as case 1's residual does. Milestone 29 addendum (OLS re-queried 2026-11-06): appendicitis MONDO:0005649 verified (label 'appendicitis'; description 'Acute inflammation of the vermiform appendix'; 'acute appendicitis' is a narrow synonym of the class); ectopic pregnancy MONDO:0000755 ('An abnormal pregnancy in which the conception is implanted outside the endometrial cavity'); ovarian cyst MONDO:0003282; acute pyelonephritis MONDO:0003529 (child of pyelonephritis MONDO:0006939); ureterolithiasis MONDO:0007009 ('The presence of a calculus in the ureter of the kidney'; exact synonyms 'calculus of ureter', 'ureteric stone'); pelvic inflammatory disease MONDO:0000922. Searches for a Mondo class for ovarian (adnexal) torsion returned no class: the full 'torsion' result set (39 classes, both result pages read) contains torsion dystonias, spermatic cord torsion, and non-human animal torsions only. Case 3's ovarian torsion hypothesis therefore carries mondo: null with the absence stated, exactly as case 2's biliary hypotheses do. No separate 'ruptured ovarian cyst' class was found either; the rupture hypothesis is coded to the cyst class MONDO:0003282 with that stated. Milestone 41 addendum (OLS re-queried 2026-11-06): carpal tunnel syndrome MONDO:0007275 verified (returned as a subclass of entrapment neuropathy and of mononeuropathy); diabetic polyneuropathy MONDO:0001583 verified; brachial plexus neuropathy MONDO:0006683 verified, with 'brachial plexopathy' listed among its exact synonyms. Searches for a cervical-specific radiculopathy class returned no Mondo class — the generic radiculopathy class MONDO:0002959 exists, and case 4 uses it with a stated note rather than asserting a cervical class Mondo does not carry. Pronator syndrome has NO Mondo class: searches returned only MONDO:0003598 (median nerve neuropathy), whose own description covers peripheral mononeuropathy of the median nerve at all sites and therefore describes both pronator syndrome and carpal tunnel syndrome; it is asserted for neither hypothesis in case 4, exactly as case 3 carried its unclassed ovarian torsion hypothesis. Milestone 43 addendum (OLS re-queried 2026-11-06): 'cubital tunnel syndrome' returned the class cubital tunnel syndrome MONDO:0043982, whose returned definition names compression of the ulnar nerve in the cubital tunnel formed by the two heads of flexor carpi ulnaris; case 5's truth hypothesis carries it. Searches for 'Guyon' and for 'ulnar tunnel syndrome' returned only the generic class ulnar neuropathy MONDO:0007006 — Mondo carries no Guyon's-canal-specific class — and case 5 codes its wrist hypothesis to the generic class with the granularity gap stated in the hypothesis's mondo_note, never a fabricated specific code. 'Thoracic outlet syndrome' returned neurogenic thoracic outlet syndrome MONDO:0015061 (alongside the generic thoracic outlet syndrome MONDO:0005979 and the arterial and venous classes); case 5's neurogenic thoracic outlet hypothesis carries MONDO:0015061. MONDO:0002959 (radiculopathy) and MONDO:0006683 (brachial plexus neuropathy) are re-used from the Milestone 41 verification above. M48 addendum (2026-11-06): Mondo lookups via the EBI OLS4 API for the acute dyspnoea case — 'pulmonary embolism' MONDO:0005279 and 'pneumothorax' MONDO:0002076, 'acute coronary syndrome' MONDO:0005542, 'chronic obstructive pulmonary disease' MONDO:0005002 and 'asthma' MONDO:0004979 returned as direct matches; 'community-acquired pneumonia' returned NO class (numFound 0) and is coded to the parent 'pneumonia' MONDO:0005249 (verified at Milestone 20 above), with the narrowing recorded in the hypothesis's mondo_note; 'acute heart failure' returned only non-human-animal classes (MONDO:1013xxx) and is coded to 'heart failure' MONDO:0005252, likewise noted. The residual hypothesis carries Mondo null by design.",
    "id": "C10"
   },
   {
    "citation": "Human Phenotype Ontology (HPO), queried via the EBI Ontology Lookup Service (ols4 API), 2026-11-06",
-   "consulted": "Verified in-session: Fever HP:0001945; Abdominal pain HP:0002027; Nausea HP:0002018; Vomiting HP:0002013; Increased total leukocyte count HP:0001974 (exact synonym 'Leukocytosis'); Jaundice HP:0000952; Acute pancreatitis HP:0001735; Pneumonia HP:0002090. HPO terms are layered beside the case data, never altered (design/07, HPO's no-alteration terms). Milestone 22 addendum (OLS re-queried 2026-11-06): Cholestasis HP:0001396 and Pruritus HP:0000989 verified. Milestone 29 addendum: case 3 reuses only terms already verified in this register (Abdominal pain HP:0002027, Fever HP:0001945, Nausea HP:0002018, Vomiting HP:0002013, Increased total leukocyte count HP:0001974); no new HPO term is asserted.",
+   "consulted": "Verified in-session: Fever HP:0001945; Abdominal pain HP:0002027; Nausea HP:0002018; Vomiting HP:0002013; Increased total leukocyte count HP:0001974 (exact synonym 'Leukocytosis'); Jaundice HP:0000952; Acute pancreatitis HP:0001735; Pneumonia HP:0002090. HPO terms are layered beside the case data, never altered (design/07, HPO's no-alteration terms). Milestone 22 addendum (OLS re-queried 2026-11-06): Cholestasis HP:0001396 and Pruritus HP:0000989 verified. Milestone 29 addendum: case 3 reuses only terms already verified in this register (Abdominal pain HP:0002027, Fever HP:0001945, Nausea HP:0002018, Vomiting HP:0002013, Increased total leukocyte count HP:0001974); no new HPO term is asserted. Milestone 41 addendum: case 4 asserts Paresthesia HP:0003401, Hand paresthesia HP:0033660, Positive carpal Tinel sign HP:0033672, Constrictive median neuropathy HP:0012185 and Neck pain HP:0030833, each verified in-session against its returned OLS class (label read from the class record) for case.carpal-tunnel.004. Milestone 43 addendum (OLS re-queried 2026-11-06): 'claw hand' returned Ulnar claw HP:0001178 — described in its returned class as the ulnar-nerve-associated posture (hyperextension of the fourth and fifth fingers at the metacarpophalangeal joints with flexion of the interphalangeal joints) — alongside the generic Claw hand deformity HP:0034337; case 5 uses the ulnar-specific class HP:0001178. 'Hypothenar atrophy' returned Intrinsic hand muscle atrophy HP:0008954, whose returned definition covers atrophy of the intrinsic muscle groups of the hand (thenar and hypothenar muscles, interossei and lumbrical muscles); case 5 uses it for its wasting finding. Paresthesia HP:0003401 and Hand paresthesia HP:0033660 are re-used from the Milestone 41 verification above. M48 addendum (2026-11-06): HPO lookups via the EBI OLS4 API for the acute dyspnoea case — 'dyspnea' HP:0002094, 'tachypnea' HP:0002789, 'tachycardia' HP:0001649, 'hypoxemia' HP:0012418 (fetched by exact id; its definition states a PaO2 decreased compared with the normal range of 80-100 mmHg), 'pleuritic chest pain' HP:0033771, 'edema' HP:0000969 and 'pedal edema' HP:0010741, 'hemoptysis' HP:0002105, 'orthopnea' HP:0012764 — all returned as direct matches.",
    "id": "C11"
   },
   {
@@ -197,6 +281,131 @@
    "citation": "ANATOMICA project module outputs (this repository), produced and verified at Milestones 11, 19 and 28, re-read at Milestone 29",
    "consulted": "Theatre procedure theatre/procedures/proc.lap-appendectomy.json, procedure id proc.appy.lap (Milestone 28), whose structures register resolves canal.appendix (record, data/digestive/digestive-inventory.json) and dig.cecum-appendix (record, data/digestive/digestive.json), and whose standard configuration requires 36 microsteps with the perforated severity branch and the retrocecal/pelvic variant configurations declared separately. Body Model: canal.appendix is a real inventory/geometry record (name 'appendix') in data/digestive/digestive-inventory.json, digestive-geometry.json and digestive-assembled.json; the compound clinical record dig.cecum-appendix exists in data/digestive/digestive.json and itself records that the consulted sources do not describe the appendix's own structure or function. Imaging (Milestone 19): data/imaging/s0778/series.json and crosswalk.json \u2014 the 104-label TotalSegmentator v1.0 set shipped for s0778 contains NO appendix label (the full label list was read at Milestone 29); the colon label (index 9, crosswalk record 'large-intestine') is the label whose caudal extent covers the caecal region.",
    "id": "C22"
+  },
+  {
+   "citation": "D'Arcy CA, McGee S. Does This Patient Have Carpal Tunnel Syndrome? (Rational Clinical Examination) JAMA. 2000;283(23):3110-3117. PMID 10865306. DOI 10.1001/jama.283.23.3110",
+   "consulted": "Abstract consulted in-session, with the pooled likelihood ratios as summarised in the DARE critical appraisal of the review (consulted alongside): hypalgesia (diminished pinprick) in the median nerve territory LR+ 3.1 (95% CI 2.0-5.1); Katz hand-diagram classic or probable pattern LR+ 2.4 (95% CI 1.6-3.5), unlikely pattern LR- 0.2 (the Katz figure rests on one included study, 145 hands, in the appraisal's accounting — flagged single-study wherever case 4 uses it); weak thumb abduction LR+ 1.8 (95% CI 1.4-2.3) and normal thumb abduction strength LR 0.5 (95% CI 0.4-0.7); Tinel sign summary LR+ 1.4 (95% CI 1.0-1.9); Phalen sign summary LR+ 1.3 (95% CI 1.1-1.6). The review's stated conclusion: a classic/probable Katz diagram or hypalgesia increases the likelihood of carpal tunnel syndrome and the absence of median-territory sensory changes decreases it, while nocturnal paresthesias, Phalen's and Tinel's signs, thenar atrophy, and two-point / vibration / monofilament testing have little or no diagnostic value. Reference standard in the underlying studies: electrodiagnostic testing.",
+   "id": "C23"
+  },
+  {
+   "citation": "American Academy of Orthopaedic Surgeons. Management of Carpal Tunnel Syndrome: Evidence-Based Clinical Practice Guideline (adopted May 17-18, 2024; replaces the 2016 guideline), as summarised in Shapiro LM, Kamal RN, et al. J Am Acad Orthop Surg. 2025;33(7):e356-e366, and in the AFP guideline summary, Am Fam Physician. 2025;112(3):337-339 — both consulted in-session",
+   "consulted": "Statements as consulted: carpal tunnel syndrome is a clinical diagnosis, and there is strong evidence that the CTS-6 evaluation tool is as effective as ultrasound, nerve conduction studies or EMG for diagnosing it; most patients diagnosed with the CTS-6 do not require further studies; when the CTS-6 is negative but clinical suspicion remains high, further evaluation with ultrasound, NCS or EMG may be warranted, and electrodiagnostic testing may be considered in more complex patients, atypical presentations, or where diagnostic uncertainty remains. MRI and upper-extremity neurodynamic testing are NOT recommended for diagnosing CTS (less accurate, higher cost). Corticosteroid injections provide short-term relief only; high-quality evidence finds no long-term benefit. Night splinting is a conservative comparator; open and endoscopic carpal tunnel release have similar long-term outcomes; the guideline synopsis lists moderate-to-severe symptoms, thenar atrophy and failed nonoperative management among the indications to discuss surgery. The working group found no association between high keyboard use and CTS. Case 4 applies the guideline mechanically (the CTS-6 is its declared score block) and records where the workup deliberately went past the guideline's letter, and why (adjudication.score_comparison).",
+   "id": "C24"
+  },
+  {
+   "citation": "Jablecki CK, Andary MT, Floeter MK, et al. Practice parameter: Electrodiagnostic studies in carpal tunnel syndrome. Report of the American Association of Electrodiagnostic Medicine, American Academy of Neurology, and the American Academy of Physical Medicine and Rehabilitation. Neurology. 2002;58(11):1589-1592; Muscle Nerve. 2002;25(6):918-922",
+   "consulted": "Consulted via the American Academy of Neurology's release of the parameter and a consulted review of the electrodiagnostic literature in CTS: the AAEM standards confirm a clinical diagnosis of carpal tunnel syndrome with sensitivity greater than 85% and specificity greater than 95% — stated as bounds, not point estimates. The recommended study protocol, as described in the consulted review: median sensory and motor conduction studies; ulnar and radial comparison studies to exclude a peripheral neuropathy; and needle EMG of the limb muscles innervated by the C5-T1 roots to exclude cervical radiculopathy, brachial plexopathy and proximal median neuropathy. The workbench computes its electrodiagnostic likelihood ratio AT the stated bounds (see lr_derivations), disclosing that the result is a floor for the parameter's LR+, not an estimate.",
+   "id": "C25"
+  },
+  {
+   "citation": "Graham B, Regehr G, Naglie G, Wright JG. The CTS-6 evaluation tool: a clinical prediction rule for carpal tunnel syndrome (items and weights as reproduced in the sources consulted for C24 and below)",
+   "consulted": "Items and weights verified identical across three independent consulted reproductions (an analysis of the CTS-6 in J Hand Surg Glob Online 2026, Table 1; the Thai-language CTS-6 validation study, Table 1; the QCTS-6 validation study): numbness predominantly or exclusively in the median nerve territory 3.5; nocturnal numbness 4; thenar atrophy and/or weakness 5; positive Phalen test 5; loss of two-point discrimination (<= 5 mm) 4.5; positive Tinel sign 4. Maximum total 26. Probability mapping as stated in the reproductions: a total above 12 corresponds to an 80% probability of CTS and a total above 5 to a 25% probability; the AAOS synopsis (C24) states that a score of 18 or higher carries a positive predictive value of 95-97%, and the AFP adaptation of the instrument (Alvarez & Brown. Am Fam Physician. 2024;109(6):571) states that 12 points or more is positive with LR+ 4.5 and LR- 0.14. One reproduction phrases the positive threshold as '>12' and another as '>=12'; case 4's patient totals 16.5, clear of the discrepancy, and the case's band set is declared so the discrepancy cannot bite. The AFP likelihood ratios for the score are NOT multiplied into the workbench board: the score and the board are separate instruments, as in cases 1 and 3.",
+   "id": "C26"
+  },
+  {
+   "citation": "Fowler JR, Gaughan JP, Ilyas AM. The sensitivity and specificity of ultrasound for the diagnosis of carpal tunnel syndrome: a meta-analysis. Clin Orthop Relat Res. 2011;469(4):1089-1094. PMID 20963527. DOI 10.1007/s11999-010-1637-5",
+   "consulted": "Abstract consulted in-session (publisher's text and the PMC record, agreeing): 19 articles, 3,131 wrists; composite sensitivity 77.6% (95% CI 71.6-83.6) and specificity 86.8% (95% CI 78.9-94.8) for ultrasound against the included studies' reference standards (Level III, systematic review of Level III studies). Cross-sectional-area cutoffs in the included studies varied widely (per-study cutoffs reported from 6.5 to 12 mm2); case 4's patient measures 13 mm2 at the tunnel inlet, above that range. The workbench's ultrasound likelihood ratio is computed from the pooled pair (see lr_derivations). The authors' own caution is carried with the number: ultrasound may not replace electrodiagnostic testing as the most sensitive and specific confirmatory test.",
+   "id": "C27"
+  },
+  {
+   "citation": "ANATOMICA project module outputs (this repository), produced and verified at Milestones 33, 35 and 39, re-read at Milestone 41",
+   "consulted": "Milestone 39 clinical record major.median (data/nervous/major-nerves.json): root values C6, C7, C8, T1; course through the carpal tunnel deep to the flexor retinaculum; the palmar cutaneous branch does NOT pass through the carpal tunnel (thenar-eminence sensation is therefore spared in carpal tunnel syndrome), while a lesion at the elbow produces proximal forearm pain and a hand of benediction; its stated clinical tests are Tinel's sign at the wrist and Phalen's manoeuvre; its geometry links are the Milestone 33 inventory records nerve.left-median-nerve and nerve.right-median-nerve. Milestone 35 innervation pass (data/innervation-link-pass.json): the phrase 'recurrent branch of the median nerve' — the innervation the clinical muscle records give the thenar muscles (data/muscular/muscles.json: muscle.abductor-pollicis-brevis, muscle.opponens-pollicis, muscle.flexor-pollicis-brevis) — is recorded UNRESOLVED, its single component status 'absent': no FMA 5.1.0 class carries the name and no inventory record exists to link; case 4 therefore links its thenar examination to the median trunk records and says so. Imaging (Milestones 19 and 32): the 104-label TotalSegmentator v1.0 label set is identical for subjects s0778 and s1090 (data/imaging/s0778/crosswalk.json and data/imaging/s1090/crosswalk.json, both re-read at Milestone 41) and contains no nerve label of any kind and no median, carpal, wrist or hand label; both series are CT thorax-abdomen-pelvis studies, so the wrist is outside the imaged volume.",
+   "id": "C28"
+  },
+  {
+   "citation": "MedlinePlus (US National Library of Medicine). Hemoglobin A1C (HbA1c) Test. medlineplus.gov, consulted in-session 2026-11-06",
+   "consulted": "The A1C test shows average blood glucose over the past two to three months. Diagnostic percentages as stated on the page: normal below 5.7%; prediabetes 5.7% to 6.4%; diabetes 6.5% or higher; and, for people with diabetes, the goal for many is below 7%. Case 4's HbA1c finding (6.8%) is interpreted against this page only: consistent with her known diabetes and below the stated goal; the number neither confirms nor excludes a polyneuropathy and is never presented as doing so.",
+   "id": "C29"
+  },
+  {
+   "citation": "ANATOMICA project module outputs (this repository), produced and verified at Milestones 33, 35 and 39, re-read at Milestone 43",
+   "consulted": "Milestone 39 clinical record major.ulnar (data/nervous/major-nerves.json): root values C8 and T1, continuation of the medial cord of the brachial plexus; course behind the elbow through the ulnar tunnel, piercing the two heads of flexor carpi ulnaris, and at the wrist superficial to the flexor retinaculum through Guyon's canal; motor distribution — forearm: flexor carpi ulnaris and the medial half of flexor digitorum profundus; hand (deep branch): hypothenar muscles, medial two lumbricals, adductor pollicis, palmar and dorsal interossei; sensory distribution — palmar cutaneous branch to the medial palm, dorsal cutaneous branch to the dorsal medial one and a half fingers and the associated dorsal hand, superficial branch to the palmar medial one and a half fingers; its clinical_testing field states the localization patterns verbatim: a lesion at the elbow affects all ulnar muscles and all sensory branches, while a lesion at the wrist affects only the intrinsic hand muscles and SPARES the dorsal cutaneous branch, confining sensory loss to the palmar medial one and a half fingers; its stated Froment's sign description matches the case's finding; its geometry links are the Milestone 33 inventory records nerve.left-ulnar-nerve and nerve.right-ulnar-nerve. Milestone 35 innervation pass (data/innervation-link-pass.json): the phrase 'ulnar nerve' resolves to the ulnar nerve records (flexor carpi ulnaris carries nerve_record_ids for both); the flexor digitorum profundus phrase is PARTIAL (medial half resolves to the ulnar nerve; the lateral half's anterior interosseous branch component is absent); the phrase 'deep branch of the ulnar nerve' — the innervation the clinical records give the interossei, abductor digiti minimi and adductor pollicis — is recorded UNRESOLVED, its component status 'absent': no FMA 5.1.0 class carries the name and no inventory record exists to link, so case 5 links its intrinsic-muscle findings to the ulnar trunk records and says so. Imaging (Milestones 19 and 32): the 104-label TotalSegmentator v1.0 label set is identical for subjects s0778 and s1090 (both crosswalks re-read at Milestone 43) and contains no nerve label of any kind and no ulnar or elbow label; both series are CT thorax-abdomen-pelvis studies, so neither the elbow nor the wrist is inside the imaged volume.",
+   "id": "C30"
+  },
+  {
+   "citation": "American Association of Electrodiagnostic Medicine (AAEM), with the American Academy of Neurology and the American Academy of Physical Medicine and Rehabilitation. Practice parameter for electrodiagnostic studies in ulnar neuropathy at the elbow: summary statement. Neurology 1999;52:688-690; Muscle Nerve 1999;22 (summary statement PDF, aanem.org, consulted in full in-session 2026-11-06)",
+   "consulted": "The parameter's conclusions and recommendations as read: ulnar neuropathy at the elbow is a common peripheral mononeuropathy, second only to carpal tunnel syndrome in incidence. Its literature review rests on 13 qualifying articles (Class A evidence from 702 normal control elbows and 564 ulnar-neuropathy elbows): '13 articles reported sensitivities of electrodiagnostic studies ranging from 37% to 86% and specificities of 95% or greater.' Technique standards: surface stimulation and recording; elbow in moderate flexion (70 to 90 degrees); across-elbow distance of 10 cm; stimulation more than 3 cm distal to the medial epicondyle avoided. Focal-lesion criteria, listed in order of strength of evidence: (a) absolute motor nerve conduction velocity from above elbow to below elbow of less than 50 m/s; (b) an AE-to-BE segment greater than 10 m/s slower than the BE-to-wrist segment; (c) a decrease in CMAP negative peak amplitude from BE to AE greater than 20%, suggesting conduction block or temporal dispersion of focal demyelination; (d) a significant change in CMAP configuration at the AE site; multiple internally consistent abnormalities are more convincing than isolated ones. General principle: if ulnar studies are abnormal, further nerve conduction studies should be carried out to exclude a diffuse process (practice standard). Practice options when studies recording abductor digiti quinti are inconclusive: recording from the first dorsal interosseous, and an inching study over 1- or 2-cm increments. And when ulnar-innervated muscles are abnormal on needle examination, the examination should be extended to non-ulnar C8/medial cord/lower trunk muscles to exclude brachial plexopathy and to the cervical paraspinals to exclude radiculopathy. Case 5's stage-4 protocol is this document's protocol, and its electrodiagnostic LR is computed at the review's least favourable supported combination (0.37 sensitivity, 0.95 specificity) as a disclosed floor.",
+   "id": "C31"
+  },
+  {
+   "citation": "Chang KV, Wu WT, Han DS, Ozcakar L. Ulnar nerve cross-sectional area for the diagnosis of cubital tunnel syndrome: a meta-analysis of ultrasonographic measurements. Arch Phys Med Rehabil 2018;99(4):743-757 (PMID 28888384; PubMed abstract consulted in-session 2026-11-06)",
+   "consulted": "Fourteen trials in the meta-analysis. At the 10 mm2 cross-sectional-area cutoff, the pooled diagnostic accuracy (five studies) is sensitivity 0.85 (95% CI 0.78-0.90), specificity 0.91 (0.86-0.94) and diagnostic odds ratio 53.96; the largest case-control CSA difference is at the medial epicondyle level (6.0 mm2), and healthy ulnar nerve CSA rarely exceeds 10 mm2 at any level. Case 5's elbow finding (14 mm2 at the medial epicondyle) is weighed with the pooled pair at the cutoff: LR+ = 0.85 / (1 - 0.91) = 9.4444, computed and labelled as such; the case patient's wrist measurement (5 mm2) is case data with no LR attached.",
+   "id": "C32"
+  },
+  {
+   "citation": "Novak CB, Lee GW, Mackinnon SE, Lay L. Provocative testing for cubital tunnel syndrome. J Hand Surg Am 1994;19(5):817-820 (abstract consulted via the Washington University School of Medicine research profile, in-session 2026-11-06); cubital-tunnel specificity figure as tabulated in the Tinel's sign evidence summary, Physio-pedia (consulted in-session 2026-11-06)",
+   "consulted": "Prospective study: 32 subjects with electrodiagnostically proven cubital tunnel syndrome (44 extremities) and 33 control subjects. In the 44 affected extremities, 31 had a Tinel's sign (sensitivity 0.70). At 30 seconds, the sensitivities of the provocative tests were: elbow flexion 0.32, pressure provocation 0.55, and the combined pressure-flexion test 0.91 — the combined test the most sensitive; the study's overall elbow-flexion positivity was 33 of 44 extremities. The abstract consulted does not state specificities; the consulted Physio-pedia Tinel's sign evidence table gives the sign's specificity in cubital tunnel syndrome as 0.98. Case 5 computes its Tinel LR+ from exactly this pair (0.70 / (1 - 0.98) = 35.0) and discloses, in the finding and the derivation, that the control arm was asymptomatic volunteers — the pair measures separation from health, not from the case's live differential. The combined pressure-flexion result is used qualitatively only: its sensitivity is stated by the primary abstract but its specificity is stated by neither consulted source, so no LR is computed from it.",
+   "id": "C33"
+  },
+  {
+   "citation": "McGowan AJ. Results of transposition of the ulnar nerve for traumatic ulnar neuritis. J Bone Joint Surg Br 1950;32-B:293-301 — grade criteria as reproduced in the classification summary 'Classification of ulnar nerve compression' (Emet Education), consulted in-session 2026-11-06, which restates the original grades with the 2021 EFORT review and records the Goldberg et al. 1989 subdivision",
+   "consulted": "The three grades as the consulted reproduction states them. Grade I (minimal): paresthesia and subjective clumsiness, no detectable intrinsic weakness — sensory symptoms without a motor deficit. Grade II (intermediate): weakness and some wasting of the interossei, with paresthesia and objective sensory loss. Grade III (severe): paralysis of one or more interossei with wasting and persistent sensory loss. Goldberg et al. (1989) subdivided grade II into IIA and IIB by the extent of the motor deficit (the summary reports their post-operative normal-function rates: 92% grade I, 45% grade IIA, 11% grade IIB); the reproduction states the subdivision's existence and basis but no mechanically applicable sub-criteria, so case 5's block grades I/II/III only and says so. Case 5's patient — objective sensory loss, 4/5 weakness, early interosseous wasting, no paralysis — is grade II on these criteria, computed mechanically by the declared block from stage 2 onward.",
+   "id": "C34"
+  },
+  {
+   "citation": "Wells PS, Anderson DR, Rodger M, et al. Derivation of a simple clinical model to categorize patients probability of pulmonary embolism: increasing the models utility with the SimpliRED D-dimer. Thromb Haemost 2000;83(3):416-420.",
+   "consulted": "Consulted 2026-11-06: the seven-item table with points (clinical signs and symptoms of DVT 3.0; pulmonary embolism as likely as or more likely than an alternative diagnosis 3.0; heart rate > 100/min 1.5; immobilisation at least 3 days or surgery in the previous 4 weeks 1.5; previous objectively diagnosed DVT or PE 1.5; haemoptysis 1.0; malignancy with treatment within 6 months or palliative 1.0) and the three-tier bands (< 2 low, 2-6 moderate, > 6 high) from two independent reproductions of the primary table, which agreed; the two-tier cut (<= 4 PE unlikely / > 4 PE likely) via the Christopher Study investigators, JAMA 2006;295:172-179, as reproduced alongside the score.",
+   "id": "C35"
+  },
+  {
+   "citation": "Maisel AS, Krishnaswamy P, Nowak RM, et al. Rapid measurement of B-type natriuretic peptide in the emergency diagnosis of heart failure (Breathing Not Properly study). N Engl J Med 2002;347(3):161-167.",
+   "consulted": "Consulted 2026-11-06: diagnostic accuracy at the 100 pg/mL cutoff — sensitivity 0.90, specificity 0.76, negative predictive value 0.89 (n = 1,586) — from the study's published record; the same study's likelihood ratios (LR+ 3.75, LR- 0.13 at the 100 pg/mL cutoff) as tabulated in a consulted diagnostic-accuracy review (PMC2696716), agreeing with the pair-derived values 0.90 / 0.24 = 3.75 and 0.10 / 0.76 = 0.132.",
+   "id": "C36"
+  },
+  {
+   "citation": "Kline JA, Courtney DM, Kabrhel C, et al. Prospective multicenter evaluation of the pulmonary embolism rule-out criteria. J Thromb Haemost 2008;6(5):772-780 (rule derived in Kline JA et al., J Thromb Haemost 2004).",
+   "consulted": "Consulted 2026-11-06 in full text (jthjournal.org): the eight criteria (age > 49 years; pulse > 99/min, i.e. >= 100; pulse oximetry < 95% on room air; haemoptysis; exogenous oestrogen use; prior DVT or PE; surgery or trauma requiring hospitalisation within 4 weeks; unilateral leg swelling), the PERC-negative definition (all eight absent), the rule's use condition (a clinician gestalt of low pretest probability, under 15%), and the prospective false-negative rate of 0.9% (11 of 1,216) among very-low-risk PERC-negative patients.",
+   "id": "C37"
+  },
+  {
+   "citation": "Righini M, Van Es J, Den Exter PL, et al. Age-adjusted D-dimer cutoff levels to rule out pulmonary embolism: the ADJUST-PE study. JAMA 2014;311(11):1117-1124.",
+   "consulted": "Consulted 2026-11-06: the age-adjusted cutoff definition (age x 10 ug/L FEU for patients older than 50 years; the fixed 500 ug/L cutoff at 50 and below) and the 3-month venous thromboembolic rates among untreated patients below cutoff (0.1% below 500 ug/L; 0.3% between 500 ug/L and the age-adjusted cutoff), from the study's published record.",
+   "id": "C38"
+  },
+  {
+   "citation": "Patel P, Patel P, Bhatt M, et al. Systematic review and meta-analysis of test accuracy for the diagnosis of suspected pulmonary embolism. Blood Adv 2020;4(18):4296-4311 (PROSPERO CRD42018084669).",
+   "consulted": "Consulted 2026-11-06: pooled D-dimer sensitivity 0.97 (95% CI 0.96-0.98) and specificity 0.41 (0.36-0.46) across 61 studies; the pooled CTPA pair (sensitivity 0.94, specificity 0.98) recorded but not used for this case's CTPA weight. Companion record consulted the same session: Stein PD et al., D-dimer for the exclusion of acute pulmonary embolism: a systematic review, Ann Intern Med 2004 (PMID 15096330) — ELISA D-dimer sensitivity 0.95 for PE, likelihood ratio for a negative result 0.13, positive likelihood ratios in the general range of 1.5 to 2.5.",
+   "id": "C39"
+  },
+  {
+   "citation": "Stein PD, Fowler SE, Goodman LR, et al. Multidetector computed tomography for acute pulmonary embolism (PIOPED II). N Engl J Med 2006;354(22):2317-2327.",
+   "consulted": "Consulted 2026-11-06: CT angiography sensitivity 0.83 (150 of 181) and specificity 0.96 (567 of 592); CTA with CT venography sensitivity 0.90 and specificity 0.95 — via the NEJM published record and a consulted review reproducing the primary counts (PMC10928556).",
+   "id": "C40"
+  },
+  {
+   "citation": "Konstantinides SV, Meyer G, Becattini C, et al. 2019 ESC Guidelines on the diagnosis and management of acute pulmonary embolism, developed in collaboration with the European Respiratory Society (ERS). Eur Heart J 2020;41(4):543-603.",
+   "consulted": "Consulted 2026-11-06 via the ACC's published guideline summary, the ESC slide set and a consulted review (PMC7873787): the diagnostic algorithm (clinical probability, then D-dimer in low/intermediate probability or PE-unlikely — age-adjusted cutoffs a class IIa consideration — then CTPA; CTPA directly in high probability or shock/hypotension), the severity classification table (high risk = haemodynamic instability; intermediate-high = no instability with sPESI >= 1 AND both RV dysfunction on imaging and elevated cardiac troponin; intermediate-low = one or neither marker; low = sPESI 0 without markers), the sPESI items (age > 80 years, cancer, chronic cardiopulmonary disease, heart rate >= 110, systolic BP < 100 mmHg, arterial oxyhaemoglobin saturation < 90%), RV/LV diameter ratio >= 1.0 as the CT RV-dysfunction threshold, hs-troponin < 14 pg/mL as the consulted normal threshold statement, and the statement that BNP/NT-proBNP is elevated in approximately 50% of acute PE through RV pressure overload and myocardial stretch.",
+   "id": "C41"
+  },
+  {
+   "citation": "Lim WS, van der Eerden MM, Laing R, et al. Defining community acquired pneumonia severity on presentation to hospital: an international derivation and validation study cohort (CURB-65). Thorax 2003;58(5):377-382.",
+   "consulted": "Consulted 2026-11-06: the five items (new confusion; urea > 7 mmol/L; respiratory rate >= 30/min; systolic BP < 90 mmHg or diastolic BP <= 60 mmHg; age >= 65 years) and the severity bands (0-1 low, 2 moderate, 3-5 high 30-day mortality risk) from reproductions of the primary score.",
+   "id": "C42"
+  },
+  {
+   "citation": "Systematic review of lung ultrasound for acute decompensated heart failure in undifferentiated dyspnoea. CJEM (abstract LO074); six studies, n = 1,911.",
+   "consulted": "Consulted 2026-11-06: pooled sensitivity 0.896 and specificity 0.884 for B-lines diagnosing acute decompensated heart failure, with published pooled likelihood ratios LR+ 6.01 and LR- 0.13 (95% CI 0.06-0.30).",
+   "id": "C43"
+  },
+  {
+   "citation": "MedlinePlus Medical Encyclopedia: blood gases (arterial blood gas test values). U.S. National Library of Medicine.",
+   "consulted": "Consulted 2026-11-06: arterial partial pressure of oxygen 75-100 mmHg; partial pressure of carbon dioxide 35-45 mmHg; pH 7.35-7.45; oxygen saturation 94-100%; bicarbonate 22-26 mEq/L (sea level values). Companion consulted the same session: arterial blood gas interpretation review, BMJ 1998;317:1213-1216 (PMC1114160).",
+   "id": "C44"
+  },
+  {
+   "citation": "Medscape laboratory reference: C-reactive protein (sourcing Pagana KD, Pagana TJ. Mosby's Diagnostic and Laboratory Test Reference, 17th ed.).",
+   "consulted": "Consulted 2026-11-06: normal CRP below 1.0 mg/dL (below 10 mg/L).",
+   "id": "C45"
+  },
+  {
+   "citation": "Mellemgaard K. The alveolar-arterial oxygen difference: its size and components in normal man. Acta Physiol Scand 1966;66(1):10-20.",
+   "consulted": "Consulted 2026-11-06 via reproductions of the fitted relation (expected A-a gradient = 2.5 + 0.21 x age in years) in the MSD/Merck Manual alveolar-arterial gradient reference and in Sarkar M, Banyal A, Lung India 2017; the alternative (age / 4 + 4) form was also consulted and is recorded in the case's aa_assessment block note.",
+   "id": "C46"
+  },
+  {
+   "citation": "MedlinePlus Medical Encyclopedia: BUN - blood test (medlineplus.gov/ency/article/003474.htm). U.S. National Library of Medicine.",
+   "consulted": "Consulted 2026-11-06: normal blood urea nitrogen 6-20 mg/dL; the SI urea reference interval 2.5-7.1 mmol/L as reproduced in MedlinePlus-derived laboratory tables the same session.",
+   "id": "C47"
   }
  ]
 }
