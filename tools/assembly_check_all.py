@@ -78,15 +78,24 @@ CENSUS = {
     "skeletal": (206, 199, None),
     "muscular": (359, 359, 127),
     "cardiovascular": (646, 646, 69),
-    "nervous": (419, 133, 52),  # Milestone 33: +286 FMA 5.1.0 concept
-    # records (geometry-absent); geometry and clinical counts unchanged
+    "nervous": (419, 133, 92),  # Milestone 33: +286 FMA 5.1.0 concept
+    # records (geometry-absent); geometry count unchanged.
+    # Milestone 39: +40 major-nerve clinical records in a second
+    # clinical file (data/nervous/major-nerves.json); inventory and
+    # geometry counts unchanged
     "respiratory": (83, 83, 37),
     "digestive": (93, 93, 31),
-    "urinary": (6, 6, 6),
-    "lymphatic": (4, 4, 4),
-    "endocrine": (3, 3, 6),
-    "reproductive": (13, 13, 16),
-    "integumentary": (6, 6, 13),
+    "urinary": (73, 6, 6),  # Milestone 37: +67 FMA 5.1.0 concept
+    # records (geometry-absent); geometry and clinical counts unchanged
+    "lymphatic": (135, 4, 4),  # Milestone 36: +131 FMA 5.1.0 concept
+    # records (geometry-absent); geometry and clinical counts unchanged
+    "endocrine": (17, 3, 6),  # Milestone 36: +14 FMA 5.1.0 concept
+    # records (geometry-absent); geometry and clinical counts unchanged
+    "reproductive": (146, 13, 16),  # Milestone 37: +57 FMA 5.1.0 concept
+    # records (geometry-absent); Milestone 38: +76 more (male);
+    # geometry and clinical counts unchanged
+    "integumentary": (59, 6, 13),  # Milestone 38: +53 FMA 5.1.0 concept
+    # records (geometry-absent); geometry and clinical counts unchanged
 }
 
 SYSTEMS = {
@@ -100,7 +109,8 @@ SYSTEMS = {
                        "data/cardiovascular/cardiovascular.json"),
     "nervous": ("data/nervous/nervous-geometry.json",
                 "data/nervous/nervous-assembled.json",
-                "data/nervous/nervous.json"),
+                ("data/nervous/nervous.json",
+                 "data/nervous/major-nerves.json")),
     "respiratory": ("data/respiratory/respiratory-geometry.json",
                     "data/respiratory/respiratory-assembled.json",
                     "data/respiratory/respiratory.json"),
@@ -356,8 +366,15 @@ def main():
         # A8 (report)
         clin_rel = SYSTEMS[key][2]
         if clin_rel:
-            clin = json.load(open(os.path.join(ROOT, clin_rel)))
-            crec = clin["records"]
+            # A system's clinical tranche may span more than one
+            # file (Milestone 39: nervous adds major-nerves.json).
+            clin_files = clin_rel if isinstance(clin_rel, tuple) \
+                else (clin_rel,)
+            crec, n_variants = [], 0
+            for one in clin_files:
+                clin = json.load(open(os.path.join(ROOT, one)))
+                crec.extend(clin["records"])
+                n_variants += len(clin.get("variants", []))
             inv_ids = set(grec)
             clin_only = 0
             for c in crec:
@@ -366,7 +383,7 @@ def main():
                     g = c["geometry"].get("inventory_record_ids")
                 if not g:
                     clin_only += 1
-            extra = f"; variants {len(clin['variants'])}" if "variants" in clin else ""
+            extra = f"; variants {n_variants}" if n_variants else ""
             note(f"A8 {key} clinical tranche",
                  f"{len(crec)} records (census {exp_clin}); clinical-only "
                  f"(no inventory link) {clin_only}{extra}")

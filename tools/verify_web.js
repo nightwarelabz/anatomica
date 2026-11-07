@@ -33,7 +33,7 @@
        exactly the Milestone-3 set (6 ossicles + coccyx); every
        clinical_ids entry resolves into the clinical map; the
        clinical map holds every authored clinical record and
-       variant (369 entries); the listed clinical-only and variant
+       variant (409 entries); the listed clinical-only and variant
        sets equal the source-derived sets.
    W6  pick codec, bound to the shipped web/viewer.js: the FS_PICK
        encoder expressions and the pick() decoder block are parsed
@@ -138,7 +138,7 @@ const SYSTEMS = {
   skeletal:     { geom: "data/skeletal/skeleton-geometry.json",         asm: "data/skeletal/skeleton-assembled.json",         clin: null },
   muscular:     { geom: "data/muscular/muscle-geometry.json",           asm: "data/muscular/muscles-assembled.json",          clin: "data/muscular/muscles.json" },
   cardiovascular:{ geom: "data/cardiovascular/cv-geometry.json",        asm: "data/cardiovascular/cv-assembled.json",         clin: "data/cardiovascular/cardiovascular.json" },
-  nervous:      { geom: "data/nervous/nervous-geometry.json",           asm: "data/nervous/nervous-assembled.json",             clin: "data/nervous/nervous.json" },
+  nervous:      { geom: "data/nervous/nervous-geometry.json",           asm: "data/nervous/nervous-assembled.json",             clin: ["data/nervous/nervous.json", "data/nervous/major-nerves.json"] },
   respiratory:  { geom: "data/respiratory/respiratory-geometry.json",   asm: "data/respiratory/respiratory-assembled.json",     clin: "data/respiratory/respiratory.json" },
   digestive:    { geom: "data/digestive/digestive-geometry.json",       asm: "data/digestive/digestive-assembled.json",         clin: "data/digestive/digestive.json" },
   urinary:      { geom: "data/urinary/urinary-geometry.json",           asm: "data/urinary/urinary-assembled.json",             clin: "data/urinary/urinary.json" },
@@ -178,6 +178,21 @@ function clinicalLinks(clin) {
   for (const v of clin.variants || []) { byId.set(v.id, v); variants.push(v.id); }
   return { byId, only, variants };
 }
+// A layer's clinical tranche may live in more than one file
+// (Milestone 39: the nervous layer adds major-nerves.json beside
+// the Milestone-9 file); merge records and variants across files.
+function loadClin(key) {
+  const c = SYSTEMS[key].clin;
+  if (!c) return null;
+  const files = Array.isArray(c) ? c : [c];
+  const merged = { records: [], variants: [] };
+  for (const f of files) {
+    const d = loadJSON(path.join(ROOT, f));
+    merged.records.push(...d.records);
+    for (const v of d.variants || []) merged.variants.push(v);
+  }
+  return merged;
+}
 
 // ---------- W1 ----------
 {
@@ -206,7 +221,7 @@ function clinicalLinks(clin) {
     } else {
       const asm = loadJSON(path.join(ROOT, SYSTEMS[key].asm));
       const geom = loadJSON(path.join(ROOT, SYSTEMS[key].geom));
-      const links = clinicalLinks(loadJSON(path.join(ROOT, SYSTEMS[key].clin)));
+      const links = clinicalLinks(loadClin(key));
       // Listed = every inventory record (the geometry file's record
       // set; assembled geometry-bearing records plus any
       // geometry-absent inventory records, e.g. the Milestone 33
@@ -308,7 +323,7 @@ for (const key of KEYS) {
       if (seen.has(key + ":" + a.record_id)) { ok = false; detail.push(`${key}:${a.record_id} listed twice`); }
       seen.add(key + ":" + a.record_id);
     }
-    const links = clinicalLinks(SYSTEMS[key].clin ? loadJSON(path.join(ROOT, SYSTEMS[key].clin)) : null);
+    const links = clinicalLinks(loadClin(key));
     const listedOnly = records.filter(r => r.layer === key && r.record_kind === "clinical-only").map(r => r.id).sort();
     const listedVar = records.filter(r => r.layer === key && r.record_kind === "variant").map(r => r.id).sort();
     if (JSON.stringify(listedOnly) !== JSON.stringify([...links.only].sort())) { ok = false; detail.push(`${key} clinical-only set differs`); }
@@ -321,7 +336,7 @@ for (const key of KEYS) {
   let expectedClin = 0;
   for (const key of KEYS) {
     if (!SYSTEMS[key].clin) continue;
-    const links = clinicalLinks(loadJSON(path.join(ROOT, SYSTEMS[key].clin)));
+    const links = clinicalLinks(loadClin(key));
     expectedClin += links.byId.size;
     for (const cid of links.byId.keys())
       if (!clinical[cid] || clinical[cid].layer !== key) { ok = false; detail.push(`clinical ${cid} missing/wrong layer`); }

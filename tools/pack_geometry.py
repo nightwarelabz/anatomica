@@ -26,7 +26,7 @@ Outputs under web/data/:
       that link no inventory record (clinical-only, listed and
       marked), and the 8 cardiovascular variant records (listed and
       marked) — 1,916
-      listed records, plus the full clinical map (361 clinical
+      listed records, plus the full clinical map (401 clinical
       records + 8 variants) keyed by id.
   manifest.json — per-layer counts/sizes/ranges actually written,
       plus each layer's pick bit, display label and colour (the
@@ -88,7 +88,9 @@ LAYERS = [
     ("cardiovascular", "Cardiovascular", 3, [0.80, 0.16, 0.28],
      "data/cardiovascular/cv-assembled.json", "data/cardiovascular/cardiovascular.json", 5),
     ("nervous", "Nervous", 4, [0.90, 0.78, 0.35],
-     "data/nervous/nervous-assembled.json", "data/nervous/nervous.json", 9),
+     "data/nervous/nervous-assembled.json",
+     ("data/nervous/nervous.json", "data/nervous/major-nerves.json"),
+     9),
     ("respiratory", "Respiratory", 5, [0.45, 0.65, 0.85],
      "data/respiratory/respiratory-assembled.json", "data/respiratory/respiratory.json", 10),
     ("digestive", "Digestive", 6, [0.75, 0.50, 0.30],
@@ -105,6 +107,24 @@ LAYERS = [
      "data/integumentary/integumentary-assembled.json", "data/integumentary/integumentary.json", 15),
 ]
 LAYER_KEYS = [l[0] for l in LAYERS]
+
+# Layers whose inventories carry FMA 5.1.0 concept records
+# (geometry-absent): listed in the shell records from the
+# inventory, marked, by the records-listing pass below.
+FMA_LISTING = {
+    "nervous": ("data/nervous/nervous-inventory.json",
+                "Milestone 33"),
+    "lymphatic": ("data/lymphatic/lymphatic-inventory.json",
+                  "Milestone 36"),
+    "endocrine": ("data/endocrine/endocrine-inventory.json",
+                  "Milestone 36"),
+    "urinary": ("data/urinary/urinary-inventory.json",
+                "Milestone 37"),
+    "reproductive": ("data/reproductive/reproductive-inventory.json",
+                     "Milestone 37/38"),
+    "integumentary": ("data/integumentary/integumentary-inventory.json",
+                      "Milestone 38"),
+}
 
 
 def convert(x, y, z):
@@ -381,24 +401,30 @@ def clinical_links(clin_file):
     clinical records with no inventory link; variants.
     The Milestone-4 tranche keys its records 'record_id'; the
     Milestone-5+ tranches key theirs 'id' — both are the record's
-    canonical id, resolved here."""
+    canonical id, resolved here. A layer may author its clinical
+    tranche in more than one file (Milestone 39: the nervous layer
+    adds data/nervous/major-nerves.json beside the Milestone-9
+    file); a tuple/list of paths is merged."""
     by_id, inv_links, clin_only, variants = {}, {}, [], []
     if clin_file is None:
         return by_id, inv_links, clin_only, variants
-    clin = load_json(clin_file)
-    for c in clin["records"]:
-        cid = c.get("record_id") or c.get("id")
-        by_id[cid] = c
-        g = c.get("geometry_record_ids")
-        if g is None and isinstance(c.get("geometry"), dict):
-            g = c["geometry"].get("inventory_record_ids")
-        if not g:
-            clin_only.append((cid, c))
-        for rid in g or []:
-            inv_links.setdefault(rid, []).append(cid)
-    for v in clin.get("variants", []):
-        by_id[v["id"]] = v
-        variants.append(v)
+    files = clin_file if isinstance(clin_file, (list, tuple)) \
+        else [clin_file]
+    for one in files:
+        clin = load_json(one)
+        for c in clin["records"]:
+            cid = c.get("record_id") or c.get("id")
+            by_id[cid] = c
+            g = c.get("geometry_record_ids")
+            if g is None and isinstance(c.get("geometry"), dict):
+                g = c["geometry"].get("inventory_record_ids")
+            if not g:
+                clin_only.append((cid, c))
+            for rid in g or []:
+                inv_links.setdefault(rid, []).append(cid)
+        for v in clin.get("variants", []):
+            by_id[v["id"]] = v
+            variants.append(v)
     return by_id, inv_links, clin_only, variants
 
 
@@ -544,15 +570,17 @@ def main():
                      "not separately modeled in geometry"}
                 records.append(e)
                 n_listed += 1
-        if key == "nervous":
-            # Milestone 33: FMA 5.1.0 concept records carry no
+        if key in FMA_LISTING:
+            # Milestone 33 (nervous) / Milestone 36 (lymphatic,
+            # endocrine): FMA 5.1.0 concept records carry no
             # geometry, so assembly skips them; list them here from
             # the inventory, marked, mirroring the skeletal
             # geometry-less pattern above.
+            inv_rel, ms_label = FMA_LISTING[key]
             listed_ids = {e["id"] for e in records
-                          if e.get("layer") == "nervous"}
-            nerv_inv = load_json("data/nervous/nervous-inventory.json")
-            for rec in nerv_inv["records"]:
+                          if e.get("layer") == key}
+            fma_inv = load_json(inv_rel)
+            for rec in fma_inv["records"]:
                 if rec["record_id"] in listed_ids:
                     continue
                 e = {"layer": key, "id": rec["record_id"],
@@ -567,12 +595,13 @@ def main():
                      "has_geometry": False,
                      "slot": None, "bbox_canonical_cm": None,
                      "cross_midline_fraction": None,
-                     "clinical_ids": [],
+                     "clinical_ids": inv_links.get(rec["record_id"],
+                                                   []),
                      "geometry_note": ("concept record from the "
                          "Foundational Model of Anatomy (FMA) 5.1.0 "
                          "(CC BY 4.0); the FMA carries no geometry "
                          "and BodyParts3D 4.0 has no concept for "
-                         "this structure (Milestone 33)")}
+                         f"this structure ({ms_label})")}
                 records.append(e)
                 n_listed += 1
         counts[key] = n_listed

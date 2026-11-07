@@ -1,0 +1,1368 @@
+#!/usr/bin/env python3
+"""ANATOMICA Milestone 39 — builder for the major-nerve clinical
+tranche: data/nervous/major-nerves.json.
+
+Forty clinical records of type major_nerve: the twelve cranial
+nerves, the six brachial-plexus trunks and cords, nine upper-limb
+nerves and thirteen lower-limb nerves. Every record links the
+inventory records (M33 FMA 5.1.0 concept records, or BodyParts3D
+records for the optic and trochlear nerves) via geometry_record_ids.
+
+Sourcing discipline (the house rule, absolute): every non-null
+content field cites, in the record's sources map, a source that was
+opened and read during the Milestone 39 build session; every null
+field carries an explicit verify entry stating why. Values are
+entered ONLY from the consulted sources named in the meta sources
+register — TeachMeAnatomy per-nerve and plexus articles, the
+University of Arkansas for Medical Sciences (Department of
+Neuroscience) nerve tables, and OpenStax Anatomy & Physiology 2e
+section 14.7, 'The Cranial Nerve Exam'. Nothing is filled from
+recall.
+
+Field discipline for type major_nerve (declared here, re-derived
+independently by tools/major_nerve_check.py):
+  core fields: root_values, motor_distribution, sensory_distribution
+  soft fields: course, clinical_testing
+  tier A — all five fields sourced
+  tier B — the three core fields sourced, one or both soft fields null
+  tier C — any core field null
+
+ta_name / ta_code follow the linked inventory records: for
+FMA-linked records, the Milestone 35 TA2 outcome already carried by
+those records (both sided records share the code); for the two
+BodyParts3D-linked records (optic, trochlear), the Milestone 23 TA2
+outcome carried by the Milestone 9 clinical records
+nerve.cn-02-optic / nerve.cn-04-trochlear. Cited to TA2.
+"""
+
+import json
+import os
+from collections import Counter
+
+PROJECT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
+OUT = os.path.join(PROJECT, "data", "nervous", "major-nerves.json")
+
+SOURCES = {
+    "TMA-CN": "TeachMeAnatomy, 'Summary of the Cranial Nerves' "
+              "(teachmeanatomy.info/head/cranial-nerves/summary/)",
+    "TMA-BP": "TeachMeAnatomy, 'The Brachial Plexus' "
+              "(teachmeanatomy.info)",
+    "TMA-LP": "TeachMeAnatomy, 'The Lumbar Plexus' "
+              "(teachmeanatomy.info)",
+    "TMA-SP": "TeachMeAnatomy, 'The Sacral Plexus' "
+              "(teachmeanatomy.info)",
+    "TMA-MED": "TeachMeAnatomy, 'The Median Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-MC": "TeachMeAnatomy, 'The Musculocutaneous Nerve' "
+              "(teachmeanatomy.info)",
+    "TMA-AX": "TeachMeAnatomy, 'The Axillary Nerve' "
+              "(teachmeanatomy.info)",
+    "TMA-RAD": "TeachMeAnatomy, 'The Radial Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-ULN": "TeachMeAnatomy, 'The Ulnar Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-FEM": "TeachMeAnatomy, 'The Femoral Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-OBT": "TeachMeAnatomy, 'The Obturator Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-SCI": "TeachMeAnatomy, 'The Sciatic Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-TIB": "TeachMeAnatomy, 'The Tibial Nerve' "
+               "(teachmeanatomy.info)",
+    "TMA-CF": "TeachMeAnatomy, 'The Common Fibular (Peroneal) Nerve' "
+              "(teachmeanatomy.info)",
+    "TMA-PUD": "TeachMeAnatomy, 'The Pudendal Nerve' "
+               "(teachmeanatomy.info)",
+    "UAMS-UL": "University of Arkansas for Medical Sciences, Department "
+               "of Neuroscience, 'Nerves of the Upper Limb' table "
+               "(medicine.uams.edu)",
+    "UAMS-LL": "University of Arkansas for Medical Sciences, Department "
+               "of Neuroscience, 'Nerves of the Lower Limb' table "
+               "(medicine.uams.edu)",
+    "OS-EXAM": "OpenStax, Anatomy and Physiology 2e, section 14.7 "
+               "'The Cranial Nerve Exam' (OpenStax text via the Oregon "
+               "State University open textbook mirror)",
+    "TA2": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA "
+           "version 2.07, as published in TA2Viewer "
+           "(ta2viewer.openanatomy.org); extracted table: "
+           "data/sources/ta2-2.07/ta2-terms.json — entered here only as "
+           "carried by the linked inventory records (Milestone 35) or "
+           "the Milestone 9 clinical records (Milestone 23)",
+}
+
+CORE = ("root_values", "motor_distribution", "sensory_distribution")
+SOFT = ("course", "clinical_testing")
+FIELDS = ("root_values", "course", "motor_distribution",
+          "sensory_distribution", "clinical_testing")
+
+FMA_NOTE = ("Links the sided FMA 5.1.0 concept records named in "
+            "geometry_record_ids; those records are geometry-absent — "
+            "the FMA is an ontology and carries no mesh data "
+            "(Milestone 33).")
+BP3D_NOTE = ("Links the BodyParts3D 4.0 inventory records named in "
+             "geometry_record_ids, which carry geometry in the nervous "
+             "system module (Milestone 9).")
+
+
+def rec(rid, name, group, ta_name, ta_code, links, note, **fields):
+    """fields: field name -> (value, [source ids]) or (None, reason)."""
+    r = {"id": rid, "name": name, "type": "major_nerve",
+         "group": group, "ta_name": ta_name, "ta_code": ta_code}
+    sources = {}
+    verify = []
+    for f in FIELDS:
+        value, src = fields[f]
+        r[f] = value
+        if value is None:
+            verify.append(f"{f}: {src} - verify")
+        else:
+            sources[f] = list(src)
+    if ta_name is not None:
+        sources["ta_name"] = ["TA2"]
+    r["sources"] = sources
+    r["verify"] = verify
+    r["note"] = note
+    r["geometry_record_ids"] = links
+    core_ok = all(r[f] is not None for f in CORE)
+    soft_ok = all(r[f] is not None for f in SOFT)
+    r["sourcing_tier"] = "A" if (core_ok and soft_ok) else (
+        "B" if core_ok else "C")
+    return r
+
+
+CN = "Cranial nerves"
+BP = "Brachial plexus — trunks and cords"
+UL = "Peripheral nerves — upper limb"
+LL = "Peripheral nerves — lower limb"
+
+RECORDS = [
+    # ------------------------------------------------ cranial nerves
+    rec("major.cn-01-olfactory", "Olfactory nerve (CN I)", CN,
+        "nervus olfactorius", 6181,
+        ["nerve.left-olfactory-nerve", "nerve.right-olfactory-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the cerebrum — one of the two cranial "
+                     "nerves that do not arise from the brainstem; its "
+                     "fibres are the axons of the olfactory receptor "
+                     "neurons of the nasal epithelium, which project to "
+                     "the olfactory bulb.", ["TMA-CN", "OS-EXAM"]),
+        course=("From the olfactory epithelium of the nasal cavity, the "
+                "nerve fibres pass upward through the cribriform plate "
+                "of the ethmoid bone to the olfactory bulb.",
+                ["TMA-CN", "OS-EXAM"]),
+        motor_distribution=("None — the nerve is purely sensory "
+                            "(special visceral sensory, SVS).",
+                            ["TMA-CN"]),
+        sensory_distribution=("Smell (special visceral sensory).",
+                              ["TMA-CN"]),
+        clinical_testing=("Tested by presenting common smells (for "
+                          "example coffee or mint) to one nostril at a "
+                          "time; the patient should be able to recognise "
+                          "the smell. Loss of the sense of smell is "
+                          "anosmia, which can follow blunt head trauma "
+                          "if all the fibres are sheared as the brain "
+                          "moves within the cranium.", ["OS-EXAM"])),
+    rec("major.cn-02-optic", "Optic nerve (CN II)", CN,
+        "nervus opticus", 6183,
+        ["nerve.left-optic-nerve", "nerve.right-optic-nerve"],
+        BP3D_NOTE,
+        root_values=("Arises from the cerebrum; the nerve carries the "
+                     "axons of the retina — including the photosensitive "
+                     "ganglion cells that send the signal for the "
+                     "pupillary light response — to the brain.",
+                     ["TMA-CN", "OS-EXAM"]),
+        course=("From the retina, the nerve enters the cranium through "
+                "the optic canal and meets its fellow at the optic "
+                "chiasm, where fibres sort so that the two halves of "
+                "the visual field are processed by opposite sides of "
+                "the brain.", ["TMA-CN", "OS-EXAM"]),
+        motor_distribution=("None — the nerve is purely sensory "
+                            "(special somatic sensory, SSS).",
+                            ["TMA-CN"]),
+        sensory_distribution=("Vision (special somatic sensory).",
+                              ["TMA-CN"]),
+        clinical_testing=("Visual acuity is tested with a Snellen "
+                          "chart; the extent of the visual field is "
+                          "tested by establishing the boundaries of "
+                          "peripheral vision; the optic disk, where the "
+                          "optic nerve emerges from the eye, is inspected "
+                          "through the pupil with an ophthalmoscope. The "
+                          "nerve is the afferent (sensory) limb of the "
+                          "pupillary light reflex. Loss of peripheral "
+                          "vision ('tunnel vision') may result from a "
+                          "pituitary tumour pressing on the optic "
+                          "chiasm.", ["OS-EXAM"])),
+    rec("major.cn-03-oculomotor", "Oculomotor nerve (CN III)", CN,
+        "nervus oculomotorius", 6187,
+        ["nerve.left-oculomotor-nerve", "nerve.right-oculomotor-nerve"],
+        FMA_NOTE,
+        root_values=("Arises at the midbrain–pontine junction of the "
+                     "brainstem.", ["TMA-CN"]),
+        course=("From the midbrain–pontine junction, the nerve passes "
+                "to the orbit and enters it through the superior "
+                "orbital fissure.", ["TMA-CN"]),
+        motor_distribution=("Somatic motor (GSM): four extrinsic eye "
+                            "muscles — superior rectus, inferior rectus, "
+                            "medial rectus and inferior oblique (all the "
+                            "extraocular muscles except lateral rectus "
+                            "and superior oblique) — and the levator "
+                            "palpebrae superioris. Visceral motor (GVM, "
+                            "parasympathetic): the pupillary sphincter, "
+                            "and control of the shape of the lens for "
+                            "accommodation.", ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("None — the nerve is motor only "
+                              "(general somatic motor and general "
+                              "visceral motor).", ["TMA-CN"]),
+        clinical_testing=("Eye movement is tested by having the patient "
+                          "track the tip of a pen through the visual "
+                          "field, watching for conjugate movement; "
+                          "failure of one eye to move in conjugation "
+                          "with the other produces diplopia. Moving the "
+                          "pen in toward the face tests convergence and "
+                          "accommodation. The nerve is the efferent "
+                          "(motor) limb of the pupillary light reflex: "
+                          "if light in either eye elicits constriction "
+                          "in only one eye, the problem is with the "
+                          "oculomotor system.", ["OS-EXAM"])),
+    rec("major.cn-04-trochlear", "Trochlear nerve (CN IV)", CN,
+        "nervus trochlearis", 6191,
+        ["nerve.left-trochlear-nerve", "nerve.right-trochlear-nerve"],
+        BP3D_NOTE,
+        root_values=("Arises from the posterior side of the midbrain; "
+                     "it has the longest intracranial length of all "
+                     "the cranial nerves.", ["TMA-CN"]),
+        course=("From the posterior midbrain, the nerve travels to the "
+                "orbit and enters it through the superior orbital "
+                "fissure.", ["TMA-CN"]),
+        motor_distribution=("The superior oblique muscle (general "
+                            "somatic motor), which rotates the eye "
+                            "along its axis medially (intorsion).",
+                            ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("None — the nerve is motor only "
+                              "(general somatic motor).", ["TMA-CN"]),
+        clinical_testing=("Tested with the other gaze nerves by having "
+                          "the patient track the tip of a pen through "
+                          "the visual field, watching for conjugate "
+                          "movement; failure of the superior oblique to "
+                          "act in conjugation with the other eye "
+                          "produces diplopia.", ["OS-EXAM"])),
+    rec("major.cn-05-trigeminal", "Trigeminal nerve (CN V)", CN,
+        "nervus trigeminus", 6192,
+        ["nerve.left-trigeminal-nerve", "nerve.right-trigeminal-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the pons.", ["TMA-CN"]),
+        course=("From the pons, the nerve divides into three divisions "
+                "that leave the cranium separately: the ophthalmic "
+                "division through the superior orbital fissure, the "
+                "maxillary division through the foramen rotundum, and "
+                "the mandibular division through the foramen ovale.",
+                ["TMA-CN"]),
+        motor_distribution=("The muscles of mastication (special "
+                            "visceral motor, via the mandibular "
+                            "division).", ["TMA-CN"]),
+        sensory_distribution=("General sensation (GSS) from the face "
+                              "and head, by division — ophthalmic: "
+                              "scalp, forehead and nose; maxillary: "
+                              "cheeks, lower eyelid, nasal mucosa, upper "
+                              "lip, upper teeth and palate; mandibular: "
+                              "anterior two-thirds of the tongue "
+                              "(general sensation), skin over the "
+                              "mandible and lower teeth.", ["TMA-CN"]),
+        clinical_testing=("Sensory function is tested by discrimination "
+                          "on the face: while the patient's eyes are "
+                          "closed, the examiner alternates the cotton "
+                          "tip (light touch) and the snapped pointed end "
+                          "(pain) of a cotton-tipped applicator, and the "
+                          "patient identifies whether the stimulus is "
+                          "sharp or dull. The nerve is also the sensory "
+                          "component of the jaw-jerk reflex, via its "
+                          "mesencephalic nucleus, which processes "
+                          "proprioceptive information of the face.",
+                          ["OS-EXAM"])),
+    rec("major.cn-06-abducens", "Abducens nerve (CN VI)", CN,
+        "nervus abducens", 6283,
+        ["nerve.left-abducens-nerve", "nerve.right-abducens-nerve"],
+        FMA_NOTE,
+        root_values=("Arises at the pontine–medulla junction of the "
+                     "brainstem.", ["TMA-CN"]),
+        course=("From the pontine–medulla junction, the nerve passes "
+                "to the orbit and enters it through the superior "
+                "orbital fissure.", ["TMA-CN"]),
+        motor_distribution=("The lateral rectus muscle (general "
+                            "somatic motor), which abducts the eye.",
+                            ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("None — the nerve is motor only "
+                              "(general somatic motor).", ["TMA-CN"]),
+        clinical_testing=("Tested by having the patient track the tip "
+                          "of a pen through the visual field: in "
+                          "horizontal gaze the lateral rectus of one eye "
+                          "acts with the medial rectus of the other. "
+                          "Failure of one eye to abduct while the other "
+                          "adducts is internuclear ophthalmoplegia, and "
+                          "diplopia results from any failure of the "
+                          "extraocular muscles to move one eye in "
+                          "perfect conjugation with the other.",
+                          ["OS-EXAM"])),
+    rec("major.cn-07-facial", "Facial nerve (CN VII)", CN,
+        "nervus facialis", 6284,
+        ["nerve.left-facial-nerve", "nerve.right-facial-nerve"],
+        FMA_NOTE,
+        root_values=("Arises at the pontine–medulla junction of the "
+                     "brainstem.", ["TMA-CN"]),
+        course=("From the pontine–medulla junction, the nerve enters "
+                "the internal acoustic meatus and ultimately leaves "
+                "the skull through the stylomastoid foramen.",
+                ["TMA-CN"]),
+        motor_distribution=("The muscles of facial expression "
+                            "(special visceral motor). Visceral motor "
+                            "(GVM, parasympathetic): the lacrimal gland, "
+                            "the submandibular and sublingual glands, "
+                            "and the mucous glands of the mouth and "
+                            "nose.", ["TMA-CN"]),
+        sensory_distribution=("Taste from the anterior two-thirds of "
+                              "the tongue and from the hard and soft "
+                              "palates (special visceral sensory); "
+                              "general sensation from part of the "
+                              "external ear (GSS).", ["TMA-CN"]),
+        clinical_testing=("Taste is tested by introducing salty, sour, "
+                          "bitter or sweet stimuli to either side of "
+                          "the tongue. The muscles of facial expression "
+                          "are tested by directed contraction against "
+                          "resistance — for example, the patient "
+                          "squeezes her eyes shut while the examiner "
+                          "tries to pry them open; the muscles of the "
+                          "upper and lower face both need to be tested, "
+                          "and severe deficits are obvious as one side "
+                          "of the face not moving like the other.",
+                          ["OS-EXAM"])),
+    rec("major.cn-08-vestibulocochlear",
+        "Vestibulocochlear nerve (CN VIII)", CN,
+        "nervus vestibulocochlearis", 6307,
+        ["nerve.left-vestibulocochlear-nerve",
+         "nerve.right-vestibulocochlear-nerve"],
+        FMA_NOTE,
+        root_values=("Arises at the pontine–medulla junction; its "
+                     "vestibular and cochlear divisions carry "
+                     "equilibrium and auditory sensations from the "
+                     "inner ear to the medulla.", ["TMA-CN", "OS-EXAM"]),
+        course=("The two divisions emerge from the inner ear, pass "
+                "through the internal auditory (acoustic) meatus, and "
+                "synapse in nuclei of the superior medulla.",
+                ["TMA-CN", "OS-EXAM"]),
+        motor_distribution=("None — the nerve is purely sensory "
+                            "(special somatic sensory, SSS).",
+                            ["TMA-CN"]),
+        sensory_distribution=("Hearing (cochlear division) and balance "
+                              "/ equilibrium (vestibular division) "
+                              "(special somatic sensory).",
+                              ["TMA-CN", "OS-EXAM"]),
+        clinical_testing=("Hearing is tested with a tuning fork: in "
+                          "the Rinne test the vibrating fork is placed "
+                          "on the mastoid process until the sound is no "
+                          "longer heard, then moved beside the ear "
+                          "canal — if the sound is then not heard, a "
+                          "conductive hearing deficit is present; in "
+                          "the Weber test the fork is placed on top of "
+                          "the skull, and with unilateral conductive "
+                          "loss the sound is louder in the affected ear, "
+                          "while with unilateral sensorineural loss it "
+                          "is quieter in that ear. Equilibrium is "
+                          "assessed through the vestibulo-ocular "
+                          "reflex. Ménière's disease can affect both "
+                          "systems, with vertigo, a low-frequency "
+                          "ringing in the ears, or a loss of hearing.",
+                          ["OS-EXAM"])),
+    rec("major.cn-09-glossopharyngeal",
+        "Glossopharyngeal nerve (CN IX)", CN,
+        "nervus glossopharyngeus", 6320,
+        ["nerve.left-glossopharyngeal-nerve",
+         "nerve.right-glossopharyngeal-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the medulla oblongata, posterior to "
+                     "the olive.", ["TMA-CN"]),
+        course=("From the medulla, the nerve leaves the cranium "
+                "through the jugular foramen.", ["TMA-CN"]),
+        motor_distribution=("The stylopharyngeus muscle (special "
+                            "visceral motor). Visceral motor (GVM, "
+                            "parasympathetic): the parotid gland, via "
+                            "fibres that synapse in the otic ganglion.",
+                            ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("Taste from the posterior one-third of "
+                              "the tongue (SVS); general sensation from "
+                              "the posterior one-third of the tongue, "
+                              "part of the external ear and the middle "
+                              "ear cavity (GSS); visceral sensation from "
+                              "the carotid body and carotid sinus "
+                              "(GVS).", ["TMA-CN"]),
+        clinical_testing=("The nerve relays general sensation from the "
+                          "pharyngeal walls and forms the afferent limb "
+                          "of the gag reflex: moving a tongue depressor "
+                          "to contact the lateral wall of the fauces "
+                          "should elicit the gag reflex, and "
+                          "stimulation of either side should elicit an "
+                          "equivalent response. Taste from the "
+                          "posterior tongue is tested with salty, sour, "
+                          "bitter or sweet stimuli applied to the "
+                          "tongue.", ["OS-EXAM"])),
+    rec("major.cn-10-vagus", "Vagus nerve (CN X)", CN,
+        "nervus vagus", 6332,
+        ["nerve.left-vagus-nerve", "nerve.right-vagus-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the medulla oblongata, posterior to "
+                     "the olive.", ["TMA-CN"]),
+        course=("From the medulla, the nerve leaves the cranium "
+                "through the jugular foramen and descends through the "
+                "neck; it has autonomic functions in the thoracic and "
+                "superior abdominal cavities.", ["TMA-CN", "OS-EXAM"]),
+        motor_distribution=("Most muscles of the pharynx and larynx "
+                            "(special visceral motor) — the vagus "
+                            "directly stimulates the contraction of "
+                            "skeletal muscles in the pharynx and larynx "
+                            "to contribute to the swallowing and speech "
+                            "functions; smooth muscle of the pharynx, "
+                            "larynx and most of the gastrointestinal "
+                            "tract (general visceral motor).",
+                            ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("Visceral sensation from the larynx, "
+                              "pharynx and the thoracic and abdominal "
+                              "viscera (GVS); general sensation from part "
+                              "of the external ear, the larynx and the "
+                              "pharynx (GSS); taste from the epiglottis "
+                              "region of the tongue (SVS).", ["TMA-CN"]),
+        clinical_testing=("Motor function is tested through the gag "
+                          "reflex — the motor response, contraction of "
+                          "the muscles of the pharynx, is mediated "
+                          "through the vagus nerve — and by having the "
+                          "patient repeat consonant sounds such as "
+                          "'lah-kah-pah' while the examiner observes "
+                          "the movements of the soft palate and the "
+                          "arches between the palate and the tongue.",
+                          ["OS-EXAM"])),
+    rec("major.cn-11-accessory", "Accessory nerve (CN XI)", CN,
+        "nervus accessorius spinalis", 6356,
+        ["nerve.left-spinal-accessory-nerve",
+         "nerve.right-spinal-accessory-nerve"],
+        FMA_NOTE + " ta_name/ta_code follow the linked FMA records' "
+        "Milestone 35 outcome (TA2 6356, nervus accessorius "
+        "spinalis); the Milestone 9 whole-nerve clinical record "
+        "(nerve.cn-11-accessory) carries the Milestone 23 outcome "
+        "TA2 6352, nervus accessorius.",
+        root_values=("Cranial root from the medulla (nucleus "
+                     "ambiguus); spinal root from the upper cervical "
+                     "spinal cord.", ["UAMS-UL"]),
+        course=("The spinal root ascends and enters the cranial "
+                "cavity through the foramen magnum; the nerve then "
+                "exits the skull through the jugular foramen to reach "
+                "the sternocleidomastoid and trapezius.",
+                ["UAMS-UL", "TMA-CN"]),
+        motor_distribution=("The sternocleidomastoid and trapezius "
+                            "muscles (general somatic motor); a few "
+                            "fibres run with the vagus nerve to the "
+                            "viscera (special visceral motor).",
+                            ["TMA-CN", "UAMS-UL"]),
+        sensory_distribution=("None — the nerve is motor only.",
+                              ["UAMS-UL", "TMA-CN"]),
+        clinical_testing=("Tested by asking the patient to shrug both "
+                          "shoulders against resistance (trapezius) "
+                          "and to flex and extend the neck, or "
+                          "laterally flex the neck toward the shoulder, "
+                          "against resistance (sternocleidomastoid and "
+                          "trapezius); any difference on one side "
+                          "versus the other would suggest damage on the "
+                          "weaker side.", ["OS-EXAM"])),
+    rec("major.cn-12-hypoglossal", "Hypoglossal nerve (CN XII)", CN,
+        "nervus hypoglossus", 6357,
+        ["nerve.left-hypoglossal-nerve",
+         "nerve.right-hypoglossal-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the medulla oblongata, anterior to "
+                     "the olive.", ["TMA-CN"]),
+        course=("From the medulla, the nerve leaves the cranium "
+                "through the hypoglossal canal and passes to the "
+                "tongue.", ["TMA-CN"]),
+        motor_distribution=("The intrinsic and extrinsic muscles of "
+                            "the tongue (general somatic motor), except "
+                            "the palatoglossus, which is controlled by "
+                            "the vagus nerve.", ["TMA-CN", "OS-EXAM"]),
+        sensory_distribution=("None — the nerve is motor only "
+                              "(general somatic motor).", ["TMA-CN"]),
+        clinical_testing=("Tested by asking the patient to stick out "
+                          "the tongue: the genioglossus is responsible "
+                          "for protrusion, so if the nerve on one side "
+                          "has a deficit, the tongue sticks out toward "
+                          "the side with the damage. Loss of function "
+                          "of the tongue can interfere with speech and "
+                          "swallowing.", ["OS-EXAM"])),
+]
+
+RECORDS += [
+    # --------------------------------------- brachial plexus parts
+    rec("major.superior-trunk", "Superior trunk of brachial plexus", BP,
+        "truncus superior plexus brachialis", 6398,
+        ["nerve.superior-trunk-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the union of the anterior rami of C5 "
+                     "and C6; the roots emerge between the anterior "
+                     "and middle scalene muscles.", ["TMA-BP"]),
+        course=("The trunk traverses the posterior triangle of the "
+                "neck and divides into anterior and posterior "
+                "divisions, which go on to form the cords of the "
+                "plexus.", ["TMA-BP"]),
+        motor_distribution=("Gives off the suprascapular nerve (to "
+                            "supraspinatus and infraspinatus) and the "
+                            "nerve to subclavius; its fibres continue "
+                            "via the lateral and posterior cords into "
+                            "the terminal nerves of the upper limb.",
+                            ["TMA-BP", "UAMS-UL"]),
+        sensory_distribution=("Carries the C5–C6 sensory fibres of the "
+                              "upper limb; upper trunk injury produces "
+                              "sensory loss over the lateral aspect of "
+                              "the upper limb.", ["TMA-BP"]),
+        clinical_testing=("Upper trunk (C5–C6) injury is Erb's palsy: "
+                          "the suprascapular, axillary and "
+                          "musculocutaneous nerves are predominantly "
+                          "affected, with loss of abduction and lateral "
+                          "rotation of the arm, loss of supination and "
+                          "loss of shoulder flexion, sensory loss on "
+                          "the lateral aspect of the upper limb, and "
+                          "the characteristic 'waiter's tip' position "
+                          "of the limb.", ["TMA-BP"])),
+    rec("major.middle-trunk", "Middle trunk of brachial plexus", BP,
+        "truncus medius plexus brachialis", 6401,
+        ["nerve.middle-trunk-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the anterior ramus of C7 alone.",
+                     ["TMA-BP"]),
+        course=("The trunk traverses the posterior triangle of the "
+                "neck and divides into anterior and posterior "
+                "divisions, which go on to form the cords of the "
+                "plexus.", ["TMA-BP"]),
+        motor_distribution=("Motor fibres of C7 pass through the trunk "
+                            "into the lateral cord (via the anterior "
+                            "division) and the posterior cord (via the "
+                            "posterior division), and so into the "
+                            "terminal nerves of the upper limb; the "
+                            "plexus account lists no branches arising "
+                            "from the middle trunk itself.",
+                            ["TMA-BP"]),
+        sensory_distribution=(None, "no sensory distribution specific "
+                              "to the middle trunk is stated in the "
+                              "consulted sources; not entered"),
+        clinical_testing=(None, "no lesion pattern or bedside test "
+                          "specific to the middle trunk is described "
+                          "in the consulted sources; not entered")),
+    rec("major.inferior-trunk", "Inferior trunk of brachial plexus", BP,
+        "truncus inferior plexus brachialis", 6404,
+        ["nerve.inferior-trunk-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the union of the anterior rami of C8 "
+                     "and T1; the roots emerge between the anterior "
+                     "and middle scalene muscles.", ["TMA-BP"]),
+        course=("The trunk traverses the posterior triangle of the "
+                "neck and divides into anterior and posterior "
+                "divisions; the anterior division continues as the "
+                "medial cord of the plexus.", ["TMA-BP"]),
+        motor_distribution=("Its fibres reach the hand via the medial "
+                            "cord and the ulnar and median nerves, "
+                            "which supply the intrinsic muscles of the "
+                            "hand.", ["TMA-BP"]),
+        sensory_distribution=("Carries the C8–T1 sensory fibres of the "
+                              "upper limb; lower trunk injury produces "
+                              "sensory loss along the medial side of "
+                              "the upper limb.", ["TMA-BP"]),
+        clinical_testing=("Lower trunk (C8–T1) injury is Klumpke's "
+                          "palsy: the ulnar and median nerves are "
+                          "predominantly affected, the intrinsic "
+                          "muscles of the hand are affected with "
+                          "sensory loss on the medial side of the "
+                          "upper limb, and the hand is left clawed.",
+                          ["TMA-BP"])),
+    rec("major.lateral-cord", "Lateral cord of brachial plexus", BP,
+        "fasciculus lateralis plexus brachialis", 6415,
+        ["nerve.lateral-cord-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the union of the anterior divisions of "
+                     "the superior and middle trunks; root values C5, "
+                     "C6 and C7. The cords of the plexus are named by "
+                     "their relationship to the axillary artery.",
+                     ["TMA-BP"]),
+        course=("Lies lateral to the axillary artery in the axilla; "
+                "gives off the lateral pectoral nerve, then divides "
+                "into the musculocutaneous nerve and the lateral root "
+                "of the median nerve.", ["TMA-BP"]),
+        motor_distribution=("Motor fibres pass into the "
+                            "musculocutaneous nerve (coracobrachialis, "
+                            "biceps brachii and brachialis) and, via "
+                            "the lateral root of the median nerve, "
+                            "into the median nerve's muscles of the "
+                            "forearm and hand.",
+                            ["TMA-BP", "TMA-MC", "TMA-MED"]),
+        sensory_distribution=("Sensory fibres pass into the "
+                              "musculocutaneous nerve, continuing as "
+                              "the lateral cutaneous nerve of the "
+                              "forearm (lateral forearm), and into the "
+                              "median nerve (lateral palm and the "
+                              "palmar surface of the lateral three and "
+                              "a half digits).",
+                              ["TMA-MC", "TMA-MED"]),
+        clinical_testing=(None, "no lesion pattern or bedside test "
+                          "specific to the lateral cord is described "
+                          "in the consulted sources; not entered")),
+    rec("major.posterior-cord", "Posterior cord of brachial plexus", BP,
+        "fasciculus posterior plexus brachialis", 6416,
+        ["nerve.posterior-cord-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the union of the posterior divisions "
+                     "of all three trunks; root values C5–T1. The "
+                     "cords of the plexus are named by their "
+                     "relationship to the axillary artery.",
+                     ["TMA-BP"]),
+        course=("Lies posterior to the axillary artery in the axilla; "
+                "gives off the subscapular nerves and the thoracodorsal "
+                "nerve, then divides into the axillary nerve and the "
+                "radial nerve.", ["TMA-BP"]),
+        motor_distribution=("Motor fibres pass into the axillary nerve "
+                            "(deltoid and teres minor) and the radial "
+                            "nerve (triceps brachii, brachioradialis, "
+                            "extensor carpi radialis longus and the "
+                            "posterior compartment of the forearm).",
+                            ["TMA-BP", "TMA-AX", "TMA-RAD"]),
+        sensory_distribution=("Sensory fibres pass into the axillary "
+                              "nerve (skin over the inferior part of "
+                              "the deltoid) and the radial nerve's "
+                              "cutaneous branches (posterior arm, "
+                              "posterior forearm, lower lateral arm, "
+                              "and the dorsal surface of the lateral "
+                              "hand and digits).",
+                              ["TMA-AX", "TMA-RAD"]),
+        clinical_testing=(None, "no lesion pattern or bedside test "
+                          "specific to the posterior cord is described "
+                          "in the consulted sources; not entered")),
+    rec("major.medial-cord", "Medial cord of brachial plexus", BP,
+        "fasciculus medialis plexus brachialis", 6417,
+        ["nerve.medial-cord-of-brachial-nerve-plexus"],
+        FMA_NOTE,
+        root_values=("Formed by the anterior division of the inferior "
+                     "trunk; root values C8 and T1. The cords of the "
+                     "plexus are named by their relationship to the "
+                     "axillary artery.", ["TMA-BP"]),
+        course=("Lies medial to the axillary artery in the axilla; "
+                "gives off the medial pectoral nerve, the medial "
+                "cutaneous nerve of the arm and the medial cutaneous "
+                "nerve of the forearm, then divides into the ulnar "
+                "nerve and the medial root of the median nerve.",
+                ["TMA-BP"]),
+        motor_distribution=("Motor fibres pass into the ulnar nerve "
+                            "(flexor carpi ulnaris, the medial half of "
+                            "flexor digitorum profundus and the "
+                            "intrinsic muscles of the hand) and, via "
+                            "the medial root of the median nerve, into "
+                            "the median nerve's muscles.",
+                            ["TMA-BP", "TMA-ULN", "TMA-MED"]),
+        sensory_distribution=("Gives off the medial cutaneous nerve of "
+                              "the arm (medial arm) and the medial "
+                              "cutaneous nerve of the forearm (medial "
+                              "forearm) directly; further sensory "
+                              "fibres continue into the ulnar nerve "
+                              "(medial palm, and the medial one and a "
+                              "half digits).",
+                              ["TMA-BP", "UAMS-UL", "TMA-ULN"]),
+        clinical_testing=(None, "no lesion pattern or bedside test "
+                          "specific to the medial cord is described in "
+                          "the consulted sources; not entered")),
+
+    # -------------------------------------------- upper-limb nerves
+    rec("major.suprascapular", "Suprascapular nerve", UL,
+        "nervus suprascapularis", 6411,
+        ["nerve.left-suprascapular-nerve",
+         "nerve.right-suprascapular-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the superior trunk of the brachial "
+                     "plexus; root values C5 and C6.",
+                     ["UAMS-UL", "TMA-BP"]),
+        course=("Passes through the suprascapular notch, inferior to "
+                "the superior transverse scapular ligament, to reach "
+                "the posterior scapular region.", ["UAMS-UL"]),
+        motor_distribution=("Supraspinatus and infraspinatus.",
+                            ["UAMS-UL"]),
+        sensory_distribution=("None — the nerve has no cutaneous "
+                              "branches.", ["UAMS-UL"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to the suprascapular nerve is "
+                          "stated in the consulted sources; not "
+                          "entered")),
+    rec("major.long-thoracic", "Long thoracic nerve", UL,
+        "nervus thoracicus longus", 6410,
+        ["nerve.left-long-thoracic-nerve",
+         "nerve.right-long-thoracic-nerve"],
+        FMA_NOTE,
+        root_values=("Arises from the roots of the brachial plexus; "
+                     "root values C5, C6 and C7 (ventral primary "
+                     "rami).", ["TMA-BP", "UAMS-UL"]),
+        course=("Descends on the superficial surface of the serratus "
+                "anterior muscle.", ["UAMS-UL"]),
+        motor_distribution=("Serratus anterior.", ["UAMS-UL"]),
+        sensory_distribution=("None — the nerve has no cutaneous "
+                              "branches.", ["UAMS-UL"]),
+        clinical_testing=("Lesion of the nerve causes winging of the "
+                          "scapula (scapular winging), through "
+                          "paralysis of its muscle, the serratus "
+                          "anterior.", ["UAMS-UL"])),
+    rec("major.musculocutaneous", "Musculocutaneous nerve", UL,
+        "nervus musculocutaneus", 6421,
+        ["nerve.left-musculocutaneous-nerve",
+         "nerve.right-musculocutaneous-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the lateral cord of the "
+                     "brachial plexus; root values C5, C6 and C7.",
+                     ["TMA-MC"]),
+        course=("Arises in the axilla, pierces the coracobrachialis, "
+                "then descends between the biceps brachii and "
+                "brachialis muscles, and continues beyond the elbow "
+                "as the lateral cutaneous nerve of the forearm.",
+                ["TMA-MC"]),
+        motor_distribution=("Coracobrachialis, biceps brachii and "
+                            "brachialis — the muscles of the anterior "
+                            "compartment of the arm.", ["TMA-MC"]),
+        sensory_distribution=("Continues as the lateral cutaneous "
+                              "nerve of the forearm, supplying the "
+                              "skin of the lateral side of the "
+                              "forearm.", ["TMA-MC", "UAMS-UL"]),
+        clinical_testing=("Injury to the nerve weakens flexion of the "
+                          "elbow and of the shoulder, and weakens "
+                          "supination of the forearm, with sensory "
+                          "loss over the lateral forearm.",
+                          ["TMA-MC"])),
+    rec("major.axillary", "Axillary nerve", UL,
+        "nervus axillaris", 6440,
+        ["nerve.left-axillary-nerve", "nerve.right-axillary-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the posterior cord of the "
+                     "brachial plexus; root values C5 and C6.",
+                     ["TMA-AX"]),
+        course=("Arises in the axilla, exits the axilla through the "
+                "quadrangular space, and winds around the surgical "
+                "neck of the humerus to reach the deltoid.",
+                ["TMA-AX"]),
+        motor_distribution=("Deltoid and teres minor.", ["TMA-AX"]),
+        sensory_distribution=("Via its branch, the upper lateral "
+                              "cutaneous nerve of the arm: the skin "
+                              "over the inferior part of the deltoid "
+                              "— the 'regimental badge' area.",
+                              ["TMA-AX"]),
+        clinical_testing=("Most commonly injured by fracture of the "
+                          "surgical neck of the humerus or by shoulder "
+                          "dislocation: the deltoid is paralysed, so "
+                          "the arm cannot be abducted beyond the "
+                          "initial 15 degrees (the range supplied by "
+                          "supraspinatus), with sensory loss over the "
+                          "regimental badge area. Named bedside tests "
+                          "in the source include the deltoid extension "
+                          "lag sign and the external rotation lag "
+                          "sign.", ["TMA-AX"])),
+    rec("major.radial", "Radial nerve", UL,
+        "nervus radialis", 6431,
+        ["nerve.left-radial-nerve", "nerve.right-radial-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the posterior cord of the "
+                     "brachial plexus; root values C5–T1.",
+                     ["TMA-RAD"]),
+        course=("Arises in the axilla, leaves via the triangular "
+                "interval into the posterior compartment of the arm, "
+                "descends in the radial (spiral) groove of the "
+                "humerus, crosses anterior to the lateral epicondyle "
+                "at the elbow, and divides into a deep branch — which "
+                "passes through the supinator and continues as the "
+                "posterior interosseous nerve — and a superficial "
+                "sensory branch.", ["TMA-RAD"]),
+        motor_distribution=("Triceps brachii, brachioradialis and "
+                            "extensor carpi radialis longus, and — "
+                            "via the deep / posterior interosseous "
+                            "branch — the extensor muscles of the "
+                            "posterior compartment of the forearm.",
+                            ["TMA-RAD"]),
+        sensory_distribution=("The posterior cutaneous nerve of the "
+                              "arm, the lower lateral cutaneous nerve "
+                              "of the arm and the posterior cutaneous "
+                              "nerve of the forearm; and, via the "
+                              "superficial branch, the dorsal surface "
+                              "of the lateral three and a half digits.",
+                              ["TMA-RAD"]),
+        clinical_testing=("Lesion in the axilla: paralysis of the "
+                          "triceps as well as of the wrist extensors, "
+                          "giving wrist drop. Lesion in the radial "
+                          "groove: wrist drop, but the triceps is "
+                          "weakened rather than paralysed (its "
+                          "branches arise proximal to the groove). "
+                          "Lesion of the deep branch alone: no wrist "
+                          "drop (extensor carpi radialis longus is "
+                          "spared) and no sensory loss.", ["TMA-RAD"])),
+    rec("major.median", "Median nerve", UL,
+        "nervus medianus", 6459,
+        ["nerve.left-median-nerve", "nerve.right-median-nerve"],
+        FMA_NOTE,
+        root_values=("Formed in the axilla by the lateral and medial "
+                     "roots, from the lateral and medial cords of the "
+                     "brachial plexus; root values C6–T1, with C5 "
+                     "fibres present in some people.", ["TMA-MED"]),
+        course=("Descends through the arm, first lateral and then "
+                "medial to the brachial artery; passes through the "
+                "cubital fossa, between the two heads of pronator "
+                "teres, and deep to flexor digitorum superficialis in "
+                "the forearm; enters the hand through the carpal "
+                "tunnel and divides into the recurrent branch and the "
+                "palmar digital branches.", ["TMA-MED"]),
+        motor_distribution=("In the forearm: pronator teres, flexor "
+                            "carpi radialis, palmaris longus and "
+                            "flexor digitorum superficialis; via the "
+                            "anterior interosseous branch: flexor "
+                            "pollicis longus, pronator quadratus and "
+                            "the lateral half of flexor digitorum "
+                            "profundus. In the hand: the thenar "
+                            "muscles and the lateral two lumbricals.",
+                            ["TMA-MED"]),
+        sensory_distribution=("The palmar cutaneous branch supplies "
+                              "the lateral part of the palm; the "
+                              "palmar digital branches supply the "
+                              "palmar surface of the lateral three and "
+                              "a half digits.", ["TMA-MED"]),
+        clinical_testing=("Carpal tunnel syndrome is assessed with "
+                          "Tinel's sign and Phalen's manoeuvre; the "
+                          "palmar cutaneous branch is spared in carpal "
+                          "tunnel syndrome, because it does not pass "
+                          "through the carpal tunnel. A lesion at the "
+                          "elbow produces the 'hand of benediction' on "
+                          "attempted finger flexion, a supinated "
+                          "forearm and thenar wasting; a lesion at the "
+                          "wrist affects only the hand, the forearm "
+                          "muscles being spared.", ["TMA-MED"])),
+    rec("major.ulnar", "Ulnar nerve", UL,
+        "nervus ulnaris", 6449,
+        ["nerve.left-ulnar-nerve", "nerve.right-ulnar-nerve"],
+        FMA_NOTE,
+        root_values=("Continuation of the medial cord of the brachial "
+                     "plexus; root values C8 and T1.", ["TMA-ULN"]),
+        course=("Arises in the axilla and descends the medial side of "
+                "the arm; at mid-arm it penetrates the medial "
+                "intermuscular septum into the posterior compartment, "
+                "passes behind the elbow through the ulnar tunnel "
+                "(between the medial epicondyle and the olecranon), "
+                "pierces the two heads of flexor carpi ulnaris, and "
+                "runs deep to that muscle in the forearm; at the "
+                "wrist it passes superficial to the flexor retinaculum "
+                "and enters the hand through the ulnar (Guyon's) "
+                "canal, dividing into superficial and deep branches.",
+                ["TMA-ULN"]),
+        motor_distribution=("In the forearm: flexor carpi ulnaris and "
+                            "the medial half of flexor digitorum "
+                            "profundus. In the hand, via the deep "
+                            "branch: the hypothenar muscles, the "
+                            "medial two lumbricals, adductor pollicis "
+                            "and the palmar and dorsal interossei; "
+                            "palmaris brevis via the superficial "
+                            "branch. Together, all the intrinsic "
+                            "muscles of the hand except the thenar "
+                            "muscles and the lateral two lumbricals.",
+                            ["TMA-ULN"]),
+        sensory_distribution=("The palmar cutaneous branch supplies "
+                              "the medial half of the palm; the dorsal "
+                              "cutaneous branch supplies the dorsal "
+                              "surface of the medial one and a half "
+                              "fingers and the associated dorsal hand; "
+                              "the superficial branch supplies the "
+                              "palmar surface of the medial one and a "
+                              "half fingers.", ["TMA-ULN"]),
+        clinical_testing=("Froment's sign: the patient holds a piece "
+                          "of paper between thumb and index finger "
+                          "while the examiner pulls it away; if the "
+                          "adductor pollicis is paralysed, the thumb's "
+                          "interphalangeal joint flexes to hold the "
+                          "paper — a positive sign. Lesion at the "
+                          "elbow (for example medial epicondyle trauma "
+                          "or cubital tunnel compression): all ulnar "
+                          "muscles are affected, wrist flexion occurs "
+                          "with abduction, finger abduction and "
+                          "adduction are lost, Froment's sign is "
+                          "positive, all sensory branches are lost and "
+                          "the hypothenar eminence wastes. Lesion at "
+                          "the wrist: only the intrinsic hand muscles "
+                          "are affected, and the dorsal cutaneous "
+                          "branch is spared, so sensory loss is "
+                          "confined to the palmar medial one and a "
+                          "half fingers.", ["TMA-ULN"])),
+    rec("major.medial-cutaneous-arm", "Medial cutaneous nerve of arm",
+        UL, "nervus cutaneus medialis brachii", 6445,
+        ["nerve.medial-cutaneous-nerve-of-arm"],
+        FMA_NOTE,
+        root_values=("Branch of the medial cord of the brachial "
+                     "plexus (root values C8 and T1 via the cord).",
+                     ["TMA-BP", "UAMS-UL"]),
+        course=("Arises from the medial cord of the brachial plexus; "
+                "communicates with the intercostobrachial nerve.",
+                ["UAMS-UL", "TMA-BP"]),
+        motor_distribution=("None — a cutaneous (sensory) nerve.",
+                            ["UAMS-UL"]),
+        sensory_distribution=("Skin of the medial side of the arm.",
+                              ["UAMS-UL"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to this nerve is stated in the "
+                          "consulted sources; not entered")),
+    rec("major.medial-cutaneous-forearm",
+        "Medial cutaneous nerve of forearm", UL,
+        "nervus cutaneus medialis antebrachii", 6446,
+        ["nerve.medial-cutaneous-nerve-of-forearm"],
+        FMA_NOTE,
+        root_values=("Branch of the medial cord of the brachial "
+                     "plexus (root values C8 and T1 via the cord).",
+                     ["TMA-BP", "UAMS-UL"]),
+        course=("Arises from the medial cord of the brachial plexus; "
+                "travels with the basilic vein for part of its "
+                "course.", ["UAMS-UL", "TMA-BP"]),
+        motor_distribution=("None — a cutaneous (sensory) nerve.",
+                            ["UAMS-UL"]),
+        sensory_distribution=("Skin of the medial side of the "
+                              "forearm.", ["UAMS-UL"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to this nerve is stated in the "
+                          "consulted sources; not entered")),
+]
+
+RECORDS += [
+    # -------------------------------------------- lower-limb nerves
+    rec("major.femoral", "Femoral nerve", LL,
+        "nervus femoralis", 6522,
+        ["nerve.left-femoral-nerve", "nerve.right-femoral-nerve"],
+        FMA_NOTE,
+        root_values=("The largest branch of the lumbar plexus, formed "
+                     "from the anterior rami of L2, L3 and L4.",
+                     ["TMA-FEM", "TMA-LP"]),
+        course=("Travels inferiorly through the substance of psoas "
+                "major, passes under the inguinal ligament into the "
+                "femoral triangle, lateral to the femoral vessels and "
+                "outside the femoral sheath, and about 4 cm below the "
+                "inguinal ligament divides into anterior and posterior "
+                "divisions.", ["TMA-FEM"]),
+        motor_distribution=("Hip flexors: pectineus, iliacus and "
+                            "sartorius. Knee extensors: the quadriceps "
+                            "femoris (rectus femoris, vastus lateralis, "
+                            "vastus medialis and vastus "
+                            "intermedius).", ["TMA-FEM"]),
+        sensory_distribution=("The anterior cutaneous branches supply "
+                              "the anteromedial thigh; the saphenous "
+                              "nerve, its terminal branch, supplies "
+                              "the medial side of the leg and foot.",
+                              ["TMA-FEM"]),
+        clinical_testing=("In a lumbar plexopathy affecting the "
+                          "femoral nerve: weakness of hip flexion, "
+                          "impaired knee extension, and a reduced "
+                          "patellar reflex.", ["TMA-LP"])),
+    rec("major.obturator", "Obturator nerve", LL,
+        "nervus obturatorius", 6532,
+        ["nerve.left-obturator-nerve", "nerve.right-obturator-nerve"],
+        FMA_NOTE,
+        root_values=("Formed from the anterior divisions of the "
+                     "anterior rami of L2, L3 and L4 (lumbar plexus).",
+                     ["TMA-OBT"]),
+        course=("Descends through the fibres of psoas major and "
+                "emerges from its medial border, travels along the "
+                "lateral pelvic wall to the obturator foramen, and "
+                "enters the medial compartment of the thigh through "
+                "the obturator canal, dividing into anterior and "
+                "posterior divisions that pass in front of and behind "
+                "adductor brevis.", ["TMA-OBT"]),
+        motor_distribution=("The muscles of the medial compartment of "
+                            "the thigh — adductor longus, adductor "
+                            "brevis, the adductor part of adductor "
+                            "magnus, gracilis and obturator externus "
+                            "— the hip adductors, excepting the "
+                            "hamstring part of adductor magnus.",
+                            ["TMA-OBT"]),
+        sensory_distribution=("Via its cutaneous branch: the skin of "
+                              "the middle part of the medial thigh.",
+                              ["TMA-OBT"]),
+        clinical_testing=("The nerve can be damaged during pelvic or "
+                          "abdominal surgery, causing numbness and "
+                          "paraesthesia on the medial side of the "
+                          "thigh, weakness of thigh adduction, and "
+                          "problems with posture and gait arising from "
+                          "the loss of adduction.", ["TMA-OBT"])),
+    rec("major.lateral-femoral-cutaneous",
+        "Lateral cutaneous nerve of thigh", LL,
+        "nervus cutaneus lateralis femoris", 6521,
+        ["nerve.left-lateral-femoral-cutaneous-nerve",
+         "nerve.right-lateral-femoral-cutaneous-nerve"],
+        FMA_NOTE,
+        root_values=("Branch of the lumbar plexus; root values L2 "
+                     "and L3.", ["TMA-LP"]),
+        course=("Arises from the lumbar plexus and enters the thigh "
+                "at the lateral aspect of the inguinal ligament.",
+                ["TMA-LP"]),
+        motor_distribution=("None — the nerve is purely sensory.",
+                            ["TMA-LP"]),
+        sensory_distribution=("The skin of the anterior and lateral "
+                              "aspects of the thigh, down to the knee.",
+                              ["TMA-LP"]),
+        clinical_testing=("In a lumbar plexopathy, involvement of "
+                          "this nerve produces sensory loss over the "
+                          "lateral thigh.", ["TMA-LP"])),
+    rec("major.saphenous", "Saphenous nerve", LL,
+        "nervus saphenus", 6525,
+        ["nerve.left-saphenous-nerve", "nerve.right-saphenous-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the femoral nerve, arising "
+                     "from its posterior division (root values L2–L4 "
+                     "via the femoral nerve).", ["TMA-FEM"]),
+        course=("Travels through the adductor (subsartorial) canal "
+                "with the femoral vessels, and exits the canal before "
+                "the adductor hiatus to reach the medial side of the "
+                "leg.", ["TMA-FEM"]),
+        motor_distribution=("None — the saphenous nerve is the "
+                            "terminal cutaneous (sensory) branch of "
+                            "the femoral nerve.", ["TMA-FEM"]),
+        sensory_distribution=("The medial side of the leg and foot.",
+                              ["TMA-FEM"]),
+        clinical_testing=("The nerve accompanies the long (great) "
+                          "saphenous vein in the leg and can be "
+                          "damaged during stripping of that vein, "
+                          "causing pain, paraesthesia or complete "
+                          "sensory loss on the medial side of the "
+                          "lower leg.", ["TMA-FEM"])),
+    rec("major.superior-gluteal", "Superior gluteal nerve", LL,
+        "nervus gluteus superior", 6543,
+        ["nerve.left-superior-gluteal-nerve",
+         "nerve.right-superior-gluteal-nerve"],
+        FMA_NOTE,
+        root_values=("Branch of the sacral plexus; root values L4, "
+                     "L5 and S1.", ["TMA-SP", "UAMS-LL"]),
+        course=("Leaves the pelvis through the greater sciatic "
+                "foramen superior to (above) the piriformis, "
+                "accompanied by the superior gluteal artery and "
+                "vein.", ["TMA-SP", "UAMS-LL"]),
+        motor_distribution=("Gluteus medius, gluteus minimus and "
+                            "tensor fasciae latae.",
+                            ["TMA-SP", "UAMS-LL"]),
+        sensory_distribution=("None.", ["TMA-SP", "UAMS-LL"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to this nerve is stated in the "
+                          "consulted sources (the Trendelenburg test "
+                          "is not described in any source consulted "
+                          "for this tranche); not entered")),
+    rec("major.inferior-gluteal", "Inferior gluteal nerve", LL,
+        "nervus gluteus inferior", 6544,
+        ["nerve.left-inferior-gluteal-nerve",
+         "nerve.right-inferior-gluteal-nerve"],
+        FMA_NOTE,
+        root_values=("Branch of the sacral plexus; root values L5, "
+                     "S1 and S2.", ["TMA-SP", "UAMS-LL"]),
+        course=("Leaves the pelvis through the greater sciatic "
+                "foramen inferior to (below) the piriformis, "
+                "accompanied by the inferior gluteal vessels.",
+                ["TMA-SP", "UAMS-LL"]),
+        motor_distribution=("Gluteus maximus.", ["TMA-SP", "UAMS-LL"]),
+        sensory_distribution=("None.", ["TMA-SP", "UAMS-LL"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to this nerve is stated in the "
+                          "consulted sources; not entered")),
+    rec("major.sciatic", "Sciatic nerve", LL,
+        "nervus ischiadicus", 6569,
+        ["nerve.left-sciatic-nerve", "nerve.right-sciatic-nerve"],
+        FMA_NOTE,
+        root_values=("From the sacral plexus; root values L4–S3. The "
+                     "largest nerve in the body, about 2 cm wide as a "
+                     "flat band; it consists of two nerves — the "
+                     "tibial and common fibular nerves — bound "
+                     "together in a single connective tissue sheath.",
+                     ["TMA-SCI", "TMA-SP"]),
+        course=("Leaves the pelvis through the greater sciatic "
+                "foramen, emerging inferior to the piriformis; "
+                "descends, crossing the posterior surfaces of the "
+                "superior gemellus, obturator internus, inferior "
+                "gemellus and quadratus femoris; enters the posterior "
+                "compartment of the thigh deep to the long head of "
+                "biceps femoris; and bifurcates at the apex of the "
+                "popliteal fossa into the tibial and common fibular "
+                "nerves (in about 12% of people the two divisions "
+                "separate as they leave the pelvis).", ["TMA-SCI"]),
+        motor_distribution=("Directly: the posterior compartment of "
+                            "the thigh (biceps femoris, "
+                            "semimembranosus and semitendinosus) and "
+                            "the hamstring portion of adductor magnus. "
+                            "Indirectly, via its terminal branches: "
+                            "all the muscles of the leg and foot. The "
+                            "nerve innervates no muscles in the "
+                            "gluteal region.", ["TMA-SCI"]),
+        sensory_distribution=("No direct sensory functions; "
+                              "indirectly, via its terminal branches, "
+                              "it supplies the lateral leg, the heel, "
+                              "and the dorsal and plantar surfaces of "
+                              "the foot.", ["TMA-SCI"]),
+        clinical_testing=("Piriformis syndrome — compression of the "
+                          "nerve by the piriformis muscle — presents "
+                          "with radicular pain, numbness and muscle "
+                          "weakness and buttock tenderness, and the "
+                          "pain may be exacerbated by internal "
+                          "rotation of the lower limb at the hip. "
+                          "Injection safety: the nerve passes through "
+                          "the lower medial quadrant of the gluteal "
+                          "region, so intramuscular injections are "
+                          "made only into the upper lateral quadrant.",
+                          ["TMA-SCI"])),
+    rec("major.tibial", "Tibial nerve", LL,
+        "nervus tibialis", 6582,
+        ["nerve.left-tibial-nerve", "nerve.right-tibial-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the sciatic nerve; root "
+                     "values L4–S3.", ["TMA-TIB"]),
+        course=("Arises at the apex of the popliteal fossa, travels "
+                "through the fossa and descends in the posterior "
+                "compartment of the leg, passes posterior and "
+                "inferior to the medial malleolus through the tarsal "
+                "tunnel (beneath the flexor retinaculum), and "
+                "terminates just distal to the tunnel by dividing "
+                "into the medial and lateral plantar nerves.",
+                ["TMA-TIB"]),
+        motor_distribution=("The posterior compartment of the leg — "
+                            "superficial: plantaris, soleus and "
+                            "gastrocnemius; deep: popliteus, flexor "
+                            "hallucis longus, flexor digitorum longus "
+                            "and tibialis posterior. In the foot, via "
+                            "the medial and lateral plantar branches: "
+                            "the intrinsic muscles of the sole, except "
+                            "extensor digitorum brevis and extensor "
+                            "hallucis brevis (deep fibular nerve).",
+                            ["TMA-TIB"]),
+        sensory_distribution=("Via the branches that contribute to "
+                              "the sural nerve: the posterolateral "
+                              "leg and the lateral foot. The medial "
+                              "calcaneal branches supply the heel. The "
+                              "medial plantar branch supplies the "
+                              "plantar surface of the medial three and "
+                              "a half digits and the associated sole; "
+                              "the lateral plantar branch the lateral "
+                              "one and a half digits and the associated "
+                              "sole — together, the whole sole of the "
+                              "foot.", ["TMA-TIB"]),
+        clinical_testing=("Tarsal tunnel syndrome — entrapment of "
+                          "the nerve in the tarsal tunnel — causes "
+                          "altered sensation in the sole of the foot "
+                          "and, in severe cases, weakness and wasting "
+                          "of the intrinsic muscles of the foot. "
+                          "Damage to the nerve causes loss of "
+                          "plantarflexion and loss of flexion of the "
+                          "toes, and weakened inversion of the foot.",
+                          ["TMA-TIB"])),
+    rec("major.common-fibular", "Common fibular (peroneal) nerve", LL,
+        "nervus fibularis communis", 6571,
+        ["nerve.left-common-fibular-nerve",
+         "nerve.right-common-fibular-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal branch of the sciatic nerve; root "
+                     "values L4–S2.", ["TMA-CF"]),
+        course=("Arises at the apex of the popliteal fossa where the "
+                "sciatic nerve bifurcates, follows the medial border "
+                "of biceps femoris inferolaterally across the "
+                "lateral head of gastrocnemius, wraps around the "
+                "neck of the fibula between the attachments of "
+                "fibularis longus, and divides into the superficial "
+                "fibular and deep fibular nerves.", ["TMA-CF"]),
+        motor_distribution=("Directly: the short head of biceps "
+                            "femoris. Via the superficial fibular "
+                            "nerve: the lateral compartment of the leg "
+                            "(fibularis longus and brevis — eversion). "
+                            "Via the deep fibular nerve: the anterior "
+                            "compartment of the leg (tibialis "
+                            "anterior, extensor digitorum longus and "
+                            "extensor hallucis longus — dorsiflexion "
+                            "and extension of the digits) and some "
+                            "intrinsic muscles of the foot.",
+                            ["TMA-CF"]),
+        sensory_distribution=("The lateral sural cutaneous branch "
+                              "supplies the upper lateral leg; the "
+                              "sural communicating branch joins the "
+                              "tibial contribution to form the sural "
+                              "nerve (lower posterolateral leg). Via "
+                              "the superficial fibular nerve: the "
+                              "anterolateral leg and the dorsum of "
+                              "the foot except the first web space. "
+                              "Via the deep fibular nerve: the first "
+                              "web space.", ["TMA-CF"]),
+        clinical_testing=("The nerve is most commonly damaged at the "
+                          "neck of the fibula, by fracture or by a "
+                          "tight plaster cast: dorsiflexion is lost "
+                          "and the foot is held in plantarflexion — "
+                          "footdrop, with its characteristic gait; "
+                          "eversion and extension of the digits are "
+                          "also lost, with sensory loss over the "
+                          "dorsum of the foot and the lateral leg, "
+                          "while the medial leg (saphenous territory) "
+                          "and the heel and sole (tibial territory) "
+                          "are preserved.", ["TMA-CF"])),
+    rec("major.superficial-fibular", "Superficial fibular nerve", LL,
+        "nervus fibularis superficialis", 6574,
+        ["nerve.left-superficial-fibular-nerve",
+         "nerve.right-superficial-fibular-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal division of the common fibular nerve "
+                     "(root values L4–S2 via the common fibular "
+                     "nerve).", ["TMA-CF"]),
+        course=("Arises where the common fibular nerve divides at "
+                "the neck of the fibula, and descends within the "
+                "lateral compartment of the leg.", ["TMA-CF"]),
+        motor_distribution=("Fibularis (peroneus) longus and "
+                            "fibularis brevis — eversion of the "
+                            "foot.", ["TMA-CF", "UAMS-LL"]),
+        sensory_distribution=("The anterolateral leg and the dorsum "
+                              "of the foot, except the first web "
+                              "space (deep fibular nerve).",
+                              ["TMA-CF", "UAMS-LL"]),
+        clinical_testing=("Its function is lost in the parent "
+                          "nerve's lesion at the fibular neck: "
+                          "eversion is lost, together with the "
+                          "dorsiflexion supplied by the deep fibular "
+                          "division, in footdrop.", ["TMA-CF"])),
+    rec("major.deep-fibular", "Deep fibular nerve", LL,
+        "nervus fibularis profundus", 6579,
+        ["nerve.left-deep-fibular-nerve",
+         "nerve.right-deep-fibular-nerve"],
+        FMA_NOTE,
+        root_values=("Terminal division of the common fibular nerve "
+                     "(root values L4–S2 via the common fibular "
+                     "nerve).", ["TMA-CF"]),
+        course=("Arises where the common fibular nerve divides at "
+                "the neck of the fibula, and descends within the "
+                "anterior compartment of the leg.", ["TMA-CF"]),
+        motor_distribution=("The anterior compartment of the leg — "
+                            "tibialis anterior, extensor hallucis "
+                            "longus, extensor digitorum longus and "
+                            "fibularis tertius — and the muscles on "
+                            "the dorsum of the foot, extensor "
+                            "digitorum brevis and extensor hallucis "
+                            "brevis.", ["UAMS-LL", "TMA-CF", "TMA-TIB"]),
+        sensory_distribution=("The web space between the great toe "
+                              "and the second toe (the first web "
+                              "space).", ["TMA-CF", "UAMS-LL"]),
+        clinical_testing=("Anterior compartment syndrome of the leg "
+                          "can damage the deep fibular nerve, "
+                          "resulting in foot drop; a deep fibular "
+                          "palsy can itself produce footdrop.",
+                          ["UAMS-LL", "TMA-CF"])),
+    rec("major.sural", "Sural nerve", LL,
+        "nervus suralis", 6586,
+        ["nerve.left-sural-nerve", "nerve.right-sural-nerve"],
+        FMA_NOTE,
+        root_values=("Formed by the union of the medial sural "
+                     "cutaneous nerve (a branch of the tibial nerve) "
+                     "with the fibular communicating branch of the "
+                     "lateral sural cutaneous nerve (from the common "
+                     "fibular nerve); it has no spinal root values of "
+                     "its own.", ["UAMS-LL", "TMA-CF", "TMA-TIB"]),
+        course=("Formed in the leg by the union of the medial sural "
+                "cutaneous nerve with the fibular communicating "
+                "branch, and descends in the posterior leg.",
+                ["UAMS-LL"]),
+        motor_distribution=("None — a cutaneous nerve, formed from "
+                            "sensory branches of the tibial and "
+                            "common fibular nerves.",
+                            ["TMA-TIB", "TMA-CF", "UAMS-LL"]),
+        sensory_distribution=("The posterior surface of the leg and "
+                              "the lateral side of the foot.",
+                              ["UAMS-LL", "TMA-TIB"]),
+        clinical_testing=(None, "no bedside test or lesion pattern "
+                          "specific to the sural nerve is stated in "
+                          "the consulted sources; not entered")),
+    rec("major.pudendal", "Pudendal nerve", LL,
+        "nervus pudendalis", 6554,
+        ["nerve.left-pudendal-nerve", "nerve.right-pudendal-nerve"],
+        FMA_NOTE,
+        root_values=("Formed on the posterior pelvic wall from the "
+                     "anterior divisions of the ventral rami of S2, "
+                     "S3 and S4 (sacral plexus).",
+                     ["TMA-PUD", "TMA-SP"]),
+        course=("Descends between the piriformis and ischiococcygeus "
+                "muscles, leaves the pelvis through the lower part of "
+                "the greater sciatic foramen, crosses the "
+                "sacrospinous ligament near the ischial spine, "
+                "re-enters the pelvis through the lesser sciatic "
+                "foramen, and runs with the internal pudendal artery "
+                "and vein through the pudendal (Alcock's) canal in "
+                "the fascia over obturator internus, dividing into "
+                "the inferior rectal nerve, the perineal nerve and "
+                "the dorsal nerve of the penis or clitoris.",
+                ["TMA-PUD"]),
+        motor_distribution=("Via the perineal nerve: bulbospongiosus, "
+                            "ischiocavernosus, levator ani and the "
+                            "external urethral sphincter; via the "
+                            "inferior rectal nerve: the external anal "
+                            "sphincter — together, the somatic control "
+                            "of urinary and faecal continence.",
+                            ["TMA-PUD"]),
+        sensory_distribution=("The external genitalia of both sexes "
+                              "and the skin of the perineum: the "
+                              "perianal skin and the lower third of "
+                              "the anal canal (inferior rectal nerve); "
+                              "the perineum and the labia majora and "
+                              "minora, or the posterior scrotum "
+                              "(perineal nerve); and the skin of the "
+                              "penis or clitoris (dorsal nerve).",
+                              ["TMA-PUD"]),
+        clinical_testing=("Clinical procedure — the pudendal nerve "
+                          "block, used to provide analgesia for "
+                          "vaginal childbirth, episiotomy repair and "
+                          "minor vaginal procedures: with the patient "
+                          "in the lithotomy position, the ischial "
+                          "spine is palpated transvaginally and local "
+                          "anaesthetic is injected around the spine, "
+                          "aspirating before injecting because the "
+                          "internal pudendal artery accompanies the "
+                          "nerve.", ["TMA-PUD"])),
+]
+
+
+def main():
+    tiers = Counter(r["sourcing_tier"] for r in RECORDS)
+    groups = Counter(r["group"] for r in RECORDS)
+    doc = {
+        "meta": {
+            "title": "ANATOMICA nervous system major-nerve clinical "
+                     "records — Milestone 39",
+            "generated_by": "tools/build_major_nerve_records.py",
+            "sourcing_rule": "every non-null clinical field cites a "
+                             "source consulted during the Milestone 39 "
+                             "build session in the record's sources "
+                             "map; every null field carries an explicit "
+                             "verify entry stating why the value was "
+                             "not entered; nothing is filled from "
+                             "recall",
+            "field_discipline": {
+                "type": "major_nerve",
+                "core": list(CORE),
+                "soft": list(SOFT),
+                "tier_rule": "A — all five fields sourced; B — the "
+                             "three core fields sourced and one or "
+                             "both soft fields null + flagged; C — any "
+                             "core field null + flagged",
+            },
+            "sources": SOURCES,
+            "record_count": len(RECORDS),
+            "tiers": dict(sorted(tiers.items())),
+            "groups": dict(groups),
+            "ta_rule": "ta_name/ta_code follow the linked inventory "
+                       "records: the Milestone 35 TA2 outcome carried "
+                       "by the FMA 5.1.0 inventory records (both "
+                       "sided records share the code), or — for the "
+                       "optic and trochlear nerves, which link "
+                       "BodyParts3D records — the Milestone 23 TA2 "
+                       "outcome carried by the Milestone 9 clinical "
+                       "records nerve.cn-02-optic / "
+                       "nerve.cn-04-trochlear",
+        },
+        "records": RECORDS,
+    }
+    with open(OUT, "w") as fh:
+        json.dump(doc, fh, indent=1, ensure_ascii=False)
+        fh.write("\n")
+    print(f"wrote {OUT}: {len(RECORDS)} records, tiers {dict(tiers)}")
+
+
+if __name__ == "__main__":
+    main()
