@@ -1,0 +1,551 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "cts6": {
+     "items": {
+      "median_territory_numbness": {
+       "points": 3.5,
+       "state": "satisfied"
+      },
+      "nocturnal_numbness": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "phalen": {
+       "points": 5,
+       "state": "satisfied"
+      },
+      "thenar_atrophy_or_weakness": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "tinel": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "two_point_discrimination_loss": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 26,
+     "not_assessed": [],
+     "partial": false,
+     "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+     "total": 16.5
+    }
+   },
+   "hypothesis": "hyp.carpal-tunnel-syndrome",
+   "mondo": "MONDO:0007275"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.cervical-radiculopathy",
+    "learner_probability": 0.15,
+    "ruled_out_at_stage": 4,
+    "stage": 4,
+    "workbench_probability": 0.0015044116892847092
+   }
+  ],
+  "attempt_id": "attempt.case-carpal-tunnel-004.model-learner",
+  "case_id": "case.carpal-tunnel.004",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "leading hypothesis posterior moves 0.7778 -> 0.6364",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.hand-exam-battery",
+    "time_min": 20
+   },
+   {
+    "basis": "excludes must-not-miss hyp.diabetic-polyneuropathy (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.hba1c",
+    "time_min": 15
+   },
+   {
+    "basis": "leading hypothesis posterior moves 0.6364 -> 0.9114",
+    "classification": "discriminating",
+    "cost_units": 4,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.wrist-ultrasound",
+    "time_min": 30
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 8,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.cervical-mri",
+    "time_min": 45
+   },
+   {
+    "basis": "hyp.cervical-radiculopathy crosses the rule-out line (0.0234 -> 0.0015)",
+    "classification": "discriminating",
+    "cost_units": 6,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.ncs-emg",
+    "time_min": 60
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchor's mechanics are visible stage by stage, which is what makes this a teaching case rather than a scolding. It was installed before the case began (another clinician's framing, an old plain film), and it was then fed twice by artifacts that feel like evidence: renormalisation at stage 2 (the neck's board share rose because a finding argued against its rival, not because anything argued for the neck) and a degenerative MRI at stage 3 (a true finding with no discriminating content \u2014 no likelihood ratio exists for it in any source this case consulted, and the guideline recommends against ordering the study at all). The learner's stage-4 defence \u2014 'the ache is real' \u2014 is also true, and was never the question: the case does not claim the patient has no cervical spondylosis; the MRI shows she does. It claims spondylosis is not the cause of median-distribution nocturnal paresthesias, and the instrument designed to separate those claims \u2014 conduction localization plus a C5-T1 needle examination \u2014 separated them. The second lesson is about the guideline: the CTS-6 was positive at stage 2 (16.5), and the AAOS letter says most such patients need no further study. The ultrasound and electrodiagnosis were nonetheless the right orders here, for the adjudication's stated reason \u2014 a live, anchored rival hypothesis had to be excluded by an instrument that could actually exclude it. The MRI was not the same kind of order: it tested nothing, excluded nothing, and was bought to confirm a prior. Same menu, same stage, opposite epistemics \u2014 the classifications (discriminating, discriminating, non-contributory) are the lesson.",
+   "description": "Stage 1: nocturnal median-distribution paresthesias; the learner ranked carpal tunnel syndrome first (0.40) but kept cervical radiculopathy close (0.28) \u2014 the patient had been told by another clinician that her neck is the cause, and the learner carried the framing in. Nothing at stage 1 retires the neck, and the learner's caution is defensible there. Stage 2: the exam battery returned positive Phalen/Tinel/Durkan, a classic picture \u2014 and a completely normal motor examination, whose likelihood ratio (0.5, C23) pulled the workbench's carpal-tunnel posterior DOWN to 0.6364 while renormalisation lifted the neck to 0.0962. The learner read the relative rise as corroboration, moved the neck UP to 0.30, and ordered a cervical MRI to prove it. Stage 3: ultrasound put carpal tunnel at 0.9114 on the workbench board and retired pronator syndrome, polyneuropathy and plexopathy; the MRI showed spondylosis without compression, changed nothing mechanically, and the learner still held the neck at 0.22, treating the degenerative image as support. Stage 4: the AANEM protocol localized the lesion to the wrist and its needle examination cleared every C5-T1 myotome; the workbench retired the neck at 0.0015. The learner committed to carpal tunnel syndrome and the correct disposition \u2014 and still held the neck at 0.15, writing that the ache is real and the MRI showed degeneration. One anchoring event is scored by the machinery: (stage 4, hyp.cervical-radiculopathy).",
+   "reactions": "The learner reached the right diagnosis and the right disposition, spent the menu's most expensive item on the anchor, and has one number to answer for: 0.15 on a hypothesis the localizing instrument retired. That is a good case's normal shape \u2014 the error is small, precisely located, and entirely instructive.",
+   "summary": "One scored event: anchoring on cervical radiculopathy at stage 4, after the electrodiagnostic protocol retired it. Diagnosis and disposition correct. Carry forward: (1) a degenerative MRI finding without root compression is not evidence for a radiculopathy \u2014 it is the kind of age-typical image the AAOS guideline's position on MRI exists to keep out of this diagnosis; (2) the famous provocative signs were the weak members of this case \u2014 Phalen and Tinel completed the score but carried no board weight (C23), while the quiet normal motor examination was the stage-2 board's biggest mover; (3) when the competing hypothesis is anatomical \u2014 neck versus wrist \u2014 order the instrument that localizes the lesion, not the instrument that photographs the anchor."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "cts6": {
+      "items": {
+       "median_territory_numbness": {
+        "points": 3.5,
+        "state": "satisfied"
+       },
+       "nocturnal_numbness": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "phalen": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "thenar_atrophy_or_weakness": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "tinel": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "two_point_discrimination_loss": {
+        "points": 0,
+        "state": "unknown"
+       }
+      },
+      "max_total": 26,
+      "not_assessed": [
+       "thenar_atrophy_or_weakness",
+       "phalen",
+       "two_point_discrimination_loss",
+       "tinel"
+      ],
+      "partial": true,
+      "status": "intermediate (> 5 corresponds to a 25% probability of CTS, C26; below the positive threshold)",
+      "total": 7.5
+     }
+    },
+    "cts6": {
+     "items": {
+      "median_territory_numbness": {
+       "points": 3.5,
+       "state": "satisfied"
+      },
+      "nocturnal_numbness": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "phalen": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "thenar_atrophy_or_weakness": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "tinel": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "two_point_discrimination_loss": {
+       "points": 0,
+       "state": "unknown"
+      }
+     },
+     "max_total": 26,
+     "not_assessed": [
+      "thenar_atrophy_or_weakness",
+      "phalen",
+      "two_point_discrimination_loss",
+      "tinel"
+     ],
+     "partial": true,
+     "status": "intermediate (> 5 corresponds to a 25% probability of CTS, C26; below the positive threshold)",
+     "total": 7.5
+    },
+    "learner_board": {
+     "hyp.brachial-plexopathy": 0.03,
+     "hyp.carpal-tunnel-syndrome": 0.4,
+     "hyp.cervical-radiculopathy": 0.28,
+     "hyp.diabetic-polyneuropathy": 0.09,
+     "hyp.other-unspecified": 0.15,
+     "hyp.pronator-syndrome": 0.05
+    },
+    "learner_brier": 0.4724,
+    "learner_probability_on_truth": 0.4,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.carpal-tunnel-syndrome",
+    "stage": 1,
+    "workbench_board": {
+     "hyp.brachial-plexopathy": 0.0229,
+     "hyp.carpal-tunnel-syndrome": 0.7778,
+     "hyp.cervical-radiculopathy": 0.0588,
+     "hyp.diabetic-polyneuropathy": 0.0457,
+     "hyp.other-unspecified": 0.0686,
+     "hyp.pronator-syndrome": 0.0261
+    },
+    "workbench_brier": 0.0608,
+    "workbench_probability_on_truth": 0.7778,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.carpal-tunnel-syndrome"
+   },
+   {
+    "criteria": {
+     "cts6": {
+      "items": {
+       "median_territory_numbness": {
+        "points": 3.5,
+        "state": "satisfied"
+       },
+       "nocturnal_numbness": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "phalen": {
+        "points": 5,
+        "state": "satisfied"
+       },
+       "thenar_atrophy_or_weakness": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "tinel": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "two_point_discrimination_loss": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 26,
+      "not_assessed": [],
+      "partial": false,
+      "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+      "total": 16.5
+     }
+    },
+    "cts6": {
+     "items": {
+      "median_territory_numbness": {
+       "points": 3.5,
+       "state": "satisfied"
+      },
+      "nocturnal_numbness": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "phalen": {
+       "points": 5,
+       "state": "satisfied"
+      },
+      "thenar_atrophy_or_weakness": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "tinel": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "two_point_discrimination_loss": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 26,
+     "not_assessed": [],
+     "partial": false,
+     "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+     "total": 16.5
+    },
+    "learner_board": {
+     "hyp.brachial-plexopathy": 0.03,
+     "hyp.carpal-tunnel-syndrome": 0.38,
+     "hyp.cervical-radiculopathy": 0.3,
+     "hyp.diabetic-polyneuropathy": 0.09,
+     "hyp.other-unspecified": 0.15,
+     "hyp.pronator-syndrome": 0.05
+    },
+    "learner_brier": 0.5084,
+    "learner_probability_on_truth": 0.38,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.carpal-tunnel-syndrome",
+    "stage": 2,
+    "workbench_board": {
+     "hyp.brachial-plexopathy": 0.0374,
+     "hyp.carpal-tunnel-syndrome": 0.6364,
+     "hyp.cervical-radiculopathy": 0.0962,
+     "hyp.diabetic-polyneuropathy": 0.0749,
+     "hyp.other-unspecified": 0.1123,
+     "hyp.pronator-syndrome": 0.0428
+    },
+    "workbench_brier": 0.1629,
+    "workbench_probability_on_truth": 0.6364,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.carpal-tunnel-syndrome"
+   },
+   {
+    "criteria": {
+     "cts6": {
+      "items": {
+       "median_territory_numbness": {
+        "points": 3.5,
+        "state": "satisfied"
+       },
+       "nocturnal_numbness": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "phalen": {
+        "points": 5,
+        "state": "satisfied"
+       },
+       "thenar_atrophy_or_weakness": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "tinel": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "two_point_discrimination_loss": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 26,
+      "not_assessed": [],
+      "partial": false,
+      "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+      "total": 16.5
+     }
+    },
+    "cts6": {
+     "items": {
+      "median_territory_numbness": {
+       "points": 3.5,
+       "state": "satisfied"
+      },
+      "nocturnal_numbness": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "phalen": {
+       "points": 5,
+       "state": "satisfied"
+      },
+      "thenar_atrophy_or_weakness": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "tinel": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "two_point_discrimination_loss": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 26,
+     "not_assessed": [],
+     "partial": false,
+     "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+     "total": 16.5
+    },
+    "learner_board": {
+     "hyp.brachial-plexopathy": 0.01,
+     "hyp.carpal-tunnel-syndrome": 0.55,
+     "hyp.cervical-radiculopathy": 0.22,
+     "hyp.diabetic-polyneuropathy": 0.06,
+     "hyp.other-unspecified": 0.13,
+     "hyp.pronator-syndrome": 0.03
+    },
+    "learner_brier": 0.2724,
+    "learner_probability_on_truth": 0.55,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.carpal-tunnel-syndrome",
+    "stage": 3,
+    "workbench_board": {
+     "hyp.brachial-plexopathy": 0.0091,
+     "hyp.carpal-tunnel-syndrome": 0.9114,
+     "hyp.cervical-radiculopathy": 0.0234,
+     "hyp.diabetic-polyneuropathy": 0.0182,
+     "hyp.other-unspecified": 0.0274,
+     "hyp.pronator-syndrome": 0.0104
+    },
+    "workbench_brier": 0.0097,
+    "workbench_probability_on_truth": 0.9114,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.carpal-tunnel-syndrome"
+   },
+   {
+    "criteria": {
+     "cts6": {
+      "items": {
+       "median_territory_numbness": {
+        "points": 3.5,
+        "state": "satisfied"
+       },
+       "nocturnal_numbness": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "phalen": {
+        "points": 5,
+        "state": "satisfied"
+       },
+       "thenar_atrophy_or_weakness": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "tinel": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "two_point_discrimination_loss": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 26,
+      "not_assessed": [],
+      "partial": false,
+      "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+      "total": 16.5
+     }
+    },
+    "cts6": {
+     "items": {
+      "median_territory_numbness": {
+       "points": 3.5,
+       "state": "satisfied"
+      },
+      "nocturnal_numbness": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "phalen": {
+       "points": 5,
+       "state": "satisfied"
+      },
+      "thenar_atrophy_or_weakness": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "tinel": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "two_point_discrimination_loss": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 26,
+     "not_assessed": [],
+     "partial": false,
+     "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+     "total": 16.5
+    },
+    "learner_board": {
+     "hyp.brachial-plexopathy": 0.01,
+     "hyp.carpal-tunnel-syndrome": 0.7,
+     "hyp.cervical-radiculopathy": 0.15,
+     "hyp.diabetic-polyneuropathy": 0.03,
+     "hyp.other-unspecified": 0.09,
+     "hyp.pronator-syndrome": 0.02
+    },
+    "learner_brier": 0.122,
+    "learner_probability_on_truth": 0.7,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.carpal-tunnel-syndrome",
+    "stage": 4,
+    "workbench_board": {
+     "hyp.brachial-plexopathy": 0.0006,
+     "hyp.carpal-tunnel-syndrome": 0.9943,
+     "hyp.cervical-radiculopathy": 0.0015,
+     "hyp.diabetic-polyneuropathy": 0.0012,
+     "hyp.other-unspecified": 0.0018,
+     "hyp.pronator-syndrome": 0.0007
+    },
+    "workbench_brier": 0.0,
+    "workbench_probability_on_truth": 0.9943,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.carpal-tunnel-syndrome"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 21,
+   "total_time_min": 170
+  },
+  "review": {
+   "recorded_reviewers": [],
+   "required": "Review of this case's clinical content (presentation, CTS-6 application, LR use including the bounds-computed electrodiagnostic LR, differential weighting, the guideline-tension adjudication, disposition) by a qualified clinician before the case is used as validated teaching content.",
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.brachial-plexopathy": 3,
+   "hyp.cervical-radiculopathy": 4,
+   "hyp.diabetic-polyneuropathy": 3,
+   "hyp.other-unspecified": 4,
+   "hyp.pronator-syndrome": 3
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.4724,
+    "2": 0.5084,
+    "3": 0.2724,
+    "4": 0.122
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.4,
+    "2": 0.38,
+    "3": 0.55,
+    "4": 0.7
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 0,
+    "discriminating": 3,
+    "non-contributory": 1,
+    "safety-net": 1
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.0608,
+    "2": 0.1629,
+    "3": 0.0097,
+    "4": 0.0
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "content": "dual-sourced-draft",
+   "note": "Every quantitative clinical claim in this case traces to a source in cases/parameters.json consulted in-session (C23-C29 for this case). CTS-6 items, weights and bands are the published instrument's own (C26); the AAOS guideline's statements are applied as consulted (C24). Likelihood ratios are cited point values (C23) or arithmetic on cited sensitivity/specificity pairs (C27; C25 \u2014 the latter computed at the source's stated bounds and disclosed as a floor). The electrodiagnostic and ultrasound values are the case patient's authored results (case data); the test characteristics they are weighed with are the cited ones. The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+   "scores": "formative-only"
+  }
+ }
+}
