@@ -24,6 +24,125 @@ carries no real patient data, and it is not for diagnosis or treatment of real p
   state; complications in the operating theatre are computed by the engine.
 - **Open forever.** The whole system is licensed AGPL-3.0.
 
+## How to use
+
+Get the code first: clone this repository or download it as an archive.
+There are no accounts, no server, and no telemetry — every module runs
+locally. ANATOMICA is for education and simulation only; never use it on
+a real patient.
+
+### 1. Explore the body — the web shell (easiest start)
+
+Serve the `web/` folder with any static file server and open it in a
+browser (the viewer loads its data packs over HTTP, so opening the file
+directly will not work):
+
+```sh
+cd web
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+- **Move:** drag to orbit, scroll to zoom, Shift-drag (or right/middle
+  drag) to pan, pinch on touch screens. **Reset view** restores the
+  starting camera.
+- **Find a structure:** type in the **Search** box (name, Terminologia
+  Anatomica name, or record id), filter by region, or click a row in the
+  record list. Clicking a mesh in the 3D view selects it too — the
+  selected structure highlights, the rest dim (toggleable), and its full
+  record opens in the right-hand panel.
+- **Layers:** toggle the eleven body systems on and off to build the
+  view you need, from full body down to a single system. The **labels**
+  and **wireframe** toggles sit in the header.
+- **Imaging:** switch from **Atlas** to **Imaging** in the header. Step
+  through slices with the slider or the slice buttons, adjust
+  window/level with the presets or the Width/Level sliders, click a
+  voxel to identify what it is, click a legend row to isolate a label,
+  and use **MPR planes** for crosshair-linked axial, coronal, and
+  sagittal views of the same volume. Imaging here is synthetic and
+  derived from the Body Model, and is labelled as such.
+
+### 2. The native application (flagship viewer)
+
+Needs a Rust toolchain and a machine with a display and GPU:
+
+```sh
+cd native
+cargo run --release -- view     # windowed viewer
+cargo run --release -- verify   # headless check: loads the packs, runs
+                                # the assertions, renders proof frames
+                                # to native/frames/
+```
+
+In the viewer: mouse orbit, wheel zoom, right-drag pan, left click
+picks a structure (its record prints to the console and the mesh
+highlights). Keys: **S** skeletal, **M** muscular, **1–0** toggle
+layers, **I** integumentary, **A** all layers, **G** glass shell (skin
+translucent), **W** wireframe, **R** reset view.
+
+### 3. Run the physiology engine
+
+```sh
+cd physiology
+cargo run --release -- validate        # resting outputs checked against
+                                        # every published normal range
+cargo run --release -- run course       # a −1,500 mL haemorrhage, untreated
+                                        # vs crystalloid / whole blood /
+                                        # component transfusion arms
+cargo run --release -- run hormones     # water, sodium, and ADH axes
+cargo run --release -- run respiratory  # respiratory and acid–base cases
+```
+
+Every run is deterministic: the same command always produces the same
+trace, and each run prints a trace hash and a PASS/FAIL line per output
+against its cited expectation.
+
+### 4. Operate — the Theatre (surgical simulator)
+
+```sh
+cd theatre
+cargo run --release -- validate   # check every procedure, parameter,
+                                  # and instrument record
+cargo run --release -- run-all    # run all shipped attempt traces and
+                                  # write their scored debriefs
+cargo run --release -- run <trace.json> [--out <debrief.json>]
+```
+
+A procedure is a step graph over the atlas anatomy; an attempt is a
+trace JSON (see `theatre/traces/` for examples to copy). The runner
+scores the attempt and emits a debrief. Safety gates are enforced as
+the specialty defines them: in laparoscopic cholecystectomy, dividing
+a structure before the Critical View of Safety is demonstrated fails
+the attempt, because the model resolves the divided structure as the
+common bile duct — the real injury mechanism. Scores are formative
+only: the expert-review gate recorded in the procedure files is not
+yet met, and the files say so.
+
+### 5. Work a case — the case and hypothesis workbench
+
+```sh
+python3 tools/case_run.py   # score every shipped case and print its
+                            # board, stage by stage
+```
+
+Each case in `cases/` presents in stages. To work one yourself, write
+an attempt JSON alongside the examples in `cases/attempts/`: commit a
+differential with explicit probabilities, update it as each stage's
+findings arrive, and order tests knowing each carries cost and
+information value. The runner recomputes the workbench board from the
+cited likelihood ratios, evaluates the guideline criteria mechanically,
+scores your board (per-stage Brier scores, rank of the true diagnosis —
+there is deliberately no single composite score), and writes a
+PEARLS-structured debrief to `cases/debriefs/`.
+
+### 6. Check the data yourself
+
+Nothing here asks to be taken on trust. The tools in `tools/` recompute
+the claims in this README from the data itself — `tools/census.py`
+for the Body Model census, and a `*_check.py` beside every data module
+and subsystem. If a checker and this README ever disagree, the checker
+is right.
+
 ## Layout
 
 | Path | Contents |
