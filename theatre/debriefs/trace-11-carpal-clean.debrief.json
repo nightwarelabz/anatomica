@@ -1,0 +1,270 @@
+{
+  "trace_id": "trace-11-carpal-clean",
+  "trace_name": "Carpal tunnel release: clean expert attempt, standard anatomy",
+  "procedure_id": "proc.carpal-release",
+  "case_variant": null,
+  "verdict": "PASS",
+  "failed_at_s": null,
+  "fail_reason": null,
+  "validity_label": "formative-only",
+  "duration_s": 1920.0,
+  "checklist": {
+    "completed": 29,
+    "required": 29,
+    "pct": 100.0,
+    "missing": []
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 3,
+    "pause_before_first_clip": true,
+    "points": 4,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 4,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": false,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.9113712137776,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
+  },
+  "management": null,
+  "errors": [],
+  "complications": [],
+  "decisions": [
+    {
+      "t_s": 840.0,
+      "id": "dp1",
+      "choice": "proceed-open"
+    }
+  ],
+  "engine_trace_hash": "0x7da515af201ee8af",
+  "engine_beats": 2151,
+  "engine_conservation_error_ml": 1.0122676030732691e-9,
+  "debrief": {
+    "description": [
+      "[t=60s] m0.1: Review the referral, the electrodiagnostic confirmation and the symptom pattern; confirm the diagnosis of carpal tunnel syndrome and the indication for release",
+      "[t=120s] m0.2: Confirm consent and operative plan, including anticipation of median nerve variant anatomy (Lanz groups I-IV) and the possibility of nerve injury and repair",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan for the case",
+      "[t=240s] m0.4: Establish anaesthesia: local anaesthetic alone is supported by strong evidence for this operation (T28); intravenous regional or general anaesthesia per patient factors and surgeon preference (T21)",
+      "[t=300s] m0.5: Apply the upper-arm tourniquet for a bloodless, visualised field",
+      "[t=360s] m0.6: Position the patient supine with the hand on a hand table, palm up; mark the surface landmarks - Kaplan's cardinal line distally, the hook of the hamate medially, the distal wrist crease proximally",
+      "[t=420s] m0.7: WHO Sign In completed before induction of anaesthesia",
+      "[t=480s] m0.8: Confirm that antibiotic prophylaxis is withheld: routine prophylaxis is not indicated for clean elective carpal tunnel release (T26; T28, limited evidence) - the withholding is a recorded decision, not an omission",
+      "[t=540s] m0.9: WHO Time Out completed immediately before skin incision",
+      "[t=600s] m1.1: Make the longitudinal skin incision on the ulnar aspect of the tunnel: from Kaplan's cardinal line distally toward the distal wrist crease proximally, along the axis of the radial border of the ring finger, 3-5 mm ulnar to the thenar crease, approximately 3-4 cm, not crossing the wrist crease",
+      "[t=660s] m1.2: Dissect through the subcutaneous fat under direct vision, identifying and preserving the cutaneous sensory branches crossing the field",
+      "[t=720s] m2.1: Divide the palmar fascia in line with its longitudinal fibres for the full length of the incision and expose the transverse carpal ligament along the whole field",
+      "[t=780s] m2.2: Review the operative findings at the wrist and confirm the plan to proceed with open release",
+      "[t=840s] dp1 -> proceed-open",
+      "[t=900s] m3.1: Release the antebrachial fascia proximally, on the ulnar side of the palmaris longus tendon and under direct vision, protecting the palmar cutaneous branch",
+      "[t=960s] m3.2: Make the small initial opening in the ligament at its proximal edge and identify the median nerve through it, at the proximal aspect of the wound",
+      "[t=1020s] m4.1: Demonstrate the median nerve identified at the proximal edge of the retinaculum and protected - looped and retracted clear of the division line",
+      "[t=1080s] m4.2: Establish the division limits: distally the superficial palmar arch beyond the volar fat pad (typically 18 mm beyond the ligament's distal edge); medially the ulnar neurovascular bundle at Guyon's canal, radial to the hook of the hamate",
+      "[t=1140s] m5.1: Account for the recurrent motor branch: state its expected course (Lanz group I) and set the division line on the ulnar side of the ligament, directed toward the ring finger, away from the branch",
+      "[t=1140s] Structures at risk identified and protected before division of the transverse carpal ligament achieved: all three criteria demonstrated",
+      "[t=1200s] m5.2: Confirm the ligament is clearly visible and fully exposed along the intended division line",
+      "[t=1260s] m5.3: Second look: re-confirm the identified nerve, the branch account and the division limits immediately before the pause",
+      "[t=1320s] m5.4: Pre-division pause: the identified nerve, the branch account and the division limits are verbalised and confirmed with the team before the ligament is divided",
+      "[t=1380s] m6.1: Divide the transverse carpal ligament longitudinally along its ulnar aspect, under direct vision, from the proximal opening to the volar fat pad - and no further",
+      "[t=1440s] m6.2: Confirm the release is complete: a smooth elevator passes freely alongside the nerve proximally and distally, the ligament is transected along its full length and the antebrachial fascia release is confirmed",
+      "[t=1500s] m6.3: Inspect the tunnel and the nerve: no tumour, aberrant muscle or thickened synovium; the nerve's appearance recorded",
+      "[t=1560s] m7.1: Deflate the tourniquet, achieve haemostasis and inspect the wound",
+      "[t=1620s] m7.2: Re-inspect the median nerve and the thenar branch region at the end of the release: nerve integrity confirmed before closure",
+      "[t=1680s] m8.1: Close the skin (the ligament is left open - that is the release)",
+      "[t=1740s] m8.2: Confirm the postoperative plan: analgesia, elevation and early mobilisation; no routine supervised therapy and no prophylactic antibiotics (T28)",
+      "[t=1800s] m8.3: WHO Sign Out completed before the patient leaves the operating room"
+    ],
+    "plus": [
+      "The structures at risk were identified and protected before the ligament was divided — median nerve demonstrated and protected, recurrent branch accounted for, division limits established (T21, T22).",
+      "Pre-division pause performed and the identification confirmed with the team before division (module safety culture, T20).",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [],
+    "directive": [
+      "Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it."
+    ],
+    "summary": [
+      "Verdict: PASS (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 100.0% (29/29), safety gate 4/4, process 4/5, physiology 7/7, management n/a (no complication)."
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review the referral, the electrodiagnostic confirmation and the symptom pattern; confirm the diagnosis of carpal tunnel syndrome and the indication for release"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and operative plan, including anticipation of median nerve variant anatomy (Lanz groups I-IV) and the possibility of nerve injury and repair"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan for the case"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.4: Establish anaesthesia: local anaesthetic alone is supported by strong evidence for this operation (T28); intravenous regional or general anaesthesia per patient factors and surgeon preference (T21)"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.5: Apply the upper-arm tourniquet for a bloodless, visualised field"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.6: Position the patient supine with the hand on a hand table, palm up; mark the surface landmarks - Kaplan's cardinal line distally, the hook of the hamate medially, the distal wrist crease proximally"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.7: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 480.0,
+      "kind": "step",
+      "text": "m0.8: Confirm that antibiotic prophylaxis is withheld: routine prophylaxis is not indicated for clean elective carpal tunnel release (T26; T28, limited evidence) - the withholding is a recorded decision, not an omission"
+    },
+    {
+      "t_s": 540.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed immediately before skin incision"
+    },
+    {
+      "t_s": 600.0,
+      "kind": "step",
+      "text": "m1.1: Make the longitudinal skin incision on the ulnar aspect of the tunnel: from Kaplan's cardinal line distally toward the distal wrist crease proximally, along the axis of the radial border of the ring finger, 3-5 mm ulnar to the thenar crease, approximately 3-4 cm, not crossing the wrist crease"
+    },
+    {
+      "t_s": 660.0,
+      "kind": "step",
+      "text": "m1.2: Dissect through the subcutaneous fat under direct vision, identifying and preserving the cutaneous sensory branches crossing the field"
+    },
+    {
+      "t_s": 720.0,
+      "kind": "step",
+      "text": "m2.1: Divide the palmar fascia in line with its longitudinal fibres for the full length of the incision and expose the transverse carpal ligament along the whole field"
+    },
+    {
+      "t_s": 780.0,
+      "kind": "step",
+      "text": "m2.2: Review the operative findings at the wrist and confirm the plan to proceed with open release"
+    },
+    {
+      "t_s": 840.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed-open"
+    },
+    {
+      "t_s": 900.0,
+      "kind": "step",
+      "text": "m3.1: Release the antebrachial fascia proximally, on the ulnar side of the palmaris longus tendon and under direct vision, protecting the palmar cutaneous branch"
+    },
+    {
+      "t_s": 960.0,
+      "kind": "step",
+      "text": "m3.2: Make the small initial opening in the ligament at its proximal edge and identify the median nerve through it, at the proximal aspect of the wound"
+    },
+    {
+      "t_s": 1020.0,
+      "kind": "step",
+      "text": "m4.1: Demonstrate the median nerve identified at the proximal edge of the retinaculum and protected - looped and retracted clear of the division line"
+    },
+    {
+      "t_s": 1080.0,
+      "kind": "step",
+      "text": "m4.2: Establish the division limits: distally the superficial palmar arch beyond the volar fat pad (typically 18 mm beyond the ligament's distal edge); medially the ulnar neurovascular bundle at Guyon's canal, radial to the hook of the hamate"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "step",
+      "text": "m5.1: Account for the recurrent motor branch: state its expected course (Lanz group I) and set the division line on the ulnar side of the ligament, directed toward the ring finger, away from the branch"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "gate",
+      "text": "Structures at risk identified and protected before division of the transverse carpal ligament achieved: all three criteria demonstrated"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "step",
+      "text": "m5.2: Confirm the ligament is clearly visible and fully exposed along the intended division line"
+    },
+    {
+      "t_s": 1260.0,
+      "kind": "step",
+      "text": "m5.3: Second look: re-confirm the identified nerve, the branch account and the division limits immediately before the pause"
+    },
+    {
+      "t_s": 1320.0,
+      "kind": "step",
+      "text": "m5.4: Pre-division pause: the identified nerve, the branch account and the division limits are verbalised and confirmed with the team before the ligament is divided"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "step",
+      "text": "m6.1: Divide the transverse carpal ligament longitudinally along its ulnar aspect, under direct vision, from the proximal opening to the volar fat pad - and no further"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "divide",
+      "text": "m6.1 divided with the structures at risk identified and protected"
+    },
+    {
+      "t_s": 1440.0,
+      "kind": "step",
+      "text": "m6.2: Confirm the release is complete: a smooth elevator passes freely alongside the nerve proximally and distally, the ligament is transected along its full length and the antebrachial fascia release is confirmed"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m6.3: Inspect the tunnel and the nerve: no tumour, aberrant muscle or thickened synovium; the nerve's appearance recorded"
+    },
+    {
+      "t_s": 1560.0,
+      "kind": "step",
+      "text": "m7.1: Deflate the tourniquet, achieve haemostasis and inspect the wound"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "step",
+      "text": "m7.2: Re-inspect the median nerve and the thenar branch region at the end of the release: nerve integrity confirmed before closure"
+    },
+    {
+      "t_s": 1680.0,
+      "kind": "step",
+      "text": "m8.1: Close the skin (the ligament is left open - that is the release)"
+    },
+    {
+      "t_s": 1740.0,
+      "kind": "step",
+      "text": "m8.2: Confirm the postoperative plan: analgesia, elevation and early mobilisation; no routine supervised therapy and no prophylactic antibiotics (T28)"
+    },
+    {
+      "t_s": 1800.0,
+      "kind": "step",
+      "text": "m8.3: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}
