@@ -1,4 +1,4 @@
-# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54)
+# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54 + 57)
 
 Diagnosis practiced as explicit reasoning (design/07): a staged
 presentation, a differential board the learner must commit numbers
@@ -13,7 +13,7 @@ debrief scored by stated rules.
   or anywhere in ANATOMICA (education-only scope, master plan §8).
 - **Facts are cited; fiction is labelled.** Clinical facts (criteria,
   likelihood ratios, reference ranges, test characteristics) trace
-  to the sources registered in `parameters.json` (C1–C51), consulted
+  to the sources registered in `parameters.json` (C1–C62), consulted
   in-session. The patient's particulars are *case data* and are
   labelled as such wherever they appear. Anything that could not be
   sourced carries a verify flag — never a quietly invented value.
@@ -44,7 +44,7 @@ debrief scored by stated rules.
 
 ## Contents
 
-- `parameters.json` — source register (C1–C51), the workbench's
+- `parameters.json` — source register (C1–C62), the workbench's
   scoring-rule constants (all flagged project conventions), and the
   likelihood-ratio derivations. Extended at Milestone 22 with C14
   (WSES bile-duct-injury guidelines), C15 (MRCP test characteristics),
@@ -97,6 +97,30 @@ debrief scored by stated rules.
   class the costochondritis search returns is Tietze syndrome
   (MONDO:0001858), defined by the swellings case 7's patient
   lacks — refused, and the truth carries Mondo null.
+  Extended at Milestone 57 with C52 (the ATA statement on
+  postoperative hypoparathyroidism — the definition, the PTH
+  thresholds, the supplementation tiers and the calcitriol
+  criterion), C53 (Fong & Khan's hypocalcemia review — the
+  hypoparathyroid profile, the Box 2 investigation panel, the
+  intravenous criteria and regimen), C54 (Cooper & Gittoes —
+  the albumin correction and the 1.9 mmol/L urgency
+  threshold), C55 (the NEJM appraisal of Chvostek's and
+  Trousseau's signs), C56-C58 (the MedlinePlus PTH, magnesium
+  and phosphorus ranges), C59 and C60 (the ECG sources — the
+  ST-segment mechanism, the sex-specific QTc thresholds and
+  the 500 ms risk band), C61 (the hyperventilation-syndrome
+  case report — the mimic's physiology: the ionized calcium
+  falls, the total does not) and C62 (the Theatre module's
+  trace-30 debrief, this case's operative-history evidence),
+  one further LR derivation (Trousseau's sign, LR+ 23.5
+  computed at the conservative end of the C53/C55 pair —
+  0.94 / 0.04 — with the post-thyroidectomy counterweight
+  carried in the prose), and dated Milestone 57 addenda to
+  the C10/C11 registers: MONDO:0001220 verified, the
+  postoperative subclass refused (no such class exists), and
+  two recorded rejections (MONDO:0002945 resolves to a
+  basal-cell carcinoma class; HP:0003473 to fatigable
+  weakness, not tetany).
 - `case.ruq-pain.001.json` — the first worked case: acute calculous
   cholecystitis as a staged RUQ-pain presentation, 4 stages, 29
   findings, 9 labs, 8 orderable tests, 7 hypotheses, mechanical
@@ -287,6 +311,43 @@ debrief scored by stated rules.
   search returns only Tietze syndrome (MONDO:0001858), defined
   by the swellings this patient lacks (C51) — refused, and the
   truth hypothesis carries Mondo null with the refusal recorded.
+- `case.post-thyroid-hypocalcemia.008.json` — the sequel case
+  (Milestone 57): the trace-30 patient on postoperative days
+  1-2, perioral and digital paresthesias progressing after a
+  total thyroidectomy whose own debrief computed this
+  outcome. 4 stages, 22 findings, 9 labs, 10 measurements,
+  3 orderable tests, 6 hypotheses. The module's second loop,
+  in its second form: case 2 linked a FAILED trace; this one
+  links a PASSED trace (42/43 — m3.2, the right parathyroid
+  account, the one unmet microstep), carries the debrief's
+  SHA-256, and has the checker match the verdict, the
+  checklist arithmetic, the error, the computed hypocalcemia
+  complication and the dp6 calcium-replacement decision
+  field-by-field; the disposition then EXECUTES that
+  protocol. One likelihood ratio (Trousseau's sign, LR+ 23.5
+  computed at the conservative end of the consulted pair,
+  its post-thyroidectomy counterweight stated in the finding
+  itself) and one classification block assembled from three
+  consulted sources with the assembly disclosed: the
+  hypocalcemia management tier, which classifies
+  iv-calcium-indicated from stage 1 on the symptomatic limb
+  alone (C53's criterion is unconditional — recorded, not
+  smoothed) and reclassifies under its first rule when the
+  panel lands (corrected calcium 7.3 mg/dL, fallen from 7.8;
+  ionized 0.94 mmol/L; PTH 8 pg/mL; phosphate above range;
+  magnesium normal; vitamin D replete; venous pH normal;
+  QTc 486 ms). The scored error is premature closure: the
+  ward note's anxiety/hyperventilation attribution — a real
+  mechanism (C61) that cannot lower a TOTAL calcium — was
+  inherited by the learner, absorbed a below-range day-1
+  calcium filed unactioned, and delayed the panel by a
+  stage. The physiology link is data-identity with case 1
+  plus the stated gap: the engine has no calcium axis, and
+  the calcium course is authored data. No imaging link: an
+  `imaging_assessment` records that neither subject's
+  104-label set contains a thyroid or parathyroid label.
+  Ontology: MONDO:0001220 verified for the truth; the
+  postoperative subclass refused, as none exists.
 - `attempts/` — learner attempts (boards + orders per stage). Case
   2's model learner is deliberately imperfect in one documented way:
   it anchors on a retained CBD stone (ERCP ordered as therapy at
@@ -326,11 +387,18 @@ debrief scored by stated rules.
   pathway and commits the truth at 0.55 at stage 4: one scored
   event, a fourth installation shape (social pressure, after case
   4's clinician-frame, case 5's self-installed and case 6's
-  result-installed anchors).
+  result-installed anchors). Case 8's model learner anchors on
+  anxiety/hyperventilation — an anchor she neither installed nor
+  was pressured into but INHERITED from the ward note before the
+  case began: she leads with it at stage 1 (0.34 against the
+  truth's 0.30), still holds it at 0.26 at stage 2 after
+  eliciting Trousseau's sign with her own hands, and releases
+  it only when the calcium panel returns — one scored event, a
+  fifth installation shape (premature closure).
 - `debriefs/` — generated by `tools/case_run.py` (one generic runner
   for every case since Milestone 22); independently recomputed by
   `tools/case_check.py` (parameterised over all cases, with per-case
-  profile sections; 11,884 checks at Milestone 54).
+  profile sections; 13,135 checks at Milestone 57).
 - `fhir/` — FHIR-shaped interchange export of the case (design/07);
   the case JSON is the source of truth and the checker fails the
   build if the export disagrees with it.

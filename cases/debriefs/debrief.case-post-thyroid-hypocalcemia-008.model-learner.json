@@ -1,0 +1,376 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "hypocalcemia_management_tier": {
+     "inputs": {
+      "calcium_below_85": true,
+      "corrected_below_19": true,
+      "ionized_below_10": true,
+      "ionized_below_11": true,
+      "pth_below_15": true,
+      "symptomatic": true
+     },
+     "result": {
+      "label": "Intravenous calcium indicated -- symptomatic hypocalcemia with corrected calcium below 1.9 mmol/L: IV calcium gluconate under cardiac monitoring, oral calcium and calcitriol alongside (C53 criteria; the C52 calcitriol criterion -- symptomatic with calcium declining on sequential measurements -- is also met)",
+      "tier": "iv-calcium-indicated"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    }
+   },
+   "hypothesis": "hyp.postop-hypoparathyroidism",
+   "mondo": "MONDO:0001220"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.anxiety-hyperventilation",
+    "learner_probability": 0.26,
+    "ruled_out_at_stage": 2,
+    "stage": 2,
+    "workbench_probability": 0.015311004784688997
+   }
+  ],
+  "attempt_id": "attempt.case-post-thyroid-hypocalcemia-008.model-learner",
+  "case_id": "case.post-thyroid-hypocalcemia.008",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "leading hypothesis posterior moves 0.4200 -> 0.9445",
+    "classification": "discriminating",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.bedside-exam",
+    "time_min": 10
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 1,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.ecg",
+    "time_min": 10
+   },
+   {
+    "basis": "settles guideline item(s): hypocalcemia_management_tier.calcium_below_85, hypocalcemia_management_tier.corrected_below_19, hypocalcemia_management_tier.ionized_below_10, hypocalcemia_management_tier.ionized_below_11, hypocalcemia_management_tier.pth_below_15",
+    "classification": "criteria-completing",
+    "cost_units": 3,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.calcium-panel",
+    "time_min": 30
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchor's mechanics are the fifth shape in this module's series. Case 4's was installed by another clinician, case 5's by the learner's own true history, case 6's by a test result, case 7's by social pressure. This one is premature closure by inheritance: a benign, mechanistically real explanation (hyperventilation genuinely produces these symptoms, C61) was attached to the symptoms by the ward note before the case began, and its plausibility did the work that evidence usually has to do -- it absorbed the day-1 calcium (a value below the ATA line, filed unactioned), it shaped the learner's stage-1 board, it survived the Trousseau sign she elicited herself, and it set her stage-1 orders: the cheap bedside test the frame was comfortable with, not the panel the protocol had already pointed at. Three features distinguish this shape. First, the discriminating evidence PREDATED the encounter: unlike case 6's BNP or case 7's pressured CTPA, nothing new had to arrive to break the frame -- the debrief and the day-1 value were both in the record from the start, and the failure was one of reading, not of information. Second, the mimic is honest: hyperventilation alkalosis really does lower ionized calcium and produce perioral tingling and tetany (C61), which is why the frame feels like physiology rather than bias -- the discriminating tests are therefore not 'is she anxious?' (she is, and irrelevantly) but the total calcium, the PTH, and the pH, the three legs the mimic cannot produce. Third, the release came from the learner's own orders: she bought the panel at stage 2 despite the frame, and the frame did not survive its return. The lesson the case is built to teach is not 'distrust anxiety' -- it is that an attribution in the record is a hypothesis with an author, and it must re-earn its place against the chart's own numbers like any other.",
+   "description": "Stage 1: the learner leads with the inherited frame -- anxiety/hyperventilation 0.34, the truth 0.30, neck hematoma 0.10 (the airway question properly priced) -- and orders only the bedside battery. What she does NOT do is the case's stage-1 story: the calcium panel, available from stage 1 and already chosen in embryo by the operation's dp6 protocol, is not ordered, although a corrected calcium of 7.8 mg/dL sits in the chart from the day before, filed under the very frame she has adopted. Her Brier is 0.6384 against the workbench's 0.4144 -- the workbench, which weights the trace-30 debrief as evidence, already leads with the truth at 0.42. Stage 2: Trousseau's sign is positive on her own examination; the workbench moves the truth to 0.9445 and retires all five rivals; she moves the truth only to 0.52 and keeps the frame at 0.26 -- the anchoring event (stage 2, hyp.anxiety-hyperventilation), the fifth installation shape in this module's series: premature closure on a benign attribution, installed by inheritance before the case began and surviving evidence she personally elicited. To her credit, her stage-2 orders are exactly right -- ECG and the calcium panel. Stage 3: the panel returns the conjunction (corrected 7.3 and falling, ionized 0.94, PTH 8, phosphate high, magnesium normal, pH normal) and the tier block classifies iv-calcium-indicated; she releases the frame to 0.06 and moves the truth to 0.78 (Brier 0.0598). Her ECG classifies non-contributory -- ordered for the QT (486 ms, the tracing the monitored infusion needed), and the case records that verdict as the classification's limit, not the order's. Stage 4: commit hyp.postop-hypoparathyroidism at 0.86, Brier 0.0244, with the intravenous-tier management the block computed. Total resource tally: 50 minutes, 5 units.",
+   "reactions": "PEARLS reactions: a strong, instructive performance with one scored anchoring event, and its most interesting feature is where the anchor lived. The learner did not invent the anxiety frame -- she inherited it from the ward note, held it as her lead hypothesis at stage 1 (0.34 against the truth's 0.30), and was still holding it at 0.26 at stage 2, after her own hands had elicited Trousseau's sign and the workbench had retired the hypothesis across the rule-out line. What released her was not a new fact about the patient but the panel: the first evidence in the case that the frame could not absorb. Her stage-4 board (truth 0.86, Brier 0.0244) is the best-calibrated close in the module's recent cases; the cost of the anchor was a stage, not the diagnosis.",
+   "summary": "Postoperative hypoparathyroidism declaring as symptomatic hypocalcemia on days 1-2 after a total thyroidectomy whose own debrief had computed it. The learner inherited the record's anxiety frame, anchored on it through her own positive Trousseau sign (one scored event, the module's fifth shape), ordered the right tests a stage late, and committed the truth at 0.86 with the intravenous-tier management the block computed -- executing, in the end, the calcium-replacement protocol the operation had chosen two days earlier. Formative only; the expert-review gate remains UNMET."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "hypocalcemia_management_tier": {
+      "inputs": {
+       "calcium_below_85": "unknown",
+       "corrected_below_19": "unknown",
+       "ionized_below_10": "unknown",
+       "ionized_below_11": "unknown",
+       "pth_below_15": "unknown",
+       "symptomatic": true
+      },
+      "result": {
+       "label": "Intravenous calcium indicated -- symptomatic hypocalcemia (C53: symptoms alone are an intravenous criterion). NOTE (Milestone 57): this rule fires from stage 1 on symptoms alone, before any calcium value exists -- C53's symptomatic limb is unconditional. The case's adjudication does NOT rest on this early classification: the stage-3 reclassification under the first rule (symptomatic + corrected < 1.9 mmol/L + ionized < 1.0) is the tier the management executes, and the profile asserts both.",
+       "tier": "iv-calcium-indicated"
+      },
+      "rule_index": 4,
+      "status": "classified"
+     }
+    },
+    "hypocalcemia_management_tier": {
+     "inputs": {
+      "calcium_below_85": "unknown",
+      "corrected_below_19": "unknown",
+      "ionized_below_10": "unknown",
+      "ionized_below_11": "unknown",
+      "pth_below_15": "unknown",
+      "symptomatic": true
+     },
+     "result": {
+      "label": "Intravenous calcium indicated -- symptomatic hypocalcemia (C53: symptoms alone are an intravenous criterion). NOTE (Milestone 57): this rule fires from stage 1 on symptoms alone, before any calcium value exists -- C53's symptomatic limb is unconditional. The case's adjudication does NOT rest on this early classification: the stage-3 reclassification under the first rule (symptomatic + corrected < 1.9 mmol/L + ionized < 1.0) is the tier the management executes, and the profile asserts both.",
+      "tier": "iv-calcium-indicated"
+     },
+     "rule_index": 4,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.anxiety-hyperventilation": 0.34,
+     "hyp.hypomagnesemia": 0.08,
+     "hyp.neck-hematoma": 0.1,
+     "hyp.other-unspecified": 0.1,
+     "hyp.postop-hypoparathyroidism": 0.3,
+     "hyp.vitamin-d-inadequacy": 0.08
+    },
+    "learner_brier": 0.6384,
+    "learner_probability_on_truth": 0.3,
+    "learner_rank_of_truth": 2,
+    "learner_top": "hyp.anxiety-hyperventilation",
+    "stage": 1,
+    "workbench_board": {
+     "hyp.anxiety-hyperventilation": 0.16,
+     "hyp.hypomagnesemia": 0.1,
+     "hyp.neck-hematoma": 0.08,
+     "hyp.other-unspecified": 0.18,
+     "hyp.postop-hypoparathyroidism": 0.42,
+     "hyp.vitamin-d-inadequacy": 0.06
+    },
+    "workbench_brier": 0.4144,
+    "workbench_probability_on_truth": 0.42,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.postop-hypoparathyroidism"
+   },
+   {
+    "criteria": {
+     "hypocalcemia_management_tier": {
+      "inputs": {
+       "calcium_below_85": "unknown",
+       "corrected_below_19": "unknown",
+       "ionized_below_10": "unknown",
+       "ionized_below_11": "unknown",
+       "pth_below_15": "unknown",
+       "symptomatic": true
+      },
+      "result": {
+       "label": "Intravenous calcium indicated -- symptomatic hypocalcemia (C53: symptoms alone are an intravenous criterion). NOTE (Milestone 57): this rule fires from stage 1 on symptoms alone, before any calcium value exists -- C53's symptomatic limb is unconditional. The case's adjudication does NOT rest on this early classification: the stage-3 reclassification under the first rule (symptomatic + corrected < 1.9 mmol/L + ionized < 1.0) is the tier the management executes, and the profile asserts both.",
+       "tier": "iv-calcium-indicated"
+      },
+      "rule_index": 4,
+      "status": "classified"
+     }
+    },
+    "hypocalcemia_management_tier": {
+     "inputs": {
+      "calcium_below_85": "unknown",
+      "corrected_below_19": "unknown",
+      "ionized_below_10": "unknown",
+      "ionized_below_11": "unknown",
+      "pth_below_15": "unknown",
+      "symptomatic": true
+     },
+     "result": {
+      "label": "Intravenous calcium indicated -- symptomatic hypocalcemia (C53: symptoms alone are an intravenous criterion). NOTE (Milestone 57): this rule fires from stage 1 on symptoms alone, before any calcium value exists -- C53's symptomatic limb is unconditional. The case's adjudication does NOT rest on this early classification: the stage-3 reclassification under the first rule (symptomatic + corrected < 1.9 mmol/L + ionized < 1.0) is the tier the management executes, and the profile asserts both.",
+      "tier": "iv-calcium-indicated"
+     },
+     "rule_index": 4,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.anxiety-hyperventilation": 0.26,
+     "hyp.hypomagnesemia": 0.06,
+     "hyp.neck-hematoma": 0.05,
+     "hyp.other-unspecified": 0.07,
+     "hyp.postop-hypoparathyroidism": 0.52,
+     "hyp.vitamin-d-inadequacy": 0.04
+    },
+    "learner_brier": 0.3106,
+    "learner_probability_on_truth": 0.52,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.postop-hypoparathyroidism",
+    "stage": 2,
+    "workbench_board": {
+     "hyp.anxiety-hyperventilation": 0.0153,
+     "hyp.hypomagnesemia": 0.0096,
+     "hyp.neck-hematoma": 0.0077,
+     "hyp.other-unspecified": 0.0172,
+     "hyp.postop-hypoparathyroidism": 0.9445,
+     "hyp.vitamin-d-inadequacy": 0.0057
+    },
+    "workbench_brier": 0.0038,
+    "workbench_probability_on_truth": 0.9445,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.postop-hypoparathyroidism"
+   },
+   {
+    "criteria": {
+     "hypocalcemia_management_tier": {
+      "inputs": {
+       "calcium_below_85": true,
+       "corrected_below_19": true,
+       "ionized_below_10": true,
+       "ionized_below_11": true,
+       "pth_below_15": true,
+       "symptomatic": true
+      },
+      "result": {
+       "label": "Intravenous calcium indicated -- symptomatic hypocalcemia with corrected calcium below 1.9 mmol/L: IV calcium gluconate under cardiac monitoring, oral calcium and calcitriol alongside (C53 criteria; the C52 calcitriol criterion -- symptomatic with calcium declining on sequential measurements -- is also met)",
+       "tier": "iv-calcium-indicated"
+      },
+      "rule_index": 0,
+      "status": "classified"
+     }
+    },
+    "hypocalcemia_management_tier": {
+     "inputs": {
+      "calcium_below_85": true,
+      "corrected_below_19": true,
+      "ionized_below_10": true,
+      "ionized_below_11": true,
+      "pth_below_15": true,
+      "symptomatic": true
+     },
+     "result": {
+      "label": "Intravenous calcium indicated -- symptomatic hypocalcemia with corrected calcium below 1.9 mmol/L: IV calcium gluconate under cardiac monitoring, oral calcium and calcitriol alongside (C53 criteria; the C52 calcitriol criterion -- symptomatic with calcium declining on sequential measurements -- is also met)",
+      "tier": "iv-calcium-indicated"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.anxiety-hyperventilation": 0.06,
+     "hyp.hypomagnesemia": 0.04,
+     "hyp.neck-hematoma": 0.03,
+     "hyp.other-unspecified": 0.07,
+     "hyp.postop-hypoparathyroidism": 0.78,
+     "hyp.vitamin-d-inadequacy": 0.02
+    },
+    "learner_brier": 0.0598,
+    "learner_probability_on_truth": 0.78,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.postop-hypoparathyroidism",
+    "stage": 3,
+    "workbench_board": {
+     "hyp.anxiety-hyperventilation": 0.0153,
+     "hyp.hypomagnesemia": 0.0096,
+     "hyp.neck-hematoma": 0.0077,
+     "hyp.other-unspecified": 0.0172,
+     "hyp.postop-hypoparathyroidism": 0.9445,
+     "hyp.vitamin-d-inadequacy": 0.0057
+    },
+    "workbench_brier": 0.0038,
+    "workbench_probability_on_truth": 0.9445,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.postop-hypoparathyroidism"
+   },
+   {
+    "criteria": {
+     "hypocalcemia_management_tier": {
+      "inputs": {
+       "calcium_below_85": true,
+       "corrected_below_19": true,
+       "ionized_below_10": true,
+       "ionized_below_11": true,
+       "pth_below_15": true,
+       "symptomatic": true
+      },
+      "result": {
+       "label": "Intravenous calcium indicated -- symptomatic hypocalcemia with corrected calcium below 1.9 mmol/L: IV calcium gluconate under cardiac monitoring, oral calcium and calcitriol alongside (C53 criteria; the C52 calcitriol criterion -- symptomatic with calcium declining on sequential measurements -- is also met)",
+       "tier": "iv-calcium-indicated"
+      },
+      "rule_index": 0,
+      "status": "classified"
+     }
+    },
+    "hypocalcemia_management_tier": {
+     "inputs": {
+      "calcium_below_85": true,
+      "corrected_below_19": true,
+      "ionized_below_10": true,
+      "ionized_below_11": true,
+      "pth_below_15": true,
+      "symptomatic": true
+     },
+     "result": {
+      "label": "Intravenous calcium indicated -- symptomatic hypocalcemia with corrected calcium below 1.9 mmol/L: IV calcium gluconate under cardiac monitoring, oral calcium and calcitriol alongside (C53 criteria; the C52 calcitriol criterion -- symptomatic with calcium declining on sequential measurements -- is also met)",
+      "tier": "iv-calcium-indicated"
+     },
+     "rule_index": 0,
+     "status": "classified"
+    },
+    "learner_board": {
+     "hyp.anxiety-hyperventilation": 0.03,
+     "hyp.hypomagnesemia": 0.03,
+     "hyp.neck-hematoma": 0.02,
+     "hyp.other-unspecified": 0.05,
+     "hyp.postop-hypoparathyroidism": 0.86,
+     "hyp.vitamin-d-inadequacy": 0.01
+    },
+    "learner_brier": 0.0244,
+    "learner_probability_on_truth": 0.86,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.postop-hypoparathyroidism",
+    "stage": 4,
+    "workbench_board": {
+     "hyp.anxiety-hyperventilation": 0.0153,
+     "hyp.hypomagnesemia": 0.0096,
+     "hyp.neck-hematoma": 0.0077,
+     "hyp.other-unspecified": 0.0172,
+     "hyp.postop-hypoparathyroidism": 0.9445,
+     "hyp.vitamin-d-inadequacy": 0.0057
+    },
+    "workbench_brier": 0.0038,
+    "workbench_probability_on_truth": 0.9445,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.postop-hypoparathyroidism"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 5,
+   "total_time_min": 50
+  },
+  "review": {
+   "delphi": "not convened",
+   "note": "The expert-review gate (master plan section 7) is UNMET for this case, exactly as Milestones 17, 20, 29, 41, 43, 48 and 54 recorded it for the cases before it: no expert review panel exists yet, no named reviewers can be recorded, and none are invented. Content remains dual-sourced-draft; scores are formative-only.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "roles": [
+    "endocrinologist",
+    "endocrine surgeon or thyroid surgeon"
+   ],
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.anxiety-hyperventilation": 2,
+   "hyp.hypomagnesemia": 2,
+   "hyp.neck-hematoma": 2,
+   "hyp.other-unspecified": 2,
+   "hyp.vitamin-d-inadequacy": 2
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.6384,
+    "2": 0.3106,
+    "3": 0.0598,
+    "4": 0.0244
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.3,
+    "2": 0.52,
+    "3": 0.78,
+    "4": 0.86
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 1,
+    "discriminating": 1,
+    "non-contributory": 1,
+    "safety-net": 0
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.4144,
+    "2": 0.0038,
+    "3": 0.0038,
+    "4": 0.0038
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "The workbench's board arithmetic, the tier classification block, the order classification and the anchoring detection are computed by the module's own machinery and independently recomputed by tools/case_check.py; the case adds one likelihood ratio (Trousseau's sign, computed at the conservative end of a consulted pair, with its in-context counterweight stated in the finding itself) and one classification block (the management tier, assembled from three consulted sources with the assembly disclosed). Calibration proper needs a case series; eight cases now exist and are still not a calibration series -- the debrief says so."
+  }
+ }
+}

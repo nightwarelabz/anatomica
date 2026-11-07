@@ -43,7 +43,17 @@ PE-unlikely exclusion pathway walked — Wells complete at 0.0,
 PERC precondition met at count 1, the age-adjusted D-dimer
 margins, the social-pressure anchoring event, the
 non-contributory CTPA, the recorded Mondo refusal for the
-costochondritis-class truth).
+costochondritis-class truth) and case 8 (Milestone 57: the
+management-tier block's stage-by-stage classification
+(symptomatic limb first, conjunction at stage 3), the
+albumin-correction arithmetic, the ATA conjunction, the
+Trousseau derivation at its conservative end, the
+premature-closure anchoring event, and the second LOOP
+verification: the trace-30 Theatre debrief is re-read, its
+SHA-256 recomputed, and every matched field compared
+field-by-field — this time against a PASSED trace whose one
+unmet criterion, the right parathyroid account, computed
+the case).
 
 Usage: python3 tools/case_check.py
 """
@@ -2052,6 +2062,325 @@ def profile_case7(case, ctx, boards, attempt):
        "absent Theatre handoff")
 
 
+def profile_case8(case, ctx, boards, attempt):
+    print("\n=== case.post-thyroid-hypocalcemia.008 profile: management "
+          "tier / correction arithmetic / ATA conjunction / Trousseau "
+          "derivation / anchoring (premature closure) / physiology + "
+          "imaging links / the LOOP to trace 30 (M57) ===")
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    TRUTH = "hyp.postop-hypoparathyroidism"
+    ANX = "hyp.anxiety-hyperventilation"
+    labs = {l["id"]: l for l in case["labs"]}
+    finds = {f["id"]: f for f in case["findings"]}
+    meas = {m["id"]: m for m in case["measurements"]}
+
+    ok(len(case["findings"]) == 22 and len(case["labs"]) == 9
+       and len(case["measurements"]) == 10
+       and len(case["available_tests"]) == 3
+       and len(case["hypotheses"]) == 6,
+       "case8: 22 findings / 9 labs / 10 measurements / 3 orderable "
+       "tests / 6 hypotheses")
+    lrs = [f for f in case["findings"] if f.get("lr")]
+    ok(len(lrs) == 1 and lrs[0]["id"] == "f.trousseau-sign"
+       and lrs[0]["lr"]["lr_plus"] == 23.5
+       and lrs[0]["lr"]["status"] == "computed"
+       and lrs[0]["lr"]["source"] == "C53",
+       "case8: exactly ONE likelihood ratio in the case -- Trousseau's "
+       "sign, LR+ 23.5 computed (C53)")
+    ok("lr" not in finds["f.chvostek-sign"]
+       and "lr" not in finds["f.qt-prolonged"]
+       and "lr" not in finds["f.pth-low"]
+       and "lr" not in finds["f.hypocalcemia-confirmed"],
+       "case8: Chvostek, the QT, the PTH and the calcium itself carry "
+       "NO LR -- no consulted source quantifies them and none is "
+       "invented")
+    der = [d for d in PARAMS["lr_derivations"]
+           if d["finding"] == "f.trousseau-sign"]
+    ok(len(der) == 1 and der[0]["lr_plus"] == 23.5
+       and der[0]["target_hypothesis"] == TRUTH
+       and all(tok in der[0]["derivation"]
+               for tok in ("0.94", "0.04", "23.5", "94.0")),
+       "case8: the Trousseau derivation is registered once, at the "
+       "conservative end (0.94 / 0.04 = 23.5; the 94.0 end named in "
+       "the prose)")
+
+    # ---- the management tier -----------------------------------------
+    ok("classification" not in case["adjudication"]
+       and "severity_grade" not in case["adjudication"]
+       and case["adjudication"]["severity_tier"]["block"]
+       == "hypocalcemia_management_tier"
+       and case["adjudication"]["severity_tier"]["tier"]
+       == "iv-calcium-indicated",
+       "case8: the tier result travels as severity_tier (the block is "
+       "a classification in criteria_blocks; the adjudication key is "
+       "deliberately neither 'classification' nor 'severity_grade')")
+    blk = [b for b in case["criteria_blocks"]
+           if b["id"] == "hypocalcemia_management_tier"][0]
+    evs = {s: ctx.block_eval(blk, s) for s in (1, 2, 3, 4)}
+    ok(all(evs[s]["status"] == "classified"
+           and evs[s]["result"]["tier"] == "iv-calcium-indicated"
+           for s in (1, 2, 3, 4)),
+       "case8: the tier block classifies iv-calcium-indicated at "
+       "every stage")
+    ok(evs[1]["rule_index"] == 4 and evs[2]["rule_index"] == 4
+       and evs[1]["inputs"]["symptomatic"] is True
+       and evs[1]["inputs"]["corrected_below_19"] == "unknown",
+       "case8: at stages 1-2 the tier fires on the SYMPTOMATIC limb "
+       "alone (rule index 4; C53's symptomatic criterion is "
+       "unconditional) with the laboratory inputs still unknown -- "
+       "recorded, not smoothed")
+    ok(evs[3]["rule_index"] == 0 and evs[4]["rule_index"] == 0
+       and all(v is True for v in evs[3]["inputs"].values()),
+       "case8: at stages 3-4 the FIRST rule fires (symptomatic + "
+       "corrected < 1.9 mmol/L) with all six inputs true")
+    ok(deb["per_stage"][2]["hypocalcemia_management_tier"]["result"]
+       ["tier"] == "iv-calcium-indicated",
+       "case8: the shipped debrief's stage-3 tier agrees with the "
+       "adjudication")
+
+    # ---- arithmetic and the ATA conjunction ---------------------------
+    ok(abs((7.7 + 0.8 * (4.0 - 3.9))
+           - labs["lab.corrected-calcium-pod1"]["value"]) < 0.05
+       and abs((7.0 + 0.8 * (4.0 - 3.6))
+               - labs["lab.corrected-calcium"]["value"]) < 0.05
+       and abs((1.75 + 0.02 * (40 - 36)) - 1.83) < 0.005,
+       "case8: both albumin corrections re-derive from the case's own "
+       "totals and albumins (POD1 7.78 -> 7.8; POD2 7.32 -> 7.3 "
+       "mg/dL = 1.83 mmol/L, C54)")
+    ok(labs["lab.corrected-calcium"]["value"] < 8.5
+       and labs["lab.pth"]["value"] < 12
+       and labs["lab.pth"]["value"] < 15
+       and labs["lab.ionized-calcium"]["value"] < 1.0
+       and labs["lab.ionized-calcium"]["value"] < 1.1
+       and labs["lab.corrected-calcium-pod1"]["value"]
+       > labs["lab.corrected-calcium"]["value"],
+       "case8: the ATA conjunction on the case's own atoms -- "
+       "corrected 7.3 < 8.5 mg/dL, PTH 8 < 12 (the statement's lab "
+       "limit) and < 15 (its risk threshold), ionized 0.94 < 1.0 (the "
+       "IV limb) and < 1.1 (supplementation), and the sequential "
+       "decline 7.8 -> 7.3 the calcitriol criterion turns on (C52)")
+    ok(labs["lab.phosphate"]["value"]
+       > labs["lab.phosphate"]["reference_range"]["high"]
+       and labs["lab.magnesium"]["reference_range"]["low"]
+       <= labs["lab.magnesium"]["value"]
+       <= labs["lab.magnesium"]["reference_range"]["high"]
+       and labs["lab.vitamin-d"]["value"]
+       >= labs["lab.vitamin-d"]["reference_range"]["low"]
+       and labs["lab.vitamin-d"]["reference_range"]["high"] is None,
+       "case8: phosphate above range (the hypoparathyroid profile's "
+       "third limb), magnesium in range (the rival retired and the "
+       "C54 caveat discharged), vitamin D above its one-sided "
+       "inadequacy line (no upper bound asserted -- none consulted)")
+    ok(450 < meas["meas.qtc-ms"]["value"] < 500
+       and meas["meas.venous-ph"]["value"] == 7.44,
+       "case8: QTc 486 ms -- prolonged for a woman (C60: > 450 ms) "
+       "and below the 500 ms arrhythmia-risk band (C59); venous pH "
+       "7.44 -- no alkalosis, the mimic's required mechanism absent "
+       "(C61)")
+
+    # ---- trajectories and the anchoring event -------------------------
+    ok([round(boards[s][TRUTH], 4) for s in (1, 2, 3, 4)]
+       == [0.42, 0.9445, 0.9445, 0.9445]
+       and [round(boards[s][ANX], 4) for s in (1, 2, 3, 4)]
+       == [0.16, 0.0153, 0.0153, 0.0153],
+       "case8: workbench trajectories -- truth 0.42 -> 0.9445 on the "
+       "Trousseau LR and flat thereafter (the panel moves no board); "
+       "the frame 0.16 -> 0.0153")
+    ok(deb["ruled_out_by_workbench"] == {
+        ANX: 2, "hyp.hypomagnesemia": 2, "hyp.neck-hematoma": 2,
+        "hyp.vitamin-d-inadequacy": 2, "hyp.other-unspecified": 2},
+       "case8: the workbench retires ALL FIVE rivals at stage 2 (the "
+       "single LR's arithmetic -- owned in the dossier, not hidden)")
+    ok([s["workbench_brier"] for s in deb["per_stage"]]
+       == [0.4144, 0.0038, 0.0038, 0.0038]
+       and [s["learner_brier"] for s in deb["per_stage"]]
+       == [0.6384, 0.3106, 0.0598, 0.0244],
+       "case8: Brier trajectories -- workbench 0.4144 -> 0.0038; "
+       "learner 0.6384 -> 0.3106 -> 0.0598 -> 0.0244")
+    anch = deb["anchoring_events"]
+    ok(len(anch) == 1 and anch[0]["stage"] == 2
+       and anch[0]["hypothesis"] == ANX
+       and anch[0]["learner_probability"] == 0.26,
+       "case8: exactly ONE anchoring event -- (stage 2, anxiety/"
+       "hyperventilation) held at 0.26 at the stage the workbench "
+       "retired it: premature closure by inheritance, the fifth "
+       "installation shape in the module's series")
+    lb = [s["board"] for s in attempt["stages"]]
+    ok(lb[0][ANX] == 0.34 and lb[0][TRUTH] == 0.30,
+       "case8: the learner's stage-1 board LEADS with the inherited "
+       "frame (0.34) over the truth (0.30) -- the frame was installed "
+       "by the record before the case began")
+    ok("test.calcium-panel" not in attempt["stages"][0]["orders"]
+       and "test.calcium-panel" in attempt["stages"][1]["orders"],
+       "case8: the calcium panel is NOT ordered at stage 1 (it was "
+       "available from stage 1) and IS ordered at stage 2 -- the "
+       "under-ordering the frame produced")
+
+    # ---- order classifications and tally ------------------------------
+    cls = {o["test_id"]: o["classification"] for o in deb["orders"]}
+    ok(cls == {"test.bedside-exam": "discriminating",
+               "test.calcium-panel": "criteria-completing",
+               "test.ecg": "non-contributory"},
+       "case8: order classifications -- bedside exam discriminating, "
+       "calcium panel criteria-completing, ECG non-contributory (the "
+       "safety order the classification cannot price -- owned in the "
+       "case and the dossier)")
+    ok(deb["resource_tally"]["total_time_min"] == 50
+       and deb["resource_tally"]["total_cost_units"] == 5,
+       "case8: resource tally 50 min / 5 units")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"] == TRUTH
+       and "dp6" in commit["management"],
+       "case8: attempt commit matches adjudication and names the "
+       "dp6 protocol it executes")
+
+    # ---- physiology link: data-identity + the stated gap --------------
+    c1 = load(os.path.join(CASES, "case.ruq-pain.001.json"))["case"]
+    pl = case["physiology_link"]
+    ok(pl["trace_hash"] == c1["physiology_link"]["trace_hash"]
+       == "0x6369b10e9a71c872"
+       and pl["baseline_recorded_outputs"]
+       == c1["physiology_link"]["baseline_recorded_outputs"]
+       and "no calcium axis" in pl["gap_statement"],
+       "case8: physiology link by data-identity with case 1 (the "
+       "pinned hash, the same seven resting outputs); the gap stated "
+       "in-case -- the engine has no calcium axis, so the calcium "
+       "course is authored data, not simulation")
+
+    # ---- imaging assessment: correctly absent -------------------------
+    ok("imaging_link" not in case and "imaging_assessment" in case,
+       "case8: no imaging_link is declared -- an imaging_assessment "
+       "records that no imaging was performed or indicated, and that "
+       "the shipped series could not have shown the glands")
+    ia = case["imaging_assessment"]
+    ok(len(ia["series"]) == 2
+       and all(s["labels_in_set"] == 104 for s in ia["series"]),
+       "case8: the assessment covers both shipped subjects at 104 "
+       "labels each")
+    for sid in ("s0778", "s1090"):
+        cwx = load(os.path.join(ROOT, "data", "imaging", sid,
+                                "crosswalk.json"))
+        names = sorted(l["label"] for l in cwx["labels"])
+        ok(len(names) == 104, f"case8: {sid} label set recounted "
+                              "at 104")
+        ok(not any("thyroid" in n or "parathyroid" in n
+                   for n in names),
+           f"case8: {sid} label set contains NO thyroid or "
+           "parathyroid label -- the glands at the centre of the "
+           "case are not segmented in either series, as the "
+           "assessment states")
+
+    # ---- ontology and Body Model records ------------------------------
+    gt = case["ground_truth"]
+    hyps8 = {h["id"]: h for h in case["hypotheses"]}
+    ok(gt["mondo"] == case["adjudication"]["mondo"] == "MONDO:0001220"
+       and hyps8[TRUTH]["mondo"] == "MONDO:0001220"
+       and "postoperative" in gt["mondo_note"],
+       "case8: MONDO:0001220 (hypoparathyroidism) everywhere the "
+       "truth is coded; the postoperative qualifier was refused a "
+       "code (no such Mondo class exists) and lives in prose")
+    ok(all(hyps8[h].get("mondo") is None
+           and hyps8[h].get("mondo_note")
+           for h in (ANX, "hyp.hypomagnesemia", "hyp.neck-hematoma",
+                     "hyp.vitamin-d-inadequacy",
+                     "hyp.other-unspecified")),
+       "case8: every rival carries Mondo null WITH its reason -- "
+       "nothing invented")
+    endo = load(os.path.join(ROOT, "data", "endocrine",
+                             "endocrine.json"))
+    eids = {r["id"] for r in endo["records"]}
+    ok("gland.parathyroid-glands" in eids
+       and "gland.thyroid-gland" in eids
+       and all(r["id"] in eids
+               for r in hyps8[TRUTH]["body_records"]),
+       "case8: the truth's Body Model records exist in "
+       "data/endocrine/endocrine.json -- including "
+       "gland.parathyroid-glands, the record trace 30's complication "
+       "resolves onto")
+    regs = {s["id"] for s in PARAMS["sources"]}
+    ok(all(f"C{n}" in regs for n in range(52, 63))
+       and PARAMS["extended_at_milestone"] == 57,
+       "case8: the register carries C52-C62 and "
+       "extended_at_milestone 57")
+
+    # ---- THE LOOP: trace 30 re-read, field by field -------------------
+    link = case["theatre_link"]
+    tpath = os.path.join(ROOT, link["debrief_file"])
+    t30 = load(tpath)
+    digest = hashlib.sha256(open(tpath, "rb").read()).hexdigest()
+    mf = link["matched_fields"]
+    ok(digest == link["debrief_sha256"],
+       "case8 LOOP: the trace-30 debrief's SHA-256 recomputes to "
+       "the hash the case records")
+    c62 = [s for s in PARAMS["sources"] if s["id"] == "C62"][0]
+    ok(digest in c62["consulted"],
+       "case8 LOOP: the register's C62 entry carries the same hash")
+    ok(t30["trace_id"] == link["trace_id"]
+       and t30["procedure_id"] == link["procedure_id"]
+       == "proc.thyroidectomy.total",
+       "case8 LOOP: trace id and procedure id match the shipped "
+       "debrief")
+    ok(t30["verdict"] == mf["verdict"] == "PASS"
+       and t30["failed_at_s"] is None,
+       "case8 LOOP: the linked trace PASSED -- the loop's second "
+       "form (case 2's was a FAIL): the gate worked and the priced "
+       "complication happened anyway")
+    ok(t30["checklist"]["completed"] == mf["checklist_completed"] == 42
+       and t30["checklist"]["required"] == mf["checklist_required"] == 43
+       and t30["checklist"]["missing"] == mf["checklist_missing"]
+       == ["m3.2"],
+       "case8 LOOP: checklist 42/43 with m3.2 the one missing "
+       "microstep, matched field-by-field")
+    ok(t30["safety_gate"]["points"] == mf["safety_gate_points"] == 3
+       and t30["safety_gate"]["max"] == mf["safety_gate_max"] == 4
+       and t30["process"]["points"] == mf["process_points"] == 4
+       and t30["management"]["points"] == mf["management_points"] == 5
+       and t30["management"]["max"] == mf["management_max"] == 5,
+       "case8 LOOP: safety gate 3/4, process 4/5, management 5/5 "
+       "matched")
+    errs = [e for e in t30["errors"]
+            if e["id"] == "err.parathyroid-unaccounted"]
+    ok(len(errs) == 1 and errs[0]["t_s"] == mf["error_t_s"] == 2880.0
+       and mf["unmet_criterion"] == "m3.2"
+       and "m3.2" in errs[0]["detail"],
+       "case8 LOOP: the debrief's error is err.parathyroid-"
+       "unaccounted at t=2880 s, its detail naming m3.2")
+    comp = [c for c in t30["complications"]
+            if c["kind"] == "hypocalcemia"]
+    cmf = mf["complication_hypocalcemia"]
+    ok(len(comp) == 1 and comp[0]["t_onset_s"] == cmf["t_onset_s"]
+       == 2880.0
+       and comp[0]["resolved_structure"] == cmf["resolved_structure"]
+       == "gland.parathyroid-glands"
+       and comp[0]["recognised"] is False
+       and cmf["recognised"] is False,
+       "case8 LOOP: the computed complication matched -- kind "
+       "hypocalcemia, onset 2880 s, resolved onto "
+       "gland.parathyroid-glands, recognised: false in the "
+       "operation's own record (the recognition is this case)")
+    dp6 = [d for d in t30["decisions"] if d["id"] == "dp6"]
+    ok(len(dp6) == 1
+       and dp6[0]["choice"] == mf["decision_dp6"]["choice"]
+       == "calcium-replacement-protocol"
+       and dp6[0]["t_s"] == mf["decision_dp6"]["t_s"] == 2760.0,
+       "case8 LOOP: dp6 chose the calcium-replacement-protocol at "
+       "t=2760 s -- the protocol this case's disposition executes")
+    ok(t30["engine_trace_hash"] == mf["engine_trace_hash"]
+       == "0xe0568df387d3cee7",
+       "case8 LOOP: engine trace hash matched")
+    ok(digest in finds["f.thyroidectomy-history"]["text"]
+       and "42 of 43" in finds["f.thyroidectomy-history"]["text"]
+       and "m3.2" in finds["f.thyroidectomy-history"]["text"],
+       "case8 LOOP: the stage-1 operative-history finding carries "
+       "the hash and the matched facts in its own text")
+    ok("handoff" not in case["management"]
+       and digest in case["management"]["theatre_link_verified"],
+       "case8: management carries theatre_link_verified (with the "
+       "hash), not a handoff -- the link is history and protocol, "
+       "verified")
+
 def main():
     attempts = {}
     for p in glob.glob(os.path.join(CASES, "attempts", "*.json")):
@@ -2092,6 +2421,10 @@ def main():
     if "case.pe-ruleout.007" in profiles:
         c, ctx, boards = profiles["case.pe-ruleout.007"]
         profile_case7(c, ctx, boards, attempts["case.pe-ruleout.007"])
+    if "case.post-thyroid-hypocalcemia.008" in profiles:
+        c, ctx, boards = profiles["case.post-thyroid-hypocalcemia.008"]
+        profile_case8(c, ctx, boards,
+                      attempts["case.post-thyroid-hypocalcemia.008"])
 
     print(f"\n{'ALL CHECKS PASS' if FAIL == 0 else 'FAILURES PRESENT'}: "
           f"{PASS} passed, {FAIL} failed")
