@@ -6,9 +6,9 @@
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
-   "records": 6,
+   "records": 73,
    "records_with_meshes": 6,
-   "records_without_meshes": 0
+   "records_without_meshes": 67
   }
  },
  "records": [
@@ -545,6 +545,2083 @@
      829.989
     ]
    }
+  },
+  {
+   "record_id": "uri.left-cortex-of-kidney",
+   "name": "Cortex of left kidney",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15584"
+   ],
+   "concept_names": [
+    "Cortex of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-cortex-of-kidney",
+   "name": "Cortex of right kidney",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15583"
+   ],
+   "concept_names": [
+    "Cortex of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-medulla-of-kidney",
+   "name": "Medulla of left kidney",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA0329240"
+   ],
+   "concept_names": [
+    "Medulla of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-medulla-of-kidney",
+   "name": "Medulla of right kidney",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA0329239"
+   ],
+   "concept_names": [
+    "Medulla of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-pyramid",
+   "name": "Renal pyramid",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA258870"
+   ],
+   "concept_names": [
+    "Renal pyramid"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-papilla",
+   "name": "Renal papilla",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15622"
+   ],
+   "concept_names": [
+    "Renal papilla"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-column",
+   "name": "Renal column",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17633"
+   ],
+   "concept_names": [
+    "Renal column"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-renal-pelvis",
+   "name": "Left renal pelvis",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15579"
+   ],
+   "concept_names": [
+    "Left renal pelvis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-renal-pelvis",
+   "name": "Right renal pelvis",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15578"
+   ],
+   "concept_names": [
+    "Right renal pelvis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.major-calyx",
+   "name": "Major calyx",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15613"
+   ],
+   "concept_names": [
+    "Major calyx"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.minor-calyx",
+   "name": "Minor calyx",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15614"
+   ],
+   "concept_names": [
+    "Minor calyx"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-sinus",
+   "name": "Renal sinus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA284412"
+   ],
+   "concept_names": [
+    "Renal sinus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-lobe",
+   "name": "Renal lobe",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17881"
+   ],
+   "concept_names": [
+    "Renal lobe"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-renal-fascia",
+   "name": "Left renal fascia",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA18106"
+   ],
+   "concept_names": [
+    "Left renal fascia"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-renal-fascia",
+   "name": "Right renal fascia",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA18105"
+   ],
+   "concept_names": [
+    "Right renal fascia"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-fibrous-capsule-of-kidney",
+   "name": "Fibrous capsule of left kidney",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA66612"
+   ],
+   "concept_names": [
+    "Fibrous capsule of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-fibrous-capsule-of-kidney",
+   "name": "Fibrous capsule of right kidney",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA66611"
+   ],
+   "concept_names": [
+    "Fibrous capsule of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-hilum-of-kidney",
+   "name": "Hilum of left kidney",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15942"
+   ],
+   "concept_names": [
+    "Hilum of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-hilum-of-kidney",
+   "name": "Hilum of right kidney",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15941"
+   ],
+   "concept_names": [
+    "Hilum of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.nephron",
+   "name": "Nephron",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17640"
+   ],
+   "concept_names": [
+    "Nephron"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-tubule",
+   "name": "Renal tubule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15627"
+   ],
+   "concept_names": [
+    "Renal tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.renal-corpuscle",
+   "name": "Renal corpuscle",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15625"
+   ],
+   "concept_names": [
+    "Renal corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.glomerulus",
+   "name": "Glomerulus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15624"
+   ],
+   "concept_names": [
+    "Glomerulus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.glomerular-capsule",
+   "name": "Glomerular capsule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15626"
+   ],
+   "concept_names": [
+    "Glomerular capsule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.proximal-convoluted-tubule",
+   "name": "Proximal convoluted tubule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17693"
+   ],
+   "concept_names": [
+    "Proximal convoluted tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.proximal-straight-tubule",
+   "name": "Proximal straight tubule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17716"
+   ],
+   "concept_names": [
+    "Proximal straight tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.loop-of-henle",
+   "name": "Loop of Henle",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17698"
+   ],
+   "concept_names": [
+    "Loop of Henle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.descending-thin-limb",
+   "name": "Descending thin limb",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17719"
+   ],
+   "concept_names": [
+    "Descending thin limb"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.ascending-thin-limb",
+   "name": "Ascending thin limb",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17720"
+   ],
+   "concept_names": [
+    "Ascending thin limb"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.distal-convoluted-tubule",
+   "name": "Distal convoluted tubule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA17721"
+   ],
+   "concept_names": [
+    "Distal convoluted tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.macula-densa",
+   "name": "Macula densa",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA86333"
+   ],
+   "concept_names": [
+    "Macula densa"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.collecting-duct-of-renal-tubule",
+   "name": "Collecting duct of renal tubule",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15628"
+   ],
+   "concept_names": [
+    "Collecting duct of renal tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.juxtaglomerular-complex",
+   "name": "Juxtaglomerular complex",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA83599"
+   ],
+   "concept_names": [
+    "Juxtaglomerular complex"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.afferent-glomerular-arteriole",
+   "name": "Afferent glomerular arteriole",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272216"
+   ],
+   "concept_names": [
+    "Afferent glomerular arteriole"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.efferent-glomerular-arteriole",
+   "name": "Efferent glomerular arteriole",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272214"
+   ],
+   "concept_names": [
+    "Efferent glomerular arteriole"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.descending-vasa-recta",
+   "name": "Descending vasa recta",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272225"
+   ],
+   "concept_names": [
+    "Descending vasa recta"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.ascending-vasa-recta",
+   "name": "Ascending vasa recta",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272227"
+   ],
+   "concept_names": [
+    "Ascending vasa recta"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-peritubular-capillary-plexus-of-kidney",
+   "name": "Peritubular capillary plexus of left kidney",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272223"
+   ],
+   "concept_names": [
+    "Peritubular capillary plexus of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-peritubular-capillary-plexus-of-kidney",
+   "name": "Peritubular capillary plexus of right kidney",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA272221"
+   ],
+   "concept_names": [
+    "Peritubular capillary plexus of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.apex-of-urinary-bladder",
+   "name": "Apex of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15914"
+   ],
+   "concept_names": [
+    "Apex of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.body-of-urinary-bladder",
+   "name": "Body of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15909"
+   ],
+   "concept_names": [
+    "Body of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.fundus-of-urinary-bladder",
+   "name": "Fundus of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15908"
+   ],
+   "concept_names": [
+    "Fundus of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.neck-of-urinary-bladder",
+   "name": "Neck of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15912"
+   ],
+   "concept_names": [
+    "Neck of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.trigone-of-urinary-bladder",
+   "name": "Trigone of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15910"
+   ],
+   "concept_names": [
+    "Trigone of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.uvula-of-urinary-bladder",
+   "name": "Uvula of urinary bladder",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15915"
+   ],
+   "concept_names": [
+    "Uvula of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.internal-urethral-orifice",
+   "name": "Internal urethral orifice",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA85263"
+   ],
+   "concept_names": [
+    "Internal urethral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.detrusor",
+   "name": "Detrusor",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA68018"
+   ],
+   "concept_names": [
+    "Detrusor"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.interureteric-crest",
+   "name": "Interureteric crest",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA75124"
+   ],
+   "concept_names": [
+    "Interureteric crest"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.ureteropelvic-junction",
+   "name": "Ureteropelvic junction",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15898"
+   ],
+   "concept_names": [
+    "Ureteropelvic junction"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.ureterovesical-junction",
+   "name": "Ureterovesical junction",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15899"
+   ],
+   "concept_names": [
+    "Ureterovesical junction"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.abdominal-part-of-ureter",
+   "name": "Abdominal part of ureter",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15882"
+   ],
+   "concept_names": [
+    "Abdominal part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.pelvic-part-of-ureter",
+   "name": "Pelvic part of ureter",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15883"
+   ],
+   "concept_names": [
+    "Pelvic part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.intramural-part-of-ureter",
+   "name": "Intramural part of ureter",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA77289"
+   ],
+   "concept_names": [
+    "Intramural part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.left-ureteral-orifice",
+   "name": "Left ureteral orifice",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15940"
+   ],
+   "concept_names": [
+    "Left ureteral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.right-ureteral-orifice",
+   "name": "Right ureteral orifice",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15939"
+   ],
+   "concept_names": [
+    "Right ureteral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.male-urethra",
+   "name": "Male urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19668"
+   ],
+   "concept_names": [
+    "Male urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.female-urethra",
+   "name": "Female urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19669"
+   ],
+   "concept_names": [
+    "Female urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.pre-prostatic-part-of-urethra",
+   "name": "Pre-prostatic part of urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19672"
+   ],
+   "concept_names": [
+    "Pre-prostatic part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.bulbous-part-of-urethra",
+   "name": "Bulbous part of urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA0327176"
+   ],
+   "concept_names": [
+    "Bulbous part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.urethral-crest",
+   "name": "Urethral crest",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19718"
+   ],
+   "concept_names": [
+    "Urethral crest"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.seminal-colliculus",
+   "name": "Seminal colliculus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19719"
+   ],
+   "concept_names": [
+    "Seminal colliculus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.external-urethral-sphincter",
+   "name": "External urethral sphincter",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA85274"
+   ],
+   "concept_names": [
+    "External urethral sphincter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.external-urethral-orifice",
+   "name": "External urethral orifice",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19650"
+   ],
+   "concept_names": [
+    "External urethral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.prostatic-urethra",
+   "name": "Prostatic urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19673"
+   ],
+   "concept_names": [
+    "Prostatic urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.membranous-urethra",
+   "name": "Membranous urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19674"
+   ],
+   "concept_names": [
+    "Membranous urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.spongiose-part-of-urethra",
+   "name": "Spongiose part of urethra",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19675"
+   ],
+   "concept_names": [
+    "Spongiose part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "uri.preprostatic-sphincter",
+   "name": "Preprostatic sphincter",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA45769"
+   ],
+   "concept_names": [
+    "Preprostatic sphincter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
   }
  ]
 }

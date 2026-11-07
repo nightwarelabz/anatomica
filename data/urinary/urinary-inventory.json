@@ -95,14 +95,20 @@
     "ureteric segment of right renal artery"
    ]
   },
-  "record_count": 6,
+  "record_count": 73,
   "record_representations": {
-   "whole-concept": 6
+   "whole-concept": 6,
+   "fma-concept": 67
   },
   "records_by_subtree": {
    "kidney-isa": 2,
    "ureter-isa": 2,
-   "bladder-urethra-isa": 2
+   "bladder-urethra-isa": 2,
+   "kidney-interior": 19,
+   "nephron": 20,
+   "bladder-parts": 9,
+   "ureter-parts": 7,
+   "urethra-divided": 12
   },
   "instance_records": [
    "left kidney",
@@ -1444,6 +1450,25 @@
      }
     }
    ]
+  },
+  "fma_extension": {
+   "milestone": 37,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 67,
+   "geometry_absent": 67,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or kidney-suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36 convention",
+   "accounting": "data/fma-intake-37.json"
+  },
+  "ta2_pass": {
+   "milestone": "M37",
+   "date": "2026-11-06",
+   "scope": "the 67 FMA-sourced records of this inventory (Milestone 37 intake); the 6 BP3D-sourced records are untouched by this pass",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer; extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "method": "tools/ta2_match_fma37.py (candidates) -> tools/ta2_decide_fma37.py (curated decisions) -> tools/ta2_pass_fma37.py (this application)",
+   "artifact": "data/ta2-name-pass.json (fma_inventory_urinary)",
+   "resolved": 42,
+   "ambiguous": 2,
+   "not_found": 23
   }
  },
  "concepts": [
@@ -1790,6 +1815,2418 @@
     "lower urinary tract"
    ],
    "note": null
+  },
+  {
+   "record_id": "uri.left-cortex-of-kidney",
+   "name": "Cortex of left kidney",
+   "ta_name": "cortex renis",
+   "ta_code": 3368,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15581",
+   "concept_ids": [
+    "FMA15584"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of parenchyma of kidney",
+    "Cortex of kidney",
+    "Cortex of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.right-cortex-of-kidney",
+   "name": "Cortex of right kidney",
+   "ta_name": "cortex renis",
+   "ta_code": 3368,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15581",
+   "concept_ids": [
+    "FMA15583"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of parenchyma of kidney",
+    "Cortex of kidney",
+    "Cortex of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.left-medulla-of-kidney",
+   "name": "Medulla of left kidney",
+   "ta_name": "medulla renis",
+   "ta_code": 3369,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA0329238",
+   "concept_ids": [
+    "FMA0329240"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Medulla",
+    "Medulla of kidney",
+    "Medulla of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.right-medulla-of-kidney",
+   "name": "Medulla of right kidney",
+   "ta_name": "medulla renis",
+   "ta_code": 3369,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA0329238",
+   "concept_ids": [
+    "FMA0329239"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Medulla",
+    "Medulla of kidney",
+    "Medulla of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-pyramid",
+   "name": "Renal pyramid",
+   "ta_name": "pyramis renalis",
+   "ta_code": 3379,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA258870",
+   "concept_ids": [
+    "FMA258870"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of parenchyma of kidney",
+    "Renal pyramid"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-papilla",
+   "name": "Renal papilla",
+   "ta_name": "papilla renalis",
+   "ta_code": 3381,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15622",
+   "concept_ids": [
+    "FMA15622"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of parenchyma of kidney",
+    "Renal papilla"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-column",
+   "name": "Renal column",
+   "ta_name": "columnae renales",
+   "ta_code": 3370,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17633",
+   "concept_ids": [
+    "FMA17633"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of parenchyma of kidney",
+    "Region of cortex of kidney",
+    "Renal column"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.left-renal-pelvis",
+   "name": "Left renal pelvis",
+   "ta_name": "pelvis renalis",
+   "ta_code": 3384,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15575",
+   "concept_ids": [
+    "FMA15579"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Renal pelvis",
+    "Left renal pelvis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.right-renal-pelvis",
+   "name": "Right renal pelvis",
+   "ta_name": "pelvis renalis",
+   "ta_code": 3384,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15575",
+   "concept_ids": [
+    "FMA15578"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Renal pelvis",
+    "Right renal pelvis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.major-calyx",
+   "name": "Major calyx",
+   "ta_name": "calices renales majores",
+   "ta_code": 3385,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15613",
+   "concept_ids": [
+    "FMA15613"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Renal calyx",
+    "Major calyx"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.minor-calyx",
+   "name": "Minor calyx",
+   "ta_name": "calices renales minores",
+   "ta_code": 3389,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15614",
+   "concept_ids": [
+    "FMA15614"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Renal calyx",
+    "Minor calyx"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-sinus",
+   "name": "Renal sinus",
+   "ta_name": "sinus renalis",
+   "ta_code": 3362,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA284412",
+   "concept_ids": [
+    "FMA284412"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical compartment",
+    "Renal sinus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-lobe",
+   "name": "Renal lobe",
+   "ta_name": "lobus renis",
+   "ta_code": 3376,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17881",
+   "concept_ids": [
+    "FMA17881"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Renal lobe"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.left-renal-fascia",
+   "name": "Left renal fascia",
+   "ta_name": "fascia renalis",
+   "ta_code": 3819,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18104",
+   "concept_ids": [
+    "FMA18106"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of internal fascia",
+    "Zone of abdominal fascia",
+    "Zone of endoabdominal fascia",
+    "Zone of dense endoabdominal fascia",
+    "Renal fascia",
+    "Left renal fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.right-renal-fascia",
+   "name": "Right renal fascia",
+   "ta_name": "fascia renalis",
+   "ta_code": 3819,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18104",
+   "concept_ids": [
+    "FMA18105"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of internal fascia",
+    "Zone of abdominal fascia",
+    "Zone of endoabdominal fascia",
+    "Zone of dense endoabdominal fascia",
+    "Renal fascia",
+    "Right renal fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.left-fibrous-capsule-of-kidney",
+   "name": "Fibrous capsule of left kidney",
+   "ta_name": "capsula fibrosa renis",
+   "ta_code": 3367,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA66610",
+   "concept_ids": [
+    "FMA66612"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Portion of tissue",
+    "Portion of connective tissue",
+    "Irregular connective tissue",
+    "Dense irregular connective tissue",
+    "Fibrous connective tissue",
+    "Fibrous capsule of kidney",
+    "Fibrous capsule of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the renal capsule of Milestone 12's gap analysis"
+  },
+  {
+   "record_id": "uri.right-fibrous-capsule-of-kidney",
+   "name": "Fibrous capsule of right kidney",
+   "ta_name": "capsula fibrosa renis",
+   "ta_code": 3367,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA66610",
+   "concept_ids": [
+    "FMA66611"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Portion of tissue",
+    "Portion of connective tissue",
+    "Irregular connective tissue",
+    "Dense irregular connective tissue",
+    "Fibrous connective tissue",
+    "Fibrous capsule of kidney",
+    "Fibrous capsule of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the renal capsule of Milestone 12's gap analysis"
+  },
+  {
+   "record_id": "uri.left-hilum-of-kidney",
+   "name": "Hilum of left kidney",
+   "ta_name": "hilum renis",
+   "ta_code": 3361,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15610",
+   "concept_ids": [
+    "FMA15942"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Hilum",
+    "Hilum of kidney",
+    "Hilum of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.right-hilum-of-kidney",
+   "name": "Hilum of right kidney",
+   "ta_name": "hilum renis",
+   "ta_code": 3361,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15610",
+   "concept_ids": [
+    "FMA15941"
+   ],
+   "subtree": "kidney-interior",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Hilum",
+    "Hilum of kidney",
+    "Hilum of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.nephron",
+   "name": "Nephron",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17640",
+   "concept_ids": [
+    "FMA17640"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Essential morphological unit",
+    "Nephron"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Nephron': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-tubule",
+   "name": "Renal tubule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15627",
+   "concept_ids": [
+    "FMA15627"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Renal tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table carries no nephron-segment terms at all \u2014 the uriniferous tubule and its parts are Terminologia Histologica territory, and no term in the table's naming apparatus names this structure. The worksheet's candidates are class-word cores of other renal structures (cortex, medulla, pelvis, vessels) \u2014 class mismatch."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.renal-corpuscle",
+   "name": "Renal corpuscle",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15625",
+   "concept_ids": [
+    "FMA15625"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Renal corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table carries no nephron-segment terms at all \u2014 the uriniferous tubule and its parts are Terminologia Histologica territory, and no term in the table's naming apparatus names this structure."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.glomerulus",
+   "name": "Glomerulus",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15624",
+   "concept_ids": [
+    "FMA15624"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Organ part cluster",
+    "Organ component cluster",
+    "Glomerulus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Glomerulus': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.glomerular-capsule",
+   "name": "Glomerular capsule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15626",
+   "concept_ids": [
+    "FMA15626"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Glomerular capsule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Glomerular capsule': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.proximal-convoluted-tubule",
+   "name": "Proximal convoluted tubule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17693",
+   "concept_ids": [
+    "FMA17693"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Proximal convoluted tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Proximal convoluted tubule': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.proximal-straight-tubule",
+   "name": "Proximal straight tubule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17716",
+   "concept_ids": [
+    "FMA17716"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Proximal straight tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Proximal straight tubule': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.loop-of-henle",
+   "name": "Loop of Henle",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17698",
+   "concept_ids": [
+    "FMA17698"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Loop of Henle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Loop of Henle': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.descending-thin-limb",
+   "name": "Descending thin limb",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17719",
+   "concept_ids": [
+    "FMA17719"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Descending thin limb"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Descending thin limb': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.ascending-thin-limb",
+   "name": "Ascending thin limb",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17720",
+   "concept_ids": [
+    "FMA17720"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Ascending thin limb"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Ascending thin limb': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.distal-convoluted-tubule",
+   "name": "Distal convoluted tubule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17721",
+   "concept_ids": [
+    "FMA17721"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Region of renal tubule",
+    "Distal convoluted tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Distal convoluted tubule': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.macula-densa",
+   "name": "Macula densa",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA86333",
+   "concept_ids": [
+    "FMA86333"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Macula densa"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Macula densa': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.collecting-duct-of-renal-tubule",
+   "name": "Collecting duct of renal tubule",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15628",
+   "concept_ids": [
+    "FMA15628"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of organ component of kidney",
+    "Region of uriniferous tubule",
+    "Collecting duct of renal tubule"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Collecting duct of renal tubule': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the FMA's preferred name for the collecting duct"
+  },
+  {
+   "record_id": "uri.juxtaglomerular-complex",
+   "name": "Juxtaglomerular complex",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA83599",
+   "concept_ids": [
+    "FMA83599"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Juxtaglomerular complex"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Juxtaglomerular complex': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the FMA's class for the juxtaglomerular apparatus of Milestone 12's gap analysis"
+  },
+  {
+   "record_id": "uri.afferent-glomerular-arteriole",
+   "name": "Afferent glomerular arteriole",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272216",
+   "concept_ids": [
+    "FMA272216"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of arterial tree organ",
+    "Artery",
+    "Systemic artery",
+    "Segment of renal artery",
+    "Afferent glomerular arteriole"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Afferent glomerular arteriole': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "a glomerular microvascular class, recorded under this module as part of the nephron apparatus censused at Milestone 12; the cardiovascular module carries no renal microvasculature records"
+  },
+  {
+   "record_id": "uri.efferent-glomerular-arteriole",
+   "name": "Efferent glomerular arteriole",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272214",
+   "concept_ids": [
+    "FMA272214"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of arterial tree organ",
+    "Artery",
+    "Systemic artery",
+    "Segment of renal artery",
+    "Postglomerular segment of renal artery",
+    "Efferent glomerular arteriole"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Efferent glomerular arteriole': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "a glomerular microvascular class, recorded under this module as part of the nephron apparatus censused at Milestone 12; the cardiovascular module carries no renal microvasculature records"
+  },
+  {
+   "record_id": "uri.descending-vasa-recta",
+   "name": "Descending vasa recta",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272225",
+   "concept_ids": [
+    "FMA272225"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of arterial tree organ",
+    "Artery",
+    "Systemic artery",
+    "Segment of renal artery",
+    "Postglomerular segment of renal artery",
+    "Descending vasa recta"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Descending vasa recta': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "one of the FMA's two vasa recta classes (descending and ascending); its long/short descending subdivisions are below this intake's granularity (see deferred)"
+  },
+  {
+   "record_id": "uri.ascending-vasa-recta",
+   "name": "Ascending vasa recta",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272227",
+   "concept_ids": [
+    "FMA272227"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of venous tree organ",
+    "Vein",
+    "Systemic vein",
+    "Subdivision of inferior systemic venous tree",
+    "Tributary of renal vein",
+    "Ascending vasa recta"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Ascending vasa recta': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "one of the FMA's two vasa recta classes (descending and ascending)"
+  },
+  {
+   "record_id": "uri.left-peritubular-capillary-plexus-of-kidney",
+   "name": "Peritubular capillary plexus of left kidney",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272218",
+   "concept_ids": [
+    "FMA272223"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Capillary plexus",
+    "Systemic capillary plexus",
+    "Systemic capillary network of cardinal organ part",
+    "Capillary network of organ component",
+    "Peritubular capillary plexus of kidney",
+    "Peritubular capillary plexus of left kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Peritubular capillary plexus of kidney': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the FMA's class for the peritubular capillary network of Milestone 12's gap analysis"
+  },
+  {
+   "record_id": "uri.right-peritubular-capillary-plexus-of-kidney",
+   "name": "Peritubular capillary plexus of right kidney",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA272218",
+   "concept_ids": [
+    "FMA272221"
+   ],
+   "subtree": "nephron",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Capillary plexus",
+    "Systemic capillary plexus",
+    "Systemic capillary network of cardinal organ part",
+    "Capillary network of organ component",
+    "Peritubular capillary plexus of kidney",
+    "Peritubular capillary plexus of right kidney"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Peritubular capillary plexus of kidney': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the FMA's class for the peritubular capillary network of Milestone 12's gap analysis"
+  },
+  {
+   "record_id": "uri.apex-of-urinary-bladder",
+   "name": "Apex of urinary bladder",
+   "ta_name": "apex vesicae",
+   "ta_code": 3402,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15914",
+   "concept_ids": [
+    "FMA15914"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of urinary bladder",
+    "Apex of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.body-of-urinary-bladder",
+   "name": "Body of urinary bladder",
+   "ta_name": "corpus vesicae",
+   "ta_code": 3403,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15909",
+   "concept_ids": [
+    "FMA15909"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of urinary bladder",
+    "Body of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.fundus-of-urinary-bladder",
+   "name": "Fundus of urinary bladder",
+   "ta_name": "fundus vesicae",
+   "ta_code": 3404,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15908",
+   "concept_ids": [
+    "FMA15908"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of urinary bladder",
+    "Fundus of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.neck-of-urinary-bladder",
+   "name": "Neck of urinary bladder",
+   "ta_name": "cervix vesicae",
+   "ta_code": 3405,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15912",
+   "concept_ids": [
+    "FMA15912"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Neck of organ",
+    "Neck of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.trigone-of-urinary-bladder",
+   "name": "Trigone of urinary bladder",
+   "ta_name": "trigonum vesicae",
+   "ta_code": 3421,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15910",
+   "concept_ids": [
+    "FMA15910"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of wall of urinary bladder",
+    "Trigone of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.uvula-of-urinary-bladder",
+   "name": "Uvula of urinary bladder",
+   "ta_name": "uvula vesicae",
+   "ta_code": 3406,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15915",
+   "concept_ids": [
+    "FMA15915"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of wall of urinary bladder",
+    "Uvula of urinary bladder"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.internal-urethral-orifice",
+   "name": "Internal urethral orifice",
+   "ta_name": "ostium internum urethrae",
+   "ta_code": 3424,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA85263",
+   "concept_ids": [
+    "FMA85263"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Urethral orifice",
+    "Internal urethral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.detrusor",
+   "name": "Detrusor",
+   "ta_name": "detrusor vesicae",
+   "ta_code": 3413,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA68018",
+   "concept_ids": [
+    "FMA68018"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Subdivision of muscle layer",
+    "Subdivision of muscle layer of urinary bladder",
+    "Detrusor"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the detrusor muscle"
+  },
+  {
+   "record_id": "uri.interureteric-crest",
+   "name": "Interureteric crest",
+   "ta_name": "plica interureterica",
+   "ta_code": 3422,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA75124",
+   "concept_ids": [
+    "FMA75124"
+   ],
+   "subtree": "bladder-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Organ crest",
+    "Interureteric crest"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name for the interureteric ridge (bar) named in Milestone 12's clinical record"
+  },
+  {
+   "record_id": "uri.ureteropelvic-junction",
+   "name": "Ureteropelvic junction",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15898",
+   "concept_ids": [
+    "FMA15898"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Ureteral junction",
+    "Ureteropelvic junction"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Ureteropelvic junction': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.ureterovesical-junction",
+   "name": "Ureterovesical junction",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15899",
+   "concept_ids": [
+    "FMA15899"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Ureteral junction",
+    "Ureterovesical junction"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Ureterovesical junction': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.abdominal-part-of-ureter",
+   "name": "Abdominal part of ureter",
+   "ta_name": "pars abdominalis ureteris",
+   "ta_code": 3395,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15882",
+   "concept_ids": [
+    "FMA15882"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Abdominal part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.pelvic-part-of-ureter",
+   "name": "Pelvic part of ureter",
+   "ta_name": "pars pelvica ureteris",
+   "ta_code": 3396,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15883",
+   "concept_ids": [
+    "FMA15883"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Pelvic part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.intramural-part-of-ureter",
+   "name": "Intramural part of ureter",
+   "ta_name": "pars intramuralis ureteris",
+   "ta_code": 3397,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77289",
+   "concept_ids": [
+    "FMA77289"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of ureter",
+    "Intramural part of ureter"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.left-ureteral-orifice",
+   "name": "Left ureteral orifice",
+   "ta_name": "ostium ureteris",
+   "ta_code": 3423,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77047",
+   "concept_ids": [
+    "FMA15940"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Ureteral orifice",
+    "Left ureteral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's spelling ('ureteral') of the ureteric orifice"
+  },
+  {
+   "record_id": "uri.right-ureteral-orifice",
+   "name": "Right ureteral orifice",
+   "ta_name": "ostium ureteris",
+   "ta_code": 3423,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77047",
+   "concept_ids": [
+    "FMA15939"
+   ],
+   "subtree": "ureter-parts",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Ureteral orifice",
+    "Right ureteral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's spelling ('ureteral') of the ureteric orifice"
+  },
+  {
+   "record_id": "uri.male-urethra",
+   "name": "Male urethra",
+   "ta_name": "urethra masculina",
+   "ta_code": 3442,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19668",
+   "concept_ids": [
+    "FMA19668"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Urethra",
+    "Male urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.female-urethra",
+   "name": "Female urethra",
+   "ta_name": "urethra feminina",
+   "ta_code": 3426,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19669",
+   "concept_ids": [
+    "FMA19669"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Urethra",
+    "Female urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.pre-prostatic-part-of-urethra",
+   "name": "Pre-prostatic part of urethra",
+   "ta_name": "pars intramuralis urethrae masculinae",
+   "ta_code": 3443,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19672",
+   "concept_ids": [
+    "FMA19672"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of urethra",
+    "Segment of male urethra",
+    "Pre-prostatic part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.bulbous-part-of-urethra",
+   "name": "Bulbous part of urethra",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA0327176",
+   "concept_ids": [
+    "FMA0327176"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of urethra",
+    "Segment of male urethra",
+    "Bulbous part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Bulbous part of urethra': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.urethral-crest",
+   "name": "Urethral crest",
+   "ta_name": "crista urethralis masculina",
+   "ta_code": 3446,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19718",
+   "concept_ids": [
+    "FMA19718"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of wall of prostatic part of urethra",
+    "Region of posterior wall of prostatic part of urethra",
+    "Urethral crest"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.seminal-colliculus",
+   "name": "Seminal colliculus",
+   "ta_name": "colliculus seminalis",
+   "ta_code": 3448,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19719",
+   "concept_ids": [
+    "FMA19719"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of wall of prostatic part of urethra",
+    "Region of posterior wall of prostatic part of urethra",
+    "Region of urethral crest (male)",
+    "Seminal colliculus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.external-urethral-sphincter",
+   "name": "External urethral sphincter",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA85274",
+   "concept_ids": [
+    "FMA85274"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Muscle organ",
+    "Muscle of body proper",
+    "Muscle of trunk",
+    "Perineal muscle",
+    "Deep perineal muscle",
+    "External urethral sphincter"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the external urethral sphincter only sexed \u2014 3431 sphincter externus urethrae femininae and 3454 sphincter externus urethrae masculinae; the FMA class is the un-sexed generic (a perineal muscle class), and neither term alone names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.external-urethral-orifice",
+   "name": "External urethral orifice",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19650",
+   "concept_ids": [
+    "FMA19650"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Urethral orifice",
+    "External urethral orifice"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the external urethral orifice only sexed \u2014 3432 ostium externum urethrae femininae (named again at 3557 in the female external genitalia chapter) and 3458 ostium externum urethrae masculinae; the FMA class is the un-sexed generic under 'Urethral orifice', and neither term alone names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "uri.prostatic-urethra",
+   "name": "Prostatic urethra",
+   "ta_name": "pars prostatica urethrae",
+   "ta_code": 3445,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19673",
+   "concept_ids": [
+    "FMA19673"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of urethra",
+    "Segment of male urethra",
+    "Prostatic urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the prostatic part of the male urethra"
+  },
+  {
+   "record_id": "uri.membranous-urethra",
+   "name": "Membranous urethra",
+   "ta_name": "pars membranacea urethrae masculinae",
+   "ta_code": 3453,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19674",
+   "concept_ids": [
+    "FMA19674"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of urethra",
+    "Segment of male urethra",
+    "Membranous urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the membranous part of the male urethra"
+  },
+  {
+   "record_id": "uri.spongiose-part-of-urethra",
+   "name": "Spongiose part of urethra",
+   "ta_name": "pars spongiosa urethrae",
+   "ta_code": 3455,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19675",
+   "concept_ids": [
+    "FMA19675"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of urethra",
+    "Segment of male urethra",
+    "Spongiose part of urethra"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the spongy (penile) part of the male urethra"
+  },
+  {
+   "record_id": "uri.preprostatic-sphincter",
+   "name": "Preprostatic sphincter",
+   "ta_name": "sphincter internus urethrae masculinae",
+   "ta_code": 3444,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA45769",
+   "concept_ids": [
+    "FMA45769"
+   ],
+   "subtree": "urethra-divided",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Preprostatic sphincter"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's named sphincter of the bladder neck and pre-prostatic urethra; the FMA carries no class named 'internal urethral sphincter' (see absence probes)"
   }
  ]
 }

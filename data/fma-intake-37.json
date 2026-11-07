@@ -1,0 +1,1968 @@
+{
+ "meta": {
+  "milestone": "M37",
+  "date": "2026-11-06",
+  "scope": "FMA 5.1.0 concept intake #3: the urinary interior and the female reproductive tract \u2014 the structures Milestones 12 and 14 proved absent from BodyParts3D 4.0",
+  "method": "tools/fma_uri_repro_map.py (frozen targets, mechanical resolution) \u2014 checked by tools/fma_uri_repro_check.py (independent)",
+  "rule": "lateralised records where the FMA carries both sided classes (prefix or kidney-suffix naming, IS-A parent-verified), one un-sided record otherwise; any FMAID already inventoried anywhere in the Body Model is excluded and accounted with its owner",
+  "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)"
+ },
+ "systems": {
+  "urinary": {
+   "records_before": 6,
+   "records_after": 73,
+   "records_added": 67,
+   "targets": [
+    {
+     "target": "Cortex of kidney",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "uri.left-cortex-of-kidney",
+      "uri.right-cortex-of-kidney"
+     ],
+     "fmaids": [
+      "FMA15584",
+      "FMA15583"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Medulla of kidney",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "uri.left-medulla-of-kidney",
+      "uri.right-medulla-of-kidney"
+     ],
+     "fmaids": [
+      "FMA0329240",
+      "FMA0329239"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Renal pyramid",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-pyramid"
+     ],
+     "fmaids": [
+      "FMA258870"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal papilla",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-papilla"
+     ],
+     "fmaids": [
+      "FMA15622"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal column",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-column"
+     ],
+     "fmaids": [
+      "FMA17633"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal pelvis",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "uri.left-renal-pelvis",
+      "uri.right-renal-pelvis"
+     ],
+     "fmaids": [
+      "FMA15579",
+      "FMA15578"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Major calyx",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.major-calyx"
+     ],
+     "fmaids": [
+      "FMA15613"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Minor calyx",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.minor-calyx"
+     ],
+     "fmaids": [
+      "FMA15614"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal sinus",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-sinus"
+     ],
+     "fmaids": [
+      "FMA284412"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal lobe",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-lobe"
+     ],
+     "fmaids": [
+      "FMA17881"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal fascia",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "uri.left-renal-fascia",
+      "uri.right-renal-fascia"
+     ],
+     "fmaids": [
+      "FMA18106",
+      "FMA18105"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Fibrous capsule of kidney",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "uri.left-fibrous-capsule-of-kidney",
+      "uri.right-fibrous-capsule-of-kidney"
+     ],
+     "fmaids": [
+      "FMA66612",
+      "FMA66611"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Hilum of kidney",
+     "subtree": "kidney-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "uri.left-hilum-of-kidney",
+      "uri.right-hilum-of-kidney"
+     ],
+     "fmaids": [
+      "FMA15942",
+      "FMA15941"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Nephron",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.nephron"
+     ],
+     "fmaids": [
+      "FMA17640"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal tubule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-tubule"
+     ],
+     "fmaids": [
+      "FMA15627"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Renal corpuscle",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.renal-corpuscle"
+     ],
+     "fmaids": [
+      "FMA15625"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Glomerulus",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.glomerulus"
+     ],
+     "fmaids": [
+      "FMA15624"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Glomerular capsule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.glomerular-capsule"
+     ],
+     "fmaids": [
+      "FMA15626"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Proximal convoluted tubule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.proximal-convoluted-tubule"
+     ],
+     "fmaids": [
+      "FMA17693"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Proximal straight tubule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.proximal-straight-tubule"
+     ],
+     "fmaids": [
+      "FMA17716"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Loop of Henle",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.loop-of-henle"
+     ],
+     "fmaids": [
+      "FMA17698"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Descending thin limb",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.descending-thin-limb"
+     ],
+     "fmaids": [
+      "FMA17719"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ascending thin limb",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.ascending-thin-limb"
+     ],
+     "fmaids": [
+      "FMA17720"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Distal convoluted tubule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.distal-convoluted-tubule"
+     ],
+     "fmaids": [
+      "FMA17721"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Macula densa",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.macula-densa"
+     ],
+     "fmaids": [
+      "FMA86333"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Collecting duct of renal tubule",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.collecting-duct-of-renal-tubule"
+     ],
+     "fmaids": [
+      "FMA15628"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Juxtaglomerular complex",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.juxtaglomerular-complex"
+     ],
+     "fmaids": [
+      "FMA83599"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Afferent glomerular arteriole",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.afferent-glomerular-arteriole"
+     ],
+     "fmaids": [
+      "FMA272216"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Efferent glomerular arteriole",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.efferent-glomerular-arteriole"
+     ],
+     "fmaids": [
+      "FMA272214"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Descending vasa recta",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.descending-vasa-recta"
+     ],
+     "fmaids": [
+      "FMA272225"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ascending vasa recta",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.ascending-vasa-recta"
+     ],
+     "fmaids": [
+      "FMA272227"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Peritubular capillary plexus of kidney",
+     "subtree": "nephron",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "uri.left-peritubular-capillary-plexus-of-kidney",
+      "uri.right-peritubular-capillary-plexus-of-kidney"
+     ],
+     "fmaids": [
+      "FMA272223",
+      "FMA272221"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Apex of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.apex-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15914"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Body of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.body-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15909"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Fundus of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.fundus-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15908"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Neck of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.neck-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15912"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Trigone of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.trigone-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15910"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Uvula of urinary bladder",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.uvula-of-urinary-bladder"
+     ],
+     "fmaids": [
+      "FMA15915"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Internal urethral orifice",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.internal-urethral-orifice"
+     ],
+     "fmaids": [
+      "FMA85263"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Detrusor",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.detrusor"
+     ],
+     "fmaids": [
+      "FMA68018"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Interureteric crest",
+     "subtree": "bladder-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.interureteric-crest"
+     ],
+     "fmaids": [
+      "FMA75124"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ureteropelvic junction",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.ureteropelvic-junction"
+     ],
+     "fmaids": [
+      "FMA15898"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ureterovesical junction",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.ureterovesical-junction"
+     ],
+     "fmaids": [
+      "FMA15899"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Abdominal part of ureter",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.abdominal-part-of-ureter"
+     ],
+     "fmaids": [
+      "FMA15882"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pelvic part of ureter",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.pelvic-part-of-ureter"
+     ],
+     "fmaids": [
+      "FMA15883"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Intramural part of ureter",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.intramural-part-of-ureter"
+     ],
+     "fmaids": [
+      "FMA77289"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ureteral orifice",
+     "subtree": "ureter-parts",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "uri.left-ureteral-orifice",
+      "uri.right-ureteral-orifice"
+     ],
+     "fmaids": [
+      "FMA15940",
+      "FMA15939"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Male urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.male-urethra"
+     ],
+     "fmaids": [
+      "FMA19668"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Female urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.female-urethra"
+     ],
+     "fmaids": [
+      "FMA19669"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pre-prostatic part of urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.pre-prostatic-part-of-urethra"
+     ],
+     "fmaids": [
+      "FMA19672"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Bulbous part of urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.bulbous-part-of-urethra"
+     ],
+     "fmaids": [
+      "FMA0327176"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Urethral crest",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.urethral-crest"
+     ],
+     "fmaids": [
+      "FMA19718"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Seminal colliculus",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.seminal-colliculus"
+     ],
+     "fmaids": [
+      "FMA19719"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "External urethral sphincter",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.external-urethral-sphincter"
+     ],
+     "fmaids": [
+      "FMA85274"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "External urethral orifice",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.external-urethral-orifice"
+     ],
+     "fmaids": [
+      "FMA19650"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Prostatic urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.prostatic-urethra"
+     ],
+     "fmaids": [
+      "FMA19673"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Membranous urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.membranous-urethra"
+     ],
+     "fmaids": [
+      "FMA19674"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Spongiose part of urethra",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.spongiose-part-of-urethra"
+     ],
+     "fmaids": [
+      "FMA19675"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Preprostatic sphincter",
+     "subtree": "urethra-divided",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "uri.preprostatic-sphincter"
+     ],
+     "fmaids": [
+      "FMA45769"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Kidney",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA7205 already inventoried (bp3d:urinary:kidney.left-kidney); FMA7204 already inventoried (bp3d:urinary:kidney.right-kidney)",
+     "records": []
+    },
+    {
+     "target": "Ureter",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA15572 already inventoried (bp3d:urinary:ureter.left-ureter); FMA15571 already inventoried (bp3d:urinary:ureter.right-ureter)",
+     "records": []
+    },
+    {
+     "target": "Urinary bladder",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA15900 already inventoried (bp3d:urinary:urinary-bladder)",
+     "records": []
+    },
+    {
+     "target": "Urethra",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA19667 already inventoried (bp3d:urinary:urethra)",
+     "records": []
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Renal cortex",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Renal medulla",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Renal capsule",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Renal hilum",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Collecting duct",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Juxtaglomerular apparatus",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Vasa recta",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Peritubular capillary",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Capsule of glomerulus",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Nephron loop",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Detrusor muscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Interureteric ridge",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Ureteric orifice",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Spongy urethra",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Prostatic part of urethra",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Membranous part of urethra",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Internal urethral sphincter",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Thick ascending limb",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Thick descending limb",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Distal straight tubule",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Connecting tubule",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "Renal calyx (FMA284558), the generic parent class of the major and minor calyces",
+     "reason": "the census names the major and minor calyces; both are recorded. The generic parent is not separately recorded (the Milestone 33/36 convention: generic parents are recorded only where the census names the generic, as with 'Lymph node')"
+    },
+    {
+     "names": "Renal segment (FMA15615) and its five named segment classes (superior, anterior superior, anterior inferior, inferior, posterior segments of kidney)",
+     "reason": "the vascular segments are not named in Milestone 12's absence census (its kidney interior families are pelvis/calyces, pyramids, papillae, columns, cortex/medulla, nephron); a named follow-on candidate"
+    },
+    {
+     "names": "Long descending vasa recta (FMA272280), Short descending vasa recta (FMA272282)",
+     "reason": "subdivisions of the descending vasa recta class, below this intake's granularity; the descending and ascending classes are recorded"
+    },
+    {
+     "names": "Dome of urinary bladder (FMA265241)",
+     "reason": "a region class overlapping the fundus/apex zones, which are recorded; not named in Milestone 12's census"
+    },
+    {
+     "names": "Renal pelvis proper (FMA17658) and the intra-/extra-renal segment classes of the renal pelvis and ureter",
+     "reason": "subdivisions of the renal pelvis class below this intake's granularity; the pelvis is recorded (sided)"
+    },
+    {
+     "names": "Medullary ray (FMA74299), Cortex proper of kidney (FMA17876) and the inner/outer cortex and stripe classes of the medulla",
+     "reason": "sub-zonal subdivisions of the cortex and medulla classes, below this intake's granularity; both zonal classes are recorded (sided)"
+    }
+   ]
+  },
+  "reproductive": {
+   "records_before": 13,
+   "records_after": 70,
+   "records_added": 57,
+   "targets": [
+    {
+     "target": "Ovary",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-ovary",
+      "repro.right-ovary"
+     ],
+     "fmaids": [
+      "FMA7214",
+      "FMA7213"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Follicle of ovary",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.follicle-of-ovary"
+     ],
+     "fmaids": [
+      "FMA18640"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Corpus luteum",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.corpus-luteum"
+     ],
+     "fmaids": [
+      "FMA18619"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Corpus albicans",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.corpus-albicans"
+     ],
+     "fmaids": [
+      "FMA18620"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hilum of ovary",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.hilum-of-ovary"
+     ],
+     "fmaids": [
+      "FMA18652"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ovarian ligament",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-ovarian-ligament",
+      "repro.right-ovarian-ligament"
+     ],
+     "fmaids": [
+      "FMA55424",
+      "FMA55423"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Suspensory ligament of ovary",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.suspensory-ligament-of-ovary"
+     ],
+     "fmaids": [
+      "FMA19822"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Mesovarium",
+     "subtree": "ovary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-mesovarium",
+      "repro.right-mesovarium"
+     ],
+     "fmaids": [
+      "FMA19818",
+      "FMA19817"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-uterine-tube",
+      "repro.right-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18484",
+      "FMA18483"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Infundibulum of uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.infundibulum-of-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18307"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Fimbria of uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.fimbria-of-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18308"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Ampulla of uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.ampulla-of-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18305"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Isthmus of uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.isthmus-of-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18306"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Uterine part of uterine tube",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.uterine-part-of-uterine-tube"
+     ],
+     "fmaids": [
+      "FMA18309"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Mesosalpinx",
+     "subtree": "uterine-tube",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-mesosalpinx",
+      "repro.right-mesosalpinx"
+     ],
+     "fmaids": [
+      "FMA19810",
+      "FMA19809"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.uterus"
+     ],
+     "fmaids": [
+      "FMA17558"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Body of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.body-of-uterus"
+     ],
+     "fmaids": [
+      "FMA17739"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Fundus of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.fundus-of-uterus"
+     ],
+     "fmaids": [
+      "FMA17561"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Endometrium",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.endometrium"
+     ],
+     "fmaids": [
+      "FMA17742"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Myometrium",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.myometrium"
+     ],
+     "fmaids": [
+      "FMA17743"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cavity of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.cavity-of-uterus"
+     ],
+     "fmaids": [
+      "FMA17745"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cervix of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.cervix-of-uterus"
+     ],
+     "fmaids": [
+      "FMA17740"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Supravaginal part of cervix",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.supravaginal-part-of-cervix"
+     ],
+     "fmaids": [
+      "FMA77055"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Vaginal part of cervix",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.vaginal-part-of-cervix"
+     ],
+     "fmaids": [
+      "FMA77056"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Serosa of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.serosa-of-uterus"
+     ],
+     "fmaids": [
+      "FMA17744"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Broad ligament of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.broad-ligament-of-uterus"
+     ],
+     "fmaids": [
+      "FMA16516"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Round ligament of uterus",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-round-ligament-of-uterus",
+      "repro.right-round-ligament-of-uterus"
+     ],
+     "fmaids": [
+      "FMA57790",
+      "FMA57789"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Mesometrium",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-mesometrium",
+      "repro.right-mesometrium"
+     ],
+     "fmaids": [
+      "FMA19820",
+      "FMA19819"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Uterosacral ligament",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-uterosacral-ligament",
+      "repro.right-uterosacral-ligament"
+     ],
+     "fmaids": [
+      "FMA19120",
+      "FMA19119"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Cardinal ligament",
+     "subtree": "uterus",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-cardinal-ligament",
+      "repro.right-cardinal-ligament"
+     ],
+     "fmaids": [
+      "FMA302830",
+      "FMA302828"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Vagina",
+     "subtree": "vagina",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.vagina"
+     ],
+     "fmaids": [
+      "FMA19949"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Fornix of vagina",
+     "subtree": "vagina",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.fornix-of-vagina"
+     ],
+     "fmaids": [
+      "FMA19985"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Anterior fornix of vagina",
+     "subtree": "vagina",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.anterior-fornix-of-vagina"
+     ],
+     "fmaids": [
+      "FMA19986"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Posterior fornix of vagina",
+     "subtree": "vagina",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.posterior-fornix-of-vagina"
+     ],
+     "fmaids": [
+      "FMA19987"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hymen of vagina",
+     "subtree": "vagina",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.hymen-of-vagina"
+     ],
+     "fmaids": [
+      "FMA20005"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Vulva",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.vulva"
+     ],
+     "fmaids": [
+      "FMA20462"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Clitoris",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.clitoris"
+     ],
+     "fmaids": [
+      "FMA9909"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Glans of clitoris",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.glans-of-clitoris"
+     ],
+     "fmaids": [
+      "FMA19999"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Labium majus",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-labium-majus",
+      "repro.right-labium-majus"
+     ],
+     "fmaids": [
+      "FMA20372",
+      "FMA20369"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Labium minus",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-labium-minus",
+      "repro.right-labium-minus"
+     ],
+     "fmaids": [
+      "FMA20381",
+      "FMA20380"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Vestibule of vagina",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.vestibule-of-vagina"
+     ],
+     "fmaids": [
+      "FMA19970"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Greater vestibular gland",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-greater-vestibular-gland",
+      "repro.right-greater-vestibular-gland"
+     ],
+     "fmaids": [
+      "FMA20012",
+      "FMA20011"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Lesser vestibular gland",
+     "subtree": "vulva",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-lesser-vestibular-gland",
+      "repro.right-lesser-vestibular-gland"
+     ],
+     "fmaids": [
+      "FMA0328531",
+      "FMA0328530"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Perineal body",
+     "subtree": "perineum-shared",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.perineal-body"
+     ],
+     "fmaids": [
+      "FMA20274"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Mons pubis",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA20218 already inventoried (bp3d:reproductive:mons-pubis)",
+     "records": []
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Ovarian follicle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Ligament of ovary",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Cervix",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Uterine cervix",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Perimetrium",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Broad ligament",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Hymen",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Fimbriae of uterine tube",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Cervical canal",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Isthmus of uterus",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "External os of uterus",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Internal os of uterus",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Cortex of ovary",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Medulla of ovary",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Paraurethral gland",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "Paraurethral glands (Skene's glands): the FMA carries no single anatomical class \u2014 only the set class FMA265251 'Set of paraurethral glands' and classes for their ducts and orifices",
+     "reason": "set/aggregate classes are not records, per the Milestone 9/33 convention; the glands remain concept-blocked in the FMA at record granularity (named in Milestone 14's female probe line)"
+    },
+    {
+     "names": "Ectocervix (FMA86484), Endocervix (FMA86485)",
+     "reason": "mucosal subdivisions of the cervix below this intake's granularity; the cervix and its supravaginal/vaginal parts are recorded"
+    },
+    {
+     "names": "Perineal membrane (FMA30548 probed at Milestone 14), rectouterine and vesicouterine pouches",
+     "reason": "perineal fascial and peritoneal-pouch classes of Milestone 14's shared probe line; they straddle the muscular/peritoneal boundary and are outside this intake's scope (urinary interior + female tract); named follow-on candidates"
+    },
+    {
+     "names": "Uterine horn (FMA77053)",
+     "reason": "a class for the lateral angle region of the uterus, not a named part in Milestone 14's census; the fundus and body are recorded"
+    }
+   ]
+  }
+ },
+ "plexus_reverification": {
+  "date": "2026-11-06",
+  "question": "Milestone 35 \u00a71 recorded FMA5906/5907/5908 as carrying rdfs:label but no fma:preferred_name (a Milestone 33 import reading); Milestone 36 \u00a75.1 flagged the reading as a probable naive-parser artifact",
+  "verdict": "the note does not stand \u2014 all three classes carry fma:preferred_name identical to their labels, under both the depth-aware parse and an independent XML parse",
+  "classes": [
+   {
+    "fmaid": "FMA5906",
+    "role": "un-sided class",
+    "preferred_name": "Brachial nerve plexus",
+    "label": "Brachial nerve plexus",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA45245",
+    "role": "sided class (left)",
+    "preferred_name": "Left brachial nerve plexus",
+    "label": "Left brachial nerve plexus",
+    "is_a_parent": "FMA5906",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA45244",
+    "role": "sided class (right)",
+    "preferred_name": "Right brachial nerve plexus",
+    "label": "Right brachial nerve plexus",
+    "is_a_parent": "FMA5906",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA5907",
+    "role": "un-sided class",
+    "preferred_name": "Lumbosacral nerve plexus",
+    "label": "Lumbosacral nerve plexus",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA0328819",
+    "role": "sided class (left)",
+    "preferred_name": "Left lumbosacral nerve plexus",
+    "label": "Left lumbosacral nerve plexus",
+    "is_a_parent": "FMA5907",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA0328818",
+    "role": "sided class (right)",
+    "preferred_name": "Right lumbosacral nerve plexus",
+    "label": "Right lumbosacral nerve plexus",
+    "is_a_parent": "FMA5907",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA5908",
+    "role": "un-sided class",
+    "preferred_name": "Lumbar nerve plexus",
+    "label": "Lumbar nerve plexus",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA20675",
+    "role": "sided class (left)",
+    "preferred_name": "Left lumbar nerve plexus",
+    "label": "Left lumbar nerve plexus",
+    "is_a_parent": "FMA5908",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA20674",
+    "role": "sided class (right)",
+    "preferred_name": "Right lumbar nerve plexus",
+    "label": "Right lumbar nerve plexus",
+    "is_a_parent": "FMA5908",
+    "parses_agree": true
+   }
+  ],
+  "correction": "Correction (2026-11-06, Milestone 37): Milestone 35 \u00a71 recorded the un-sided plexus classes FMA5906/5907/5908 as carrying an rdfs:label but no fma:preferred_name. That reading was an artifact of the naive OWL block parser (the defect class proven at Milestone 36 \u00a75.1): under the depth-aware parse, and independently under an ElementTree XML parse, all three classes carry fma:preferred_name identical to their labels. The six sided records' class_concept_id (null since the Milestone 33 import) and group_path (one null entry at the class position) are corrected to the derived values. Record names, concept FMAIDs, TA2 names and codes, and all other fields are unchanged and re-verified; the Milestone 35 TA2 outcomes for these records (6395 / 6517 / 6516, the un-sided classes' terms) stand.",
+  "records_corrected": [
+   {
+    "record_id": "nerve.left-brachial-nerve-plexus",
+    "concept_id": "FMA45245",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5906",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     null,
+     "Left brachial nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     "Brachial nerve plexus",
+     "Left brachial nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Left brachial nerve plexus",
+     "concept_ids": [
+      "FMA45245"
+     ],
+     "ta_name": "plexus brachialis",
+     "ta_code": 6395
+    }
+   },
+   {
+    "record_id": "nerve.right-brachial-nerve-plexus",
+    "concept_id": "FMA45244",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5906",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     null,
+     "Right brachial nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     "Brachial nerve plexus",
+     "Right brachial nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Right brachial nerve plexus",
+     "concept_ids": [
+      "FMA45244"
+     ],
+     "ta_name": "plexus brachialis",
+     "ta_code": 6395
+    }
+   },
+   {
+    "record_id": "nerve.left-lumbosacral-nerve-plexus",
+    "concept_id": "FMA0328819",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5907",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     null,
+     "Left lumbosacral nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     "Lumbosacral nerve plexus",
+     "Left lumbosacral nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Left lumbosacral nerve plexus",
+     "concept_ids": [
+      "FMA0328819"
+     ],
+     "ta_name": "plexus lumbosacralis",
+     "ta_code": 6516
+    }
+   },
+   {
+    "record_id": "nerve.right-lumbosacral-nerve-plexus",
+    "concept_id": "FMA0328818",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5907",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     null,
+     "Right lumbosacral nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Somatic nerve plexus",
+     "Limb nerve plexus",
+     "Lumbosacral nerve plexus",
+     "Right lumbosacral nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Right lumbosacral nerve plexus",
+     "concept_ids": [
+      "FMA0328818"
+     ],
+     "ta_name": "plexus lumbosacralis",
+     "ta_code": 6516
+    }
+   },
+   {
+    "record_id": "nerve.left-lumbar-nerve-plexus",
+    "concept_id": "FMA20675",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5908",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Subdivision of limb nerve plexus",
+     "Subdivision of lumbosacral nerve plexus",
+     null,
+     "Left lumbar nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Subdivision of limb nerve plexus",
+     "Subdivision of lumbosacral nerve plexus",
+     "Lumbar nerve plexus",
+     "Left lumbar nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Left lumbar nerve plexus",
+     "concept_ids": [
+      "FMA20675"
+     ],
+     "ta_name": "plexus lumbalis",
+     "ta_code": 6517
+    }
+   },
+   {
+    "record_id": "nerve.right-lumbar-nerve-plexus",
+    "concept_id": "FMA20674",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA5908",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Subdivision of limb nerve plexus",
+     "Subdivision of lumbosacral nerve plexus",
+     null,
+     "Right lumbar nerve plexus"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Anatomical cluster",
+     "Anatomical junction",
+     "Nerve plexus",
+     "Subdivision of limb nerve plexus",
+     "Subdivision of lumbosacral nerve plexus",
+     "Lumbar nerve plexus",
+     "Right lumbar nerve plexus"
+    ],
+    "identity_reverified": {
+     "name": "Right lumbar nerve plexus",
+     "concept_ids": [
+      "FMA20674"
+     ],
+     "ta_name": "plexus lumbalis",
+     "ta_code": 6517
+    }
+   }
+  ],
+  "applied_by": "tools/fma_plexus_correct.py",
+  "records_changed_this_run": 6,
+  "adjacent_observation_not_corrected": "nerve.left-oculomotor-nerve and nerve.right-oculomotor-nerve carry the same Milestone 33 artifact (class_concept_id null, one null group_path entry at the un-sided class position; parents under the depth-aware parse: {'FMA50864': 'Oculomotor nerve'}). They are outside this milestone's named scope (the six plexus classes) and are NOT corrected here; named for a future ruling."
+ }
+}

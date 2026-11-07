@@ -22,6 +22,16 @@ its own core/soft table), pathway and nephron segment order,
 bladder parts and ureter constriction lists, and the adrenal
 non-duplication gate.
 
+Scope note (Milestone 37): the inventory now also carries 67
+FMA 5.1.0 concept records (the urinary interior). Every check
+below that speaks of the concept universe, the records, the
+dispositions, the geometry or the clinical linkage is scoped
+to the BP3D partition (records without the fma-5.1.0 source
+tag), exactly as shipped at Milestone 12; the FMA records
+themselves are gated by tools/fma_uri_repro_check.py, and
+their TA2 discipline by ta2_discipline.run_fma_inventory_multi
+at the end of this file.
+
 Exit code 0 only if every hard check passes. Printed lines marked
 [report] are informational.
 """
@@ -213,10 +223,15 @@ check(all(("artery" in n or "vein" in n) or n == "gallbladder"
 # ------------------------------------------------------------------
 # Records and dispositions, re-derived from the shipped inventory
 # ------------------------------------------------------------------
-records = inv["records"]
-check(len(records) == inv["meta"]["record_count"] == 6,
-      f"record count: {len(records)}")
-check(len({r['record_id'] for r in records}) == len(records),
+records_all = inv["records"]
+records = [r for r in records_all if r.get("source") != "fma-5.1.0"]
+check(len(records) == 6
+      and len(records_all) == inv["meta"]["record_count"],
+      f"record count: {len(records)} BP3D + "
+      f"{len(records_all) - len(records)} FMA (Milestone 37) = "
+      f"{len(records_all)}")
+check(len({r['record_id'] for r in records_all})
+      == len(records_all),
       "record ids unique")
 claimed = {}
 for r in records:
@@ -301,13 +316,20 @@ def obj_stats(path):
 
 geo = json.load(open(os.path.join(URI, "urinary-geometry.json"),
                      encoding="utf-8"))
-check(geo["meta"]["coverage"] == {"records": 6,
-                                  "records_with_meshes": 6,
-                                  "records_without_meshes": 0},
-      "geometry coverage 6/6 records")
+fma_geo = [g for g in geo["records"]
+           if g.get("source") == "fma-5.1.0"]
+check(geo["meta"]["coverage"] == {
+        "records": len(records_all),
+        "records_with_meshes": 6,
+        "records_without_meshes": len(fma_geo)},
+      "geometry coverage: 6/6 BP3D records with meshes; the "
+      "Milestone 37 FMA records are geometry-absent")
 geo_by_id = {g["record_id"]: g for g in geo["records"]}
-check(set(geo_by_id) == {r["record_id"] for r in records},
+check(set(geo_by_id) == {r["record_id"] for r in records_all},
       "geometry records = inventory records")
+check(all(not g["isa_meshes"] and not g["partof_meshes"]
+          and g.get("geometry_status") for g in fma_geo),
+      "FMA geometry entries are mesh-less (Milestone 37)")
 entries = mismatches = 0
 distinct = {"isa": set(), "partof": set()}
 tot = {"isa": [0, 0], "partof": [0, 0]}
@@ -593,6 +615,9 @@ import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import ta2_discipline as _ta2d
 _ta2d.run("urinary", "data/urinary/urinary.json", check)
+_ta2d.run_fma_inventory_multi(
+    "urinary", "data/urinary/urinary-inventory.json",
+    "fma_inventory_urinary", "M37", check)
 
 print()
 if failures:
