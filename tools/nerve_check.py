@@ -7,9 +7,13 @@ streaming the OBJ files, absence probes are re-run over all six
 tables, and the clinical file is validated for citation completeness,
 flag completeness, tier consistency and geometry-link resolution.
 
-Also reported (not gated): the Milestone 4 finding C3 continuity —
-how many of the muscle module's distinct innervation nerve names now
-resolve to a nervous-system record (clinical or inventory).
+Also gated (Milestone 35): the innervation-link re-pointing — the
+muscle module's innervation.nerve_record_ids links are re-derived
+here from the rules stated in data/innervation-link-pass.json
+(decomposition + exact-correspondence rules R1–R4 against the
+FMA-sourced inventory, the OWL re-parsed from the vendored
+FMA 5.1.0 package), and the shipped links must equal the
+re-derivation exactly.
 
 Exit code 0 only if every hard check passes.
 """
@@ -325,33 +329,297 @@ report("C7 inventory linkage",
        f"inventory records; {len(recs) - len(linked_inv)} inventory "
        f"records are inventory-only in v1")
 
-# -------------------------------------- REPORT: Milestone 4 C3 continuity
+# -------------------------------------- Milestone 35: innervation links
+# Independent re-derivation of the re-pointing. The decomposition
+# and the R1–R4 exact-correspondence rules are re-implemented here
+# from the rule text in data/innervation-link-pass.json; the OWL
+# is re-parsed from the vendored FMA 5.1.0 extraction. No code is
+# shared with tools/innervation_match.py / innervation_decide.py /
+# innervation_pass.py.
+import re as _re
+import zipfile as _zipfile
+
 mus = json.load(open(os.path.join(PROJECT,
                                   "data/muscular/muscles.json")))
 mrecs = mus["records"] if isinstance(mus, dict) else mus
-phrases = sorted({r["innervation"]["nerve"] for r in mrecs
+link_art = json.load(open(os.path.join(
+    PROJECT, "data/innervation-link-pass.json")))
+
+_owl_path = os.path.join(PROJECT, "work/fma/fma.owl")
+if not os.path.exists(_owl_path):
+    os.makedirs(os.path.dirname(_owl_path), exist_ok=True)
+    with _zipfile.ZipFile(os.path.join(
+            PROJECT, "data/sources/fma-5.1.0/fma.zip")) as _zf:
+        _zf.extract("fma.owl", os.path.dirname(_owl_path))
+_owl = {}
+_cur, _buf = None, []
+with open(_owl_path, encoding="utf-8", errors="replace") as _fh:
+    for _line in _fh:
+        _m = _re.search(r'<owl:Class rdf:about='
+                        r'"http://purl\.org/sig/ont/fma/fma(\d+)"',
+                        _line)
+        if _m:
+            _cur, _buf = _m.group(1), [_line]
+            continue
+        if _cur is not None:
+            _buf.append(_line)
+            if "</owl:Class>" in _line:
+                _text = "".join(_buf)
+                _nm = _re.search(r"<fma:preferred_name>([^<]+)"
+                                 r"</fma:preferred_name>", _text) \
+                    or _re.search(r"<rdfs:label[^>]*>([^<]+)"
+                                  r"</rdfs:label>", _text)
+                _owl[_cur] = {
+                    "name": _nm.group(1) if _nm else None,
+                    "synonyms": _re.findall(
+                        r"<fma:synonym>([^<]+)</fma:synonym>",
+                        _text),
+                    "parents": _re.findall(
+                        r'<rdfs:subClassOf rdf:resource='
+                        r'"http://purl\.org/sig/ont/fma/fma(\d+)"/>',
+                        _text)}
+                _cur, _buf = None, []
+
+
+def _c8_norm(s):
+    s = _re.sub(r"\s+", " ", s.lower().strip())
+    s = _re.sub(r"\bthe\b", "", s)
+    return _re.sub(r"\s+", " ", s).strip()
+
+
+def _c8_decompose(phrase):
+    comps = []
+    for seg in phrase.split(";"):
+        seg = seg.strip()
+        m = _re.match(r"^[^:()]{1,40}:\s*(.+)$", seg)
+        if m:
+            seg = m.group(1).strip()
+        m = _re.search(r"\(may also receive a branch from the "
+                       r"(.+?)\)\s*$", seg)
+        if m:
+            comps.append((_c8_norm(m.group(1)), "contributory"))
+            seg = seg[:m.start()].strip()
+        m = _re.search(r",\s*with contributions from the (.+)$",
+                       seg)
+        if m:
+            comps.append((_c8_norm(m.group(1)), "contributory"))
+            seg = seg[:m.start()].strip()
+        core = _re.sub(r"\s*\(.*?\)\s*$", "", seg)
+        m = _re.match(r"^(.+?) component of the (.+)$", core)
+        if m:
+            comps.append((_c8_norm(m.group(2)), "primary"))
+            continue
+        seg = core
+        im = _re.match(r"^(.+?)\s*\((.*?)\)\s+(nerve|nerves|ramus|"
+                       r"rami|plexus|ganglion)$", seg)
+        if im:
+            seg = f"{im.group(1)} {im.group(3)}"
+        m = _re.match(r"^(.+?) and (.+?) (\w+) nerves$", seg)
+        if m:
+            comps.append((_c8_norm(f"{m.group(1)} {m.group(3)} "
+                                    f"nerve"), "primary"))
+            comps.append((_c8_norm(f"{m.group(2)} {m.group(3)} "
+                                    f"nerve"), "primary"))
+            continue
+        comps.append((_c8_norm(seg), "primary"))
+    return comps
+
+
+_fma_recs = [r for r in recs if r.get("source") == "fma-5.1.0"]
+
+
+def _c8_class_fid(r):
+    if r.get("class_concept_id"):
+        return r["class_concept_id"][3:]
+    cid = r["concept_ids"][0][3:]
+    if r.get("side"):
+        want = _re.sub(r"^(Left|Right) ", "", r["name"])
+        for p in _owl.get(cid, {}).get("parents", []):
+            if _owl.get(p, {}).get("name") == want:
+                return p
+    return cid
+
+
+_by_class, _class_name = {}, {}
+for _r in _fma_recs:
+    _cf = _c8_class_fid(_r)
+    _by_class.setdefault(_cf, []).append(_r["record_id"])
+    _class_name[_cf] = _owl.get(_cf, {}).get("name")
+for _v in _by_class.values():
+    _v.sort()
+_by_cname, _by_syn, _by_plural, _children = {}, {}, {}, {}
+for _cf, _nm in _class_name.items():
+    if _nm:
+        _by_cname.setdefault(_c8_norm(_nm), []).append(_cf)
+        for _s in _owl.get(_cf, {}).get("synonyms", []):
+            _by_syn.setdefault(_c8_norm(_s), []).append(_cf)
+for _cid, _info in _owl.items():
+    if _info.get("name"):
+        _pl = " ".join({"nerve": "nerves", "ramus": "rami"}.get(
+            t, t) for t in _info["name"].lower().split(" "))
+        _by_plural.setdefault(_pl, []).append(_cid)
+    for _p in _info.get("parents", []):
+        _children.setdefault(_p, []).append(_cid)
+_unsided = {_c8_norm(r["name"]): r["record_id"]
+            for r in _fma_recs if not r.get("side")}
+_RESTRICT = {"cervical", "thoracic", "lumbar", "sacral", "upper",
+            "lower"}
+
+
+def _c8_resolve(name):
+    """-> (status, record_ids): resolved / restricted / absent."""
+    hits = []
+    if name in _unsided:
+        hits.append([_unsided[name]])
+    for cf in _by_cname.get(name, []):
+        hits.append(_by_class[cf])
+    for cf in _by_syn.get(name, []):
+        hits.append(_by_class[cf])
+    for cid in _by_plural.get(name, []):
+        if _by_class.get(cid):
+            hits.append(_by_class[cid])
+        else:
+            lvl = []
+            for kid in _children.get(cid, []):
+                kn = _owl.get(kid, {}).get("name")
+                if kn and kn.lower().endswith(
+                        _owl[cid]["name"].lower()):
+                    lvl += _by_class.get(kid, [])
+            if lvl:
+                hits.append(sorted(lvl))
+    if hits:
+        assert all(h == hits[0] for h in hits), name
+        return "resolved", hits[0]
+    toks = [t for t in name.split(" ") if t not in _RESTRICT
+            and not _re.fullmatch(r"[a-z]\d+-[a-z]\d+|[a-z]\d+", t)]
+    stripped = " ".join(toks)
+    if stripped != name:
+        st, _ = _c8_resolve(stripped)
+        if st == "resolved":
+            return "restricted", []
+    return "absent", []
+
+
+_c8_phrases = {}
+for _p in sorted({r["innervation"]["nerve"] for r in mrecs
                   if r.get("innervation")
-                  and r["innervation"].get("nerve")})
+                  and r["innervation"].get("nerve")}):
+    _comps = []
+    _union = set()
+    for _nm, _role in _c8_decompose(_p):
+        _st, _ids = _c8_resolve(_nm)
+        _comps.append((_nm, _role, _st, _ids))
+        _union |= set(_ids)
+    _c8_phrases[_p] = (_comps, sorted(_union))
+
+# C8a: shipped links equal the re-derivation, record by record
+_bad_link = []
+for _r in mrecs:
+    _inn = _r.get("innervation") or {}
+    _phrase = _inn.get("nerve")
+    if _phrase:
+        if _inn.get("nerve_record_ids") != _c8_phrases[_phrase][1]:
+            _bad_link.append(_r["record_id"])
+    elif "nerve_record_ids" in _inn:
+        _bad_link.append(_r["record_id"])
+check(not _bad_link,
+      "C8a innervation links: every muscle record's "
+      "nerve_record_ids equals the independent R1–R4 "
+      "re-derivation for its phrase"
+      + (f" — FAILING: {_bad_link}" if _bad_link else ""))
+
+# C8b: the artifact's accounting equals the re-derivation
+_art_phrases = {p["phrase"]: p for p in link_art["phrases"]}
+_c8_counts = {
+    "phrases": len(_c8_phrases),
+    "phrases_fully_resolved": sum(
+        1 for c, _ in _c8_phrases.values()
+        if all(x[2] == "resolved" for x in c)),
+    "phrases_partially_resolved": sum(
+        1 for c, _ in _c8_phrases.values()
+        if any(x[2] == "resolved" for x in c)
+        and not all(x[2] == "resolved" for x in c)),
+    "phrases_unresolved": sum(
+        1 for c, _ in _c8_phrases.values()
+        if not any(x[2] == "resolved" for x in c)),
+    "components": sum(len(c) for c, _ in _c8_phrases.values()),
+    "components_resolved": sum(
+        1 for c, _ in _c8_phrases.values() for x in c
+        if x[2] == "resolved"),
+    "components_restricted": sum(
+        1 for c, _ in _c8_phrases.values() for x in c
+        if x[2] == "restricted"),
+    "components_absent": sum(
+        1 for c, _ in _c8_phrases.values() for x in c
+        if x[2] == "absent"),
+    "distinct_inventory_records_linked": len(
+        {i for _, u in _c8_phrases.values() for i in u}),
+}
+_art_bad = []
+if set(_art_phrases) != set(_c8_phrases):
+    _art_bad.append("phrase sets differ")
+for _p, (_comps, _union) in _c8_phrases.items():
+    _ap = _art_phrases.get(_p)
+    if _ap is None:
+        continue
+    if _ap["record_ids"] != _union:
+        _art_bad.append(f"{_p}: union")
+    _ac = {(c["name"], c["role"]): c for c in _ap["components"]}
+    for _nm, _role, _st, _ids in _comps:
+        _a = _ac.get((_nm, _role))
+        if _a is None or _a["status"] != _st \
+                or _a["record_ids"] != _ids:
+            _art_bad.append(f"{_p}: {_nm}")
+if link_art["after"] != _c8_counts:
+    _art_bad.append("after census")
+check(not _art_bad,
+      "C8b innervation accounting: data/innervation-link-pass.json "
+      "components, statuses and census match the re-derivation"
+      + (f" — FAILING: {_art_bad[:4]}" if _art_bad else ""))
+
+# C8c: every non-resolved component carries its reason
+_reason_bad = [f"{p['phrase']}: {c['name']}"
+               for p in link_art["phrases"]
+               for c in p["components"]
+               if c["status"] != "resolved"
+               and not (c.get("reason") or "").strip()]
+check(not _reason_bad,
+      "C8c every restricted/absent innervation component carries "
+      "a specific reason in the artifact"
+      + (f" — FAILING: {_reason_bad}" if _reason_bad else ""))
+
+# C8d: clinical continuity — the old full-phrase semantics still
+# resolve the same 11 phrases to this module's clinical records
 cli_names = {r["name"].lower() for r in crecs}
 cli_names |= {r["name"].split(" (")[0].lower() for r in crecs}
-inv_names = {r["name"].lower() for r in recs}
-resolved_cli = [p for p in phrases if p.lower() in cli_names]
-resolved_inv = [p for p in phrases if p.lower() in inv_names]
-report("C8 Milestone 4 C3 continuity",
-       f"{len(phrases)} distinct innervation nerve names in the "
-       f"muscle module; {len(resolved_cli)} resolve to a sourced "
-       f"clinical record of this module, {len(resolved_inv)} to an "
-       f"inventory (geometry) record; the rest remain unresolvable "
-       f"against BP3D 4.0 because the release carries no concepts "
-       f"for them")
-print("  resolved to clinical records:", resolved_cli)
-print("  resolved to inventory records:", resolved_inv)
+resolved_cli = sorted(p for p in _c8_phrases
+                      if p.lower() in cli_names)
+check(resolved_cli == link_art["before"]["to_clinical"],
+      "C8d clinical continuity: the phrases resolving to sourced "
+      "clinical records are unchanged (11, as Milestone 33 "
+      "recorded)")
+report("C8 Milestone 35 innervation re-pointing",
+       f"{_c8_counts['phrases']} distinct innervation phrases; "
+       f"{_c8_counts['phrases_fully_resolved']} now fully resolve "
+       f"to FMA inventory records, "
+       f"{_c8_counts['phrases_partially_resolved']} partially, "
+       f"{_c8_counts['phrases_unresolved']} not at all "
+       f"({_c8_counts['components_resolved']} of "
+       f"{_c8_counts['components']} named-nerve components link, "
+       f"{_c8_counts['components_restricted']} restricted to a "
+       f"subset of a generic class, "
+       f"{_c8_counts['components_absent']} with no intaken "
+       f"record); {_c8_counts['distinct_inventory_records_linked']}"
+       f" distinct inventory records linked. Before Milestone 35, "
+       f"2 of the 45 phrases resolved to inventory records under "
+       f"full-phrase equality.")
 
 # ------------------------------------------------- TA2 discipline (M23)
 import os as _os, sys as _sys
 _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import ta2_discipline as _ta2d
 _ta2d.run("nervous", "data/nervous/nervous.json", check)
+_ta2d.run_fma_inventory(check)
 
 print()
 if failures:

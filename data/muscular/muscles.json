@@ -92,6 +92,19 @@
    "ambiguous": 1,
    "not_found": 0,
    "artifact": "data/ta2-name-pass.json"
+  },
+  "innervation_link_pass": {
+   "milestone": "M35",
+   "date": "2026-11-06",
+   "field": "innervation.nerve_record_ids",
+   "method": "tools/innervation_match.py (worksheet) -> tools/innervation_decide.py (decisions) -> tools/innervation_pass.py (this application)",
+   "artifact": "data/innervation-link-pass.json",
+   "records_written": 115,
+   "phrases": 45,
+   "phrases_fully_resolved": 29,
+   "phrases_partially_resolved": 2,
+   "phrases_unresolved": 14,
+   "distinct_inventory_records_linked": 69
   }
  },
  "records": [
@@ -120,7 +133,11 @@
    ],
    "innervation": {
     "nerve": "accessory nerve",
-    "root_values": "C3, C4 (proprioceptor fibres)"
+    "root_values": "C3, C4 (proprioceptor fibres)",
+    "nerve_record_ids": [
+     "nerve.left-spinal-accessory-nerve",
+     "nerve.right-spinal-accessory-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -172,7 +189,8 @@
    ],
    "innervation": {
     "nerve": "dorsal scapular nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -199,7 +217,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "StatPearls' shoulder article gives this muscle the thoracodorsal nerve and latissimus dorsi actions (an apparent copy error in that source); the TeachMeAnatomy values are used.",
@@ -224,7 +242,8 @@
    ],
    "innervation": {
     "nerve": "dorsal scapular nerve",
-    "root_values": "C4, C5"
+    "root_values": "C4, C5",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -276,7 +295,8 @@
    ],
    "innervation": {
     "nerve": "dorsal scapular nerve",
-    "root_values": "C4, C5"
+    "root_values": "C4, C5",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -329,7 +349,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of the upper thoracic spinal nerves",
-    "root_values": "T2-T5"
+    "root_values": "T2-T5",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -381,7 +402,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of the lower thoracic spinal nerves",
-    "root_values": "T9-T12"
+    "root_values": "T9-T12",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -436,7 +458,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": "C3, C4"
+    "root_values": "C3, C4",
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -489,7 +514,8 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the lower cervical spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -516,7 +542,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": null,
@@ -542,7 +568,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -569,7 +598,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -595,7 +624,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -622,7 +654,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -648,7 +680,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -675,7 +710,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -701,7 +736,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -728,7 +766,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -754,7 +792,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -781,7 +822,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -807,7 +848,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -834,7 +878,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -860,7 +904,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -887,7 +934,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the erector spinae column as a whole, not a part-specific statement.",
@@ -912,7 +959,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -939,7 +989,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
@@ -964,7 +1014,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -991,7 +1044,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
@@ -1016,7 +1069,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1043,7 +1099,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Attachments are the consulted source's statement for the semispinalis group as a whole, not a part-specific statement.",
@@ -1070,7 +1126,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1097,7 +1156,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
@@ -1124,7 +1183,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1148,7 +1210,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
@@ -1175,7 +1237,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1202,7 +1267,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Values are the consulted source's statement for the rotatores group as a whole.",
@@ -1253,7 +1318,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
@@ -1301,7 +1366,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
@@ -1349,7 +1414,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the interspinales only; its innervation is not stated there.",
@@ -1397,7 +1462,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
@@ -1445,7 +1510,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
@@ -1493,7 +1558,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
@@ -1539,9 +1604,9 @@
     "actions": "TMA-IB"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources",
-    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 splits the posterior cervical intertransversarii into 2238 (laterales) and 2297 (mediales), with no single term for the posterior set as a whole."
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 splits the posterior cervical intertransversarii into 2238 (laterales) and 2297 (mediales), with no single term for the posterior set as a whole."
    ],
    "note": "The consulted source describes the span and action of the intertransversarii only; its innervation is not stated there.",
    "sourcing_tier": "C"
@@ -1591,7 +1656,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source gives attachments and action for the levatores costarum; its innervation is not stated there.",
@@ -1642,7 +1707,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted source gives attachments and action for the levatores costarum; its innervation is not stated there.",
@@ -1667,7 +1732,8 @@
    ],
    "innervation": {
     "nerve": "suboccipital nerve (posterior ramus of C1)",
-    "root_values": "C1"
+    "root_values": "C1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "vertebral artery",
@@ -1721,7 +1787,8 @@
    ],
    "innervation": {
     "nerve": "suboccipital nerve (posterior ramus of C1)",
-    "root_values": "C1"
+    "root_values": "C1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "vertebral artery",
@@ -1775,7 +1842,8 @@
    ],
    "innervation": {
     "nerve": "suboccipital nerve (posterior ramus of C1)",
-    "root_values": "C1"
+    "root_values": "C1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "vertebral artery",
@@ -1829,7 +1897,8 @@
    ],
    "innervation": {
     "nerve": "suboccipital nerve (posterior ramus of C1)",
-    "root_values": "C1"
+    "root_values": "C1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "vertebral artery",
@@ -1886,7 +1955,13 @@
    ],
    "innervation": {
     "nerve": "lateral and medial pectoral nerves",
-    "root_values": "lateral pectoral nerve C5, C6, C7; medial pectoral nerve C8, T1"
+    "root_values": "lateral pectoral nerve C5, C6, C7; medial pectoral nerve C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-lateral-pectoral-nerve",
+     "nerve.left-medial-pectoral-nerve",
+     "nerve.right-lateral-pectoral-nerve",
+     "nerve.right-medial-pectoral-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1939,7 +2014,11 @@
    ],
    "innervation": {
     "nerve": "medial pectoral nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-medial-pectoral-nerve",
+     "nerve.right-medial-pectoral-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -1991,7 +2070,8 @@
    ],
    "innervation": {
     "nerve": "nerve to subclavius",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -2044,7 +2124,11 @@
    ],
    "innervation": {
     "nerve": "long thoracic nerve",
-    "root_values": "C5, C6, C7"
+    "root_values": "C5, C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-long-thoracic-nerve",
+     "nerve.right-long-thoracic-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2100,7 +2184,11 @@
    ],
    "innervation": {
     "nerve": "axillary nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-axillary-nerve",
+     "nerve.right-axillary-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2153,7 +2241,11 @@
    ],
    "innervation": {
     "nerve": "lower subscapular nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-inferior-subscapular-nerve",
+     "nerve.right-inferior-subscapular-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2205,7 +2297,11 @@
    ],
    "innervation": {
     "nerve": "suprascapular nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-suprascapular-nerve",
+     "nerve.right-suprascapular-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2257,7 +2353,11 @@
    ],
    "innervation": {
     "nerve": "suprascapular nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-suprascapular-nerve",
+     "nerve.right-suprascapular-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2309,7 +2409,13 @@
    ],
    "innervation": {
     "nerve": "upper and lower subscapular nerves",
-    "root_values": "C5, C6, C7"
+    "root_values": "C5, C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-inferior-subscapular-nerve",
+     "nerve.left-superior-subscapular-nerve",
+     "nerve.right-inferior-subscapular-nerve",
+     "nerve.right-superior-subscapular-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2361,7 +2467,11 @@
    ],
    "innervation": {
     "nerve": "axillary nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-axillary-nerve",
+     "nerve.right-axillary-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2414,7 +2524,11 @@
    ],
    "innervation": {
     "nerve": "musculocutaneous nerve",
-    "root_values": "C5, C6, C7"
+    "root_values": "C5, C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-musculocutaneous-nerve",
+     "nerve.right-musculocutaneous-nerve"
+    ]
    },
    "arterial_supply": [
     "muscular branches of the brachial artery"
@@ -2470,7 +2584,11 @@
    ],
    "innervation": {
     "nerve": "musculocutaneous nerve",
-    "root_values": "C5, C6"
+    "root_values": "C5, C6",
+    "nerve_record_ids": [
+     "nerve.left-musculocutaneous-nerve",
+     "nerve.right-musculocutaneous-nerve"
+    ]
    },
    "arterial_supply": [
     "muscular branches of the brachial artery"
@@ -2523,7 +2641,13 @@
    ],
    "innervation": {
     "nerve": "musculocutaneous nerve, with contributions from the radial nerve",
-    "root_values": "C5, C6 (C7 small contribution)"
+    "root_values": "C5, C6 (C7 small contribution)",
+    "nerve_record_ids": [
+     "nerve.left-musculocutaneous-nerve",
+     "nerve.left-radial-nerve",
+     "nerve.right-musculocutaneous-nerve",
+     "nerve.right-radial-nerve"
+    ]
    },
    "arterial_supply": [
     "muscular branches of the brachial artery"
@@ -2578,7 +2702,11 @@
    ],
    "innervation": {
     "nerve": "radial nerve",
-    "root_values": "C6, C7, C8"
+    "root_values": "C6, C7, C8",
+    "nerve_record_ids": [
+     "nerve.left-radial-nerve",
+     "nerve.right-radial-nerve"
+    ]
    },
    "arterial_supply": [
     "profunda brachii artery"
@@ -2632,7 +2760,11 @@
    ],
    "innervation": {
     "nerve": "radial nerve",
-    "root_values": "C7, C8, T1"
+    "root_values": "C7, C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-radial-nerve",
+     "nerve.right-radial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -2685,7 +2817,11 @@
    ],
    "innervation": {
     "nerve": "median nerve",
-    "root_values": "C6, C7"
+    "root_values": "C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-median-nerve",
+     "nerve.right-median-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -2738,7 +2874,11 @@
    ],
    "innervation": {
     "nerve": "median nerve",
-    "root_values": "C6, C7"
+    "root_values": "C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-median-nerve",
+     "nerve.right-median-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -2792,7 +2932,11 @@
    ],
    "innervation": {
     "nerve": "median nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": [
+     "nerve.left-median-nerve",
+     "nerve.right-median-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -2848,7 +2992,11 @@
    ],
    "innervation": {
     "nerve": "ulnar nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-ulnar-nerve",
+     "nerve.right-ulnar-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -2878,7 +3026,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)"
    ],
    "note": "StatPearls gives this muscle a median-nerve supply, which conflicts with TeachMeAnatomy (ulnar nerve) and standard teaching; the TeachMeAnatomy value is used and the root values are left flagged rather than taken from the conflicting entry. Arterial supply is the consulted source's statement for the anterior compartment of the forearm as a whole.",
    "sourcing_tier": "B"
@@ -2905,7 +3053,11 @@
    ],
    "innervation": {
     "nerve": "median nerve",
-    "root_values": "C7, C8, T1"
+    "root_values": "C7, C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-median-nerve",
+     "nerve.right-median-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -2959,7 +3111,11 @@
    ],
    "innervation": {
     "nerve": "medial half: ulnar nerve; lateral half: anterior interosseous branch of the median nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-ulnar-nerve",
+     "nerve.right-ulnar-nerve"
+    ]
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -3012,7 +3168,8 @@
    ],
    "innervation": {
     "nerve": "anterior interosseous branch of the median nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -3065,7 +3222,8 @@
    ],
    "innervation": {
     "nerve": "anterior interosseous branch of the median nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "ulnar artery and radial artery"
@@ -3118,7 +3276,11 @@
    ],
    "innervation": {
     "nerve": "radial nerve",
-    "root_values": "C5, C6, C7"
+    "root_values": "C5, C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-radial-nerve",
+     "nerve.right-radial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -3170,7 +3332,11 @@
    ],
    "innervation": {
     "nerve": "radial nerve",
-    "root_values": "C6, C7"
+    "root_values": "C6, C7",
+    "nerve_record_ids": [
+     "nerve.left-radial-nerve",
+     "nerve.right-radial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -3222,7 +3388,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the radial nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3274,7 +3441,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3326,7 +3494,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3379,7 +3548,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3431,7 +3601,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3484,7 +3655,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the radial nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3536,7 +3708,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3588,7 +3761,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3638,7 +3812,8 @@
    ],
    "innervation": {
     "nerve": "posterior interosseous nerve",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -3665,7 +3840,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "insertion: flagged for verification — not stated in the consulted sources (see note)",
+    "insertion: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "The consulted StatPearls text gives the insertion as the distal phalanx of the thumb, which conflicts with the standard proximal-phalanx attachment; the field is flagged for verification rather than entered from a conflicting source.",
@@ -3690,7 +3865,8 @@
    ],
    "innervation": {
     "nerve": "recurrent branch of the median nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -3743,7 +3919,8 @@
    ],
    "innervation": {
     "nerve": "recurrent branch of the median nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -3796,7 +3973,8 @@
    ],
    "innervation": {
     "nerve": "recurrent branch of the median nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -3849,7 +4027,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -3902,7 +4081,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -3955,7 +4135,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -4008,7 +4189,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -4061,7 +4243,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -4114,7 +4297,8 @@
    ],
    "innervation": {
     "nerve": "deep branch of the ulnar nerve",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -4167,7 +4351,11 @@
    ],
    "innervation": {
     "nerve": "median nerve (lateral two lumbricals); deep branch of the ulnar nerve (medial two lumbricals)",
-    "root_values": "C8, T1"
+    "root_values": "C8, T1",
+    "nerve_record_ids": [
+     "nerve.left-median-nerve",
+     "nerve.right-median-nerve"
+    ]
    },
    "arterial_supply": [
     "superficial and deep palmar arterial arches (formed by the radial and ulnar arteries)"
@@ -4225,7 +4413,10 @@
    ],
    "innervation": {
     "nerve": "posterior rami of the spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.posterior-ramus-of-spinal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": null,
@@ -4237,11 +4428,11 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources",
-    "geometry: no inventory record resolved for this concept (flagged gap — see MILESTONE-4.md)"
+    "geometry: no inventory record resolved for this concept (flagged gap \u2014 see MILESTONE-4.md)"
    ],
-   "note": "NO GEOMETRY: multifidus has no concept in the BodyParts3D/FMA tables (absence probe: 0 hits in all six tables) — a flagged data gap, recorded in MILESTONE-4.md. The clinical values are from the consulted TeachMeAnatomy intrinsic-back article.",
+   "note": "NO GEOMETRY: multifidus has no concept in the BodyParts3D/FMA tables (absence probe: 0 hits in all six tables) \u2014 a flagged data gap, recorded in MILESTONE-4.md. The clinical values are from the consulted TeachMeAnatomy intrinsic-back article.",
    "sourcing_tier": "B"
   },
   {
@@ -4266,7 +4457,11 @@
    ],
    "innervation": {
     "nerve": "inferior gluteal nerve",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-inferior-gluteal-nerve",
+     "nerve.right-inferior-gluteal-nerve"
+    ]
    },
    "arterial_supply": [
     "inferior gluteal artery"
@@ -4321,7 +4516,11 @@
    ],
    "innervation": {
     "nerve": "superior gluteal nerve",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.left-superior-gluteal-nerve",
+     "nerve.right-superior-gluteal-nerve"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery"
@@ -4375,7 +4574,11 @@
    ],
    "innervation": {
     "nerve": "superior gluteal nerve",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.left-superior-gluteal-nerve",
+     "nerve.right-superior-gluteal-nerve"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery"
@@ -4431,7 +4634,11 @@
    ],
    "innervation": {
     "nerve": "superior gluteal nerve",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.left-superior-gluteal-nerve",
+     "nerve.right-superior-gluteal-nerve"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery"
@@ -4485,7 +4692,10 @@
    ],
    "innervation": {
     "nerve": "nerve to piriformis",
-    "root_values": "S1, S2"
+    "root_values": "S1, S2",
+    "nerve_record_ids": [
+     "nerve.nerve-to-piriformis"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery",
@@ -4541,7 +4751,8 @@
    ],
    "innervation": {
     "nerve": "nerve to obturator internus",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superior gluteal artery",
@@ -4595,7 +4806,8 @@
    ],
    "innervation": {
     "nerve": "nerve to obturator internus",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": []
    },
    "arterial_supply": [
     "superior gluteal artery",
@@ -4649,7 +4861,10 @@
    ],
    "innervation": {
     "nerve": "nerve to quadratus femoris",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.nerve-to-quadratus-femoris"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery",
@@ -4703,7 +4918,10 @@
    ],
    "innervation": {
     "nerve": "nerve to quadratus femoris",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.nerve-to-quadratus-femoris"
+    ]
    },
    "arterial_supply": [
     "superior gluteal artery",
@@ -4758,7 +4976,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of spinal nerves L1-L3",
-    "root_values": "L1, L2, L3"
+    "root_values": "L1, L2, L3",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -4810,7 +5029,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3"
+    "root_values": "L2, L3",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -4863,7 +5086,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3"
+    "root_values": "L2, L3",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -4917,7 +5144,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": [
     "lateral femoral circumflex artery"
@@ -4972,7 +5203,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": [
     "lateral femoral circumflex artery"
@@ -5027,7 +5262,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": [
     "femoral artery",
@@ -5082,7 +5321,11 @@
    ],
    "innervation": {
     "nerve": "femoral nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.right-femoral-nerve"
+    ]
    },
    "arterial_supply": [
     "lateral femoral circumflex artery"
@@ -5136,7 +5379,13 @@
    ],
    "innervation": {
     "nerve": "femoral nerve (may also receive a branch from the obturator nerve)",
-    "root_values": "L2, L3"
+    "root_values": "L2, L3",
+    "nerve_record_ids": [
+     "nerve.left-femoral-nerve",
+     "nerve.left-obturator-nerve",
+     "nerve.right-femoral-nerve",
+     "nerve.right-obturator-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -5190,7 +5439,11 @@
    ],
    "innervation": {
     "nerve": "obturator nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-obturator-nerve",
+     "nerve.right-obturator-nerve"
+    ]
    },
    "arterial_supply": [
     "obturator artery"
@@ -5244,7 +5497,11 @@
    ],
    "innervation": {
     "nerve": "obturator nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-obturator-nerve",
+     "nerve.right-obturator-nerve"
+    ]
    },
    "arterial_supply": [
     "obturator artery"
@@ -5298,7 +5555,11 @@
    ],
    "innervation": {
     "nerve": "obturator nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-obturator-nerve",
+     "nerve.right-obturator-nerve"
+    ]
    },
    "arterial_supply": [
     "obturator artery"
@@ -5355,7 +5616,13 @@
    ],
    "innervation": {
     "nerve": "obturator nerve (adductor part); tibial component of the sciatic nerve (hamstring part)",
-    "root_values": "L2, L3, L4 (obturator part); L4-S3 (tibial component, as stated by the source)"
+    "root_values": "L2, L3, L4 (obturator part); L4-S3 (tibial component, as stated by the source)",
+    "nerve_record_ids": [
+     "nerve.left-obturator-nerve",
+     "nerve.left-sciatic-nerve",
+     "nerve.right-obturator-nerve",
+     "nerve.right-sciatic-nerve"
+    ]
    },
    "arterial_supply": [
     "obturator artery"
@@ -5408,7 +5675,11 @@
    ],
    "innervation": {
     "nerve": "obturator nerve",
-    "root_values": "L2, L3, L4"
+    "root_values": "L2, L3, L4",
+    "nerve_record_ids": [
+     "nerve.left-obturator-nerve",
+     "nerve.right-obturator-nerve"
+    ]
    },
    "arterial_supply": [
     "obturator artery"
@@ -5464,7 +5735,13 @@
    ],
    "innervation": {
     "nerve": "tibial nerve (long head); common fibular nerve (short head)",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-common-fibular-nerve",
+     "nerve.left-tibial-nerve",
+     "nerve.right-common-fibular-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": [
     "perforating branches of the profunda femoris artery",
@@ -5521,7 +5798,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": [
     "perforating branches of the profunda femoris (deep femoral) artery"
@@ -5576,7 +5857,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "L5, S1, S2"
+    "root_values": "L5, S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -5631,7 +5916,11 @@
    ],
    "innervation": {
     "nerve": "deep fibular (peroneal) nerve",
-    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)"
+    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)",
+    "nerve_record_ids": [
+     "nerve.left-deep-fibular-nerve",
+     "nerve.right-deep-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "anterior tibial artery"
@@ -5686,7 +5975,11 @@
    ],
    "innervation": {
     "nerve": "deep fibular (peroneal) nerve",
-    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)"
+    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)",
+    "nerve_record_ids": [
+     "nerve.left-deep-fibular-nerve",
+     "nerve.right-deep-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "anterior tibial artery"
@@ -5741,7 +6034,11 @@
    ],
    "innervation": {
     "nerve": "deep fibular (peroneal) nerve",
-    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)"
+    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)",
+    "nerve_record_ids": [
+     "nerve.left-deep-fibular-nerve",
+     "nerve.right-deep-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "anterior tibial artery"
@@ -5795,7 +6092,11 @@
    ],
    "innervation": {
     "nerve": "deep fibular (peroneal) nerve",
-    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)"
+    "root_values": "L4-S2 (nerve-level span stated by the source for the anterior compartment)",
+    "nerve_record_ids": [
+     "nerve.left-deep-fibular-nerve",
+     "nerve.right-deep-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "anterior tibial artery"
@@ -5852,7 +6153,11 @@
    ],
    "innervation": {
     "nerve": "superficial fibular (peroneal) nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-superficial-fibular-nerve",
+     "nerve.right-superficial-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "fibular (peroneal) artery"
@@ -5882,7 +6187,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)"
    ],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (lateral compartment: fibular/peroneal artery). Root values for the superficial fibular nerve differ between consulted flashcard sources and are verify-flagged rather than entered.",
    "sourcing_tier": "B"
@@ -5907,7 +6212,11 @@
    ],
    "innervation": {
     "nerve": "superficial fibular (peroneal) nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-superficial-fibular-nerve",
+     "nerve.right-superficial-fibular-nerve"
+    ]
    },
    "arterial_supply": [
     "fibular (peroneal) artery"
@@ -5937,7 +6246,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)"
    ],
    "note": "Arterial supply is the compartment statement of the consulted leg-lecture tables (lateral compartment: fibular/peroneal artery). Root values for the superficial fibular nerve differ between consulted flashcard sources and are verify-flagged rather than entered.",
    "sourcing_tier": "B"
@@ -5963,7 +6272,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "S1, S2"
+    "root_values": "S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6016,7 +6329,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "S1, S2"
+    "root_values": "S1, S2",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6069,7 +6386,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6123,7 +6444,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "L4, L5, S1"
+    "root_values": "L4, L5, S1",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6181,7 +6506,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": "L4, L5"
+    "root_values": "L4, L5",
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": [
     "posterior tibial artery"
@@ -6235,7 +6564,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": [
     "posterior tibial artery"
@@ -6265,7 +6598,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)"
    ],
    "note": "Root values conflict between consulted sources (S1, S2 in the Wikipedia table vs S2, S3 in a Gray's Atlas flashcard table) and are verify-flagged. Arterial supply is the compartment statement of the consulted leg-lecture tables (deep posterior compartment: posterior tibial artery).",
    "sourcing_tier": "B"
@@ -6292,7 +6625,11 @@
    ],
    "innervation": {
     "nerve": "tibial nerve",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-tibial-nerve",
+     "nerve.right-tibial-nerve"
+    ]
    },
    "arterial_supply": [
     "posterior tibial artery"
@@ -6322,7 +6659,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)"
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)"
    ],
    "note": "Root values conflict between consulted sources (S1, S2 in the Wikipedia table vs S2, S3 in a Gray's Atlas flashcard table) and are verify-flagged. Arterial supply is the compartment statement of the consulted leg-lecture tables (deep posterior compartment: posterior tibial artery).",
    "sourcing_tier": "B"
@@ -6348,7 +6685,11 @@
    ],
    "innervation": {
     "nerve": "phrenic nerve",
-    "root_values": "C3, C4, C5"
+    "root_values": "C3, C4, C5",
+    "nerve_record_ids": [
+     "nerve.left-phrenic-nerve",
+     "nerve.right-phrenic-nerve"
+    ]
    },
    "arterial_supply": [
     "pericardiacophrenic artery",
@@ -6400,7 +6741,31 @@
    ],
    "innervation": {
     "nerve": "intercostal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-eighth-intercostal-nerve",
+     "nerve.left-eleventh-intercostal-nerve",
+     "nerve.left-fifth-intercostal-nerve",
+     "nerve.left-first-intercostal-nerve",
+     "nerve.left-fourth-intercostal-nerve",
+     "nerve.left-ninth-intercostal-nerve",
+     "nerve.left-second-intercostal-nerve",
+     "nerve.left-seventh-intercostal-nerve",
+     "nerve.left-sixth-intercostal-nerve",
+     "nerve.left-tenth-intercostal-nerve",
+     "nerve.left-third-intercostal-nerve",
+     "nerve.right-eighth-intercostal-nerve",
+     "nerve.right-eleventh-intercostal-nerve",
+     "nerve.right-fifth-intercostal-nerve",
+     "nerve.right-first-intercostal-nerve",
+     "nerve.right-fourth-intercostal-nerve",
+     "nerve.right-ninth-intercostal-nerve",
+     "nerve.right-second-intercostal-nerve",
+     "nerve.right-seventh-intercostal-nerve",
+     "nerve.right-sixth-intercostal-nerve",
+     "nerve.right-tenth-intercostal-nerve",
+     "nerve.right-third-intercostal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6424,7 +6789,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "FMA/BP3D models the intercostals as single classes spanning all intercostal spaces; each space is supplied by its own intercostal nerve (T1-T11), so no single root value applies to the class record.",
@@ -6449,7 +6814,31 @@
    ],
    "innervation": {
     "nerve": "intercostal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": [
+     "nerve.left-eighth-intercostal-nerve",
+     "nerve.left-eleventh-intercostal-nerve",
+     "nerve.left-fifth-intercostal-nerve",
+     "nerve.left-first-intercostal-nerve",
+     "nerve.left-fourth-intercostal-nerve",
+     "nerve.left-ninth-intercostal-nerve",
+     "nerve.left-second-intercostal-nerve",
+     "nerve.left-seventh-intercostal-nerve",
+     "nerve.left-sixth-intercostal-nerve",
+     "nerve.left-tenth-intercostal-nerve",
+     "nerve.left-third-intercostal-nerve",
+     "nerve.right-eighth-intercostal-nerve",
+     "nerve.right-eleventh-intercostal-nerve",
+     "nerve.right-fifth-intercostal-nerve",
+     "nerve.right-first-intercostal-nerve",
+     "nerve.right-fourth-intercostal-nerve",
+     "nerve.right-ninth-intercostal-nerve",
+     "nerve.right-second-intercostal-nerve",
+     "nerve.right-seventh-intercostal-nerve",
+     "nerve.right-sixth-intercostal-nerve",
+     "nerve.right-tenth-intercostal-nerve",
+     "nerve.right-third-intercostal-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6473,7 +6862,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "FMA/BP3D models the intercostals as single classes spanning all intercostal spaces; each space is supplied by its own intercostal nerve (T1-T11), so no single root value applies to the class record.",
@@ -6515,7 +6904,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "origin: not stated in the consulted sources",
     "insertion: not stated in the consulted sources",
     "arterial_supply: not stated in the consulted sources"
@@ -6616,7 +7005,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "actions: not stated in the consulted sources",
     "arterial_supply: not stated in the consulted sources"
    ],
@@ -6645,7 +7034,11 @@
    ],
    "innervation": {
     "nerve": "spinal accessory nerve (CN XI)",
-    "root_values": "C2, C3 (proprioceptive)"
+    "root_values": "C2, C3 (proprioceptive)",
+    "nerve_record_ids": [
+     "nerve.left-spinal-accessory-nerve",
+     "nerve.right-spinal-accessory-nerve"
+    ]
    },
    "arterial_supply": null,
    "geometry": {
@@ -6698,7 +7091,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of cervical spinal nerves",
-    "root_values": "C4, C5, C6"
+    "root_values": "C4, C5, C6",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -6751,7 +7145,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of cervical spinal nerves",
-    "root_values": null
+    "root_values": null,
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {
@@ -6778,7 +7173,7 @@
     "ta_name": "TA2"
    },
    "verify": [
-    "innervation.root_values: flagged for verification — not stated in the consulted sources (see note)",
+    "innervation.root_values: flagged for verification \u2014 not stated in the consulted sources (see note)",
     "arterial_supply: not stated in the consulted sources"
    ],
    "note": "Root values are not stated consistently across the consulted sources and are verify-flagged.",
@@ -6804,7 +7199,8 @@
    ],
    "innervation": {
     "nerve": "anterior rami of cervical spinal nerves",
-    "root_values": "C7, C8"
+    "root_values": "C7, C8",
+    "nerve_record_ids": []
    },
    "arterial_supply": null,
    "geometry": {

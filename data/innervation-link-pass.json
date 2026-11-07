@@ -1,0 +1,1244 @@
+{
+ "meta": {
+  "milestone": "M35",
+  "date": "2026-11-06",
+  "scope": "the muscle module's 45 distinct innervation nerve phrases (115 records) re-pointed against the FMA-sourced nervous inventory records of Milestone 33",
+  "method": "tools/innervation_match.py -> tools/innervation_decide.py -> tools/innervation_pass.py",
+  "rule": "A phrase decomposes into named-nerve components by stated mechanical rules (';' separates; 'territory:' prefixes, parentheticals other than the two contributory patterns, and 'A component of the B' are qualifiers on B; 'may also receive a branch from the X' and 'with contributions from the X' are contributory components; 'A and B <stem> nerves' expands to the two named nerves). A component links to FMA-sourced inventory records only on exact correspondence: R1 the name equals an un-sided record's name; R2 it equals the preferred name of an FMA class with records (all the class's records); R3 it equals an FMA-listed synonym of such a class; R4 it is the class name pluralised under {nerve->nerves, ramus->rami} (the class's records, or its level-specialisation child classes' records). A name that restricts a generic class to a region/level subset does not link to the generic record. No fuzzy matching.",
+  "before_note": "Milestone 9/33 semantics (old nerve_check C8): a phrase resolved only when the full phrase string equalled a record name."
+ },
+ "before": {
+  "phrases": 45,
+  "to_clinical": [
+   "accessory nerve",
+   "axillary nerve",
+   "femoral nerve",
+   "inferior gluteal nerve",
+   "median nerve",
+   "musculocutaneous nerve",
+   "obturator nerve",
+   "radial nerve",
+   "superior gluteal nerve",
+   "tibial nerve",
+   "ulnar nerve"
+  ],
+  "to_inventory": [
+   "nerve to piriformis",
+   "nerve to quadratus femoris"
+  ]
+ },
+ "after": {
+  "phrases": 45,
+  "phrases_fully_resolved": 29,
+  "phrases_partially_resolved": 2,
+  "phrases_unresolved": 14,
+  "components": 53,
+  "components_resolved": 37,
+  "components_restricted": 5,
+  "components_absent": 11,
+  "distinct_inventory_records_linked": 69
+ },
+ "phrases": [
+  {
+   "phrase": "accessory nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "accessory nerve",
+     "name": "accessory nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R3",
+     "class_fmaid": "FMA6720",
+     "class_name": "Spinal accessory nerve",
+     "record_ids": [
+      "nerve.left-spinal-accessory-nerve",
+      "nerve.right-spinal-accessory-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-spinal-accessory-nerve",
+    "nerve.right-spinal-accessory-nerve"
+   ]
+  },
+  {
+   "phrase": "anterior interosseous branch of the median nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "anterior interosseous branch of the median nerve",
+     "name": "anterior interosseous branch of median nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the phrase's name matches neither the preferred name nor any listed synonym of the evidently intended class FMA44822 'Anterior interosseous nerve' (the median nerve's anterior interosseous branch under its shorter FMA name), and that class was not intaken at Milestone 33 in any case; no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "anterior rami of cervical spinal nerves",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "anterior rami of cervical spinal nerves",
+     "name": "anterior rami of cervical spinal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "restricted",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name restricts the generic class FMA5982 'Anterior ramus of spinal nerve' to a region/level subset; the generic class's record nerve.anterior-ramus-of-spinal-nerve denotes the unrestricted class, so no link is made, and the named subset has no inventory record."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "anterior rami of spinal nerves L1-L3",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "anterior rami of spinal nerves L1-L3",
+     "name": "anterior rami of spinal nerves l1-l3",
+     "role": "primary",
+     "qualifier": null,
+     "status": "restricted",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name restricts the generic class FMA5982 'Anterior ramus of spinal nerve' to a region/level subset; the generic class's record nerve.anterior-ramus-of-spinal-nerve denotes the unrestricted class, so no link is made, and the named subset has no inventory record."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "anterior rami of the lower thoracic spinal nerves",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "anterior rami of the lower thoracic spinal nerves",
+     "name": "anterior rami of lower thoracic spinal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "restricted",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name restricts the generic class FMA5982 'Anterior ramus of spinal nerve' to a region/level subset; the generic class's record nerve.anterior-ramus-of-spinal-nerve denotes the unrestricted class, so no link is made, and the named subset has no inventory record."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "anterior rami of the upper thoracic spinal nerves",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "anterior rami of the upper thoracic spinal nerves",
+     "name": "anterior rami of upper thoracic spinal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "restricted",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name restricts the generic class FMA5982 'Anterior ramus of spinal nerve' to a region/level subset; the generic class's record nerve.anterior-ramus-of-spinal-nerve denotes the unrestricted class, so no link is made, and the named subset has no inventory record."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "axillary nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "axillary nerve",
+     "name": "axillary nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37072",
+     "class_name": "Axillary nerve",
+     "record_ids": [
+      "nerve.left-axillary-nerve",
+      "nerve.right-axillary-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-axillary-nerve",
+    "nerve.right-axillary-nerve"
+   ]
+  },
+  {
+   "phrase": "deep branch of the radial nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "deep branch of the radial nerve",
+     "name": "deep branch of radial nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name is an FMA-listed synonym of FMA77559 'Posterior interosseous nerve', which was not intaken at Milestone 33; no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "deep branch of the ulnar nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "deep branch of the ulnar nerve",
+     "name": "deep branch of ulnar nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA44877 'Deep branch of ulnar nerve' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "deep fibular (peroneal) nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "deep fibular (peroneal) nerve",
+     "name": "deep fibular nerve",
+     "role": "primary",
+     "qualifier": "peroneal",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA44771",
+     "class_name": "Deep fibular nerve",
+     "record_ids": [
+      "nerve.left-deep-fibular-nerve",
+      "nerve.right-deep-fibular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-deep-fibular-nerve",
+    "nerve.right-deep-fibular-nerve"
+   ]
+  },
+  {
+   "phrase": "dorsal scapular nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "dorsal scapular nerve",
+     "name": "dorsal scapular nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA65279 'Dorsal scapular nerve' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "femoral nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "femoral nerve",
+     "name": "femoral nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16486",
+     "class_name": "Femoral nerve",
+     "record_ids": [
+      "nerve.left-femoral-nerve",
+      "nerve.right-femoral-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-femoral-nerve",
+    "nerve.right-femoral-nerve"
+   ]
+  },
+  {
+   "phrase": "femoral nerve (may also receive a branch from the obturator nerve)",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "femoral nerve (may also receive a branch from the obturator nerve)",
+     "name": "obturator nerve",
+     "role": "contributory",
+     "qualifier": "branch (phrase: may also receive)",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16487",
+     "class_name": "Obturator nerve",
+     "record_ids": [
+      "nerve.left-obturator-nerve",
+      "nerve.right-obturator-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "femoral nerve (may also receive a branch from the obturator nerve)",
+     "name": "femoral nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16486",
+     "class_name": "Femoral nerve",
+     "record_ids": [
+      "nerve.left-femoral-nerve",
+      "nerve.right-femoral-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-femoral-nerve",
+    "nerve.left-obturator-nerve",
+    "nerve.right-femoral-nerve",
+    "nerve.right-obturator-nerve"
+   ]
+  },
+  {
+   "phrase": "inferior gluteal nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "inferior gluteal nerve",
+     "name": "inferior gluteal nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16511",
+     "class_name": "Inferior gluteal nerve",
+     "record_ids": [
+      "nerve.left-inferior-gluteal-nerve",
+      "nerve.right-inferior-gluteal-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-inferior-gluteal-nerve",
+    "nerve.right-inferior-gluteal-nerve"
+   ]
+  },
+  {
+   "phrase": "intercostal nerves",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "intercostal nerves",
+     "name": "intercostal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R4",
+     "class_fmaid": "FMA6028",
+     "class_name": "Intercostal nerve",
+     "record_ids": [
+      "nerve.left-eighth-intercostal-nerve",
+      "nerve.left-eleventh-intercostal-nerve",
+      "nerve.left-fifth-intercostal-nerve",
+      "nerve.left-first-intercostal-nerve",
+      "nerve.left-fourth-intercostal-nerve",
+      "nerve.left-ninth-intercostal-nerve",
+      "nerve.left-second-intercostal-nerve",
+      "nerve.left-seventh-intercostal-nerve",
+      "nerve.left-sixth-intercostal-nerve",
+      "nerve.left-tenth-intercostal-nerve",
+      "nerve.left-third-intercostal-nerve",
+      "nerve.right-eighth-intercostal-nerve",
+      "nerve.right-eleventh-intercostal-nerve",
+      "nerve.right-fifth-intercostal-nerve",
+      "nerve.right-first-intercostal-nerve",
+      "nerve.right-fourth-intercostal-nerve",
+      "nerve.right-ninth-intercostal-nerve",
+      "nerve.right-second-intercostal-nerve",
+      "nerve.right-seventh-intercostal-nerve",
+      "nerve.right-sixth-intercostal-nerve",
+      "nerve.right-tenth-intercostal-nerve",
+      "nerve.right-third-intercostal-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-eighth-intercostal-nerve",
+    "nerve.left-eleventh-intercostal-nerve",
+    "nerve.left-fifth-intercostal-nerve",
+    "nerve.left-first-intercostal-nerve",
+    "nerve.left-fourth-intercostal-nerve",
+    "nerve.left-ninth-intercostal-nerve",
+    "nerve.left-second-intercostal-nerve",
+    "nerve.left-seventh-intercostal-nerve",
+    "nerve.left-sixth-intercostal-nerve",
+    "nerve.left-tenth-intercostal-nerve",
+    "nerve.left-third-intercostal-nerve",
+    "nerve.right-eighth-intercostal-nerve",
+    "nerve.right-eleventh-intercostal-nerve",
+    "nerve.right-fifth-intercostal-nerve",
+    "nerve.right-first-intercostal-nerve",
+    "nerve.right-fourth-intercostal-nerve",
+    "nerve.right-ninth-intercostal-nerve",
+    "nerve.right-second-intercostal-nerve",
+    "nerve.right-seventh-intercostal-nerve",
+    "nerve.right-sixth-intercostal-nerve",
+    "nerve.right-tenth-intercostal-nerve",
+    "nerve.right-third-intercostal-nerve"
+   ]
+  },
+  {
+   "phrase": "lateral and medial pectoral nerves",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "lateral and medial pectoral nerves",
+     "name": "lateral pectoral nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA65296",
+     "class_name": "Lateral pectoral nerve",
+     "record_ids": [
+      "nerve.left-lateral-pectoral-nerve",
+      "nerve.right-lateral-pectoral-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "lateral and medial pectoral nerves",
+     "name": "medial pectoral nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA65293",
+     "class_name": "Medial pectoral nerve",
+     "record_ids": [
+      "nerve.left-medial-pectoral-nerve",
+      "nerve.right-medial-pectoral-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-lateral-pectoral-nerve",
+    "nerve.left-medial-pectoral-nerve",
+    "nerve.right-lateral-pectoral-nerve",
+    "nerve.right-medial-pectoral-nerve"
+   ]
+  },
+  {
+   "phrase": "long thoracic nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "long thoracic nerve",
+     "name": "long thoracic nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA65275",
+     "class_name": "Long thoracic nerve",
+     "record_ids": [
+      "nerve.left-long-thoracic-nerve",
+      "nerve.right-long-thoracic-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-long-thoracic-nerve",
+    "nerve.right-long-thoracic-nerve"
+   ]
+  },
+  {
+   "phrase": "lower subscapular nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "lower subscapular nerve",
+     "name": "lower subscapular nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R3",
+     "class_fmaid": "FMA65307",
+     "class_name": "Inferior subscapular nerve",
+     "record_ids": [
+      "nerve.left-inferior-subscapular-nerve",
+      "nerve.right-inferior-subscapular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-inferior-subscapular-nerve",
+    "nerve.right-inferior-subscapular-nerve"
+   ]
+  },
+  {
+   "phrase": "medial half: ulnar nerve; lateral half: anterior interosseous branch of the median nerve",
+   "status": "partial",
+   "components": [
+    {
+     "segment": "medial half: ulnar nerve",
+     "name": "ulnar nerve",
+     "role": "primary",
+     "qualifier": "medial half",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37319",
+     "class_name": "Ulnar nerve",
+     "record_ids": [
+      "nerve.left-ulnar-nerve",
+      "nerve.right-ulnar-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "lateral half: anterior interosseous branch of the median nerve",
+     "name": "anterior interosseous branch of median nerve",
+     "role": "primary",
+     "qualifier": "lateral half",
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the phrase's name matches neither the preferred name nor any listed synonym of the evidently intended class FMA44822 'Anterior interosseous nerve' (the median nerve's anterior interosseous branch under its shorter FMA name), and that class was not intaken at Milestone 33 in any case; no inventory record exists to link."
+    }
+   ],
+   "record_ids": [
+    "nerve.left-ulnar-nerve",
+    "nerve.right-ulnar-nerve"
+   ]
+  },
+  {
+   "phrase": "medial pectoral nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "medial pectoral nerve",
+     "name": "medial pectoral nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA65293",
+     "class_name": "Medial pectoral nerve",
+     "record_ids": [
+      "nerve.left-medial-pectoral-nerve",
+      "nerve.right-medial-pectoral-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-medial-pectoral-nerve",
+    "nerve.right-medial-pectoral-nerve"
+   ]
+  },
+  {
+   "phrase": "median nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "median nerve",
+     "name": "median nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA14385",
+     "class_name": "Median nerve",
+     "record_ids": [
+      "nerve.left-median-nerve",
+      "nerve.right-median-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-median-nerve",
+    "nerve.right-median-nerve"
+   ]
+  },
+  {
+   "phrase": "median nerve (lateral two lumbricals); deep branch of the ulnar nerve (medial two lumbricals)",
+   "status": "partial",
+   "components": [
+    {
+     "segment": "median nerve (lateral two lumbricals)",
+     "name": "median nerve",
+     "role": "primary",
+     "qualifier": "lateral two lumbricals",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA14385",
+     "class_name": "Median nerve",
+     "record_ids": [
+      "nerve.left-median-nerve",
+      "nerve.right-median-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "deep branch of the ulnar nerve (medial two lumbricals)",
+     "name": "deep branch of ulnar nerve",
+     "role": "primary",
+     "qualifier": "medial two lumbricals",
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA44877 'Deep branch of ulnar nerve' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": [
+    "nerve.left-median-nerve",
+    "nerve.right-median-nerve"
+   ]
+  },
+  {
+   "phrase": "musculocutaneous nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "musculocutaneous nerve",
+     "name": "musculocutaneous nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37064",
+     "class_name": "Musculocutaneous nerve",
+     "record_ids": [
+      "nerve.left-musculocutaneous-nerve",
+      "nerve.right-musculocutaneous-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-musculocutaneous-nerve",
+    "nerve.right-musculocutaneous-nerve"
+   ]
+  },
+  {
+   "phrase": "musculocutaneous nerve, with contributions from the radial nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "musculocutaneous nerve, with contributions from the radial nerve",
+     "name": "radial nerve",
+     "role": "contributory",
+     "qualifier": "contributions",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37069",
+     "class_name": "Radial nerve",
+     "record_ids": [
+      "nerve.left-radial-nerve",
+      "nerve.right-radial-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "musculocutaneous nerve, with contributions from the radial nerve",
+     "name": "musculocutaneous nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37064",
+     "class_name": "Musculocutaneous nerve",
+     "record_ids": [
+      "nerve.left-musculocutaneous-nerve",
+      "nerve.right-musculocutaneous-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-musculocutaneous-nerve",
+    "nerve.left-radial-nerve",
+    "nerve.right-musculocutaneous-nerve",
+    "nerve.right-radial-nerve"
+   ]
+  },
+  {
+   "phrase": "nerve to obturator internus",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "nerve to obturator internus",
+     "name": "nerve to obturator internus",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA78711 'Nerve to obturator internus' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "nerve to piriformis",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "nerve to piriformis",
+     "name": "nerve to piriformis",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R1",
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [
+      "nerve.nerve-to-piriformis"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.nerve-to-piriformis"
+   ]
+  },
+  {
+   "phrase": "nerve to quadratus femoris",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "nerve to quadratus femoris",
+     "name": "nerve to quadratus femoris",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R1",
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [
+      "nerve.nerve-to-quadratus-femoris"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.nerve-to-quadratus-femoris"
+   ]
+  },
+  {
+   "phrase": "nerve to subclavius",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "nerve to subclavius",
+     "name": "nerve to subclavius",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name is an FMA-listed synonym of FMA65280 'Subclavian nerve', which was not intaken at Milestone 33; no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "obturator nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "obturator nerve",
+     "name": "obturator nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16487",
+     "class_name": "Obturator nerve",
+     "record_ids": [
+      "nerve.left-obturator-nerve",
+      "nerve.right-obturator-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-obturator-nerve",
+    "nerve.right-obturator-nerve"
+   ]
+  },
+  {
+   "phrase": "obturator nerve (adductor part); tibial component of the sciatic nerve (hamstring part)",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "obturator nerve (adductor part)",
+     "name": "obturator nerve",
+     "role": "primary",
+     "qualifier": "adductor part",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16487",
+     "class_name": "Obturator nerve",
+     "record_ids": [
+      "nerve.left-obturator-nerve",
+      "nerve.right-obturator-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "tibial component of the sciatic nerve (hamstring part)",
+     "name": "sciatic nerve",
+     "role": "primary",
+     "qualifier": "hamstring part; tibial component",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA19034",
+     "class_name": "Sciatic nerve",
+     "record_ids": [
+      "nerve.left-sciatic-nerve",
+      "nerve.right-sciatic-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-obturator-nerve",
+    "nerve.left-sciatic-nerve",
+    "nerve.right-obturator-nerve",
+    "nerve.right-sciatic-nerve"
+   ]
+  },
+  {
+   "phrase": "phrenic nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "phrenic nerve",
+     "name": "phrenic nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA6191",
+     "class_name": "Phrenic nerve",
+     "record_ids": [
+      "nerve.left-phrenic-nerve",
+      "nerve.right-phrenic-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-phrenic-nerve",
+    "nerve.right-phrenic-nerve"
+   ]
+  },
+  {
+   "phrase": "posterior interosseous nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "posterior interosseous nerve",
+     "name": "posterior interosseous nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA77559 'Posterior interosseous nerve' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "posterior rami of the lower cervical spinal nerves",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "posterior rami of the lower cervical spinal nerves",
+     "name": "posterior rami of lower cervical spinal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "restricted",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "the name restricts the generic class FMA5983 'Posterior ramus of spinal nerve' to a region/level subset; the generic class's record nerve.posterior-ramus-of-spinal-nerve denotes the unrestricted class, so no link is made, and the named subset has no inventory record."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "posterior rami of the spinal nerves",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "posterior rami of the spinal nerves",
+     "name": "posterior rami of spinal nerves",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R4",
+     "class_fmaid": "FMA5983",
+     "class_name": "Posterior ramus of spinal nerve",
+     "record_ids": [
+      "nerve.posterior-ramus-of-spinal-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.posterior-ramus-of-spinal-nerve"
+   ]
+  },
+  {
+   "phrase": "radial nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "radial nerve",
+     "name": "radial nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37069",
+     "class_name": "Radial nerve",
+     "record_ids": [
+      "nerve.left-radial-nerve",
+      "nerve.right-radial-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-radial-nerve",
+    "nerve.right-radial-nerve"
+   ]
+  },
+  {
+   "phrase": "recurrent branch of the median nerve",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "recurrent branch of the median nerve",
+     "name": "recurrent branch of median nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "no FMA 5.1.0 class carries this name as a preferred name or a listed synonym (full-OWL probe over preferred names and synonyms); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "spinal accessory nerve (CN XI)",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "spinal accessory nerve (CN XI)",
+     "name": "spinal accessory nerve",
+     "role": "primary",
+     "qualifier": "CN XI",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA6720",
+     "class_name": "Spinal accessory nerve",
+     "record_ids": [
+      "nerve.left-spinal-accessory-nerve",
+      "nerve.right-spinal-accessory-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-spinal-accessory-nerve",
+    "nerve.right-spinal-accessory-nerve"
+   ]
+  },
+  {
+   "phrase": "suboccipital nerve (posterior ramus of C1)",
+   "status": "unresolved",
+   "components": [
+    {
+     "segment": "suboccipital nerve (posterior ramus of C1)",
+     "name": "suboccipital nerve",
+     "role": "primary",
+     "qualifier": "posterior ramus of C1",
+     "status": "absent",
+     "rule": null,
+     "class_fmaid": null,
+     "class_name": null,
+     "record_ids": [],
+     "reason": "FMA class FMA7054 'Suboccipital nerve' exists in FMA 5.1.0 but was not among the classes intaken at Milestone 33 (frozen target list); no inventory record exists to link."
+    }
+   ],
+   "record_ids": []
+  },
+  {
+   "phrase": "superficial fibular (peroneal) nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "superficial fibular (peroneal) nerve",
+     "name": "superficial fibular nerve",
+     "role": "primary",
+     "qualifier": "peroneal",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA44699",
+     "class_name": "Superficial fibular nerve",
+     "record_ids": [
+      "nerve.left-superficial-fibular-nerve",
+      "nerve.right-superficial-fibular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-superficial-fibular-nerve",
+    "nerve.right-superficial-fibular-nerve"
+   ]
+  },
+  {
+   "phrase": "superior gluteal nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "superior gluteal nerve",
+     "name": "superior gluteal nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA16510",
+     "class_name": "Superior gluteal nerve",
+     "record_ids": [
+      "nerve.left-superior-gluteal-nerve",
+      "nerve.right-superior-gluteal-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-superior-gluteal-nerve",
+    "nerve.right-superior-gluteal-nerve"
+   ]
+  },
+  {
+   "phrase": "suprascapular nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "suprascapular nerve",
+     "name": "suprascapular nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37025",
+     "class_name": "Suprascapular nerve",
+     "record_ids": [
+      "nerve.left-suprascapular-nerve",
+      "nerve.right-suprascapular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-suprascapular-nerve",
+    "nerve.right-suprascapular-nerve"
+   ]
+  },
+  {
+   "phrase": "tibial nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "tibial nerve",
+     "name": "tibial nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA19035",
+     "class_name": "Tibial nerve",
+     "record_ids": [
+      "nerve.left-tibial-nerve",
+      "nerve.right-tibial-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-tibial-nerve",
+    "nerve.right-tibial-nerve"
+   ]
+  },
+  {
+   "phrase": "tibial nerve (long head); common fibular nerve (short head)",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "tibial nerve (long head)",
+     "name": "tibial nerve",
+     "role": "primary",
+     "qualifier": "long head",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA19035",
+     "class_name": "Tibial nerve",
+     "record_ids": [
+      "nerve.left-tibial-nerve",
+      "nerve.right-tibial-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "common fibular nerve (short head)",
+     "name": "common fibular nerve",
+     "role": "primary",
+     "qualifier": "short head",
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA19039",
+     "class_name": "Common fibular nerve",
+     "record_ids": [
+      "nerve.left-common-fibular-nerve",
+      "nerve.right-common-fibular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-common-fibular-nerve",
+    "nerve.left-tibial-nerve",
+    "nerve.right-common-fibular-nerve",
+    "nerve.right-tibial-nerve"
+   ]
+  },
+  {
+   "phrase": "ulnar nerve",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "ulnar nerve",
+     "name": "ulnar nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R2",
+     "class_fmaid": "FMA37319",
+     "class_name": "Ulnar nerve",
+     "record_ids": [
+      "nerve.left-ulnar-nerve",
+      "nerve.right-ulnar-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-ulnar-nerve",
+    "nerve.right-ulnar-nerve"
+   ]
+  },
+  {
+   "phrase": "upper and lower subscapular nerves",
+   "status": "resolved",
+   "components": [
+    {
+     "segment": "upper and lower subscapular nerves",
+     "name": "upper subscapular nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R3",
+     "class_fmaid": "FMA65304",
+     "class_name": "Superior subscapular nerve",
+     "record_ids": [
+      "nerve.left-superior-subscapular-nerve",
+      "nerve.right-superior-subscapular-nerve"
+     ],
+     "reason": null
+    },
+    {
+     "segment": "upper and lower subscapular nerves",
+     "name": "lower subscapular nerve",
+     "role": "primary",
+     "qualifier": null,
+     "status": "resolved",
+     "rule": "R3",
+     "class_fmaid": "FMA65307",
+     "class_name": "Inferior subscapular nerve",
+     "record_ids": [
+      "nerve.left-inferior-subscapular-nerve",
+      "nerve.right-inferior-subscapular-nerve"
+     ],
+     "reason": null
+    }
+   ],
+   "record_ids": [
+    "nerve.left-inferior-subscapular-nerve",
+    "nerve.left-superior-subscapular-nerve",
+    "nerve.right-inferior-subscapular-nerve",
+    "nerve.right-superior-subscapular-nerve"
+   ]
+  }
+ ]
+}

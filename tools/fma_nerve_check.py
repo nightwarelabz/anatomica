@@ -31,9 +31,10 @@ Checks:
       flags and the fma-5.1.0 source tag.
   C1  census arithmetic: meta record_count, representations and
       coverage recompute from the records themselves.
-  C2  [REPORT] Milestone 4 C3 continuity re-count: muscle-module
-      innervation names resolving to a nervous inventory record
-      (geometry-bearing or concept-only) and to a clinical record.
+  C2  [REPORT] Milestone 4 C3 continuity, as re-pointed at
+      Milestone 35: prints the census of
+      data/innervation-link-pass.json (the one resolution
+      semantics; re-derived and gated in nerve_check.py C8).
 
 Usage: fma_nerve_check.py. Exit 0 iff all gated checks pass.
 Stdlib only.
@@ -183,23 +184,27 @@ def main():
           "C1 geometry coverage arithmetic", f"{cov}")
 
     try:
-        mus = json.load(open(os.path.join(ROOT, "data", "muscular",
-                                          "muscles.json")))
-        names = set()
-        for r in mus["records"]:
-            iv = r.get("innervation") or {}
-            n = iv.get("nerve") if isinstance(iv, dict) else None
-            if n:
-                names.add(n.lower())
-        inv_names = {r["name"].lower() for r in INV["records"]}
-        clin = json.load(open(os.path.join(ROOT, "data", "nervous",
-                                           "nervous.json")))
-        clin_names = {r["name"].lower() for r in clin["records"]}
-        res_inv = sorted(n for n in names if n in inv_names)
-        res_clin = sorted(n for n in names if n in clin_names)
-        print(f"  [REPORT] C2 muscle innervation names: {len(names)} "
-              f"distinct; resolve to inventory records: {len(res_inv)}; "
-              f"to clinical records: {len(res_clin)}")
+        # Milestone 35: the resolution census is the one in
+        # data/innervation-link-pass.json (component decomposition
+        # + exact-correspondence rules R1–R4), re-derived and
+        # gated in tools/nerve_check.py C8 — this report prints
+        # that census, not a second naive count.
+        link = json.load(open(os.path.join(
+            ROOT, "data", "innervation-link-pass.json")))
+        a, b = link["after"], link["before"]
+        print(f"  [REPORT] C2 muscle innervation names: "
+              f"{a['phrases']} distinct phrases; Milestone 35 "
+              f"re-pointing: {a['phrases_fully_resolved']} fully "
+              f"resolve to FMA inventory records, "
+              f"{a['phrases_partially_resolved']} partially, "
+              f"{a['phrases_unresolved']} not at all "
+              f"({a['components_resolved']} of {a['components']} "
+              f"named-nerve components link; "
+              f"{a['distinct_inventory_records_linked']} distinct "
+              f"inventory records linked); before: "
+              f"{len(b['to_inventory'])} phrases to inventory and "
+              f"{len(b['to_clinical'])} to clinical records under "
+              f"full-phrase equality")
     except Exception as exc:  # report-only section
         print(f"  [REPORT] C2 skipped: {exc}")
 
