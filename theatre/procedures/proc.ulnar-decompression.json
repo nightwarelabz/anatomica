@@ -1,0 +1,978 @@
+{
+ "procedure": {
+  "authority_basis": "Authored against the consulted cubital tunnel literature listed in theatre/parameters.json: the surgical-approaches review (T29), the randomised-trials meta-analysis (T30), the single-surgeon cohort whose operative protocol implements the stability rule this procedure encodes (T31), the subluxation prevalence study (T32), the elbow prophylaxis study (T33), the failed-release review (T34) and the revision series (T35); T6, T8, T9, T10 and T20 are shared with the theatre's earlier procedures. The decomposition is this module's own, built to cognitive-task-analysis discipline (design/05): no published cubital tunnel release microstep list was copied, and the granularity follows the operative descriptions actually consulted. StatPearls' cubital tunnel syndrome chapter was attempted in-session and was reCAPTCHA-blocked, as at Milestones 39 and 42; it is cited for nothing.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.2 (operative findings reviewed at the elbow).",
+    "choices": [
+     {
+      "effect": "Continue with the authored plan: in-situ decompression as the primary configuration, the transposition decision reserved for the stability assessment at m6.1 (T31's protocol; T29: outside subluxation, no technique has demonstrated superiority).",
+      "id": "proceed-in-situ",
+      "label": "Proceed with ulnar nerve decompression",
+      "scoring": "Neutral in itself; the attempt's required set follows the operation actually performed."
+     },
+     {
+      "effect": "Bailout: stop and refer to a service with peripheral-nerve surgery expertise.",
+      "id": "abort-refer",
+      "label": "Abort and refer to a peripheral-nerve surgery service",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the findings and the referral permit proceeding with decompression?"
+   },
+   {
+    "anchor": "Anchored at microstep m3.2 (second look) - the point at which identification is either achieved or declared unachievable.",
+    "choices": [
+     {
+      "effect": "Continue exposure proximally into undisected tissue until the nerve, the cutaneous-branch account and the release extent can be demonstrated.",
+      "id": "extend-exposure",
+      "label": "Extend the incision and exposure until the structures are identified",
+      "scoring": "Positive: persistence with exposure rather than division."
+     },
+     {
+      "effect": "Escalate to a more experienced operator before any division.",
+      "id": "call-senior",
+      "label": "Call for senior / peripheral-nerve help",
+      "scoring": "Positive escalation."
+     },
+     {
+      "effect": "Bailout: stop and refer to a peripheral-nerve surgery service.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "The scored-error choice: division without identification - the runner resolves it onto the ulnar nerve (or the unaccounted cutaneous nerve) and fails the attempt.",
+      "id": "continue-dissection",
+      "label": "Divide the fascia where it is presumed safe",
+      "scoring": "err.no-bailout, and the division itself fires the gate's misidentification resolution."
+     }
+    ],
+    "id": "dp2",
+    "question": "The structures at risk cannot be positively identified. What now?"
+   },
+   {
+    "anchor": "On recognition of the nerve injury computed by the misidentification resolution.",
+    "choices": [
+     {
+      "effect": "Definitive repair of the injured nerve under magnification at the index operation; the repair itself is microstep m7.3.",
+      "id": "convert-microscope-repair",
+      "label": "Convert to microscope repair at the index operation",
+      "scoring": "The definitive plan; with microstep m7.3 performed, the management control point is earned."
+     },
+     {
+      "effect": "Immediate referral to the peripheral-nerve repair service without attempting repair.",
+      "id": "repair-refer",
+      "label": "Refer immediately to the nerve repair service",
+      "scoring": "Plan-positive, but control is not credited: referral without repair leaves the injury uncontrolled at the index operation - the same asymmetry the carpal tunnel release scores (Milestone 42)."
+     },
+     {
+      "effect": "Bailout by omission: close and document, with no repair and no referral made at the index operation.",
+      "id": "abort-close",
+      "label": "Abort the operation and close without repair or referral",
+      "scoring": "Neither plan nor control is credited."
+     }
+    ],
+    "id": "dp3",
+    "question": "A nerve injury has been recognised. What is the definitive plan?"
+   },
+   {
+    "anchor": "After microstep m8.2 (postoperative plan confirmed).",
+    "choices": [
+     {
+      "effect": "Return to theatre to complete the release / stabilise the nerve: the definitive treatment of the computed postoperative consequences (incomplete release, unaddressed instability, new compression site), per the revision literature's rule that technical failures are corrected by complete decompression (T34).",
+      "id": "return-theatre",
+      "label": "Return to theatre to complete the correction",
+      "scoring": "The definitive plan for a postoperative structural consequence."
+     },
+     {
+      "effect": "Observe and review in clinic, with re-operation only if symptoms declare themselves.",
+      "id": "observe-and-review",
+      "label": "Observe and review",
+      "scoring": "Not the definitive plan for a computed structural consequence."
+     },
+     {
+      "effect": "Refer onward routinely without a corrective plan.",
+      "id": "refer-routine",
+      "label": "Refer routinely",
+      "scoring": "Not the definitive plan for a computed structural consequence."
+     }
+    ],
+    "id": "dp4",
+    "question": "A postoperative consequence has been declared. What is the plan?"
+   },
+   {
+    "anchor": "Anchored at microstep m6.1 (the dynamic stability assessment after complete decompression).",
+    "choices": [
+     {
+      "effect": "Complete the decompression in situ: the nerve stays in its sulcus. Correct when stability is preserved (T31's protocol performs decompression alone in that case; T30: for a stable nerve the configurations are in equipoise). In the subluxating configuration the runner scores this choice err.subluxation-unaddressed and computes the postoperative instability consequence.",
+      "id": "complete-in-situ",
+      "label": "Complete the decompression in situ",
+      "scoring": "Correct for a stable nerve; the scored configuration error for an unstable one."
+     },
+     {
+      "effect": "Transpose the nerve anterior to the medial epicondyle: microsteps m6.3-m6.6 become required for this attempt and the in-situ completion m6.2 is dropped (runner-enacted). The configuration the specialty consensus prefers for an unstable nerve (T29) and the consulted protocol performs (T31).",
+      "id": "anterior-transposition",
+      "label": "Transpose the nerve anteriorly",
+      "scoring": "Correct for an unstable nerve; accepted without penalty for a stable one (equipoise, T30) - its additional required microsteps must then actually be performed."
+     },
+     {
+      "effect": "Bailout: stop, close and refer to a peripheral-nerve surgery service.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp5",
+    "question": "The released nerve's stability has been assessed through the full range. Which configuration completes the operation?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's misidentification resolution: the scissors pass through the unvisualised fascia and divide the ulnar nerve itself where it lies in and beyond the tunnel - the catastrophic injury of this operation (T34 lists injury to the ulnar nerve among the technical causes of failure). The attempt FAILS at the moment of division, regardless of all other scores (design/05 master rule, applied here as it is to the cholecystectomy's bile duct, the appendicectomy's cecum and the carpal release's median nerve).",
+    "definition": "Dividing a fascial structure of the release before the ulnar nerve is identified and protected (gate.nerve-protection, crit1 unmet).",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T31"
+   },
+   {
+    "consequence": "Computed by the runner's misidentification resolution onto the medial antebrachial cutaneous nerve: the division and its dissection cross the cutaneous branches that were never accounted for, in the subcutaneous plane the incision traverses. The consequence the specialty names for this operation: numbness in the nerve's distribution and, where a neuroma forms, causalgia-type pain at the elbow - among the most frequent complications of open decompression (T29), a named technical cause of a failed release (T34), and an injury recorded in the consulted cohort's open decompression group (T31). The attempt FAILS at the moment of division: the gate protects this nerve by name, and dividing with it unaccounted is a gate failure, not a scored departure.",
+    "definition": "Dividing a fascial structure of the release with the medial antebrachial cutaneous nerve unaccounted for (gate.nerve-protection, crit2 unmet) while the ulnar nerve itself is identified.",
+    "id": "err.mabc-unaccounted",
+    "severity": "critical-fail",
+    "source": "T29"
+   },
+   {
+    "consequence": "Persistent symptoms declared as a postoperative consequence, computed at scoring: the revision literature is explicit that incomplete decompression is a technical cause of failure (T34), and the revision series quantifies the sites - arcade of Struthers 71.4%, deep flexor-pronator aponeurosis 38% (T35). Managed at dp4 by return to theatre to complete the release.",
+    "definition": "Completing the release without confirming its completeness along the full length (microstep m5.4 not performed).",
+    "id": "err.incomplete-release",
+    "severity": "major",
+    "source": "T34"
+   },
+   {
+    "consequence": "Postoperative nerve instability declared as a consequence, computed at scoring: the nerve continues to subluxate over the medial epicondyle with flexion - the chronic irritation the transposition consensus exists to relieve (T29), and 'persistent or new ulnar nerve subluxation/instability' is a named technical failure of the primary operation in the revision taxonomy (T34). Managed at dp4 by return to theatre for a stabilising transposition.",
+    "definition": "Finding the released nerve unstable at the stability assessment (variant.subluxating-nerve) and completing the operation in situ anyway (dp5 choice complete-in-situ).",
+    "id": "err.subluxation-unaddressed",
+    "severity": "major",
+    "source": "T29"
+   },
+   {
+    "consequence": "A new compression site declared as a postoperative consequence, computed at scoring: the transposed nerve kinks and compresses over the intact septum's edge - T34's 'creation of a new area of compression', and the single commonest residual finding at revision of failed transposition (an intact septum in 76.2%, T35). Managed at dp4 by return to theatre to release the septum.",
+    "definition": "Performing the anterior transposition (microstep m6.5) without releasing the medial intermuscular septum (microstep m6.4 not performed).",
+    "id": "err.new-compression-site",
+    "severity": "major",
+    "source": "T35"
+   },
+   {
+    "consequence": "Scored as a judgment error in the debrief; the division that follows it fires the gate's misidentification resolution and fails the attempt.",
+    "definition": "Declaring the structures at risk unidentifiable at dp2 and dividing anyway instead of altering strategy.",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T20"
+   },
+   {
+    "consequence": "Scored in the process component and named in the debrief analysis.",
+    "definition": "Omitting a WHO checklist integration point (Sign In, Time Out or Sign Out).",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.ulnar-decompression",
+  "name": "Open ulnar nerve decompression at the elbow (in-situ release, with anterior transposition configuration)",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, anaesthesia and checklist (Step 0)",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review the referral, the electrodiagnostic confirmation, the symptom pattern and the McGowan grade; confirm ulnar neuropathy at the elbow and the indication for decompression",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Confirm consent and the operative plan: in-situ decompression as the primary configuration, with anterior transposition consented and planned should the stability assessment find the nerve unstable; consent covers injury to the medial antebrachial cutaneous nerve, including its painful-neuroma consequence",
+        "required": true,
+        "sources": [
+         "T29",
+         "T34"
+        ],
+        "targets": [
+         "major.ulnar",
+         "nerve.medial-cutaneous-nerve-of-forearm"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Confirm team, resource tier and equipment plan for the case, including the operating microscope's availability should a nerve injury require repair",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Step 0: planning the procedure"
+     },
+     {
+      "id": "step.0.2",
+      "microsteps": [
+       {
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Establish anaesthesia: brachial plexus block, the consulted cohort's standard anaesthetic for this operation",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [
+         "inst.arm-tourniquet"
+        ],
+        "label": "Apply the pneumatic arm tourniquet for a bloodless, visualised field",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Position the patient supine with the arm on a hand table, the elbow free to range through full flexion and extension (the stability assessment requires the full range, intraoperatively)",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "humerus_right"
+        ],
+        "verb": "position"
+       },
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.7",
+        "instruments": [],
+        "label": "WHO Sign In completed before induction of anaesthesia",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "id": "m0.8",
+        "instruments": [],
+        "label": "Confirm that antibiotic prophylaxis is withheld: preoperative antibiotics do not demonstrate benefit for uncomplicated ulnar nerve release at the elbow (919 operations; infection 1.7% without vs 2.7% with prophylaxis, T33), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design",
+        "required": true,
+        "sources": [
+         "T33"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Time Out completed immediately before skin incision",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Anaesthesia, setup and checklist"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Skin incision and subcutaneous dissection",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Make the longitudinal skin incision along the course of the ulnar nerve, between the medial epicondyle and the olecranon",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "humerus_right"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [
+         "inst.tenotomy-scissors",
+         "inst.retractor-ragnell"
+        ],
+        "label": "Dissect through the subcutaneous layer under direct vision: the branches of the medial antebrachial cutaneous nerve cross this field, and the 8-10 cm incision this operation needs puts them at risk along its whole length (T29)",
+        "required": true,
+        "sources": [
+         "T29"
+        ],
+        "targets": [
+         "nerve.medial-cutaneous-nerve-of-forearm"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m1.3",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Demonstrate the medial antebrachial cutaneous nerve and its branches identified in the subcutaneous plane and protected - held clear of the dissection and of every division line along the whole incision",
+        "required": true,
+        "sources": [
+         "T29",
+         "T34"
+        ],
+        "targets": [
+         "nerve.medial-cutaneous-nerve-of-forearm"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Incise and dissect the subcutaneous layer"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Identification of the ulnar nerve",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m2.1",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Demonstrate the ulnar nerve identified proximal to the cubital tunnel, in undisected tissue, and protected under a vessel loop before any fascial structure is divided",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.2",
+        "instruments": [],
+        "label": "Review the operative findings at the elbow and confirm the plan to proceed: in-situ decompression primary, transposition reserved for instability at the stability assessment",
+        "required": true,
+        "sources": [
+         "T29",
+         "T30"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m2.3",
+        "instruments": [],
+        "label": "Demonstrate the full release extent established before any division: proximally to the arcade of Struthers, through the cubital tunnel, and distally through the flexor carpi ulnaris aponeurosis until the motor branches - the nerve under direct vision along the whole length to be released",
+        "required": true,
+        "sources": [
+         "T29",
+         "T31",
+         "T34"
+        ],
+        "targets": [
+         "major.ulnar",
+         "fascia.arcade-of-struthers",
+         "fascia.fcu-aponeurosis"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Find and protect the nerve; establish the release extent"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "The nerve gate",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "id": "m3.1",
+        "instruments": [
+         "inst.retractor-ragnell"
+        ],
+        "label": "Confirm the cubital tunnel retinaculum (Osborne's ligament) is fully exposed, with the protected nerve seen entering the tunnel",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "ligament.cubital-tunnel-retinaculum",
+         "major.ulnar"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp2",
+        "id": "m3.2",
+        "instruments": [],
+        "label": "Second look: re-confirm the identified nerve, the cutaneous-branch account and the release extent before division",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m3.3",
+        "instruments": [],
+        "label": "Pre-division pause: the identified nerve, the branch account and the release extent are confirmed aloud before any fascial structure is divided",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Confirm the field; pause"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Proximal release",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "id": "m4.1",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Divide the arcade of Struthers and the proximal fascia, when present, as part of the proximal decompression - an unreleased arcade is the commonest proximal finding at revision (71.4%, T35)",
+        "required": true,
+        "sources": [
+         "T31",
+         "T35"
+        ],
+        "targets": [
+         "fascia.arcade-of-struthers"
+        ],
+        "verb": "divide"
+       }
+      ],
+      "name": "Release the proximal compression sites"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "Cubital tunnel and distal release",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Divide Osborne's ligament (the cubital tunnel retinaculum) over the protected nerve",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "ligament.cubital-tunnel-retinaculum"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m5.2",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Release the aponeurotic band between the humeral and ulnar heads of flexor carpi ulnaris, continuing the distal decompression until the motor branches are visualised",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "fascia.fcu-aponeurosis",
+         "muscle.flexor-carpi-ulnaris"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m5.3",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Release the deep flexor-pronator aponeurosis, the distal limit of a complete decompression (residual compression at this site in 38% of revisions, T35)",
+        "required": true,
+        "sources": [
+         "T34",
+         "T35"
+        ],
+        "targets": [
+         "fascia.deep-flexor-pronator-aponeurosis"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m5.4",
+        "instruments": [
+         "inst.freer-elevator"
+        ],
+        "label": "Confirm the release is complete along the full length: a smooth elevator passes freely beside the nerve and the nerve glides without a residual band, from the arcade of Struthers to the flexor-pronator aponeurosis (omission of this confirmation computes the incomplete-release consequence at scoring)",
+        "required": true,
+        "sources": [
+         "T29",
+         "T34"
+        ],
+        "targets": [
+         "major.ulnar",
+         "fascia.fcu-aponeurosis"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Divide and confirm"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Stability assessment and configuration",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "anchors_decision": "dp5",
+        "id": "m6.1",
+        "instruments": [],
+        "label": "Range the elbow through full flexion and extension and dynamically assess the released nerve's stability in the sulcus - the consulted protocol's decision point: instability or subluxation routes to transposition, preserved stability completes the decompression alone (T31)",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar",
+         "humerus_right"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Assess stability dynamically"
+     },
+     {
+      "id": "step.6.2",
+      "microsteps": [
+       {
+        "id": "m6.2",
+        "instruments": [],
+        "label": "In-situ completion: confirm the nerve lies stable in the sulcus through the full range, untethered and under no tension",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m6.3",
+        "instruments": [],
+        "label": "Transposition: mobilise the nerve sufficiently in the proximal and distal directions, preserving the perineural vascular structures",
+        "required": false,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m6.4",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Transposition: release the medial intermuscular septum proximally, so the transposed nerve cannot kink or compress over its edge (an intact septum is the single commonest residual finding at revision - 76.2%, T35)",
+        "required": false,
+        "sources": [
+         "T31",
+         "T35"
+        ],
+        "targets": [
+         "ligament.medial-intermuscular-septum"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.5",
+        "instruments": [],
+        "label": "Transposition: create the bed anterior to the medial epicondyle (submuscular, within the common flexor mass, in the consulted open technique) and transpose the nerve anteriorly without tension, retained by a fascial sling so it cannot migrate posteriorly",
+        "required": false,
+        "sources": [
+         "T31",
+         "T29"
+        ],
+        "targets": [
+         "major.ulnar",
+         "muscle.flexor-carpi-ulnaris"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m6.6",
+        "instruments": [],
+        "label": "Transposition: take the elbow through a full range of flexion and extension again - confirm unrestricted gliding of the transposed nerve and the absence of residual tension or kinking at either end",
+        "required": false,
+        "sources": [
+         "T31"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Complete the configuration"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Haemostasis, inspection and repair",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Deflate the tourniquet, achieve haemostasis and inspect the wound",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [],
+        "label": "Re-inspect the ulnar nerve along the whole released length and the medial antebrachial cutaneous branches at the end of the case",
+        "required": true,
+        "sources": [
+         "T34"
+        ],
+        "targets": [
+         "major.ulnar",
+         "nerve.medial-cutaneous-nerve-of-forearm"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Haemostasis and final inspection"
+     },
+     {
+      "id": "step.7.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp3",
+        "id": "m7.3",
+        "instruments": [
+         "inst.operating-microscope"
+        ],
+        "label": "Repair the injured nerve by epineurial repair under the operating microscope",
+        "required": false,
+        "sources": [
+         "T34"
+        ],
+        "targets": [
+         "major.ulnar"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Injury management"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Closure and Sign Out",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [],
+        "label": "Close the subcutaneous layer and the skin (the tunnel is left open - that is the release)",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "anchors_decision": "dp4",
+        "id": "m8.2",
+        "instruments": [],
+        "label": "Confirm the postoperative plan: active elbow range-of-motion exercises from postoperative day 3; after submuscular transposition, avoid forceful gripping for approximately three weeks",
+        "required": true,
+        "sources": [
+         "T31"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.3",
+        "instruments": [],
+        "label": "WHO Sign Out completed before the patient leaves the operating room",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Closure, postoperative plan and Sign Out"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET — design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The ulnar nerve is identified proximal to the cubital tunnel, in undisected tissue, and is protected - held under a vessel loop, under vision - before any fascial structure of the release is divided (T31: the nerve is identified and then decompressed proximally and distally). A division made without the nerve in view passes through it where it lies in and beyond the tunnel.",
+      "id": "crit1",
+      "name": "Ulnar nerve identified and protected",
+      "source": "T31"
+     },
+     {
+      "definition": "The medial antebrachial cutaneous nerve and the branches that cross the incision field are identified in the subcutaneous plane and protected along the whole incision before any fascial division. This is the operation's named cutaneous injury: numbness in its distribution is among the most frequent complications of open decompression, whose 8-10 cm incisions threaten it along their length (T29); injury to the cutaneous nerves is a named technical cause of a failed release (T34); and the injury occurred in the consulted cohort's open decompression group (T31).",
+      "id": "crit2",
+      "name": "Medial antebrachial cutaneous branches accounted for",
+      "source": "T29"
+     },
+     {
+      "definition": "The full extent of the release is established before division begins: proximally the arcade of Struthers, through the cubital tunnel, and distally through the flexor carpi ulnaris aponeurosis until the motor branches and the deep flexor-pronator aponeurosis - the span a complete decompression covers (T34), at whose named sites the revision series finds residual compression (T35: Struthers 71.4%, septum 76.2% in transposition, flexor-pronator aponeurosis 38%). The nerve is under direct vision along the whole length to be released (T29).",
+      "id": "crit3",
+      "name": "Full release extent established",
+      "source": "T34"
+     }
+    ],
+    "enforcement": "The runner evaluates this gate at every division action on a fascial structure of the release (the arcade of Struthers, the cubital tunnel retinaculum, the flexor carpi ulnaris aponeurosis, the deep flexor-pronator aponeurosis, and - in the transposition configuration - the medial intermuscular septum). A divide action taken while the gate is unachieved does not divide the intended anatomy: it resolves through the misidentification model onto the structure the unmet criterion was protecting - the ulnar nerve itself when crit1 is unmet (err.divide-unidentified), the medial antebrachial cutaneous nerve when only crit2 is unmet (err.mabc-unaccounted) - and fails the attempt. Dependent steps (phases 4-5) are the gate's unlock set. The stability discipline is enforced separately, at scoring, by the configuration rules (err.subluxation-unaddressed, err.new-compression-site), because its decision point (dp5) sits after the divisions it governs.",
+    "id": "gate.nerve-protection",
+    "kind": "safety_gate",
+    "name": "Nerves at risk identified and protected before division of the cubital tunnel fascia",
+    "source": "T31",
+    "statement": "No fascial structure of this release may be divided until the structures its division endangers have been identified and protected AND demonstrated (all three criteria, via the microsteps that demonstrate them): the ulnar nerve along the release, the medial antebrachial cutaneous branches crossing the field, and the full proximal-to-distal extent across which division will run.",
+    "unlocks": [
+     "step.4.1",
+     "step.5.1"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "Before dividing any fascial structure of the release, the operator pauses and the team confirms the structures at risk have been identified and protected. Carried over from the theatre's gate discipline (design/05, T20) and the WHO checklist culture (T6); no cubital tunnel source consulted states this pause - it is the module's own safety culture, labelled as such.",
+      "id": "pause1",
+      "name": "Momentary pause and team confirmation before dividing",
+      "source": "T20"
+     }
+    ],
+    "enforcement": "Scored checkpoint (microstep m3.3), not a second blocking gate in v1: the blocking gate is the identification itself. Omitting the pause forfeits the safety point and is named in the debrief analysis.",
+    "id": "gate.pre-division-pause",
+    "kind": "checkpoint",
+    "name": "Pre-division pause",
+    "source": "T20",
+    "statement": "Before dividing, the operator pauses and the team confirms the nerve identification, the cutaneous-branch account and the release extent.",
+    "unlocks": []
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (the transposition configuration changes the required set by the dp5 decision rule in decision_points[]). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1) - for a nerve injury, the repair microstep performed; escalation appropriate to the event (1), definitive plan consistent with the literature (1): repair decisions at dp3 for a nerve injury, return to theatre at dp4 for a postoperative structural consequence (incomplete release, unaddressed instability, new compression site).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine run, never from the trace script: time-below-threshold component (3/2/1/0 by the rubric bands in theatre parameters), nadir MAP component (>= threshold 2; 55 to threshold 1; below 55 0), blood-loss component (bands in theatre parameters: 2/1/0). This operation computes no blood loss in v1: its injuries are structural nerve injuries without a consulted haemodynamic rate, and no bleed placeholder was invented for it.",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "One point each: WHO Sign In, WHO Time Out, WHO Sign Out, prophylaxis inside the cited window, Step 0 planning microsteps complete. For THIS procedure the prophylaxis point is structurally unavailable: preoperative antibiotic prophylaxis does not demonstrate benefit for uncomplicated ulnar nerve release at the elbow (T33: 919 operations, infection 1.7% without vs 2.7% with), so the procedure carries no prophylaxis microstep - the withholding is itself an authored, sourced microstep (m0.8) - and the process component's ceiling for this procedure is 4 of 5. That ceiling is a documented property of the operation, not an omission in any attempt.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "One point per nerve-protection criterion demonstrated before the first division (3), plus one for the pre-division pause performed before the division (1). Gate violations are additionally recorded as errors and, for division, fail the attempt - the points never offset the fail rule.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "notes": "No composite score is computed: design/05 defines components, not a weighting, and inventing weights would violate the precision law. GOALS (T8) and OSATS (T9) are carried as rubric data for observed-performance rating in the shells; a headless scripted runner has no observed performance to rate, so both are reported as NOT POPULATED in v1 debriefs rather than estimated. Scores are formative only (see validity).",
+   "rubrics": {
+    "goals": "T8",
+    "osats": "T9"
+   },
+   "verdict_rule": "FAIL if any critical-fail error fires (division before identification of the ulnar nerve or of the medial antebrachial cutaneous nerve); otherwise PASS, with postoperative structural consequences (incomplete release, unaddressed instability, new compression site) declared as complications and scored through the management component."
+  },
+  "structures": [
+   {
+    "id": "major.ulnar",
+    "kind": "record",
+    "note": "Milestone 39 clinical record for the ulnar nerve (sourcing tier A), linking the sided Milestone 33 inventory records nerve.left-ulnar-nerve and nerve.right-ulnar-nerve. Its course field states that the nerve passes behind the elbow through the ulnar tunnel between the medial epicondyle and the olecranon and pierces the two heads of flexor carpi ulnaris; its clinical-testing field records the elbow lesion pattern this operation treats and the wrist pattern it must not be confused with (the distinction case.ulnar-neuropathy.005 adjudicated at Milestone 43). This is the structure the operation decompresses - and the structure the master-rule division injures.",
+    "resolves_to": "data/nervous/major-nerves.json"
+   },
+   {
+    "id": "nerve.medial-cutaneous-nerve-of-forearm",
+    "kind": "record",
+    "note": "Milestone 33 FMA concept record (FMA39079; TA2 6446, nervus cutaneus medialis antebrachii), un-sided, geometry absent, in data/nervous/nervous-inventory.json. The medial antebrachial cutaneous nerve: the operation's named iatrogenic injury - its branches cross the incision field in the subcutaneous plane, numbness in its distribution is among the most frequent complications of open decompression (T29), its injury is a named technical cause of a failed release (T34), and the injury occurred in the consulted cohort's open decompression group (T31). The gate's crit2 protects it by name.",
+    "resolves_to": "data/nervous/nervous-inventory.json"
+   },
+   {
+    "id": "muscle.flexor-carpi-ulnaris",
+    "kind": "record",
+    "note": "Flexor carpi ulnaris, in data/muscular/muscles.json: the muscle whose two heads (humeral and ulnar) the ulnar nerve passes between, joined by the aponeurotic band the distal release divides (T31); its Milestone 35 innervation links resolve to both ulnar nerve inventory records - the fact case.ulnar-neuropathy.005's checker asserts.",
+    "resolves_to": "data/muscular/muscles.json"
+   },
+   {
+    "id": "humerus_right",
+    "kind": "record",
+    "note": "Right humerus, in data/skeletal/skeleton-geometry.json. The medial epicondyle - the landmark the incision is set against (between the epicondyle and the olecranon, T31), the apex the unstable nerve subluxates over (T32), and the landmark the transposition moves the nerve anterior to (T29, T31) - is part of this bone record; the Body Model carries no separate medial epicondyle record (verified this milestone by searching every Body Model data file for an epicondyle record id). Laterality follows the theatre's register convention (the carpal release registers hamate_right).",
+    "resolves_to": "data/skeletal/skeleton-geometry.json"
+   },
+   {
+    "id": "ligament.cubital-tunnel-retinaculum",
+    "kind": "absence",
+    "note": "The cubital tunnel retinaculum (Osborne's ligament) - the roof of the cubital tunnel and the structure microstep m5.1 divides - has NO Body Model record: no record in any system inventory denotes it (verified this milestone by searching every Body Model data file for Osborne / retinaculum record ids; the theatre's Milestone 42 checker already asserts no retinaculum record id exists anywhere in the Body Model). The absence is this register's central honesty, parallel to the cholecystectomy's cystic artery and the carpal release's transverse carpal ligament: the divided structure is defined by the consulted technique sources - the fascial roof released as part of the decompression, proximally and distally with the other compressive structures (T29, T31).",
+    "resolves_to": null
+   },
+   {
+    "id": "fascia.arcade-of-struthers",
+    "kind": "absence",
+    "note": "The arcade of Struthers - the proximal fascial arcade under which the nerve passes in the distal arm, the proximal limit of a complete release (T34) - has NO Body Model record (verified this milestone: no record id in any Body Model data file names it). Defined by the consulted sources: released when present as part of the proximal decompression (T31); the commonest proximal site of residual compression at revision, 71.4% (T35).",
+    "resolves_to": null
+   },
+   {
+    "id": "fascia.fcu-aponeurosis",
+    "kind": "absence",
+    "note": "The aponeurotic band between the humeral and ulnar heads of flexor carpi ulnaris has NO Body Model record (verified this milestone: no record id in any Body Model data file names an aponeurosis). Defined by the consulted technique source: the distal decompression is continued through this band until the motor branches are visualised (T31). The muscle it joins does have a record (muscle.flexor-carpi-ulnaris, above); its aponeurosis does not - the register keeps the two facts separate.",
+    "resolves_to": null
+   },
+   {
+    "id": "fascia.deep-flexor-pronator-aponeurosis",
+    "kind": "absence",
+    "note": "The deep flexor-pronator aponeurosis - the distal limit of the complete decompression span in the failed-release literature (T34) - has NO Body Model record (verified this milestone, as for the other aponeurosis entries). Residual compression at this site was found in 38% of the revision series' failed transpositions (T35), which is why the release runs to it and why the completeness confirmation (m5.4) spans it.",
+    "resolves_to": null
+   },
+   {
+    "id": "ligament.medial-intermuscular-septum",
+    "kind": "absence",
+    "note": "The medial intermuscular septum of the arm - the septum the nerve passes at mid-arm (major.ulnar's course field) and the edge the transposed nerve must not kink over - has NO Body Model record under that denotation (verified this milestone: the only septum record ids in the Body Model are the nasal septum and the septa of the testis). Defined by the consulted sources: released proximally in the transposition configuration (T31); an intact septum was the single commonest residual finding at revision of failed transposition, 76.2% (T35).",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance response processes (GOALS/OSATS rating) are future shell work."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "The variant changes no gate criterion: the identification-and-protection gate is configuration-independent, and the nerve and the cutaneous branches are protected identically whether the nerve is stable or not.",
+     "The variant acts at the configuration decision (dp5, anchored at the m6.1 dynamic stability assessment). With an unstable nerve, choosing anterior transposition makes microsteps m6.3-m6.6 required for the attempt and drops the in-situ completion m6.2 (runner-enacted, the appendicectomy's decision-required mechanism generalised); choosing complete-in-situ scores err.subluxation-unaddressed and computes the postoperative instability consequence at scoring. The rule follows the consulted protocol, which routes intraoperative instability to transposition and performs decompression alone when stability is preserved (T31), and the specialty consensus to the same effect (T29) - with the evidence caveat both the review and the dossier state: no comparative study decides the subluxation subset beyond one study's subgroup, and for a stable nerve the configurations are in equipoise (T30), so transposition chosen for a stable nerve is accepted, not scored as an error."
+    ],
+    "id": "variant.subluxating-nerve",
+    "name": "Subluxating / unstable ulnar nerve (recurrent luxation)",
+    "prevalence": "Recurrent luxation of the ulnar nerve at the elbow in 16.2% of the general population (Childress 1975, T32) - comfortably above the variant gate (>= 1%). The figure is a general-population anatomical prevalence, not a measured frequency of instability found at operation after release; the consulted sources do not state the latter quantity, and this entry does not pretend the two are the same number.",
+    "required_additions": [],
+    "source": "T32",
+    "structure_additions": [],
+    "trace": "theatre/traces/trace-18-ulnar-variant-subluxating.json"
+   }
+  ]
+ }
+}

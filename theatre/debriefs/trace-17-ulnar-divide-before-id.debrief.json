@@ -1,0 +1,313 @@
+{
+  "trace_id": "trace-17-ulnar-divide-before-id",
+  "trace_name": "Ulnar nerve decompression: division before identification - ulnar nerve injury",
+  "procedure_id": "proc.ulnar-decompression",
+  "case_variant": null,
+  "verdict": "FAIL",
+  "failed_at_s": 1140.0,
+  "fail_reason": "an unidentified critical structure (fascia.arcade-of-struthers) was divided before the nerves at risk were identified and protected (err.divide-unidentified)",
+  "validity_label": "formative-only",
+  "duration_s": 1800.0,
+  "checklist": {
+    "completed": 23,
+    "required": 30,
+    "pct": 76.66666666666667,
+    "missing": [
+      "m2.1",
+      "m5.1",
+      "m5.2",
+      "m5.3",
+      "m5.4",
+      "m6.1",
+      "m6.2"
+    ]
+  },
+  "safety_gate": {
+    "criteria_before_first_clipdiv": 2,
+    "pause_before_first_clip": true,
+    "points": 3,
+    "max": 4,
+    "note": null
+  },
+  "process": {
+    "points": 4,
+    "max": 5,
+    "sign_in": true,
+    "time_out": true,
+    "sign_out": true,
+    "prophylaxis_in_window": false,
+    "planning_complete": true
+  },
+  "physiology": {
+    "points": 7,
+    "max": 7,
+    "time_points": 3,
+    "nadir_points": 2,
+    "loss_points": 2,
+    "map_nadir_mmhg": 72.9113712137776,
+    "map_baseline_mmhg": 72.91107480813304,
+    "seconds_below_threshold": 0.0,
+    "blood_loss_ml": 0.0,
+    "blood_loss_crosscheck_ml": 0.0,
+    "infused_ml": 0.0,
+    "transfused_ml": 0.0
+  },
+  "management": {
+    "points": 5,
+    "max": 5,
+    "recognised": 2,
+    "control": 1,
+    "escalation": 1,
+    "plan": 1
+  },
+  "errors": [
+    {
+      "t_s": 1140.0,
+      "id": "err.divide-unidentified",
+      "detail": "fascia.arcade-of-struthers divided before the nerves at risk were identified and protected (2 of 3 criteria met)"
+    }
+  ],
+  "complications": [
+    {
+      "kind": "ulnar-nerve-injury",
+      "t_onset_s": 1140.0,
+      "detail": "the division passes through the unvisualised fascia and divides the ulnar nerve, which lies in and beyond the tunnel along the whole release length - the catastrophic iatrogenic injury of this operation (the ulnar nerve is among the structures the failed-release literature lists as injured at this operation, T34)",
+      "resolved_structure": "major.ulnar",
+      "stewart_way_class": null,
+      "recognised": true,
+      "controlled_s": null,
+      "loss_ml": null
+    }
+  ],
+  "decisions": [
+    {
+      "t_s": 840.0,
+      "id": "dp1",
+      "choice": "proceed-in-situ"
+    },
+    {
+      "t_s": 1320.0,
+      "id": "dp3",
+      "choice": "convert-microscope-repair"
+    }
+  ],
+  "engine_trace_hash": "0xcaf099d78a49139b",
+  "engine_beats": 2023,
+  "engine_conservation_error_ml": 9.567884262651205e-10,
+  "debrief": {
+    "description": [
+      "[t=60s] m0.1: Review the referral, the electrodiagnostic confirmation, the symptom pattern and the McGowan grade; confirm ulnar neuropathy at the elbow and the indication for decompression",
+      "[t=120s] m0.2: Confirm consent and the operative plan: in-situ decompression as the primary configuration, with anterior transposition consented and planned should the stability assessment find the nerve unstable; consent covers injury to the medial antebrachial cutaneous nerve, including its painful-neuroma consequence",
+      "[t=180s] m0.3: Confirm team, resource tier and equipment plan for the case, including the operating microscope's availability should a nerve injury require repair",
+      "[t=240s] m0.4: Establish anaesthesia: brachial plexus block, the consulted cohort's standard anaesthetic for this operation",
+      "[t=300s] m0.5: Apply the pneumatic arm tourniquet for a bloodless, visualised field",
+      "[t=360s] m0.6: Position the patient supine with the arm on a hand table, the elbow free to range through full flexion and extension (the stability assessment requires the full range, intraoperatively)",
+      "[t=420s] m0.7: WHO Sign In completed before induction of anaesthesia",
+      "[t=480s] m0.8: Confirm that antibiotic prophylaxis is withheld: preoperative antibiotics do not demonstrate benefit for uncomplicated ulnar nerve release at the elbow (919 operations; infection 1.7% without vs 2.7% with prophylaxis, T33), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design",
+      "[t=540s] m0.9: WHO Time Out completed immediately before skin incision",
+      "[t=600s] m1.1: Make the longitudinal skin incision along the course of the ulnar nerve, between the medial epicondyle and the olecranon",
+      "[t=660s] m1.2: Dissect through the subcutaneous layer under direct vision: the branches of the medial antebrachial cutaneous nerve cross this field, and the 8-10 cm incision this operation needs puts them at risk along its whole length (T29)",
+      "[t=720s] m1.3: Demonstrate the medial antebrachial cutaneous nerve and its branches identified in the subcutaneous plane and protected - held clear of the dissection and of every division line along the whole incision",
+      "[t=780s] m2.2: Review the operative findings at the elbow and confirm the plan to proceed: in-situ decompression primary, transposition reserved for instability at the stability assessment",
+      "[t=840s] dp1 -> proceed-in-situ",
+      "[t=900s] m2.3: Demonstrate the full release extent established before any division: proximally to the arcade of Struthers, through the cubital tunnel, and distally through the flexor carpi ulnaris aponeurosis until the motor branches - the nerve under direct vision along the whole length to be released",
+      "[t=960s] m3.1: Confirm the cubital tunnel retinaculum (Osborne's ligament) is fully exposed, with the protected nerve seen entering the tunnel",
+      "[t=1020s] m3.2: Second look: re-confirm the identified nerve, the cutaneous-branch account and the release extent before division",
+      "[t=1080s] m3.3: Pre-division pause: the identified nerve, the branch account and the release extent are confirmed aloud before any fascial structure is divided",
+      "[t=1140s] m4.1: Divide the arcade of Struthers and the proximal fascia, when present, as part of the proximal decompression - an unreleased arcade is the commonest proximal finding at revision (71.4%, T35)",
+      "[t=1140s] err.divide-unidentified: fascia.arcade-of-struthers divided before the nerves at risk were identified and protected (2 of 3 criteria met)",
+      "[t=1140s] ulnar nerve injury: the nerve was divided within the unopened fascia",
+      "[t=1140s] an unidentified critical structure (fascia.arcade-of-struthers) was divided before the nerves at risk were identified and protected (err.divide-unidentified)",
+      "[t=1200s] complication recognised: ulnar-nerve-injury",
+      "[t=1260s] help called: peripheral nerve surgery service",
+      "[t=1320s] dp3 -> convert-microscope-repair",
+      "[t=1380s] m7.3: Repair the injured nerve by epineurial repair under the operating microscope",
+      "[t=1380s] epineurial repair of the injured nerve performed under magnification",
+      "[t=1440s] m7.1: Deflate the tourniquet, achieve haemostasis and inspect the wound",
+      "[t=1500s] m7.2: Re-inspect the ulnar nerve along the whole released length and the medial antebrachial cutaneous branches at the end of the case",
+      "[t=1560s] m8.1: Close the subcutaneous layer and the skin (the tunnel is left open - that is the release)",
+      "[t=1620s] m8.2: Confirm the postoperative plan: active elbow range-of-motion exercises from postoperative day 3; after submuscular transposition, avoid forceful gripping for approximately three weeks",
+      "[t=1680s] m8.3: WHO Sign Out completed before the patient leaves the operating room"
+    ],
+    "plus": [
+      "Pre-division pause performed and the identification confirmed with the team before division (module safety culture, T20).",
+      "The nerve injury was recognised during the index operation and a definitive plan was made.",
+      "All three WHO checklist phases were completed at their integration points (T6)."
+    ],
+    "delta": [
+      "err.divide-unidentified — fascia.arcade-of-struthers divided before the nerves at risk were identified and protected (2 of 3 criteria met)",
+      "required microsteps not performed: m2.1, m5.1, m5.2, m5.3, m5.4, m6.1, m6.2"
+    ],
+    "directive": [
+      "Never divide the fascia of this release until the ulnar nerve is seen and protected: identify it proximal to the tunnel, in undisected tissue, and keep it under vision along the whole length to be released (T31). The injury this gate prevents is the operation's catastrophic one (T34)."
+    ],
+    "summary": [
+      "Verdict: FAIL (formative only — no construct evidence exists for these scores yet).",
+      "Checklist 76.7% (23/30), safety gate 3/4, process 4/5, physiology 7/7, management 5/5.",
+      "Attempt failed at t=1140s: an unidentified critical structure (fascia.arcade-of-struthers) was divided before the nerves at risk were identified and protected (err.divide-unidentified)",
+      "Next focus: err.divide-unidentified — fascia.arcade-of-struthers divided before the nerves at risk were identified and protected (2 of 3 criteria met)"
+    ]
+  },
+  "event_log": [
+    {
+      "t_s": 60.0,
+      "kind": "step",
+      "text": "m0.1: Review the referral, the electrodiagnostic confirmation, the symptom pattern and the McGowan grade; confirm ulnar neuropathy at the elbow and the indication for decompression"
+    },
+    {
+      "t_s": 120.0,
+      "kind": "step",
+      "text": "m0.2: Confirm consent and the operative plan: in-situ decompression as the primary configuration, with anterior transposition consented and planned should the stability assessment find the nerve unstable; consent covers injury to the medial antebrachial cutaneous nerve, including its painful-neuroma consequence"
+    },
+    {
+      "t_s": 180.0,
+      "kind": "step",
+      "text": "m0.3: Confirm team, resource tier and equipment plan for the case, including the operating microscope's availability should a nerve injury require repair"
+    },
+    {
+      "t_s": 240.0,
+      "kind": "step",
+      "text": "m0.4: Establish anaesthesia: brachial plexus block, the consulted cohort's standard anaesthetic for this operation"
+    },
+    {
+      "t_s": 300.0,
+      "kind": "step",
+      "text": "m0.5: Apply the pneumatic arm tourniquet for a bloodless, visualised field"
+    },
+    {
+      "t_s": 360.0,
+      "kind": "step",
+      "text": "m0.6: Position the patient supine with the arm on a hand table, the elbow free to range through full flexion and extension (the stability assessment requires the full range, intraoperatively)"
+    },
+    {
+      "t_s": 420.0,
+      "kind": "step",
+      "text": "m0.7: WHO Sign In completed before induction of anaesthesia"
+    },
+    {
+      "t_s": 480.0,
+      "kind": "step",
+      "text": "m0.8: Confirm that antibiotic prophylaxis is withheld: preoperative antibiotics do not demonstrate benefit for uncomplicated ulnar nerve release at the elbow (919 operations; infection 1.7% without vs 2.7% with prophylaxis, T33), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design"
+    },
+    {
+      "t_s": 540.0,
+      "kind": "step",
+      "text": "m0.9: WHO Time Out completed immediately before skin incision"
+    },
+    {
+      "t_s": 600.0,
+      "kind": "step",
+      "text": "m1.1: Make the longitudinal skin incision along the course of the ulnar nerve, between the medial epicondyle and the olecranon"
+    },
+    {
+      "t_s": 660.0,
+      "kind": "step",
+      "text": "m1.2: Dissect through the subcutaneous layer under direct vision: the branches of the medial antebrachial cutaneous nerve cross this field, and the 8-10 cm incision this operation needs puts them at risk along its whole length (T29)"
+    },
+    {
+      "t_s": 720.0,
+      "kind": "step",
+      "text": "m1.3: Demonstrate the medial antebrachial cutaneous nerve and its branches identified in the subcutaneous plane and protected - held clear of the dissection and of every division line along the whole incision"
+    },
+    {
+      "t_s": 780.0,
+      "kind": "step",
+      "text": "m2.2: Review the operative findings at the elbow and confirm the plan to proceed: in-situ decompression primary, transposition reserved for instability at the stability assessment"
+    },
+    {
+      "t_s": 840.0,
+      "kind": "decision",
+      "text": "dp1 -> proceed-in-situ"
+    },
+    {
+      "t_s": 900.0,
+      "kind": "step",
+      "text": "m2.3: Demonstrate the full release extent established before any division: proximally to the arcade of Struthers, through the cubital tunnel, and distally through the flexor carpi ulnaris aponeurosis until the motor branches - the nerve under direct vision along the whole length to be released"
+    },
+    {
+      "t_s": 960.0,
+      "kind": "step",
+      "text": "m3.1: Confirm the cubital tunnel retinaculum (Osborne's ligament) is fully exposed, with the protected nerve seen entering the tunnel"
+    },
+    {
+      "t_s": 1020.0,
+      "kind": "step",
+      "text": "m3.2: Second look: re-confirm the identified nerve, the cutaneous-branch account and the release extent before division"
+    },
+    {
+      "t_s": 1080.0,
+      "kind": "step",
+      "text": "m3.3: Pre-division pause: the identified nerve, the branch account and the release extent are confirmed aloud before any fascial structure is divided"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "step",
+      "text": "m4.1: Divide the arcade of Struthers and the proximal fascia, when present, as part of the proximal decompression - an unreleased arcade is the commonest proximal finding at revision (71.4%, T35)"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "error",
+      "text": "err.divide-unidentified: fascia.arcade-of-struthers divided before the nerves at risk were identified and protected (2 of 3 criteria met)"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "complication",
+      "text": "ulnar nerve injury: the nerve was divided within the unopened fascia"
+    },
+    {
+      "t_s": 1140.0,
+      "kind": "fail",
+      "text": "an unidentified critical structure (fascia.arcade-of-struthers) was divided before the nerves at risk were identified and protected (err.divide-unidentified)"
+    },
+    {
+      "t_s": 1200.0,
+      "kind": "recognise",
+      "text": "complication recognised: ulnar-nerve-injury"
+    },
+    {
+      "t_s": 1260.0,
+      "kind": "help",
+      "text": "help called: peripheral nerve surgery service"
+    },
+    {
+      "t_s": 1320.0,
+      "kind": "decision",
+      "text": "dp3 -> convert-microscope-repair"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "step",
+      "text": "m7.3: Repair the injured nerve by epineurial repair under the operating microscope"
+    },
+    {
+      "t_s": 1380.0,
+      "kind": "control",
+      "text": "epineurial repair of the injured nerve performed under magnification"
+    },
+    {
+      "t_s": 1440.0,
+      "kind": "step",
+      "text": "m7.1: Deflate the tourniquet, achieve haemostasis and inspect the wound"
+    },
+    {
+      "t_s": 1500.0,
+      "kind": "step",
+      "text": "m7.2: Re-inspect the ulnar nerve along the whole released length and the medial antebrachial cutaneous branches at the end of the case"
+    },
+    {
+      "t_s": 1560.0,
+      "kind": "step",
+      "text": "m8.1: Close the subcutaneous layer and the skin (the tunnel is left open - that is the release)"
+    },
+    {
+      "t_s": 1620.0,
+      "kind": "step",
+      "text": "m8.2: Confirm the postoperative plan: active elbow range-of-motion exercises from postoperative day 3; after submuscular transposition, avoid forceful gripping for approximately three weeks"
+    },
+    {
+      "t_s": 1680.0,
+      "kind": "step",
+      "text": "m8.3: WHO Sign Out completed before the patient leaves the operating room"
+    }
+  ]
+}
