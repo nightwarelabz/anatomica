@@ -186,19 +186,28 @@
     "nipple"
    ]
   },
-  "record_count": 6,
+  "record_count": 59,
   "record_representations": {
    "organ": 1,
-   "whole-concept": 5
+   "whole-concept": 5,
+   "fma-concept": 53
   },
   "records_by_subtree": {
    "integument-partof": 1,
    "epidermis-subdivision-isa": 4,
-   "hair-set-isa": 1
+   "hair-set-isa": 1,
+   "skin-layers": 11,
+   "skin-regions": 1,
+   "cells": 5,
+   "sensory": 2,
+   "appendage": 12,
+   "glands": 4,
+   "nail": 11,
+   "mammary": 7
   },
   "records_by_line": {
-   "skin": 1,
-   "appendage": 5
+   "skin": 20,
+   "appendage": 39
   },
   "boundary_closures": {
    "milestone_14_reproductive": {
@@ -1053,6 +1062,25 @@
     ]
    },
    "exact_name_zero_hit_count": 29
+  },
+  "fma_extension": {
+   "milestone": 38,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 53,
+   "geometry_absent": 53,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36/37 convention",
+   "accounting": "data/fma-intake-38.json"
+  },
+  "ta2_pass": {
+   "milestone": "M38",
+   "date": "2026-11-06",
+   "scope": "the 53 FMA-sourced records of this inventory (Milestone 38 intake); the 6 BP3D-sourced records are untouched by this pass",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer; extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "method": "tools/ta2_match_fma38.py (candidates) -> tools/ta2_decide_fma38.py (curated decisions) -> tools/ta2_pass_fma38.py (this application)",
+   "artifact": "data/ta2-name-pass.json (fma_inventory_integumentary)",
+   "resolved": 28,
+   "ambiguous": 4,
+   "not_found": 21
   }
  },
  "concepts": [
@@ -1431,6 +1459,1934 @@
     "set of facial hairs"
    ],
    "note": "the only named facial hair the release carries; keyed on its own concept under set of facial hairs (FMA70741), carried as class_concept_id. The eyebrow, its set class and the set of hairs above it all resolve to the same single mesh file (FJ2812), so the classes carry no geometry beyond this record's. There is no eyelash concept in the release (exact-name probe-verified)"
+  },
+  {
+   "record_id": "integ.epidermis",
+   "name": "Epidermis",
+   "ta_name": "epidermis",
+   "ta_code": 7046,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70596",
+   "concept_ids": [
+    "FMA70596"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Portion of tissue",
+    "Portion of epithelium",
+    "Multilaminar epithelium",
+    "Stratified squamous epithelium",
+    "Keratinized stratified squamous epithelium",
+    "Epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.dermis",
+   "name": "Dermis",
+   "ta_name": "dermis",
+   "ta_code": 7047,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70323",
+   "concept_ids": [
+    "FMA70323"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Portion of tissue",
+    "Portion of connective tissue",
+    "Irregular connective tissue",
+    "Dense irregular connective tissue",
+    "Dermis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hypodermis",
+   "name": "Hypodermis",
+   "ta_name": "tela subcutanea",
+   "ta_code": 7083,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70544",
+   "concept_ids": [
+    "FMA70544"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Portion of tissue",
+    "Portion of connective tissue",
+    "Irregular connective tissue",
+    "Loose connective tissue",
+    "Hypodermis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.basal-cell-layer-of-epidermis",
+   "name": "Basal cell layer of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67540",
+   "concept_ids": [
+    "FMA67540"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Layer of epidermis proper",
+    "Basal cell layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names the epidermis whole (7046) but carries no layer term for it in any form \u2014 the strata are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": "the FMA's class for the stratum basale of Milestone 15's clinical record (no class is named 'Stratum basale')"
+  },
+  {
+   "record_id": "integ.prickle-cell-layer-of-epidermis",
+   "name": "Prickle cell layer of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67542",
+   "concept_ids": [
+    "FMA67542"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Layer of epidermis proper",
+    "Prickle cell layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names the epidermis whole (7046) but carries no layer term for it in any form \u2014 the strata are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": "the FMA's class for the stratum spinosum of Milestone 15's clinical record"
+  },
+  {
+   "record_id": "integ.granular-layer-of-epidermis",
+   "name": "Granular layer of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70344",
+   "concept_ids": [
+    "FMA70344"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Layer of epidermis proper",
+    "Granular layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names the epidermis whole (7046) but carries no layer term for it in any form \u2014 the strata are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": "the FMA's class for the stratum granulosum of Milestone 15's clinical record"
+  },
+  {
+   "record_id": "integ.stratum-lucidum-of-epidermis",
+   "name": "Stratum lucidum of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70540",
+   "concept_ids": [
+    "FMA70540"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Layer of epidermis proper",
+    "Stratum lucidum of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names the epidermis whole (7046) but carries no layer term for it in any form \u2014 the strata are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": "the one stratum the FMA names in the classic Latin form"
+  },
+  {
+   "record_id": "integ.horny-layer-of-epidermis",
+   "name": "Horny layer of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67545",
+   "concept_ids": [
+    "FMA67545"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Layer of epidermis proper",
+    "Horny layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names the epidermis whole (7046) but carries no layer term for it in any form \u2014 the strata are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": "the FMA's class for the stratum corneum of Milestone 15's clinical record"
+  },
+  {
+   "record_id": "integ.papillary-layer-of-dermis",
+   "name": "Papillary layer of dermis",
+   "ta_name": "stratum papillare",
+   "ta_code": 7048,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA64776",
+   "concept_ids": [
+    "FMA64776"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Layer of dermis",
+    "Papillary layer of dermis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.reticular-layer-of-dermis",
+   "name": "Reticular layer of dermis",
+   "ta_name": "stratum reticulare",
+   "ta_code": 7050,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA64778",
+   "concept_ids": [
+    "FMA64778"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Layer of dermis",
+    "Reticular layer of dermis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.superficial-fascia",
+   "name": "Superficial fascia",
+   "ta_name": "tela subcutanea",
+   "ta_code": 7083,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9630",
+   "concept_ids": [
+    "FMA9630"
+   ],
+   "subtree": "skin-layers",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Fascia organ",
+    "Superficial fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the subcutaneous layer under its second name in Milestone 15's gap analysis; the release's deep fascial system is a separate filing (Milestone 15 sweep adjudication) and is not touched"
+  },
+  {
+   "record_id": "integ.skin-of-scalp",
+   "name": "Skin of scalp",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA24757",
+   "concept_ids": [
+    "FMA24757"
+   ],
+   "subtree": "skin-regions",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of skin",
+    "Segment of skin of head",
+    "Segment of skin of head proper",
+    "Skin of scalp"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Skin of scalp': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the scalp of Milestone 15's absence census, as skin; the class 'Scalp' (FMA46494) is a body-region aggregate, not skin, and is deferred"
+  },
+  {
+   "record_id": "integ.melanocyte",
+   "name": "Melanocyte",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70545",
+   "concept_ids": [
+    "FMA70545"
+   ],
+   "subtree": "cells",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Epithelial cell",
+    "Ecto-epithelial cell",
+    "Neurecto-epithelial cell",
+    "Melanocyte"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no epidermal cell terms at all \u2014 the skin's cells are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.merkel-cell",
+   "name": "Merkel cell",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70548",
+   "concept_ids": [
+    "FMA70548"
+   ],
+   "subtree": "cells",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Epithelial cell",
+    "Ecto-epithelial cell",
+    "General ecto-epithelial cell",
+    "Epidermal cell",
+    "Keratinized cell of epidermis",
+    "Merkel cell"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no epidermal cell terms at all \u2014 the skin's cells are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.langerhans-cell",
+   "name": "Langerhans cell",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA63072",
+   "concept_ids": [
+    "FMA63072"
+   ],
+   "subtree": "cells",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Hemal cell",
+    "Differentiated hemal cell",
+    "Mononuclear phagocyte",
+    "Antigen-presenting cell",
+    "Langerhans cell"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no epidermal cell terms at all \u2014 the skin's cells are Terminologia Histologica territory, as the nephron segments were at Milestone 37."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.keratinized-cell-of-epidermis",
+   "name": "Keratinized cell of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA62879",
+   "concept_ids": [
+    "FMA62879"
+   ],
+   "subtree": "cells",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Epithelial cell",
+    "Ecto-epithelial cell",
+    "General ecto-epithelial cell",
+    "Epidermal cell",
+    "Keratinized cell of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no epidermal cell terms at all \u2014 the skin's cells are Terminologia Histologica territory, as the nephron segments were at Milestone 37. The FMA itself carries no class named 'Keratinocyte'; this record and the nonkeratinized cell are its keratinocyte classes."
+   ],
+   "note": "the FMA carries no class named 'Keratinocyte' (absence-probed); this and the nonkeratinized cell are its epidermal keratinocyte classes"
+  },
+  {
+   "record_id": "integ.nonkeratinized-cell-of-epidermis",
+   "name": "Nonkeratinized cell of epidermis",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA62880",
+   "concept_ids": [
+    "FMA62880"
+   ],
+   "subtree": "cells",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Epithelial cell",
+    "Ecto-epithelial cell",
+    "General ecto-epithelial cell",
+    "Epidermal cell",
+    "Nonkeratinized cell of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no epidermal cell terms at all \u2014 the skin's cells are Terminologia Histologica territory, as the nephron segments were at Milestone 37. The FMA itself carries no class named 'Keratinocyte'; this record and the keratinized cell are its keratinocyte classes."
+   ],
+   "note": "the FMA carries no class named 'Keratinocyte' (absence-probed); this and the keratinized cell are its epidermal keratinocyte classes"
+  },
+  {
+   "record_id": "integ.pacinian-corpuscle",
+   "name": "Pacinian corpuscle",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA83604",
+   "concept_ids": [
+    "FMA83604"
+   ],
+   "subtree": "sensory",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Sensory receptor",
+    "Exteroceptor",
+    "Contact receptor",
+    "Pacinian corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no lamellar (Pacinian) corpuscle term anywhere in its naming apparatus; the cutaneous corpuscles are Terminologia Histologica territory in the served table, as the epidermal strata are."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.meissners-corpuscle",
+   "name": "Meissner's corpuscle",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA83605",
+   "concept_ids": [
+    "FMA83605"
+   ],
+   "subtree": "sensory",
+   "line": "skin",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cell",
+    "Nucleated cell",
+    "Somatic cell",
+    "Sensory receptor",
+    "Exteroceptor",
+    "Contact receptor",
+    "Meissner's corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's served table names no tactile (Meissner) corpuscle term anywhere in its naming apparatus; the worksheet's sole candidate, 6728 plexus submucosus, is a submucosal nerve plexus \u2014 class mismatch. The cutaneous corpuscles are Terminologia Histologica territory in the served table."
+   ],
+   "note": "the lamellar/tactile corpuscle pair of Milestone 15's gap analysis; the OWL text encodes this class's preferred name with an XML entity for the apostrophe, and the record carries the decoded name"
+  },
+  {
+   "record_id": "integ.hair-follicle",
+   "name": "Hair follicle",
+   "ta_name": "folliculus pili",
+   "ta_code": 7064,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70660",
+   "concept_ids": [
+    "FMA70660"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Hair follicle"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hair-shaft",
+   "name": "Hair shaft",
+   "ta_name": "stipes pili",
+   "ta_code": 7063,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70728",
+   "concept_ids": [
+    "FMA70728"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair",
+    "Hair shaft"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hair-root",
+   "name": "Hair root",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70730",
+   "concept_ids": [
+    "FMA70730"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair",
+    "Hair root"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's hair apparatus in the served table is exactly 7053 pili, 7064 folliculus pili, 7063 stipes pili, 7057 cilia and 7058 pili barbae; the worksheet's CORE candidates are the shaft and the follicle \u2014 class mismatch \u2014 and no term names this record's structure."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hair-papilla",
+   "name": "Hair papilla",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA322851",
+   "concept_ids": [
+    "FMA322851"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair follicle",
+    "Region of lower segment of hair follicle",
+    "Hair papilla"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's hair apparatus in the served table is exactly 7053 pili, 7064 folliculus pili, 7063 stipes pili, 7057 cilia and 7058 pili barbae; the worksheet's CORE candidates are the shaft and the follicle \u2014 class mismatch \u2014 and no term names this record's structure."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hair-matrix",
+   "name": "Hair matrix",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70945",
+   "concept_ids": [
+    "FMA70945"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair",
+    "Hair matrix"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2's hair apparatus in the served table is exactly 7053 pili, 7064 folliculus pili, 7063 stipes pili, 7057 cilia and 7058 pili barbae; the worksheet's CORE candidates are the shaft and the follicle \u2014 class mismatch \u2014 and no term names this record's structure."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.cortex-of-hair",
+   "name": "Cortex of hair",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70934",
+   "concept_ids": [
+    "FMA70934"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair",
+    "Cortex of hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Cortex of hair': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.cuticle-of-hair",
+   "name": "Cuticle of hair",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70933",
+   "concept_ids": [
+    "FMA70933"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair",
+    "Cuticle of hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Cuticle of hair': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.bulb-of-hair-follicle",
+   "name": "Bulb of hair follicle",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70666",
+   "concept_ids": [
+    "FMA70666"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of hair follicle",
+    "Region of lower segment of hair follicle",
+    "Bulb of hair follicle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Bulb of hair follicle': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the FMA's class for the hair bulb of Milestone 15's clinical record (no class is named 'Hair bulb')"
+  },
+  {
+   "record_id": "integ.dermal-papilla",
+   "name": "Dermal papilla",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70737",
+   "concept_ids": [
+    "FMA70737"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of papillary layer of dermis",
+    "Dermal papilla"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Dermal papilla': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the dermal papilla of the hair follicle; Milestone 15's gap analysis names 'the dermal papilla' absent"
+  },
+  {
+   "record_id": "integ.sebaceous-gland",
+   "name": "Sebaceous gland",
+   "ta_name": "glandula sebacea",
+   "ta_code": 7082,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA59160",
+   "concept_ids": [
+    "FMA59160"
+   ],
+   "subtree": "glands",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Simple exocrine gland",
+    "Simple branched acinar gland",
+    "Sebaceous gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.sweat-gland",
+   "name": "Sweat gland",
+   "ta_name": "glandulae sudoriferae",
+   "ta_code": 7079,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA59152",
+   "concept_ids": [
+    "FMA59152"
+   ],
+   "subtree": "glands",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Simple exocrine gland",
+    "Simple coiled tubular gland",
+    "Sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.eccrine-sweat-gland",
+   "name": "Eccrine sweat gland",
+   "ta_name": "glandula sudorifera merocrina",
+   "ta_code": 7080,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA59154",
+   "concept_ids": [
+    "FMA59154"
+   ],
+   "subtree": "glands",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Simple exocrine gland",
+    "Simple coiled tubular gland",
+    "Sweat gland",
+    "Eccrine sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.apocrine-sweat-gland",
+   "name": "Apocrine sweat gland",
+   "ta_name": "glandula sudorifera apocrina",
+   "ta_code": 7081,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA59155",
+   "concept_ids": [
+    "FMA59155"
+   ],
+   "subtree": "glands",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Simple exocrine gland",
+    "Simple coiled tubular gland",
+    "Sweat gland",
+    "Apocrine sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.nail",
+   "name": "Nail",
+   "ta_name": "unguis",
+   "ta_code": 7065,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54326",
+   "concept_ids": [
+    "FMA54326"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Skin appendage",
+    "Nail"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.nail-of-finger",
+   "name": "Nail of finger",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54327",
+   "concept_ids": [
+    "FMA54327"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Skin appendage",
+    "Nail",
+    "Nail of finger"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the nail once, undivided by digit (7065 unguis); the term's denotation strictly contains this record's (the nails of the fingers only) \u2014 the Milestone 35 containment pattern, so the term is not entered."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.nail-of-toe",
+   "name": "Nail of toe",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54328",
+   "concept_ids": [
+    "FMA54328"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Skin appendage",
+    "Nail",
+    "Nail of toe"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the nail once, undivided by digit (7065 unguis); the term's denotation strictly contains this record's (the nails of the toes only) \u2014 the Milestone 35 containment pattern, so the term is not entered."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.root-of-nail",
+   "name": "Root of nail",
+   "ta_name": "radix unguis",
+   "ta_code": 7076,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA60128",
+   "concept_ids": [
+    "FMA60128"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of nail",
+    "Root of nail"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.nail-matrix",
+   "name": "Nail matrix",
+   "ta_name": "matrix unguis",
+   "ta_code": 7077,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77856",
+   "concept_ids": [
+    "FMA77856"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Nail matrix"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.lunule-of-nail",
+   "name": "Lunule of nail",
+   "ta_name": "lunula unguis",
+   "ta_code": 7067,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77858",
+   "concept_ids": [
+    "FMA77858"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of nail",
+    "Subdivision of body of nail",
+    "Lunule of nail"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.eponychium",
+   "name": "Eponychium",
+   "ta_name": "eponychium",
+   "ta_code": 7072,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77859",
+   "concept_ids": [
+    "FMA77859"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Organ component layer of skin",
+    "Eponychium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.hyponychium",
+   "name": "Hyponychium",
+   "ta_name": "hyponychium",
+   "ta_code": 7073,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77860",
+   "concept_ids": [
+    "FMA77860"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Organ component layer of skin",
+    "Hyponychium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.body-of-nail",
+   "name": "Body of nail",
+   "ta_name": "lamina unguis",
+   "ta_code": 7066,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA60127",
+   "concept_ids": [
+    "FMA60127"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Region of tissue component",
+    "Region of nail",
+    "Body of nail"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the nail plate of Milestone 15's clinical record"
+  },
+  {
+   "record_id": "integ.nail-bed-of-finger",
+   "name": "Nail bed of finger",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA60348",
+   "concept_ids": [
+    "FMA60348"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of skin",
+    "Skin of limb",
+    "Segment of skin of upper limb",
+    "Segment of skin of free upper limb",
+    "Skin of part of hand",
+    "Segment of skin of finger",
+    "Segment of skin of dorsal part of finger",
+    "Nail bed of finger"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the nail bed once, undivided (7074 lectulus, under 7065 unguis); the FMA divides it by region (finger and toe generics, then per-digit classes), and the generic term's denotation strictly contains this record's \u2014 the Milestone 35 containment pattern."
+   ],
+   "note": "the FMA carries the nail bed only per region \u2014 this generic and the toe generic, then per-digit classes (deferred); no class is named 'Nail bed'"
+  },
+  {
+   "record_id": "integ.nail-bed-of-toe",
+   "name": "Nail bed of toe",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA60529",
+   "concept_ids": [
+    "FMA60529"
+   ],
+   "subtree": "nail",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of skin",
+    "Skin of limb",
+    "Segment of skin of lower limb",
+    "Segment of skin of free lower limb",
+    "Segment of skin of foot",
+    "Segment of skin of dorsal part of toe",
+    "Nail bed of toe"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the nail bed once, undivided (7074 lectulus, under 7065 unguis); the FMA divides it by region (finger and toe generics, then per-digit classes), and the generic term's denotation strictly contains this record's \u2014 the Milestone 35 containment pattern."
+   ],
+   "note": "the FMA carries the nail bed only per region \u2014 this generic and the finger generic, then per-digit classes (deferred); no class is named 'Nail bed'"
+  },
+  {
+   "record_id": "integ.eyelash",
+   "name": "Eyelash",
+   "ta_name": "cilia",
+   "ta_code": 7057,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA53669",
+   "concept_ids": [
+    "FMA53669"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Skin appendage",
+    "Hair",
+    "Hair of body region",
+    "Hair of head",
+    "Eyelash"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.beard",
+   "name": "Beard",
+   "ta_name": "pili barbae",
+   "ta_code": 7058,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54240",
+   "concept_ids": [
+    "FMA54240"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ regions",
+    "Set of hairs",
+    "Set of facial hairs",
+    "Beard"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.vellus-hair",
+   "name": "Vellus hair",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA70668",
+   "concept_ids": [
+    "FMA70668"
+   ],
+   "subtree": "appendage",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal tissue part",
+    "Tissue component of epithelium",
+    "Subdivision of epidermis",
+    "Skin appendage",
+    "Hair",
+    "Vellus hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Vellus hair': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.left-mammary-gland",
+   "name": "Left mammary gland",
+   "ta_name": "glandula mammaria",
+   "ta_code": 7099,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA286452",
+   "concept_ids": [
+    "FMA286456"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Organ cluster",
+    "Mammary gland",
+    "Left mammary gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "owned by this module under the Milestone 15 adjudication \u2014 a modified sweat gland; the counter-consideration (an accessory gland of the female reproductive system) is recorded on the clinical record organ.mammary-gland and stands"
+  },
+  {
+   "record_id": "integ.right-mammary-gland",
+   "name": "Right mammary gland",
+   "ta_name": "glandula mammaria",
+   "ta_code": 7099,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA286452",
+   "concept_ids": [
+    "FMA286454"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Organ cluster",
+    "Mammary gland",
+    "Right mammary gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "owned by this module under the Milestone 15 adjudication \u2014 a modified sweat gland; the counter-consideration (an accessory gland of the female reproductive system) is recorded on the clinical record organ.mammary-gland and stands"
+  },
+  {
+   "record_id": "integ.left-nipple",
+   "name": "Left nipple",
+   "ta_name": "papilla mammaria",
+   "ta_code": 7105,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67771",
+   "concept_ids": [
+    "FMA223695"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of thorax",
+    "Region of anterior chest",
+    "Region of pectoral part of chest",
+    "Region of breast",
+    "Nipple",
+    "Left nipple"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.right-nipple",
+   "name": "Right nipple",
+   "ta_name": "papilla mammaria",
+   "ta_code": 7105,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67771",
+   "concept_ids": [
+    "FMA223693"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of thorax",
+    "Region of anterior chest",
+    "Region of pectoral part of chest",
+    "Region of breast",
+    "Nipple",
+    "Right nipple"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.left-areola",
+   "name": "Left areola",
+   "ta_name": "areola mammae",
+   "ta_code": 7106,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67796",
+   "concept_ids": [
+    "FMA67920"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of thorax",
+    "Region of anterior chest",
+    "Region of pectoral part of chest",
+    "Region of breast",
+    "Areola",
+    "Left areola"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.right-areola",
+   "name": "Right areola",
+   "ta_name": "areola mammae",
+   "ta_code": 7106,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA67796",
+   "concept_ids": [
+    "FMA67919"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of thorax",
+    "Region of anterior chest",
+    "Region of pectoral part of chest",
+    "Region of breast",
+    "Areola",
+    "Right areola"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "integ.lactiferous-duct",
+   "name": "Lactiferous duct",
+   "ta_name": "ductus lactiferi",
+   "ta_code": 7103,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA58006",
+   "concept_ids": [
+    "FMA58006"
+   ],
+   "subtree": "mammary",
+   "line": "appendage",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of lactiferous gland",
+    "Lactiferous duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
   }
  ]
 }

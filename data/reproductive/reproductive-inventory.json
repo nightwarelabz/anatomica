@@ -100,11 +100,12 @@
     "urethra": "urinary module record 'urethra' (FMA19667): the release's single unsexed urethra concept, held by Milestone 12; cross-referenced by this module's male pathway record, never duplicated"
    }
   },
-  "record_count": 13,
+  "record_count": 146,
   "record_representations": {
    "whole-concept": 10,
    "organ": 2,
-   "partof-concept": 1
+   "partof-concept": 1,
+   "fma-concept": 133
   },
   "records_by_subtree": {
    "epididymis-isa": 2,
@@ -115,12 +116,24 @@
    "corpus-spongiosum-isa": 1,
    "glans-zone-isa": 1,
    "mons-pubis-partof": 1,
-   "perineum-partof": 2
+   "perineum-partof": 2,
+   "ovary": 11,
+   "uterine-tube": 9,
+   "uterus": 19,
+   "vagina": 5,
+   "vulva": 12,
+   "perineum-shared": 1,
+   "male-pathway": 21,
+   "testis-interior": 20,
+   "epididymis-parts": 6,
+   "prostate-parts": 8,
+   "cord-scrotum": 12,
+   "penis-parts": 9
   },
   "records_by_sex_line": {
-   "male": 10,
-   "female": 1,
-   "shared": 2
+   "male": 86,
+   "female": 57,
+   "shared": 3
   },
   "instance_records": [
    "left epididymis",
@@ -1200,6 +1213,33 @@
     "female": 22,
     "shared": 4
    }
+  },
+  "fma_extension": {
+   "milestone": 37,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 57,
+   "geometry_absent": 57,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or kidney-suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36 convention",
+   "accounting": "data/fma-intake-37.json"
+  },
+  "ta2_pass": {
+   "milestone": "M38",
+   "date": "2026-11-06",
+   "scope": "all 133 FMA-sourced records of this inventory (57 Milestone 37 female intake + 76 Milestone 38 male intake); the 13 BP3D-sourced records are untouched by this pass",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer; extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "method": "Milestone 37 records: tools/ta2_match_fma37.py -> tools/ta2_decide_fma37.py; Milestone 38 records: tools/ta2_match_fma38.py -> tools/ta2_decide_fma38.py; applied by tools/ta2_pass_fma38.py (this application)",
+   "artifact": "data/ta2-name-pass.json (fma_inventory_reproductive)",
+   "resolved": 120,
+   "ambiguous": 1,
+   "not_found": 12
+  },
+  "fma_extension_38": {
+   "milestone": 38,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 76,
+   "geometry_absent": 76,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36/37 convention",
+   "accounting": "data/fma-intake-38.json"
   }
  },
  "concepts": [
@@ -1913,6 +1953,5114 @@
     "perineum"
    ],
    "note": "PART-OF child of the perineum; the release gives it the same mesh files as its parent"
+  },
+  {
+   "record_id": "repro.left-ovary",
+   "name": "Left ovary",
+   "ta_name": "ovarium",
+   "ta_code": 3470,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA7209",
+   "concept_ids": [
+    "FMA7214"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Corticomedullary organ",
+    "Ovary",
+    "Left ovary"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-ovary",
+   "name": "Right ovary",
+   "ta_name": "ovarium",
+   "ta_code": 3470,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA7209",
+   "concept_ids": [
+    "FMA7213"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Corticomedullary organ",
+    "Ovary",
+    "Right ovary"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.follicle-of-ovary",
+   "name": "Follicle of ovary",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18640",
+   "concept_ids": [
+    "FMA18640"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Follicle of ovary"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no generic ovarian follicle: only the vesicular stage (3482 folliculi ovarici vesiculosi) among the ovary's terms; the FMA class is the follicle generic, broader than the stage term. (The worksheet's only candidate, 3834 ligamentum proprium ovarii, is the ovarian ligament \u2014 class mismatch.)"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.corpus-luteum",
+   "name": "Corpus luteum",
+   "ta_name": "corpus luteum",
+   "ta_code": 3484,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18619",
+   "concept_ids": [
+    "FMA18619"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Corpus luteum"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.corpus-albicans",
+   "name": "Corpus albicans",
+   "ta_name": "corpus albicans",
+   "ta_code": 3485,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18620",
+   "concept_ids": [
+    "FMA18620"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Corpus albicans"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.hilum-of-ovary",
+   "name": "Hilum of ovary",
+   "ta_name": "hilum ovarii",
+   "ta_code": 3471,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18652",
+   "concept_ids": [
+    "FMA18652"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical conduit space",
+    "Anatomical orifice",
+    "Hilum",
+    "Hilum of ovary"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-ovarian-ligament",
+   "name": "Left ovarian ligament",
+   "ta_name": "ligamentum proprium ovarii",
+   "ta_code": 3834,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55422",
+   "concept_ids": [
+    "FMA55424"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Ligament organ",
+    "Nonskeletal ligament",
+    "Ovarian ligament",
+    "Left ovarian ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-ovarian-ligament",
+   "name": "Right ovarian ligament",
+   "ta_name": "ligamentum proprium ovarii",
+   "ta_code": 3834,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55422",
+   "concept_ids": [
+    "FMA55423"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Ligament organ",
+    "Nonskeletal ligament",
+    "Ovarian ligament",
+    "Right ovarian ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.suspensory-ligament-of-ovary",
+   "name": "Suspensory ligament of ovary",
+   "ta_name": "ligamentum suspensorium ovarii",
+   "ta_code": 3805,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19822",
+   "concept_ids": [
+    "FMA19822"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Mesentery",
+    "Suspensory ligament of ovary"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-mesovarium",
+   "name": "Left mesovarium",
+   "ta_name": "mesovarium",
+   "ta_code": 3803,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19815",
+   "concept_ids": [
+    "FMA19818"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesovarium",
+    "Left mesovarium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-mesovarium",
+   "name": "Right mesovarium",
+   "ta_name": "mesovarium",
+   "ta_code": 3803,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19815",
+   "concept_ids": [
+    "FMA19817"
+   ],
+   "subtree": "ovary",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesovarium",
+    "Right mesovarium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-uterine-tube",
+   "name": "Left uterine tube",
+   "ta_name": "tuba uterina",
+   "ta_code": 3486,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18245",
+   "concept_ids": [
+    "FMA18484"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Uterine tube",
+    "Left uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-uterine-tube",
+   "name": "Right uterine tube",
+   "ta_name": "tuba uterina",
+   "ta_code": 3486,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18245",
+   "concept_ids": [
+    "FMA18483"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Uterine tube",
+    "Right uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.infundibulum-of-uterine-tube",
+   "name": "Infundibulum of uterine tube",
+   "ta_name": "infundibulum tubae uterinae",
+   "ta_code": 3488,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18307",
+   "concept_ids": [
+    "FMA18307"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterine tube",
+    "Infundibulum of uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.fimbria-of-uterine-tube",
+   "name": "Fimbria of uterine tube",
+   "ta_name": "fimbriae tubae uterinae",
+   "ta_code": 3489,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18308",
+   "concept_ids": [
+    "FMA18308"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterine tube",
+    "Fimbria of uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.ampulla-of-uterine-tube",
+   "name": "Ampulla of uterine tube",
+   "ta_name": "ampulla tubae uterinae",
+   "ta_code": 3491,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18305",
+   "concept_ids": [
+    "FMA18305"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterine tube",
+    "Ampulla of uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.isthmus-of-uterine-tube",
+   "name": "Isthmus of uterine tube",
+   "ta_name": "isthmus tubae uterinae",
+   "ta_code": 3492,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18306",
+   "concept_ids": [
+    "FMA18306"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterine tube",
+    "Isthmus of uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.uterine-part-of-uterine-tube",
+   "name": "Uterine part of uterine tube",
+   "ta_name": "pars uterina tubae uterinae",
+   "ta_code": 3493,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18309",
+   "concept_ids": [
+    "FMA18309"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterine tube",
+    "Uterine part of uterine tube"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-mesosalpinx",
+   "name": "Left mesosalpinx",
+   "ta_name": "mesosalpinx",
+   "ta_code": 3802,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19808",
+   "concept_ids": [
+    "FMA19810"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesosalpinx",
+    "Left mesosalpinx"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-mesosalpinx",
+   "name": "Right mesosalpinx",
+   "ta_name": "mesosalpinx",
+   "ta_code": 3802,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19808",
+   "concept_ids": [
+    "FMA19809"
+   ],
+   "subtree": "uterine-tube",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesosalpinx",
+    "Right mesosalpinx"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.uterus",
+   "name": "Uterus",
+   "ta_name": "uterus",
+   "ta_code": 3500,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17558",
+   "concept_ids": [
+    "FMA17558"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.body-of-uterus",
+   "name": "Body of uterus",
+   "ta_name": "corpus uteri",
+   "ta_code": 3502,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17739",
+   "concept_ids": [
+    "FMA17739"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterus",
+    "Body of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.fundus-of-uterus",
+   "name": "Fundus of uterus",
+   "ta_name": "fundus uteri",
+   "ta_code": 3501,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17561",
+   "concept_ids": [
+    "FMA17561"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterus",
+    "Fundus of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.endometrium",
+   "name": "Endometrium",
+   "ta_name": "endometrium",
+   "ta_code": 3521,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17742",
+   "concept_ids": [
+    "FMA17742"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Endometrium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.myometrium",
+   "name": "Myometrium",
+   "ta_name": "myometrium",
+   "ta_code": 3520,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17743",
+   "concept_ids": [
+    "FMA17743"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Myometrium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.cavity-of-uterus",
+   "name": "Cavity of uterus",
+   "ta_name": "cavitas uteri",
+   "ta_code": 3503,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17745",
+   "concept_ids": [
+    "FMA17745"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical cavity",
+    "Organ cavity",
+    "Cavity of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.cervix-of-uterus",
+   "name": "Cervix of uterus",
+   "ta_name": "cervix uteri",
+   "ta_code": 3508,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17740",
+   "concept_ids": [
+    "FMA17740"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of uterus",
+    "Cervix of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the cervix"
+  },
+  {
+   "record_id": "repro.supravaginal-part-of-cervix",
+   "name": "Supravaginal part of cervix",
+   "ta_name": "portio supravaginalis cervicis",
+   "ta_code": 3509,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77055",
+   "concept_ids": [
+    "FMA77055"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of cervix",
+    "Supravaginal part of cervix"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.vaginal-part-of-cervix",
+   "name": "Vaginal part of cervix",
+   "ta_name": "portio vaginalis cervicis",
+   "ta_code": 3511,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77056",
+   "concept_ids": [
+    "FMA77056"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of cervix",
+    "Vaginal part of cervix"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.serosa-of-uterus",
+   "name": "Serosa of uterus",
+   "ta_name": "perimetrium",
+   "ta_code": 3518,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA17744",
+   "concept_ids": [
+    "FMA17744"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Serosa",
+    "Serosa of organ",
+    "Serosa of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's preferred name for the perimetrium"
+  },
+  {
+   "record_id": "repro.broad-ligament-of-uterus",
+   "name": "Broad ligament of uterus",
+   "ta_name": "ligamentum latum uteri",
+   "ta_code": 3800,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16516",
+   "concept_ids": [
+    "FMA16516"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Mesentery",
+    "Broad ligament of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the broad ligament"
+  },
+  {
+   "record_id": "repro.left-round-ligament-of-uterus",
+   "name": "Left round ligament of uterus",
+   "ta_name": "ligamentum teres uteri",
+   "ta_code": 3835,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20420",
+   "concept_ids": [
+    "FMA57790"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Ligament organ",
+    "Nonskeletal ligament",
+    "Round ligament of uterus",
+    "Left round ligament of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-round-ligament-of-uterus",
+   "name": "Right round ligament of uterus",
+   "ta_name": "ligamentum teres uteri",
+   "ta_code": 3835,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20420",
+   "concept_ids": [
+    "FMA57789"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Ligament organ",
+    "Nonskeletal ligament",
+    "Round ligament of uterus",
+    "Right round ligament of uterus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-mesometrium",
+   "name": "Left mesometrium",
+   "ta_name": "mesometrium",
+   "ta_code": 3801,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19816",
+   "concept_ids": [
+    "FMA19820"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesometrium",
+    "Left mesometrium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-mesometrium",
+   "name": "Right mesometrium",
+   "ta_name": "mesometrium",
+   "ta_code": 3801,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19816",
+   "concept_ids": [
+    "FMA19819"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of mesentery",
+    "Region of broad ligament",
+    "Mesometrium",
+    "Right mesometrium"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-uterosacral-ligament",
+   "name": "Left uterosacral ligament",
+   "ta_name": "ligamentum uterosacrale",
+   "ta_code": 3840,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19111",
+   "concept_ids": [
+    "FMA19120"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of internal fascia",
+    "Zone of abdominal fascia",
+    "Zone of pelvic fascia",
+    "Dense endopelvic fascia",
+    "Uterosacral ligament",
+    "Left uterosacral ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-uterosacral-ligament",
+   "name": "Right uterosacral ligament",
+   "ta_name": "ligamentum uterosacrale",
+   "ta_code": 3840,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19111",
+   "concept_ids": [
+    "FMA19119"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of internal fascia",
+    "Zone of abdominal fascia",
+    "Zone of pelvic fascia",
+    "Dense endopelvic fascia",
+    "Uterosacral ligament",
+    "Right uterosacral ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-cardinal-ligament",
+   "name": "Left cardinal ligament",
+   "ta_name": "ligamentum cardinale",
+   "ta_code": 3839,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77064",
+   "concept_ids": [
+    "FMA302830"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Mesentery",
+    "Cardinal ligament",
+    "Left cardinal ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the transverse cervical (Mackenrodt) ligament"
+  },
+  {
+   "record_id": "repro.right-cardinal-ligament",
+   "name": "Right cardinal ligament",
+   "ta_name": "ligamentum cardinale",
+   "ta_code": 3839,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77064",
+   "concept_ids": [
+    "FMA302828"
+   ],
+   "subtree": "uterus",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Mesentery",
+    "Cardinal ligament",
+    "Right cardinal ligament"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the transverse cervical (Mackenrodt) ligament"
+  },
+  {
+   "record_id": "repro.vagina",
+   "name": "Vagina",
+   "ta_name": "vagina",
+   "ta_code": 3523,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19949",
+   "concept_ids": [
+    "FMA19949"
+   ],
+   "subtree": "vagina",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Cavitated organ",
+    "Organ with organ cavity",
+    "Vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.fornix-of-vagina",
+   "name": "Fornix of vagina",
+   "ta_name": "fornix vaginae",
+   "ta_code": 3524,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19985",
+   "concept_ids": [
+    "FMA19985"
+   ],
+   "subtree": "vagina",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Fornix of vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.anterior-fornix-of-vagina",
+   "name": "Anterior fornix of vagina",
+   "ta_name": "pars anterior fornicis vaginae",
+   "ta_code": 3525,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19986",
+   "concept_ids": [
+    "FMA19986"
+   ],
+   "subtree": "vagina",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Fornix of vagina",
+    "Anterior fornix of vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.posterior-fornix-of-vagina",
+   "name": "Posterior fornix of vagina",
+   "ta_name": "pars posterior fornicis vaginae",
+   "ta_code": 3526,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19987",
+   "concept_ids": [
+    "FMA19987"
+   ],
+   "subtree": "vagina",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Fornix of vagina",
+    "Posterior fornix of vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.hymen-of-vagina",
+   "name": "Hymen of vagina",
+   "ta_name": "hymen",
+   "ta_code": 3530,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20005",
+   "concept_ids": [
+    "FMA20005"
+   ],
+   "subtree": "vagina",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of vagina",
+    "Hymen of vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class name for the hymen"
+  },
+  {
+   "record_id": "repro.vulva",
+   "name": "Vulva",
+   "ta_name": "vulva",
+   "ta_code": 3547,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20462",
+   "concept_ids": [
+    "FMA20462"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Pudendum",
+    "Vulva"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.clitoris",
+   "name": "Clitoris",
+   "ta_name": "clitoris",
+   "ta_code": 3565,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9909",
+   "concept_ids": [
+    "FMA9909"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of female perineum",
+    "Clitoris"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.glans-of-clitoris",
+   "name": "Glans of clitoris",
+   "ta_name": "glans clitoridis",
+   "ta_code": 3568,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19999",
+   "concept_ids": [
+    "FMA19999"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of cavernous organ",
+    "Glans of clitoris"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-labium-majus",
+   "name": "Left labium majus",
+   "ta_name": "labium majus vulvae",
+   "ta_code": 3549,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20367",
+   "concept_ids": [
+    "FMA20372"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of female perineum",
+    "Labium majus",
+    "Left labium majus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-labium-majus",
+   "name": "Right labium majus",
+   "ta_name": "labium majus vulvae",
+   "ta_code": 3549,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20367",
+   "concept_ids": [
+    "FMA20369"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of female perineum",
+    "Labium majus",
+    "Right labium majus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-labium-minus",
+   "name": "Left labium minus",
+   "ta_name": "labium minus vulvae",
+   "ta_code": 3553,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20374",
+   "concept_ids": [
+    "FMA20381"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of female perineum",
+    "Labium minus",
+    "Left labium minus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-labium-minus",
+   "name": "Right labium minus",
+   "ta_name": "labium minus vulvae",
+   "ta_code": 3553,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20374",
+   "concept_ids": [
+    "FMA20380"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of female perineum",
+    "Labium minus",
+    "Right labium minus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.vestibule-of-vagina",
+   "name": "Vestibule of vagina",
+   "ta_name": "vestibulum vaginae",
+   "ta_code": 3558,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19970",
+   "concept_ids": [
+    "FMA19970"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Immaterial anatomical entity",
+    "Anatomical space",
+    "Anatomical cavity",
+    "Vestibule",
+    "Vestibule of vagina"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-greater-vestibular-gland",
+   "name": "Left greater vestibular gland",
+   "ta_name": "glandula vestibularis major",
+   "ta_code": 3563,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9598",
+   "concept_ids": [
+    "FMA20012"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Lobular organ",
+    "Vestibular gland",
+    "Greater vestibular gland",
+    "Left greater vestibular gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "Bartholin's gland"
+  },
+  {
+   "record_id": "repro.right-greater-vestibular-gland",
+   "name": "Right greater vestibular gland",
+   "ta_name": "glandula vestibularis major",
+   "ta_code": 3563,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9598",
+   "concept_ids": [
+    "FMA20011"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Lobular organ",
+    "Vestibular gland",
+    "Greater vestibular gland",
+    "Right greater vestibular gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "Bartholin's gland"
+  },
+  {
+   "record_id": "repro.left-lesser-vestibular-gland",
+   "name": "Left lesser vestibular gland",
+   "ta_name": "glandulae vestibulares minores",
+   "ta_code": 3564,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20019",
+   "concept_ids": [
+    "FMA0328531"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Lobular organ",
+    "Vestibular gland",
+    "Lesser vestibular gland",
+    "Left lesser vestibular gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-lesser-vestibular-gland",
+   "name": "Right lesser vestibular gland",
+   "ta_name": "glandulae vestibulares minores",
+   "ta_code": 3564,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20019",
+   "concept_ids": [
+    "FMA0328530"
+   ],
+   "subtree": "vulva",
+   "sex_line": "female",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Lobular organ",
+    "Vestibular gland",
+    "Lesser vestibular gland",
+    "Right lesser vestibular gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.perineal-body",
+   "name": "Perineal body",
+   "ta_name": "corpus perineale",
+   "ta_code": 2398,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA20274",
+   "concept_ids": [
+    "FMA20274"
+   ],
+   "subtree": "perineum-shared",
+   "sex_line": "shared",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Decussation",
+    "Perineal body"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "boundary call (Milestone 37): a sex-shared midline structure named absent on Milestone 14's shared probe line; recorded under the reproductive module, which owns the perineum records, with sex_line 'shared'"
+  },
+  {
+   "record_id": "repro.left-deferent-duct",
+   "name": "Left deferent duct",
+   "ta_name": "ductus deferens",
+   "ta_code": 3621,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19234",
+   "concept_ids": [
+    "FMA19236"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Deferent duct",
+    "Left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis \u2014 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
+  },
+  {
+   "record_id": "repro.right-deferent-duct",
+   "name": "Right deferent duct",
+   "ta_name": "ductus deferens",
+   "ta_code": 3621,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19234",
+   "concept_ids": [
+    "FMA19235"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Deferent duct",
+    "Right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis \u2014 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
+  },
+  {
+   "record_id": "repro.left-deferent-duct-proper",
+   "name": "Left deferent duct proper",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19258",
+   "concept_ids": [
+    "FMA19261"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Deferent duct proper",
+    "Left deferent duct proper"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the deferent duct's main course segment in the FMA's subdivision of the duct"
+  },
+  {
+   "record_id": "repro.right-deferent-duct-proper",
+   "name": "Right deferent duct proper",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19258",
+   "concept_ids": [
+    "FMA19260"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Deferent duct proper",
+    "Right deferent duct proper"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+   ],
+   "note": "the deferent duct's main course segment in the FMA's subdivision of the duct"
+  },
+  {
+   "record_id": "repro.left-ampulla-of-deferent-duct",
+   "name": "Ampulla of left deferent duct",
+   "ta_name": "ampulla ductus deferentis",
+   "ta_code": 3626,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19259",
+   "concept_ids": [
+    "FMA19263"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Ampulla of deferent duct",
+    "Ampulla of left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form for the ampulla of ductus deferens"
+  },
+  {
+   "record_id": "repro.right-ampulla-of-deferent-duct",
+   "name": "Ampulla of right deferent duct",
+   "ta_name": "ampulla ductus deferentis",
+   "ta_code": 3626,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19259",
+   "concept_ids": [
+    "FMA19262"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Ampulla of deferent duct",
+    "Ampulla of right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form for the ampulla of ductus deferens"
+  },
+  {
+   "record_id": "repro.left-scrotal-part-of-deferent-duct",
+   "name": "Scrotal part of left deferent duct",
+   "ta_name": "pars scrotalis ductus deferentis",
+   "ta_code": 3622,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76610",
+   "concept_ids": [
+    "FMA86719"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Scrotal part of deferent duct",
+    "Scrotal part of left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.right-scrotal-part-of-deferent-duct",
+   "name": "Scrotal part of right deferent duct",
+   "ta_name": "pars scrotalis ductus deferentis",
+   "ta_code": 3622,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76610",
+   "concept_ids": [
+    "FMA86718"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Scrotal part of deferent duct",
+    "Scrotal part of right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.left-funicular-part-of-deferent-duct",
+   "name": "Funicular part of left deferent duct",
+   "ta_name": "pars funicularis ductus deferentis",
+   "ta_code": 3623,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76611",
+   "concept_ids": [
+    "FMA86721"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Funicular part of deferent duct",
+    "Funicular part of left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.right-funicular-part-of-deferent-duct",
+   "name": "Funicular part of right deferent duct",
+   "ta_name": "pars funicularis ductus deferentis",
+   "ta_code": 3623,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76611",
+   "concept_ids": [
+    "FMA86720"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Funicular part of deferent duct",
+    "Funicular part of right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.left-inguinal-part-of-deferent-duct",
+   "name": "Inguinal part of left deferent duct",
+   "ta_name": "pars inguinalis ductus deferentis",
+   "ta_code": 3624,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76612",
+   "concept_ids": [
+    "FMA86723"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Inguinal part of deferent duct",
+    "Inguinal part of left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.right-inguinal-part-of-deferent-duct",
+   "name": "Inguinal part of right deferent duct",
+   "ta_name": "pars inguinalis ductus deferentis",
+   "ta_code": 3624,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76612",
+   "concept_ids": [
+    "FMA86722"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Inguinal part of deferent duct",
+    "Inguinal part of right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.left-pelvic-part-of-deferent-duct",
+   "name": "Pelvic part of left deferent duct",
+   "ta_name": "pars pelvica ductus deferentis",
+   "ta_code": 3625,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76613",
+   "concept_ids": [
+    "FMA86725"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Pelvic part of deferent duct",
+    "Pelvic part of left deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.right-pelvic-part-of-deferent-duct",
+   "name": "Pelvic part of right deferent duct",
+   "ta_name": "pars pelvica ductus deferentis",
+   "ta_code": 3625,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA76613",
+   "concept_ids": [
+    "FMA86724"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of deferent duct",
+    "Pelvic part of deferent duct",
+    "Pelvic part of right deferent duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+  },
+  {
+   "record_id": "repro.left-ejaculatory-duct",
+   "name": "Left ejaculatory duct",
+   "ta_name": "ductus ejaculatorius",
+   "ta_code": 3636,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19325",
+   "concept_ids": [
+    "FMA19327"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Ejaculatory duct",
+    "Left ejaculatory duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-ejaculatory-duct",
+   "name": "Right ejaculatory duct",
+   "ta_name": "ductus ejaculatorius",
+   "ta_code": 3636,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19325",
+   "concept_ids": [
+    "FMA19326"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Ejaculatory duct",
+    "Right ejaculatory duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.efferent-ductule",
+   "name": "Efferent ductule",
+   "ta_name": "ductuli efferentes testis",
+   "ta_code": 3602,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19081",
+   "concept_ids": [
+    "FMA19081"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Efferent ductule"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's singular class name for the efferent ductules of Milestone 14's male pathway"
+  },
+  {
+   "record_id": "repro.left-duct-of-epididymis",
+   "name": "Duct of left epididymis",
+   "ta_name": "ductus epididymidis",
+   "ta_code": 3608,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18297",
+   "concept_ids": [
+    "FMA18301"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Duct of epididymis",
+    "Duct of left epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-duct-of-epididymis",
+   "name": "Duct of right epididymis",
+   "ta_name": "ductus epididymidis",
+   "ta_code": 3608,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18297",
+   "concept_ids": [
+    "FMA18300"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Duct of epididymis",
+    "Duct of right epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-duct-of-seminal-vesicle",
+   "name": "Duct of left seminal vesicle",
+   "ta_name": "ductus excretorius glandulae seminalis",
+   "ta_code": 3635,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19473",
+   "concept_ids": [
+    "FMA19475"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Duct of seminal vesicle",
+    "Duct of left seminal vesicle"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-duct-of-seminal-vesicle",
+   "name": "Duct of right seminal vesicle",
+   "ta_name": "ductus excretorius glandulae seminalis",
+   "ta_code": 3635,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19473",
+   "concept_ids": [
+    "FMA19474"
+   ],
+   "subtree": "male-pathway",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Duct of seminal vesicle",
+    "Duct of right seminal vesicle"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-seminiferous-tubule-of-testis",
+   "name": "Seminiferous tubule of left testis",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19825",
+   "concept_ids": [
+    "FMA19829"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Tubule of testis",
+    "Seminiferous tubule of testis",
+    "Seminiferous tubule of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the seminiferous tubule only as its two kinds, both plural collectives \u2014 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
+   ],
+   "note": "the FMA's name form for the seminiferous tubule (no class is named 'Seminiferous tubule')"
+  },
+  {
+   "record_id": "repro.right-seminiferous-tubule-of-testis",
+   "name": "Seminiferous tubule of right testis",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19825",
+   "concept_ids": [
+    "FMA19828"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Tubule of testis",
+    "Seminiferous tubule of testis",
+    "Seminiferous tubule of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the seminiferous tubule only as its two kinds, both plural collectives \u2014 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
+   ],
+   "note": "the FMA's name form for the seminiferous tubule (no class is named 'Seminiferous tubule')"
+  },
+  {
+   "record_id": "repro.left-straight-seminiferous-tubule-of-testis",
+   "name": "Straight seminiferous tubule of left testis",
+   "ta_name": "tubuli seminiferi recti",
+   "ta_code": 3600,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19827",
+   "concept_ids": [
+    "FMA19833"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Tubule of testis",
+    "Subdivision of seminiferous tubule of testis",
+    "Straight seminiferous tubule of testis",
+    "Straight seminiferous tubule of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the straight tubules (tubuli recti) of Milestone 14's male pathway, recorded separately because the pathway names them as a station"
+  },
+  {
+   "record_id": "repro.right-straight-seminiferous-tubule-of-testis",
+   "name": "Straight seminiferous tubule of right testis",
+   "ta_name": "tubuli seminiferi recti",
+   "ta_code": 3600,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19827",
+   "concept_ids": [
+    "FMA19832"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Duct",
+    "Tubule of testis",
+    "Subdivision of seminiferous tubule of testis",
+    "Straight seminiferous tubule of testis",
+    "Straight seminiferous tubule of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the straight tubules (tubuli recti) of Milestone 14's male pathway, recorded separately because the pathway names them as a station"
+  },
+  {
+   "record_id": "repro.left-rete-testis",
+   "name": "Left rete testis",
+   "ta_name": "rete testis",
+   "ta_code": 3601,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19834",
+   "concept_ids": [
+    "FMA19836"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Rete testis",
+    "Left rete testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-rete-testis",
+   "name": "Right rete testis",
+   "ta_name": "rete testis",
+   "ta_code": 3601,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19834",
+   "concept_ids": [
+    "FMA19835"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Anatomical junction",
+    "Zone of continuity",
+    "Rete testis",
+    "Right rete testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-lobule-of-testis",
+   "name": "Lobule of left testis",
+   "ta_name": "lobuli testis",
+   "ta_code": 3597,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19860",
+   "concept_ids": [
+    "FMA19862"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Lobule",
+    "Lobule of testis",
+    "Lobule of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-lobule-of-testis",
+   "name": "Lobule of right testis",
+   "ta_name": "lobuli testis",
+   "ta_code": 3597,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19860",
+   "concept_ids": [
+    "FMA19861"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Lobule",
+    "Lobule of testis",
+    "Lobule of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-septum-of-testis",
+   "name": "Septum of left testis",
+   "ta_name": "septula testis",
+   "ta_code": 3596,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19814",
+   "concept_ids": [
+    "FMA19840"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Septum of organ",
+    "Septum of testis",
+    "Septum of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-septum-of-testis",
+   "name": "Septum of right testis",
+   "ta_name": "septula testis",
+   "ta_code": 3596,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19814",
+   "concept_ids": [
+    "FMA19839"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Septum of organ",
+    "Septum of testis",
+    "Septum of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-mediastinum-of-testis",
+   "name": "Mediastinum of left testis",
+   "ta_name": "mediastinum testis",
+   "ta_code": 3595,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19812",
+   "concept_ids": [
+    "FMA19838"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Septum of organ",
+    "Mediastinum of testis",
+    "Mediastinum of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form ('Mediastinum testis' names no class)"
+  },
+  {
+   "record_id": "repro.right-mediastinum-of-testis",
+   "name": "Mediastinum of right testis",
+   "ta_name": "mediastinum testis",
+   "ta_code": 3595,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19812",
+   "concept_ids": [
+    "FMA19837"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Septum of organ",
+    "Mediastinum of testis",
+    "Mediastinum of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form ('Mediastinum testis' names no class)"
+  },
+  {
+   "record_id": "repro.left-tunica-albuginea-of-testis",
+   "name": "Tunica albuginea of left testis",
+   "ta_name": "tunica albuginea testis",
+   "ta_code": 3593,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19843",
+   "concept_ids": [
+    "FMA19864"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Tunica of testis",
+    "Tunica albuginea of testis",
+    "Tunica albuginea of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-tunica-albuginea-of-testis",
+   "name": "Tunica albuginea of right testis",
+   "ta_name": "tunica albuginea testis",
+   "ta_code": 3593,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19843",
+   "concept_ids": [
+    "FMA19863"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Tunica of testis",
+    "Tunica albuginea of testis",
+    "Tunica albuginea of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-tunica-vaginalis-of-testis",
+   "name": "Tunica vaginalis of left testis",
+   "ta_name": "tunica vaginalis testis",
+   "ta_code": 3584,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19844",
+   "concept_ids": [
+    "FMA19946"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Tunica of testis",
+    "Tunica vaginalis of testis",
+    "Tunica vaginalis of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form (no class is named 'Tunica vaginalis')"
+  },
+  {
+   "record_id": "repro.right-tunica-vaginalis-of-testis",
+   "name": "Tunica vaginalis of right testis",
+   "ta_name": "tunica vaginalis testis",
+   "ta_code": 3584,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19844",
+   "concept_ids": [
+    "FMA19945"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Tunica of testis",
+    "Tunica vaginalis of testis",
+    "Tunica vaginalis of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form (no class is named 'Tunica vaginalis')"
+  },
+  {
+   "record_id": "repro.left-visceral-layer-of-tunica-vaginalis-of-testis",
+   "name": "Visceral layer of tunica vaginalis of left testis",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19849",
+   "concept_ids": [
+    "FMA19852"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Subdivision of tunica vaginalis of testis",
+    "Visceral layer of tunica vaginalis of testis",
+    "Visceral layer of tunica vaginalis of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-visceral-layer-of-tunica-vaginalis-of-testis",
+   "name": "Visceral layer of tunica vaginalis of right testis",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19849",
+   "concept_ids": [
+    "FMA19851"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Subdivision of tunica vaginalis of testis",
+    "Visceral layer of tunica vaginalis of testis",
+    "Visceral layer of tunica vaginalis of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-parietal-layer-of-tunica-vaginalis-of-testis",
+   "name": "Parietal layer of tunica vaginalis of left testis",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19850",
+   "concept_ids": [
+    "FMA19856"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Subdivision of tunica vaginalis of testis",
+    "Parietal layer of tunica vaginalis of testis",
+    "Parietal layer of tunica vaginalis of left testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-parietal-layer-of-tunica-vaginalis-of-testis",
+   "name": "Parietal layer of tunica vaginalis of right testis",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19850",
+   "concept_ids": [
+    "FMA19853"
+   ],
+   "subtree": "testis-interior",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component layer",
+    "Membranous layer",
+    "Subdivision of tunica vaginalis of testis",
+    "Parietal layer of tunica vaginalis of testis",
+    "Parietal layer of tunica vaginalis of right testis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-head-of-epididymis",
+   "name": "Head of left epididymis",
+   "ta_name": "caput epididymidis",
+   "ta_code": 3604,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18259",
+   "concept_ids": [
+    "FMA18263"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Head of epididymis",
+    "Head of left epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-head-of-epididymis",
+   "name": "Head of right epididymis",
+   "ta_name": "caput epididymidis",
+   "ta_code": 3604,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18259",
+   "concept_ids": [
+    "FMA18262"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Head of epididymis",
+    "Head of right epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-body-of-epididymis",
+   "name": "Body of left epididymis",
+   "ta_name": "corpus epididymidis",
+   "ta_code": 3606,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18260",
+   "concept_ids": [
+    "FMA18265"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Body of epididymis",
+    "Body of left epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-body-of-epididymis",
+   "name": "Body of right epididymis",
+   "ta_name": "corpus epididymidis",
+   "ta_code": 3606,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18260",
+   "concept_ids": [
+    "FMA18264"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Body of epididymis",
+    "Body of right epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-tail-of-epididymis",
+   "name": "Tail of left epididymis",
+   "ta_name": "cauda epididymidis",
+   "ta_code": 3607,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18261",
+   "concept_ids": [
+    "FMA18267"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Tail of epididymis",
+    "Tail of left epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-tail-of-epididymis",
+   "name": "Tail of right epididymis",
+   "ta_name": "cauda epididymidis",
+   "ta_code": 3607,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18261",
+   "concept_ids": [
+    "FMA18266"
+   ],
+   "subtree": "epididymis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of epididymis",
+    "Tail of epididymis",
+    "Tail of right epididymis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.apex-of-prostate",
+   "name": "Apex of prostate",
+   "ta_name": "apex prostatae",
+   "ta_code": 3639,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19594",
+   "concept_ids": [
+    "FMA19594"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Apex of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.base-of-prostate",
+   "name": "Base of prostate",
+   "ta_name": "basis prostatae",
+   "ta_code": 3638,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19595",
+   "concept_ids": [
+    "FMA19595"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Base of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-lobe-of-prostate",
+   "name": "Left lobe of prostate",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19570",
+   "concept_ids": [
+    "FMA66399"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Lobe of prostate",
+    "Left lobe of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) \u2014 class mismatch."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-lobe-of-prostate",
+   "name": "Right lobe of prostate",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19570",
+   "concept_ids": [
+    "FMA66398"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Lobe of prostate",
+    "Right lobe of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) \u2014 class mismatch."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.central-zone-of-prostate",
+   "name": "Central zone of prostate",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA74231",
+   "concept_ids": [
+    "FMA74231"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Central zone of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 carries 'zona centralis prostatae' only as a related term of 3647 zona glandularum periurethralium prostatae \u2014 the periurethral glandular zone, a neighboring but distinct McNeal zone (the central zone surrounds the ejaculatory ducts; the periurethral glands lie within the transitional zone). The name is in the table's apparatus but is not this record's term, so it is not entered."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.peripheral-zone-of-prostate",
+   "name": "Peripheral zone of prostate",
+   "ta_name": "zona peripherica prostatae",
+   "ta_code": 3649,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19587",
+   "concept_ids": [
+    "FMA19587"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Peripheral zone of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.transition-zone-of-prostate",
+   "name": "Transition zone of prostate",
+   "ta_name": "zona transitionalis prostatae",
+   "ta_code": 3648,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA45721",
+   "concept_ids": [
+    "FMA45721"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of prostate",
+    "Transition zone of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the transitional zone of McNeal named in Milestone 14's clinical record"
+  },
+  {
+   "record_id": "repro.anterior-fibromuscular-stroma-of-prostate",
+   "name": "Anterior fibromuscular stroma of prostate",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA74238",
+   "concept_ids": [
+    "FMA74238"
+   ],
+   "subtree": "prostate-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of stroma",
+    "Region of prostatic stroma",
+    "Anterior fibromuscular stroma of prostate"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 No term in TA2's prostate chapter names the anterior fibromuscular stroma (the chapter names the glandular part, its zones and the prostatic ducts)."
+   ],
+   "note": "the FMA's spelling ('fibromuscular') of the anterior fibromuscular stroma"
+  },
+  {
+   "record_id": "repro.left-spermatic-cord",
+   "name": "Left spermatic cord",
+   "ta_name": "funiculus spermaticus",
+   "ta_code": 3615,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19937",
+   "concept_ids": [
+    "FMA19939"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Organ part cluster",
+    "Organ region cluster",
+    "Spermatic cord",
+    "Left spermatic cord"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-spermatic-cord",
+   "name": "Right spermatic cord",
+   "ta_name": "funiculus spermaticus",
+   "ta_code": 3615,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19937",
+   "concept_ids": [
+    "FMA19938"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Organ part cluster",
+    "Organ region cluster",
+    "Spermatic cord",
+    "Right spermatic cord"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.scrotum",
+   "name": "Scrotum",
+   "ta_name": "scrotum",
+   "ta_code": 3693,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18252",
+   "concept_ids": [
+    "FMA18252"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Scrotum"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-external-spermatic-fascia",
+   "name": "Left external spermatic fascia",
+   "ta_name": "fascia spermatica externa",
+   "ta_code": 3616,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA69248",
+   "concept_ids": [
+    "FMA0329173"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of muscle organ",
+    "Zone of external oblique",
+    "Zone of aponeurosis of external oblique",
+    "External spermatic fascia",
+    "Left external spermatic fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-external-spermatic-fascia",
+   "name": "Right external spermatic fascia",
+   "ta_name": "fascia spermatica externa",
+   "ta_code": 3616,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA69248",
+   "concept_ids": [
+    "FMA0329172"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of muscle organ",
+    "Zone of external oblique",
+    "Zone of aponeurosis of external oblique",
+    "External spermatic fascia",
+    "Right external spermatic fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.left-internal-spermatic-fascia",
+   "name": "Left internal spermatic fascia",
+   "ta_name": "fascia spermatica interna",
+   "ta_code": 3619,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77299",
+   "concept_ids": [
+    "FMA80370"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Fascia organ component",
+    "Internal spermatic fascia",
+    "Left internal spermatic fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.right-internal-spermatic-fascia",
+   "name": "Right internal spermatic fascia",
+   "ta_name": "fascia spermatica interna",
+   "ta_code": 3619,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA77299",
+   "concept_ids": [
+    "FMA80369"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Fascia organ component",
+    "Internal spermatic fascia",
+    "Right internal spermatic fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.cremasteric-fascia",
+   "name": "Cremasteric fascia",
+   "ta_name": "fascia cremasterica",
+   "ta_code": 3618,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA74054",
+   "concept_ids": [
+    "FMA74054"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Nonparenchymatous organ",
+    "Fascia organ",
+    "Cremasteric fascia"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.cremasteric-muscle",
+   "name": "Cremasteric muscle",
+   "ta_name": "cremaster",
+   "ta_code": 3617,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA21531",
+   "concept_ids": [
+    "FMA21531"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of fascia of perineum",
+    "Regional part of fascia of scrotum",
+    "Cremasteric muscle"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "boundary: a muscle, recorded here because Milestone 14's male-line census names the cremaster absent and the muscular module carries no cremaster record (verified against its inventory); the FMA's class name for the cremaster"
+  },
+  {
+   "record_id": "repro.dartos-muscle",
+   "name": "Dartos muscle",
+   "ta_name": "musculus dartos",
+   "ta_code": 3697,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA27647",
+   "concept_ids": [
+    "FMA27647"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of superficial fascia",
+    "Zone of superficial fascia of trunk",
+    "Zone of superficial fascia of trunk proper",
+    "Zone of superficial fascia of perineum",
+    "Zone of dartos fascia",
+    "Dartos muscle"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "boundary: the tunica dartos of the scrotum, named absent on Milestone 14's male line; the muscular module carries no dartos record (verified against its inventory)"
+  },
+  {
+   "record_id": "repro.left-pampiniform-plexus",
+   "name": "Left pampiniform plexus",
+   "ta_name": "plexus pampiniformis sinister",
+   "ta_code": 5016,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19607",
+   "concept_ids": [
+    "FMA0329181"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of venous tree organ",
+    "Venous plexus",
+    "Pampiniform plexus",
+    "Left pampiniform plexus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) \u2014 the Milestone 37 glomerular-arteriole pattern"
+  },
+  {
+   "record_id": "repro.right-pampiniform-plexus",
+   "name": "Right pampiniform plexus",
+   "ta_name": "plexus pampiniformis dexter",
+   "ta_code": 5019,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19607",
+   "concept_ids": [
+    "FMA0329180"
+   ],
+   "subtree": "cord-scrotum",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of blood vessel tree organ",
+    "Arborial segment of venous tree organ",
+    "Venous plexus",
+    "Pampiniform plexus",
+    "Right pampiniform plexus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) \u2014 the Milestone 37 glomerular-arteriole pattern"
+  },
+  {
+   "record_id": "repro.penis",
+   "name": "Penis",
+   "ta_name": "penis",
+   "ta_code": 3662,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9707",
+   "concept_ids": [
+    "FMA9707"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the organ class itself: Milestone 14 found the penis in the release only as its erectile parts and its cardiovascular vessels, with no organ concept"
+  },
+  {
+   "record_id": "repro.root-of-penis",
+   "name": "Root of penis",
+   "ta_name": "radix penis",
+   "ta_code": 3663,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19611",
+   "concept_ids": [
+    "FMA19611"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Root of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.body-of-penis",
+   "name": "Body of penis",
+   "ta_name": "corpus penis",
+   "ta_code": 3664,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA18249",
+   "concept_ids": [
+    "FMA18249"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Body of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.bulb-of-penis",
+   "name": "Bulb of penis",
+   "ta_name": "bulbus penis",
+   "ta_code": 3685,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19614",
+   "concept_ids": [
+    "FMA19614"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of cavernous organ",
+    "Zone of corpus spongiosum of penis",
+    "Bulb of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.neck-of-glans-penis",
+   "name": "Neck of glans penis",
+   "ta_name": "collum glandis penis",
+   "ta_code": 3671,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19626",
+   "concept_ids": [
+    "FMA19626"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of cavernous organ",
+    "Zone of corpus spongiosum of penis",
+    "Zone of glans penis",
+    "Neck of glans penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.fascia-of-penis",
+   "name": "Fascia of penis",
+   "ta_name": "fascia penis",
+   "ta_code": 3689,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19641",
+   "concept_ids": [
+    "FMA19641"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of fascia of perineum",
+    "Fascia of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "repro.prepuce-of-penis",
+   "name": "Prepuce of penis",
+   "ta_name": "preputium penis",
+   "ta_code": 3675,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19639",
+   "concept_ids": [
+    "FMA19639"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Prepuce of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the prepuce (no class is named 'Prepuce')"
+  },
+  {
+   "record_id": "repro.frenulum-of-penis",
+   "name": "Frenulum of penis",
+   "ta_name": "frenulum preputii",
+   "ta_code": 3676,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19647",
+   "concept_ids": [
+    "FMA19647"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Subdivision of cardinal body part",
+    "Subdivision of body proper",
+    "Subdivision of trunk",
+    "Subdivision of front of trunk",
+    "Subdivision of perineum",
+    "Subdivision of urogenital part of perineum",
+    "Subdivision of urogenital part of male perineum",
+    "Frenulum of penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the frenulum of the prepuce"
+  },
+  {
+   "record_id": "repro.corona-of-glans-penis",
+   "name": "Corona of glans penis",
+   "ta_name": "corona glandis penis",
+   "ta_code": 3669,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA19627",
+   "concept_ids": [
+    "FMA19627"
+   ],
+   "subtree": "penis-parts",
+   "sex_line": "male",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of cavernous organ",
+    "Zone of corpus spongiosum of penis",
+    "Zone of glans penis",
+    "Corona of glans penis"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's name form for the corona of the glans"
   }
  ]
 }

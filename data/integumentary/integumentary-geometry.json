@@ -6,16 +6,16 @@
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
-   "records": 6,
+   "records": 59,
    "records_with_meshes": 6,
-   "records_without_meshes": 0,
+   "records_without_meshes": 53,
    "by_line": {
     "skin": {
-     "records": 1,
+     "records": 20,
      "records_with_meshes": 1
     },
     "appendage": {
-     "records": 5,
+     "records": 39,
      "records_with_meshes": 5
     },
     "system": {
@@ -542,6 +542,1702 @@
      1545.87
     ]
    },
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.epidermis",
+   "name": "Epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70596"
+   ],
+   "concept_names": [
+    "Epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.dermis",
+   "name": "Dermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70323"
+   ],
+   "concept_names": [
+    "Dermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hypodermis",
+   "name": "Hypodermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70544"
+   ],
+   "concept_names": [
+    "Hypodermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.basal-cell-layer-of-epidermis",
+   "name": "Basal cell layer of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA67540"
+   ],
+   "concept_names": [
+    "Basal cell layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.prickle-cell-layer-of-epidermis",
+   "name": "Prickle cell layer of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA67542"
+   ],
+   "concept_names": [
+    "Prickle cell layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.granular-layer-of-epidermis",
+   "name": "Granular layer of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70344"
+   ],
+   "concept_names": [
+    "Granular layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.stratum-lucidum-of-epidermis",
+   "name": "Stratum lucidum of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70540"
+   ],
+   "concept_names": [
+    "Stratum lucidum of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.horny-layer-of-epidermis",
+   "name": "Horny layer of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA67545"
+   ],
+   "concept_names": [
+    "Horny layer of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.papillary-layer-of-dermis",
+   "name": "Papillary layer of dermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA64776"
+   ],
+   "concept_names": [
+    "Papillary layer of dermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.reticular-layer-of-dermis",
+   "name": "Reticular layer of dermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA64778"
+   ],
+   "concept_names": [
+    "Reticular layer of dermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.superficial-fascia",
+   "name": "Superficial fascia",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA9630"
+   ],
+   "concept_names": [
+    "Superficial fascia"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.skin-of-scalp",
+   "name": "Skin of scalp",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA24757"
+   ],
+   "concept_names": [
+    "Skin of scalp"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.melanocyte",
+   "name": "Melanocyte",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70545"
+   ],
+   "concept_names": [
+    "Melanocyte"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.merkel-cell",
+   "name": "Merkel cell",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA70548"
+   ],
+   "concept_names": [
+    "Merkel cell"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.langerhans-cell",
+   "name": "Langerhans cell",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA63072"
+   ],
+   "concept_names": [
+    "Langerhans cell"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.keratinized-cell-of-epidermis",
+   "name": "Keratinized cell of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA62879"
+   ],
+   "concept_names": [
+    "Keratinized cell of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nonkeratinized-cell-of-epidermis",
+   "name": "Nonkeratinized cell of epidermis",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA62880"
+   ],
+   "concept_names": [
+    "Nonkeratinized cell of epidermis"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.pacinian-corpuscle",
+   "name": "Pacinian corpuscle",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA83604"
+   ],
+   "concept_names": [
+    "Pacinian corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.meissners-corpuscle",
+   "name": "Meissner's corpuscle",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "skin",
+   "concept_ids": [
+    "FMA83605"
+   ],
+   "concept_names": [
+    "Meissner's corpuscle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hair-follicle",
+   "name": "Hair follicle",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70660"
+   ],
+   "concept_names": [
+    "Hair follicle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hair-shaft",
+   "name": "Hair shaft",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70728"
+   ],
+   "concept_names": [
+    "Hair shaft"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hair-root",
+   "name": "Hair root",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70730"
+   ],
+   "concept_names": [
+    "Hair root"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hair-papilla",
+   "name": "Hair papilla",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA322851"
+   ],
+   "concept_names": [
+    "Hair papilla"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hair-matrix",
+   "name": "Hair matrix",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70945"
+   ],
+   "concept_names": [
+    "Hair matrix"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.cortex-of-hair",
+   "name": "Cortex of hair",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70934"
+   ],
+   "concept_names": [
+    "Cortex of hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.cuticle-of-hair",
+   "name": "Cuticle of hair",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70933"
+   ],
+   "concept_names": [
+    "Cuticle of hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.bulb-of-hair-follicle",
+   "name": "Bulb of hair follicle",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70666"
+   ],
+   "concept_names": [
+    "Bulb of hair follicle"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.dermal-papilla",
+   "name": "Dermal papilla",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70737"
+   ],
+   "concept_names": [
+    "Dermal papilla"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.sebaceous-gland",
+   "name": "Sebaceous gland",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA59160"
+   ],
+   "concept_names": [
+    "Sebaceous gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.sweat-gland",
+   "name": "Sweat gland",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA59152"
+   ],
+   "concept_names": [
+    "Sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.eccrine-sweat-gland",
+   "name": "Eccrine sweat gland",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA59154"
+   ],
+   "concept_names": [
+    "Eccrine sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.apocrine-sweat-gland",
+   "name": "Apocrine sweat gland",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA59155"
+   ],
+   "concept_names": [
+    "Apocrine sweat gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail",
+   "name": "Nail",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54326"
+   ],
+   "concept_names": [
+    "Nail"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail-of-finger",
+   "name": "Nail of finger",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54327"
+   ],
+   "concept_names": [
+    "Nail of finger"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail-of-toe",
+   "name": "Nail of toe",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54328"
+   ],
+   "concept_names": [
+    "Nail of toe"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.root-of-nail",
+   "name": "Root of nail",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA60128"
+   ],
+   "concept_names": [
+    "Root of nail"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail-matrix",
+   "name": "Nail matrix",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA77856"
+   ],
+   "concept_names": [
+    "Nail matrix"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.lunule-of-nail",
+   "name": "Lunule of nail",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA77858"
+   ],
+   "concept_names": [
+    "Lunule of nail"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.eponychium",
+   "name": "Eponychium",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA77859"
+   ],
+   "concept_names": [
+    "Eponychium"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.hyponychium",
+   "name": "Hyponychium",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA77860"
+   ],
+   "concept_names": [
+    "Hyponychium"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.body-of-nail",
+   "name": "Body of nail",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA60127"
+   ],
+   "concept_names": [
+    "Body of nail"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail-bed-of-finger",
+   "name": "Nail bed of finger",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA60348"
+   ],
+   "concept_names": [
+    "Nail bed of finger"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.nail-bed-of-toe",
+   "name": "Nail bed of toe",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA60529"
+   ],
+   "concept_names": [
+    "Nail bed of toe"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.eyelash",
+   "name": "Eyelash",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA53669"
+   ],
+   "concept_names": [
+    "Eyelash"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.beard",
+   "name": "Beard",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA54240"
+   ],
+   "concept_names": [
+    "Beard"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.vellus-hair",
+   "name": "Vellus hair",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA70668"
+   ],
+   "concept_names": [
+    "Vellus hair"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.left-mammary-gland",
+   "name": "Left mammary gland",
+   "side": "left",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA286456"
+   ],
+   "concept_names": [
+    "Left mammary gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.right-mammary-gland",
+   "name": "Right mammary gland",
+   "side": "right",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA286454"
+   ],
+   "concept_names": [
+    "Right mammary gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.left-nipple",
+   "name": "Left nipple",
+   "side": "left",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA223695"
+   ],
+   "concept_names": [
+    "Left nipple"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.right-nipple",
+   "name": "Right nipple",
+   "side": "right",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA223693"
+   ],
+   "concept_names": [
+    "Right nipple"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.left-areola",
+   "name": "Left areola",
+   "side": "left",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA67920"
+   ],
+   "concept_names": [
+    "Left areola"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.right-areola",
+   "name": "Right areola",
+   "side": "right",
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA67919"
+   ],
+   "concept_names": [
+    "Right areola"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "integ.lactiferous-duct",
+   "name": "Lactiferous duct",
+   "side": null,
+   "representation": "fma-concept",
+   "line": "appendage",
+   "concept_ids": [
+    "FMA58006"
+   ],
+   "concept_names": [
+    "Lactiferous duct"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
    "bbox_partof": null
   }
  ]

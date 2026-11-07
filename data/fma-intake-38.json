@@ -1,0 +1,1765 @@
+{
+ "oculomotor_correction": {
+  "date": "2026-11-06",
+  "question": "Milestone 37 \u00a75 named the same Milestone 33 naive-parser artifact on nerve.left/right-oculomotor-nerve (class_concept_id null, one null group_path entry) and deferred it for a ruling; Milestone 38 is that ruling",
+  "verdict": "corrected \u2014 FMA50864 'Oculomotor nerve' carries fma:preferred_name identical to its label under both the depth-aware parse and an independent XML parse; the null was a parser artifact, as with the plexus classes at Milestone 37",
+  "classes": [
+   {
+    "fmaid": "FMA50864",
+    "role": "un-sided class",
+    "preferred_name": "Oculomotor nerve",
+    "label": "Oculomotor nerve",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA50880",
+    "role": "sided class (left)",
+    "preferred_name": "Left oculomotor nerve",
+    "label": "Left oculomotor nerve",
+    "is_a_parent": "FMA50864",
+    "parses_agree": true
+   },
+   {
+    "fmaid": "FMA50879",
+    "role": "sided class (right)",
+    "preferred_name": "Right oculomotor nerve",
+    "label": "Right oculomotor nerve",
+    "is_a_parent": "FMA50864",
+    "parses_agree": true
+   }
+  ],
+  "correction": "Correction (2026-11-06, Milestone 38): the two oculomotor records carried the Milestone 33 naive-parser artifact named at Milestone 37 \u00a75 \u2014 class_concept_id null and one null group_path entry at the un-sided class position \u2014 although the parent class FMA50864 'Oculomotor nerve' carries a fma:preferred_name. Under the depth-aware parse, and independently under an ElementTree XML parse, FMA50864 carries fma:preferred_name identical to its rdfs:label. The records' class_concept_id and group_path null slot are corrected to the derived values, exactly as the six plexus records were corrected at Milestone 37. A sweep of all 555 FMA-sourced records (every inventory, frozen pre-Milestone 38 snapshots) finds these two records are the only remaining carriers of the artifact; after this correction it survives nowhere in the intake. Record names, concept FMAIDs, TA2 names and codes (6187), and all other fields are unchanged and re-verified.",
+  "records_corrected": [
+   {
+    "record_id": "nerve.left-oculomotor-nerve",
+    "concept_id": "FMA50880",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA50864",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Organ",
+     "Solid organ",
+     "Nonparenchymatous organ",
+     "Neural tree organ",
+     "Cranial nerve",
+     null,
+     "Left oculomotor nerve"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Organ",
+     "Solid organ",
+     "Nonparenchymatous organ",
+     "Neural tree organ",
+     "Cranial nerve",
+     "Oculomotor nerve",
+     "Left oculomotor nerve"
+    ],
+    "identity_reverified": {
+     "name": "Left oculomotor nerve",
+     "concept_ids": [
+      "FMA50880"
+     ],
+     "ta_name": "nervus oculomotorius",
+     "ta_code": 6187
+    }
+   },
+   {
+    "record_id": "nerve.right-oculomotor-nerve",
+    "concept_id": "FMA50879",
+    "class_concept_id_before": null,
+    "class_concept_id_after": "FMA50864",
+    "group_path_before": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Organ",
+     "Solid organ",
+     "Nonparenchymatous organ",
+     "Neural tree organ",
+     "Cranial nerve",
+     null,
+     "Right oculomotor nerve"
+    ],
+    "group_path_after": [
+     "Anatomical entity",
+     "Physical anatomical entity",
+     "Material anatomical entity",
+     "Anatomical structure",
+     "Postnatal anatomical structure",
+     "Organ",
+     "Solid organ",
+     "Nonparenchymatous organ",
+     "Neural tree organ",
+     "Cranial nerve",
+     "Oculomotor nerve",
+     "Right oculomotor nerve"
+    ],
+    "identity_reverified": {
+     "name": "Right oculomotor nerve",
+     "concept_ids": [
+      "FMA50879"
+     ],
+     "ta_name": "nervus oculomotorius",
+     "ta_code": 6187
+    }
+   }
+  ],
+  "applied_by": "tools/fma_oculomotor_correct.py",
+  "records_changed_this_run": 2,
+  "sweep": {
+   "scope": "every FMA-sourced record of the intake (Milestones 33/36/37) in the frozen pre-Milestone 38 snapshots of all eleven inventories",
+   "records_enumerated": 555,
+   "carriers_found": [
+    {
+     "system": "nervous",
+     "record_id": "nerve.left-oculomotor-nerve",
+     "class_concept_id_null": true,
+     "null_group_path_slots": [
+      10
+     ]
+    },
+    {
+     "system": "nervous",
+     "record_id": "nerve.right-oculomotor-nerve",
+     "class_concept_id_null": true,
+     "null_group_path_slots": [
+      10
+     ]
+    }
+   ],
+   "after_state": "0 records in any inventory carry a null class_concept_id or a null group_path entry"
+  }
+ },
+ "meta": {
+  "milestone": "M38",
+  "date": "2026-11-06",
+  "scope": "FMA 5.1.0 concept intake #4 (final): the integumentary layers and appendages below the skin shell, and the male reproductive remainder \u2014 the structures Milestones 15 and 14 proved absent from BodyParts3D 4.0; plus the oculomotor name-provenance correction (section written by tools/fma_oculomotor_correct.py)",
+  "method": "tools/fma_integ_male_map.py (frozen targets, mechanical resolution) \u2014 checked by tools/fma_integ_male_check.py (independent)",
+  "rule": "lateralised records where the FMA carries both sided classes (prefix or suffix naming, IS-A parent-verified), one un-sided record otherwise; any FMAID already inventoried anywhere in the Body Model is excluded and accounted with its owner",
+  "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)"
+ },
+ "systems": {
+  "integumentary": {
+   "records_before": 6,
+   "records_after": 59,
+   "records_added": 53,
+   "prior_fma_records": 0,
+   "targets": [
+    {
+     "target": "Epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.epidermis"
+     ],
+     "fmaids": [
+      "FMA70596"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Dermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.dermis"
+     ],
+     "fmaids": [
+      "FMA70323"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hypodermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hypodermis"
+     ],
+     "fmaids": [
+      "FMA70544"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Basal cell layer of epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.basal-cell-layer-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA67540"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Prickle cell layer of epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.prickle-cell-layer-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA67542"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Granular layer of epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.granular-layer-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA70344"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Stratum lucidum of epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.stratum-lucidum-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA70540"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Horny layer of epidermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.horny-layer-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA67545"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Papillary layer of dermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.papillary-layer-of-dermis"
+     ],
+     "fmaids": [
+      "FMA64776"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Reticular layer of dermis",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.reticular-layer-of-dermis"
+     ],
+     "fmaids": [
+      "FMA64778"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superficial fascia",
+     "subtree": "skin-layers",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.superficial-fascia"
+     ],
+     "fmaids": [
+      "FMA9630"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Skin of scalp",
+     "subtree": "skin-regions",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.skin-of-scalp"
+     ],
+     "fmaids": [
+      "FMA24757"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Melanocyte",
+     "subtree": "cells",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.melanocyte"
+     ],
+     "fmaids": [
+      "FMA70545"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Merkel cell",
+     "subtree": "cells",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.merkel-cell"
+     ],
+     "fmaids": [
+      "FMA70548"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Langerhans cell",
+     "subtree": "cells",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.langerhans-cell"
+     ],
+     "fmaids": [
+      "FMA63072"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Keratinized cell of epidermis",
+     "subtree": "cells",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.keratinized-cell-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA62879"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nonkeratinized cell of epidermis",
+     "subtree": "cells",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nonkeratinized-cell-of-epidermis"
+     ],
+     "fmaids": [
+      "FMA62880"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pacinian corpuscle",
+     "subtree": "sensory",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.pacinian-corpuscle"
+     ],
+     "fmaids": [
+      "FMA83604"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Meissner's corpuscle",
+     "subtree": "sensory",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.meissners-corpuscle"
+     ],
+     "fmaids": [
+      "FMA83605"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hair follicle",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hair-follicle"
+     ],
+     "fmaids": [
+      "FMA70660"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hair shaft",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hair-shaft"
+     ],
+     "fmaids": [
+      "FMA70728"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hair root",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hair-root"
+     ],
+     "fmaids": [
+      "FMA70730"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hair papilla",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hair-papilla"
+     ],
+     "fmaids": [
+      "FMA322851"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hair matrix",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hair-matrix"
+     ],
+     "fmaids": [
+      "FMA70945"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cortex of hair",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.cortex-of-hair"
+     ],
+     "fmaids": [
+      "FMA70934"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cuticle of hair",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.cuticle-of-hair"
+     ],
+     "fmaids": [
+      "FMA70933"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Bulb of hair follicle",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.bulb-of-hair-follicle"
+     ],
+     "fmaids": [
+      "FMA70666"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Dermal papilla",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.dermal-papilla"
+     ],
+     "fmaids": [
+      "FMA70737"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Sebaceous gland",
+     "subtree": "glands",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.sebaceous-gland"
+     ],
+     "fmaids": [
+      "FMA59160"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Sweat gland",
+     "subtree": "glands",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.sweat-gland"
+     ],
+     "fmaids": [
+      "FMA59152"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Eccrine sweat gland",
+     "subtree": "glands",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.eccrine-sweat-gland"
+     ],
+     "fmaids": [
+      "FMA59154"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Apocrine sweat gland",
+     "subtree": "glands",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.apocrine-sweat-gland"
+     ],
+     "fmaids": [
+      "FMA59155"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail"
+     ],
+     "fmaids": [
+      "FMA54326"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail of finger",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail-of-finger"
+     ],
+     "fmaids": [
+      "FMA54327"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail of toe",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail-of-toe"
+     ],
+     "fmaids": [
+      "FMA54328"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Root of nail",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.root-of-nail"
+     ],
+     "fmaids": [
+      "FMA60128"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail matrix",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail-matrix"
+     ],
+     "fmaids": [
+      "FMA77856"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lunule of nail",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.lunule-of-nail"
+     ],
+     "fmaids": [
+      "FMA77858"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Eponychium",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.eponychium"
+     ],
+     "fmaids": [
+      "FMA77859"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Hyponychium",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.hyponychium"
+     ],
+     "fmaids": [
+      "FMA77860"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Body of nail",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.body-of-nail"
+     ],
+     "fmaids": [
+      "FMA60127"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail bed of finger",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail-bed-of-finger"
+     ],
+     "fmaids": [
+      "FMA60348"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Nail bed of toe",
+     "subtree": "nail",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.nail-bed-of-toe"
+     ],
+     "fmaids": [
+      "FMA60529"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Eyelash",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.eyelash"
+     ],
+     "fmaids": [
+      "FMA53669"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Beard",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.beard"
+     ],
+     "fmaids": [
+      "FMA54240"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Vellus hair",
+     "subtree": "appendage",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.vellus-hair"
+     ],
+     "fmaids": [
+      "FMA70668"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Mammary gland",
+     "subtree": "mammary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "integ.left-mammary-gland",
+      "integ.right-mammary-gland"
+     ],
+     "fmaids": [
+      "FMA286456",
+      "FMA286454"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Nipple",
+     "subtree": "mammary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "integ.left-nipple",
+      "integ.right-nipple"
+     ],
+     "fmaids": [
+      "FMA223695",
+      "FMA223693"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Areola",
+     "subtree": "mammary",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "integ.left-areola",
+      "integ.right-areola"
+     ],
+     "fmaids": [
+      "FMA67920",
+      "FMA67919"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Lactiferous duct",
+     "subtree": "mammary",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "integ.lactiferous-duct"
+     ],
+     "fmaids": [
+      "FMA58006"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Skin",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA7163 already inventoried (bp3d:integumentary:skin)",
+     "records": []
+    },
+    {
+     "target": "Hair",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA53667 already inventoried (bp3d:integumentary:hair, bp3d:integumentary:hair.hair-of-head, bp3d:integumentary:hair.hair-of-trunk)",
+     "records": []
+    },
+    {
+     "target": "Eyebrow",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA54237 already inventoried (bp3d:integumentary:eyebrow)",
+     "records": []
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Stratum basale",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Stratum spinosum",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Stratum granulosum",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Stratum corneum",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Keratinocyte",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Subcutaneous tissue",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Nail bed",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Lunule",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Lunula",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Hair bulb",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Fingernail",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Toenail",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Arrector pili",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Arrector pili muscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Cuticle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Lanugo",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Scalp hair",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Free nerve ending",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Tactile corpuscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Lamellar corpuscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Meissner corpuscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Dermal papilla of hair",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "Scalp (FMA46494)",
+     "reason": "a body-region aggregate (skin, fascia and muscle of the scalp region), not a skin class; the skin of the scalp is recorded"
+    },
+    {
+     "names": "Ceruminous gland (FMA323077)",
+     "reason": "a regional sweat-gland specialisation of the external acoustic meatus, below this intake's granularity; the sweat gland generic and its eccrine/apocrine types are recorded"
+    },
+    {
+     "names": "Anagen / catagen / telogen hair follicle (FMA70679 / FMA71072 / FMA70996)",
+     "reason": "growth-cycle states of the one follicle, not parts or kinds of it; the follicle is recorded"
+    },
+    {
+     "names": "Per-digit nail classes (nail beds and lunules of the individual digits)",
+     "reason": "the FMA subdivides the nail apparatus per digit below the finger/toe generics, which are recorded"
+    },
+    {
+     "names": "Gland of epidermis (FMA59153)",
+     "reason": "a generic grouping class over the cutaneous glands; the sebaceous and sweat gland classes are recorded directly"
+    }
+   ]
+  },
+  "reproductive": {
+   "records_before": 70,
+   "records_after": 146,
+   "records_added": 76,
+   "prior_fma_records": 57,
+   "targets": [
+    {
+     "target": "Deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-deferent-duct",
+      "repro.right-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA19236",
+      "FMA19235"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Deferent duct proper",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-deferent-duct-proper",
+      "repro.right-deferent-duct-proper"
+     ],
+     "fmaids": [
+      "FMA19261",
+      "FMA19260"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Ampulla of deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-ampulla-of-deferent-duct",
+      "repro.right-ampulla-of-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA19263",
+      "FMA19262"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Scrotal part of deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-scrotal-part-of-deferent-duct",
+      "repro.right-scrotal-part-of-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA86719",
+      "FMA86718"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Funicular part of deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-funicular-part-of-deferent-duct",
+      "repro.right-funicular-part-of-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA86721",
+      "FMA86720"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Inguinal part of deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-inguinal-part-of-deferent-duct",
+      "repro.right-inguinal-part-of-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA86723",
+      "FMA86722"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Pelvic part of deferent duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-pelvic-part-of-deferent-duct",
+      "repro.right-pelvic-part-of-deferent-duct"
+     ],
+     "fmaids": [
+      "FMA86725",
+      "FMA86724"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Ejaculatory duct",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-ejaculatory-duct",
+      "repro.right-ejaculatory-duct"
+     ],
+     "fmaids": [
+      "FMA19327",
+      "FMA19326"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Efferent ductule",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.efferent-ductule"
+     ],
+     "fmaids": [
+      "FMA19081"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Duct of epididymis",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-duct-of-epididymis",
+      "repro.right-duct-of-epididymis"
+     ],
+     "fmaids": [
+      "FMA18301",
+      "FMA18300"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Duct of seminal vesicle",
+     "subtree": "male-pathway",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-duct-of-seminal-vesicle",
+      "repro.right-duct-of-seminal-vesicle"
+     ],
+     "fmaids": [
+      "FMA19475",
+      "FMA19474"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Seminiferous tubule of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-seminiferous-tubule-of-testis",
+      "repro.right-seminiferous-tubule-of-testis"
+     ],
+     "fmaids": [
+      "FMA19829",
+      "FMA19828"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Straight seminiferous tubule of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-straight-seminiferous-tubule-of-testis",
+      "repro.right-straight-seminiferous-tubule-of-testis"
+     ],
+     "fmaids": [
+      "FMA19833",
+      "FMA19832"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Rete testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-rete-testis",
+      "repro.right-rete-testis"
+     ],
+     "fmaids": [
+      "FMA19836",
+      "FMA19835"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Lobule of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-lobule-of-testis",
+      "repro.right-lobule-of-testis"
+     ],
+     "fmaids": [
+      "FMA19862",
+      "FMA19861"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Septum of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-septum-of-testis",
+      "repro.right-septum-of-testis"
+     ],
+     "fmaids": [
+      "FMA19840",
+      "FMA19839"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Mediastinum of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-mediastinum-of-testis",
+      "repro.right-mediastinum-of-testis"
+     ],
+     "fmaids": [
+      "FMA19838",
+      "FMA19837"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tunica albuginea of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-tunica-albuginea-of-testis",
+      "repro.right-tunica-albuginea-of-testis"
+     ],
+     "fmaids": [
+      "FMA19864",
+      "FMA19863"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tunica vaginalis of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-tunica-vaginalis-of-testis",
+      "repro.right-tunica-vaginalis-of-testis"
+     ],
+     "fmaids": [
+      "FMA19946",
+      "FMA19945"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Visceral layer of tunica vaginalis of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-visceral-layer-of-tunica-vaginalis-of-testis",
+      "repro.right-visceral-layer-of-tunica-vaginalis-of-testis"
+     ],
+     "fmaids": [
+      "FMA19852",
+      "FMA19851"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Parietal layer of tunica vaginalis of testis",
+     "subtree": "testis-interior",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-parietal-layer-of-tunica-vaginalis-of-testis",
+      "repro.right-parietal-layer-of-tunica-vaginalis-of-testis"
+     ],
+     "fmaids": [
+      "FMA19856",
+      "FMA19853"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Head of epididymis",
+     "subtree": "epididymis-parts",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-head-of-epididymis",
+      "repro.right-head-of-epididymis"
+     ],
+     "fmaids": [
+      "FMA18263",
+      "FMA18262"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Body of epididymis",
+     "subtree": "epididymis-parts",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-body-of-epididymis",
+      "repro.right-body-of-epididymis"
+     ],
+     "fmaids": [
+      "FMA18265",
+      "FMA18264"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tail of epididymis",
+     "subtree": "epididymis-parts",
+     "verdict": "resolved",
+     "form": "suffix",
+     "records": [
+      "repro.left-tail-of-epididymis",
+      "repro.right-tail-of-epididymis"
+     ],
+     "fmaids": [
+      "FMA18267",
+      "FMA18266"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Apex of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.apex-of-prostate"
+     ],
+     "fmaids": [
+      "FMA19594"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Base of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.base-of-prostate"
+     ],
+     "fmaids": [
+      "FMA19595"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lobe of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-lobe-of-prostate",
+      "repro.right-lobe-of-prostate"
+     ],
+     "fmaids": [
+      "FMA66399",
+      "FMA66398"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Central zone of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.central-zone-of-prostate"
+     ],
+     "fmaids": [
+      "FMA74231"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Peripheral zone of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.peripheral-zone-of-prostate"
+     ],
+     "fmaids": [
+      "FMA19587"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Transition zone of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.transition-zone-of-prostate"
+     ],
+     "fmaids": [
+      "FMA45721"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Anterior fibromuscular stroma of prostate",
+     "subtree": "prostate-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.anterior-fibromuscular-stroma-of-prostate"
+     ],
+     "fmaids": [
+      "FMA74238"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Spermatic cord",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-spermatic-cord",
+      "repro.right-spermatic-cord"
+     ],
+     "fmaids": [
+      "FMA19939",
+      "FMA19938"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Scrotum",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.scrotum"
+     ],
+     "fmaids": [
+      "FMA18252"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "External spermatic fascia",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-external-spermatic-fascia",
+      "repro.right-external-spermatic-fascia"
+     ],
+     "fmaids": [
+      "FMA0329173",
+      "FMA0329172"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Internal spermatic fascia",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-internal-spermatic-fascia",
+      "repro.right-internal-spermatic-fascia"
+     ],
+     "fmaids": [
+      "FMA80370",
+      "FMA80369"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Cremasteric fascia",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.cremasteric-fascia"
+     ],
+     "fmaids": [
+      "FMA74054"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cremasteric muscle",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.cremasteric-muscle"
+     ],
+     "fmaids": [
+      "FMA21531"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Dartos muscle",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.dartos-muscle"
+     ],
+     "fmaids": [
+      "FMA27647"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pampiniform plexus",
+     "subtree": "cord-scrotum",
+     "verdict": "resolved",
+     "form": "prefix",
+     "records": [
+      "repro.left-pampiniform-plexus",
+      "repro.right-pampiniform-plexus"
+     ],
+     "fmaids": [
+      "FMA0329181",
+      "FMA0329180"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.penis"
+     ],
+     "fmaids": [
+      "FMA9707"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Root of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.root-of-penis"
+     ],
+     "fmaids": [
+      "FMA19611"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Body of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.body-of-penis"
+     ],
+     "fmaids": [
+      "FMA18249"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Bulb of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.bulb-of-penis"
+     ],
+     "fmaids": [
+      "FMA19614"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Neck of glans penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.neck-of-glans-penis"
+     ],
+     "fmaids": [
+      "FMA19626"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Fascia of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.fascia-of-penis"
+     ],
+     "fmaids": [
+      "FMA19641"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Prepuce of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.prepuce-of-penis"
+     ],
+     "fmaids": [
+      "FMA19639"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Frenulum of penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.frenulum-of-penis"
+     ],
+     "fmaids": [
+      "FMA19647"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Corona of glans penis",
+     "subtree": "penis-parts",
+     "verdict": "resolved",
+     "form": "un-sided",
+     "records": [
+      "repro.corona-of-glans-penis"
+     ],
+     "fmaids": [
+      "FMA19627"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Testis",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA7210 already inventoried (bp3d:reproductive:testis.left-testis, bp3d:reproductive:testis.right-testis)",
+     "records": []
+    },
+    {
+     "target": "Epididymis",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA18255 already inventoried (bp3d:reproductive:epididymis.left-epididymis, bp3d:reproductive:epididymis.right-epididymis)",
+     "records": []
+    },
+    {
+     "target": "Seminal vesicle",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA19386 already inventoried (bp3d:reproductive:seminal-vesicle.left-seminal-vesicle, bp3d:reproductive:seminal-vesicle.right-seminal-vesicle)",
+     "records": []
+    },
+    {
+     "target": "Prostate",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA9600 already inventoried (bp3d:reproductive:prostate)",
+     "records": []
+    },
+    {
+     "target": "Glans penis",
+     "subtree": "existing",
+     "verdict": "excluded",
+     "evidence": "FMA18247 already inventoried (bp3d:reproductive:glans-penis)",
+     "records": []
+    },
+    {
+     "target": "Bulbourethral gland",
+     "subtree": "male-glands",
+     "verdict": "not-in-fma",
+     "evidence": "no class carries this preferred name or its sided forms in fma.owl",
+     "records": []
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Ductus deferens",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Vas deferens",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Ampulla of ductus deferens",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Seminiferous tubule",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Bulbourethral gland",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Crus of penis",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Prepuce",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Frenulum of prepuce",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Corona of glans",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Tunica vaginalis",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Mediastinum testis",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Transitional zone of prostate",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Straight tubule",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Tubuli recti",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Cremaster",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "Duct of bulbourethral gland (FMA20091) and its sided classes",
+     "reason": "the gland itself has no FMA class (the not-in-fma verdict recorded for 'Bulbourethral gland'); its duct alone is not recorded \u2014 the Milestone 37 paraurethral-gland pattern. The gland remains concept-blocked inside the source"
+    },
+    {
+     "names": "Wall / lumen / mucosa / adventitia layer classes of the deferent duct, epididymis and seminal vesicle",
+     "reason": "histological layer classes below this intake's granularity; the organs, their ducts and their named parts are recorded"
+    },
+    {
+     "names": "Convoluted seminiferous tubule of testis (FMA19826) and its sided classes",
+     "reason": "a subdivision of the recorded seminiferous tubule generic; the straight tubule is recorded separately because Milestone 14's pathway names it as a station"
+    },
+    {
+     "names": "Appendix of epididymis (FMA18268) and the appendix of testis",
+     "reason": "vestigial remnants, not named in Milestone 14's census"
+    },
+    {
+     "names": "Diverticulum / wall / lumen classes of the seminal vesicle",
+     "reason": "sub-organ classes below this intake's granularity; the gland is a Milestone 14 record and its duct is recorded here"
+    }
+   ]
+  }
+ }
+}

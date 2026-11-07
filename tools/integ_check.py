@@ -297,16 +297,24 @@ def main():
           {"record": 6, "class-carried": 2, "grouping-class": 4},
           f"disp={Counter(exp_disp.values())}")
     inv_records = {r["record_id"]: r for r in inv["records"]}
+    bp3d_records = {rid: r for rid, r in inv_records.items()
+                    if r["representation"] != "fma-concept"}
+    fma_records = {rid: r for rid, r in inv_records.items()
+                   if r["representation"] == "fma-concept"}
     check("inventory records are exactly the expected six, "
-          "with concepts, representations and carried classes",
-          set(inv_records) == set(EXP_RECORDS)
-          and meta["record_count"] == 6
-          and all(inv_records[rid]["concept_ids"] == [cid]
-                  and inv_records[rid]["representation"] == rep
-                  and inv_records[rid]["class_concept_id"] == cls
+          "with concepts, representations and carried classes "
+          "(BP3D partition, scoped at Milestone 38; the 53 "
+          "Milestone 38 FMA concept records beside them are "
+          "gated by tools/fma_integ_male_check.py)",
+          set(bp3d_records) == set(EXP_RECORDS)
+          and len(fma_records) == 53
+          and meta["record_count"] == 59
+          and all(bp3d_records[rid]["concept_ids"] == [cid]
+                  and bp3d_records[rid]["representation"] == rep
+                  and bp3d_records[rid]["class_concept_id"] == cls
                   for rid, (cid, rep, cls) in EXP_RECORDS.items())
           and meta["record_representations"] ==
-          {"organ": 1, "whole-concept": 5})
+          {"organ": 1, "whole-concept": 5, "fma-concept": 53})
     check("per-concept mesh file counts in the inventory "
           "match the element tables",
           all(inv_concepts[c]["isa_mesh_files"] ==
@@ -408,6 +416,9 @@ def main():
     all_meshes = []
     tot = Counter()
     for rid, gr in geo_rec.items():
+        if rid not in EXP_RECORDS:
+            continue  # Milestone 38 FMA entries carry no
+            # meshes; gated by tools/fma_integ_male_check.py
         cid = EXP_RECORDS[rid][0]
         for tree, elem, d in (("isa", isa_elem, ISA_DIR),
                               ("partof", po_elem, PO_DIR)):
@@ -438,10 +449,14 @@ def main():
     check(f"all geometry entries re-measured ({entries} "
           "entries)", not bad, f"bad={bad[:6]}")
     cov = geo["meta"]["coverage"]
-    check("geometry coverage meta matches (6/6; skin line "
-          "1/1, appendage line 5/5)",
-          cov["records_with_meshes"] == 6
+    check("geometry coverage meta matches (6/59 with meshes; "
+          "skin line 1/20, appendage line 5/39 — the Milestone "
+          "38 FMA records are concept-only)",
+          cov["records"] == 59
+          and cov["records_with_meshes"] == 6
+          and cov["by_line"]["skin"]["records"] == 20
           and cov["by_line"]["skin"]["records_with_meshes"] == 1
+          and cov["by_line"]["appendage"]["records"] == 39
           and cov["by_line"]["appendage"]
           ["records_with_meshes"] == 5)
     if all_meshes:
@@ -709,6 +724,11 @@ def main():
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
     import ta2_discipline as _ta2d
     _ta2d.run("integumentary", "data/integumentary/integumentary.json", lambda ok_, label: check(label, ok_))
+
+    # TA2 discipline over the Milestone 38 FMA inventory
+    # records (Milestone 38 extension of the Milestone 35
+    # pattern)
+    _ta2d.run_fma_inventory_multi("integumentary", "data/integumentary/integumentary-inventory.json", "fma_inventory_integumentary", "M38", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"integ_check: {npass}/{len(checks)} checks passed")
