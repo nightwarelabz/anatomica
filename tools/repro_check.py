@@ -35,6 +35,28 @@ sphincter pointer resolving to the muscular module, and the
 female line's geometry census — exactly one female clinical
 record links geometry, the mons pubis, at tier C.
 
+Scope note (Milestone 37): the inventory now also carries 57
+FMA 5.1.0 concept records (the female reproductive tract).
+Milestone 38 adds 76 more (the male remainder; 133 FMA
+records in the file altogether).
+Every check below that speaks of the concept universe, the
+records or the dispositions is scoped to the BP3D partition
+(records without the fma-5.1.0 source tag), exactly as shipped
+at Milestone 14. The geometry section's set-equality and
+correspondence checks span all records; its re-measurement —
+the concept->mesh derivation from the BP3D element tables —
+is likewise scoped to the BP3D partition (the derivation is
+that partition's defining rule, as in tools/uri_check.py),
+and the FMA entries are asserted mesh-less in the same
+section. Milestone 40: the section also carries the
+collision gate — the element-table derivation over
+FMA-partition concepts must be empty except for the
+adjudicated deferent-duct pair (see MILESTONE-40.md).
+The FMA records themselves are
+gated by tools/fma_uri_repro_check.py, and their TA2
+discipline by ta2_discipline.run_fma_inventory_multi at the
+end of this file.
+
 Run: python3 tools/repro_check.py   (exit 0 = all checks pass)
 """
 import json
@@ -383,7 +405,8 @@ def main():
             "anal part of perineum", "un-sided", "partof-concept",
             [ANAL_PART], ANAL_PART, "perineum-partof", "shared"),
     }
-    got_records = {r["record_id"]: r for r in inv["records"]}
+    got_records = {r["record_id"]: r for r in inv["records"]
+                   if r.get("source") != "fma-5.1.0"}
     check("record id set matches derivation (13 records)",
           set(got_records) == set(exp_records),
           f"{sorted(got_records)}")
@@ -401,11 +424,19 @@ def main():
             bad.append(rid)
     check("record fields match derivation", not bad, f"bad={bad}")
     check("meta record count, representations and sex-line "
-          "counts match",
-          meta["record_count"] == len(exp_records)
+          "counts match (totals over all records; the BP3D "
+          "partition's counters equal the derivation)",
+          meta["record_count"] == len(inv["records"])
           and meta["record_representations"] ==
-          dict(Counter(v[2] for v in exp_records.values()))
+          dict(Counter(r["representation"]
+                       for r in inv["records"]))
           and meta["records_by_sex_line"] ==
+          dict(Counter(r["sex_line"] for r in inv["records"]))
+          and dict(Counter(r["representation"]
+                           for r in got_records.values())) ==
+          dict(Counter(v[2] for v in exp_records.values()))
+          and dict(Counter(r["sex_line"]
+                           for r in got_records.values())) ==
           dict(Counter(v[6] for v in exp_records.values())))
 
     # dispositions
@@ -609,10 +640,36 @@ def main():
     bad, entries = [], 0
     tot = Counter()
     all_meshes = []
+    fma_mesh_bad = []
+    collisions = {}
     for rid, gr in geo_rec.items():
         if gr["concept_ids"] != inv_rec[rid]["concept_ids"] or \
                 gr["sex_line"] != inv_rec[rid]["sex_line"]:
             bad.append((rid, "concept ids / sex line"))
+        if inv_rec[rid].get("source") == "fma-5.1.0":
+            # FMA partition: concept-only records (Milestones
+            # 37/38). Their geometry entries are governed by
+            # the mesh-less rule, not by the BP3D element-table
+            # derivation — the derivation is the BP3D
+            # partition's defining rule (cf. the partition
+            # scoping of tools/uri_check.py). The derivation
+            # over their concepts is still computed, to feed
+            # the Milestone 40 collision gate below.
+            tt = gr.get("totals") or {}
+            if gr["isa_meshes"] or gr["partof_meshes"] or \
+                    gr.get("bbox_isa") is not None or \
+                    gr.get("bbox_partof") is not None or \
+                    (tt.get("isa") or {}).get("files") or \
+                    (tt.get("partof") or {}).get("files"):
+                fma_mesh_bad.append(rid)
+            deriv = {"isa": set(), "partof": set()}
+            for tree, elem in (("isa", isa_elem),
+                               ("partof", po_elem)):
+                for c in gr["concept_ids"]:
+                    deriv[tree] |= elem.get(c, set())
+            if deriv["isa"] or deriv["partof"]:
+                collisions[rid] = deriv
+            continue
         for tree, key, elem, d in (
                 ("isa", "isa_meshes", isa_elem, ISA_DIR),
                 ("partof", "partof_meshes", po_elem, PO_DIR)):
@@ -649,6 +706,34 @@ def main():
                 bad.append((rid, bbk + " not null"))
     check(f"all geometry entries re-measured ({entries} entries)",
           not bad, f"bad={bad[:6]}")
+    # Milestone 40 adjudication: FMA19235/FMA19236 ARE carried
+    # by BP3D 4.0 — under the FMA preferred name "deferent
+    # duct", which Milestone 14's Latin-keyed probes and sweep
+    # terms ("ductus deferens" / "vas deferens") never matched,
+    # so the line was recorded absent and Milestone 38 intaken
+    # the pair as concept-only FMA records. The records stay
+    # concept-only — upgrading them to geometry-carrying
+    # records is a geometry-intake decision (the Milestone 34
+    # line), not a checker repair. The pair's claimable meshes
+    # are pinned here so that any change to this collision
+    # set — a newly BP3D-carried FMA concept, a changed file
+    # set, or a deliberate re-filing of the pair — fails
+    # loudly instead of drifting. See MILESTONE-40.md.
+    ADJUDICATED_COLLISIONS = {
+        "repro.left-deferent-duct":
+            {"isa": {"FJ3135"}, "partof": set()},
+        "repro.right-deferent-duct":
+            {"isa": {"FJ3140"}, "partof": set()},
+    }
+    check("attribution consistency across all records "
+          "(Milestone 40 gate): the FMA partition is "
+          "mesh-less, and the BP3D element-table derivation "
+          "over FMA-partition concepts is empty except the "
+          "adjudicated deferent-duct pair (FJ3135 / FJ3140)",
+          not fma_mesh_bad
+          and collisions == ADJUDICATED_COLLISIONS,
+          f"mesh_bad={fma_mesh_bad[:3]} "
+          f"collisions={collisions}")
     cov = geo["meta"]["coverage"]
     check("geometry coverage meta matches (13/13; male 10/10, "
           "female 1/1, shared 2/2)",
@@ -951,6 +1036,7 @@ def main():
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
     import ta2_discipline as _ta2d
     _ta2d.run("reproductive", "data/reproductive/reproductive.json", lambda ok_, label: check(label, ok_))
+    _ta2d.run_fma_inventory_multi("reproductive", "data/reproductive/reproductive-inventory.json", "fma_inventory_reproductive", "M38", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"repro_check: {npass}/{len(checks)} checks passed")
