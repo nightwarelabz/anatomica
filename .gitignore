@@ -6,3 +6,8 @@ data/sources/**/*.zip
 data/sources/**/*.obj
 data/sources/**/*.glb
 data/sources/bodyparts3d-4.0/extracted/
+
+# Browser build artifacts (built locally; deployed, not tracked)
+web/pkg/
+wasm/target/
+wasm/harness/out/

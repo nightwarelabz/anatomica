@@ -76,8 +76,9 @@
 
 use crate::engine::{BeatRecord, Engine, Event};
 use crate::params::Params;
+use serde::Serialize;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 pub enum CaseKind {
     Resting,
     Hemorrhage750,
@@ -85,7 +86,7 @@ pub enum CaseKind {
     Hemorrhage1500,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct WindowStats {
     pub beats: usize,
     pub hr: f64,
@@ -142,7 +143,7 @@ fn drift(xs: &[f64]) -> f64 {
 /// the oxygen-transport quantities evaluated at a supplied cardiac
 /// output (a beat-window mean in this harness — steady-state
 /// quantities in the Milestone 24 sense).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct RespReadout {
     pub paco2: f64,
     pub pao2: f64,
@@ -237,7 +238,7 @@ pub fn window_stats(beats: &[BeatRecord]) -> WindowStats {
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CaseOutcome {
     pub kind: CaseKind,
     pub baseline: WindowStats,
@@ -397,7 +398,7 @@ pub fn run_case(params: &Params, kind: CaseKind) -> CaseOutcome {
 }
 
 /// One line of the resting validation table.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct ValidationLine {
     pub output: String,
     pub value: f64,
@@ -481,7 +482,7 @@ pub fn evaluate_resting(params: &Params, outcome: &CaseOutcome) -> Vec<Validatio
     lines
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct PerturbationLine {
     pub output: String,
     pub baseline: f64,
@@ -543,7 +544,7 @@ pub fn evaluate_perturbation(
 /// settle/baseline/engage protocol, a 750 mL haemorrhage over 60 s,
 /// then 30 minutes of undisturbed simulated time after the bleed
 /// ends. Samples the mechanism states as the trajectory unfolds.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct RefillOutcome {
     /// (minutes after bleed end, net refill mL, recruited mL)
     pub samples: Vec<(f64, f64, f64)>,
@@ -618,7 +619,7 @@ pub fn run_refill_observation(params: &Params) -> RefillOutcome {
 /// Milestone 26: two product arms join the course (whole blood,
 /// components — see CourseArm), the samples carry the oncotic
 /// states, and evaluation runs over the four-arm CourseSet.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CourseSample {
     pub minutes_after_bleed_end: f64,
     /// Haemodynamics over the 30 s ending at the mark.
@@ -664,7 +665,7 @@ pub struct CourseSample {
 /// and components (2 units PRBC then 2 units plasma, sequentially
 /// at the same nominal rate). All product arms start when the bleed
 /// ends, like the bolus.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 pub enum CourseArm {
     Untreated,
     Crystalloid,
@@ -672,7 +673,7 @@ pub enum CourseArm {
     Components,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CourseOutcome {
     pub arm: CourseArm,
     pub samples: Vec<CourseSample>,
@@ -681,7 +682,7 @@ pub struct CourseOutcome {
 }
 
 /// The four arms' outcomes, evaluated together (Milestone 26).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CourseSet {
     pub untreated: CourseOutcome,
     pub crystalloid: CourseOutcome,
@@ -895,7 +896,7 @@ pub fn run_course_arm_marks(params: &Params, arm: CourseArm, marks_min: &[f64]) 
     }
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CourseLine {
     pub output: String,
     pub baseline: f64,
@@ -1057,7 +1058,7 @@ pub fn evaluate_refill(params: &Params, outcome: &RefillOutcome) -> (f64, [f64; 
 /// would be invisible at that horizon. This runner proves the
 /// resting state is a true steady state over an hour and measures
 /// the equilibrium urine output against its cited band (S24).
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct LongRestOutcome {
     /// Haemodynamics over the first 30 s after engagement (contains
     /// the engagement transient; reported, not gated).
@@ -1134,7 +1135,7 @@ pub fn run_long_rest(params: &Params) -> LongRestOutcome {
 // intervention lands at engagement (tick 6000) through the event
 // channels, and marks are sampled on 30 s windows like the course.
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct HormoneSample {
     /// Minutes after the arm's mark origin (the load's end for the
     /// water-load arms, engagement for the others).
@@ -1159,7 +1160,7 @@ pub struct HormoneSample {
     pub blood_volume_ml: f64,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct HormoneArmOutcome {
     pub baseline_window: WindowStats,
     /// The hormonal operating point at engagement (the states sit
@@ -1367,7 +1368,7 @@ pub fn run_sodium_load(params: &Params) -> HormoneArmOutcome {
 
 /// The −1,500 mL course extended to 12 h (untreated and
 /// crystalloid arms), on the standard course protocol.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct LongCourseSet {
     pub untreated: CourseOutcome,
     pub crystalloid: CourseOutcome,
@@ -1384,7 +1385,7 @@ pub fn run_long_course(params: &Params) -> LongCourseSet {
 }
 
 /// All four hormonal arms plus the long course, evaluated together.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct HormoneSet {
     pub water_load: HormoneArmOutcome,
     pub water_control: HormoneArmOutcome,
@@ -1581,7 +1582,7 @@ pub fn evaluate_hormones(params: &Params, set: &HormoneSet) -> Vec<PerturbationL
 // never at a reflex transient).
 // ---------------------------------------------------------------------
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 pub enum RespCaseKind {
     /// Rate held at 6 /min (alveolar ventilation halved), the
     /// chemoreflex suspended by the override.
@@ -1629,7 +1630,7 @@ pub enum RespCaseKind {
     ChronicHyperventilationPure,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct RespOutcome {
     pub kind: RespCaseKind,
     pub baseline: RespReadout,

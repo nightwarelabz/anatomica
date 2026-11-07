@@ -1,0 +1,87 @@
+{
+ "attempt": {
+  "boards_note": "Each board is the learner's committed probability distribution AFTER that stage's evidence reveal (design/07 step 2/4: the board must carry explicit numbers \u2014 vague differentials cannot be scored or calibrated). Boards must sum to 1; the checker enforces it.",
+  "case_id": "case.ruq-pain.001",
+  "debrief_text": {
+   "analysis": "Three teaching points, each tied to a scored component. (1) Criteria before fragments: cholangitis under TG18 needs cholestasis or duct imaging; with bilirubin 0.9 mg/dL, enzymes inside reference, no jaundice and a 5 mm duct, there is nothing for the diagnosis to stand on \u2014 Charcot's triad is specific but only 26.4% sensitive (C2), so its partial presence is weak evidence and its textbook vividness is the trap. The consider-the-opposite prompt (design/07's debiasing evidence) for the next RUQ case: 'what would have to be true for this to be cholangitis, and have I measured those things?' (2) One test carried the case: lipase (discriminating \u2014 it alone moves pancreatitis across the rule-out line) and the ultrasound (discriminating \u2014 largest single posterior move, and the TG18 group C test). (3) Amylase alongside lipase is non-contributory by rule and by Choosing Wisely (C6): ordering both is cost without information.",
+   "description": "Stage by stage: the learner's board and the workbench's evidence board agree on the leader from stage 1 (cholecystitis), but diverge on cholangitis \u2014 the learner raises it at stage 2 (0.20 -> 0.25) on the very stage the cholestasis screen returns empty, and still holds it at 0.15 at stage 3, after the workbench has ruled it out (posterior < 0.02 and TG18 groups B and C both unmet). Pancreatitis is handled exactly right: the normal lipase collapses it at stage 2 (the attempt's 0.02 tracks the workbench's rule-out).",
+   "reactions": "The attempt reaches the right diagnosis and the right disposition. Its one systematic error is also the commonest one in the diagnostic-error literature design/07 cites: a vivid fragment (fever + RUQ pain = two-thirds of Charcot's triad) out-arguing a criteria block.",
+   "summary": "Diagnosis: acute calculous cholecystitis, TG18 definite from stage 3, Grade I severity (two Grade III items \u2014 respiratory and renal/hepatic function \u2014 recorded not-assessed rather than assumed). Disposition as committed: early laparoscopic cholecystectomy, handed to the Theatre (proc.chole.lap). Calibration note: a calibration curve is a property of a case SERIES (design/07); this single case contributes four staged Brier scores (learner 0.4550 -> 0.3336 -> 0.1184 -> 0.0276) and one anchoring event to that future series, and claims nothing more."
+  },
+  "id": "attempt.case-ruq-pain-001.model-learner",
+  "learner": "Model learner \u2014 an authored attempt shipped with the case as its worked example, in the same role as Milestone 17's shipped traces. It is deliberately imperfect in one documented way: it anchors on acute cholangitis (fever + RUQ pain read as two-thirds of Charcot's triad) and keeps assigning it 0.15 at stage 3, after the cholestasis screen and the ultrasound have between them removed every TG18 leg the diagnosis could stand on. Everything else it does is sound, including one wasteful order (amylase) kept for the debrief's Choosing Wisely point.",
+  "stages": [
+   {
+    "board": {
+     "hyp.acute-cholangitis": 0.2,
+     "hyp.acute-cholecystitis": 0.4,
+     "hyp.acute-pancreatitis": 0.1,
+     "hyp.myocardial-infarction": 0.05,
+     "hyp.other-unspecified": 0,
+     "hyp.peptic-ulcer-disease": 0.2,
+     "hyp.pneumonia": 0.05
+    },
+    "board_rationale": "RUQ pain, fever, Murphy positive: cholecystitis leads, but the learner gives cholangitis 0.20 on fever-plus-pain and keeps peptic ulcer at 0.20 for the vomiting and epigastric component.",
+    "orders": [
+     "test.cbc",
+     "test.crp",
+     "test.lft-panel",
+     "test.lipase",
+     "test.amylase",
+     "test.ecg",
+     "test.troponin"
+    ],
+    "orders_note": "Ordered at the end of stage 1; results are the stage-2 reveal. The panel is right (inflammatory markers, cholestasis screen, lipase, cardiac safety-net) with one redundancy: amylase alongside lipase.",
+    "stage": 1
+   },
+   {
+    "board": {
+     "hyp.acute-cholangitis": 0.25,
+     "hyp.acute-cholecystitis": 0.5,
+     "hyp.acute-pancreatitis": 0.02,
+     "hyp.myocardial-infarction": 0.03,
+     "hyp.other-unspecified": 0.02,
+     "hyp.peptic-ulcer-disease": 0.13,
+     "hyp.pneumonia": 0.05
+    },
+    "board_rationale": "Correctly drops pancreatitis to near-zero on the normal lipase and the cardiac pair to near-zero on ECG + troponin. But cholangitis RISES to 0.25 despite a completely negative cholestasis screen \u2014 the learner is reasoning from the fever and the triad fragment, not from the criteria. The workbench board moves the other way (cholangitis 0.042 and falling).",
+    "orders": [
+     "test.ruq-ultrasound"
+    ],
+    "orders_note": "The single highest-yield order in the case (C4).",
+    "stage": 2
+   },
+   {
+    "board": {
+     "hyp.acute-cholangitis": 0.15,
+     "hyp.acute-cholecystitis": 0.7,
+     "hyp.acute-pancreatitis": 0.01,
+     "hyp.myocardial-infarction": 0.02,
+     "hyp.other-unspecified": 0.03,
+     "hyp.peptic-ulcer-disease": 0.06,
+     "hyp.pneumonia": 0.03
+    },
+    "board_rationale": "Cholecystitis now leads clearly. But cholangitis is still held at 0.15 \u2014 'fever plus pain, and stones can obstruct' \u2014 one stage after the workbench ruled it out (posterior 0.0112, TG18 groups B and C both unmet). This is the attempt's anchoring event, recorded by rule in the debrief.",
+    "orders": [],
+    "stage": 3
+   },
+   {
+    "board": {
+     "hyp.acute-cholangitis": 0.05,
+     "hyp.acute-cholecystitis": 0.85,
+     "hyp.acute-pancreatitis": 0.01,
+     "hyp.myocardial-infarction": 0.01,
+     "hyp.other-unspecified": 0.02,
+     "hyp.peptic-ulcer-disease": 0.04,
+     "hyp.pneumonia": 0.02
+    },
+    "commit": {
+     "diagnosis_hypothesis": "hyp.acute-cholecystitis",
+     "management": "Admit for early laparoscopic cholecystectomy \u2014 Theatre handoff to procedure proc.chole.lap, as the case's management block specifies."
+    },
+    "orders": [],
+    "stage": 4
+   }
+  ]
+ }
+}

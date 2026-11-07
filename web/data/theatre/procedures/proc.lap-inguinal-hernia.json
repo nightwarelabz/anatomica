@@ -1,0 +1,1226 @@
+{
+ "procedure": {
+  "authority_basis": "Authored against the consulted groin-hernia literature listed in theatre/parameters.json: the HerniaSurge international guidelines (T36) and their 2023 update (T37), the ten golden rules for a safe minimally invasive inguinal hernia repair carrying the critical view of the myopectineal orifice (T38, with Daes & Felix 2017 and Furtado et al. 2019 as cited there), the laparoscopic inguinal anatomy review that defines the triangles of doom and pain (T39), the corona mortis meta-analysis as reported in 2024 (T40), and the sliding-hernia series (T41); T6, T8, T9, T10 and T20 are shared with the theatre's earlier procedures. Approach: TAPP was chosen over TEP because the specialty's gate concept - the critical view of the myopectineal orifice - is approach-shared, while TAPP's intraperitoneal survey (hernia typing, femoral canal inspection, consented contralateral inspection) and its peritoneal-flap closure discipline give the fuller cognitive task analysis; the counterpoint is recorded honestly - the 2023 update notes TEP exploration detects small contralateral defects and cord lipomas more directly (T37) - and TEP is the named non-authored alternative. The decomposition is this module's own, built to cognitive-task-analysis discipline (design/05): no published TAPP microstep list was copied. StatPearls' inguinal hernia chapter was attempted in-session and was reCAPTCHA-blocked, as throughout this project; it is cited for nothing.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.2 (survey reviewed).",
+    "choices": [
+     {
+      "effect": "Continue with the authored plan.",
+      "id": "proceed-tapp",
+      "label": "Proceed with the TAPP repair",
+      "scoring": "Neutral in itself."
+     },
+     {
+      "effect": "Bailout: stop and refer.",
+      "id": "abort-refer",
+      "label": "Abort and refer to a hernia service",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the survey findings permit proceeding with the TAPP repair?"
+   },
+   {
+    "anchor": "Anchored at microstep m5.2 (second look).",
+    "choices": [
+     {
+      "effect": "Continue dissection in the correct plane until the triangles and cord can be demonstrated.",
+      "id": "extend-dissection",
+      "label": "Extend the preperitoneal dissection until the anatomy can be accounted for",
+      "scoring": "Positive: persistence with exposure rather than division or fixation."
+     },
+     {
+      "effect": "Escalate before any division or fixation.",
+      "id": "call-senior",
+      "label": "Call for senior / specialist hernia help",
+      "scoring": "Positive escalation."
+     },
+     {
+      "effect": "Bailout: stop and refer.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "The scored-error choice: division or fixation without the account - the runner resolves it onto the unaccounted structure and fails the attempt.",
+      "id": "continue-dissection",
+      "label": "Divide and fixate where it is presumed safe",
+      "scoring": "err.no-bailout, and the act itself fires the gate's misidentification resolution."
+     }
+    ],
+    "id": "dp2",
+    "question": "The danger anatomy cannot be accounted for. What now?"
+   },
+   {
+    "anchor": "On uncontrolled bleeding in the preperitoneal space.",
+    "choices": [
+     {
+      "effect": "Convert: open control of the bleeding vessel.",
+      "id": "convert-open",
+      "label": "Convert to open repair for vascular control",
+      "scoring": "The definitive escalation for uncontrolled bleeding."
+     },
+     {
+      "effect": "Persist with laparoscopic haemostasis.",
+      "id": "control-laparoscopically",
+      "label": "Continue laparoscopic control attempts",
+      "scoring": "Neutral while control is achievable; the engine continues to compute the loss."
+     },
+     {
+      "effect": "Bailout by escalation to a vascular service.",
+      "id": "abort-refer",
+      "label": "Abort, pack and refer to a vascular-capable service",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp3",
+    "question": "Bleeding in the preperitoneal space cannot be controlled laparoscopically. What now?"
+   },
+   {
+    "anchor": "Anchored at microstep m7.3 (injury management).",
+    "choices": [
+     {
+      "effect": "Definitive repair of the injured vessel, duct or viscus at the index operation.",
+      "id": "convert-to-repair",
+      "label": "Convert as needed and repair the injured structure definitively",
+      "scoring": "The definitive plan."
+     },
+     {
+      "effect": "Immediate referral without attempting repair.",
+      "id": "repair-refer",
+      "label": "Refer immediately to the repair service",
+      "scoring": "Plan-positive; control of a bleeding injury is credited by haemostasis (the control action), not by this choice."
+     },
+     {
+      "effect": "Bailout by omission.",
+      "id": "abort-close",
+      "label": "Abort the operation and close without repair or referral",
+      "scoring": "Neither plan nor control is credited."
+     }
+    ],
+    "id": "dp4",
+    "question": "A structural injury has been recognised. What is the definitive plan?"
+   },
+   {
+    "anchor": "Anchored at microstep m6.3 (defect and fixation assessment, after mesh positioning).",
+    "choices": [
+     {
+      "effect": "The guideline default for almost all hernia types (T36, T38 Rule 9): no fixation microsteps are required for this attempt.",
+      "id": "non-fixation",
+      "label": "Place the mesh without fixation",
+      "scoring": "Correct for a non-large defect; the scored configuration error for a large medial (M3) defect, where it computes the recurrence consequence at scoring."
+     },
+     {
+      "effect": "Microsteps m6.4-m6.6 become required for this attempt (runner-enacted): medial fixation into Cooper's ligament, superior fixation, and lateral fixation only at least 2 cm above the iliopubic tract.",
+      "id": "fixation",
+      "label": "Fixate the mesh (zonal fixation)",
+      "scoring": "Correct for a large medial (M3) defect (T36, T38); scored as unnecessary fixation for a non-large defect."
+     },
+     {
+      "effect": "Bailout: abandon the laparoscopic repair for an open one.",
+      "id": "convert-open-repair",
+      "label": "Convert to an open repair",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp5",
+    "question": "What is the fixation strategy for this defect?"
+   },
+   {
+    "anchor": "After microstep m8.3 (postoperative plan confirmed).",
+    "choices": [
+     {
+      "effect": "Re-operation: complete the peritoneal closure / repair the adhesion source, or revise the repair for recurrence.",
+      "id": "return-theatre",
+      "label": "Return to theatre to correct the consequence",
+      "scoring": "The definitive plan for a postoperative structural consequence."
+     },
+     {
+      "effect": "Observe with re-operation only if symptoms declare.",
+      "id": "observe-and-review",
+      "label": "Observe and review",
+      "scoring": "Not the definitive plan for a computed structural consequence."
+     },
+     {
+      "effect": "Refer onward without a corrective plan.",
+      "id": "refer-routine",
+      "label": "Refer routinely",
+      "scoring": "Not the definitive plan."
+     }
+    ],
+    "id": "dp6",
+    "question": "A postoperative consequence has been declared. What is the plan?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's misidentification resolution: the act crosses the external iliac vessels inside the unaccounted triangle - vascular injury with engine-computed haemorrhage. HerniaSurge names the preperitoneal vessels among the typical vascular injuries at dissection and mesh fixation in this space (T36). The attempt FAILS at the moment of the act, regardless of all other scores (design/05 master rule, applied here as to the cholecystectomy's bile duct, the appendicectomy's cecum, the carpal release's median nerve and the ulnar release's nerves).",
+    "definition": "Dividing the sac or transversalis fascia, or placing mesh fixation, before the triangle of doom was delimited and the external iliac vessels identified (gate.mpo-account, crit1 unmet).",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T38"
+   },
+   {
+    "consequence": "Computed by the runner's misidentification resolution onto the genitofemoral nerve's femoral branch: the act crosses the lateral nerves that were never accounted for - the injury the anatomy review names for separation and fixation in this territory, whose consequence is chronic neuropathic pain (T39); clinically significant chronic postoperative inguinal pain runs at 10-12% (T36). The attempt FAILS: the gate protects this territory by name.",
+    "definition": "Dividing or fixating with the triangle of pain undelimited (gate.mpo-account, crit2 unmet) while the doom account is complete.",
+    "id": "err.pain-triangle-injury",
+    "severity": "critical-fail",
+    "source": "T39"
+   },
+   {
+    "consequence": "Computed by the runner's misidentification resolution onto the deferent duct: the act divides the unparietalized duct where it lies against the sac - the cord injury the parietalization discipline exists to prevent (T38, Rules 5-6 name cord injury among this dissection's harms). The attempt FAILS at the moment of the act.",
+    "definition": "Dividing or fixating with the cord structures unaccounted for (gate.mpo-account, crit3 unmet) while the doom and pain accounts are complete.",
+    "id": "err.vas-injury",
+    "severity": "critical-fail",
+    "source": "T38"
+   },
+   {
+    "consequence": "Computed visceral injury: the division cuts the viscus forming the sac wall (resolved onto the cecum on this right side) - the sliding hernia's defining hazard, present in 2-5% of indirect inguinal hernias (T41). The attempt FAILS at the division.",
+    "definition": "Dividing the sac in the sliding configuration without performing the sliding survey (microstep m4.5): the sac wall is formed in part by a viscus and is not a free peritoneal sac.",
+    "id": "err.missed-variant",
+    "severity": "critical-fail",
+    "source": "T41"
+   },
+   {
+    "consequence": "Computed haemorrhage from the corona mortis: 'significant hemorrhage may occur, and hemostasis may be difficult to achieve if the corona mortis vessels are accidentally cut because they may retract into the obturator canal' (T39). A collateral injury of a correctly gated act - scored major, not a failed attempt, as the carpal release's unprotected variant vessel is (Milestone 42).",
+    "definition": "Placing medial fixation (into Cooper's ligament) in the corona mortis configuration without protecting the anastomotic vessel (microstep m4.4 not performed), the gate otherwise achieved.",
+    "id": "err.corona-unprotected",
+    "severity": "major",
+    "source": "T39"
+   },
+   {
+    "consequence": "Computed nerve injury in the pain territory (resolved onto the genitofemoral nerve): fixation in this zone entraps the lateral nerves, the chronic-neuropathic-pain mechanism of T39; traumatic fixation 'should not be placed below the iliopubic tract' and 2 cm above it is the extra-safety line (T38, Rule 9). Scored as a major departure with management, not a failed attempt - the account was made and then violated, the carpal radial-dissection pattern (Milestone 42).",
+    "definition": "Placing traumatic fixation below the iliopubic tract within the triangle of pain, the gate achieved (microstep m6.7) - a prohibited placement, not an unaccounted one.",
+    "id": "err.fixation-in-pain-triangle",
+    "severity": "major",
+    "source": "T38"
+   },
+   {
+    "consequence": "Computed vascular injury with engine-computed haemorrhage (resolved onto the external iliac artery): fixation injuries in the preperitoneal space involve the vessels of this space (T36, T39). Scored as a major departure with management, not a failed attempt, on the same pattern as the pain-zone fixation.",
+    "definition": "Placing traumatic fixation within the triangle of doom, the gate achieved (microstep m6.8) - a prohibited placement, not an unaccounted one.",
+    "id": "err.fixation-in-doom-triangle",
+    "severity": "major",
+    "source": "T36"
+   },
+   {
+    "consequence": "Scored as a judgment error in the debrief: non-fixation is recommended in almost all hernia types except large medial defects (T36), and fixation is unnecessary in most minimally invasive repairs (T38, Rule 9) - its harms (chronic pain association with higher tack numbers, T38; the fixation complication list, T36) are taken on without the recurrence benefit that alone justifies it.",
+    "definition": "Fixating the mesh of a defect that is not a large medial (M3) defect.",
+    "id": "err.unnecessary-fixation",
+    "severity": "judgment",
+    "source": "T36"
+   },
+   {
+    "consequence": "Recurrence declared as a postoperative consequence, computed at scoring: fixation of large medial defects in TEP/TAPP is the HerniaSurge recommendation (expert opinion and consensus, T36), the golden rules recommend fixation in large, especially direct, hernias (T38, Rule 9), and the 2023 update's evidence runs the same way - recurrence after non-fixated mesh in direct repairs was markedly increased (RR 7.27 in the reported meta-analysis, T37). Managed at dp6 by return to theatre.",
+    "definition": "Completing a large medial (M3 EHS) defect without mesh fixation (dp5 choice non-fixation, no fixation microsteps performed).",
+    "id": "err.no-fixation-large-defect",
+    "severity": "major",
+    "source": "T36"
+   },
+   {
+    "consequence": "Bowel adhesion / obstruction risk declared as a postoperative consequence, computed at scoring: mesh exposed to the abdominal cavity through peritoneal defects may cause bowel adhesions resulting in bowel obstruction (T36), and gaps, holes or tears of the peritoneum should be closed to reduce the risk of early bowel obstruction or mesh exposure (T38, Rule 10). Managed at dp6 by return to theatre.",
+    "definition": "Closing the peritoneal flap without confirming the closure is complete (microstep m7.2 not performed).",
+    "id": "err.incomplete-peritoneal-closure",
+    "severity": "major",
+    "source": "T38"
+   },
+   {
+    "consequence": "Scored in the debrief; the act that follows it fires the gate's misidentification resolution and fails the attempt.",
+    "definition": "Declaring the danger anatomy unaccountable at dp2 and dividing or fixating anyway instead of altering strategy.",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T20"
+   },
+   {
+    "consequence": "Scored in the process component and named in the debrief analysis.",
+    "definition": "Omitting a WHO checklist integration point (Sign In, Time Out or Sign Out).",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.lap-inguinal-hernia",
+  "name": "Laparoscopic transabdominal preperitoneal (TAPP) inguinal hernia repair, right side",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, anaesthesia and checklist (Step 0)",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review the referral, the hernia examination and imaging; confirm a right inguinal hernia, its direct/indirect character as far as it is known, and the indication for repair",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Confirm consent and the operative plan: TAPP repair with mesh; consent covers the fixation decision (fixation only for a large medial defect), vascular and cord injury, nerve injury and chronic pain, and inspection of the contralateral side",
+        "required": true,
+        "sources": [
+         "T36",
+         "T37"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Confirm team, resource tier and equipment plan, including vascular-control capability should a preperitoneal vessel be injured",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Step 0: planning the procedure"
+     },
+     {
+      "id": "step.0.2",
+      "microsteps": [
+       {
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Establish general anaesthesia for the transabdominal repair",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [],
+        "label": "Position the patient supine, both arms tucked, monitors set for lower-abdominal access",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [],
+        "verb": "position"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Empty the bladder before the operation (a catheter is not used routinely)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.7",
+        "instruments": [],
+        "label": "WHO Sign In completed before induction of anaesthesia",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "id": "m0.8",
+        "instruments": [],
+        "label": "Confirm that antibiotic prophylaxis is withheld: prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in elective laparo-endoscopic repair in any patient or risk environment (T37), so this procedure carries no prophylaxis microstep - the withholding is itself the authored, sourced act, and the process component's ceiling is 4 of 5 by design",
+        "required": true,
+        "sources": [
+         "T36",
+         "T37"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Time Out completed immediately before skin incision",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Anaesthesia, setup and checklist"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Access and peritoneal flap incision (TAPP)",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [
+         "inst.hasson-trocar",
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Make the umbilical camera port (open Hasson entry), establish pneumoperitoneum at the theatre's insufflation pressure and place the camera",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [
+         "inst.trocar-5mm"
+        ],
+        "label": "Place the two 5 mm working ports under direct vision",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m1.3",
+        "instruments": [
+         "inst.hook-cautery"
+        ],
+        "label": "Incise the peritoneal flap at least 4 cm above the deep inguinal ring, from the anterior superior iliac spine to the medial umbilical fold (Rule 1)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "incise"
+       }
+      ],
+      "name": "Enter, insufflate, place ports, incise the flap"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Intraperitoneal survey",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [],
+        "label": "Survey the myopectineal orifice from within: classify the hernia (indirect, direct, femoral components) and state the defect's size and medial extent - the EHS characterisation the fixation rule will key on",
+        "required": true,
+        "sources": [
+         "T36",
+         "T38"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.2",
+        "instruments": [],
+        "label": "Inspect the femoral canal (the external iliac vein kept in view is what avoids a missed femoral hernia, Rule 4) and inspect the contralateral orifice as consented",
+        "required": true,
+        "sources": [
+         "T36",
+         "T38"
+        ],
+        "targets": [
+         "vein.right-external-iliac-vein"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m2.3",
+        "instruments": [],
+        "label": "Identify the retropubic space of Retzius and the bladder's position before medial dissection (the bladder is posterior in Retzius; in direct dissection, remain in the correct plane to avoid injuring the bladder if it forms part of the hernia)",
+        "required": true,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Survey the orifice and the field"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Preperitoneal dissection and sac reduction",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "id": "m3.1",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Develop the space of Retzius medially to the pubic symphysis and at least 2 cm below the pubis (Rule 3 dissection extent)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.2",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Develop the space of Bogros laterally, keeping dissection fat on the inguinal floor and following the peritoneal plane (Rule 2)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.3",
+        "instruments": [
+         "inst.grasper-bowel"
+        ],
+        "label": "Reduce the hernia sac and its contents; explore for and reduce any cord lipoma (a missed lipoma is a major cause of recurrence, Rule 7; the lipoma is placed on top of the mesh later)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "sac.inguinal-hernia"
+        ],
+        "verb": "dissect"
+       }
+      ],
+      "name": "Develop Retzius and Bogros; reduce the sac"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Danger anatomy account (the gate demonstrations)",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m4.1",
+        "instruments": [
+         "inst.laparoscope-30deg"
+        ],
+        "label": "Demonstrate the triangle of doom delimited - vas deferens medially, gonadal vessels laterally, peritoneal fold - with the external iliac artery and vein identified within it, and the superior pubic ramus surveyed for a corona mortis anastomosis arching over Cooper's ligament",
+        "required": true,
+        "sources": [
+         "T36",
+         "T39"
+        ],
+        "targets": [
+         "region.triangle-of-doom",
+         "artery.right-external-iliac-artery",
+         "vein.right-external-iliac-vein"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m4.2",
+        "instruments": [],
+        "label": "Demonstrate the triangle of pain delimited - iliopubic tract line established lateral to the gonadal vessels, the lateral cutaneous and genitofemoral territory accounted for WITHOUT dissecting the nerves out (Rule 2), and every planned fixation point at least 2 cm above the tract",
+        "required": true,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "region.triangle-of-pain",
+         "nerve.genitofemoral",
+         "major.lateral-femoral-cutaneous"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m4.3",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Demonstrate the cord structures accounted for and parietalized: deferent duct and gonadal vessels identified as the inverted Y's arms, the internal spermatic fascia incised, the sac separated cephalad, and the peritoneum dissected inferiorly until the vas deferens crosses the external iliac vein, iliopsoas identified posteriorly",
+        "required": true,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "repro.right-spermatic-cord",
+         "repro.right-deferent-duct",
+         "artery.right-testicular-artery"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m4.4",
+        "instruments": [
+         "inst.maryland-dissector"
+        ],
+        "label": "Protect the corona mortis: the anastomotic vessel found on the crit1 survey is dissected clear of the medial fixation line and protected before any medial fixation (variant configuration)",
+        "required": false,
+        "sources": [
+         "T39",
+         "T40"
+        ],
+        "targets": [
+         "artery.corona-mortis"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m4.5",
+        "instruments": [],
+        "label": "Sliding survey: establish whether a viscus forms part of the sac wall before any sac division - if it does, the sac wall is not divided; the viscus is reduced with the sac (variant configuration)",
+        "required": false,
+        "sources": [
+         "T41"
+        ],
+        "targets": [
+         "sac.inguinal-hernia",
+         "canal.cecum"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Account for the triangles and the cord"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "The myopectineal-orifice gate",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [],
+        "label": "Confirm the critical view of the myopectineal orifice is complete: all anatomical elements recognized, the dissection steps completed and haemostasis achieved - the specialty's precondition for mesh placement",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp2",
+        "id": "m5.2",
+        "instruments": [],
+        "label": "Second look: re-confirm the doom account, the pain account and the cord account before division or fixation",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [
+         "region.triangle-of-doom"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m5.3",
+        "instruments": [],
+        "label": "Pre-division pause: the danger-anatomy account is confirmed aloud before any structure is divided or any fixation placed",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Confirm the critical view; pause"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Sac completion, mesh placement and fixation decision",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "id": "m6.1",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Divide the sac at its neck (for a large or inguinoscrotal sac, transect and abandon the distal sac - and only after the cord elements have been safely identified, Rule 6) and divide the transversalis fascia of the direct floor as required",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "sac.inguinal-hernia",
+         "fascia.transversalis"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [],
+        "label": "Position the mesh - at least 10 cm craniocaudal by 15 cm mediolateral, heavyweight for a large direct defect - covering the whole myopectineal orifice with at least 3-4 cm overlap, at least 3 cm medial overlap from a direct defect, 1-2 cm crossover, 1-2 cm below the pubis, no wrinkles or folds, not split (Rule 8)",
+        "required": true,
+        "sources": [
+         "T37",
+         "T38"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "perform"
+       },
+       {
+        "anchors_decision": "dp5",
+        "id": "m6.3",
+        "instruments": [],
+        "label": "Assess the defect for the fixation decision: state whether this is a large medial (M3 EHS) defect - the single class for which fixation is recommended - with adequate mesh size and overlap and the direct dead space reduced",
+        "required": true,
+        "sources": [
+         "T36",
+         "T38"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Complete the sac; position the mesh"
+     },
+     {
+      "id": "step.6.2",
+      "microsteps": [
+       {
+        "id": "m6.4",
+        "instruments": [
+         "inst.mesh-tacker"
+        ],
+        "label": "Fixate medially: a tack above the pubic bone into Cooper's ligament (avoiding the epigastric vessels; bimanual palpation while placing penetrating fixation)",
+        "required": false,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "ligament.pectineal"
+        ],
+        "verb": "fixate"
+       },
+       {
+        "id": "m6.5",
+        "instruments": [
+         "inst.mesh-tacker"
+        ],
+        "label": "Fixate superiorly above the defect into the transversalis fascia / rectus sheath line, avoiding the inferior epigastric vessels",
+        "required": false,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "fascia.transversalis"
+        ],
+        "verb": "fixate"
+       },
+       {
+        "id": "m6.6",
+        "instruments": [
+         "inst.mesh-tacker"
+        ],
+        "label": "Fixate laterally ONLY at least 2 cm above the iliopubic tract - the permitted lateral point, outside the triangle of pain's nerve territory",
+        "required": false,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "region.triangle-of-pain"
+        ],
+        "verb": "fixate"
+       },
+       {
+        "id": "m6.7",
+        "instruments": [
+         "inst.mesh-tacker"
+        ],
+        "label": "PROHIBITED PLACEMENT (authored departure): place traumatic fixation below the iliopubic tract, inside the triangle of pain",
+        "required": false,
+        "sources": [
+         "T38",
+         "T39"
+        ],
+        "targets": [
+         "region.triangle-of-pain"
+        ],
+        "verb": "fixate"
+       },
+       {
+        "id": "m6.8",
+        "instruments": [
+         "inst.mesh-tacker"
+        ],
+        "label": "PROHIBITED PLACEMENT (authored departure): place traumatic fixation inside the triangle of doom",
+        "required": false,
+        "sources": [
+         "T36",
+         "T39"
+        ],
+        "targets": [
+         "region.triangle-of-doom"
+        ],
+        "verb": "fixate"
+       }
+      ],
+      "name": "Zonal fixation (fixation configuration only)"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Peritoneal closure and injury management",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the peritoneal flap with suture (suture closure is recommended instead of tacking, which risks nerve injury, Rule 10)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [],
+        "label": "Confirm the peritoneal closure is complete: no gap, hole or tear leaves mesh exposed to the abdominal cavity (omission of this confirmation computes the bowel-adhesion consequence at scoring)",
+        "required": true,
+        "sources": [
+         "T36",
+         "T38"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Close the flap; confirm completeness"
+     },
+     {
+      "id": "step.7.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp4",
+        "id": "m7.3",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Control and repair the injured structure: haemostasis of the injured vessel (which may require conversion), or repair of the injured duct or viscus, as the injury demands",
+        "required": false,
+        "sources": [
+         "T36"
+        ],
+        "targets": [
+         "artery.right-external-iliac-artery"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Injury management"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Deflation, port closure and Sign Out",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [],
+        "label": "Deflate the pneumoperitoneum under direct visualisation, confirming the mesh stays flat and undisplaced (Rule 10)",
+        "required": true,
+        "sources": [
+         "T38"
+        ],
+        "targets": [
+         "region.myopectineal-orifice"
+        ],
+        "verb": "perform"
+       },
+       {
+        "id": "m8.2",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the fascia at port sites of 1 cm or more (port-site hernias occur mostly after TAPP, 0-3.7% in the Cochrane data HerniaSurge reports)",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [
+         "peritoneum.peritoneum"
+        ],
+        "verb": "perform"
+       },
+       {
+        "anchors_decision": "dp6",
+        "id": "m8.3",
+        "instruments": [],
+        "label": "Confirm the postoperative plan: pain assessment with chronic-pain follow-up (clinically significant chronic postoperative inguinal pain runs at 10-12%), recurrence surveillance, and the plan for any declared consequence",
+        "required": true,
+        "sources": [
+         "T36"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.4",
+        "instruments": [],
+        "label": "WHO Sign Out completed before the patient leaves the operating room",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Deflate under vision; close; Sign Out"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The triangle of doom is delimited - bounded by the vas deferens medially, the testicular (gonadal) vessels laterally and the peritoneal fold (T39, verbatim) - and the external iliac artery and vein are identified within it, so no division or fixation line crosses them unknowing. The survey for an aberrant obturator (corona mortis) anastomosis over Cooper's ligament is part of this criterion's demonstration: HerniaSurge names the aberrant obturator vessels crossing Cooper's ligament among the typical preperitoneal vascular injuries at dissection and fixation (T36), and the anatomy review places the vessel about 5 cm from the symphysis, arching over the ligament (T39).",
+      "id": "crit1",
+      "name": "Triangle of doom delimited; external iliac vessels identified",
+      "source": "T39"
+     },
+     {
+      "definition": "The triangle of pain is delimited - lateral to the triangle of doom, bound by the iliopubic tract, the testicular vessels and the peritoneal fold (T39) - and its nerves (lateral-to-medial: lateral femoral cutaneous nerve, femoral branch of the genitofemoral nerve, femoral nerve, T39) are accounted for by that delimitation. Accounted for does NOT mean dissected or exposed: the golden rules state the nerves should not be systematically dissected or identified in the minimally invasive approach (T38, Rule 2); the account is territorial - the iliopubic tract line is established and every fixation point is planned at least 2 cm above it (T38, Rule 9). These are the nerves the anatomy review names as damaged at separation, fixation or bleeding control, causing chronic neuropathic pain (T39).",
+      "id": "crit2",
+      "name": "Triangle of pain delimited; lateral nerves accounted for",
+      "source": "T39"
+     },
+     {
+      "definition": "The spermatic cord's structures are accounted for - the deferent duct and the gonadal vessels identified as the inverted Y's medial and lateral arms (T38) - and the peritoneum is parietalized off them: dissected inferiorly until the vas deferens crosses the external iliac vein, with the iliopsoas identified posteriorly (T38, Rule 5), so the mesh will lie flat over the cord without folding it. The duct and vessels 'can be completely exposed only when the internal spermatic fascia is incised and the hernia sac or the peritoneal fold is separated to the cephalad direction' (T39).",
+      "id": "crit3",
+      "name": "Cord structures accounted for and parietalized",
+      "source": "T38"
+     }
+    ],
+    "enforcement": "The runner evaluates this gate at every division action on the sac or transversalis fascia and at every fixation action. An act taken while the gate is unachieved does not act on the intended anatomy: it resolves through the misidentification model onto the structure the unmet criterion was protecting, in the gate's stated priority - the external iliac vessels when crit1 is unmet (vascular injury with engine-computed haemorrhage), the pain-triangle nerves when only crit2 is unmet, the deferent duct when only crit3 is unmet - and fails the attempt. Fixation placed inside a named triangle WITH the gate achieved is a different act class: a scored departure with a computed injury, not a gate failure (the carpal release's radial-dissection pattern, Milestone 42).",
+    "id": "gate.mpo-account",
+    "kind": "safety_gate",
+    "name": "Critical view of the myopectineal orifice: danger anatomy accounted for before mesh placement, division or fixation",
+    "source": "T38",
+    "statement": "No structure of this repair may be divided and no mesh fixation placed until the danger anatomy has been accounted for AND demonstrated (all three criteria, via the microsteps that demonstrate them): the triangle of doom delimited with the external iliac vessels identified inside it, the triangle of pain delimited with its lateral nerves accounted for, and the cord structures accounted for and parietalized. The specialty's own gating sentence: 'Only if all anatomical elements have been recognized, the steps of dissection described above have been completed and hemostasis achieved should the surgeon proceed with mesh placement' (T38, carrying the critical view of the myopectineal orifice, Daes & Felix 2017).",
+    "unlocks": [
+     "step.6.1",
+     "step.6.2"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "Before dividing any structure or placing any fixation of this repair, the operator pauses and the team confirms the danger anatomy has been accounted for. Carried over from the theatre's gate discipline (design/05, T20) and the WHO checklist culture (T6); no hernia source consulted states this pause - it is the module's own safety culture, labelled as such.",
+      "id": "pause1",
+      "name": "Momentary pause and team confirmation before dividing or fixating",
+      "source": "T20"
+     }
+    ],
+    "enforcement": "Scored checkpoint (microstep m5.3), not a second blocking gate in v1: the blocking gate is the account itself. Omitting the pause forfeits the safety point and is named in the debrief analysis.",
+    "id": "gate.pre-division-pause",
+    "kind": "checkpoint",
+    "name": "Pre-division / pre-fixation pause",
+    "source": "T20",
+    "statement": "Before dividing or fixating, the operator pauses and the team confirms the danger-anatomy account.",
+    "unlocks": []
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (the fixation configuration changes the required set by the dp5 decision rule in decision_points[]; the variants add their protection/survey microsteps). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1) - for a haemorrhage, all bleeds controlled; escalation appropriate to the event (1), definitive plan consistent with the literature (1): repair decisions at dp4 for a structural injury, return to theatre at dp6 for a postoperative consequence (recurrence, bowel adhesion).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine run, never from the trace script: time-below-threshold component (3/2/1/0 by the rubric bands in theatre parameters), nadir MAP component (>= threshold 2; 55 to threshold 1; below 55 0), blood-loss component (bands in theatre parameters: 2/1/0). This operation's computed blood loss comes from its two vascular resolutions (external iliac and corona mortis), each at a verify-flagged placeholder rate, exactly as the theatre's other bleed rates.",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "One point each: WHO Sign In, WHO Time Out, WHO Sign Out, prophylaxis inside the cited window, Step 0 planning microsteps complete. For THIS procedure the prophylaxis point is structurally unavailable: antibiotic prophylaxis is never recommended in laparo-endoscopic repair (T36) and is not suggested in any patient or risk environment (T37), so the procedure carries no prophylaxis microstep - the withholding is itself an authored, sourced microstep (m0.8) - and the process component's ceiling for this procedure is 4 of 5. That ceiling is a documented property of the operation, not an omission in any attempt.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "One point per myopectineal-orifice criterion demonstrated before the first division or fixation (3), plus one for the pre-division pause performed before it (1). Gate violations are additionally recorded as errors and, for division or fixation, fail the attempt - the points never offset the fail rule.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "notes": "No composite score is computed: design/05 defines components, not a weighting, and inventing weights would violate the precision law. GOALS (T8) and OSATS (T9) are carried as rubric data for observed-performance rating in the shells; a headless scripted runner has no observed performance to rate, so both are reported as NOT POPULATED in v1 debriefs rather than estimated. Scores are formative only (see validity).",
+   "rubrics": {
+    "goals": "T8",
+    "osats": "T9"
+   },
+   "verdict_rule": "FAIL if any critical-fail error fires (division or fixation before the doom account, before the pain account, or before the cord account; or sac division in the sliding configuration without the sliding survey); otherwise PASS, with postoperative consequences (recurrence after an unfixed large medial defect, bowel adhesion after an unconfirmed peritoneal closure) and gated-act departures (unprotected corona fixation, fixation inside a named triangle) declared as complications and scored through the management component."
+  },
+  "structures": [
+   {
+    "id": "repro.right-spermatic-cord",
+    "kind": "record",
+    "note": "Right spermatic cord, in data/reproductive/reproductive-inventory.json (with its geometry record in reproductive-geometry.json). The cord is the structure the sac is separated from and parietalized with: its contents - the deferent duct, the testicular vessels and the pampiniform plexus - are registered separately below, because the gate's three criteria protect them separately.",
+    "resolves_to": "data/reproductive/reproductive-inventory.json"
+   },
+   {
+    "id": "repro.right-deferent-duct",
+    "kind": "record",
+    "note": "Right deferent duct, in data/reproductive/reproductive-inventory.json. Milestone 40 state, stated exactly: this is an FMA concept record (FMA19235) intaken concept-only at Milestone 38; the BodyParts3D mesh that belongs to it (FJ3140) exists and is real, but its geometry is UNCLAIMED - the inventory record carries no geometry slot, and claiming it is a geometry-intake decision on the Milestone 34 line, not a fact this procedure may assume. In the operative field the duct is the medial arm of the inverted Y and the medial boundary of the triangle of doom (T38, T39); the gate's crit3 protects it, and the vas-injury resolution lands on this record.",
+    "resolves_to": "data/reproductive/reproductive-inventory.json"
+   },
+   {
+    "id": "artery.right-testicular-artery",
+    "kind": "record",
+    "note": "Right testicular (gonadal) artery, in data/cardiovascular/cv-inventory.json. With the testicular vein it forms the lateral arm of the inverted Y and the lateral boundary of the triangle of doom (T38, T39).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "vein.right-testicular-vein",
+    "kind": "record",
+    "note": "Right testicular (gonadal) vein, in data/cardiovascular/cv-inventory.json, draining through the pampiniform plexus registered below. The gonadal vessels bound the triangle of doom laterally (T39).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "repro.right-pampiniform-plexus",
+    "kind": "record",
+    "note": "Right pampiniform plexus, in data/reproductive/reproductive-inventory.json: the venous plexus of the cord through which the testicular vein forms - part of the cord contents the parietalization separates from the sac (T38).",
+    "resolves_to": "data/reproductive/reproductive-inventory.json"
+   },
+   {
+    "id": "artery.right-external-iliac-artery",
+    "kind": "record",
+    "note": "Right external iliac artery, in data/cardiovascular/cv-inventory.json (the cardiovascular clinical file carries the un-sided concept, artery.external-iliac-artery; the sided record this operation works on is the inventory record, stated exactly). It lies WITHIN the triangle of doom (T39: 'Within the boundaries of this area, you can find the external iliac artery and vein') - it is the structure the gate's crit1 exists to keep out of every division and fixation line, and the vascular-injury resolution lands on it.",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "vein.right-external-iliac-vein",
+    "kind": "record",
+    "note": "Right external iliac vein, in data/cardiovascular/cv-inventory.json (the clinical file carries the un-sided concept, vein.external-iliac-vein). The dissection's Rule 4 landmark: the vein kept visible is what avoids a missed femoral hernia (T38), and the parietalization endpoint is the vas deferens crossing this vein (T38, T39).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "artery.right-inferior-epigastric-artery",
+    "kind": "record",
+    "note": "Right inferior epigastric artery, in data/cardiovascular/cv-inventory.json. The superior arm of the inverted Y (T38): it separates the direct (medial, Zone 2) from the indirect (lateral) field, it is a named fixation hazard (fixation avoids the epigastric vessels, T38; HerniaSurge lists epigastric injury first among preperitoneal vascular injuries, T36), and it is one of the two parent systems of the corona mortis anastomosis (T39, T40).",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "nerve.ilioinguinal",
+    "kind": "record",
+    "note": "Ilioinguinal nerve, a clinical record in data/nervous/nervous.json. A Zone 1 nerve of the lateral field: the golden rules' discipline is that these nerves are NOT systematically dissected or exposed in the minimally invasive approach - they are protected by delimiting their territory and keeping fixation out of it (T38, Rule 2), which is exactly how the gate's crit2 is worded.",
+    "resolves_to": "data/nervous/nervous.json"
+   },
+   {
+    "id": "nerve.genitofemoral",
+    "kind": "record",
+    "note": "Genitofemoral nerve, a clinical record in data/nervous/nervous.json. Its femoral branch runs in the triangle of pain and is, with the lateral femoral cutaneous nerve, one of the two nerves the anatomy review names as more commonly damaged at separation, fixation or bleeding control (T39). The pain-triangle injury resolution lands on this record.",
+    "resolves_to": "data/nervous/nervous.json"
+   },
+   {
+    "id": "nerve.iliohypogastric",
+    "kind": "record",
+    "note": "Iliohypogastric nerve, a clinical record in data/nervous/nervous.json: the third named nerve of the lateral abdominal wall field, accounted for in the same territory discipline as the ilioinguinal nerve (T38, T39).",
+    "resolves_to": "data/nervous/nervous.json"
+   },
+   {
+    "id": "major.lateral-femoral-cutaneous",
+    "kind": "record",
+    "note": "Lateral femoral cutaneous nerve, the Milestone 39 clinical record in data/nervous/major-nerves.json (sourcing tier as recorded there), linking its sided inventory records. The lateral-most nerve of the triangle of pain (T39 lists the triangle's contents lateral-to-medial as this nerve, the femoral branch of the genitofemoral nerve and the femoral nerve) and one of the two most commonly damaged (T39).",
+    "resolves_to": "data/nervous/major-nerves.json"
+   },
+   {
+    "id": "peritoneum.peritoneum",
+    "kind": "record",
+    "note": "Peritoneum, in data/digestive/digestive-inventory.json (the digestive clinical record is dig.peritoneum; the peritoneum record the flap work names is this inventory record). The TAPP flap is this tissue: incised at least 4 cm above the deep ring (T38, Rule 1), developed into the preperitoneal plane, and closed at the end - completely, because mesh exposed through peritoneal gaps is the adhesion and obstruction mechanism the closure discipline exists to prevent (T36, T38 Rule 10). The bowel-adhesion consequence resolves onto this record.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "canal.cecum",
+    "kind": "record",
+    "note": "Cecum, in data/digestive/digestive-inventory.json - the same record the appendicectomy's master rule resolves onto (Milestone 28). On the right side it is the viscus a sliding sac wall can be formed by; the sliding variant's missed-survey resolution lands here. The consulted sliding series defines the variant by the sac wall being formed by a viscus without naming the viscus by side (T41); the right-sided cecum assignment is this module's anatomical reading, recorded as such, not attributed to T41.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "canal.inguinal",
+    "kind": "absence",
+    "note": "The inguinal canal has NO Body Model record: verified this milestone by searching every Body Model data file for an inguinal-canal record id (the canal's contents - cord, duct, vessels - carry records; the canal as a structure does not). The operation is defined around the myopectineal orifice and the preperitoneal plane rather than the canal lumen (T38, T39), so the absence costs the model nothing it uses; it is registered so no later module invents the record by reference.",
+    "resolves_to": null
+   },
+   {
+    "id": "fascia.transversalis",
+    "kind": "absence",
+    "note": "The transversalis fascia has NO Body Model record: verified this milestone (the string 'transversalis' occurs in no record id in any Body Model data file). It is nonetheless an operative structure of this repair - the fascial layer of the direct field whose dilated state in a large medial defect the fixation rule answers (T36: 'the reduction of the dead space caused by the dilated transverse facia') - and a permitted superior fixation target. Defined by the consulted sources, as the register's other divided-structure absences are (Milestones 17, 42, 44).",
+    "resolves_to": null
+   },
+   {
+    "id": "region.triangle-of-doom",
+    "kind": "absence",
+    "note": "The triangle of doom is a REGION, not a structure, and has NO Body Model record (no record id in any data file names a triangle). Its definition is the consulted anatomy review's, verbatim: 'a triangular area bound by the vas deferens, the testicular vessels and the peritoneal fold. Within the boundaries of this area, you can find the external iliac artery and vein' (T39). The region exists in this procedure as a fixation-exclusion zone and as the doom-side fixation microstep's target; its bounding and contained structures carry their own records above.",
+    "resolves_to": null
+   },
+   {
+    "id": "region.triangle-of-pain",
+    "kind": "absence",
+    "note": "The triangle of pain is a REGION, not a structure, and has NO Body Model record. Its definition is the consulted anatomy review's: 'a triangular area located lateral to the dangerous triangle and bound by the iliopubic tract, the testicular vessels and the peritoneal fold', containing lateral-to-medial the lateral femoral cutaneous nerve, the femoral branch of the genitofemoral nerve and the femoral nerve (T39). It exists in this procedure as the lateral fixation discipline's territory: fixation is permitted only at least 2 cm above the iliopubic tract (T38), and the zone's nerves are protected by that delimitation, not by exposure (T38, Rule 2).",
+    "resolves_to": null
+   },
+   {
+    "id": "region.myopectineal-orifice",
+    "kind": "absence",
+    "note": "The myopectineal orifice (of Fruchaud, 1956, per T39) has NO Body Model record: it is the single opening, traversed by the cord and the femoral vessels, through which all groin hernias pass, and the area the mesh must cover with at least 3-4 cm of overlap (T38, Rule 8). A region defined by the consulted sources; its critical view is this procedure's gate.",
+    "resolves_to": null
+   },
+   {
+    "id": "ligament.pectineal",
+    "kind": "absence",
+    "note": "Cooper's (pectineal) ligament has NO Body Model record (no record id names Cooper, pectineal or a lacunar ligament). It is the medial fixation anchor of this operation - 'a structure that can hold a mesh and tacks' (T39), the tack point above the pubic bone (T38, Rule 9) - and the landmark the corona mortis arches over (T39). Defined by the consulted sources; the fixation microstep that targets it is gated like every other fixation act.",
+    "resolves_to": null
+   },
+   {
+    "id": "sac.inguinal-hernia",
+    "kind": "absence",
+    "note": "The inguinal hernia sac has NO Body Model record: the Body Model carries peritoneum.peritoneal-sac, the general peritoneal sac, which is a different denotation from a hernia sac and is not substituted for one. The sac of this repair - the peritoneal protrusion through the deep ring (indirect) or the direct floor - is defined by the consulted operative sources: separated from the cord, parietalized, transected and its distal part abandoned when large (T38, Rules 5-6). It is the gated division target of phase 6, as the divided structures of the earlier procedures are register absences (Milestones 17, 42, 44).",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.corona-mortis",
+    "kind": "absence",
+    "note": "The corona mortis has NO Body Model record - doubly absent: no aberrant/anastomotic obturator record exists, and the Body Model carries no obturator ARTERY record at all (verified this milestone: artery.*obturator* has zero hits; the obturator vein and nerve exist, the artery does not). The vessel is defined by the consulted sources: an anastomosis between the obturator system and the external iliac or inferior epigastric vessels behind the superior pubic ramus, arching over Cooper's ligament about 5 cm from the symphysis (T39), present in 49.3% of the population in the meta-analysis (T40). It enters the model only as the corona variant's structure addition, exactly because its absence from the inventory is the honest state.",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance response processes (GOALS/OSATS rating) are future shell work."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "The variant changes no gate criterion: the corona survey is part of crit1's demonstration in every configuration (m4.1). The variant adds the protection microstep m4.4 to the required set, and medial fixation (m6.4) placed in this configuration without m4.4 computes the corona haemorrhage (err.corona-unprotected) - a collateral injury of a gated act, not a gate failure, on the carpal persistent-median-artery pattern (Milestone 42)."
+    ],
+    "id": "variant.corona-mortis",
+    "name": "Corona mortis (aberrant obturator anastomosis over Cooper's ligament)",
+    "prevalence": "A corona mortis connection present in 49.3% of the general population (venous 41.7%, arterial 17.0%) in the consulted meta-analysis (T40) - comfortably above the variant gate (>= 1%). The figure counts any anastomosis between the obturator system and the external iliac or inferior epigastric vessels behind the superior pubic ramus; the authoring survey microstep (m4.1) looks for it in every attempt, and the variant is the configuration in which it is found and must be protected (m4.4).",
+    "required_additions": [
+     "m4.4"
+    ],
+    "source": "T40",
+    "structure_additions": [
+     "artery.corona-mortis"
+    ],
+    "trace": "theatre/traces/trace-23-hernia-variant-corona-mortis.json"
+   },
+   {
+    "gate_modifications": [
+     "The variant changes no gate criterion. It adds the sliding survey m4.5 to the required set: dividing the sac (m6.1) in this configuration without the survey computes the visceral injury and fails the attempt (err.missed-variant) - the replaced-RHA identify-before-divide pattern (Milestone 17) applied to the sac wall. With the survey performed, the sac is handled without dividing its visceral wall and the attempt proceeds."
+    ],
+    "id": "variant.sliding-hernia",
+    "name": "Sliding hernia (a viscus forms part of the sac wall)",
+    "prevalence": "From 2 per cent to 5 per cent of all indirect inguinal hernias are of the sliding variety (T41, verbatim) - above the variant gate (>= 1%). The proportion is higher in the aged, and sliding hernias are found almost exclusively in males and usually on the left side (T41); this repair is authored on the right, where the viscus at risk in the sac wall is the cecum - recorded as this module's anatomical reading, not attributed to T41.",
+    "required_additions": [
+     "m4.5"
+    ],
+    "source": "T41",
+    "structure_additions": [],
+    "trace": "theatre/traces/trace-24-hernia-variant-sliding.json"
+   }
+  ]
+ }
+}

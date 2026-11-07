@@ -1,0 +1,1057 @@
+{
+ "case": {
+  "adjudication": {
+   "diagnosis_hypothesis": "hyp.carpal-tunnel-syndrome",
+   "diagnosis_label": "Carpal tunnel syndrome \u2014 median neuropathy at the wrist (right, electrodiagnostically confirmed; left, milder clinical symptoms); CTS-6 16.5/26, positive band. The neck hypothesis that framed the referral is excluded by conjunction, below.",
+   "evidence_chain": [
+    {
+     "criterion": "CTS-6 score (block 'cts6')",
+     "finding_id": "f.median-distribution-numbness",
+     "role": "Median-territory numbness 3.5 + nocturnal numbness 4 + Phalen 5 + Tinel 4 = 16.5/26, positive band (>= 12; > 12 corresponds to an 80% probability of CTS, C26). Thenar atrophy/weakness and two-point loss contribute 0 \u2014 recorded absences (f.thenar-atrophy, f.two-point-loss), not missing data. Partial at stage 1: 7.5, with four items not yet assessed."
+    },
+    {
+     "criterion": "History and examination likelihood ratios",
+     "finding_id": "f.median-hypalgesia",
+     "role": "Hypalgesia in the median territory LR+ 3.1 and a classic Katz diagram LR+ 2.4 (C23) take the board's carpal-tunnel mass from the 0.32 prior to 0.7778 at stage 1. The normal motor examination then argues back at stage 2 (normal thumb abduction, LR 0.5, C23): 0.6364. The score and the board are different instruments; the case keeps them separate, and here they agree in direction overall while the board, honestly, dips."
+    },
+    {
+     "criterion": "The famous signs",
+     "finding_id": "f.phalen-positive",
+     "role": "Phalen's and Tinel's signs are positive \u2014 and carry NO likelihood ratio on this board. The Rational Clinical Examination (C23) pools them at LR 1.3 and 1.4 and concludes they have little or no diagnostic value; they act through the CTS-6, where the instrument's author put them, and nowhere else. A workbench that also multiplied them into the board would be double-counting weak evidence."
+    },
+    {
+     "criterion": "Ultrasound",
+     "finding_id": "f.us-csa-enlarged",
+     "role": "Median nerve cross-sectional area 13 mm2 at the inlet (right): LR+ 5.8788 computed from the Fowler meta-analysis pair (C27). Board: 0.9114 at stage 3; pronator syndrome, diabetic polyneuropathy and brachial plexopathy cross below 0.02 here. Cervical radiculopathy does NOT (0.0234) \u2014 the case does not pretend the ultrasound retires the neck."
+    },
+    {
+     "criterion": "Electrodiagnosis (the localizing instrument)",
+     "finding_id": "f.ncs-median-neuropathy",
+     "role": "The AANEM protocol (C25) localizes the lesion: median conduction slowed across the wrist segment, forearm segment normal, comparison nerves normal, needle examination across C5-T1 clean. LR+ 17.0 computed at the parameter's stated bounds (sensitivity > 85%, specificity > 95%) \u2014 a floor, disclosed as such. Board: 0.9943; cervical radiculopathy and the residual cross below 0.02 at this stage and not before."
+    },
+    {
+     "criterion": "The learner's MRI",
+     "finding_id": "f.mri-cervical-degenerative",
+     "role": "Degenerative change without root compression. No likelihood ratio, no criterion settled, no posterior moved; the machinery classifies the order non-contributory at the menu's highest cost, and the AAOS guideline recommends against MRI for this diagnosis (C24). Its role in the case is documentary: it is what the anchor spent resources on."
+    }
+   ],
+   "excluded": [
+    {
+     "basis": "Excluded by conjunction, no single leg presented as sufficient: (1) distribution \u2014 the symptoms follow the median nerve's territory, not a C6/C7 dermatome (the little finger is spared and the pattern is the nerve's, f.median-distribution-numbness); (2) examination \u2014 no radicular signs (f.no-radicular-signs); (3) imaging \u2014 the cervical MRI shows degenerative change WITHOUT nerve root compression (f.mri-cervical-degenerative), and the AAOS guideline recommends against MRI for this diagnosis in any case (C24); (4) electrodiagnosis \u2014 needle EMG across the C5-T1 myotomes shows no radiculopathy pattern (f.emg-no-radiculopathy), the protocol leg C25 specifies for exactly this exclusion, while conduction localizes the median lesion to the wrist (f.ncs-median-neuropathy). Workbench posterior 0.0015, ruled out at stage 4. The neck ache is real (f.neck-ache) and nonspecific; the case never claims she has no cervical spondylosis \u2014 the MRI shows she does \u2014 it claims spondylosis is not the cause of these symptoms.",
+     "hypothesis": "hyp.cervical-radiculopathy"
+    },
+    {
+     "basis": "Same nerve, wrong level, excluded on localization: no proximal forearm pain (f.no-forearm-pain \u2014 the pattern the Milestone 39 record gives the elbow-level lesion, C28); thenar-eminence sensation intact (f.thenar-eminence-sensation-intact \u2014 the palmar cutaneous branch passes outside the carpal tunnel and is spared in wrist-level entrapment, C28); and conduction slows across the WRIST segment with a normal forearm segment (f.ncs-median-neuropathy). Workbench posterior 0.0007, ruled out at stage 3. The hypothesis carries no Mondo class (recorded absence, C10 addendum); its exclusion is argued anatomically, not ontologically.",
+     "hypothesis": "hyp.pronator-syndrome"
+    },
+    {
+     "basis": "Excluded as the explanation of THIS presentation: the findings are not a length-dependent process \u2014 feet and ulnar territories normal, ankle jerks present (f.no-length-dependent-loss) \u2014 and the AANEM protocol's comparison legs (ulnar, radial, sural) are normal (f.ncs-other-nerves-normal). Her diabetes is real (f.diabetes-history; HbA1c 6.8%, f.hba1c-result) and is NOT excluded as a background risk or as part of the entrapment's context; the board's independence assumption between the diabetes hypothesis and the entrapment hypothesis is a declared simplification (parameters.json, lr_combination_rule), and the case does not claim the two are independent conditions in the patient. Workbench posterior 0.0012, ruled out at stage 3.",
+     "hypothesis": "hyp.diabetic-polyneuropathy"
+    },
+    {
+     "basis": "An insidious eight-month course with no trauma or antecedent illness recorded (patient history), no weakness or sensory loss outside the median territory on examination (f.no-radicular-signs), normal non-median conduction studies (f.ncs-other-nerves-normal) and a normal needle examination across all C5-T1 myotomes (f.emg-no-radiculopathy) \u2014 the protocol legs C25 specifies for this exclusion. Workbench posterior 0.0006, ruled out at stage 3.",
+     "hypothesis": "hyp.brachial-plexopathy"
+    },
+    {
+     "basis": "Nothing in the record supports a named alternative: the localization is complete and quadruple (symptom distribution, CTS-6, ultrasound cross-section, and electrodiagnostic segment localization all at the wrist segment of the median nerve), and the secondary-cause screen on ultrasound is negative (f.us-no-secondary-cause). Workbench posterior 0.0018, ruled out at stage 4.",
+     "hypothesis": "hyp.other-unspecified"
+    }
+   ],
+   "mondo": "MONDO:0007275",
+   "score_comparison": {
+    "cts6_final": {
+     "partial": false,
+     "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)",
+     "total": 16.5
+    },
+    "cts6_stage1_partial": {
+     "partial": true,
+     "status": "intermediate (> 5 corresponds to a 25% probability of CTS, C26; below the positive threshold)",
+     "total": 7.5
+    },
+    "note": "The CTS-6 and the Bayesian board agree on the diagnosis. They disagree with the AAOS guideline's letter about what happens next, and the case records it rather than smoothing it over: the guideline (C24) holds that the CTS-6 diagnoses carpal tunnel syndrome as effectively as ultrasound, NCS or EMG, and that most patients it diagnoses need no further study. This workbench ordered both anyway, for the reason the guideline's own synopsis recognises \u2014 electrodiagnostic testing may be considered where diagnostic uncertainty remains, and the AANEM protocol (C25) is the instrument that excludes the competing neck hypothesis, which examination alone had left open (board 0.0962 at stage 2) and which an earlier clinician's framing had made the referral question. The order tally counts the cost of going past the guideline. The learner's cervical MRI enjoys no such defence: the guideline recommends against it outright."
+   }
+  },
+  "available_tests": [
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.hand-exam-battery",
+    "kind": "examination",
+    "name": "Targeted hand and neck examination battery (provocative signs, thenar examination, two-point discrimination, radicular screen)",
+    "note": "The battery completes the CTS-6 (four items) \u2014 but the machinery classifies it discriminating, and the reason is its quiet member: normal thumb abduction strength argues against the diagnosis at LR 0.5 (C23) and moves the lead by 0.1414, while its famous members (Phalen, Tinel) carry no board weight at all (C23). A battery whose value came from a negative finding is the case in miniature.",
+    "time_min": {
+     "status": "verify",
+     "value": 20
+    },
+    "yields": [
+     "f.phalen-positive",
+     "f.tinel-positive",
+     "f.durkan-positive",
+     "f.thenar-atrophy",
+     "f.thumb-abduction-normal",
+     "f.two-point-loss",
+     "f.thenar-eminence-sensation-intact",
+     "f.no-radicular-signs"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 1
+    },
+    "id": "test.hba1c",
+    "kind": "laboratory",
+    "name": "HbA1c (glycated haemoglobin)",
+    "note": "Ordered against the must-not-miss metabolic hypothesis: a diabetic patient with hand paresthesias keeps a polyneuropathy on the board until distribution and electrodiagnosis retire it. The HbA1c cannot discriminate (no likelihood ratio; it settles no score item) \u2014 its role is the safety net, and the case says the number's limits out loud (f.hba1c-result).",
+    "safety_net_for": "hyp.diabetic-polyneuropathy",
+    "time_min": {
+     "status": "verify",
+     "value": 15
+    },
+    "yields": [
+     "lab.hba1c",
+     "f.hba1c-result"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 4
+    },
+    "id": "test.wrist-ultrasound",
+    "kind": "imaging",
+    "name": "Wrist ultrasound with median nerve cross-sectional area",
+    "note": "LR+ 5.8788 computed from the Fowler meta-analysis pair (C27). Also the secondary-cause screen (ganglion, persistent median artery, bifid nerve). The AAOS guideline (C24) places ultrasound among the confirmatory options when further evaluation is warranted; here it is also the first study that rules three rival hypotheses out.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "f.us-csa-enlarged",
+     "f.us-no-secondary-cause",
+     "meas.median-csa-mm2"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 8
+    },
+    "id": "test.cervical-mri",
+    "kind": "imaging",
+    "name": "MRI cervical spine",
+    "note": "Ordered by the learner to prove the neck hypothesis. The AAOS guideline recommends against MRI for diagnosing carpal tunnel syndrome (C24); the degenerative finding it returns carries no likelihood ratio, settles no criterion, and changes no posterior \u2014 the machinery classifies it non-contributory at the highest cost on the menu. It is kept on the menu deliberately: the debrief needs the anchor's purchase receipt.",
+    "time_min": {
+     "status": "verify",
+     "value": 45
+    },
+    "yields": [
+     "f.mri-cervical-degenerative"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 6
+    },
+    "id": "test.ncs-emg",
+    "kind": "electrodiagnostic",
+    "name": "Nerve conduction studies and needle EMG (AANEM-protocol electrodiagnosis)",
+    "note": "The only instrument on the menu that can retire the neck: the AANEM protocol (C25) localizes the median lesion to the wrist segment AND carries the legs that exclude the rivals \u2014 comparison nerves for a polyneuropathy, needle EMG across C5-T1 for radiculopathy, plexopathy and proximal median lesions. Its board likelihood ratio is computed at the parameter's stated bounds and is a disclosed floor (17.0).",
+    "time_min": {
+     "status": "verify",
+     "value": 60
+    },
+    "yields": [
+     "f.ncs-median-neuropathy",
+     "f.ncs-other-nerves-normal",
+     "f.emg-no-radiculopathy",
+     "meas.median-dml-ms",
+     "meas.median-sensory-peak-ms"
+    ]
+   }
+  ],
+  "criteria_blocks": [
+   {
+    "bands": [
+     {
+      "max": 26,
+      "min": 18,
+      "status": "positive \u2014 very high probability band (>= 18; PPV 95-97% in the AAOS synopsis, C24)"
+     },
+     {
+      "max": 17.5,
+      "min": 12,
+      "status": "positive (>= 12 threshold; > 12 corresponds to an 80% probability of CTS, C26)"
+     },
+     {
+      "max": 11.5,
+      "min": 5.5,
+      "status": "intermediate (> 5 corresponds to a 25% probability of CTS, C26; below the positive threshold)"
+     }
+    ],
+    "default_status": "low probability band (<= 5)",
+    "id": "cts6",
+    "items": [
+     {
+      "evidence": [
+       {
+        "finding_id": "f.median-distribution-numbness",
+        "is": "present"
+       }
+      ],
+      "id": "median_territory_numbness",
+      "label": "Numbness predominantly or exclusively in the median nerve territory",
+      "points": 3.5
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.nocturnal-numbness",
+        "is": "present"
+       }
+      ],
+      "id": "nocturnal_numbness",
+      "label": "Nocturnal numbness",
+      "points": 4
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.thenar-atrophy",
+        "is": "present"
+       }
+      ],
+      "id": "thenar_atrophy_or_weakness",
+      "label": "Thenar atrophy and/or weakness",
+      "points": 5
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.phalen-positive",
+        "is": "present"
+       }
+      ],
+      "id": "phalen",
+      "label": "Positive Phalen test",
+      "points": 5
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.two-point-loss",
+        "is": "present"
+       }
+      ],
+      "id": "two_point_discrimination_loss",
+      "label": "Loss of two-point discrimination (<= 5 mm)",
+      "points": 4.5
+     },
+     {
+      "evidence": [
+       {
+        "finding_id": "f.tinel-positive",
+        "is": "present"
+       }
+      ],
+      "id": "tinel",
+      "label": "Positive Tinel sign",
+      "points": 4
+     }
+    ],
+    "kind": "score",
+    "label": "CTS-6 evaluation tool (Graham et al.)",
+    "max_total": 26,
+    "note": "One consulted reproduction phrases the positive threshold as '>12' and another as '>=12' (C26); this patient's total (16.5) is clear of the discrepancy either way, and the bands are declared so the discrepancy cannot bite. The AFP adaptation's likelihood ratios for the score itself (LR+ 4.5 / LR- 0.14 at >= 12, C26) are NOT multiplied into the board: the score and the board are separate instruments, as in case 1 (TG18 vs the board) and case 3 (Alvarado/AIR vs the board).",
+    "source": "C26",
+    "system": "CTS-6 (Graham et al.) \u2014 six weighted clinical items, total 26; endorsed by the AAOS 2024 carpal tunnel guideline (C24) on strong evidence as performing as effectively as ultrasound, nerve conduction studies or EMG for diagnosing carpal tunnel syndrome"
+   }
+  ],
+  "findings": [
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.left-median-nerve"
+     }
+    ],
+    "criteria_roles": [
+     "CTS-6 item: numbness predominantly or exclusively in the median nerve territory \u2014 3.5 points (C26)"
+    ],
+    "hpo": [
+     "HP:0033660"
+    ],
+    "id": "f.median-distribution-numbness",
+    "kind": "history",
+    "laterality": "bilateral",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C26",
+     "C28"
+    ],
+    "stage": 1,
+    "text": "Numbness and tingling predominantly in the thumb, index finger, middle finger and radial half of the ring finger of the right hand; the little finger has never been involved. The same pattern, milder, has appeared in the left hand over the last two months (case data)."
+   },
+   {
+    "criteria_roles": [
+     "CTS-6 item: nocturnal numbness \u2014 4 points (C26)"
+    ],
+    "hpo": [
+     "HP:0033660"
+    ],
+    "id": "f.nocturnal-numbness",
+    "kind": "history",
+    "laterality": "bilateral",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C26"
+    ],
+    "stage": 1,
+    "text": "The paresthesias wake her three to four times a night; she shakes and flicks the hand (the flick sign) and hangs it over the side of the bed for relief (case data)."
+   },
+   {
+    "id": "f.daytime-provocation",
+    "kind": "history",
+    "laterality": "right",
+    "presence": "present",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Daytime symptoms are provoked by driving, holding a phone, and washing her hair \u2014 sustained wrist postures (case data). No dropping of objects and no clumsiness is reported."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "hpo": [
+     "HP:0003401"
+    ],
+    "id": "f.median-hypalgesia",
+    "kind": "examination",
+    "laterality": "right",
+    "lr": {
+     "for_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "lr_plus": 3.1,
+     "note": "LR+ 3.1 (95% CI 2.0-5.1) for hypalgesia in the median nerve territory \u2014 the D'Arcy & McGee Rational Clinical Examination's pooled value (C23), against electrodiagnostic confirmation in the underlying studies.",
+     "source": "C23",
+     "status": "cited"
+    },
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C23"
+    ],
+    "stage": 1,
+    "text": "Diminished pinprick sensation (hypalgesia) over the palmar median-nerve territory of the right hand, tested at the index-finger pad against the little finger of the same hand (case data)."
+   },
+   {
+    "id": "f.katz-classic-diagram",
+    "kind": "examination",
+    "laterality": "right",
+    "lr": {
+     "for_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "lr_plus": 2.4,
+     "note": "LR+ 2.4 (95% CI 1.6-3.5) for a classic or probable Katz hand-diagram pattern (C23). The appraisal of the review counts one included study (145 hands) for this figure \u2014 flagged single-study wherever it is used.",
+     "source": "C23",
+     "status": "cited"
+    },
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C23"
+    ],
+    "stage": 1,
+    "text": "The patient-shaded Katz hand diagram shows the classic pattern: symptoms marked over the palmar median territory with the little finger and the dorsum spared (case data)."
+   },
+   {
+    "hpo": [
+     "HP:0030833"
+    ],
+    "id": "f.neck-ache",
+    "kind": "history",
+    "laterality": "not-applicable",
+    "presence": "present",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Intermittent mild neck ache after desk work (case data). It does not radiate below the elbow and follows no dermatomal pattern. An urgent-care clinician previously attributed the hand symptoms to her neck, citing cervical spondylosis on an old plain film \u2014 the framing this case's findings must test, recorded here because the learner was told it before the case begins."
+   },
+   {
+    "id": "f.diabetes-history",
+    "kind": "history",
+    "laterality": "not-applicable",
+    "presence": "present",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "Type 2 diabetes mellitus diagnosed three years ago, managed with metformin (case data). The history keeps hyp.diabetic-polyneuropathy on the board and is also part of this case's context: the adjudication does not treat diabetes and carpal tunnel syndrome as independent stories."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     }
+    ],
+    "id": "f.no-forearm-pain",
+    "kind": "history",
+    "laterality": "bilateral",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C28"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly: no pain or aching in the proximal forearm. The Milestone 39 median-nerve record (C28) describes proximal forearm pain as part of the pronator (elbow-level) pattern; its absence is one leg of the pronator exclusion."
+   },
+   {
+    "id": "f.no-length-dependent-loss",
+    "kind": "examination",
+    "laterality": "bilateral",
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly: no length-dependent (stocking-distribution) sensory loss \u2014 sensation is normal in both feet and in the little finger / ulnar territory of both hands, and the ankle jerks are present (case data). An established generalized polyneuropathy would be expected to declare itself here first."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "criteria_roles": [
+     "CTS-6 item: positive Phalen test \u2014 5 points (C26)"
+    ],
+    "id": "f.phalen-positive",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C23",
+     "C26"
+    ],
+    "stage": 2,
+    "text": "Phalen's test positive: sustained full wrist flexion reproduces the median-distribution paresthesias within a minute (case data). The sign carries NO likelihood ratio on this board: the Rational Clinical Examination (C23) pools it at LR 1.3 (95% CI 1.1-1.6) and concludes it has little or no diagnostic value. It acts through the CTS-6, where the instrument's author weighted it, and nowhere else."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "criteria_roles": [
+     "CTS-6 item: positive Tinel sign \u2014 4 points (C26)"
+    ],
+    "hpo": [
+     "HP:0033672"
+    ],
+    "id": "f.tinel-positive",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C23",
+     "C26"
+    ],
+    "stage": 2,
+    "text": "Tinel's sign positive: percussion over the median nerve at the right wrist reproduces tingling in the median-innervated digits (case data). Like Phalen's, it carries no board likelihood ratio (C23 pools it at LR 1.4, 95% CI 1.0-1.9 \u2014 little or no diagnostic value); it acts through the CTS-6 only."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "id": "f.durkan-positive",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "present",
+    "source": [
+     "case-data"
+    ],
+    "stage": 2,
+    "text": "Durkan's carpal compression test positive: direct pressure over the carpal tunnel reproduces the symptoms (case data). Recorded qualitatively: no likelihood ratio for this test was taken from any source consulted for this case (the C23 synthesis does not pool it), so it carries no board weight."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/muscular/muscles.json",
+      "id": "muscle.abductor-pollicis-brevis"
+     },
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     }
+    ],
+    "criteria_roles": [
+     "CTS-6 item: thenar atrophy and/or weakness \u2014 5 points (C26); NOT satisfied"
+    ],
+    "id": "f.thenar-atrophy",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C26",
+     "C28"
+    ],
+    "stage": 2,
+    "text": "ABSENT finding, recorded explicitly: no thenar atrophy \u2014 thenar bulk is full and symmetric (case data). The CTS-6's heaviest item is therefore not satisfied, by an examined absence rather than by missing data."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/muscular/muscles.json",
+      "id": "muscle.abductor-pollicis-brevis"
+     },
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "id": "f.thumb-abduction-normal",
+    "kind": "examination",
+    "laterality": "right",
+    "lr": {
+     "for_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "lr_minus": 0.5,
+     "note": "LR 0.5 (95% CI 0.4-0.7) for NORMAL thumb abduction strength (C23) \u2014 the negative branch of the same examination finding whose positive branch (weakness) carries LR+ 1.8. Entered as an lr_minus on the observation 'strength is normal'.",
+     "source": "C23",
+     "status": "cited"
+    },
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C23",
+     "C28"
+    ],
+    "stage": 2,
+    "text": "Thumb abduction strength normal, 5/5 against resistance (abductor pollicis brevis), right hand (case data). This is the stage-2 board's biggest mover and it argues AGAINST the case's diagnosis: normal thumb abduction strength carries LR 0.5 in the same review that gives weak abduction LR+ 1.8 (C23). The muscle's clinical record names its nerve as the recurrent branch of the median nerve; the Milestone 35 pass records that branch as an unresolved phrase with no inventory record (C28), so this finding links the median trunk records and the muscle record \u2014 and says so, rather than implying a branch record the Body Model does not hold."
+   },
+   {
+    "criteria_roles": [
+     "CTS-6 item: loss of two-point discrimination (<= 5 mm) \u2014 4.5 points (C26); NOT satisfied"
+    ],
+    "id": "f.two-point-loss",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C26"
+    ],
+    "stage": 2,
+    "text": "ABSENT finding, recorded explicitly: no loss of two-point discrimination \u2014 she discriminates two points at 5 mm in the median-innervated digits of the right hand (case data). The CTS-6 item is not satisfied."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "id": "f.thenar-eminence-sensation-intact",
+    "kind": "examination",
+    "laterality": "right",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C28"
+    ],
+    "stage": 2,
+    "text": "Sensation over the thenar eminence is intact (case data) \u2014 the territory of the palmar cutaneous branch of the median nerve. Per the Milestone 39 record (C28), that branch does not pass through the carpal tunnel and is spared in carpal tunnel syndrome, while an elbow-level lesion (pronator syndrome) involves it: a localizing finding against the pronator hypothesis, entered qualitatively (no likelihood ratio consulted for it)."
+   },
+   {
+    "id": "f.no-radicular-signs",
+    "kind": "examination",
+    "laterality": "bilateral",
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 2,
+    "text": "ABSENT finding, recorded explicitly: no radicular signs \u2014 Spurling's manoeuvre negative, cervical range of motion full, biceps / triceps / brachioradialis reflexes symmetric, no myotomal weakness, and no dermatomal sensory loss outside the median hand territory (case data). Entered qualitatively: no likelihood ratio for these manoeuvres was taken from any source consulted for this case."
+   },
+   {
+    "id": "f.hba1c-result",
+    "kind": "laboratory-result",
+    "laterality": "not-applicable",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C29"
+    ],
+    "stage": 2,
+    "text": "HbA1c 6.8% (lab.hba1c). Against the consulted reference page (C29): above the diabetes threshold of 6.5% \u2014 consistent with her known diagnosis \u2014 and below the 7% goal that page states for many people with diabetes. The number neither confirms nor excludes a polyneuropathy; the polyneuropathy question in this case is settled by distribution and electrodiagnosis, not by glycaemic control."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "id": "f.us-csa-enlarged",
+    "kind": "imaging",
+    "laterality": "right",
+    "lr": {
+     "for_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "lr_plus": 5.8788,
+     "note": "LR+ 5.8788, computed from the Fowler et al. meta-analysis pair (C27): pooled sensitivity 77.6% and specificity 86.8% over 19 studies / 3,131 wrists. The pooling spans heterogeneous CSA cutoffs and reference standards and the derivation inherits that, labelled as such.",
+     "source": "C27",
+     "status": "computed"
+    },
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C27"
+    ],
+    "stage": 3,
+    "text": "Wrist ultrasound: median nerve cross-sectional area 13 mm2 at the tunnel inlet (pisiform level), right (meas.median-csa-mm2); the left measures 11 mm2 (case data). The consulted meta-analysis's included studies used cutoffs in the 6.5-12 mm2 range (C27); 13 mm2 sits above that range."
+   },
+   {
+    "id": "f.us-no-secondary-cause",
+    "kind": "imaging",
+    "laterality": "right",
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 3,
+    "text": "ABSENT finding, recorded explicitly: no space-occupying lesion on the ultrasound \u2014 no ganglion, no persistent median artery, no bifid median nerve seen (case data). The secondary-cause screen the ultrasound also performs is negative."
+   },
+   {
+    "id": "f.mri-cervical-degenerative",
+    "kind": "imaging",
+    "laterality": "not-applicable",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C24"
+    ],
+    "stage": 3,
+    "text": "Cervical MRI (ordered by the learner at stage 2 to prove the neck hypothesis): multilevel degenerative change with disc bulges at C5/6 and C6/7, WITHOUT nerve root compression and without cord signal change (case data). The finding is real and carries no likelihood ratio \u2014 none was taken from any consulted source \u2014 and the AAOS guideline recommends against MRI for diagnosing carpal tunnel syndrome (C24). Degenerative change of this kind is the anchor's documentary form: present, true, and non-discriminating."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "id": "f.ncs-median-neuropathy",
+    "kind": "test-result",
+    "laterality": "right",
+    "lr": {
+     "for_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "lr_plus": 17.0,
+     "note": "LR+ 17.0, computed AT the practice parameter's stated bounds (C25: sensitivity greater than 85%, specificity greater than 95%): 0.85 / (1 - 0.95) = 17.0. Because the parameter states inequalities, 17.0 is a floor for its LR+, used as the point value with the direction of the approximation disclosed.",
+     "source": "C25",
+     "status": "computed"
+    },
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C25"
+    ],
+    "stage": 4,
+    "text": "Nerve conduction studies on the AANEM protocol (C25): the median sensory peak latency and the median distal motor latency are prolonged across the wrist segment (meas.median-sensory-peak-ms, meas.median-dml-ms), the median-ulnar palmar comparison study is abnormal, and conduction across the forearm segment is normal \u2014 the lesion localizes to the wrist (case data)."
+   },
+   {
+    "id": "f.ncs-other-nerves-normal",
+    "kind": "test-result",
+    "laterality": "bilateral",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C25"
+    ],
+    "stage": 4,
+    "text": "The protocol's comparison legs are normal: ulnar and radial sensory and motor studies normal bilaterally, sural sensory response normal (case data). These are the studies the AANEM protocol (C25) specifies to exclude a generalized peripheral neuropathy; there is no electrodiagnostic polyneuropathy. Entered qualitatively against hyp.diabetic-polyneuropathy and hyp.brachial-plexopathy."
+   },
+   {
+    "id": "f.emg-no-radiculopathy",
+    "kind": "test-result",
+    "laterality": "bilateral",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C25"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding, recorded explicitly: no radiculopathy pattern on needle EMG \u2014 muscles innervated by the C5-T1 roots, including abductor pollicis brevis, show no fibrillation potentials or positive sharp waves and no neurogenic motor-unit changes in any myotome, and no median denervation in the abductor pollicis brevis (case data). The needle examination is the protocol leg the AANEM parameter (C25) specifies to exclude cervical radiculopathy, brachial plexopathy and proximal median neuropathy. Entered qualitatively."
+   }
+  ],
+  "ground_truth": {
+   "diagnosis": "Carpal tunnel syndrome \u2014 median neuropathy at the wrist, right (moderate; electrodiagnostically confirmed), left clinically milder; CTS-6 16.5/26 (positive band); cervical radiculopathy excluded by conjunction after the AANEM-protocol electrodiagnosis.",
+   "engine_state": "No physiology link is declared: the engine has no peripheral-nerve, entrapment or demyelination state, and no engine output would be evidence about this patient's median nerve. Case 2 set the precedent \u2014 a decorative link to the resting baseline would claim a connection that does not exist, so none is made.",
+   "hpo": [
+    "HP:0033660",
+    "HP:0003401",
+    "HP:0012185"
+   ],
+   "hpo_absent": [],
+   "mondo": "MONDO:0007275",
+   "mondo_label": "carpal tunnel syndrome"
+  },
+  "hypotheses": [
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.left-median-nerve"
+     }
+    ],
+    "criteria_block": {
+     "combination": "One declared score block (cts6) is computed from the findings at every stage; it is not combined with the board. The adjudication states where the guideline instrument and the board agree, and where the workup went past the AAOS guideline's letter and why (adjudication.score_comparison).",
+     "source": "C26",
+     "system": "CTS-6 evaluation tool (Graham et al.), mechanically evaluated"
+    },
+    "discriminating_findings": [
+     "f.median-hypalgesia",
+     "f.katz-classic-diagram",
+     "f.us-csa-enlarged",
+     "f.ncs-median-neuropathy"
+    ],
+    "id": "hyp.carpal-tunnel-syndrome",
+    "label": "Carpal tunnel syndrome (median neuropathy at the wrist)",
+    "mondo": "MONDO:0007275",
+    "mondo_label": "carpal tunnel syndrome",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. The largest single share, reflecting that nocturnal median-distribution paresthesias are this syndrome's textbook presentation; the number is the exercise's, not epidemiology's.",
+     "status": "verify",
+     "value": 0.32
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     }
+    ],
+    "discriminating_findings": [
+     "f.neck-ache",
+     "f.no-radicular-signs",
+     "f.mri-cervical-degenerative",
+     "f.emg-no-radiculopathy"
+    ],
+    "id": "hyp.cervical-radiculopathy",
+    "label": "Cervical radiculopathy (C6/C7)",
+    "mondo": "MONDO:0002959",
+    "mondo_label": "radiculopathy",
+    "mondo_note": "No cervical-specific radiculopathy class exists in Mondo: in-session OLS searches for a cervical radiculopathy class returned no class (C10, Milestone 41 addendum). The generic radiculopathy class is used with this note rather than asserting a class Mondo does not carry \u2014 the case-3 precedent applied to a too-general class instead of an absent one.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. The second share: the patient has a real neck ache and was told by another clinician that her neck is the cause \u2014 which is precisely why the hypothesis must be carried at full weight and retired by evidence, not by dismissal.",
+     "status": "verify",
+     "value": 0.18
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.median"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "nerve.right-median-nerve"
+     }
+    ],
+    "discriminating_findings": [
+     "f.no-forearm-pain",
+     "f.thenar-eminence-sensation-intact",
+     "f.ncs-median-neuropathy"
+    ],
+    "id": "hyp.pronator-syndrome",
+    "label": "Pronator syndrome (median nerve entrapment at the elbow)",
+    "mondo": null,
+    "mondo_label": null,
+    "mondo_note": "No Mondo class exists for pronator syndrome: in-session searches (C10, Milestone 41 addendum) returned only MONDO:0003598 (median nerve neuropathy), whose own description covers peripheral mononeuropathy of the median nerve at all sites \u2014 it therefore describes both this hypothesis and the case's diagnosis, and is asserted for neither. The hypothesis is carried unclassed, exactly as case 3 carried its unclassed ovarian torsion hypothesis.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. A small share: same nerve, wrong level \u2014 the hypothesis the thenar-eminence finding and the forearm-segment conduction exist to separate.",
+     "status": "verify",
+     "value": 0.08
+    }
+   },
+   {
+    "body_records": [],
+    "discriminating_findings": [
+     "f.diabetes-history",
+     "f.no-length-dependent-loss",
+     "f.hba1c-result",
+     "f.ncs-other-nerves-normal"
+    ],
+    "id": "hyp.diabetic-polyneuropathy",
+    "label": "Diabetic distal symmetric polyneuropathy",
+    "mondo": "MONDO:0001583",
+    "mondo_label": "diabetic polyneuropathy",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. Carried at real weight because the diabetes is real: three years of type 2 diabetes in a patient with paresthesias obliges the workbench to exclude a generalized process, not to gesture at it.",
+     "status": "verify",
+     "value": 0.14
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.superior-trunk"
+     },
+     {
+      "file": "data/nervous/major-nerves.json",
+      "id": "major.posterior-cord"
+     }
+    ],
+    "discriminating_findings": [
+     "f.ncs-other-nerves-normal",
+     "f.emg-no-radiculopathy"
+    ],
+    "id": "hyp.brachial-plexopathy",
+    "label": "Brachial plexopathy",
+    "mondo": "MONDO:0006683",
+    "mondo_label": "brachial plexus neuropathy",
+    "mondo_note": "The Mondo class is labelled 'brachial plexus neuropathy'; 'brachial plexopathy' is listed among its exact synonyms (verified in-session, C10 Milestone 41 addendum).",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. The anatomical catch-all for a multi-root process: no trauma or antecedent illness is recorded, but the needle examination that excludes it is already on the menu for the neck's sake.",
+     "status": "verify",
+     "value": 0.07
+    }
+   },
+   {
+    "body_records": [],
+    "discriminating_findings": [],
+    "id": "hyp.other-unspecified",
+    "label": "Other / unspecified",
+    "mondo": null,
+    "mondo_label": null,
+    "mondo_note": "The residual class carries no ontology code by construction: it exists so the board's probabilities are honest about not summing over a closed world.",
+    "prior": {
+     "note": "VERIFY-FLAGGED PLACEHOLDER, not a measurement: no consulted source gives a base rate for this presentation in a defined population, so the split is an authoring choice for the exercise, labelled as such wherever it appears. A deliberately large residual: entrapment presentations have a long tail of rarer causes, and the board must be able to say 'none of the named five' at meaningful weight until the localization evidence lands.",
+     "status": "verify",
+     "value": 0.21
+    }
+   }
+  ],
+  "id": "case.carpal-tunnel.004",
+  "imaging_assessment": {
+   "atlas_contrast": "The atlas Body Model DOES carry the structure: the Milestone 33 inventory records nerve.right-median-nerve and nerve.left-median-nerve, and the Milestone 39 clinical record major.median built on them \u2014 and this case links those records. What the atlas has and the imaging lacks is the honest shape of this module's coverage, stated rather than smoothed.",
+   "series": [
+    {
+     "age": 57,
+     "labels_in_set": 104,
+     "nerve_labels": 0,
+     "sex": "m",
+     "study_type": "ct thorax-abdomen-pelvis",
+     "subject": "s0778"
+    },
+    {
+     "age": 80,
+     "labels_in_set": 104,
+     "nerve_labels": 0,
+     "sex": "m",
+     "study_type": "ct thorax-abdomen-pelvis",
+     "subject": "s1090"
+    }
+   ],
+   "statement": "Neither shipped imaging series can show this case's structure, on two independent grounds, both re-verified by the checker at every run: (1) LABEL SET \u2014 the TotalSegmentator v1.0 label set is identical for the two subjects (104 labels each) and contains no nerve label of any kind, and no median, carpal, wrist or hand label; (2) FIELD OF VIEW \u2014 both series are CT thorax-abdomen-pelvis studies, so the wrist is outside the imaged volume entirely. Case 3 could localize by a neighbouring label (the colon, for the appendix); here there is not even a neighbour in the field of view, so no imaging_link is declared and the generic imaging machinery is deliberately not invoked. The case's ultrasound is an authored encounter (case data), exactly as case 3's CT was."
+  },
+  "labs": [
+   {
+    "id": "lab.hba1c",
+    "name": "HbA1c (glycated haemoglobin)",
+    "reference_range": {
+     "source": "C29",
+     "text": "Normal below 5.7%; prediabetes 5.7-6.4%; diabetes 6.5% or higher; the goal for many people with diabetes is below 7% (MedlinePlus, C29)."
+    },
+    "source": [
+     "case-data",
+     "C29"
+    ],
+    "stage": 2,
+    "unit": "%",
+    "value": 6.8
+   }
+  ],
+  "management": {
+   "alternatives_considered": "Conservative-only management (night splinting, with or without a corticosteroid injection) is the live alternative the guideline offers when symptoms settle; it was not this case's disposition because the symptoms are eight months old, nocturnal and sleep-destroying, and the neuropathy is objectively confirmed \u2014 the territory of the surgical indications the AAOS synopsis lists (C24). The disposition is the exercise's; a real service would put the choice to the patient, and the case says so.",
+   "disposition": "Carpal tunnel syndrome, right wrist (electrodiagnostically confirmed median neuropathy), left clinically milder. Guideline-concordant pathway (C24): continue night splinting; corticosteroid injection discussed as short-term relief only \u2014 the guideline's high-quality evidence finds no long-term benefit; and, after eight months of sleep-disrupting symptoms with a positive CTS-6 and EDX-confirmed median neuropathy, referral for carpal tunnel release \u2014 open or endoscopic, between which the guideline finds similar long-term outcomes. Diabetes care continues with her own clinician (HbA1c 6.8%, C29). No cervical treatment is offered: the neck hypothesis is excluded, and a degenerative MRI without root compression is not an indication for anything.",
+   "handoff": {
+    "basis": "Electrodiagnostically confirmed median neuropathy at the right wrist with a positive CTS-6 (16.5/26), after eight months of sleep-disrupting symptoms: the AAOS guideline pathway the disposition follows (C24) offers carpal tunnel release for persistent troublesome symptoms with objective confirmation, and finds no long-term outcome difference between the open and endoscopic operations. The case hands off to the Theatre's open configuration: open release is the configuration the Theatre authors (Milestone 42) \u2014 it remains the gold standard in the revision literature its sources consult, and endoscopic release is not authored there, recorded as a named non-goal in that module rather than silently. The left wrist's milder symptoms are not handed off: no electrodiagnostic confirmation exists for the left side in this case's data.",
+    "from_case_stage": 4,
+    "module": "theatre",
+    "note": "The loop the master plan section 7 and design/07 describe: the case's disposition is the Theatre attempt's starting point. In the Theatre, this same median nerve (major.median, in proc.carpal-release's structures register) is the structure the operation decompresses and the structure its safety gate protects, and the Theatre's own gates \u2014 above all the identification-and-protection gate before division of the transverse carpal ligament \u2014 take over. The case asserts nothing about the operation itself.",
+    "procedure_configuration": "standard",
+    "procedure_id": "proc.carpal-release",
+    "procedure_name": "Open carpal tunnel release"
+   },
+   "theatre_link_verified": "theatre/procedures/proc.carpal-release.json carries procedure id proc.carpal-release and a structures register resolving major.median to data/nervous/major-nerves.json (Milestone 39) \u2014 the checker re-verifies both facts at every run, so this link is a checked claim, not prose.",
+   "theatre_note": "Milestone 41 recorded here that no Theatre handoff existed: the Theatre then held exactly two procedures and no carpal tunnel release. Milestone 42 authored the procedure (proc.carpal-release, open configuration), and this case's management now carries the handoff above; the checker verifies the link at every run. The endoscopic configuration is not authored in the Theatre \u2014 a named non-goal of Milestone 42, stated there with its grounds; this case's disposition, which offers the patient either operation, is unchanged."
+  },
+  "measurements": [
+   {
+    "finding_id": "f.us-csa-enlarged",
+    "id": "meas.median-csa-mm2",
+    "name": "Median nerve cross-sectional area at the tunnel inlet (pisiform), right",
+    "source": [
+     "case-data",
+     "C27"
+    ],
+    "stage": 3,
+    "unit": "mm2",
+    "value": 13
+   },
+   {
+    "finding_id": "f.ncs-median-neuropathy",
+    "id": "meas.median-dml-ms",
+    "name": "Median distal motor latency, right",
+    "source": [
+     "case-data",
+     "C25"
+    ],
+    "stage": 4,
+    "unit": "ms",
+    "value": 5.6
+   },
+   {
+    "finding_id": "f.ncs-median-neuropathy",
+    "id": "meas.median-sensory-peak-ms",
+    "name": "Median sensory peak latency (digit-wrist segment), right",
+    "source": [
+     "case-data",
+     "C25"
+    ],
+    "stage": 4,
+    "unit": "ms",
+    "value": 4.4
+   }
+  ],
+  "milestone": 41,
+  "module": "cases",
+  "patient": {
+   "age": 47,
+   "allergies": [
+    "none recorded (case data)"
+   ],
+   "habitus": "average build (case data)",
+   "handedness": "right-hand dominant (case data)",
+   "history": [
+    "Type 2 diabetes mellitus, diagnosed 3 years ago; metformin (case data).",
+    "No prior wrist trauma, no wrist surgery, no known thyroid disease (case data).",
+    "An urgent-care clinician previously attributed the hand symptoms to cervical spondylosis seen on an old plain film (case data) \u2014 the framing the learner carries into the case."
+   ],
+   "occupation": "office administrator; keyboard-based work (case data). Her occupation is recorded as history only \u2014 the AAOS guideline's working group found no association between high keyboard use and carpal tunnel syndrome (C24), and the case asserts no causation.",
+   "sex": "F",
+   "symptom_duration_months": 8
+  },
+  "presentation_stages": [
+   {
+    "narrative": "A 47-year-old right-hand-dominant woman presents with eight months of numbness and tingling in the right thumb, index, middle and radial half of the ring finger; the little finger is never involved. The symptoms wake her three to four times a night and she shakes the hand out for relief; driving, holding a phone and washing her hair provoke them by day. The same pattern, milder, has appeared in the left hand over two months. She has an intermittent mild neck ache after desk work, without radiation. Type 2 diabetes, three years, on metformin. Vitals (case data): afebrile, heart rate 72/min, blood pressure 124/78 mmHg. A previous clinician told her the problem is her neck.",
+    "stage": 1,
+    "title": "History \u2014 eight months of nocturnal paresthesias"
+   },
+   {
+    "narrative": "Pinprick is diminished over the palmar median territory and her shaded Katz diagram is classic. Phalen's, Tinel's and Durkan's tests all reproduce the symptoms. But the motor examination is normal: thenar bulk full, thumb abduction 5/5, two-point discrimination preserved at 5 mm \u2014 and normal thumb abduction strength is evidence AGAINST the diagnosis in the same source that weights the provocative signs (C23). Thenar-eminence sensation is intact, localizing away from the elbow. No radicular signs. Her HbA1c returns at 6.8%.",
+    "stage": 2,
+    "title": "Examination \u2014 the famous signs are positive; the quiet one argues back"
+   },
+   {
+    "narrative": "Wrist ultrasound: median nerve cross-sectional area 13 mm2 at the tunnel inlet on the right (11 mm2 left), no space-occupying lesion. The board crosses three rivals below the rule-out line here \u2014 but not the neck (0.0234), and not the residual (0.0274). The learner's cervical MRI returns multilevel spondylosis with disc bulges and no root compression: a real finding with no discriminating content, bought at the menu's highest cost against the guideline's explicit advice (C24).",
+    "stage": 3,
+    "title": "Imaging decisions \u2014 ultrasound argues for the wrist; the cervical MRI argues about nothing"
+   },
+   {
+    "narrative": "Nerve conduction studies on the AANEM protocol localize the median lesion to the wrist segment, with normal forearm conduction, normal ulnar/radial/sural studies, and a needle examination across C5-T1 that shows no radiculopathy, no plexopathy pattern and no denervation. Cervical radiculopathy and the residual cross below the rule-out line at this stage and not before. The learner commits to carpal tunnel syndrome \u2014 while still holding the neck at 0.15. That residue is the case's one scored event.",
+    "stage": 4,
+    "title": "Electrodiagnosis \u2014 the lesion is at the wrist; the neck is cleared by the instrument built to clear it"
+   }
+  ],
+  "resource_tier": "enhanced",
+  "review": {
+   "recorded_reviewers": [],
+   "required": "Review of this case's clinical content (presentation, CTS-6 application, LR use including the bounds-computed electrodiagnostic LR, differential weighting, the guideline-tension adjudication, disposition) by a qualified clinician before the case is used as validated teaching content.",
+   "status": "UNMET"
+  },
+  "status": "dual-sourced-draft",
+  "synthetic": true,
+  "synthetic_note": "SYNTHETIC CASE. The patient is an authored fiction built for teaching; no real patient data exists in this module (design/07, master plan section 8 rule 9: education-only scope). Clinical facts the case relies on (score items and bands, likelihood ratios, reference ranges, test characteristics, guideline statements) are cited to the sources registered in cases/parameters.json (C23-C29 for this case) that were consulted in-session. The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+  "title": "Nocturnal hand paresthesias in a 47-year-old woman \u2014 the neck that wasn't",
+  "validity": {
+   "content": "dual-sourced-draft",
+   "note": "Every quantitative clinical claim in this case traces to a source in cases/parameters.json consulted in-session (C23-C29 for this case). CTS-6 items, weights and bands are the published instrument's own (C26); the AAOS guideline's statements are applied as consulted (C24). Likelihood ratios are cited point values (C23) or arithmetic on cited sensitivity/specificity pairs (C27; C25 \u2014 the latter computed at the source's stated bounds and disclosed as a floor). The electrodiagnostic and ultrasound values are the case patient's authored results (case data); the test characteristics they are weighed with are the cited ones. The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+   "scores": "formative-only"
+  }
+ }
+}
