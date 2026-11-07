@@ -250,3 +250,43 @@ Does not prove:
 4. The generative route decision from M19 §9 (design/06 label-map
    synthesis for the atlas subject vs derived-only imaging) is
    still open and still a real fork.
+
+## 9. Addendum — Milestone 46 re-derivation (2026-11-07)
+
+**Both series were re-derived at Milestone 46** to repair the
+SeriesDescription value-length defect found by the Milestone 45
+toolkit pass (VR LO, 67 characters against the PS3.5 maximum of
+64). Two statements above are superseded by that re-derivation and
+are corrected here rather than rewritten:
+
+- §3's statement that s0778 "was NOT re-derived; its `series.json`,
+  UIDs and DICOM hashes are the M19 originals" was true from this
+  milestone until Milestone 46. It is no longer: s0778 was
+  re-derived with its Milestone 19 recipe and milestone tag (so
+  Study ID / Implementation Version Name are unchanged), and its
+  live identifiers are now Study Instance UID
+  `2.25.111436186121315901016113655216657057019`, Series Instance
+  UID `2.25.257334890027282140845553906118231291421`, Frame of
+  Reference UID `2.25.183030832115787233563672588251471888591`, SOP
+  Instance UIDs `2.25.90617669443722634062410872182775451439.1` …
+  `.431`, Study/Series Date/Time `20261107` / `022937`.
+- This milestone's own s1090 identifiers were likewise re-rolled:
+  the live `series.json` now carries Study Instance UID
+  `2.25.12274486504345373834656626460475358455`, Series Instance UID
+  `2.25.161849003558963109385941427078439659322`, Frame of Reference
+  UID `2.25.127730395450260939289252419030042174495`, SOP Instance
+  UIDs `2.25.38640571594457294879837139020476518799.1` … `.439`,
+  Study/Series Date/Time `20261107` / `023014`, and new per-instance
+  SHA-256 hashes. The originals (Study
+  `2.25.224504308787560426380101989092124810441`, instances
+  `2.25.25803153854017574726408693877940534641.1` … `.439`, derived
+  2026-11-06T20:11:22Z) stand in the shipped-at-M32 record as
+  history.
+
+**Pixel data did not change in either series**: Milestone 46
+proved per instance that the Pixel Data bytes are identical to
+the pre-fix series (431/431 and 439/439), both crosswalks are
+byte-identical, and the combined web manifest moved only at the
+two Frame of Reference UIDs. W7/W10 and the case imaging profiles
+re-verify against the live files unchanged. Full record:
+MILESTONE-46.md.

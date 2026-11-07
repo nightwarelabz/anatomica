@@ -243,3 +243,30 @@ claims it does.
 4. Still queued from earlier milestones: physiology contractility
    effector (M18), per-layer opacity in both shells (M16), pack
    compression/streaming for the web tier (M16).
+
+## 10. Addendum — Milestone 46 re-derivation (2026-11-07)
+
+This series was **re-derived at Milestone 46** to repair the
+SeriesDescription value-length defect found by the Milestone 45
+toolkit pass (VR LO, 67 characters against the PS3.5 maximum of
+64). The re-derivation re-rolled every identifier by the pipeline's
+design, so the values this dossier's verification sections rest on
+have been superseded **in the live data files**: `series.json` now
+carries Study Instance UID
+`2.25.111436186121315901016113655216657057019`, Series Instance UID
+`2.25.257334890027282140845553906118231291421`, Frame of Reference
+UID `2.25.183030832115787233563672588251471888591`, SOP Instance
+UIDs `2.25.90617669443722634062410872182775451439.1` … `.431`,
+Study/Series Date/Time `20261107` / `022937`, and per-instance
+SHA-256 hashes of the new files. The originals recorded at this
+milestone (Study `2.25.163720870524478782057557218769442362356`,
+instances `2.25.250897527427018584249495243277704591936.1` … `.431`,
+derived 2026-11-06T12:14:50Z) stand above as the history of the
+first derivation; they no longer identify the shipped files.
+**Pixel data did not change**: Milestone 46 proved per instance
+that the Pixel Data bytes are identical to the pre-fix series
+(431/431), and the DICOM-vs-source difference set remains exactly
+the 123 watermark glyph offsets per slice. Everything else in this
+dossier — geometry, crosswalk accounting, HU statistics, the
+watermark — is unchanged and re-verified. Full record:
+MILESTONE-46.md.

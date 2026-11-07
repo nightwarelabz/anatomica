@@ -224,8 +224,27 @@ def build_crosswalk(records_by_key):
 
 
 # ----------------------------------------------------------------- DICOM ----
+# PS3.5 maximum lengths (characters, per component) for the string VRs
+# this writer emits. _el REFUSES a non-conforming value: the Milestone
+# 45 toolkit pass found a 67-character LO SeriesDescription (limit 64)
+# in all 870 instances of both series, emitted unchecked by the
+# pre-gate writer; Milestone 46 added this gate so the writer can
+# never emit an over-length string element again.
+_VR_MAX = {"AE": 16, "AS": 4, "CS": 16, "DA": 8, "DS": 16, "DT": 26,
+           "IS": 12, "LO": 64, "LT": 10240, "PN": 64, "SH": 16,
+           "ST": 1024, "TM": 16, "UI": 64}
+
+
 def _el(tag, vr, value):
     g, e = tag
+    if vr in _VR_MAX and isinstance(value, (bytes, bytearray)):
+        text = bytes(value).decode("ascii")
+        for comp in text.split("\\"):
+            semantic = comp.rstrip(" \x00")  # strip the even-length pad
+            assert len(semantic) <= _VR_MAX[vr], (
+                f"element ({g:04X},{e:04X}) VR {vr}: value component "
+                f"{semantic!r} is {len(semantic)} characters, over the "
+                f"PS3.5 maximum {_VR_MAX[vr]} — refusing to emit")
     if vr in ("OB", "OW", "OF", "SQ", "UC", "UR", "UT", "UN"):
         return struct.pack("<HH", g, e) + vr.encode("ascii") + b"\x00\x00" \
             + struct.pack("<I", len(value)) + value
@@ -464,7 +483,9 @@ def main():
         "instance_root": uid(), "impl_uid": uid(),
         "study_id": "ANATOMICA-" + MTAG, "impl_name": "ANATOMICA_" + MTAG,
         "study_desc": "SYNTHETIC - educational model - ANATOMICA derived CT study",
-        "series_desc": "SYNTHETIC - educational model - derived from TotalSegmentator " + SUBJECT,
+        # Milestone 46: shortened from "...educational model - derived
+        # from..." (67 chars) — VR LO caps at 64 (Milestone 45 defect).
+        "series_desc": "SYNTHETIC - derived from TotalSegmentator " + SUBJECT,
         "patient_id": "ANATOMICA-SYNTH-" + SUBJECT[1:],
         "sex": (subj_meta["gender"] or "").upper()[:1],
         "age": f"{int(subj_meta['age']):03d}Y",
