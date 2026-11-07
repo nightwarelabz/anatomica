@@ -1,0 +1,355 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "mcgowan": {
+     "inputs": {
+      "interosseous_paralysis": false,
+      "motor_weakness": true,
+      "objective_sensory_loss": true,
+      "paresthesia": true
+     },
+     "result": {
+      "grade_label": "intermediate",
+      "mcgowan_grade": "II"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    }
+   },
+   "hypothesis": "hyp.ulnar-neuropathy-elbow",
+   "mondo": "MONDO:0043982"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.ulnar-neuropathy-wrist",
+    "learner_probability": 0.16,
+    "ruled_out_at_stage": 3,
+    "stage": 3,
+    "workbench_probability": 0.0024489169528724977
+   }
+  ],
+  "attempt_id": "attempt.case-ulnar-neuropathy-005.model-learner",
+  "case_id": "case.ulnar-neuropathy.005",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "leading hypothesis posterior moves 0.2200 -> 0.9080",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.targeted-exam-battery",
+    "time_min": 25
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 3,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.wrist-ultrasound",
+    "time_min": 20
+   },
+   {
+    "basis": "hyp.ulnar-neuropathy-wrist crosses the rule-out line (0.0212 -> 0.0024)",
+    "classification": "discriminating",
+    "cost_units": 3,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.elbow-ultrasound",
+    "time_min": 20
+   },
+   {
+    "basis": "excludes must-not-miss hyp.lower-trunk-plexopathy (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 6,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.edx-ulnar-protocol",
+    "time_min": 60
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchor's mechanics differ from case 4's in every particular, which is why this case exists. Case 4's anchor was installed by another clinician and fed by artifacts \u2014 a renormalization rise and a degenerative image. This anchor is self-installed: the learner heard a true exposure history (a cyclist's hands do load Guyon's canal; the syndrome is real and named for the pastime), attached it to the patient before him, and then discounted the single most informative finding of his own examination. The dorsal cutaneous finding is not a soft sign in any honest taxonomy: it is a branch-anatomy fact that makes a wrist lesion impossible, elicited at stage 2 by the learner's own hands, and the learner's board at that stage still held the wrist at 0.28 \u2014 not because evidence supported it, but because the exposure story had been believed first and the finding was asked to argue against a conclusion instead of being read as a premise. Note what finally moved him: not the anatomy he already had, but two instruments (elbow ultrasound, then the electrodiagnostic protocol) whose verdicts arrived as numbers and places. The stage-3 residue of 0.16 \u2014 scored as the case's one anchoring event \u2014 is the anchor's half-life: the ultrasound had retired the wrist on the workbench board (0.0024) and the learner, conceding the elbow, still kept a sixth of his belief at the canal the anatomy had excluded a stage earlier. By stage 4 the inching study and the dorsal cutaneous SNAP \u2014 the electrodiagnostic restatement of the stage-2 finding \u2014 closed what the examination had already proven. The second lesson is about what carried weight and what did not. The board's two biggest movers were a percussion sign computed from a healthy-control specificity (stated caveat and all) and an ultrasound cutoff; the finding that actually excluded the anchor carried no likelihood ratio at all, because no consulted source quantifies it \u2014 its force is that a wrist lesion cannot produce it. A workbench that only believes numbers would have missed its own case's decisive evidence; this one records the exclusion in the adjudication, in anatomy, where it belongs.",
+   "description": "Stage 1: ulnar-distribution paresthesias with two genuine exposure stories \u2014 a truck driver's flexed, door-frame-rested elbow and a weekend cyclist's handlebar-loaded hands. The learner led with the wrist (0.34) on the cycling story, holding the elbow second (0.16) despite the flexion-provoked, nocturnal pattern sitting in the same history. Stage 2: the examination battery returned the full localization pattern \u2014 dorsal cutaneous sensory loss, forearm-muscle weakness, Tinel at the elbow and not the wrist, pressure-flexion positive \u2014 and the learner's own wrist ultrasound showed a normal canal. He moved the elbow to 0.38 but kept the wrist at 0.28, writing the dorsal finding down as a soft sign; the McGowan block, meanwhile, mechanically graded the lesion II from this stage. Stage 3: elbow ultrasound measured the nerve at 14 mm2 at the medial epicondyle against 5 mm2 at the wrist; the workbench retired the wrist (0.0024) and the residual, and the learner moved the elbow to 0.66 \u2014 and still held the wrist at 0.16, the case's single scored anchoring event. Stage 4: the electrodiagnostic protocol localized conduction slowing across the elbow segment by inching, found the dorsal cutaneous SNAP abnormal and the medial antebrachial SNAP normal, and mapped the needle abnormality to ulnar muscles only. The learner committed to cubital tunnel syndrome, McGowan grade II, and conceded the wrist to 0.04.",
+   "reactions": "The learner reached the right diagnosis, the right grade and the right disposition, and ordered a sensible menu \u2014 and still has one number to answer for: 0.16 on a wrist hypothesis that his own stage-2 examination had already excluded on branch anatomy. The error is small, precisely located, and more instructive than case 4's: nobody installed this anchor for him. He built it himself out of a true fact about cyclists, in the first five minutes, and a finding he elicited with his own hands could not move it for a full stage.",
+   "summary": "One scored event: anchoring on Guyon's canal at stage 3, a stage after the dorsal cutaneous finding excluded it anatomically and at the stage the elbow ultrasound retired it on the board. Diagnosis, grade and disposition correct. Carry forward: (1) dorsal ulnar sensation is the localization question's hinge \u2014 the dorsal cutaneous branch leaves the nerve in the forearm, so its involvement places the lesion at or above the distal forearm and an isolated wrist lesion is not a softer or harder version of the truth but an anatomical impossibility; (2) a true exposure history is the most dangerous kind of anchor, because it feels like evidence \u2014 exposures raise priors, they do not localize lesions, and this patient had two exposures pointing at two different levels; (3) when the competing hypotheses are anatomical \u2014 elbow versus wrist versus root versus plexus \u2014 the discriminating instruments are the ones that interrogate branches: sensory mapping by branch territory, the medial antebrachial cutaneous SNAP, and inching, not a picture of the site the story names."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "mcgowan": {
+      "inputs": {
+       "interosseous_paralysis": "unknown",
+       "motor_weakness": "unknown",
+       "objective_sensory_loss": "unknown",
+       "paresthesia": true
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable \u2014 the motor examination that separates the grades is not yet on record"
+     }
+    },
+    "learner_board": {
+     "hyp.c8-radiculopathy": 0.12,
+     "hyp.lower-trunk-plexopathy": 0.05,
+     "hyp.neurogenic-thoracic-outlet": 0.06,
+     "hyp.other-unspecified": 0.27,
+     "hyp.ulnar-neuropathy-elbow": 0.16,
+     "hyp.ulnar-neuropathy-wrist": 0.34
+    },
+    "learner_brier": 0.9146,
+    "learner_probability_on_truth": 0.16,
+    "learner_rank_of_truth": 3,
+    "learner_top": "hyp.ulnar-neuropathy-wrist",
+    "mcgowan": {
+     "inputs": {
+      "interosseous_paralysis": "unknown",
+      "motor_weakness": "unknown",
+      "objective_sensory_loss": "unknown",
+      "paresthesia": true
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable \u2014 the motor examination that separates the grades is not yet on record"
+    },
+    "stage": 1,
+    "workbench_board": {
+     "hyp.c8-radiculopathy": 0.14,
+     "hyp.lower-trunk-plexopathy": 0.06,
+     "hyp.neurogenic-thoracic-outlet": 0.07,
+     "hyp.other-unspecified": 0.33,
+     "hyp.ulnar-neuropathy-elbow": 0.22,
+     "hyp.ulnar-neuropathy-wrist": 0.18
+    },
+    "workbench_brier": 0.7778,
+    "workbench_probability_on_truth": 0.22,
+    "workbench_rank_of_truth": 2,
+    "workbench_top": "hyp.other-unspecified"
+   },
+   {
+    "criteria": {
+     "mcgowan": {
+      "inputs": {
+       "interosseous_paralysis": false,
+       "motor_weakness": true,
+       "objective_sensory_loss": true,
+       "paresthesia": true
+      },
+      "result": {
+       "grade_label": "intermediate",
+       "mcgowan_grade": "II"
+      },
+      "rule_index": 1,
+      "status": "classified"
+     }
+    },
+    "learner_board": {
+     "hyp.c8-radiculopathy": 0.08,
+     "hyp.lower-trunk-plexopathy": 0.04,
+     "hyp.neurogenic-thoracic-outlet": 0.04,
+     "hyp.other-unspecified": 0.18,
+     "hyp.ulnar-neuropathy-elbow": 0.38,
+     "hyp.ulnar-neuropathy-wrist": 0.28
+    },
+    "learner_brier": 0.5048,
+    "learner_probability_on_truth": 0.38,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.ulnar-neuropathy-elbow",
+    "mcgowan": {
+     "inputs": {
+      "interosseous_paralysis": false,
+      "motor_weakness": true,
+      "objective_sensory_loss": true,
+      "paresthesia": true
+     },
+     "result": {
+      "grade_label": "intermediate",
+      "mcgowan_grade": "II"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "stage": 2,
+    "workbench_board": {
+     "hyp.c8-radiculopathy": 0.0165,
+     "hyp.lower-trunk-plexopathy": 0.0071,
+     "hyp.neurogenic-thoracic-outlet": 0.0083,
+     "hyp.other-unspecified": 0.0389,
+     "hyp.ulnar-neuropathy-elbow": 0.908,
+     "hyp.ulnar-neuropathy-wrist": 0.0212
+    },
+    "workbench_brier": 0.0108,
+    "workbench_probability_on_truth": 0.908,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.ulnar-neuropathy-elbow"
+   },
+   {
+    "criteria": {
+     "mcgowan": {
+      "inputs": {
+       "interosseous_paralysis": false,
+       "motor_weakness": true,
+       "objective_sensory_loss": true,
+       "paresthesia": true
+      },
+      "result": {
+       "grade_label": "intermediate",
+       "mcgowan_grade": "II"
+      },
+      "rule_index": 1,
+      "status": "classified"
+     }
+    },
+    "learner_board": {
+     "hyp.c8-radiculopathy": 0.05,
+     "hyp.lower-trunk-plexopathy": 0.03,
+     "hyp.neurogenic-thoracic-outlet": 0.03,
+     "hyp.other-unspecified": 0.07,
+     "hyp.ulnar-neuropathy-elbow": 0.66,
+     "hyp.ulnar-neuropathy-wrist": 0.16
+    },
+    "learner_brier": 0.1504,
+    "learner_probability_on_truth": 0.66,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.ulnar-neuropathy-elbow",
+    "mcgowan": {
+     "inputs": {
+      "interosseous_paralysis": false,
+      "motor_weakness": true,
+      "objective_sensory_loss": true,
+      "paresthesia": true
+     },
+     "result": {
+      "grade_label": "intermediate",
+      "mcgowan_grade": "II"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "stage": 3,
+    "workbench_board": {
+     "hyp.c8-radiculopathy": 0.0019,
+     "hyp.lower-trunk-plexopathy": 0.0008,
+     "hyp.neurogenic-thoracic-outlet": 0.001,
+     "hyp.other-unspecified": 0.0045,
+     "hyp.ulnar-neuropathy-elbow": 0.9894,
+     "hyp.ulnar-neuropathy-wrist": 0.0024
+    },
+    "workbench_brier": 0.0001,
+    "workbench_probability_on_truth": 0.9894,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.ulnar-neuropathy-elbow"
+   },
+   {
+    "criteria": {
+     "mcgowan": {
+      "inputs": {
+       "interosseous_paralysis": false,
+       "motor_weakness": true,
+       "objective_sensory_loss": true,
+       "paresthesia": true
+      },
+      "result": {
+       "grade_label": "intermediate",
+       "mcgowan_grade": "II"
+      },
+      "rule_index": 1,
+      "status": "classified"
+     }
+    },
+    "learner_board": {
+     "hyp.c8-radiculopathy": 0.02,
+     "hyp.lower-trunk-plexopathy": 0.01,
+     "hyp.neurogenic-thoracic-outlet": 0.01,
+     "hyp.other-unspecified": 0.02,
+     "hyp.ulnar-neuropathy-elbow": 0.9,
+     "hyp.ulnar-neuropathy-wrist": 0.04
+    },
+    "learner_brier": 0.0126,
+    "learner_probability_on_truth": 0.9,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.ulnar-neuropathy-elbow",
+    "mcgowan": {
+     "inputs": {
+      "interosseous_paralysis": false,
+      "motor_weakness": true,
+      "objective_sensory_loss": true,
+      "paresthesia": true
+     },
+     "result": {
+      "grade_label": "intermediate",
+      "mcgowan_grade": "II"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "stage": 4,
+    "workbench_board": {
+     "hyp.c8-radiculopathy": 0.0003,
+     "hyp.lower-trunk-plexopathy": 0.0001,
+     "hyp.neurogenic-thoracic-outlet": 0.0001,
+     "hyp.other-unspecified": 0.0006,
+     "hyp.ulnar-neuropathy-elbow": 0.9986,
+     "hyp.ulnar-neuropathy-wrist": 0.0003
+    },
+    "workbench_brier": 0.0,
+    "workbench_probability_on_truth": 0.9986,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.ulnar-neuropathy-elbow"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 14,
+   "total_time_min": 125
+  },
+  "review": {
+   "recorded_reviewers": [],
+   "required": "Review of this case's clinical content (presentation, the McGowan block's application, LR use including the spectrum-caveated Tinel computation and the floor-computed electrodiagnostic LR, the branch-anatomy localization logic, differential weighting, disposition) by a qualified clinician before the case is used as validated teaching content.",
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.c8-radiculopathy": 2,
+   "hyp.lower-trunk-plexopathy": 2,
+   "hyp.neurogenic-thoracic-outlet": 2,
+   "hyp.other-unspecified": 3,
+   "hyp.ulnar-neuropathy-wrist": 3
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.9146,
+    "2": 0.5048,
+    "3": 0.1504,
+    "4": 0.0126
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.16,
+    "2": 0.38,
+    "3": 0.66,
+    "4": 0.9
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 0,
+    "discriminating": 2,
+    "non-contributory": 1,
+    "safety-net": 1
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.7778,
+    "2": 0.0108,
+    "3": 0.0001,
+    "4": 0.0
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "content": "dual-sourced-draft",
+   "note": "Every quantitative clinical claim in this case traces to a source in cases/parameters.json consulted in-session (C30-C34 for this case). The McGowan grades are the published classification's own, as reproduced in the consulted summary (C34). Likelihood ratios are arithmetic on cited sensitivity/specificity pairs, each with its construction disclosed: the Tinel LR+ from the primary study's sensitivity count and the consulted summary's specificity, with the healthy-control spectrum caveat stated in the entry (C33); the ultrasound LR+ from the meta-analysis's pooled pair at its stated cutoff (C32); the electrodiagnostic LR+ computed at the practice parameter's least favourable supported combination and disclosed as a floor (C31). Findings for which no source gives an accuracy pair \u2014 the dorsal cutaneous pattern, the forearm motor pattern, the SNAP pattern \u2014 carry no likelihood ratio and act through the adjudication's stated anatomy, never through invented numbers. The patient's particulars, all priors, and all test time/cost figures are case data / verify-flagged placeholders and are labelled as such wherever they appear.",
+   "scores": "formative-only"
+  }
+ }
+}
