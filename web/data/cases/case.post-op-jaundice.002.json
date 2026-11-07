@@ -1,0 +1,1411 @@
+{
+ "case": {
+  "adjudication": {
+   "classification": {
+    "basis": "Complete transection of a main duct (operative history C16; corroborated by ERCP cut-off and MRCP) places the injury in Strasberg type E. The MRCP stump measurement is 25 mm below an intact confluence; C14 Table 2: stump > 2 cm from the confluence = Bismuth I = Strasberg E1. Every other rule is excluded by a named absent finding (no minor-duct leak, no aberrant-duct occlusion/transection/involvement, no lateral injury, confluence intact, stump >= 20 mm), each of which the checker re-evaluates from the findings.",
+    "bismuth": "I",
+    "block": "strasberg_bismuth",
+    "strasberg": "E1",
+    "stump_mm": 25
+   },
+   "decided_by": "Case-author adjudication against the cited classification and criteria (C14, C2), recorded here in full so any reviewer can re-derive it. The classification itself is not asserted here: it is computed by the strasberg_bismuth block from the staged findings and the stump measurement, and the checker recomputes it. This is not an external adjudication: the design/07 review gate (>= 2 named independent reviewers) is UNMET for this case, as the review block states.",
+   "diagnosis_hypothesis": "hyp.bile-duct-injury-major",
+   "diagnosis_label": "Major bile duct injury \u2014 complete transection of the common bile duct, Strasberg E1 / Bismuth I",
+   "evidence_chain": [
+    {
+     "criterion": "Operative history (C16)",
+     "finding_id": "f.injury-main-duct-transection",
+     "role": "The index operation's Theatre debrief: CBD clipped t=1860 s, transected t=1920 s, Stewart-Way class III, recognised intraoperatively, drain-and-refer"
+    },
+    {
+     "criterion": "Obstruction picture (C14 KQ6)",
+     "finding_id": "f.jaundice",
+     "role": "Cholestatic jaundice, deepening from day 2"
+    },
+    {
+     "criterion": "Obstruction biochemistry (C14 KQ6)",
+     "finding_id": "f.bilirubin-elevated",
+     "role": "Bilirubin 6.8 mg/dL \u2014 rises in complete occlusion"
+    },
+    {
+     "criterion": "Obstruction imaging (C14 statement 6.3)",
+     "finding_id": "f.us-dilated-intrahepatic-ducts",
+     "role": "Dilated intrahepatic ducts above the injury"
+    },
+    {
+     "criterion": "Definitive anatomy (C14: MRCP gold standard)",
+     "finding_id": "f.mrcp-transection",
+     "role": "Complete transection at the clip level; stump 25 mm below an intact confluence"
+    }
+   ],
+   "excluded": [
+    {
+     "basis": "Excluded by imaging and by the one quantified update: MRCP shows no stone in any duct (f.mrcp-no-stone; LR- 0.0794 from C15 carries the workbench posterior to 0.0195, below the 0.02 rule-out line at stage 4), and the ERCP that was ordered to treat the presumed stone found a clear distal duct with the obstruction at the surgical clips (f.ercp-cutoff-at-clips). The stone hypothesis was reasonable at stage 1; by stage 4 nothing is left for it to stand on.",
+     "hypothesis": "hyp.retained-cbd-stone"
+    },
+    {
+     "basis": "Excluded mechanically and clinically: the classification block's type-A rule fails on its own inputs (f.minor-duct-leak is an explicitly absent finding; the main duct is transected, not in continuity), there is no collection on ultrasound or MRCP (f.us-no-collection, f.mrcp-no-collection), and the clinical picture is obstruction-dominant \u2014 C14 notes jaundice is absent or mild in pure leak cases because cholestasis does not occur, while this patient's bilirubin is 6.8 mg/dL and rising.",
+     "hypothesis": "hyp.minor-bile-leak"
+    },
+    {
+     "basis": "Not met on TG18 (C2), mechanically, at every stage: group B is satisfied (bilirubin 6.8 >= 2; enzymes > 1.5x ULN) and group C is satisfied (biliary dilatation), but group A is not \u2014 no fever, WBC 8.9 (<= 10.0), CRP 8 mg/L (< 10). Suspected requires A plus one of B or C. The adjudication records this precisely because it is the case's live risk: an obstructed, undrained system is where cholangitis develops, and C14's delayed-repair pathway (statement 7.4) arms exactly that watch \u2014 if fever or inflammatory markers declare, the pathway changes to drainage (PTBD for complete obstruction) and antibiotics.",
+     "hypothesis": "hyp.acute-cholangitis"
+    },
+    {
+     "basis": "Excluded on the pattern and the history: the panel is cholestatic-dominant (f.cholestatic-pattern, flagged as an interpretation), the ducts are dilated (an obstructive picture), the anatomy is demonstrated, and there is no new drug exposure (f.no-new-drug-exposure). No LR was consulted for any of this and none is pretended.",
+     "hypothesis": "hyp.hepatocellular-injury"
+    }
+   ],
+   "note": "The workbench's evidence-updated board agrees with the adjudication (the adjudicated diagnosis is top-ranked at every stage), but the adjudication rests on the classification block and the operative history, not on the board \u2014 the board is a teaching instrument (see the lr_combination_rule in cases/parameters.json)."
+  },
+  "available_tests": [
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.cbc",
+    "kind": "laboratory",
+    "name": "Complete blood count",
+    "note": "Turnaround and cost are case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted). Yields WBC and platelet count.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.wbc",
+     "lab.platelets"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 2
+    },
+    "id": "test.crp",
+    "kind": "laboratory",
+    "name": "C-reactive protein",
+    "note": "Yields the CRP result \u2014 with the WBC, this is what settles TG18 cholangitis group A (C2) in this case.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.crp"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 3
+    },
+    "id": "test.lft-panel",
+    "kind": "laboratory",
+    "name": "Liver function panel (bilirubin, ALP, ALT, AST)",
+    "note": "C14 statement 6.2's panel. Settles TG18 cholangitis group B (C2) and establishes the cholestatic pattern.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "lab.bilirubin-total",
+     "lab.alp",
+     "lab.alt",
+     "lab.ast",
+     "f.bilirubin-elevated",
+     "f.alp-markedly-elevated",
+     "f.transaminases-moderately-elevated",
+     "f.cholestatic-pattern"
+    ]
+   },
+   {
+    "available_from_stage": 1,
+    "cost_units": {
+     "status": "verify",
+     "value": 4
+    },
+    "id": "test.ultrasound",
+    "kind": "imaging",
+    "name": "Abdominal ultrasound",
+    "note": "C14: ultrasound detects ductal dilation and fluid collections; it is the collection-hunting first look (statement 6.3 pairs it with CT). Its duct-stone sensitivity is not quantified here \u2014 none was consulted.",
+    "time_min": {
+     "status": "verify",
+     "value": 30
+    },
+    "yields": [
+     "f.us-dilated-intrahepatic-ducts",
+     "f.us-no-collection",
+     "f.us-no-stone-seen"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 8
+    },
+    "id": "test.ercp",
+    "kind": "procedure",
+    "name": "ERCP with cholangiography",
+    "note": "Invasive, with the complication profile C14 lists (including post-ERCP pancreatitis). In a complete transection it can only ever show the distal duct up to the cut-off: it cannot opacity the proximal tree and cannot treat the injury (C14). Ordered by the learner at stage 2 as therapy for a presumed stone \u2014 the order the debrief examines.",
+    "time_min": {
+     "status": "verify",
+     "value": 60
+    },
+    "yields": [
+     "f.ercp-cutoff-at-clips"
+    ]
+   },
+   {
+    "available_from_stage": 2,
+    "cost_units": {
+     "status": "verify",
+     "value": 6
+    },
+    "id": "test.mrcp",
+    "kind": "imaging",
+    "name": "MRCP",
+    "note": "The gold standard for complete morphological evaluation of the biliary tree (C14): shows anatomy proximal and distal to the injury, supplies the stump measurement the Strasberg\u2013Bismuth classification runs on, and answers the stone question with C15's characteristics.",
+    "time_min": {
+     "status": "verify",
+     "value": 45
+    },
+    "yields": [
+     "f.mrcp-transection",
+     "f.mrcp-no-stone",
+     "f.mrcp-confluence-intact",
+     "f.mrcp-no-collection",
+     "f.minor-duct-leak",
+     "f.aberrant-duct-occluded",
+     "f.aberrant-duct-transected",
+     "f.main-duct-lateral-injury",
+     "f.aberrant-duct-involved"
+    ]
+   }
+  ],
+  "criteria_blocks": [
+   {
+    "default_status": "not suspected",
+    "groups": [
+     {
+      "group": "A",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.fever",
+          "is": "present"
+         },
+         {
+          "lab_id": "lab.wbc",
+          "test": "value_gt",
+          "threshold": 10.0,
+          "threshold_note": "C2 A-2 quantification: WBC > 10,000/microL (= 10.0 x10^9/L). The case WBC is 8.9."
+         },
+         {
+          "lab_id": "lab.crp",
+          "test": "value_gte",
+          "threshold": 10,
+          "threshold_note": "C2 A-2 quantification: CRP >= 1 mg/dL = 10 mg/L. The case CRP is 8 mg/L."
+         }
+        ],
+        "id": "A1",
+        "label": "Fever and/or shaking chills, or laboratory evidence of inflammatory response (WBC < 4,000 or > 10,000/microL; CRP >= 1 mg/dL)"
+       }
+      ],
+      "label": "Systemic inflammation"
+     },
+     {
+      "group": "B",
+      "items": [
+       {
+        "evidence": [
+         {
+          "lab_id": "lab.bilirubin-total",
+          "test": "value_gte",
+          "threshold": 2.0,
+          "threshold_source": "C2"
+         }
+        ],
+        "id": "B1",
+        "label": "Jaundice (total bilirubin >= 2 mg/dL)"
+       },
+       {
+        "evidence": [
+         {
+          "factor": 1.5,
+          "lab_id": "lab.alp",
+          "test": "value_gt_uln_multiple"
+         },
+         {
+          "factor": 1.5,
+          "lab_id": "lab.alt",
+          "test": "value_gt_uln_multiple"
+         },
+         {
+          "factor": 1.5,
+          "lab_id": "lab.ast",
+          "test": "value_gt_uln_multiple"
+         }
+        ],
+        "id": "B2",
+        "label": "Abnormal liver function tests (ALP, GGT, AST, ALT > 1.5x ULN)"
+       }
+      ],
+      "label": "Cholestasis"
+     },
+     {
+      "group": "C",
+      "items": [
+       {
+        "evidence": [
+         {
+          "finding_id": "f.us-dilated-intrahepatic-ducts",
+          "is": "present"
+         }
+        ],
+        "id": "C1i",
+        "label": "Biliary dilatation, or evidence of an etiology in the duct"
+       }
+      ],
+      "label": "Imaging"
+     }
+    ],
+    "id": "tg18_cholangitis",
+    "kind": "grouped",
+    "label": "TG18 acute cholangitis criteria",
+    "source": "C2",
+    "status_rules": [
+     {
+      "require": {
+       "A": true,
+       "B": true,
+       "C": true
+      },
+      "status": "definite"
+     },
+     {
+      "require": {
+       "A": true
+      },
+      "require_any": {
+       "B": true,
+       "C": true
+      },
+      "status": "suspected"
+     }
+    ],
+    "system": "Tokyo Guidelines 2018 diagnostic criteria for acute cholangitis"
+   },
+   {
+    "id": "strasberg_bismuth",
+    "inputs": [
+     {
+      "atoms": [
+       {
+        "finding_id": "f.minor-duct-leak",
+        "is": "present"
+       }
+      ],
+      "id": "leak_from_minor_duct",
+      "label": "Bile leak from the cystic duct stump or a minor duct in the liver bed"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.aberrant-duct-occluded",
+        "is": "present"
+       }
+      ],
+      "id": "aberrant_duct_occluded",
+      "label": "Aberrant right sectoral duct occluded"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.aberrant-duct-transected",
+        "is": "present"
+       }
+      ],
+      "id": "aberrant_duct_transected_leaking",
+      "label": "Aberrant right sectoral duct transected, leaking"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.main-duct-lateral-injury",
+        "is": "present"
+       }
+      ],
+      "id": "lateral_main_duct_injury",
+      "label": "Lateral (partial-circumference) injury to a major bile duct"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.injury-main-duct-transection",
+        "is": "present"
+       },
+       {
+        "finding_id": "f.ercp-cutoff-at-clips",
+        "is": "present"
+       },
+       {
+        "finding_id": "f.mrcp-transection",
+        "is": "present"
+       }
+      ],
+      "id": "main_duct_transection",
+      "label": "Complete transection of a main bile duct (CBD/CHD), established by any of: the operative history, ERCP cut-off, MRCP"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.aberrant-duct-involved",
+        "is": "present"
+       }
+      ],
+      "id": "aberrant_duct_also_involved",
+      "label": "An isolated right sectoral duct is also strictured/injured (Bismuth V combination)"
+     },
+     {
+      "atoms": [
+       {
+        "finding_id": "f.mrcp-confluence-intact",
+        "is": "absent"
+       }
+      ],
+      "id": "confluence_destroyed",
+      "label": "The ceiling of the hepatic duct confluence is destroyed"
+     },
+     {
+      "atoms": [
+       {
+        "measurement_id": "meas.stump-below-confluence-mm",
+        "test": "value_gte",
+        "threshold": 20
+       }
+      ],
+      "id": "stump_ge_20mm",
+      "label": "Remaining CHD stump >= 20 mm below the confluence (C14 Table 2: stump > 2 cm)"
+     },
+     {
+      "atoms": [
+       {
+        "measurement_id": "meas.stump-below-confluence-mm",
+        "test": "value_gte",
+        "threshold": 1
+       }
+      ],
+      "id": "stump_ge_1mm",
+      "label": "A measurable stump exists (>= 1 mm) \u2014 the injury is below the confluence, not at it"
+     },
+     {
+      "atoms": [
+       {
+        "measurement_id": "meas.stump-below-confluence-mm",
+        "test": "value_lt",
+        "threshold": 20
+       }
+      ],
+      "id": "stump_lt_20mm",
+      "label": "Remaining CHD stump < 20 mm below the confluence (C14 Table 2: stump < 2 cm)"
+     }
+    ],
+    "kind": "classification",
+    "label": "Strasberg\u2013Bismuth classification of the bile duct injury",
+    "pending_label": "not yet classifiable \u2014 the level-determining evidence (MRCP) has not been revealed",
+    "rules": [
+     {
+      "result": {
+       "bismuth": null,
+       "label": "Strasberg A \u2014 bile leak from the cystic duct stump or a minor duct in the liver bed; main duct in continuity (C14 Table 2)",
+       "strasberg": "A"
+      },
+      "when": {
+       "leak_from_minor_duct": true,
+       "main_duct_transection": false
+      }
+     },
+     {
+      "result": {
+       "bismuth": null,
+       "label": "Strasberg B \u2014 occlusion of an aberrant right hepatic duct (C14 Table 2)",
+       "strasberg": "B"
+      },
+      "when": {
+       "aberrant_duct_occluded": true
+      }
+     },
+     {
+      "result": {
+       "bismuth": null,
+       "label": "Strasberg C \u2014 leak from a transected aberrant right hepatic duct (C14 Table 2)",
+       "strasberg": "C"
+      },
+      "when": {
+       "aberrant_duct_transected_leaking": true
+      }
+     },
+     {
+      "result": {
+       "bismuth": null,
+       "label": "Strasberg D \u2014 lateral injury to a major bile duct (C14 Table 2)",
+       "strasberg": "D"
+      },
+      "when": {
+       "lateral_main_duct_injury": true,
+       "main_duct_transection": false
+      }
+     },
+     {
+      "result": {
+       "bismuth": "V",
+       "label": "Strasberg E5 / Bismuth V \u2014 main-duct injury with stricture of an isolated right sectoral duct (C14 Table 2)",
+       "strasberg": "E5"
+      },
+      "when": {
+       "aberrant_duct_also_involved": true,
+       "main_duct_transection": true
+      }
+     },
+     {
+      "result": {
+       "bismuth": "IV",
+       "label": "Strasberg E4 / Bismuth IV \u2014 injury at the confluence, ceiling of the confluence destroyed (C14 Table 2)",
+       "strasberg": "E4"
+      },
+      "when": {
+       "confluence_destroyed": true,
+       "main_duct_transection": true
+      }
+     },
+     {
+      "result": {
+       "bismuth": "III",
+       "label": "Strasberg E3 / Bismuth III \u2014 injury at the confluence, ceiling of the confluence intact, no stump (C14 Table 2)",
+       "strasberg": "E3"
+      },
+      "when": {
+       "confluence_destroyed": false,
+       "main_duct_transection": true,
+       "stump_ge_1mm": false
+      }
+     },
+     {
+      "result": {
+       "bismuth": "II",
+       "label": "Strasberg E2 / Bismuth II \u2014 transected main bile duct, stump < 2 cm from the confluence (C14 Table 2)",
+       "strasberg": "E2"
+      },
+      "when": {
+       "main_duct_transection": true,
+       "stump_ge_1mm": true,
+       "stump_lt_20mm": true
+      }
+     },
+     {
+      "result": {
+       "bismuth": "I",
+       "label": "Strasberg E1 / Bismuth I \u2014 transected main bile duct, stump > 2 cm from the confluence (C14 Table 2)",
+       "strasberg": "E1"
+      },
+      "when": {
+       "main_duct_transection": true,
+       "stump_ge_20mm": true
+      }
+     }
+    ],
+    "source": "C14",
+    "system": "Strasberg classification (1995) with Bismuth levels for type E, as tabulated in the WSES 2020 guidelines, Table 2"
+   }
+  ],
+  "findings": [
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: main_duct_transection (C14)"
+    ],
+    "id": "f.injury-main-duct-transection",
+    "kind": "history",
+    "source": [
+     "case-data",
+     "C16"
+    ],
+    "stage": 1,
+    "text": "OPERATIVE HISTORY (the loop evidence item \u2014 read from theatre/debriefs/trace-02-divide-before-cvs.debrief.json, not retyped from memory; the checker re-reads that file and matches every fact stated here). At the index operation the structure believed to be the cystic duct was clipped at t=1860 s; the Theatre's misidentification resolution records the clipped structure as the common bile duct (Stewart-Way class I mechanism). At t=1920 s it was divided: bile-duct-injury, resolved structure duct.common-bile, Stewart-Way class III \u2014 a complete transection of the common bile duct. The injury was recognised during the operation (t=2100 s), the hepatobiliary team was called (t=2160 s), the decision at dp4 was drain-refer (t=2220 s), a closed drain was placed to the gallbladder fossa (microstep m7.6, t=2280 s), and the attempt's management score was 5/5. The attempt verdict was FAIL (checklist 32/64, safety gate 0/4). File SHA-256 02ab4d2de4815d9a6f477a69531e1593c8626faab1d47e86a31fd9d35f9258a9 (recorded in theatre_link; the checker recomputes it)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B context (C2) \u2014 the sign itself; the group is settled by the bilirubin lab"
+    ],
+    "hpo": [
+     "HP:0000952"
+    ],
+    "id": "f.jaundice",
+    "kind": "exam",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 1,
+    "text": "Jaundice: sclerae and skin icteric, deepening since postoperative day 2 (case data). Cholestatic jaundice is the hallmark of the obstruction scenario in C14's postoperative presentation review."
+   },
+   {
+    "body_records": [],
+    "hpo": [
+     "HP:0000989"
+    ],
+    "id": "f.pruritus",
+    "kind": "history",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 1,
+    "text": "Mild itching since day 3 (case data). Pruritus is listed among the most common clinical signs of the cholestatic/obstructive picture in C14."
+   },
+   {
+    "body_records": [],
+    "id": "f.cholestatic-symptoms",
+    "kind": "history",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 1,
+    "text": "Dark urine (choluria) and pale stools (fecal acholia) since day 3 (case data) \u2014 with jaundice and pruritus, the cholestatic symptom set C14 names for biliary obstruction."
+   },
+   {
+    "body_records": [],
+    "hpo": [
+     "HP:0002027"
+    ],
+    "id": "f.ruq-discomfort",
+    "kind": "history",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 1,
+    "text": "Mild right upper quadrant discomfort, improving day by day; no distension, no nausea or vomiting (case data). Abdominal pain is one of C14 statement 6.1's alarm symptoms mandating prompt investigation after cholecystectomy."
+   },
+   {
+    "criteria_roles": [
+     "TG18 cholangitis group A (C2) \u2014 absent"
+    ],
+    "hpo": [
+     "HP:0001945"
+    ],
+    "id": "f.fever",
+    "kind": "vital",
+    "presence": "absent",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "ABSENT finding, recorded explicitly for the criteria evaluations: temperature 36.9 C at assessment and afebrile throughout the postoperative course (case data). No fever and no rigors at any stage."
+   },
+   {
+    "body_records": [],
+    "id": "f.drain-low-bilious-output",
+    "kind": "exam",
+    "source": [
+     "case-data",
+     "C16"
+    ],
+    "stage": 1,
+    "text": "The closed drain placed to the gallbladder fossa at the index operation (trace-02, microstep m7.6) remains in situ and drains about 40 mL per 24 h of bile-stained fluid, the volume falling each day (case data). A low, falling output: this is the obstruction scenario's drain picture, not the profuse persistent bile leakage C14 describes for an uncontrolled free leak."
+   },
+   {
+    "body_records": [],
+    "id": "f.no-new-drug-exposure",
+    "kind": "history",
+    "source": [
+     "case-data"
+    ],
+    "stage": 1,
+    "text": "No new regular medications since surgery; the only drug exposure is perioperative cefazolin prophylaxis (case data). Recorded against the hepatocellular-injury hypothesis; unquantified and weak \u2014 the laboratory pattern (f.cholestatic-pattern) is the real discriminator."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B1 (C2) \u2014 satisfied (>= 2 mg/dL)"
+    ],
+    "id": "f.bilirubin-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.bilirubin-total",
+    "source": [
+     "case-data",
+     "C2",
+     "C8"
+    ],
+    "stage": 2,
+    "text": "Total bilirubin 6.8 mg/dL \u2014 far above reference (0.1\u20131.2, C8) and above the TG18 cholangitis cholestasis threshold of 2 mg/dL (C2). In complete occlusion of the bile duct, bilirubin rises (C14)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B2 (C2) \u2014 satisfied (> 1.5x ULN)"
+    ],
+    "id": "f.alp-markedly-elevated",
+    "kind": "lab-result",
+    "lab_id": "lab.alp",
+    "source": [
+     "case-data",
+     "C8",
+     "C14"
+    ],
+    "stage": 2,
+    "text": "Alkaline phosphatase 520 U/L \u2014 about 4.0x the upper limit of reference (129 U/L, C8). ALP and total bilirubin are the early cholestasis markers named in C14."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group B item B2 (C2) \u2014 satisfied (> 1.5x ULN)"
+    ],
+    "id": "f.transaminases-moderately-elevated",
+    "kind": "lab-result",
+    "lab_ids": [
+     "lab.alt",
+     "lab.ast"
+    ],
+    "source": [
+     "case-data",
+     "C2",
+     "C8"
+    ],
+    "stage": 2,
+    "text": "ALT 96 U/L (2.7x the upper limit of 36, C8) and AST 88 U/L (2.7x the upper limit of 33, C8) \u2014 both above the TG18 cholangitis B-2 line of 1.5x ULN (C2), and both far below the bilirubin/ALP elevation in fold terms."
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "id": "f.cholestatic-pattern",
+    "kind": "lab-result",
+    "lr_note": "Pattern interpretation is the case author's reading of the panel (bilirubin 6.8 mg/dL and ALP 4.0x ULN dominant; transaminases 2.7x ULN), recorded as an interpretation, not a measurement. No likelihood ratio is taken for it: none was consulted, so the board is not moved by it. It acts in the adjudication and in the hepatocellular hypothesis's discriminator list.",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 2,
+    "text": "Laboratory pattern (case-author interpretation, flagged in lr_note): cholestatic \u2014 the obstruction enzymes dominate (bilirubin and ALP), with moderate transaminases. C14's biochemistry review: in stenosis or complete occlusion, bilirubin increases while aminotransferases are not the leading abnormality."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "TG18 cholangitis group C (C2) \u2014 biliary dilatation, satisfied"
+    ],
+    "id": "f.us-dilated-intrahepatic-ducts",
+    "kind": "imaging",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 2,
+    "text": "Ultrasound: intrahepatic bile ducts dilated (case imaging report). Detecting ductal dilation is ultrasound's named role in C14's postoperative imaging review."
+   },
+   {
+    "body_records": [],
+    "id": "f.us-no-collection",
+    "kind": "imaging",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 2,
+    "text": "Ultrasound: no subhepatic or intra-abdominal fluid collection \u2014 no biloma (case imaging report). Ultrasound and CT are the collection-hunting modalities in C14 statement 6.3; a collection, if present, would be the percutaneous-drainage target under statement 7.4."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "id": "f.us-no-stone-seen",
+    "kind": "imaging",
+    "lr_note": "Unquantified: no test characteristic for ultrasound detection of duct stones was consulted in-session, so no LR is taken. The finding is recorded as weak negative evidence only; the stone question is settled by MRCP (f.mrcp-no-stone, LR from C15).",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 2,
+    "text": "Ultrasound: the distal common bile duct is incompletely visualised (bowel gas); no stone is identified in the visualised duct (case imaging report)."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: main_duct_transection (corroborating)"
+    ],
+    "id": "f.ercp-cutoff-at-clips",
+    "kind": "imaging",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 3,
+    "text": "ERCP cholangiogram: a normal-calibre distal common bile duct opacifies up to an abrupt cut-off at surgical clips in the mid duct; no contrast passes the clips and the proximal tree is not opacified; no stone in the distal duct, none extracted (case procedure report). C14 states ERCP's limits exactly here: ducts upstream of an obstructing lesion are not visualised, and endoscopic therapy cannot bridge a transection of the common bile duct."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification inputs: main_duct_transection; stump measurement (see measurements)"
+    ],
+    "id": "f.mrcp-transection",
+    "kind": "imaging",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "MRCP: complete transection of the common bile duct at the surgical clip level, with loss of duct continuity; the remaining common hepatic duct stump measures 25 mm below an intact hepatic duct confluence (see measurements); intrahepatic ducts dilated above the injury (case imaging report). MRCP is the gold standard for complete morphological evaluation of the biliary tree and for localisation and classification of the injury (C14, statement 6.3 and KQ6 review). A HIDA scan was considered and not ordered: C14 records hepatobiliary scintigraphy as more sensitive for leaks but with poor spatial resolution and a specific pitfall in large duct defects (non-excretion misread), and it could not supply the stump measurement the classification needs."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "id": "f.mrcp-no-stone",
+    "kind": "imaging",
+    "lr": {
+     "computed_from": "C15 sensitivity 0.927, specificity 0.919: LR- = (1 - 0.927) / 0.919 = 0.0794",
+     "for_hypothesis": "hyp.retained-cbd-stone",
+     "lr_minus": 0.0794,
+     "note": "C15 is a single-centre retrospective study (n=691), not a meta-analysis; the LR is used with that limitation stated. Applied once, at stage 4.",
+     "source": "C15",
+     "status": "computed"
+    },
+    "source": [
+     "case-data",
+     "C15"
+    ],
+    "stage": 4,
+    "text": "MRCP: no stone in any bile duct \u2014 no choledocholithiasis (case imaging report). This is the result C15's sensitivity/specificity describe, and its LR- is what carries the retained-stone hypothesis across the workbench rule-out line."
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: confluence_destroyed (negated)"
+    ],
+    "id": "f.mrcp-confluence-intact",
+    "kind": "imaging",
+    "presence": "present",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "MRCP: the hepatic duct confluence is intact \u2014 the ceiling of the biliary confluence is preserved; right and left hepatic ducts communicate (case imaging report). In C14 Table 2's terms, the confluence ceiling is intact, not destroyed."
+   },
+   {
+    "body_records": [],
+    "id": "f.mrcp-no-collection",
+    "kind": "imaging",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "MRCP: no biloma and no intra-abdominal fluid collection (case imaging report) \u2014 corroborates f.us-no-collection. There is no collection for percutaneous drainage to target (C14 statement 7.4 applies drainage to collections 'whenever present')."
+   },
+   {
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: leak_from_minor_duct \u2014 absent"
+    ],
+    "id": "f.minor-duct-leak",
+    "kind": "imaging",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding, recorded explicitly for the classification: MRCP shows no leak from the cystic duct stump and no leak from any minor duct in the liver bed (case imaging report). Strasberg type A is therefore excluded by the classification block, not by assertion."
+   },
+   {
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: aberrant_duct_occluded \u2014 absent"
+    ],
+    "id": "f.aberrant-duct-occluded",
+    "kind": "imaging",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding: no aberrant right sectoral duct is occluded (case imaging report). Strasberg type B excluded mechanically."
+   },
+   {
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: aberrant_duct_transected_leaking \u2014 absent"
+    ],
+    "id": "f.aberrant-duct-transected",
+    "kind": "imaging",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding: no aberrant right sectoral duct is transected or leaking (case imaging report). Strasberg type C excluded mechanically."
+   },
+   {
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: lateral_main_duct_injury \u2014 absent"
+    ],
+    "id": "f.main-duct-lateral-injury",
+    "kind": "imaging",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding: the main-duct injury is not a lateral (partial-circumference) defect; it is a complete transection (case imaging report; f.injury-main-duct-transection). Strasberg type D excluded mechanically."
+   },
+   {
+    "criteria_roles": [
+     "Strasberg\u2013Bismuth classification input: aberrant_duct_also_involved \u2014 absent"
+    ],
+    "id": "f.aberrant-duct-involved",
+    "kind": "imaging",
+    "presence": "absent",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "text": "ABSENT finding: no stricture or injury of an isolated right sectoral duct accompanies the main-duct injury (case imaging report). The Bismuth V / Strasberg E5 combination is therefore excluded mechanically."
+   }
+  ],
+  "ground_truth": {
+   "diagnosis": "Major bile duct injury \u2014 complete transection of the common bile duct at the index laparoscopic cholecystectomy (Theatre trace-02; Stewart-Way class III mechanism), classified Strasberg E1 / Bismuth I on this admission's MRCP, presenting as obstructive (cholestatic) jaundice on postoperative day 4",
+   "engine_state": "No engine state is claimed. The physiology engine has no biliary perturbation (the missing biliary compartment recorded at Milestones 17, 18 and 20), so \u2014 unlike case 1 \u2014 this case declares no physiology_link at all rather than linking at a level that would be decorative. The gap is stated here, in the open.",
+   "hpo": [
+    "HP:0000952",
+    "HP:0001396",
+    "HP:0000989",
+    "HP:0002027"
+   ],
+   "hpo_absent": [
+    {
+     "hpo": "HP:0001945",
+     "label": "Fever",
+     "note": "Explicitly absent (f.fever) \u2014 with the sub-threshold WBC and CRP, this absence is what keeps TG18 cholangitis group A unmet and the criteria at 'not suspected' despite groups B and C being met."
+    }
+   ],
+   "mondo": null,
+   "mondo_note": "No Mondo class for bile duct injury exists in the in-session OLS verification (C10 addendum, Milestone 22); the ground truth carries a local identity rather than an approximate code."
+  },
+  "hypotheses": [
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "criteria_block": "strasberg_bismuth",
+    "defining_features": "A major bile duct injury: complete loss of main-duct continuity with tissue loss \u2014 in C14's words, the pattern where 'the common bile duct is clipped and transected'. Strasberg type E, subdivided by the Bismuth level of the injury. This case's injury is not hypothetical: it is the Theatre trace-02 outcome, recognised at the index operation and referred (theatre_link, C16). What the workbench must still do is classify it (level) and exclude the rivals on this admission's evidence.",
+    "discriminating_findings": [
+     {
+      "direction": "supports",
+      "finding_id": "f.injury-main-duct-transection",
+      "note": "the operative history itself (Theatre trace-02 debrief, C16)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.mrcp-transection",
+      "note": "MRCP demonstrates the transection and supplies the level (stump 25 mm)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.ercp-cutoff-at-clips",
+      "note": "cholangiographic cut-off at the clips; proximal tree not opacified"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.jaundice",
+      "note": "the obstruction scenario of C14 \u2014 shared with every obstructive hypothesis; not discriminating among them"
+     }
+    ],
+    "id": "hyp.bile-duct-injury-major",
+    "mondo": null,
+    "mondo_note": "No Mondo class exists for bile duct injury: OLS was queried in-session at Milestone 22 for 'bile duct injury', 'bile duct stricture', and 'bile leak' and returned no class (C10 addendum). MONDO:0001710 (perforation of bile duct) exists but names a different lesion and is not applied. The hypothesis therefore carries a local identity, as case 1's residual does \u2014 an unassigned code is honest; an approximate one would be an invented identity.",
+    "name": "Major bile duct injury (Strasberg E family) from the index operation",
+    "prior": {
+     "note": "Case-author prior, flagged. No consulted source publishes a probability distribution over the causes of day-4 post-cholecystectomy jaundice, and none is presented as doing so. The value reflects the case's declared setup (an injury recognised at the index operation is in the referral letter) and nothing more.",
+     "status": "verify",
+     "value": 0.35
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "defining_features": "Presence or formation of gallstones in the common bile duct (Mondo description, C10 addendum) \u2014 here, a stone retained from the index presentation obstructing the distal duct. The commonest single cause of postoperative obstructive jaundice in the abstract, and this case's anchoring trap: it is the diagnosis ERCP can treat, which is exactly why it is reached for first.",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.mrcp-no-stone",
+      "note": "LR- 0.0794 computed from C15 \u2014 the only quantified update in the case; carries this hypothesis across the rule-out line at stage 4"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.ercp-cutoff-at-clips",
+      "note": "the obstruction is at the surgical clips, the distal duct is clear and no stone was extracted \u2014 unquantified"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-no-stone-seen",
+      "note": "weak, unquantified (distal duct incompletely visualised)"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.bilirubin-elevated",
+      "note": "shared with every obstructive cause; does not discriminate among them"
+     }
+    ],
+    "id": "hyp.retained-cbd-stone",
+    "mondo": "MONDO:0006699",
+    "name": "Retained common bile duct stone (choledocholithiasis)",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.bile-duct-injury-major prior note).",
+     "status": "verify",
+     "value": 0.2
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     },
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     }
+    ],
+    "defining_features": "A bile leak from the cystic duct stump or a minor duct in the liver bed, the main duct in continuity (Strasberg type A, C14 Table 2), typically declaring as bile from the drain or a biloma. One of C14's two frequent postoperative scenarios (leakage vs obstruction).",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.drain-low-bilious-output",
+      "note": "output is low and falling, and the dominant picture is obstruction (deepening jaundice) \u2014 C14 notes jaundice is absent or mild in pure leak cases because cholestasis does not occur; unquantified"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-no-collection",
+      "note": "no biloma on ultrasound"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.mrcp-no-collection",
+      "note": "no collection on MRCP either"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.minor-duct-leak",
+      "note": "MRCP: no minor-duct leak exists in this case (absent finding, stage 4)"
+     }
+    ],
+    "id": "hyp.minor-bile-leak",
+    "mondo": null,
+    "mondo_note": "No Mondo class for bile leak was found in the in-session OLS queries (C10 addendum); local identity, as for hyp.bile-duct-injury-major.",
+    "name": "Minor bile leak (Strasberg A family) with biloma",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.bile-duct-injury-major prior note).",
+     "status": "verify",
+     "value": 0.15
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "data/digestive/digestive.json",
+      "id": "dig.biliary-tree"
+     },
+     {
+      "file": "web/data/records.json",
+      "id": "gallbladder"
+     }
+    ],
+    "criteria_block": {
+     "combination": "suspected: >=1 of A and >=1 of (B or C); definite: A + B + C",
+     "source": "C2",
+     "system": "Tokyo Guidelines 2018 diagnostic criteria for acute cholangitis"
+    },
+    "defining_features": "Acute infection of an obstructed biliary tree (Mondo, C10). The standing danger in any obstructed system and the reason this admission is watched: C14 records that patients in the delayed-repair window may experience cholangitis, managed then with biliary drainage and antibiotics. TG18 (C2) operationalises it: systemic inflammation (A) + cholestasis (B) + imaging (C).",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.fever",
+      "note": "afebrile throughout \u2014 group A's clinical leg absent"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.bilirubin-elevated",
+      "note": "group B satisfied \u2014 cholestasis is present; it is the injury's obstruction, not yet infection"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.us-dilated-intrahepatic-ducts",
+      "note": "group C satisfied \u2014 biliary dilatation present"
+     },
+     {
+      "direction": "supports",
+      "finding_id": "f.jaundice",
+      "note": "the visible leg of group B"
+     }
+    ],
+    "id": "hyp.acute-cholangitis",
+    "mondo": "MONDO:0001930",
+    "name": "Acute cholangitis (secondary, obstructed system)",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.bile-duct-injury-major prior note).",
+     "status": "verify",
+     "value": 0.1
+    }
+   },
+   {
+    "body_records": [
+     {
+      "file": "web/data/records.json",
+      "id": "liver"
+     }
+    ],
+    "defining_features": "A hepatocellular-pattern liver injury (anaesthetic, drug, or ischaemic) arising after the operation \u2014 the non-obstructive explanation for abnormal postoperative liver tests, included so the panel's pattern has to be read, not assumed.",
+    "discriminating_findings": [
+     {
+      "direction": "against",
+      "finding_id": "f.cholestatic-pattern",
+      "note": "the panel is cholestatic-dominant (bilirubin/ALP), not hepatocellular-dominant \u2014 case-author interpretation, flagged on the finding"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.no-new-drug-exposure",
+      "note": "no new drug exposure beyond perioperative cefazolin \u2014 weak, unquantified"
+     },
+     {
+      "direction": "against",
+      "finding_id": "f.us-dilated-intrahepatic-ducts",
+      "note": "dilated ducts are an obstructive, not hepatocellular, picture"
+     }
+    ],
+    "id": "hyp.hepatocellular-injury",
+    "mondo": null,
+    "mondo_note": "Mondo's hepatitis class (MONDO:0002251) is defined as an inflammatory process affecting the liver 'for more than six months' \u2014 a chronic-flavoured class. Applying it to an acute postoperative hepatocellular injury would misapply the ontology, the same trap Milestone 20 recorded when it dropped acute hepatitis from case 1's board. The hypothesis therefore carries a local identity and this note.",
+    "name": "Hepatocellular / drug-induced liver injury",
+    "prior": {
+     "note": "Case-author prior, flagged (see hyp.bile-duct-injury-major prior note).",
+     "status": "verify",
+     "value": 0.1
+    }
+   },
+   {
+    "body_records": [],
+    "defining_features": "The residual: every cause of post-cholecystectomy jaundice not named on the board (a benign postoperative stricture forming without transection, haemobilia, Mirizzi-type compression from a remnant, hepatic artery injury with segmental ischaemia, and the rest). A board without a residual forces false certainty; design/07's calibration purpose requires one.",
+    "discriminating_findings": [],
+    "id": "hyp.other-unspecified",
+    "mondo": null,
+    "mondo_note": "No Mondo class: the residual is by definition unnamed. Assigning it a code would be inventing an identity.",
+    "name": "Other / unspecified",
+    "prior": {
+     "note": "Residual so the declared priors sum to 1. Case-author value, flagged.",
+     "status": "verify",
+     "value": 0.1
+    }
+   }
+  ],
+  "id": "case.post-op-jaundice.002",
+  "labs": [
+   {
+    "analyte": "White blood cell count",
+    "id": "lab.wbc",
+    "interpretation": "within reference; at or below the TG18 cholangitis A-2 inflammatory line of 10.0 x10^9/L (C2), so group A is not met on WBC",
+    "reference_range": {
+     "high": 11.0,
+     "low": 4.5,
+     "source": "C7",
+     "unit": "x10^9/L"
+    },
+    "stage": 2,
+    "test_id": "test.cbc",
+    "unit": "x10^9/L",
+    "value": 8.9
+   },
+   {
+    "analyte": "Platelet count",
+    "id": "lab.platelets",
+    "interpretation": "recorded; no criterion in this case uses it",
+    "reference_range": null,
+    "reference_range_note": "No general platelet reference range was consulted in-session, and no platelet threshold is used by any criteria block in this case. The value is recorded for completeness of the CBC, as in case 1's discipline: unclassified rather than classified against an unconsulted range.",
+    "stage": 2,
+    "test_id": "test.cbc",
+    "unit": "x10^9/L",
+    "value": 268
+   },
+   {
+    "analyte": "C-reactive protein",
+    "id": "lab.crp",
+    "interpretation": "below the TG18 cholangitis A-2 inflammatory threshold (8 < 10 mg/L), so group A is not met on CRP",
+    "reference_range": {
+     "note": "TG18's inflammatory-response quantification: CRP >= 1 mg/dL (10 mg/L) evidences an inflammatory response (C2, A-2). Stated as the guideline threshold it is, not as a laboratory reference range.",
+     "source": "C2",
+     "threshold_high": 10,
+     "unit": "mg/L"
+    },
+    "stage": 2,
+    "test_id": "test.crp",
+    "unit": "mg/L",
+    "value": 8
+   },
+   {
+    "analyte": "Total bilirubin",
+    "id": "lab.bilirubin-total",
+    "interpretation": "markedly elevated; above the TG18 cholangitis B-1 threshold of 2 mg/dL (C2)",
+    "reference_range": {
+     "high": 1.2,
+     "low": 0.1,
+     "source": "C8",
+     "unit": "mg/dL"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "mg/dL",
+    "value": 6.8
+   },
+   {
+    "analyte": "Alkaline phosphatase",
+    "id": "lab.alp",
+    "interpretation": "markedly elevated, about 4.0x the upper limit of reference; above the TG18 cholangitis B-2 line of 1.5x ULN (C2)",
+    "reference_range": {
+     "high": 129,
+     "low": 40,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 520
+   },
+   {
+    "analyte": "Alanine aminotransferase (ALT)",
+    "id": "lab.alt",
+    "interpretation": "elevated, 2.7x the upper limit of reference; above the TG18 cholangitis B-2 line of 1.5x ULN (C2)",
+    "reference_range": {
+     "high": 36,
+     "low": 4,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 96
+   },
+   {
+    "analyte": "Aspartate aminotransferase (AST)",
+    "id": "lab.ast",
+    "interpretation": "elevated, 2.7x the upper limit of reference; above the TG18 cholangitis B-2 line of 1.5x ULN (C2)",
+    "reference_range": {
+     "high": 33,
+     "low": 8,
+     "source": "C8",
+     "unit": "U/L"
+    },
+    "stage": 2,
+    "test_id": "test.lft-panel",
+    "unit": "U/L",
+    "value": 88
+   }
+  ],
+  "management": {
+   "definitive_pathway": "Roux-en-Y hepaticojejunostomy by the hepatobiliary team \u2014 the treatment of choice for major (Strasberg E) bile duct injury (C14 statement 4.2 and KQ3 review) \u2014 performed after a minimum of 3 weeks from the index operation, once the acute situation has resolved (C14 statement 7.4, the 72 h\u20133 week band this presentation falls in). ERCP has no definitive role: it cannot bridge a complete transection (C14), and its stage-3 performance in this case demonstrated exactly that limit. PTBD is held in reserve for the septic complete-obstruction scenario named in statement 7.4, which has not occurred.",
+   "disposition": "The patient remains under the hepatobiliary team at the referral centre \u2014 the referral C14 statement 7.3 requires was already effected at the index operation (trace-02, dp4 drain-refer). No collection exists, so there is nothing for percutaneous drainage to target today; no infection is present, so no antibiotics are started (C14 KQ5: in biliary obstruction without bile leak or signs of sepsis, antibiotic therapy may not be required). The in-situ drain is monitored. Cholangitis surveillance is explicit: fever, rigors, or rising inflammatory markers move her onto the infected-obstruction pathway (drainage \u2014 PTBD is C14's named route for complete CBD obstruction \u2014 plus antibiotics).",
+   "theatre_link_verified": "theatre/debriefs/trace-02-divide-before-cvs.debrief.json carries trace id trace-02-divide-before-cvs, verdict FAIL, the class III bile-duct-injury complication on duct.common-bile, and the dp4 drain-refer decision \u2014 the checker re-reads the file, recomputes its SHA-256, and matches every field in theatre_link.matched_fields.",
+   "wses_timing_band": {
+    "band": "72h_to_3wk",
+    "basis": "Postoperative day 4 at presentation: beyond statement 7.3's immediate window (within 72 h) and inside statement 7.4's band (72 h to 3 weeks). The checker recomputes the band from patient.postoperative_day.",
+    "source": "C14",
+    "statement": "7.4"
+   }
+  },
+  "measurements": [
+   {
+    "finding_id": "f.mrcp-transection",
+    "id": "meas.stump-below-confluence-mm",
+    "name": "Common hepatic duct stump below the confluence",
+    "note": "MRCP measurement (case imaging report): distance from the hepatic duct confluence to the transection/clip level = the length of the remaining common hepatic duct stump. The Strasberg\u2013Bismuth level thresholds are stated in centimetres in C14 Table 2 (stump > 2 cm = Bismuth I / Strasberg E1; stump < 2 cm = II / E2); the classification block compares this measurement against 20 mm and 1 mm. A case datum measured on the case's authored imaging, like every other case datum \u2014 the classification arithmetic on it is what the checker recomputes.",
+    "source": [
+     "case-data",
+     "C14"
+    ],
+    "stage": 4,
+    "unit": "mm",
+    "value": 25
+   }
+  ],
+  "milestone": 22,
+  "module": "cases",
+  "patient": {
+   "age": 54,
+   "allergies": [
+    "none recorded (case data)"
+   ],
+   "habitus": "overweight (case data)",
+   "history": [
+    "Four days ago she underwent the laparoscopic cholecystectomy that case.ruq-pain.001 handed to the Theatre (procedure proc.chole.lap). The operation as played in Theatre trace-02 is this case's operative history: the common bile duct was clipped at t=1860 s and transected at t=1920 s (Stewart-Way class III), the injury was recognised during the operation, a closed drain was placed to the gallbladder fossa, and the decision was drain-and-refer to a hepatobiliary team (theatre_link, C16).",
+    "Jaundice first noted on postoperative day 2 and deepening since; dark urine and pale stools from day 3; mild itching (case data).",
+    "No new regular medications; perioperative cefazolin only (case data).",
+    "Eating and drinking; bowels working; afebrile throughout the postoperative course (case data)."
+   ],
+   "postoperative_day": 4,
+   "sex": "F"
+  },
+  "presentation_stages": [
+   {
+    "narrative": "The patient is assessed at the hepatobiliary referral centre on postoperative day 4 after the index laparoscopic cholecystectomy whose Theatre debrief (trace-02) records a recognised common bile duct transection, a drain placed, and a drain-and-refer decision. She is visibly jaundiced, with dark urine, pale stools and mild itching. She is afebrile (36.9 C), heart rate 78/min, blood pressure 122/74 mmHg. The closed drain to the gallbladder fossa placed at the index operation drains about 40 mL per 24 h of bile-stained fluid, falling each day. Abdomen soft, mild right upper quadrant discomfort, no peritonism. The learner must commit a stage-1 differential board for post-cholecystectomy jaundice before any new result exists.",
+    "stage": 1,
+    "title": "Postoperative day 4 \u2014 referral-centre assessment"
+   },
+   {
+    "narrative": "Laboratories: total bilirubin 6.8 mg/dL; alkaline phosphatase 520 U/L (about four times the upper limit of reference); ALT 96 U/L and AST 88 U/L (each under three times the upper limit); white cell count 8.9 x10^9/L; CRP 8 mg/L \u2014 below the TG18 cholangitis inflammatory-response threshold; platelets 268 x10^9/L. Ultrasound: intrahepatic bile ducts are dilated; no subhepatic or intra-abdominal fluid collection; the distal common bile duct is incompletely visualised and no stone is identified in it.",
+    "stage": 2,
+    "title": "Laboratory panel and abdominal ultrasound"
+   },
+   {
+    "narrative": "ERCP (ordered by the learner at stage 2 with therapeutic intent for a presumed retained stone): the cholangiogram opacifies a normal-calibre distal common bile duct up to an abrupt cut-off at surgical clips in the mid common bile duct. No contrast passes the clips; the proximal biliary tree is not opacified (ERCP cannot show ducts upstream of a complete obstruction, C14). No stone is seen in the distal duct and none is extracted. No sphincterotomy or stent is possible across a complete transection.",
+    "stage": 3,
+    "title": "ERCP \u2014 the learner's order returns"
+   },
+   {
+    "narrative": "MRCP (the gold standard for complete morphological evaluation of the biliary tree, C14): complete transection of the common bile duct at the clip level; the remaining common hepatic duct stump measures 25 mm below an intact hepatic duct confluence; intrahepatic ducts are dilated above the injury; no stone is present in any duct; no injury to an aberrant right sectoral duct; the injury is complete (circumferential), not a lateral defect; no leak from the cystic duct stump or any minor duct; no fluid collection. The Strasberg\u2013Bismuth classification is computed from these findings by the case's classification block. Adjudication and the WSES-timed disposition follow.",
+    "stage": 4,
+    "title": "MRCP \u2014 definitive anatomy, classification, disposition"
+   }
+  ],
+  "resource_tier": "enhanced",
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestones 17 and 20 recorded it; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "status": "dual-sourced-draft",
+  "synthetic": true,
+  "synthetic_note": "Synthetic case, authored for teaching. The patient is the same authored fiction as case.ruq-pain.001; her operation is the Theatre's shipped trace-02 attempt (Milestone 17), whose debrief file is this case's operative-history evidence (see theatre_link). No real patient data exists in this module.",
+  "theatre_link": {
+   "debrief_file": "theatre/debriefs/trace-02-divide-before-cvs.debrief.json",
+   "debrief_sha256": "bf5b5313e28123cd80bc38a5cae8f62242e5cb0bc4d07a31aa239eb0a3aa28a2",
+   "matched_fields": {
+    "checklist_completed": 32,
+    "checklist_required": 64,
+    "complication_bdi": {
+     "kind": "bile-duct-injury",
+     "recognised": true,
+     "resolved_structure": "duct.common-bile",
+     "stewart_way_class": "III",
+     "t_onset_s": 1920.0
+    },
+    "complication_clip": {
+     "kind": "clip-on-common-bile-duct",
+     "stewart_way_class": "I (mechanism)",
+     "t_onset_s": 1860.0
+    },
+    "decision_dp4": {
+     "choice": "drain-refer",
+     "id": "dp4",
+     "t_s": 2220.0
+    },
+    "drain_microstep": "m7.6",
+    "fail_reason_contains": "err.divide-unidentified",
+    "failed_at_s": 1920.0,
+    "management_max": 5,
+    "management_points": 5,
+    "safety_gate_points": 0,
+    "verdict": "FAIL"
+   },
+   "note": "Every value in matched_fields is read from the shipped debrief file by the checker and compared field by field, and the file's SHA-256 is recomputed. Nothing in this case's operative history is retyped from the Milestone 17 report: if the debrief file changes, this case's checks fail until the case is re-derived. MILESTONE 25 RE-RECORDING: the debrief file was regenerated under the Milestone 25 physiology engine (renal excretion + interstitial reservoir; the Theatre's blood-loss identity extended to the new boundary fluxes). Every matched field above is unchanged — verdict, timings, checklist, scores and both complications are identical; only the debrief's engine bookkeeping fields moved (engine trace hash, beat count 2729 -> 2727, conservation error ~1e-9 mL), which is what changed the file hash (7bb98df4... -> 02ab4d2d...). The hash was re-recorded in this Milestone 25 session after a field-by-field diff of the old and new debrief files. MILESTONE 26 RE-RECORDING: the debrief file was regenerated under the Milestone 26 physiology engine (oncotic state + blood-product channel; the Theatre's blood-loss identity extended to the product boundary flux, and the debrief gained the physiology.transfused_ml field — 0.0 for every shipped trace, none of which transfuses). Every matched field is unchanged — verdict, timings, checklist, scores and both complications are identical, and the measured blood loss is identical; only the debrief's engine bookkeeping fields moved (engine trace hash, beat count 2727 -> 2723, conservation error ~1e-9 mL) plus the added transfused_ml field, which is what changed the file hash (02ab4d2d... -> 74e13c0e...). The hash was re-recorded in this Milestone 26 session after a field-by-field diff of the old and new debrief files. MILESTONE 30 RE-RECORDING: the debrief file was regenerated under the Milestone 30 physiology engine (the hormonal volume axes: sodium/osmolality lump, ADH axis, aldosterone effect state; the new states are folded into the engine trace hash). Every matched field is unchanged — verdict, timings, checklist, scores and both complications are identical, and the measured blood loss is identical; only the debrief's engine bookkeeping fields moved (engine trace hash, conservation error ~1e-9 mL; the beat count is unchanged at 2723), which is what changed the file hash (74e13c0e... -> bf5b5313...). The hash was re-recorded in this Milestone 30 session after a field-by-field diff of the old and new debrief files.",
+   "procedure_id": "proc.chole.lap",
+   "role": "Operative history \u2014 THE LOOP. This case's index operation is the Theatre's shipped trace-02 attempt, and its debrief is this case's stage-1 operative-history evidence. Design/07's interchange section specifies exactly this: 'Theatre post-op complications generate case stubs in the same format (the missed bile-duct injury returns as a case), closing the loop between modules.'",
+   "trace_id": "trace-02-divide-before-cvs"
+  },
+  "title": "Postoperative jaundice, day 4 after laparoscopic cholecystectomy \u2014 the trace-02 bile duct injury returns",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights. Calibration proper needs a case series; two cases yield two sets of staged scores, and the debrief says so."
+  }
+ }
+}

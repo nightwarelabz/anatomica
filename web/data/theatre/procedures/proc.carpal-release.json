@@ -1,0 +1,1022 @@
+{
+ "procedure": {
+  "authority_basis": "Authored against the consulted operative technique literature for open carpal tunnel release (T21, T22), the median nerve variation classification and its prevalence literature (T23, T24, T25), the prophylaxis evidence (T26, T28), the revision literature (T27) and the AAOS guideline (T28) listed in theatre/parameters.json (sources T21-T28; T6, T8, T9, T10 and T20 are shared with the theatre's earlier procedures). The decomposition is this module's own, built to cognitive-task-analysis discipline (design/05): no published carpal tunnel release microstep list was copied, and the granularity follows the operative descriptions actually consulted.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.2 (operative findings reviewed at the wrist).",
+    "choices": [
+     {
+      "effect": "Continue with the authored configuration: open release (T27: open carpal tunnel release remains the gold standard; T28: surgery is the most effective long-term treatment, offered for persistent troublesome symptoms, denervation or thenar weakness).",
+      "id": "proceed-open",
+      "label": "Proceed with open carpal tunnel release",
+      "scoring": "Neutral in itself; the attempt's required set follows the operation actually performed."
+     },
+     {
+      "effect": "Bailout: stop and refer to a service with hand surgery expertise.",
+      "id": "abort-refer",
+      "label": "Abort and refer to a hand surgery service",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the findings and the referral permit proceeding with open release?"
+   },
+   {
+    "anchor": "Anchored at microstep m5.3 (second look) - the point at which identification is either achieved or declared unachievable.",
+    "choices": [
+     {
+      "effect": "Continue exposure (a mini-open incision may be extended to a standard incision for visualisation, T21) until the nerve, the branch account and the limits can be demonstrated.",
+      "id": "extend-exposure",
+      "label": "Extend the incision and exposure until the structures are identified",
+      "scoring": "Positive: persistence with exposure rather than division."
+     },
+     {
+      "effect": "Escalate to a more experienced operator before any division.",
+      "id": "call-senior",
+      "label": "Call for senior / hand-surgery help",
+      "scoring": "Positive escalation."
+     },
+     {
+      "effect": "Bailout: stop and refer to a hand surgery service.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "The scored-error choice: division without identification - the runner resolves it onto the median nerve and fails the attempt.",
+      "id": "continue-dissection",
+      "label": "Divide the ligament where it is presumed safe",
+      "scoring": "err.no-bailout, and the division itself fires err.divide-unidentified."
+     }
+    ],
+    "id": "dp2",
+    "question": "The structures at risk cannot be positively identified. What now?"
+   },
+   {
+    "anchor": "On recognition of the nerve injury computed by the misidentification resolution.",
+    "choices": [
+     {
+      "effect": "Definitive repair of the divided nerve under magnification at the index operation; the repair itself is microstep m7.3.",
+      "id": "convert-microscope-repair",
+      "label": "Convert to microscope-assisted epineurial repair",
+      "scoring": "Definitive plan (management plan point)."
+     },
+     {
+      "effect": "The nerve is protected and the patient referred without delay to the service that will repair it.",
+      "id": "repair-refer",
+      "label": "Protect the nerve, close, and refer immediately to a hand surgery / peripheral nerve service",
+      "scoring": "Definitive plan where repair expertise is not in the room (management plan point)."
+     },
+     {
+      "effect": "No repair and no referral: the divided nerve is left to the postoperative course.",
+      "id": "continue",
+      "label": "Complete the release and observe",
+      "scoring": "Scores no plan point; named in the debrief delta."
+     }
+    ],
+    "id": "dp3",
+    "question": "A median nerve (or recurrent motor branch) injury is recognised. What is the definitive plan?"
+   },
+   {
+    "anchor": "Anchored at microstep m8.2 (the postoperative course step) - the debrief's postoperative-consequence point.",
+    "choices": [
+     {
+      "effect": "Revision release: at revision, the most common finding is the incomplete release itself (T27), and completing it is the definitive treatment.",
+      "id": "return-theatre",
+      "label": "Return to theatre for re-exploration and completion of the release",
+      "scoring": "Definitive plan for an incomplete release with persistent symptoms (management plan point)."
+     },
+     {
+      "effect": "Re-evaluation of the persistent symptoms (the revision literature's assessment pathway, T27) before any re-operation.",
+      "id": "reassess-edx",
+      "label": "Repeat electrodiagnostic studies and imaging before deciding",
+      "scoring": "Appropriate assessment, but for a declared incomplete release the definitive plan is completion of the release; scores no plan point on its own."
+     },
+     {
+      "effect": "No source control of the residual compression.",
+      "id": "observe",
+      "label": "Observe and reassure",
+      "scoring": "Scores no plan point for a declared incomplete release; named in the debrief delta."
+     }
+    ],
+    "id": "dp4",
+    "question": "Postoperative course: symptoms persist unchanged after the release. What is the plan?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's misidentification resolution: the blade or scissors pass through the unvisualised tunnel and divide the median nerve itself, which lies immediately deep to the ligament - the catastrophic nerve injury of this operation (T27 lists the median nerve among the structures injured iatrogenically at carpal tunnel release). The attempt FAILS at the moment of division, regardless of all other scores (design/05 master rule, applied here as it is to the cholecystectomy's bile duct and the appendicectomy's cecum).",
+    "definition": "Dividing the transverse carpal ligament before the structures at risk are identified and protected (gate.nerve-id).",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T21"
+   },
+   {
+    "consequence": "The division crosses the branch where it pierces the ligament: recurrent motor branch injury - loss of thenar motor function - computed by the runner, and the attempt FAILS. The variant's injury differs from the master rule's only in which structure the division resolves onto: here the unaccounted structure is inside the ligament itself. (The persistent-median-artery configuration's missed variant is scored separately, as err.unprotected-variant-vessel: there the divided structure is the intended one and the injury is collateral.)",
+    "definition": "Dividing the transverse carpal ligament in the transligamentous configuration with the recurrent motor branch unaccounted for (criterion crit2 undemonstrated because microstep m5.5 was not performed).",
+    "id": "err.missed-variant",
+    "severity": "critical-fail",
+    "source": "T23"
+   },
+   {
+    "consequence": "Haemorrhage from the persistent median artery, computed by the physiology engine from the verify-flagged theatre rate and the time to control. The attempt does not fail on this error: the divided structure was the intended one; the injury is collateral and controllable.",
+    "definition": "Dividing the ligament in the persistent-median-artery configuration without identifying and protecting the artery (microstep m5.6).",
+    "id": "err.unprotected-variant-vessel",
+    "severity": "major",
+    "source": "T25"
+   },
+   {
+    "consequence": "Palmar cutaneous branch injury: the revision literature's named iatrogenic injury of this approach (T27), whose presentation is a painful neuroma and new palmar sensory symptoms - recorded as a postoperative structural consequence; identifying and preserving the cutaneous branches is the step the technique literature calls the most important in reducing painful incisional neuromas (T21). No volume or physiology effect is computed.",
+    "definition": "Dissecting radially across the palmar cutaneous branch's territory (microstep m6.4) instead of keeping the dissection on the ulnar side of the field.",
+    "id": "err.palmar-cutaneous-injury",
+    "severity": "major",
+    "source": "T27"
+   },
+   {
+    "consequence": "Computed at scoring as this operation's characteristic postoperative consequence: persistent symptoms. The most common reason for persistent symptoms after carpal tunnel release is the incomplete release of the transverse carpal ligament, occurring distally at the palmar arch or proximally at the antebrachial fascia, attributed to inadequate exposure and visualization (T27). Management is scored at dp4.",
+    "definition": "Completing the attempt with the ligament divided but the completeness of the release never confirmed (microstep m6.2 not performed).",
+    "id": "err.incomplete-release",
+    "severity": "major",
+    "source": "T27"
+   },
+   {
+    "consequence": "Guideline-discordant: additional procedures such as internal neurolysis, epineurotomy and tenosynovectomy are rarely indicated and should not be a routine part of primary carpal tunnel release (T21).",
+    "definition": "Performing internal neurolysis or epineurotomy as a routine part of a primary release (microstep m6.5).",
+    "id": "err.unnecessary-neurolysis",
+    "severity": "judgment",
+    "source": "T21"
+   },
+   {
+    "consequence": "Recorded judgment error; if division follows it resolves under the master rule.",
+    "definition": "At dp2 the structures at risk were declared unidentifiable and dissection/division continued instead of altering strategy.",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T20"
+   },
+   {
+    "consequence": "Process error (T6).",
+    "definition": "A WHO checklist phase (Sign In, Time Out, Sign Out) not performed.",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.carpal-release",
+  "name": "Open carpal tunnel release",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, anaesthesia and checklist (Step 0)",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review the referral, the electrodiagnostic confirmation and the symptom pattern; confirm the diagnosis of carpal tunnel syndrome and the indication for release",
+        "required": true,
+        "sources": [
+         "T28"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Confirm consent and operative plan, including anticipation of median nerve variant anatomy (Lanz groups I-IV) and the possibility of nerve injury and repair",
+        "required": true,
+        "sources": [
+         "T23",
+         "T28"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Confirm team, resource tier and equipment plan for the case",
+        "note": "Resource tiers per design/05 (basic / limited / enhanced / maximal); the tier is recorded with the attempt, not scored in v1.",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Step 0: planning the procedure"
+     },
+     {
+      "id": "step.0.2",
+      "microsteps": [
+       {
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Establish anaesthesia: local anaesthetic alone is supported by strong evidence for this operation (T28); intravenous regional or general anaesthesia per patient factors and surgeon preference (T21)",
+        "required": true,
+        "sources": [
+         "T28"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [
+         "inst.arm-tourniquet"
+        ],
+        "label": "Apply the upper-arm tourniquet for a bloodless, visualised field",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Position the patient supine with the hand on a hand table, palm up; mark the surface landmarks - Kaplan's cardinal line distally, the hook of the hamate medially, the distal wrist crease proximally",
+        "required": true,
+        "sources": [
+         "T21",
+         "T22"
+        ],
+        "targets": [
+         "landmark.kaplans-cardinal-line",
+         "hamate_right"
+        ],
+        "verb": "position"
+       },
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.7",
+        "instruments": [],
+        "label": "WHO Sign In completed before induction of anaesthesia",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "id": "m0.8",
+        "instruments": [],
+        "label": "Confirm that antibiotic prophylaxis is withheld: routine prophylaxis is not indicated for clean elective carpal tunnel release (T26; T28, limited evidence) - the withholding is a recorded decision, not an omission",
+        "required": true,
+        "sources": [
+         "T26",
+         "T28"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       },
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Time Out completed immediately before skin incision",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Anaesthesia, setup and checklist"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Skin incision",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Make the longitudinal skin incision on the ulnar aspect of the tunnel: from Kaplan's cardinal line distally toward the distal wrist crease proximally, along the axis of the radial border of the ring finger, 3-5 mm ulnar to the thenar crease, approximately 3-4 cm, not crossing the wrist crease",
+        "required": true,
+        "sources": [
+         "T21",
+         "T22"
+        ],
+        "targets": [
+         "landmark.kaplans-cardinal-line"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [
+         "inst.forceps-adson",
+         "inst.retractor-ragnell"
+        ],
+        "label": "Dissect through the subcutaneous fat under direct vision, identifying and preserving the cutaneous sensory branches crossing the field",
+        "note": "Identifying and preserving these branches is the step the technique literature calls the most important in reducing painful incisional neuromas (T21).",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "nerve.palmar-cutaneous-branch"
+        ],
+        "verb": "dissect"
+       }
+      ],
+      "name": "Incise and dissect the subcutaneous layer"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Palmar fascia and exposure of the ligament",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [
+         "inst.retractor-ragnell"
+        ],
+        "label": "Divide the palmar fascia in line with its longitudinal fibres for the full length of the incision and expose the transverse carpal ligament along the whole field",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "ligament.transverse-carpal"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.2",
+        "instruments": [],
+        "label": "Review the operative findings at the wrist and confirm the plan to proceed with open release",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "ligament.transverse-carpal",
+         "major.median"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Expose the transverse carpal ligament"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Identification of the median nerve",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "id": "m3.1",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Release the antebrachial fascia proximally, on the ulnar side of the palmaris longus tendon and under direct vision, protecting the palmar cutaneous branch",
+        "required": true,
+        "sources": [
+         "T21",
+         "T22"
+        ],
+        "targets": [
+         "muscle.palmaris-longus",
+         "nerve.palmar-cutaneous-branch"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m3.2",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Make the small initial opening in the ligament at its proximal edge and identify the median nerve through it, at the proximal aspect of the wound",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "ligament.transverse-carpal",
+         "major.median"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Find the nerve at the proximal edge"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Protection and division limits",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m4.1",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Demonstrate the median nerve identified at the proximal edge of the retinaculum and protected - looped and retracted clear of the division line",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median",
+         "ligament.transverse-carpal"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m4.2",
+        "instruments": [],
+        "label": "Establish the division limits: distally the superficial palmar arch beyond the volar fat pad (typically 18 mm beyond the ligament's distal edge); medially the ulnar neurovascular bundle at Guyon's canal, radial to the hook of the hamate",
+        "required": true,
+        "sources": [
+         "T22"
+        ],
+        "targets": [
+         "artery.superficial-palmar-arch",
+         "canal.guyon",
+         "hamate_right"
+        ],
+        "verb": "demonstrate"
+       }
+      ],
+      "name": "Protect the nerve; establish the limits"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "The nerve gate",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit2",
+        "id": "m5.1",
+        "instruments": [],
+        "label": "Account for the recurrent motor branch: state its expected course (Lanz group I) and set the division line on the ulnar side of the ligament, directed toward the ring finger, away from the branch",
+        "required": true,
+        "sources": [
+         "T21",
+         "T23"
+        ],
+        "targets": [
+         "nerve.recurrent-branch-median",
+         "ligament.transverse-carpal"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m5.2",
+        "instruments": [
+         "inst.retractor-ragnell"
+        ],
+        "label": "Confirm the ligament is clearly visible and fully exposed along the intended division line",
+        "note": "The precondition the technique literature states for avoiding injury to an intraligamentous variation of the recurrent motor branch: the ligament must be clearly visible and exposed before division (T21).",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "ligament.transverse-carpal"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp2",
+        "id": "m5.3",
+        "instruments": [],
+        "label": "Second look: re-confirm the identified nerve, the branch account and the division limits immediately before the pause",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m5.4",
+        "instruments": [],
+        "label": "Pre-division pause: the identified nerve, the branch account and the division limits are verbalised and confirmed with the team before the ligament is divided",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Account for the branch; pause"
+     },
+     {
+      "id": "step.5.2",
+      "microsteps": [
+       {
+        "id": "m5.5",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Identify the recurrent motor branch where it pierces the retinaculum and carefully release it from the ligament (transligamentous configuration)",
+        "required": false,
+        "sources": [
+         "T21",
+         "T23"
+        ],
+        "targets": [
+         "nerve.recurrent-branch-median",
+         "ligament.transverse-carpal"
+        ],
+        "verb": "identify"
+       },
+       {
+        "id": "m5.6",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Identify the persistent median artery between the trunks of the high-division (bifid) median nerve and protect it before division (Lanz group III configuration)",
+        "required": false,
+        "sources": [
+         "T25"
+        ],
+        "targets": [
+         "artery.persistent-median",
+         "major.median"
+        ],
+        "verb": "identify"
+       }
+      ],
+      "name": "Variant anatomy"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Division of the ligament",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "id": "m6.1",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Divide the transverse carpal ligament longitudinally along its ulnar aspect, under direct vision, from the proximal opening to the volar fat pad - and no further",
+        "required": true,
+        "sources": [
+         "T21",
+         "T22"
+        ],
+        "targets": [
+         "ligament.transverse-carpal"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [
+         "inst.freer-elevator"
+        ],
+        "label": "Confirm the release is complete: a smooth elevator passes freely alongside the nerve proximally and distally, the ligament is transected along its full length and the antebrachial fascia release is confirmed",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median",
+         "ligament.transverse-carpal"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m6.3",
+        "instruments": [],
+        "label": "Inspect the tunnel and the nerve: no tumour, aberrant muscle or thickened synovium; the nerve's appearance recorded",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Divide and confirm"
+     },
+     {
+      "id": "step.6.2",
+      "microsteps": [
+       {
+        "id": "m6.4",
+        "instruments": [
+         "inst.forceps-adson"
+        ],
+        "label": "Extend the dissection radially across the palmar cutaneous branch's territory",
+        "note": "Modelled so the rubric can score it: performing this dissection records err.palmar-cutaneous-injury (T27) - the approach stays on the ulnar side of the field precisely to avoid this branch (T21, T22).",
+        "required": false,
+        "sources": [
+         "T27"
+        ],
+        "targets": [
+         "nerve.palmar-cutaneous-branch"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m6.5",
+        "instruments": [
+         "inst.tenotomy-scissors"
+        ],
+        "label": "Perform internal neurolysis / epineurotomy of the median nerve",
+        "note": "Modelled so the rubric can score it: performing neurolysis in a primary release records err.unnecessary-neurolysis (T21: such additional procedures are rarely indicated and are not a routine part of primary release).",
+        "required": false,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Scored departures"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Haemostasis, inspection and repair",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Deflate the tourniquet, achieve haemostasis and inspect the wound",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [],
+        "label": "Re-inspect the median nerve and the thenar branch region at the end of the release: nerve integrity confirmed before closure",
+        "required": true,
+        "sources": [
+         "T21"
+        ],
+        "targets": [
+         "major.median",
+         "nerve.recurrent-branch-median"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Haemostasis and final inspection"
+     },
+     {
+      "id": "step.7.2",
+      "microsteps": [
+       {
+        "anchors_decision": "dp3",
+        "id": "m7.3",
+        "instruments": [
+         "inst.operating-microscope",
+         "inst.vessel-loop"
+        ],
+        "label": "Repair the divided nerve by epineurial repair under magnification",
+        "note": "Required only in the injury configuration: performing it is the definitive control the management score credits after a computed nerve injury.",
+        "required": false,
+        "sources": [
+         "T27"
+        ],
+        "targets": [
+         "major.median"
+        ],
+        "verb": "perform"
+       }
+      ],
+      "name": "Injury management"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Closure and Sign Out",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Close the skin (the ligament is left open - that is the release)",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "anchors_decision": "dp4",
+        "id": "m8.2",
+        "instruments": [],
+        "label": "Confirm the postoperative plan: analgesia, elevation and early mobilisation; no routine supervised therapy and no prophylactic antibiotics (T28)",
+        "required": true,
+        "sources": [
+         "T28"
+        ],
+        "targets": [],
+        "verb": "perform"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.3",
+        "instruments": [],
+        "label": "WHO Sign Out completed before the patient leaves the operating room",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [],
+        "verb": "checklist"
+       }
+      ],
+      "name": "Closure, postoperative plan and Sign Out"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET — design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The median nerve is identified where the small initial opening in the ligament first exposes it, at the proximal aspect of the wound (T21), and is protected - kept under vision and retracted clear of the division line - before the ligament is divided. The nerve lies immediately deep to the ligament along the whole tunnel; a division made without it in view passes through it.",
+      "id": "crit1",
+      "name": "Median nerve identified and protected",
+      "source": "T21"
+     },
+     {
+      "definition": "The course of the recurrent motor branch relative to the ligament is accounted for and the division line is set on the ulnar side of the ligament, directed toward the ring finger, away from the branch (T21, T22). The branch's course is variable (Lanz group I, T23): most often it arises distal to the ligament, but in the transligamentous variation it pierces the ligament itself - so in that configuration this criterion is demonstrated only when the branch has been identified where it pierces the retinaculum (microstep m5.5), not by the standard account.",
+      "id": "crit2",
+      "name": "Recurrent motor branch course accounted for",
+      "source": "T21"
+     },
+     {
+      "definition": "The limits within which division is safe are established before division: distally, the superficial palmar arch, typically 18 mm distal to the ligament's distal edge, approached through the volar fat pad that marks complete release (T21, T22); medially, the ulnar neurovascular bundle in Guyon's canal, superficial and ulnar to the ligament at the hook of the hamate (T21, T22). Division stops short of both.",
+      "id": "crit3",
+      "name": "Division limits established",
+      "source": "T22"
+     }
+    ],
+    "enforcement": "The runner evaluates this gate at the division action on the ligament. A divide action taken while the gate is unachieved does not divide the intended anatomy: it resolves through the misidentification model (err.divide-unidentified) onto the median nerve and fails the attempt. In the transligamentous configuration, where the one unaccounted element is the branch inside the ligament itself, it resolves onto the recurrent branch (err.missed-variant) and likewise fails. Dependent steps (phase 6) are the gate's unlock set.",
+    "id": "gate.nerve-id",
+    "kind": "safety_gate",
+    "name": "Structures at risk identified and protected before division of the transverse carpal ligament",
+    "source": "T21",
+    "statement": "The transverse carpal ligament may not be divided until the structures its division endangers have been identified and protected AND demonstrated (all three criteria, via the microsteps that demonstrate them): the median nerve within the tunnel, the recurrent motor branch's course relative to the ligament, and the division's distal and medial limits.",
+    "unlocks": [
+     "step.6.1"
+    ]
+   },
+   {
+    "criteria": [
+     {
+      "definition": "Before dividing the transverse carpal ligament, the operator pauses and the team confirms the structures at risk have been identified and protected. Carried over from the theatre's gate discipline (design/05, T20) and the WHO checklist culture (T6); no carpal tunnel guideline consulted states this pause - it is the module's own safety culture, labelled as such.",
+      "id": "pause1",
+      "name": "Momentary pause and team confirmation before dividing",
+      "source": "T20"
+     }
+    ],
+    "enforcement": "Scored checkpoint (microstep m5.4), not a second blocking gate in v1: the blocking gate is the identification itself. Omitting the pause forfeits the safety point and is named in the debrief analysis.",
+    "id": "gate.pre-division-pause",
+    "kind": "checkpoint",
+    "name": "Pre-division pause",
+    "source": "T20",
+    "statement": "Before dividing the ligament, the operator pauses and the team confirms the nerve identification, the branch account and the division limits.",
+    "unlocks": []
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (variant configurations change the required set by the rules in variants[]). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1) - for a nerve injury, the repair microstep performed; for haemorrhage, the bleeding controlled - escalation appropriate to the event (1), definitive plan consistent with the guideline (1).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine run, never from the trace script: time-below-threshold component (3/2/1/0 by the rubric bands in theatre parameters), nadir MAP component (>= threshold 2; 55 to threshold 1; below 55 0), blood-loss component (bands in theatre parameters: 2/1/0).",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "One point each: WHO Sign In, WHO Time Out, WHO Sign Out, prophylaxis inside the cited window, Step 0 planning microsteps complete. For THIS procedure the prophylaxis point is structurally unavailable: routine antibiotic prophylaxis is not indicated for clean elective carpal tunnel release (T26, and T28's limited-evidence recommendation), so the procedure carries no prophylaxis microstep - the withholding is itself an authored, sourced microstep (m0.8) - and the process component's ceiling for this procedure is 4 of 5. That ceiling is a documented property of the operation, not an omission in any attempt.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "One point per nerve-gate criterion demonstrated before the division (3), plus one for the pre-division pause performed before the division (1). Gate violations are additionally recorded as errors and, for division, fail the attempt - the points never offset the fail rule.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "notes": "No composite score is computed: design/05 defines components, not a weighting, and inventing weights would violate the precision law. GOALS (T8) and OSATS (T9) are carried as rubric data for observed-performance rating in the shells; a headless scripted runner has no observed performance to rate, so both are reported as NOT POPULATED in v1 debriefs rather than estimated. Scores are formative only (validity label below) until construct evidence exists. Endoscopic release is NOT authored as a configuration of this procedure: the guideline finds no difference in long-term outcomes between mini-open and endoscopic release (T28), the open configuration keeps the field under direct vision and remains the gold standard (T27), and endoscopic release is among the risk factors for revision in the consulted review (T27). A second configuration was not supported to the same cognitive-task-analysis standard by the sources consulted in-session; it is recorded as a named non-goal in MILESTONE-42.md, not silently omitted.",
+   "rubrics": {
+    "goals": {
+     "domains": [
+      "depth perception",
+      "bimanual dexterity",
+      "efficiency",
+      "tissue handling",
+      "autonomy"
+     ],
+     "scale": "5 domains x 1-5, anchors at 1, 3, 5; total 25",
+     "source": "T8",
+     "status": "rubric data; not populated by the headless runner"
+    },
+    "osats": {
+     "items": [
+      "respect for tissue",
+      "time and motion",
+      "instrument handling",
+      "knowledge of instruments",
+      "use of assistants",
+      "flow of operation",
+      "knowledge of specific procedure"
+     ],
+     "scale": "7 items x 1-5; total 35",
+     "source": "T9",
+     "status": "rubric data; not populated by the headless runner"
+    }
+   },
+   "verdict_rule": "FAIL if any critical-fail error fired (err.divide-unidentified; err.missed-variant in the transligamentous configuration); otherwise PASS. Bailout choices at decision points never cause a fail and score positively (design/05)."
+  },
+  "structures": [
+   {
+    "id": "major.median",
+    "kind": "record",
+    "note": "Milestone 39 clinical record for the median nerve (sourcing tier A), linking the sided Milestone 33 inventory records nerve.left-median-nerve and nerve.right-median-nerve. Its course field states that the nerve enters the hand through the carpal tunnel and divides into the recurrent branch and the palmar digital branches; its clinical-testing field records that the palmar cutaneous branch is spared in carpal tunnel syndrome because it does not pass through the tunnel. This is the structure the operation decompresses - and the structure the master-rule division injures.",
+    "resolves_to": "data/nervous/major-nerves.json"
+   },
+   {
+    "id": "major.ulnar",
+    "kind": "record",
+    "note": "Milestone 39 clinical record for the ulnar nerve (sourcing tier A), linking nerve.left-ulnar-nerve and nerve.right-ulnar-nerve. The ulnar nerve passes superficial and ulnar to the transverse carpal ligament and bifurcates into its sensory and deep motor branches in Guyon's canal (T21) - the medial limit of this operation's division.",
+    "resolves_to": "data/nervous/major-nerves.json"
+   },
+   {
+    "id": "muscle.palmaris-longus",
+    "kind": "record",
+    "note": "Clinical record for palmaris longus. Its tendon is the proximal field's surface landmark: the antebrachial fascia is released on the ulnar side of the palmaris longus tendon (T21), and the palmar cutaneous branch runs in the same proximal plane along the ulnar aspect of the flexor carpi radialis (T22).",
+    "resolves_to": "data/muscular/muscles.json"
+   },
+   {
+    "id": "hamate_right",
+    "kind": "record",
+    "note": "The hamate's geometry record (the left record, hamate_left, is in the same file). The hook of the hamate is the ligament's ulnar distal attachment and the palpable orientation landmark of the approach (T22: the ligament attaches ulnarly to the pisiform and the hook of the hamate); the case module's patient (Milestone 41) is right-sided, so the register resolves the right record.",
+    "resolves_to": "data/skeletal/skeleton-geometry.json"
+   },
+   {
+    "id": "ligament.transverse-carpal",
+    "kind": "absence",
+    "note": "The transverse carpal ligament (flexor retinaculum) - the structure this procedure divides - has NO Body Model record: no record in any system inventory denotes it (verified this milestone by searching every Body Model data file for retinaculum / transverse carpal ligament; the skeletal module carries bones, and no ligament records exist in the Body Model). The absence is this register's central honesty, parallel to the cholecystectomy's cystic artery: the operation's target is defined by the consulted technique sources - the roof of the carpal tunnel, attaching to the scaphoid and trapezium radially and to the pisiform and hook of the hamate ulnarly (T22), which must be clearly visible and exposed before it is divided (T21).",
+    "resolves_to": null
+   },
+   {
+    "id": "nerve.recurrent-branch-median",
+    "kind": "absence",
+    "note": "The named gap, stated plainly. The recurrent (thenar motor) branch of the median nerve has NO Body Model record: the Foundational Model of Anatomy has no class for it, so the Milestone 33 intake could not take it, and Milestone 35's innervation pass left the phrase 'recurrent branch of the median nerve' unresolved with its nerve component recorded absent; Milestone 41's case checker re-verifies that absence at every run. The branch is real in the operative field - the Milestone 39 record major.median names it in the nerve's course - and its anatomy here is defined entirely by the consulted surgical sources: it supplies the thenar muscles, most often arises distal to the ligament and curves around its distal edge, and in the transligamentous variation pierces the ligament itself (T21, T22; classification T23; pooled prevalences T24). The gate's second criterion exists because of this branch; the register records that the Body Model cannot yet point at it.",
+    "resolves_to": null
+   },
+   {
+    "id": "nerve.palmar-cutaneous-branch",
+    "kind": "absence",
+    "note": "The palmar cutaneous branch of the median nerve has no Body Model record of its own (searched this milestone across every data file). The Milestone 39 record major.median names the branch in its sensory and clinical-testing fields - it supplies the lateral part of the palm and is spared in carpal tunnel syndrome because it does not pass through the tunnel. Its operative anatomy is from the consulted sources: it arises from the radial aspect of the median nerve 6-11 cm (T21) or approximately 5-6 cm (T22) proximal to the wrist crease, passes volar to the ligament, and is protected by an ulnarly placed incision and by dividing the antebrachial fascia under direct vision (T21, T22, T27).",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.superficial-palmar-arch",
+    "kind": "absence",
+    "note": "No Body Model record denotes the superficial palmar arch: the cardiovascular inventory carries palmar metacarpal arteries but no arch record (searched this milestone; an absence of the same family as the arterial absences Milestone 5 recorded). The arch is this operation's distal limit: it lies typically 18 mm distal to the distal edge of the transverse carpal ligament (T22), and the volar fat pad around it is the landmark that the ligament has been completely released (T21).",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.persistent-median",
+    "kind": "absence",
+    "note": "A persistent median artery is a variant vessel - present in 7.5% of wrists in the consulted sonographic series (T25) - and no Body Model record denotes it: the cardiovascular module models standard anatomy and its own named variants, and this variant is not among them. In the Lanz group III configuration it accompanies a high division (bifid) of the median nerve, running between its two trunks (T23, T25). It enters this register only as the variant's structure addition.",
+    "resolves_to": null
+   },
+   {
+    "id": "canal.guyon",
+    "kind": "absence",
+    "note": "Guyon's canal - the fibro-osseous canal at the ulnar wrist through which the ulnar nerve passes, superficial and ulnar to the transverse carpal ligament, before bifurcating (T21) - is an operative region, not a Body Model record; the nerve itself resolves at major.ulnar. The canal marks the medial limit of the division: the division line stays radial to the hook of the hamate.",
+    "resolves_to": null
+   },
+   {
+    "id": "landmark.kaplans-cardinal-line",
+    "kind": "absence",
+    "note": "Kaplan's cardinal line - drawn from the ulnar border of the radially abducted thumb toward the hook of the hamate (T21, T22) - is a surface landmark, not a Body Model record. It marks the distal extent of the incision and of the tunnel: the carpal tunnel runs from Kaplan's cardinal line distally to the wrist flexion crease proximally (T22).",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance response processes (GOALS/OSATS rating) are future shell work."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "Microstep m5.5 (identify the recurrent motor branch where it pierces the retinaculum and carefully release it from the ligament, per T21) becomes required in this configuration.",
+     "Criterion crit2 cannot be demonstrated by the standard account (m5.1) while the branch lies inside the unopened ligament: crit2 demonstrated before m5.5 is deferred by the runner and registers only once the branch is identified. Dividing with the branch unaccounted resolves onto the branch itself (err.missed-variant) and fails the attempt - the variant's injury consequence is that the structure at risk is inside the structure being divided."
+    ],
+    "id": "variant.transligamentous-recurrent-branch",
+    "name": "Transligamentous recurrent motor branch (Lanz group I)",
+    "prevalence": "Transligamentous course in 11.3% of hands, pooled in the Henry et al. 2015 meta-analysis (31 studies, 3,918 hands, T24); 23% in the Poisel cadaver series as reported in the classification literature (T23); approximately 20% in the series the operative-exposures chapter cites (T22). The extraligamentous course is the standard configuration (75.2% pooled, T24).",
+    "required_additions": [
+     "m5.5"
+    ],
+    "source": "T24",
+    "structure_additions": [
+     "nerve.recurrent-branch-median"
+    ],
+    "trace": "theatre/traces/trace-13-carpal-variant-transligamentous.json"
+   },
+   {
+    "gate_modifications": [
+     "Microstep m5.6 (identify the persistent median artery between the trunks of the high-division nerve and protect it) becomes required in this configuration.",
+     "Dividing the ligament with the artery unprotected does not fail the attempt - the divided structure is the intended one - but computes haemorrhage from the artery (err.unprotected-variant-vessel) at the verify-flagged theatre rate until the artery is controlled."
+    ],
+    "id": "variant.persistent-median-artery",
+    "name": "Persistent median artery with high division (bifid) median nerve (Lanz group III)",
+    "prevalence": "Persistent median artery in 7.5% of wrists and a bifid median nerve in 9.4% in the consulted sonographic series of 160 wrists, the two coexisting in 6.3% - more often together than either alone (T25). Lanz group III (high division of the nerve) was found in 2.8% of the 246 operated tunnels of the classification series, as reproduced in T21.",
+    "required_additions": [
+     "m5.6"
+    ],
+    "source": "T25",
+    "structure_additions": [
+     "artery.persistent-median"
+    ],
+    "trace": "theatre/traces/trace-14-carpal-variant-persistent-median-artery.json"
+   }
+  ]
+ }
+}

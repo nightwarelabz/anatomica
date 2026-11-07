@@ -1,0 +1,1324 @@
+{
+ "procedure": {
+  "authority_basis": "Authored by cognitive task analysis against the consulted thyroid-surgery literature listed in theatre/parameters.json: the American Thyroid Association's differentiated thyroid cancer guidelines (T42), whose Recommendation 42A requires visual identification of the recurrent laryngeal nerve in all cases and steps to preserve the external branch at the superior pole, whose Recommendation 42B frames intraoperative neural stimulation and monitoring as a weak-recommendation adjunct that facilitates identification, and whose Recommendation 43 requires the parathyroid glands and their blood supply to be preserved, with autotransplantation of devascularised glands; the International Neural Monitoring Study Group's 2018 staging guideline (T43), which defines loss of signal and builds the staged-completion strategy for bilateral surgery on it; the American Association of Endocrine Surgeons' definitive surgical management guidelines (T44), whose critical-steps account supplies this procedure's operative sequence (middle thyroid vein, capsular dissection, nerve traced through the field, Berry ligament divided at the trachea, superior pole vessels ligated on the capsule - Recommendations 25-27) and whose postoperative standards supply its computed consequences (hematoma, Recommendation 58; nerve repair, Recommendation 59; calcium strategy, Recommendations 60-61); the INMSG external-branch standards statement (T48), which records that the branch is usually avoided rather than exposed - the ground for crit3's territorial account; the extralaryngeal-branching meta-analysis (T45) for the authored variant; the non-recurrent nerve meta-analysis (T46) for the below-gate variant that is surveyed for but not authored; and the post-thyroidectomy hypocalcemia systematic review (T47) for the parathyroid consequence's incidence and predictors. The gate is the specialty's own standard reorganised, not an invention: three strong-recommendation accounts (nerve, parathyroids, external branch) demonstrated per side before that side's divisions, because total thyroidectomy is two operations sharing one airway and one calcium axis, and the bilateral injury is the catastrophe the staging literature (T43) and the guidelines' own preoperative warnings (T42) both organise against.",
+  "decision_points": [
+   {
+    "anchor": "After microstep m2.3 (field survey before the accounts).",
+    "choices": [
+     {
+      "effect": "Proceed to the bilateral dissection as planned: right accounts, right divisions, then the left side in mirror.",
+      "id": "proceed-total-thyroidectomy",
+      "label": "Proceed with total thyroidectomy",
+      "scoring": "Neutral in itself; the attempt's required set follows the operation actually performed."
+     },
+     {
+      "effect": "Bailout: stop before the accounts and refer to a service with endocrine surgery expertise.",
+      "id": "abort-refer",
+      "label": "Abort and refer to an endocrine surgery service",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the findings and the plan permit proceeding with total thyroidectomy?"
+   },
+   {
+    "anchor": "After microstep m4.1 (second look before the right divisions).",
+    "choices": [
+     {
+      "effect": "Extend the exposure and re-make the incomplete account before any division: the gate is then evaluated on the completed demonstrations.",
+      "id": "extend-exposure",
+      "label": "Extend the exposure and complete the account",
+      "scoring": "The strategy change design/05 and the guidelines expect when identification is incomplete: no error is scored for extending."
+     },
+     {
+      "effect": "Call for senior help before dividing: the escalation the management score credits when a complication follows.",
+      "id": "call-senior",
+      "label": "Call for senior help",
+      "scoring": "Escalation-positive."
+     },
+     {
+      "effect": "Bailout: stop and refer rather than divide on an incomplete account.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     },
+     {
+      "effect": "Continue dissecting toward division with the account still incomplete.",
+      "id": "continue-dissection",
+      "label": "Continue dissection on the incomplete account",
+      "scoring": "Scores err.no-bailout (judgment): the second look existed to change strategy, and continuing converts an incomplete account into the gate failure the divisions then compute."
+     }
+    ],
+    "id": "dp2",
+    "question": "The second look finds an account incomplete: what changes before division?"
+   },
+   {
+    "anchor": "After microstep m7.3 (the repair microstep, performed when a transection was computed).",
+    "choices": [
+     {
+      "effect": "Repair under magnification now: primary reanastomosis where the ends meet without tension, ansa cervicalis graft where they do not (T44, Recommendation 59). Enacted by performing m7.3, which is also the management score's definitive control for the injury.",
+      "id": "convert-microscope-repair",
+      "label": "Convert to magnified repair now",
+      "scoring": "The definitive plan (management plan point) when m7.3 is also performed for control."
+     },
+     {
+      "effect": "Refer immediately to the nerve repair / laryngology service for repair and voice management.",
+      "id": "repair-refer",
+      "label": "Refer immediately for repair",
+      "scoring": "Also earns the management plan point (the carpal/ulnar rule): referral is a definitive plan; it does not earn the control point, which requires the repair itself (m7.3)."
+     },
+     {
+      "effect": "Close without any repair plan for the divided nerve.",
+      "id": "abort-close",
+      "label": "Abort the repair plan and close",
+      "scoring": "No plan point: an unrepaired, unreferred transection is the outcome Recommendation 59 (T44) exists to prevent."
+     }
+    ],
+    "id": "dp3",
+    "question": "A recurrent laryngeal nerve transection is computed: what is the repair plan?"
+   },
+   {
+    "anchor": "After microsteps m3.4 and m5.5 (the per-side parathyroid perfusion assessments).",
+    "choices": [
+     {
+      "effect": "Autotransplant the devascularised gland: identity confirmed, gland minced into a marked intramuscular pocket in the sternocleidomastoid or strap muscle (T44, Recommendation 27b; T42). Enacted by performing that side's autotransplant microstep (m7.1/m7.2), which the scenario makes required.",
+      "id": "autotransplant",
+      "label": "Autotransplant the devascularised gland",
+      "scoring": "The consulted standard for a gland that cannot be preserved (T44, Recommendation 27b, strong recommendation). The scoring keys on the microstep, not the declaration: a declared autotransplant never performed still computes hypocalcemia."
+     },
+     {
+      "effect": "Leave the devascularised gland in situ and monitor calcium postoperatively.",
+      "id": "leave-and-monitor",
+      "label": "Leave the gland and monitor",
+      "scoring": "Scores err.devascularized-gland-not-autotransplanted and computes hypocalcemia at scoring when the scenario's gland is left untransplanted: monitoring detects the consequence the standard exists to prevent; it does not prevent it."
+     },
+     {
+      "effect": "Bailout: stop and refer the parathyroid problem to a service with endocrine surgery expertise.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp4",
+    "question": "A parathyroid gland is devascularised: how is it handled?"
+   },
+   {
+    "anchor": "After microstep m5.6 (completion review before the second side is divided).",
+    "choices": [
+     {
+      "effect": "Proceed to the left divisions on the completed left accounts.",
+      "id": "proceed-left",
+      "label": "Proceed with the second side",
+      "scoring": "Neutral when the first side's nerve is intact and signalling; the left gate is then evaluated on its own demonstrations."
+     },
+     {
+      "effect": "Stage the completion: close now and complete the second side at a second operation after the first side's function is known - the standard response to first-side loss of signal that does not recover, existing precisely to prevent bilateral paralysis (T43; T42).",
+      "id": "convert-staged",
+      "label": "Convert to a staged completion",
+      "scoring": "Bailout-positive per design/05 and the monitoring guidelines' own strategy (T43): staging after first-side signal loss is the gold-standard safety strategy, never a failure."
+     },
+     {
+      "effect": "Bailout: abandon the completion and refer.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp5",
+    "question": "Complete the second side now, or stage the completion?"
+   },
+   {
+    "anchor": "After microstep m8.3 (postoperative plan declared).",
+    "choices": [
+     {
+      "effect": "Return to theatre immediately: a suspected hematoma is evaluated at the bedside and evacuated without delay - nonoperative management of an acute post-thyroidectomy hematoma is not recommended, and untreated hematoma is life-threatening (T44, Recommendation 58).",
+      "id": "return-theatre",
+      "label": "Return to theatre (hematoma)",
+      "scoring": "The definitive plan (management plan point) for the neck-hematoma consequence."
+     },
+     {
+      "effect": "Calcium replacement protocol: oral calcium first-line, calcitriol as necessary, intravenous calcium in severe or refractory situations (T44, Recommendation 61), on the supplementation strategy of Recommendation 60.",
+      "id": "calcium-replacement-protocol",
+      "label": "Calcium replacement protocol (hypocalcemia)",
+      "scoring": "The definitive plan (management plan point) for the hypocalcemia consequence."
+     },
+     {
+      "effect": "Observe and review on the ward without a specific protocol.",
+      "id": "observe-and-review",
+      "label": "Observe and review",
+      "scoring": "No plan point for either computed consequence: hematoma forbids observation (T44) and significant hypocalcemia takes the replacement protocol (T44, Recommendation 61)."
+     },
+     {
+      "effect": "Refer the consequence to routine outpatient follow-up.",
+      "id": "refer-routine",
+      "label": "Refer to routine follow-up",
+      "scoring": "No plan point: both computed consequences are immediate-postoperative problems with immediate standards."
+     }
+    ],
+    "id": "dp6",
+    "question": "A postoperative consequence is computed: what is the definitive plan?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the runner's per-side resolution: the division takes the unaccounted recurrent laryngeal nerve of that side - at the inferior pedicle or, classically, at the ligament of Berry, the most common site of injury (T44). The attempt FAILS at the moment of division, regardless of all other scores (design/05 master rule). If the other side's nerve is already injured, the bilateral injury is computed additionally.",
+    "definition": "Dividing or ligating the inferior thyroid pedicle or the ligament of Berry on a side whose recurrent laryngeal nerve has not been visually identified and traced (gate.nerve-parathyroid-account, crit1 unmet on that side).",
+    "id": "err.divide-unidentified",
+    "severity": "critical-fail",
+    "source": "T42"
+   },
+   {
+    "consequence": "Computed by the runner's variant resolution, checked before the plain crit1 resolution: the division takes the unaccounted anterior motor branch, and the attempt FAILS at that timestamp. Branched nerves are the higher-risk configuration in the operative literature (T45), which is why the survey is a gate-level act in this configuration and not a courtesy.",
+    "definition": "Dividing the inferior pedicle or the ligament of Berry in the extralaryngeal-branching configuration without the branch survey (m3.5): the nerve's branches were never all accounted for, so the account the gate holds - the whole nerve, every branch, to the laryngeal entry - was never made.",
+    "id": "err.missed-variant",
+    "severity": "critical-fail",
+    "source": "T45"
+   },
+   {
+    "consequence": "Computed as a collateral injury on that side's external branch: cricothyroid paralysis degrading voice pitch and projection without vocal fold paralysis (T48). A scored major departure with management, not a failed attempt - the divided structure is the intended pedicle; the injury is to the nerve the capsular line existed to protect (the carpal persistent-median-artery pattern).",
+    "definition": "Dividing the superior thyroid pedicle on a side whose external branch of the superior laryngeal nerve has not been accounted for (crit3 unmet on that side): the pedicle line was not established on the capsule with the branch's course excluded from it.",
+    "id": "err.ebsln-unaccounted",
+    "severity": "major",
+    "source": "T44"
+   },
+   {
+    "consequence": "Postoperative hypocalcemia computed at scoring, resolved onto the parathyroid glands: transient hypocalcemia is the commonest complication of total thyroidectomy (median incidence 27%, range 19-38%, across 115 studies, T47), and identification of fewer than two parathyroid glands at surgery is an independent predictor of its permanent form (T47). Managed at dp6 by the calcium replacement protocol (T44, Recommendation 61). Not a failed attempt: the consequence is postoperative and manageable, and the attempt's failure mode for the parathyroids is this computation, not the division itself.",
+    "definition": "Completing a side's inferior pedicle and Berry work with that side's parathyroid account undemonstrated (crit2 unmet on that side): the glands on that side were never accounted for on the capsule, so their perfusion was never under the operation's control.",
+    "id": "err.parathyroid-unaccounted",
+    "severity": "major",
+    "source": "T47"
+   },
+   {
+    "consequence": "Hypocalcemia computed at scoring, as for the unaccounted gland: the devascularised gland's function is lost either way; the autotransplant is what gives the tissue a second blood supply (T44, Recommendation 27b). (The systematic review notes autotransplantation itself is associated with transient hypocalcemia, T47 - it is a marker of a gland that could not be preserved in situ, not a guarantee against the transient form.)",
+    "definition": "A scenario-declared devascularised parathyroid gland completed without its autotransplant microstep (m7.1/m7.2): the gland the perfusion assessment declared devascularised was neither preserved nor transplanted.",
+    "id": "err.devascularized-gland-not-autotransplanted",
+    "severity": "major",
+    "source": "T44"
+   },
+   {
+    "consequence": "Neck hematoma computed at scoring, resolved onto the trachea: collected blood in the closed neck compresses the cervical trachea and impairs laryngeal venous return, producing rapid airway edema and stridor; untreated hematoma is life-threatening, nonoperative management is not recommended, and the standard is immediate evaluation with a low threshold for cervical exploration (T44, Recommendation 58) - managed at dp6 by return to theatre. Structural outcome: no bleed volume is computed, because no consulted rate exists for this operation's field and none is invented.",
+    "definition": "Closing the neck after Berry-ligament work without the haemostasis confirmation (m7.4): the dry-field verification, with positive-pressure ventilation to unmask venous bleeding (T44), was never performed.",
+    "id": "err.unconfirmed-haemostasis",
+    "severity": "major",
+    "source": "T44"
+   },
+   {
+    "consequence": "No complication is computed by the error itself; it marks the decision that converts an incomplete account into whatever the subsequent divisions compute.",
+    "definition": "At dp2, the second look found an account incomplete and dissection continued toward division instead of altering strategy - extending the exposure, calling for senior help, or aborting and referring (design/05).",
+    "id": "err.no-bailout",
+    "severity": "judgment",
+    "source": "T20"
+   },
+   {
+    "consequence": "A process deduction only; no complication is computed.",
+    "definition": "A WHO checklist phase (Sign In, Time Out or Sign Out) was not performed at its integration point.",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.thyroidectomy.total",
+  "name": "Total thyroidectomy",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, anaesthesia and checklist",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review the indication and extent: total thyroidectomy confirmed against the preoperative diagnosis, imaging and cytology; preoperative voice assessment documented, and laryngeal examination performed where indicated - abnormal voice, prior neck or upper-chest surgery, or known cancer with posterior extrathyroidal extension or extensive central nodes (T42, Recommendation 41)",
+        "required": true,
+        "sources": [
+         "T42"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Consent review confirmed: recurrent laryngeal nerve injury and voice change (temporary vocal fold dysfunction 0.5-10% and permanent 0-5% in most series, T44), bilateral injury with airway risk (0.1-0.4% of cases, T44), hypocalcemia and calcium supplementation, neck hematoma with possible return to theatre, and the staged-completion possibility if the first side's monitoring signal is lost",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Team and equipment brief: nerve monitoring available and understood as an adjunct to visual identification, never its substitute (T42, Recommendation 42B; T43); autotransplant instruments and cold sterile saline ready (T44); emergency airway plan for the bilateral-injury and hematoma contingencies stated aloud",
+        "required": true,
+        "sources": [
+         "T42",
+         "T43",
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.4",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "General anaesthesia induced with a nerve-monitoring endotracheal tube; tube position and electrode contact verified before positioning",
+        "required": true,
+        "sources": [
+         "T43"
+        ],
+        "targets": [
+         "airway.trachea"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.5",
+        "instruments": [],
+        "label": "Positioning: semi-Fowler with a support under the shoulders and the neck extended; pressure points padded; the endotracheal tube secured clear of the operative field (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Vagal stimulation baseline (V1) obtained before any dissection: the monitoring chain is proven working before it is relied on. This is an adjunct equipment check - it demonstrates no gate criterion and accounts for no nerve (T43; T42, Recommendation 42B)",
+        "required": true,
+        "sources": [
+         "T43"
+        ],
+        "targets": [
+         "nerve.right-vagus-nerve"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.7",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Sign In",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.8",
+        "instruments": [],
+        "label": "Antibiotic prophylaxis withheld - deliberately, as the authored standard for this operation: postoperative antibiotics are not indicated in thyroid surgery (T44), and a prospective series of 6,778 thyroidectomy patients given no prophylaxis reported a 0.49% postoperative infection incidence (T44). The withholding is the scored act: this microstep carries no prophylaxis marker, so the process score's ceiling for this operation is 4 of 5 by design",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.9",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Time Out",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Planning and checklist"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Incision and exposure",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "id": "m1.1",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Transverse collar incision in a natural skin crease, caudal to the cricoid cartilage and rostral to the sternal notch (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "incise"
+       },
+       {
+        "id": "m1.2",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Subplatysmal flaps developed superiorly to the thyroid cartilage and inferiorly to the sternal notch (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m1.3",
+        "instruments": [
+         "inst.retractor-thyroid"
+        ],
+        "label": "Median raphe opened; the sternohyoid and sternothyroid strap muscles separated and retracted laterally, preserved (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "muscle.right-sternothyroid"
+        ],
+        "verb": "retract"
+       }
+      ],
+      "name": "Incision and flap development"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Right lobe mobilisation",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [
+         "inst.retractor-thyroid"
+        ],
+        "label": "Right lobe exposed and rotated medially, opening the tracheoesophageal groove (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "endo.right-lobe-of-thyroid-gland"
+        ],
+        "verb": "retract"
+       },
+       {
+        "id": "m2.2",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Middle thyroid vein ligated and divided on the ventral surface of the lobe, allowing medial mobility of the lobe and exposure of the tracheoesophageal groove (T44). A mobilisation division of the standard sequence, taken before the accounts; it is not one of the gate's protected divisions",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "vein.right-middle-thyroid-vein"
+        ],
+        "verb": "divide"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m2.3",
+        "instruments": [],
+        "label": "Field survey before the accounts: the tracheoesophageal groove, the tubercle of Zuckerkandl region and the nerve's expected course reviewed. The nerve is sought in the groove; its absence there raises the non-recurrent configuration - pooled prevalence 0.7% (T46), below this module's 1% variant gate, so it is surveyed for here rather than authored as a variant: a nerve found crossing transversely from the vagus is identified visually like any other, and the crit1 account is unchanged",
+        "required": true,
+        "sources": [
+         "T44",
+         "T46"
+        ],
+        "targets": [
+         "nerve.right-recurrent-laryngeal-nerve"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Mobilisation and field survey"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Right-sided accounts - the gate criteria, right side",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m3.1",
+        "instruments": [
+         "inst.nerve-monitor",
+         "inst.vessel-loop"
+        ],
+        "label": "Demonstrate the right recurrent laryngeal nerve identified visually in the tracheoesophageal groove and traced through the entire operative field to its laryngeal entry, deep to the ligament of Berry, and protected: visual identification is required in all cases (T42, Recommendation 42A; T44, Recommendation 26). Stimulation of the identified nerve (R1) confirms function as an adjunct (T43); it does not make this account - an unidentified nerve with a working monitor is still unaccounted",
+        "required": true,
+        "sources": [
+         "T42",
+         "T43",
+         "T44"
+        ],
+        "targets": [
+         "nerve.right-recurrent-laryngeal-nerve"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m3.2",
+        "instruments": [
+         "inst.forceps-adson"
+        ],
+        "label": "Demonstrate the right parathyroid glands accounted for with perfusion preserved: the superior gland (posterior to the nerve's plane, superior-lateral to the inferior thyroid artery / nerve intersection) and the inferior gland (on or near the inferior capsule, anterior and medial to the nerve) identified and dissected free along the thyroid capsule with their blood supply intact - dissection on the capsule, the inferior artery's branches taken at the capsule (T42, Recommendation 43; T44, Recommendation 27a)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "endo.right-superior-parathyroid-gland",
+         "endo.right-inferior-parathyroid-gland"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m3.3",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Demonstrate the right external branch of the superior laryngeal nerve accounted for at the superior pole: its course on the inferior constrictor toward the cricothyroid excluded from the pedicle line territorially - the superior pole vessels will be ligated individually on the thyroid capsule, which is the account where the branch is not itself seen (T44, Recommendation 25; T42: if the branch cannot be visually identified, steps are taken to avoid it by staying close to the capsule and skeletonising the superior pedicle). Stimulation at the pole is an adjunct to this account, not the account (T48)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44",
+         "T48"
+        ],
+        "targets": [
+         "nerve.right-external-laryngeal-branch"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp4",
+        "id": "m3.4",
+        "instruments": [],
+        "label": "Right parathyroid perfusion assessed at the end of the accounts: each gland's colour and capsular bleeding judged, and any devascularised gland declared here for the dp4 decision (T42, Recommendation 43; T44, Recommendation 27b)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "gland.parathyroid-glands"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m3.5",
+        "instruments": [
+         "inst.vessel-loop"
+        ],
+        "label": "Right recurrent laryngeal nerve branch survey (branching configuration): the nerve divides extralaryngeally before its laryngeal entry, and EVERY branch is identified and accounted for to the entry point. The motor fibres run in the anterior branch, and posterior branches can also carry motor fibres, so no branch is treated as expendable (T45); branched nerves carried the higher palsy risk in the operative series the meta-analysis reports (T45)",
+        "required": false,
+        "sources": [
+         "T45"
+        ],
+        "targets": [
+         "nerve.right-recurrent-laryngeal-nerve"
+        ],
+        "verb": "identify"
+       }
+      ],
+      "name": "The right-sided accounts"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Right gate confirmation and division",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "anchors_decision": "dp2",
+        "id": "m4.1",
+        "instruments": [],
+        "label": "Second look before division: the three right-sided accounts re-confirmed with the team - nerve seen and traced to its entry, parathyroids perfused on the capsule, superior pole line clear of the external branch's course",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [
+         "nerve.right-recurrent-laryngeal-nerve"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m4.2",
+        "instruments": [],
+        "label": "Pre-division pause. Accounts are confirmed before the inferior pedicle and the ligament of Berry are divided: the pause of this module precedes the work the gate exists to protect - the Berry ligament is the commonest site of recurrent laryngeal nerve injury in this operation (T44)",
+        "required": true,
+        "sources": [
+         "T20"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m4.3",
+        "instruments": [
+         "inst.right-angle-clamp",
+         "inst.clip-applier"
+        ],
+        "label": "Superior thyroid pedicle ligated and divided individually on the thyroid capsule, branch by branch - the capsule line is the external branch's protection, and this division is crit3-gated per side in the engine (T44, Recommendation 25)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "artery.right-superior-thyroid-artery"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m4.4",
+        "instruments": [
+         "inst.right-angle-clamp",
+         "inst.bipolar-forceps"
+        ],
+        "label": "Inferior thyroid pedicle divided at the capsule, its branches taken on the gland so the parathyroid blood supply - which reaches the glands from this artery - is preserved; taken only after this side's nerve is identified (crit1-gated per side) (T42, Recommendation 43; T44)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "artery.right-inferior-thyroid-artery"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m4.5",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Ligament of Berry divided as close to the trachea as possible, the identified nerve in view throughout: the ligament is the most common site of recurrent laryngeal nerve injury in this operation (T44). crit1-gated per side",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "ligament.right-ligament-of-berry"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m4.6",
+        "instruments": [],
+        "label": "Right lobe delivered; the specimen inspected immediately, before it leaves the field, for a parathyroid gland carried on its capsule that can be rescued (T42, Recommendation 43)",
+        "required": true,
+        "sources": [
+         "T42"
+        ],
+        "targets": [
+         "endo.right-lobe-of-thyroid-gland"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Gate confirmation and right division"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "Left lobe mobilisation and accounts",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Left lobe exposed and mobilised as on the right; the middle thyroid vein ligated and divided (T44). The same steps are performed for the contralateral lobe (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "vein.left-middle-thyroid-vein"
+        ],
+        "verb": "divide"
+       },
+       {
+        "demonstrates": "crit1",
+        "id": "m5.2",
+        "instruments": [
+         "inst.nerve-monitor",
+         "inst.vessel-loop"
+        ],
+        "label": "Demonstrate the left recurrent laryngeal nerve identified visually in the tracheoesophageal groove and traced through the field to its laryngeal entry, and protected. The left account is made in full, not inherited from the right: the catastrophe this gate exists to prevent is a second-side injury added to a first - undiagnosed nerve dysfunction is what converts a unilateral injury into bilateral paralysis, respiratory distress and tracheostomy (T42; T44, Recommendation 26)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T43",
+         "T44"
+        ],
+        "targets": [
+         "nerve.left-recurrent-laryngeal-nerve"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit2",
+        "id": "m5.3",
+        "instruments": [
+         "inst.forceps-adson"
+        ],
+        "label": "Demonstrate the left parathyroid glands accounted for with perfusion preserved, dissected free along the capsule with blood supply intact, as on the right (T42, Recommendation 43; T44, Recommendation 27a)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "endo.left-superior-parathyroid-gland",
+         "endo.left-inferior-parathyroid-gland"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m5.4",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Demonstrate the left external branch of the superior laryngeal nerve accounted for at the superior pole territorially, the pedicle line on the capsule, as on the right (T44, Recommendation 25; T48)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44",
+         "T48"
+        ],
+        "targets": [
+         "nerve.left-external-laryngeal-branch"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp4",
+        "id": "m5.5",
+        "instruments": [],
+        "label": "Left parathyroid perfusion assessed; any devascularised gland declared for the dp4 decision (T42, Recommendation 43; T44, Recommendation 27b)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "gland.parathyroid-glands"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "anchors_decision": "dp5",
+        "id": "m5.6",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Completion review before the second side is divided: the first side's nerve re-stimulated at the end of its dissection and the vagus after haemostasis (the R2/V2 sequence, T43). If the first side's signal is lost and does not recover, the consulted standard is to stage the completion rather than risk bilateral paralysis (T43; T42) - decided at dp5",
+        "required": true,
+        "sources": [
+         "T42",
+         "T43"
+        ],
+        "targets": [
+         "nerve.left-vagus-nerve"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Mobilisation, accounts and completion review"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Left division and completion",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "id": "m6.1",
+        "instruments": [
+         "inst.right-angle-clamp",
+         "inst.clip-applier"
+        ],
+        "label": "Left superior thyroid pedicle ligated and divided individually on the thyroid capsule (crit3-gated per side) (T44, Recommendation 25)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "artery.left-superior-thyroid-artery"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [
+         "inst.right-angle-clamp",
+         "inst.bipolar-forceps"
+        ],
+        "label": "Left inferior thyroid pedicle divided at the capsule, branches on the gland, parathyroid supply preserved (crit1-gated per side) (T42, Recommendation 43; T44)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "artery.left-inferior-thyroid-artery"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.3",
+        "instruments": [
+         "inst.scissors"
+        ],
+        "label": "Left ligament of Berry divided as close to the trachea as possible, the identified nerve in view throughout (crit1-gated per side) (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "ligament.left-ligament-of-berry"
+        ],
+        "verb": "divide"
+       },
+       {
+        "id": "m6.4",
+        "instruments": [],
+        "label": "Left lobe delivered; the specimen inspected immediately for a parathyroid gland that can be rescued (T42, Recommendation 43)",
+        "required": true,
+        "sources": [
+         "T42"
+        ],
+        "targets": [
+         "endo.left-lobe-of-thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m6.5",
+        "instruments": [
+         "inst.bipolar-forceps"
+        ],
+        "label": "Isthmus taken in continuity with the specimen and the pyramidal lobe resected, as total thyroidectomy requires (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "endo.isthmus-of-thyroid-gland"
+        ],
+        "verb": "dissect"
+       },
+       {
+        "id": "m6.6",
+        "instruments": [
+         "inst.nerve-monitor"
+        ],
+        "label": "Both nerve courses re-inspected from groove to laryngeal entry and re-stimulated at completion (R2/V2): anatomical continuity and signal both confirmed before closure (T43). Postoperative voice assessment follows in the plan at m8.3 (T42, Recommendation 44)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T43"
+        ],
+        "targets": [
+         "nerve.left-recurrent-laryngeal-nerve"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Left division and specimen completion"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Completion management",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Right devascularised parathyroid autotransplanted: parathyroid identity confirmed, the gland minced and placed into a suture- or clip-marked intramuscular pocket in the sternocleidomastoid (T44, Recommendation 27b; T42, Recommendation 43). Required only in the attempt configuration whose scenario declares a devascularised right gland (runner-inserted, the appendicectomy severity mechanism)",
+        "required": false,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "endo.right-inferior-parathyroid-gland"
+        ],
+        "verb": "repair"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [
+         "inst.scalpel-no15"
+        ],
+        "label": "Left devascularised parathyroid autotransplanted, as at m7.1 (T44, Recommendation 27b; T42, Recommendation 43). Required only in the attempt configuration whose scenario declares a devascularised left gland",
+        "required": false,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "endo.left-inferior-parathyroid-gland"
+        ],
+        "verb": "repair"
+       },
+       {
+        "anchors_decision": "dp3",
+        "id": "m7.3",
+        "instruments": [
+         "inst.operating-microscope"
+        ],
+        "label": "Transected recurrent laryngeal nerve (either side) repaired under magnification: primary reanastomosis with fine monofilament where the two ends meet without tension, an ansa cervicalis graft where they do not. Attempted repair of a unilateral transection is a strong recommendation (T44, Recommendation 59); the repair maintains vocalis muscular tone and voice quality rather than restoring vocal fold mobility (T44)",
+        "required": false,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "nerve.right-recurrent-laryngeal-nerve"
+        ],
+        "verb": "repair"
+       },
+       {
+        "id": "m7.4",
+        "instruments": [],
+        "label": "Haemostasis confirmed before closure: a dry, bloodless field verified, with positive-pressure ventilation by the anaesthetist to unmask venous bleeding (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.5",
+        "instruments": [],
+        "label": "Parathyroid completion confirmation: the final state of all four glands declared - in situ and perfused, or autotransplanted - the specimen findings reconciled, and the postoperative calcium strategy set on the record (T44, Recommendation 60)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.parathyroid-glands"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Completion management"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Closure and postoperative plan",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Strap muscles reapproximated in the midline (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "muscle.right-sternothyroid"
+        ],
+        "verb": "close"
+       },
+       {
+        "id": "m8.2",
+        "instruments": [
+         "inst.needle-holder"
+        ],
+        "label": "Platysma and skin closed. No drain: drain use after thyroidectomy was associated with no difference in reoperation rate, hematoma or seroma formation in a meta-analysis of more than 2,000 patients (T44)",
+        "required": true,
+        "sources": [
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "close"
+       },
+       {
+        "anchors_decision": "dp6",
+        "id": "m8.3",
+        "instruments": [],
+        "label": "Postoperative plan declared: voice assessed in the postoperative period with formal laryngeal examination if abnormal (T42, Recommendation 44); calcium (with or without PTH) measured and the supplementation strategy applied (T44, Recommendations 60-61); hematoma vigilance - a suspected hematoma is evaluated immediately at the bedside, with a low threshold for cervical exploration, because untreated hematoma is life-threatening (T44, Recommendation 58)",
+        "required": true,
+        "sources": [
+         "T42",
+         "T44"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.4",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Sign Out",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "gland.thyroid-gland"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Closure and postoperative plan"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The recurrent laryngeal nerve is identified and preserved on the side being dissected: seen in the tracheoesophageal groove and traced through the entire operative field to its laryngeal entry, deep to the ligament of Berry, before the inferior pedicle and the Berry ligament on that side are divided. Visual identification is required in all cases (T42, Recommendation 42A, strong recommendation; T44, Recommendation 26), and injury rates are lower when the nerve is routinely visualised than when it is simply avoided (T42). The ligament of Berry is the most common site of injury (T44). Demonstrated per side: right m3.1, left m5.2. Monitoring confirms the identified nerve's function as an adjunct (T42, Recommendation 42B; T43) and demonstrates nothing by itself.",
+      "id": "crit1",
+      "name": "Recurrent laryngeal nerve identified and preserved (per side)",
+      "source": "T42"
+     },
+     {
+      "definition": "The parathyroid glands are accounted for on the side being dissected with their perfusion preserved: identified and dissected free along the thyroid capsule with blood supply intact, the inferior pedicle taken at the capsule because the glands receive their supply from the inferior thyroid artery (T42, Recommendation 43, strong recommendation; T44, Recommendation 27a). A gland that cannot be preserved in situ is autotransplanted (T44, Recommendation 27b) - decided at dp4 and scored at completion, not a division precondition. Demonstrated per side: right m3.2, left m5.3.",
+      "id": "crit2",
+      "name": "Parathyroid glands accounted for, perfusion preserved (per side)",
+      "source": "T42"
+     },
+     {
+      "definition": "The external branch of the superior laryngeal nerve is accounted for at the superior pole on the side being dissected: its course on the inferior constrictor toward the cricothyroid excluded from the pedicle line, the superior pole vessels ligated individually close to the thyroid capsule. Steps should be taken to preserve the branch during superior pole dissection (T42, Recommendation 42A); the superior pole vessels should be ligated close to the capsule to avoid potential injury to it (T44, Recommendation 25); where the branch cannot be visually identified, staying on the capsule and skeletonising the pedicle is the account (T42). Demonstrated per side: right m3.3, left m5.4. The account is territorial where the branch is unseen - the hernia crit2 pattern - because most surgeons avoid rather than expose this nerve (T48).",
+      "id": "crit3",
+      "name": "External branch of the superior laryngeal nerve accounted for (per side)",
+      "source": "T44"
+     }
+    ],
+    "enforcement": "The engine evaluates the gate PER SIDE at every gated division (the scored gate records the criteria; the divide handler checks the side being divided, on the variant-rules pattern). The gated divisions are the superior thyroid pedicle, the inferior thyroid pedicle and the ligament of Berry on each side; the middle thyroid vein divisions (m2.2, m5.1) are mobilisation steps of the standard sequence and are not gated. An inferior-pedicle or Berry division taken with that side's crit1 undemonstrated injures that side's recurrent laryngeal nerve and FAILS the attempt at that timestamp (err.divide-unidentified); if the other side's nerve already carries the injury, the bilateral injury is computed additionally - bilateral vocal fold dysfunction, a life-threatening immediate postoperative event reported in 0.1-0.4% of cases (T44). A superior-pedicle division with that side's crit3 undemonstrated injures that side's external branch (err.ebsln-unaccounted): a scored major departure, not a failed attempt - the divided structure is the intended pedicle and the injury is collateral, on the carpal persistent-median-artery pattern. crit2 is not division-blocking: a side whose pedicle/Berry work was completed with its parathyroid account undemonstrated computes postoperative hypocalcemia at scoring (err.parathyroid-unaccounted). In the extralaryngeal-branching configuration, an inferior/Berry division on the branched (right) side without the branch survey (m3.5) injures the unaccounted anterior motor branch and FAILS the attempt (err.missed-variant) - checked before the plain crit1 resolution, on the replaced-RHA / carpal / ulnar pattern. No monitoring microstep (m0.4, m0.6, the stimulation content of the crit1 demonstrations, m5.6, m6.6) demonstrates a criterion or satisfies any part of this gate: the adjunct cannot substitute for identification (T42, Recommendations 42A-42B).",
+    "id": "gate.nerve-parathyroid-account",
+    "kind": "safety_gate",
+    "name": "Nerve and parathyroid account before division",
+    "source": "T42",
+    "statement": "No inferior thyroid pedicle is divided and no ligament of Berry is divided on a side until that side's recurrent laryngeal nerve has been visually identified and traced, that side's parathyroid glands have been accounted for on the capsule with their perfusion preserved, and that side's external branch of the superior laryngeal nerve has been accounted for at the superior pole - the specialty's own standard stated as one gate (T42, Recommendations 42A and 43, both strong recommendations; T44, Recommendations 25-27). Total thyroidectomy is a bilateral operation, so the gate is demonstrated and enforced per side: the right demonstrations (m3.1-m3.3) unlock the right divisions (step.4.1), the left demonstrations (m5.2-m5.4) unlock the left divisions (step.6.1), and neither side's account is inherited from the other.",
+    "unlocks": [
+     "step.4.1",
+     "step.6.1"
+    ]
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (the branching variant adds m3.5; a devascularised-gland scenario adds that side's autotransplant microstep). Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "applies": "Only when a complication was computed; otherwise reported as not applicable.",
+     "derivation": "Recognition of the complication (2), definitive control achieved where control applies (1) - for a recurrent laryngeal nerve injury, the repair microstep m7.3 performed; for hypocalcemia and hematoma there is no intraoperative control act and control rests on the bleeds condition - escalation (1) and a definitive plan taken at the governing decision point (1): dp3 repair choices for a nerve injury, dp6 return-theatre for hematoma, dp6 calcium-replacement-protocol for hypocalcemia. A failed attempt can still score 5 of 5 in management; management never rescues the verdict (design/05).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine's beat record over the attempt (Milestone 18 engine): time below the MAP threshold, MAP nadir and the compartment-identity blood loss, banded by theatre/parameters.json. This operation computes no haemorrhage in its authored rules (its injuries are structural), so a clean or structurally-injured attempt scores on an undisturbed circulation.",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "WHO Sign In, Time Out and Sign Out (3), prophylaxis in window (1), planning complete (1). Antibiotic prophylaxis is withheld by design for this operation (T44), so the prophylaxis point is structurally unavailable and the ceiling is 4 of 5 - the withholding microstep m0.8 is the authored standard act and is itself required.",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "Gate criteria demonstrated before the first gated division (3 of 3: crit1, crit2, crit3 - the scored gate reads the criteria register, whose first demonstrations are the right side's; the per-side enforcement that actually protects the left side lives in the divide handler) plus the pre-division pause performed before that division (1).",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "composite": "No composite score is computed or reported (design/05: no weighting of incommensurable components without validity evidence).",
+   "thresholds": "No pass mark exists for any component; the verdict is governed by the master rule alone - a critical structure divided unaccounted fails the attempt, and no component score can rescue it."
+  },
+  "structures": [
+   {
+    "id": "gland.thyroid-gland",
+    "kind": "record",
+    "note": "Milestone 13 clinical record for the thyroid gland in data/endocrine/endocrine.json. The organ this operation removes in total. Its own verify text documents that the superior thyroid artery has no cardiovascular record (its parent external carotid was absent from the source release) - the cross-support for the superior-pedicle absence entries below.",
+    "resolves_to": "data/endocrine/endocrine.json"
+   },
+   {
+    "id": "endo.right-lobe-of-thyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record for the right lobe of the thyroid gland in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The first side dissected in this authored sequence.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.left-lobe-of-thyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record for the left lobe of the thyroid gland in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The second side dissected.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.isthmus-of-thyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record for the isthmus of the thyroid gland in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). Taken in continuity with the specimen at m6.5 (T44).",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.pyramidal-lobe-of-thyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record for the pyramidal lobe in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The consulted operative standard directs that the pyramidal lobe be identified and resected during total thyroidectomy (T44); it is cleared with the isthmus at m6.5.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "gland.parathyroid-glands",
+    "kind": "record",
+    "note": "Milestone 13 clinical record for the parathyroid glands in data/endocrine/endocrine.json. The gland set the gate's crit2 accounts for, the perfusion assessments (m3.4/m5.5) and the completion confirmation (m7.5) address, and the structure the computed hypocalcemia resolves onto.",
+    "resolves_to": "data/endocrine/endocrine.json"
+   },
+   {
+    "id": "endo.right-superior-parathyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The right superior gland: posterior to the recurrent laryngeal nerve's plane, superior-lateral to the inferior thyroid artery / nerve intersection (T44) - accounted at m3.2.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.right-inferior-parathyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The right inferior gland: on or near the inferior capsule, anterior and medial to the nerve (T44), its supply from the inferior thyroid artery the reason the pedicle is taken at the capsule. Accounted at m3.2; the autotransplant microstep m7.1 targets it as the pedicle-side gland of the devascularised-gland scenario.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.left-superior-parathyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The left superior gland, accounted at m5.3.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "endo.left-inferior-parathyroid-gland",
+    "kind": "record",
+    "note": "Milestone 36 FMA concept record in data/endocrine/endocrine-inventory.json (concept-only; geometry absent). The left inferior gland, accounted at m5.3; the autotransplant microstep m7.2 targets it in the left devascularised-gland scenario.",
+    "resolves_to": "data/endocrine/endocrine-inventory.json"
+   },
+   {
+    "id": "artery.right-inferior-thyroid-artery",
+    "kind": "record",
+    "note": "Cardiovascular inventory record in data/cardiovascular/cv-inventory.json. The right inferior pedicle divided at m4.4 - divided at the capsule because the parathyroid glands receive their blood supply from this vessel (T42, Recommendation 43 discussion). One of this operation's gated divisions.",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "artery.left-inferior-thyroid-artery",
+    "kind": "record",
+    "note": "Cardiovascular inventory record in data/cardiovascular/cv-inventory.json. The left inferior pedicle divided at m6.2; one of this operation's gated divisions.",
+    "resolves_to": "data/cardiovascular/cv-inventory.json"
+   },
+   {
+    "id": "nerve.right-vagus-nerve",
+    "kind": "record",
+    "note": "Milestone 33 FMA concept record in data/nervous/nervous-inventory.json. The right vagus: stimulated for the V1 baseline at m0.6 and the parent trunk of the recurrent laryngeal nerve this operation protects - a branch the Body Model does not carry as its own record (see the absence entries).",
+    "resolves_to": "data/nervous/nervous-inventory.json"
+   },
+   {
+    "id": "nerve.left-vagus-nerve",
+    "kind": "record",
+    "note": "Milestone 33 FMA concept record in data/nervous/nervous-inventory.json. The left vagus, addressed by the completion review's R2/V2 stimulation sequence at m5.6 (T43).",
+    "resolves_to": "data/nervous/nervous-inventory.json"
+   },
+   {
+    "id": "major.cn-10-vagus",
+    "kind": "record",
+    "note": "Milestone 39 clinical record for the vagus nerve (cranial nerve X) in data/nervous/major-nerves.json (sourcing tier A), linking the sided inventory records. Its motor field covers most muscles of the pharynx and larynx - the territory whose supply the recurrent branch carries, and the nearest clinical record to a nerve the inventory does not hold separately.",
+    "resolves_to": "data/nervous/major-nerves.json"
+   },
+   {
+    "id": "airway.trachea",
+    "kind": "record",
+    "note": "Respiratory inventory record in data/respiratory/respiratory-inventory.json. The airway the neck hematoma consequence resolves onto (collected blood compresses the cervical trachea and impairs laryngeal venous return, T44), and the structure the monitoring tube passes through at m0.4.",
+    "resolves_to": "data/respiratory/respiratory-inventory.json"
+   },
+   {
+    "id": "muscle.right-cricothyroid",
+    "kind": "record",
+    "note": "Muscular inventory record in data/muscular/muscle-inventory.json. The cricothyroid is the external branch's muscle: its paralysis lowers voice pitch and projection without vocal fold paralysis (T48) - the functional stake of crit3 on the right.",
+    "resolves_to": "data/muscular/muscle-inventory.json"
+   },
+   {
+    "id": "muscle.left-cricothyroid",
+    "kind": "record",
+    "note": "Muscular inventory record in data/muscular/muscle-inventory.json. The left cricothyroid - the functional stake of crit3 on the left (T48).",
+    "resolves_to": "data/muscular/muscle-inventory.json"
+   },
+   {
+    "id": "muscle.right-sternothyroid",
+    "kind": "record",
+    "note": "Muscular inventory record in data/muscular/muscle-inventory.json. A strap muscle: separated and retracted at m1.3 and reapproximated at m8.1 (T44). Also one of the two muscle beds the guidelines name for parathyroid autotransplantation (strap or sternocleidomastoid, T42).",
+    "resolves_to": "data/muscular/muscle-inventory.json"
+   },
+   {
+    "id": "nerve.right-recurrent-laryngeal-nerve",
+    "kind": "absence",
+    "note": "The recurrent laryngeal nerve has NO Body Model record on either side: verified this milestone by searching every Body Model data file for a recurrent-laryngeal record id. The Milestone 33 FMA intake's cranial-nerve concepts and the Milestone 39 major-nerve tranche carry the vagus (nerve.right-vagus-nerve; major.cn-10-vagus) but no recurrent branch, and the only laryngeal ids in the inventory are cartilages and the prelaryngeal lymph nodes. The structure crit1 protects and the master-rule injury resolves onto this absence entry, on the hernia corona-mortis precedent; no record was invented for this milestone.",
+    "resolves_to": null
+   },
+   {
+    "id": "nerve.left-recurrent-laryngeal-nerve",
+    "kind": "absence",
+    "note": "As the right: no left recurrent laryngeal nerve record exists anywhere in the Body Model (verified this milestone across all data files; the vagus is carried, its recurrent branch is not). The left master-rule injury - and, with the right, the computed bilateral injury - resolves onto this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "nerve.right-external-laryngeal-branch",
+    "kind": "absence",
+    "note": "The external branch of the superior laryngeal nerve has NO Body Model record: the superior laryngeal nerve and its branches are absent from the nervous inventory and from the Milestone 39 tranche alike (verified this milestone). The structure crit3 accounts for at the right superior pole, and the structure the superior-pedicle collateral injury resolves onto; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "nerve.left-external-laryngeal-branch",
+    "kind": "absence",
+    "note": "As the right: no left external-branch record exists in the Body Model (verified this milestone). The structure crit3 accounts for at the left superior pole and the left collateral injury's resolution; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.right-superior-thyroid-artery",
+    "kind": "absence",
+    "note": "The superior thyroid artery has NO cardiovascular record: the inventory carries the inferior thyroid arteries but not the superior, and the clinical thyroid record's own verify text (gland.thyroid-gland) documents why - the superior thyroid artery's parent external carotid was absent from the source release. The right superior pedicle, a gated division of this operation, targets this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "artery.left-superior-thyroid-artery",
+    "kind": "absence",
+    "note": "As the right: no left superior thyroid artery record exists in the cardiovascular inventory (see gland.thyroid-gland's verify text for the documented cause). The left superior pedicle's division targets this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "ligament.right-ligament-of-berry",
+    "kind": "absence",
+    "note": "The ligament of Berry (the posterior suspensory ligament of the thyroid) has NO record in any system inventory (verified this milestone): it is a fascial condensation the operative literature names - the nerve passes deep to or through it before entering the larynx, and it is the most common site of recurrent laryngeal nerve injury (T44) - but the Body Model's sources do not carry it. The right Berry division, the gate's most protected act, targets this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "ligament.left-ligament-of-berry",
+    "kind": "absence",
+    "note": "As the right: no left ligament of Berry record exists in any inventory (verified this milestone). The left Berry division targets this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "vein.right-middle-thyroid-vein",
+    "kind": "absence",
+    "note": "The middle thyroid vein has NO record in the cardiovascular inventory (verified this milestone): the thyroid's venous drainage is not among the source release's named vessels, although the vein is a named step of the operative sequence - ligated and divided on the ventral surface of the lobe to mobilise it (T44). The right mobilisation division targets this absence entry; no record was invented.",
+    "resolves_to": null
+   },
+   {
+    "id": "vein.left-middle-thyroid-vein",
+    "kind": "absence",
+    "note": "As the right: no left middle thyroid vein record exists in the cardiovascular inventory (verified this milestone). The left mobilisation division targets this absence entry; no record was invented.",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance data do not exist yet."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "The variant changes no gate criterion: crit1's account - the nerve identified and traced to its laryngeal entry - is configuration-independent, but in this configuration the account is only complete when every extralaryngeal branch has been accounted for, because the branches separate before the entry point the trunk account watches.",
+     "The variant adds one required microstep (m3.5, the branch survey) on the right side, where this configuration is authored. The runner enforces it in on_divide: an inferior-pedicle or Berry division on the branched side without m3.5 resolves as err.missed-variant (critical-fail) onto the unaccounted anterior motor branch, checked BEFORE the plain crit1 resolution - the replaced-RHA pattern, in which the variant's own identification act is what the division needed. The left crit1 demonstration (m5.2) carries the same branch-survey discipline in its label; the authored variant configuration is right-sided, as in the carpal module's transligamentous authorship, and the dossier states the asymmetry rather than hiding it."
+    ],
+    "id": "variant.rln-extralaryngeal-branching",
+    "name": "Extralaryngeal branching of the recurrent laryngeal nerve (right)",
+    "prevalence": "Pooled intraoperative prevalence 39.2% of nerves at risk (95% CI 29.0-49.9) in the meta-analysis of 28,387 nerves (T45) - far above the variant gate (>= 1%). The same meta-analysis pools 73.3% in cadaveric studies and 60.0% overall; the intraoperative figure is the one carried, as the frequency the operating surgeon encounters. The meta-analysis also reports that branched nerves carried higher palsy rates in the operative series it pools, and that the motor fibres run in the anterior branch with posterior branches sometimes carrying motor fibres too (T45).",
+    "required_additions": [
+     "m3.5"
+    ],
+    "source": "T45",
+    "structure_additions": [],
+    "trace": "theatre/traces/trace-28-thyroid-variant-branching.json"
+   }
+  ]
+ }
+}

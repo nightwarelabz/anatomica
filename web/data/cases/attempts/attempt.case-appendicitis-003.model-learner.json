@@ -1,0 +1,84 @@
+{
+ "attempt": {
+  "case_id": "case.appendicitis.003",
+  "debrief_text": {
+   "analysis": "The anchoring event is precisely located: the learner held a hypothesis at 0.15 at the very stage where the pathway's decisive, stage-ordered test had retired it. The defence offered \u2014 'too early to test' \u2014 inverts the actual logic: the test's negative likelihood ratio already prices its sensitivity (97% in C21), which is why a negative result moves the probability so far; distrusting the number while accepting the number's framework is the anchor talking. The honest residue is also in the case file: a small minority of ectopics do test negative, which is why the adjudication's exclusion rests on the test PLUS two normal adnexal imaging studies \u2014 vigilance is warranted, a 0.15 board entry is not. The second lesson is the score disagreement: the learner initially read the Alvarado 10/10 as case-closed and had to be brought back by the AIR 6/12. Both numbers are correct arithmetic; they price different things (presence vs magnitude), and the guideline evidence (C20) is explicit that Alvarado cannot positively confirm in adults while intermediate-risk patients go to imaging. The pathway the learner eventually walked \u2014 scores, pregnancy test, ultrasound for the gynaecological set, CT as adjudicator \u2014 is the pathway the instruments, read with their calibrations, prescribe.",
+   "description": "Stage 1: migratory pain with anorexia and post-pain vomiting; the learner ranked appendicitis first (0.35) but kept ectopic pregnancy close (0.20) on the strength of the menstrual history \u2014 reasonable at that stage, when nothing has retired it. Stage 2: the bloods completed both scores (Alvarado 10/10, AIR 6/12), the urinalysis was clear, and the urine beta-hCG was NEGATIVE. The workbench applied the test's likelihood ratio and ruled ectopic pregnancy out (0.0022). The learner moved it only from 0.20 to 0.15, writing that the test might have been done too early. Stage 3: normal ovaries on ultrasound; the learner finally dropped ectopic pregnancy to 0.04. Stage 4: CT confirmed uncomplicated appendicitis; the learner committed to it and to laparoscopic appendicectomy in the standard configuration. One anchoring event is scored by the machinery: (stage 2, hyp.ectopic-pregnancy).",
+   "reactions": "The learner reached the right diagnosis, the right disposition and the right operation, and still has something to learn \u2014 which is the normal shape of a good case. The workbench board and both scores were never the problem; the learner's stage-2 board was.",
+   "summary": "One scored event: anchoring on ectopic pregnancy at stage 2, against the negative pregnancy test. Diagnosis, branch and disposition all correct. Carry forward: (1) when a test's likelihood ratio has already priced its own error rate, a negative result is a conclusion, not a suggestion; (2) read every score with its calibration \u2014 a saturated Alvarado and an intermediate AIR are not a contradiction, they are two instruments reporting different features of the same patient; (3) order the decisive cheap test early \u2014 the pregnancy test retired the most dangerous hypothesis in the differential at stage 2 for one cost unit."
+  },
+  "id": "attempt.case-appendicitis-003.model-learner",
+  "learner": "Model learner (authored): a competent learner whose single documented error is anchoring on the ectopic-pregnancy hypothesis through the very stage at which the pregnancy test retires it.",
+  "stages": [
+   {
+    "board": {
+     "hyp.acute-appendicitis": 0.35,
+     "hyp.acute-pyelonephritis": 0.04,
+     "hyp.ectopic-pregnancy": 0.2,
+     "hyp.other-unspecified": 0.03,
+     "hyp.ovarian-torsion": 0.12,
+     "hyp.pid": 0.04,
+     "hyp.ruptured-ovarian-cyst": 0.18,
+     "hyp.ureteric-stone": 0.04
+    },
+    "orders": [
+     "test.cbc",
+     "test.crp",
+     "test.urine-hcg",
+     "test.urinalysis"
+    ],
+    "stage": 1
+   },
+   {
+    "board": {
+     "hyp.acute-appendicitis": 0.45,
+     "hyp.acute-pyelonephritis": 0.03,
+     "hyp.ectopic-pregnancy": 0.15,
+     "hyp.other-unspecified": 0.04,
+     "hyp.ovarian-torsion": 0.1,
+     "hyp.pid": 0.04,
+     "hyp.ruptured-ovarian-cyst": 0.16,
+     "hyp.ureteric-stone": 0.03
+    },
+    "orders": [
+     "test.pelvic-ultrasound"
+    ],
+    "stage": 2
+   },
+   {
+    "board": {
+     "hyp.acute-appendicitis": 0.55,
+     "hyp.acute-pyelonephritis": 0.04,
+     "hyp.ectopic-pregnancy": 0.04,
+     "hyp.other-unspecified": 0.08,
+     "hyp.ovarian-torsion": 0.08,
+     "hyp.pid": 0.05,
+     "hyp.ruptured-ovarian-cyst": 0.12,
+     "hyp.ureteric-stone": 0.04
+    },
+    "orders": [
+     "test.ct-abdomen-pelvis"
+    ],
+    "stage": 3
+   },
+   {
+    "board": {
+     "hyp.acute-appendicitis": 0.9,
+     "hyp.acute-pyelonephritis": 0.01,
+     "hyp.ectopic-pregnancy": 0.01,
+     "hyp.other-unspecified": 0.01,
+     "hyp.ovarian-torsion": 0.02,
+     "hyp.pid": 0.01,
+     "hyp.ruptured-ovarian-cyst": 0.03,
+     "hyp.ureteric-stone": 0.01
+    },
+    "commit": {
+     "diagnosis_hypothesis": "hyp.acute-appendicitis",
+     "management": "Laparoscopic appendicectomy (Theatre procedure proc.appy.lap, standard configuration \u2014 uncomplicated appendicitis, standard position)"
+    },
+    "orders": [],
+    "stage": 4
+   }
+  ]
+ }
+}

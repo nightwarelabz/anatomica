@@ -1,0 +1,75 @@
+{
+ "attempt": {
+  "case_id": "case.carpal-tunnel.004",
+  "debrief_text": {
+   "analysis": "The anchor's mechanics are visible stage by stage, which is what makes this a teaching case rather than a scolding. It was installed before the case began (another clinician's framing, an old plain film), and it was then fed twice by artifacts that feel like evidence: renormalisation at stage 2 (the neck's board share rose because a finding argued against its rival, not because anything argued for the neck) and a degenerative MRI at stage 3 (a true finding with no discriminating content \u2014 no likelihood ratio exists for it in any source this case consulted, and the guideline recommends against ordering the study at all). The learner's stage-4 defence \u2014 'the ache is real' \u2014 is also true, and was never the question: the case does not claim the patient has no cervical spondylosis; the MRI shows she does. It claims spondylosis is not the cause of median-distribution nocturnal paresthesias, and the instrument designed to separate those claims \u2014 conduction localization plus a C5-T1 needle examination \u2014 separated them. The second lesson is about the guideline: the CTS-6 was positive at stage 2 (16.5), and the AAOS letter says most such patients need no further study. The ultrasound and electrodiagnosis were nonetheless the right orders here, for the adjudication's stated reason \u2014 a live, anchored rival hypothesis had to be excluded by an instrument that could actually exclude it. The MRI was not the same kind of order: it tested nothing, excluded nothing, and was bought to confirm a prior. Same menu, same stage, opposite epistemics \u2014 the classifications (discriminating, discriminating, non-contributory) are the lesson.",
+   "description": "Stage 1: nocturnal median-distribution paresthesias; the learner ranked carpal tunnel syndrome first (0.40) but kept cervical radiculopathy close (0.28) \u2014 the patient had been told by another clinician that her neck is the cause, and the learner carried the framing in. Nothing at stage 1 retires the neck, and the learner's caution is defensible there. Stage 2: the exam battery returned positive Phalen/Tinel/Durkan, a classic picture \u2014 and a completely normal motor examination, whose likelihood ratio (0.5, C23) pulled the workbench's carpal-tunnel posterior DOWN to 0.6364 while renormalisation lifted the neck to 0.0962. The learner read the relative rise as corroboration, moved the neck UP to 0.30, and ordered a cervical MRI to prove it. Stage 3: ultrasound put carpal tunnel at 0.9114 on the workbench board and retired pronator syndrome, polyneuropathy and plexopathy; the MRI showed spondylosis without compression, changed nothing mechanically, and the learner still held the neck at 0.22, treating the degenerative image as support. Stage 4: the AANEM protocol localized the lesion to the wrist and its needle examination cleared every C5-T1 myotome; the workbench retired the neck at 0.0015. The learner committed to carpal tunnel syndrome and the correct disposition \u2014 and still held the neck at 0.15, writing that the ache is real and the MRI showed degeneration. One anchoring event is scored by the machinery: (stage 4, hyp.cervical-radiculopathy).",
+   "reactions": "The learner reached the right diagnosis and the right disposition, spent the menu's most expensive item on the anchor, and has one number to answer for: 0.15 on a hypothesis the localizing instrument retired. That is a good case's normal shape \u2014 the error is small, precisely located, and entirely instructive.",
+   "summary": "One scored event: anchoring on cervical radiculopathy at stage 4, after the electrodiagnostic protocol retired it. Diagnosis and disposition correct. Carry forward: (1) a degenerative MRI finding without root compression is not evidence for a radiculopathy \u2014 it is the kind of age-typical image the AAOS guideline's position on MRI exists to keep out of this diagnosis; (2) the famous provocative signs were the weak members of this case \u2014 Phalen and Tinel completed the score but carried no board weight (C23), while the quiet normal motor examination was the stage-2 board's biggest mover; (3) when the competing hypothesis is anatomical \u2014 neck versus wrist \u2014 order the instrument that localizes the lesion, not the instrument that photographs the anchor."
+  },
+  "id": "attempt.case-carpal-tunnel-004.model-learner",
+  "learner": "Model learner (authored): a competent learner carrying an anchor installed before the case begins \u2014 an urgent-care clinician told the patient her neck is the cause, citing spondylosis on an old plain film \u2014 whose single documented error is still holding cervical radiculopathy at 0.15 at stage 4, after the electrodiagnostic protocol retires it.",
+  "stages": [
+   {
+    "board": {
+     "hyp.brachial-plexopathy": 0.03,
+     "hyp.carpal-tunnel-syndrome": 0.4,
+     "hyp.cervical-radiculopathy": 0.28,
+     "hyp.diabetic-polyneuropathy": 0.09,
+     "hyp.other-unspecified": 0.15,
+     "hyp.pronator-syndrome": 0.05
+    },
+    "orders": [
+     "test.hand-exam-battery",
+     "test.hba1c"
+    ],
+    "stage": 1
+   },
+   {
+    "board": {
+     "hyp.brachial-plexopathy": 0.03,
+     "hyp.carpal-tunnel-syndrome": 0.38,
+     "hyp.cervical-radiculopathy": 0.3,
+     "hyp.diabetic-polyneuropathy": 0.09,
+     "hyp.other-unspecified": 0.15,
+     "hyp.pronator-syndrome": 0.05
+    },
+    "orders": [
+     "test.wrist-ultrasound",
+     "test.cervical-mri"
+    ],
+    "stage": 2
+   },
+   {
+    "board": {
+     "hyp.brachial-plexopathy": 0.01,
+     "hyp.carpal-tunnel-syndrome": 0.55,
+     "hyp.cervical-radiculopathy": 0.22,
+     "hyp.diabetic-polyneuropathy": 0.06,
+     "hyp.other-unspecified": 0.13,
+     "hyp.pronator-syndrome": 0.03
+    },
+    "orders": [
+     "test.ncs-emg"
+    ],
+    "stage": 3
+   },
+   {
+    "board": {
+     "hyp.brachial-plexopathy": 0.01,
+     "hyp.carpal-tunnel-syndrome": 0.7,
+     "hyp.cervical-radiculopathy": 0.15,
+     "hyp.diabetic-polyneuropathy": 0.03,
+     "hyp.other-unspecified": 0.09,
+     "hyp.pronator-syndrome": 0.02
+    },
+    "commit": {
+     "diagnosis_hypothesis": "hyp.carpal-tunnel-syndrome",
+     "management": "Night splinting continued; referral for carpal tunnel release (open or endoscopic) of the right wrist; no cervical treatment \u2014 Theatre handoff to procedure proc.carpal-release (open configuration), as the case's management block specifies."
+    },
+    "orders": [],
+    "stage": 4
+   }
+  ]
+ }
+}
