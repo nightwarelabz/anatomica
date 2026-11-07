@@ -98,13 +98,18 @@
     "zone of cricothyroid"
    ]
   },
-  "record_count": 3,
+  "record_count": 17,
   "record_representations": {
-   "whole-concept": 3
+   "whole-concept": 3,
+   "fma-concept": 14
   },
   "records_by_subtree": {
    "adrenal-gland-isa": 2,
-   "pituitary-isa": 1
+   "pituitary-isa": 1,
+   "thyroid": 5,
+   "parathyroid": 5,
+   "islets": 1,
+   "paraganglia": 3
   },
   "instance_records": [
    "left adrenal gland",
@@ -869,6 +874,25 @@
      }
     }
    ]
+  },
+  "fma_extension": {
+   "milestone": 36,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 14,
+   "geometry_absent": 14,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes; one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33 convention",
+   "accounting": "data/fma-intake-36.json"
+  },
+  "ta2_pass": {
+   "milestone": "M36",
+   "date": "2026-11-06",
+   "scope": "the 14 FMA-sourced records of this inventory (Milestone 36 intake); the 3 BP3D-sourced records are untouched by this pass",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer; extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "method": "tools/ta2_match_fma36.py (candidates) -> tools/ta2_decide_fma36.py (curated decisions) -> tools/ta2_pass_fma36.py (this application)",
+   "artifact": "data/ta2-name-pass.json (fma_inventory_endocrine)",
+   "resolved": 13,
+   "ambiguous": 1,
+   "not_found": 0
   }
  },
  "concepts": [
@@ -1081,6 +1105,530 @@
     "endocrine system"
    ],
    "note": "the gland is a leaf in both tables: no adenohypophysis, neurohypophysis or other part exists as a concept (probe-verified); its two-part structure is carried as sourced text in the clinical tranche"
+  },
+  {
+   "record_id": "endo.thyroid-gland",
+   "name": "Thyroid gland",
+   "ta_name": "glandula thyreoidea",
+   "ta_code": 3863,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9603",
+   "concept_ids": [
+    "FMA9603"
+   ],
+   "subtree": "thyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Lobular organ",
+    "Thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.left-lobe-of-thyroid-gland",
+   "name": "Left lobe of thyroid gland",
+   "ta_name": "lobus glandulae thyreoideae",
+   "ta_code": 3864,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA13367",
+   "concept_ids": [
+    "FMA13369"
+   ],
+   "subtree": "thyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Lobe of thyroid gland",
+    "Left lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.right-lobe-of-thyroid-gland",
+   "name": "Right lobe of thyroid gland",
+   "ta_name": "lobus glandulae thyreoideae",
+   "ta_code": 3864,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA13367",
+   "concept_ids": [
+    "FMA13368"
+   ],
+   "subtree": "thyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Lobe of thyroid gland",
+    "Right lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.isthmus-of-thyroid-gland",
+   "name": "Isthmus of thyroid gland",
+   "ta_name": "isthmus glandulae thyreoideae",
+   "ta_code": 3866,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA49178",
+   "concept_ids": [
+    "FMA49178"
+   ],
+   "subtree": "thyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ zone",
+    "Zone of thyroid gland",
+    "Isthmus of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.pyramidal-lobe-of-thyroid-gland",
+   "name": "Pyramidal lobe of thyroid gland",
+   "ta_name": "lobus pyramidalis",
+   "ta_code": 3867,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA49180",
+   "concept_ids": [
+    "FMA49180"
+   ],
+   "subtree": "thyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Anatomical lobe",
+    "Lobe of thyroid gland",
+    "Pyramidal lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.parathyroid-gland",
+   "name": "Parathyroid gland",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA13890",
+   "concept_ids": [
+    "FMA13890"
+   ],
+   "subtree": "parathyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the parathyroid glands only in their superior (3871 glandula parathyroidea superior) and inferior (3872) division; the FMA class is the undivided gland, and no single TA2 term names it (the accessory gland 3873 is a variant, not the class)."
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "endo.left-superior-parathyroid-gland",
+   "name": "Left superior parathyroid gland",
+   "ta_name": "glandula parathyreoidea superior",
+   "ta_code": 3871,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55558",
+   "concept_ids": [
+    "FMA55561"
+   ],
+   "subtree": "parathyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Parathyroid gland",
+    "Superior parathyroid gland",
+    "Left superior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.right-superior-parathyroid-gland",
+   "name": "Right superior parathyroid gland",
+   "ta_name": "glandula parathyreoidea superior",
+   "ta_code": 3871,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55558",
+   "concept_ids": [
+    "FMA55560"
+   ],
+   "subtree": "parathyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Parathyroid gland",
+    "Superior parathyroid gland",
+    "Right superior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.left-inferior-parathyroid-gland",
+   "name": "Left inferior parathyroid gland",
+   "ta_name": "glandula parathyreoidea inferior",
+   "ta_code": 3872,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55559",
+   "concept_ids": [
+    "FMA55563"
+   ],
+   "subtree": "parathyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Parathyroid gland",
+    "Inferior parathyroid gland",
+    "Left inferior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.right-inferior-parathyroid-gland",
+   "name": "Right inferior parathyroid gland",
+   "ta_name": "glandula parathyreoidea inferior",
+   "ta_code": 3872,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA55559",
+   "concept_ids": [
+    "FMA55562"
+   ],
+   "subtree": "parathyroid",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Parathyroid gland",
+    "Inferior parathyroid gland",
+    "Right inferior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.pancreatic-islet",
+   "name": "Pancreatic islet",
+   "ta_name": "insulae pancreaticae",
+   "ta_code": 3128,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16016",
+   "concept_ids": [
+    "FMA16016"
+   ],
+   "subtree": "islets",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Pancreatic islet"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "host organ is the digestive module's pancreas record (FMA7198); this concept record carries the endocrine content only \u2014 the Milestone 13 boundary"
+  },
+  {
+   "record_id": "endo.paraganglion",
+   "name": "Paraganglion",
+   "ta_name": "paraganglia",
+   "ta_code": 3885,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15648",
+   "concept_ids": [
+    "FMA15648"
+   ],
+   "subtree": "paraganglia",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Paraganglion"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "endo.left-carotid-body",
+   "name": "Left carotid body",
+   "ta_name": "glomus caroticum",
+   "ta_code": 3886,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA50095",
+   "concept_ids": [
+    "FMA50102"
+   ],
+   "subtree": "paraganglia",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Carotid body",
+    "Left carotid body"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "endo.right-carotid-body",
+   "name": "Right carotid body",
+   "ta_name": "glomus caroticum",
+   "ta_code": 3886,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA50095",
+   "concept_ids": [
+    "FMA50101"
+   ],
+   "subtree": "paraganglia",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Organ",
+    "Solid organ",
+    "Parenchymatous organ",
+    "Homogeneous organ",
+    "Carotid body",
+    "Right carotid body"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
   }
  ]
 }

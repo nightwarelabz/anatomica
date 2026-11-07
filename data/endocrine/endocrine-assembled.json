@@ -16,7 +16,22 @@
    "Per-part pose registration is not performed; boxes are in the source pose."
   ],
   "records_with_geometry": 3,
-  "records_without_geometry": [],
+  "records_without_geometry": [
+   "endo.thyroid-gland",
+   "endo.left-lobe-of-thyroid-gland",
+   "endo.right-lobe-of-thyroid-gland",
+   "endo.isthmus-of-thyroid-gland",
+   "endo.pyramidal-lobe-of-thyroid-gland",
+   "endo.parathyroid-gland",
+   "endo.left-superior-parathyroid-gland",
+   "endo.right-superior-parathyroid-gland",
+   "endo.left-inferior-parathyroid-gland",
+   "endo.right-inferior-parathyroid-gland",
+   "endo.pancreatic-islet",
+   "endo.paraganglion",
+   "endo.left-carotid-body",
+   "endo.right-carotid-body"
+  ],
   "deduped_files": [],
   "union_bbox_canonical_cm": {
    "min": [

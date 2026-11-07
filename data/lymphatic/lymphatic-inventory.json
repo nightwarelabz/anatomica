@@ -39,15 +39,26 @@
     "tributary of splenic vein"
    ]
   },
-  "record_count": 4,
+  "record_count": 135,
   "record_representations": {
    "whole-concept": 3,
-   "partof-organ": 1
+   "partof-organ": 1,
+   "fma-concept": 131
   },
   "records_by_subtree": {
    "spleen-isa": 1,
    "thymus-partof": 1,
-   "thymus-lobe-isa": 2
+   "thymus-lobe-isa": 2,
+   "conducting": 16,
+   "nodes-head-neck": 25,
+   "nodes-upper-limb": 16,
+   "nodes-thoracic": 22,
+   "nodes-abdominal": 20,
+   "nodes-pelvic-lower-limb": 13,
+   "tonsils-malt": 9,
+   "marrow": 3,
+   "interiors-spleen": 4,
+   "interiors-thymus": 3
   },
   "instance_records": [
    "left lobe of thymus",
@@ -802,6 +813,25 @@
      }
     }
    ]
+  },
+  "fma_extension": {
+   "milestone": 36,
+   "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
+   "records_added": 131,
+   "geometry_absent": 131,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes; one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33 convention",
+   "accounting": "data/fma-intake-36.json"
+  },
+  "ta2_pass": {
+   "milestone": "M36",
+   "date": "2026-11-06",
+   "scope": "the 131 FMA-sourced records of this inventory (Milestone 36 intake); the 4 BP3D-sourced records are untouched by this pass",
+   "source": "Terminologia Anatomica, 2nd edition (TA2), FIPAT 2019, TA version 2.07, as published in TA2Viewer; extracted table: data/sources/ta2-2.07/ta2-terms.json",
+   "method": "tools/ta2_match_fma36.py (candidates) -> tools/ta2_decide_fma36.py (curated decisions) -> tools/ta2_pass_fma36.py (this application)",
+   "artifact": "data/ta2-name-pass.json (fma_inventory_lymphatic)",
+   "resolved": 117,
+   "ambiguous": 8,
+   "not_found": 6
   }
  },
  "concepts": [
@@ -976,6 +1006,5284 @@
     "thymus"
    ],
    "note": "lateralised instance; the side-stripped class concept is carried as class_concept_id (Milestone 12 pattern). The instance is a part of the thymus in PART-OF and an instance of the lobe class in IS-A"
+  },
+  {
+   "record_id": "lymph.lymphatic-vessel",
+   "name": "Lymphatic vessel",
+   "ta_name": "vasa lymphatica",
+   "ta_code": 3915,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA30315",
+   "concept_ids": [
+    "FMA30315"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "lymph.lymphatic-capillary",
+   "name": "Lymphatic capillary",
+   "ta_name": "vas lymphocapillare",
+   "ta_code": 3918,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5028",
+   "concept_ids": [
+    "FMA5028"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Lymphatic capillary"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "lymph.thoracic-duct",
+   "name": "Thoracic duct",
+   "ta_name": "ductus thoracicus",
+   "ta_code": 5137,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5031",
+   "concept_ids": [
+    "FMA5031"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ",
+    "Thoracic duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.cisterna-chyli",
+   "name": "Cisterna chyli",
+   "ta_name": "cisterna chyli",
+   "ta_code": 5145,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5835",
+   "concept_ids": [
+    "FMA5835"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ region",
+    "Organ segment",
+    "Segment of hollow tree organ",
+    "Segment of vascular tree organ",
+    "Segment of lymphatic tree organ",
+    "Segment of thoracic duct",
+    "Cisterna chyli"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-jugular-lymphatic-trunk",
+   "name": "Left jugular lymphatic trunk",
+   "ta_name": "truncus lymphaticus jugularis sinister",
+   "ta_code": 5140,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12250",
+   "concept_ids": [
+    "FMA5032"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Jugular lymphatic trunk",
+    "Left jugular lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-jugular-lymphatic-trunk",
+   "name": "Right jugular lymphatic trunk",
+   "ta_name": "truncus lymphaticus jugularis dexter",
+   "ta_code": 5133,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12250",
+   "concept_ids": [
+    "FMA12251"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Jugular lymphatic trunk",
+    "Right jugular lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-subclavian-lymphatic-trunk",
+   "name": "Left subclavian lymphatic trunk",
+   "ta_name": "truncus lymphaticus subclavius sinister",
+   "ta_code": 5141,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12252",
+   "concept_ids": [
+    "FMA5033"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Subclavian lymphatic trunk",
+    "Left subclavian lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-subclavian-lymphatic-trunk",
+   "name": "Right subclavian lymphatic trunk",
+   "ta_name": "truncus lymphaticus subclavius dexter",
+   "ta_code": 5134,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12252",
+   "concept_ids": [
+    "FMA5830"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Subclavian lymphatic trunk",
+    "Right subclavian lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-bronchomediastinal-lymphatic-trunk",
+   "name": "Left bronchomediastinal lymphatic trunk",
+   "ta_name": "truncus lymphaticus bronchomediastinalis sinister",
+   "ta_code": 5136,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9585",
+   "concept_ids": [
+    "FMA5834"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Bronchomediastinal lymphatic trunk",
+    "Left bronchomediastinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-bronchomediastinal-lymphatic-trunk",
+   "name": "Right bronchomediastinal lymphatic trunk",
+   "ta_name": "truncus lymphaticus bronchomediastinalis dexter",
+   "ta_code": 5135,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9585",
+   "concept_ids": [
+    "FMA5831"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Bronchomediastinal lymphatic trunk",
+    "Right bronchomediastinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-lumbar-lymphatic-trunk",
+   "name": "Left lumbar lymphatic trunk",
+   "ta_name": "truncus lymphaticus lumbalis sinister",
+   "ta_code": 5147,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12765",
+   "concept_ids": [
+    "FMA5841"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Lumbar lymphatic trunk",
+    "Left lumbar lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-lumbar-lymphatic-trunk",
+   "name": "Right lumbar lymphatic trunk",
+   "ta_name": "truncus lymphaticus lumbalis dexter",
+   "ta_code": 5146,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12765",
+   "concept_ids": [
+    "FMA5840"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Lumbar lymphatic trunk",
+    "Right lumbar lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-intestinal-lymphatic-trunk",
+   "name": "Left intestinal lymphatic trunk",
+   "ta_name": "truncus lymphaticus intestinalis",
+   "ta_code": 5148,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5842",
+   "concept_ids": [
+    "FMA235550"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Intestinal lymphatic trunk",
+    "Left intestinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-intestinal-lymphatic-trunk",
+   "name": "Right intestinal lymphatic trunk",
+   "ta_name": "truncus lymphaticus intestinalis",
+   "ta_code": 5148,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5842",
+   "concept_ids": [
+    "FMA235548"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ part",
+    "Intestinal lymphatic trunk",
+    "Right intestinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-lymphatic-duct",
+   "name": "Right lymphatic duct",
+   "ta_name": "ductus lymphaticus dexter",
+   "ta_code": 5132,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5832",
+   "concept_ids": [
+    "FMA5832"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymphatic vessel",
+    "Trunk of lymphatic tree organ",
+    "Right lymphatic duct"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class is intrinsically the right-sided duct \u2014 no left counterpart and no separate un-sided class exists; recorded as the un-sided job on the class as released, its name carrying the side"
+  },
+  {
+   "record_id": "lymph.lymph-node",
+   "name": "Lymph node",
+   "ta_name": "nodus lymphoideus",
+   "ta_code": 5192,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5034",
+   "concept_ids": [
+    "FMA5034"
+   ],
+   "subtree": "conducting",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "lymph.left-occipital-lymph-node",
+   "name": "Left occipital lymph node",
+   "ta_name": "nodi occipitales",
+   "ta_code": 5199,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61214",
+   "concept_ids": [
+    "FMA232554"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Occipital lymph node",
+    "Left occipital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-occipital-lymph-node",
+   "name": "Right occipital lymph node",
+   "ta_name": "nodi occipitales",
+   "ta_code": 5199,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61214",
+   "concept_ids": [
+    "FMA232552"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Occipital lymph node",
+    "Right occipital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-mastoid-lymph-node",
+   "name": "Left mastoid lymph node",
+   "ta_name": "nodi mastoidei",
+   "ta_code": 5200,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61215",
+   "concept_ids": [
+    "FMA232646"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Mastoid lymph node",
+    "Left mastoid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-mastoid-lymph-node",
+   "name": "Right mastoid lymph node",
+   "ta_name": "nodi mastoidei",
+   "ta_code": 5200,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61215",
+   "concept_ids": [
+    "FMA232644"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Mastoid lymph node",
+    "Right mastoid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.parotid-lymph-node",
+   "name": "Parotid lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61216",
+   "concept_ids": [
+    "FMA61216"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 divides the parotid nodes into the superficial set (5201 nodi parotidei superficiales) and the deep set (5202 nodi parotidei profundi, the intraglandular nodes 5205 named within that territory); the FMA class is the whole group, and no single TA2 term names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-superficial-parotid-lymph-node",
+   "name": "Left superficial parotid lymph node",
+   "ta_name": "nodi parotidei superficiales",
+   "ta_code": 5201,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61217",
+   "concept_ids": [
+    "FMA77984"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Parotid lymph node",
+    "Superficial parotid lymph node",
+    "Left superficial parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-superficial-parotid-lymph-node",
+   "name": "Right superficial parotid lymph node",
+   "ta_name": "nodi parotidei superficiales",
+   "ta_code": 5201,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61217",
+   "concept_ids": [
+    "FMA77983"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Parotid lymph node",
+    "Superficial parotid lymph node",
+    "Right superficial parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.deep-parotid-lymph-node",
+   "name": "Deep parotid lymph node",
+   "ta_name": "nodi parotidei profundi",
+   "ta_code": 5202,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61218",
+   "concept_ids": [
+    "FMA61218"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Parotid lymph node",
+    "Deep parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.facial-lymph-node",
+   "name": "Facial lymph node",
+   "ta_name": "nodi faciales",
+   "ta_code": 5206,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61222",
+   "concept_ids": [
+    "FMA61222"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Facial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-submandibular-lymph-node",
+   "name": "Left submandibular lymph node",
+   "ta_name": "nodi submandibulares",
+   "ta_code": 5214,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61224",
+   "concept_ids": [
+    "FMA232676"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Submandibular lymph node",
+    "Left submandibular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-submandibular-lymph-node",
+   "name": "Right submandibular lymph node",
+   "ta_name": "nodi submandibulares",
+   "ta_code": 5214,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61224",
+   "concept_ids": [
+    "FMA232673"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Submandibular lymph node",
+    "Right submandibular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.submental-lymph-node",
+   "name": "Submental lymph node",
+   "ta_name": "nodi submentales",
+   "ta_code": 5213,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61229",
+   "concept_ids": [
+    "FMA61229"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of head",
+    "Submental lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.anterior-cervical-lymph-node",
+   "name": "Anterior cervical lymph node",
+   "ta_name": "nodi cervicales anteriores",
+   "ta_code": 5215,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61230",
+   "concept_ids": [
+    "FMA61230"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.lateral-cervical-lymph-node",
+   "name": "Lateral cervical lymph node",
+   "ta_name": "nodi cervicales laterales",
+   "ta_code": 5223,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61232",
+   "concept_ids": [
+    "FMA61232"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Lateral cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.deep-lateral-cervical-lymph-node",
+   "name": "Deep lateral cervical lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12770",
+   "concept_ids": [
+    "FMA12770"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Lateral cervical lymph node",
+    "Deep lateral cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 divides the deep lateral cervical nodes into superior (5225) and inferior (5229) sets; the FMA class is the whole group, and no single TA2 term names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-supraclavicular-lymph-node",
+   "name": "Left supraclavicular lymph node",
+   "ta_name": "nodi supraclaviculares",
+   "ta_code": 5233,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14192",
+   "concept_ids": [
+    "FMA232719"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Supraclavicular lymph node",
+    "Left supraclavicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-supraclavicular-lymph-node",
+   "name": "Right supraclavicular lymph node",
+   "ta_name": "nodi supraclaviculares",
+   "ta_code": 5233,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14192",
+   "concept_ids": [
+    "FMA232721"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Supraclavicular lymph node",
+    "Right supraclavicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-retropharyngeal-lymph-node",
+   "name": "Left retropharyngeal lymph node",
+   "ta_name": "nodi retropharyngei",
+   "ta_code": 5234,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61237",
+   "concept_ids": [
+    "FMA224628"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Retropharyngeal lymph node",
+    "Left retropharyngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-retropharyngeal-lymph-node",
+   "name": "Right retropharyngeal lymph node",
+   "ta_name": "nodi retropharyngei",
+   "ta_code": 5234,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61237",
+   "concept_ids": [
+    "FMA224626"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Retropharyngeal lymph node",
+    "Right retropharyngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-prelaryngeal-lymph-node",
+   "name": "Left prelaryngeal lymph node",
+   "ta_name": "nodi prelaryngei",
+   "ta_code": 5219,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61234",
+   "concept_ids": [
+    "FMA224636"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Prelaryngeal lymph node",
+    "Left prelaryngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-prelaryngeal-lymph-node",
+   "name": "Right prelaryngeal lymph node",
+   "ta_name": "nodi prelaryngei",
+   "ta_code": 5219,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61234",
+   "concept_ids": [
+    "FMA224634"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Prelaryngeal lymph node",
+    "Right prelaryngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-pretracheal-lymph-node",
+   "name": "Left pretracheal lymph node",
+   "ta_name": "nodi pretracheales",
+   "ta_code": 5221,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61236",
+   "concept_ids": [
+    "FMA224632"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Pretracheal lymph node",
+    "Left pretracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-pretracheal-lymph-node",
+   "name": "Right pretracheal lymph node",
+   "ta_name": "nodi pretracheales",
+   "ta_code": 5221,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61236",
+   "concept_ids": [
+    "FMA224630"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Pretracheal lymph node",
+    "Right pretracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-jugulodigastric-lymph-node",
+   "name": "Left jugulodigastric lymph node",
+   "ta_name": "nodus jugulodigastricus",
+   "ta_code": 5226,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61240",
+   "concept_ids": [
+    "FMA232701"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Lateral cervical lymph node",
+    "Deep lateral cervical lymph node",
+    "Jugulodigastric lymph node",
+    "Left jugulodigastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-jugulodigastric-lymph-node",
+   "name": "Right jugulodigastric lymph node",
+   "ta_name": "nodus jugulodigastricus",
+   "ta_code": 5226,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA61240",
+   "concept_ids": [
+    "FMA232699"
+   ],
+   "subtree": "nodes-head-neck",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Lateral cervical lymph node",
+    "Deep lateral cervical lymph node",
+    "Jugulodigastric lymph node",
+    "Right jugulodigastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.axillary-lymph-node",
+   "name": "Axillary lymph node",
+   "ta_name": "nodi axillares",
+   "ta_code": 5236,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA276805",
+   "concept_ids": [
+    "FMA276805"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA carries the sided forms of this aggregate only as group classes (Left/Right axillary lymph node group); the un-sided class is recorded, per the counting convention"
+  },
+  {
+   "record_id": "lymph.left-pectoral-axillary-lymph-node-group",
+   "name": "Left pectoral axillary lymph node group",
+   "ta_name": "nodi axillares anteriores",
+   "ta_code": 5241,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA71748",
+   "concept_ids": [
+    "FMA224536"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ components",
+    "Lymph node group",
+    "Lymph node group of upper limb",
+    "Pectoral axillary lymph node group",
+    "Left pectoral axillary lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA names this aggregate only as a group class; recorded as released"
+  },
+  {
+   "record_id": "lymph.right-pectoral-axillary-lymph-node-group",
+   "name": "Right pectoral axillary lymph node group",
+   "ta_name": "nodi axillares anteriores",
+   "ta_code": 5241,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA71748",
+   "concept_ids": [
+    "FMA224534"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ components",
+    "Lymph node group",
+    "Lymph node group of upper limb",
+    "Pectoral axillary lymph node group",
+    "Right pectoral axillary lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA names this aggregate only as a group class; recorded as released"
+  },
+  {
+   "record_id": "lymph.left-subscapular-lymph-node",
+   "name": "Left subscapular lymph node",
+   "ta_name": "nodi axillares posteriores",
+   "ta_code": 5240,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14187",
+   "concept_ids": [
+    "FMA232568"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Subscapular lymph node",
+    "Left subscapular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the subscapular (posterior axillary) node group"
+  },
+  {
+   "record_id": "lymph.right-subscapular-lymph-node",
+   "name": "Right subscapular lymph node",
+   "ta_name": "nodi axillares posteriores",
+   "ta_code": 5240,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14187",
+   "concept_ids": [
+    "FMA232566"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Subscapular lymph node",
+    "Right subscapular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA's class for the subscapular (posterior axillary) node group"
+  },
+  {
+   "record_id": "lymph.left-apical-axillary-lymph-node",
+   "name": "Left apical axillary lymph node",
+   "ta_name": "nodi axillares apicales",
+   "ta_code": 5237,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14190",
+   "concept_ids": [
+    "FMA232560"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Apical axillary lymph node",
+    "Left apical axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-apical-axillary-lymph-node",
+   "name": "Right apical axillary lymph node",
+   "ta_name": "nodi axillares apicales",
+   "ta_code": 5237,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14190",
+   "concept_ids": [
+    "FMA232558"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Apical axillary lymph node",
+    "Right apical axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-central-axillary-lymph-node",
+   "name": "Left central axillary lymph node",
+   "ta_name": "nodi axillares centrales",
+   "ta_code": 5238,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14189",
+   "concept_ids": [
+    "FMA232576"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Central axillary lymph node",
+    "Left central axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-central-axillary-lymph-node",
+   "name": "Right central axillary lymph node",
+   "ta_name": "nodi axillares centrales",
+   "ta_code": 5238,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14189",
+   "concept_ids": [
+    "FMA232574"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Central axillary lymph node",
+    "Right central axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-lateral-axillary-lymph-node",
+   "name": "Left lateral axillary lymph node",
+   "ta_name": "nodi axillares laterales",
+   "ta_code": 5239,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14186",
+   "concept_ids": [
+    "FMA232564"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Lateral axillary lymph node",
+    "Left lateral axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-lateral-axillary-lymph-node",
+   "name": "Right lateral axillary lymph node",
+   "ta_name": "nodi axillares laterales",
+   "ta_code": 5239,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA14186",
+   "concept_ids": [
+    "FMA232562"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Axillary lymph node",
+    "Superficial axillary lymph node",
+    "Lateral axillary lymph node",
+    "Right lateral axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-brachial-lymph-node",
+   "name": "Left brachial lymph node",
+   "ta_name": "nodi brachiales",
+   "ta_code": 5244,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44314",
+   "concept_ids": [
+    "FMA275981"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Brachial lymph node",
+    "Left brachial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-brachial-lymph-node",
+   "name": "Right brachial lymph node",
+   "ta_name": "nodi brachiales",
+   "ta_code": 5244,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44314",
+   "concept_ids": [
+    "FMA275979"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Brachial lymph node",
+    "Right brachial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-supratrochlear-lymph-node",
+   "name": "Left supratrochlear lymph node",
+   "ta_name": "nodi supratrochleares",
+   "ta_code": 5246,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44316",
+   "concept_ids": [
+    "FMA234508"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Supratrochlear lymph node",
+    "Left supratrochlear lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-supratrochlear-lymph-node",
+   "name": "Right supratrochlear lymph node",
+   "ta_name": "nodi supratrochleares",
+   "ta_code": 5246,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44316",
+   "concept_ids": [
+    "FMA234506"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Supratrochlear lymph node",
+    "Right supratrochlear lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.cubital-lymph-node",
+   "name": "Cubital lymph node",
+   "ta_name": "nodi cubitales",
+   "ta_code": 5245,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44315",
+   "concept_ids": [
+    "FMA44315"
+   ],
+   "subtree": "nodes-upper-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of upper limb",
+    "Cubital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-paratracheal-lymph-node",
+   "name": "Left paratracheal lymph node",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5953",
+   "concept_ids": [
+    "FMA5955"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Paratracheal lymph node",
+    "Left paratracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the paratracheal nodes twice by region \u2014 5222 nodi paratracheales colli and 5260 nodi paratracheales thoracis; the FMA class is the one chain along the trachea, and neither term alone names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-paratracheal-lymph-node",
+   "name": "Right paratracheal lymph node",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5953",
+   "concept_ids": [
+    "FMA5954"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of neck",
+    "Anterior cervical lymph node",
+    "Deep anterior cervical lymph node",
+    "Paratracheal lymph node",
+    "Right paratracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the paratracheal nodes twice by region \u2014 5222 nodi paratracheales colli and 5260 nodi paratracheales thoracis; the FMA class is the one chain along the trachea, and neither term alone names it."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-tracheobronchial-lymph-node",
+   "name": "Left tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales",
+   "ta_code": 5261,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5950",
+   "concept_ids": [
+    "FMA5952"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Left tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-tracheobronchial-lymph-node",
+   "name": "Right tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales",
+   "ta_code": 5261,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5950",
+   "concept_ids": [
+    "FMA5951"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Right tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-superior-tracheobronchial-lymph-node",
+   "name": "Left superior tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales superiores",
+   "ta_code": 5262,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5959",
+   "concept_ids": [
+    "FMA5961"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Superior tracheobronchial lymph node",
+    "Left superior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-superior-tracheobronchial-lymph-node",
+   "name": "Right superior tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales superiores",
+   "ta_code": 5262,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5959",
+   "concept_ids": [
+    "FMA5960"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Superior tracheobronchial lymph node",
+    "Right superior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-inferior-tracheobronchial-lymph-node",
+   "name": "Left inferior tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales inferiores",
+   "ta_code": 5263,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5962",
+   "concept_ids": [
+    "FMA5964"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Inferior tracheobronchial lymph node",
+    "Left inferior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-inferior-tracheobronchial-lymph-node",
+   "name": "Right inferior tracheobronchial lymph node",
+   "ta_name": "nodi tracheobronchiales inferiores",
+   "ta_code": 5263,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5962",
+   "concept_ids": [
+    "FMA5963"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Tracheobronchial lymph node",
+    "Inferior tracheobronchial lymph node",
+    "Right inferior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-bronchopulmonary-lymph-node",
+   "name": "Left bronchopulmonary lymph node",
+   "ta_name": "nodi bronchopulmonales",
+   "ta_code": 5266,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5965",
+   "concept_ids": [
+    "FMA5967"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Bronchopulmonary lymph node",
+    "Left bronchopulmonary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-bronchopulmonary-lymph-node",
+   "name": "Right bronchopulmonary lymph node",
+   "ta_name": "nodi bronchopulmonales",
+   "ta_code": 5266,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5965",
+   "concept_ids": [
+    "FMA5966"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Bronchopulmonary lymph node",
+    "Right bronchopulmonary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.intercostal-lymph-node",
+   "name": "Intercostal lymph node",
+   "ta_name": "nodi intercostales",
+   "ta_code": 5251,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5932",
+   "concept_ids": [
+    "FMA5932"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Intercostal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.diaphragmatic-lymph-node",
+   "name": "Diaphragmatic lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12773",
+   "concept_ids": [
+    "FMA12773"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the diaphragmatic nodes as the superior set (5253 nodi phrenici superiores, thoracic) and the inferior set (5279 nodi phrenici inferiores, abdominal); the FMA class is undivided."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-superior-diaphragmatic-lymph-node",
+   "name": "Left superior diaphragmatic lymph node",
+   "ta_name": "nodi phrenici superiores",
+   "ta_code": 5253,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA66167",
+   "concept_ids": [
+    "FMA232616"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Diaphragmatic lymph node",
+    "Superior diaphragmatic lymph node",
+    "Left superior diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-superior-diaphragmatic-lymph-node",
+   "name": "Right superior diaphragmatic lymph node",
+   "ta_name": "nodi phrenici superiores",
+   "ta_code": 5253,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA66167",
+   "concept_ids": [
+    "FMA232614"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Diaphragmatic lymph node",
+    "Superior diaphragmatic lymph node",
+    "Right superior diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.superior-phrenic-lymph-node",
+   "name": "Superior phrenic lymph node",
+   "ta_name": "nodi phrenici superiores",
+   "ta_code": 5253,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA276776",
+   "concept_ids": [
+    "FMA276776"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Diaphragmatic lymph node",
+    "Posterior diaphragmatic lymph node",
+    "Superior phrenic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.superior-mediastinal-lymph-node",
+   "name": "Superior mediastinal lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA276903",
+   "concept_ids": [
+    "FMA276903"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Superior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 carries no superior mediastinal node term; the superior mediastinal territory is inside the mediastinal heading 5254, which the mediastinal record takes."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-posterior-mediastinal-lymph-node",
+   "name": "Left posterior mediastinal lymph node",
+   "ta_name": null,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5947",
+   "concept_ids": [
+    "FMA5949"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Posterior mediastinal lymph node",
+    "Left posterior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no posterior mediastinal group; the posterior mediastinal territory is carried by the juxta-oesophageal (5264) and prevertebral (5252) terms, neither of which is this group."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-posterior-mediastinal-lymph-node",
+   "name": "Right posterior mediastinal lymph node",
+   "ta_name": null,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5947",
+   "concept_ids": [
+    "FMA5948"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Posterior mediastinal lymph node",
+    "Right posterior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no posterior mediastinal group; the posterior mediastinal territory is carried by the juxta-oesophageal (5264) and prevertebral (5252) terms, neither of which is this group."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.mediastinal-lymph-node",
+   "name": "Mediastinal lymph node",
+   "ta_name": "nodi lymphoidei mediastinales",
+   "ta_code": 5254,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12774",
+   "concept_ids": [
+    "FMA12774"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-esophageal-lymph-node",
+   "name": "Left esophageal lymph node",
+   "ta_name": "nodi juxtaoesophagei",
+   "ta_code": 5264,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12784",
+   "concept_ids": [
+    "FMA276764"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Posterior mediastinal lymph node",
+    "Esophageal lymph node",
+    "Left esophageal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-esophageal-lymph-node",
+   "name": "Right esophageal lymph node",
+   "ta_name": "nodi juxtaoesophagei",
+   "ta_code": 5264,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12784",
+   "concept_ids": [
+    "FMA276761"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of thorax",
+    "Deep lymph node of thorax",
+    "Mediastinal lymph node",
+    "Posterior mediastinal lymph node",
+    "Esophageal lymph node",
+    "Right esophageal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.anterior-mediastinal-lymph-node-group",
+   "name": "Anterior mediastinal lymph node group",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA233426",
+   "concept_ids": [
+    "FMA233426"
+   ],
+   "subtree": "nodes-thoracic",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ components",
+    "Lymph node group",
+    "Lymph node group of body proper",
+    "Lymph node group of trunk",
+    "Lymph node group of thorax",
+    "Mediastinal lymph node group",
+    "Anterior mediastinal lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 folds the anterior mediastinal nodes into the brachiocephalic (5255) and pericardial (5258, 5259) terms under the mediastinal heading; no term names the anterior mediastinal group as such."
+   ],
+   "note": "the FMA names this aggregate only as a group class; recorded as released"
+  },
+  {
+   "record_id": "lymph.celiac-lymph-node",
+   "name": "Celiac lymph node",
+   "ta_name": "nodi coeliaci",
+   "ta_code": 5282,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12792",
+   "concept_ids": [
+    "FMA12792"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Visceral pre-aortic lymph node",
+    "Celiac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-gastric-lymph-node",
+   "name": "Left gastric lymph node",
+   "ta_name": "nodi gastrici sinistri",
+   "ta_code": 5284,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12796",
+   "concept_ids": [
+    "FMA12797"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Gastric lymph node",
+    "Left gastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-gastric-lymph-node",
+   "name": "Right gastric lymph node",
+   "ta_name": "nodi gastrici dextri",
+   "ta_code": 5283,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12796",
+   "concept_ids": [
+    "FMA277650"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Gastric lymph node",
+    "Right gastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-hepatic-lymph-node",
+   "name": "Left hepatic lymph node",
+   "ta_name": "nodi hepatici",
+   "ta_code": 5299,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12798",
+   "concept_ids": [
+    "FMA277913"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Hepatic lymph node",
+    "Left hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-hepatic-lymph-node",
+   "name": "Right hepatic lymph node",
+   "ta_name": "nodi hepatici",
+   "ta_code": 5299,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12798",
+   "concept_ids": [
+    "FMA277909"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Hepatic lymph node",
+    "Right hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.common-hepatic-lymph-node",
+   "name": "Common hepatic lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA277259",
+   "concept_ids": [
+    "FMA277259"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Hepatic lymph node",
+    "Common hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the hepatic nodes undivided (5299 nodi hepatici, which the hepatic record takes); no common hepatic term exists in its apparatus."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.splenic-lymph-node",
+   "name": "Splenic lymph node",
+   "ta_name": "nodi splenici",
+   "ta_code": 5295,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA66187",
+   "concept_ids": [
+    "FMA66187"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Pancreatic lymph node",
+    "Splenic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.pancreatic-lymph-node",
+   "name": "Pancreatic lymph node",
+   "ta_name": "nodi pancreatici",
+   "ta_code": 5292,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16626",
+   "concept_ids": [
+    "FMA16626"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Pancreatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.pancreaticoduodenal-lymph-node",
+   "name": "Pancreaticoduodenal lymph node",
+   "ta_name": "nodi pancreaticoduodenales",
+   "ta_code": 5296,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16623",
+   "concept_ids": [
+    "FMA16623"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Pancreaticoduodenal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.cystic-lymph-node",
+   "name": "Cystic lymph node",
+   "ta_name": "nodus cysticus",
+   "ta_code": 5300,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12804",
+   "concept_ids": [
+    "FMA12804"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Hepatic lymph node",
+    "Lymph node along bile duct",
+    "Cystic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.superior-mesenteric-lymph-node",
+   "name": "Superior mesenteric lymph node",
+   "ta_name": "nodi mesenterici superiores",
+   "ta_code": 5302,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12793",
+   "concept_ids": [
+    "FMA12793"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Visceral pre-aortic lymph node",
+    "Superior mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.inferior-mesenteric-lymph-node",
+   "name": "Inferior mesenteric lymph node",
+   "ta_name": "nodi mesenterici inferiores",
+   "ta_code": 5312,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12794",
+   "concept_ids": [
+    "FMA12794"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Visceral pre-aortic lymph node",
+    "Inferior mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.mesenteric-lymph-node",
+   "name": "Mesenteric lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12795",
+   "concept_ids": [
+    "FMA12795"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the mesenteric nodes only in their superior (5302) and inferior (5312) divisions; the FMA class is the undivided group."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-colic-lymph-node",
+   "name": "Left colic lymph node",
+   "ta_name": "nodi colici sinistri",
+   "ta_code": 5314,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16612",
+   "concept_ids": [
+    "FMA16696"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Colic lymph node",
+    "Mesocolic lymph node",
+    "Intermediate colic lymph node",
+    "Left colic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-colic-lymph-node",
+   "name": "Right colic lymph node",
+   "ta_name": "nodi colici dextri",
+   "ta_code": 5310,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16612",
+   "concept_ids": [
+    "FMA16695"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Colic lymph node",
+    "Mesocolic lymph node",
+    "Intermediate colic lymph node",
+    "Right colic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.ileocolic-lymph-node",
+   "name": "Ileocolic lymph node",
+   "ta_name": "nodi ileocolici",
+   "ta_code": 5305,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16611",
+   "concept_ids": [
+    "FMA16611"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Ileocolic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.appendicular-lymph-node",
+   "name": "Appendicular lymph node",
+   "ta_name": "nodi appendiculares",
+   "ta_code": 5308,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16620",
+   "concept_ids": [
+    "FMA16620"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Visceral lymph node of abdomen proper",
+    "Intestinal lymph node",
+    "Appendicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.lateral-aortic-lymph-node",
+   "name": "Lateral aortic lymph node",
+   "ta_name": "nodi aortici laterales",
+   "ta_code": 5271,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16604",
+   "concept_ids": [
+    "FMA16604"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of abdomen proper",
+    "Parietal lymph node of abdomen proper",
+    "Parietal lumbar lymph node",
+    "Left parietal lumbar lymph node",
+    "Lateral aortic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-lumbar-lymph-node-group",
+   "name": "Left lumbar lymph node group",
+   "ta_name": "nodi lumbales sinistri",
+   "ta_code": 5270,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA277687",
+   "concept_ids": [
+    "FMA277691"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ components",
+    "Lymph node group",
+    "Lumbar lymph node group",
+    "Left lumbar lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA names this aggregate only as a group class; recorded as released"
+  },
+  {
+   "record_id": "lymph.right-lumbar-lymph-node-group",
+   "name": "Right lumbar lymph node group",
+   "ta_name": "nodi lumbales dextri",
+   "ta_code": 5275,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA277687",
+   "concept_ids": [
+    "FMA277689"
+   ],
+   "subtree": "nodes-abdominal",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical set",
+    "Set of organ parts",
+    "Set of organ components",
+    "Lymph node group",
+    "Lumbar lymph node group",
+    "Right lumbar lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the FMA names this aggregate only as a group class; recorded as released"
+  },
+  {
+   "record_id": "lymph.common-iliac-lymph-node",
+   "name": "Common iliac lymph node",
+   "ta_name": "nodi iliaci communes",
+   "ta_code": 5319,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA12806",
+   "concept_ids": [
+    "FMA12806"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of pelvis",
+    "Parietal lymph node of pelvis",
+    "Common iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.external-iliac-lymph-node",
+   "name": "External iliac lymph node",
+   "ta_name": "nodi iliaci externi",
+   "ta_code": 5325,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16646",
+   "concept_ids": [
+    "FMA16646"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of pelvis",
+    "Parietal lymph node of pelvis",
+    "External iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.internal-iliac-lymph-node",
+   "name": "Internal iliac lymph node",
+   "ta_name": "nodi iliaci interni",
+   "ta_code": 5334,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16654",
+   "concept_ids": [
+    "FMA16654"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of pelvis",
+    "Parietal lymph node of pelvis",
+    "Internal iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.sacral-lymph-node",
+   "name": "Sacral lymph node",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16655",
+   "concept_ids": [
+    "FMA16655"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of pelvis",
+    "Parietal lymph node of pelvis",
+    "Sacral lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the sacral nodes as the median set (5324 nodi sacrales mediani) and the lateral set (5338 nodi sacrales laterales); the FMA class is undivided."
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.gluteal-lymph-node",
+   "name": "Gluteal lymph node",
+   "ta_name": "nodi glutei",
+   "ta_code": 5335,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16657",
+   "concept_ids": [
+    "FMA16657"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of body proper",
+    "Lymph node of trunk",
+    "Lymph node of abdomen",
+    "Lymph node of pelvis",
+    "Parietal lymph node of pelvis",
+    "Gluteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.inguinal-lymph-node",
+   "name": "Inguinal lymph node",
+   "ta_name": "nodi inguinales",
+   "ta_code": 5348,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44226",
+   "concept_ids": [
+    "FMA44226"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.superficial-inguinal-lymph-node",
+   "name": "Superficial inguinal lymph node",
+   "ta_name": "nodi inguinales superficiales",
+   "ta_code": 5349,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA5036",
+   "concept_ids": [
+    "FMA5036"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Inguinal lymph node",
+    "Superficial inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.deep-inguinal-lymph-node",
+   "name": "Deep inguinal lymph node",
+   "ta_name": "nodi inguinales profundi",
+   "ta_code": 5353,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44225",
+   "concept_ids": [
+    "FMA44225"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Inguinal lymph node",
+    "Deep inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.popliteal-lymph-node",
+   "name": "Popliteal lymph node",
+   "ta_name": "nodi poplitei",
+   "ta_code": 5357,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44227",
+   "concept_ids": [
+    "FMA44227"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-superficial-popliteal-lymph-node",
+   "name": "Left superficial popliteal lymph node",
+   "ta_name": "nodi poplitei superficiales",
+   "ta_code": 5358,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44231",
+   "concept_ids": [
+    "FMA232596"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Popliteal lymph node",
+    "Superficial popliteal lymph node",
+    "Left superficial popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-superficial-popliteal-lymph-node",
+   "name": "Right superficial popliteal lymph node",
+   "ta_name": "nodi poplitei superficiales",
+   "ta_code": 5358,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44231",
+   "concept_ids": [
+    "FMA232594"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Popliteal lymph node",
+    "Superficial popliteal lymph node",
+    "Right superficial popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-deep-popliteal-lymph-node",
+   "name": "Left deep popliteal lymph node",
+   "ta_name": "nodi poplitei profundi",
+   "ta_code": 5359,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44232",
+   "concept_ids": [
+    "FMA275977"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Popliteal lymph node",
+    "Deep popliteal lymph node",
+    "Left deep popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-deep-popliteal-lymph-node",
+   "name": "Right deep popliteal lymph node",
+   "ta_name": "nodi poplitei profundi",
+   "ta_code": 5359,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA44232",
+   "concept_ids": [
+    "FMA275975"
+   ],
+   "subtree": "nodes-pelvic-lower-limb",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Organ component of lymphatic tree organ",
+    "Lymph node",
+    "Lymph node of limb",
+    "Lymph node of lower limb",
+    "Popliteal lymph node",
+    "Deep popliteal lymph node",
+    "Right deep popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.tonsil",
+   "name": "Tonsil",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9609",
+   "concept_ids": [
+    "FMA9609"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no generic tonsil: only the four named tonsils (palatina, pharyngea, lingualis, tubaria \u2014 each recorded) and the unrelated tonsilla cerebelli; the FMA's generic class has no TA2 counterpart."
+   ],
+   "note": "generic class in the FMA; recorded as the un-sided class, as released"
+  },
+  {
+   "record_id": "lymph.left-palatine-tonsil",
+   "name": "Left palatine tonsil",
+   "ta_name": "tonsilla palatina",
+   "ta_code": 5181,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9610",
+   "concept_ids": [
+    "FMA54974"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Palatine tonsil",
+    "Left palatine tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-palatine-tonsil",
+   "name": "Right palatine tonsil",
+   "ta_name": "tonsilla palatina",
+   "ta_code": 5181,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9610",
+   "concept_ids": [
+    "FMA54973"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Palatine tonsil",
+    "Right palatine tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.pharyngeal-tonsil",
+   "name": "Pharyngeal tonsil",
+   "ta_name": "tonsilla pharyngea",
+   "ta_code": 5186,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54970",
+   "concept_ids": [
+    "FMA54970"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Pharyngeal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-lingual-tonsil",
+   "name": "Left lingual tonsil",
+   "ta_name": "tonsilla lingualis",
+   "ta_code": 5179,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54836",
+   "concept_ids": [
+    "FMA54838"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Lingual tonsil",
+    "Left lingual tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-lingual-tonsil",
+   "name": "Right lingual tonsil",
+   "ta_name": "tonsilla lingualis",
+   "ta_code": 5179,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54836",
+   "concept_ids": [
+    "FMA54837"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Lingual tonsil",
+    "Right lingual tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.left-tubal-tonsil",
+   "name": "Left tubal tonsil",
+   "ta_name": "tonsilla tubaria",
+   "ta_code": 5189,
+   "side": "left",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54975",
+   "concept_ids": [
+    "FMA54977"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Tubal tonsil",
+    "Left tubal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.right-tubal-tonsil",
+   "name": "Right tubal tonsil",
+   "ta_name": "tonsilla tubaria",
+   "ta_code": 5189,
+   "side": "right",
+   "representation": "fma-concept",
+   "class_concept_id": "FMA54975",
+   "concept_ids": [
+    "FMA54976"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Pharyngeal lymphoid tissue",
+    "Tonsil",
+    "Tubal tonsil",
+    "Right tubal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.aggregated-lymphoid-follicle-of-small-intestine",
+   "name": "Aggregated lymphoid follicle of small intestine",
+   "ta_name": null,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15054",
+   "concept_ids": [
+    "FMA15054"
+   ],
+   "subtree": "tonsils-malt",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Tissue cluster",
+    "Portion of heterogeneous tissue",
+    "Lymphomyeloid tissue",
+    "Lymphoid tissue",
+    "Epithelium-associated lymphoid tissue",
+    "Mucosa-associated lymphoid tissue",
+    "Organized mucosa-associated lymphoid tissue",
+    "Gut-associated lymphoid tissue",
+    "Aggregated lymphoid follicle of small intestine"
+   ],
+   "source": "fma-5.1.0",
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the aggregated lymphoid nodules only by organ \u2014 2960 noduli lymphoidei aggregati ilei (the Peyer's patches proper) and 2978 ... appendicis vermiformis; the FMA class is the small-intestine aggregate generally (its ileal specialisation FMA72027 corresponds to 2960), broader than either term."
+   ],
+   "note": "the FMA's class for the aggregated lymphoid follicles of the small intestine (Peyer's patches); the FMA also carries a regional ileal class (FMA72027), not separately recorded \u2014 the census granularity is the named aggregate"
+  },
+  {
+   "record_id": "lymph.bone-marrow",
+   "name": "Bone marrow",
+   "ta_name": "medulla ossis",
+   "ta_code": 388,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA9608",
+   "concept_ids": [
+    "FMA9608"
+   ],
+   "subtree": "marrow",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": "the primary lymphoid organ of Milestone 13's gap analysis, which recorded its absence under this module"
+  },
+  {
+   "record_id": "lymph.red-bone-marrow",
+   "name": "Red bone marrow",
+   "ta_name": "medulla rubra ossis",
+   "ta_code": 390,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA74595",
+   "concept_ids": [
+    "FMA74595"
+   ],
+   "subtree": "marrow",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Bone marrow",
+    "Red bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.yellow-bone-marrow",
+   "name": "Yellow bone marrow",
+   "ta_name": "medulla flava ossis",
+   "ta_code": 389,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA74596",
+   "concept_ids": [
+    "FMA74596"
+   ],
+   "subtree": "marrow",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Anatomical cluster",
+    "Heterogeneous anatomical cluster",
+    "Bone marrow",
+    "Yellow bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.splenic-pulp",
+   "name": "Splenic pulp",
+   "ta_name": "pulpa splenis",
+   "ta_code": 5174,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15845",
+   "concept_ids": [
+    "FMA15845"
+   ],
+   "subtree": "interiors-spleen",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of parenchyma of spleen",
+    "Splenic pulp"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.red-pulp-of-spleen",
+   "name": "Red pulp of spleen",
+   "ta_name": "pulpa rubra splenis",
+   "ta_code": 5175,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA15844",
+   "concept_ids": [
+    "FMA15844"
+   ],
+   "subtree": "interiors-spleen",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of parenchyma of spleen",
+    "Splenic pulp",
+    "Red pulp of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.white-pulp-of-spleen",
+   "name": "White pulp of spleen",
+   "ta_name": "pulpa alba splenis",
+   "ta_code": 5176,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA62805",
+   "concept_ids": [
+    "FMA62805"
+   ],
+   "subtree": "interiors-spleen",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Region of organ component",
+    "Region of parenchyma of spleen",
+    "Splenic pulp",
+    "White pulp of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.trabecula-of-spleen",
+   "name": "Trabecula of spleen",
+   "ta_name": "trabeculae splenis",
+   "ta_code": 5173,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA16027",
+   "concept_ids": [
+    "FMA16027"
+   ],
+   "subtree": "interiors-spleen",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Trabecula",
+    "Trabecula of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.lobule-of-thymus",
+   "name": "Lobule of thymus",
+   "ta_name": "lobuli thymi",
+   "ta_code": 5154,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA72215",
+   "concept_ids": [
+    "FMA72215"
+   ],
+   "subtree": "interiors-thymus",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Lobular organ component",
+    "Lobule",
+    "Lobule of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.cortex-of-thymus",
+   "name": "Cortex of thymus",
+   "ta_name": "cortex thymi",
+   "ta_code": 5155,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA72205",
+   "concept_ids": [
+    "FMA72205"
+   ],
+   "subtree": "interiors-thymus",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Cortex",
+    "Cortex of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
+  },
+  {
+   "record_id": "lymph.medulla-of-thymus",
+   "name": "Medulla of thymus",
+   "ta_name": "medulla thymi",
+   "ta_code": 5156,
+   "side": null,
+   "representation": "fma-concept",
+   "class_concept_id": "FMA72206",
+   "concept_ids": [
+    "FMA72206"
+   ],
+   "subtree": "interiors-thymus",
+   "group_path": [
+    "Anatomical entity",
+    "Physical anatomical entity",
+    "Material anatomical entity",
+    "Anatomical structure",
+    "Postnatal anatomical structure",
+    "Cardinal organ part",
+    "Organ component",
+    "Medulla",
+    "Medulla of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "sources": {
+    "ta_name": [
+     "TA2"
+    ]
+   },
+   "geometry": "absent",
+   "verify": [
+    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 36)",
+    "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
+   ],
+   "note": null
   }
  ]
 }

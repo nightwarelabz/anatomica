@@ -6,9 +6,9 @@
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
-   "records": 4,
+   "records": 135,
    "records_with_meshes": 4,
-   "records_without_meshes": 0
+   "records_without_meshes": 131
   }
  },
  "records": [
@@ -325,6 +325,4067 @@
      1329.75
     ]
    }
+  },
+  {
+   "record_id": "lymph.lymphatic-vessel",
+   "name": "Lymphatic vessel",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA30315"
+   ],
+   "concept_names": [
+    "Lymphatic vessel"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.lymphatic-capillary",
+   "name": "Lymphatic capillary",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5028"
+   ],
+   "concept_names": [
+    "Lymphatic capillary"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.thoracic-duct",
+   "name": "Thoracic duct",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5031"
+   ],
+   "concept_names": [
+    "Thoracic duct"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.cisterna-chyli",
+   "name": "Cisterna chyli",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5835"
+   ],
+   "concept_names": [
+    "Cisterna chyli"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-jugular-lymphatic-trunk",
+   "name": "Left jugular lymphatic trunk",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5032"
+   ],
+   "concept_names": [
+    "Left jugular lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-jugular-lymphatic-trunk",
+   "name": "Right jugular lymphatic trunk",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12251"
+   ],
+   "concept_names": [
+    "Right jugular lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-subclavian-lymphatic-trunk",
+   "name": "Left subclavian lymphatic trunk",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5033"
+   ],
+   "concept_names": [
+    "Left subclavian lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-subclavian-lymphatic-trunk",
+   "name": "Right subclavian lymphatic trunk",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5830"
+   ],
+   "concept_names": [
+    "Right subclavian lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-bronchomediastinal-lymphatic-trunk",
+   "name": "Left bronchomediastinal lymphatic trunk",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5834"
+   ],
+   "concept_names": [
+    "Left bronchomediastinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-bronchomediastinal-lymphatic-trunk",
+   "name": "Right bronchomediastinal lymphatic trunk",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5831"
+   ],
+   "concept_names": [
+    "Right bronchomediastinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-lumbar-lymphatic-trunk",
+   "name": "Left lumbar lymphatic trunk",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5841"
+   ],
+   "concept_names": [
+    "Left lumbar lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-lumbar-lymphatic-trunk",
+   "name": "Right lumbar lymphatic trunk",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5840"
+   ],
+   "concept_names": [
+    "Right lumbar lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-intestinal-lymphatic-trunk",
+   "name": "Left intestinal lymphatic trunk",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA235550"
+   ],
+   "concept_names": [
+    "Left intestinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-intestinal-lymphatic-trunk",
+   "name": "Right intestinal lymphatic trunk",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA235548"
+   ],
+   "concept_names": [
+    "Right intestinal lymphatic trunk"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-lymphatic-duct",
+   "name": "Right lymphatic duct",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5832"
+   ],
+   "concept_names": [
+    "Right lymphatic duct"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.lymph-node",
+   "name": "Lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5034"
+   ],
+   "concept_names": [
+    "Lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-occipital-lymph-node",
+   "name": "Left occipital lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232554"
+   ],
+   "concept_names": [
+    "Left occipital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-occipital-lymph-node",
+   "name": "Right occipital lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232552"
+   ],
+   "concept_names": [
+    "Right occipital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-mastoid-lymph-node",
+   "name": "Left mastoid lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232646"
+   ],
+   "concept_names": [
+    "Left mastoid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-mastoid-lymph-node",
+   "name": "Right mastoid lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232644"
+   ],
+   "concept_names": [
+    "Right mastoid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.parotid-lymph-node",
+   "name": "Parotid lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61216"
+   ],
+   "concept_names": [
+    "Parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-superficial-parotid-lymph-node",
+   "name": "Left superficial parotid lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA77984"
+   ],
+   "concept_names": [
+    "Left superficial parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-superficial-parotid-lymph-node",
+   "name": "Right superficial parotid lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA77983"
+   ],
+   "concept_names": [
+    "Right superficial parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.deep-parotid-lymph-node",
+   "name": "Deep parotid lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61218"
+   ],
+   "concept_names": [
+    "Deep parotid lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.facial-lymph-node",
+   "name": "Facial lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61222"
+   ],
+   "concept_names": [
+    "Facial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-submandibular-lymph-node",
+   "name": "Left submandibular lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232676"
+   ],
+   "concept_names": [
+    "Left submandibular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-submandibular-lymph-node",
+   "name": "Right submandibular lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232673"
+   ],
+   "concept_names": [
+    "Right submandibular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.submental-lymph-node",
+   "name": "Submental lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61229"
+   ],
+   "concept_names": [
+    "Submental lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.anterior-cervical-lymph-node",
+   "name": "Anterior cervical lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61230"
+   ],
+   "concept_names": [
+    "Anterior cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.lateral-cervical-lymph-node",
+   "name": "Lateral cervical lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA61232"
+   ],
+   "concept_names": [
+    "Lateral cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.deep-lateral-cervical-lymph-node",
+   "name": "Deep lateral cervical lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12770"
+   ],
+   "concept_names": [
+    "Deep lateral cervical lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-supraclavicular-lymph-node",
+   "name": "Left supraclavicular lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232719"
+   ],
+   "concept_names": [
+    "Left supraclavicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-supraclavicular-lymph-node",
+   "name": "Right supraclavicular lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232721"
+   ],
+   "concept_names": [
+    "Right supraclavicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-retropharyngeal-lymph-node",
+   "name": "Left retropharyngeal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224628"
+   ],
+   "concept_names": [
+    "Left retropharyngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-retropharyngeal-lymph-node",
+   "name": "Right retropharyngeal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224626"
+   ],
+   "concept_names": [
+    "Right retropharyngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-prelaryngeal-lymph-node",
+   "name": "Left prelaryngeal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224636"
+   ],
+   "concept_names": [
+    "Left prelaryngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-prelaryngeal-lymph-node",
+   "name": "Right prelaryngeal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224634"
+   ],
+   "concept_names": [
+    "Right prelaryngeal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-pretracheal-lymph-node",
+   "name": "Left pretracheal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224632"
+   ],
+   "concept_names": [
+    "Left pretracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-pretracheal-lymph-node",
+   "name": "Right pretracheal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224630"
+   ],
+   "concept_names": [
+    "Right pretracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-jugulodigastric-lymph-node",
+   "name": "Left jugulodigastric lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232701"
+   ],
+   "concept_names": [
+    "Left jugulodigastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-jugulodigastric-lymph-node",
+   "name": "Right jugulodigastric lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232699"
+   ],
+   "concept_names": [
+    "Right jugulodigastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.axillary-lymph-node",
+   "name": "Axillary lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA276805"
+   ],
+   "concept_names": [
+    "Axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-pectoral-axillary-lymph-node-group",
+   "name": "Left pectoral axillary lymph node group",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224536"
+   ],
+   "concept_names": [
+    "Left pectoral axillary lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-pectoral-axillary-lymph-node-group",
+   "name": "Right pectoral axillary lymph node group",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA224534"
+   ],
+   "concept_names": [
+    "Right pectoral axillary lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-subscapular-lymph-node",
+   "name": "Left subscapular lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232568"
+   ],
+   "concept_names": [
+    "Left subscapular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-subscapular-lymph-node",
+   "name": "Right subscapular lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232566"
+   ],
+   "concept_names": [
+    "Right subscapular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-apical-axillary-lymph-node",
+   "name": "Left apical axillary lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232560"
+   ],
+   "concept_names": [
+    "Left apical axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-apical-axillary-lymph-node",
+   "name": "Right apical axillary lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232558"
+   ],
+   "concept_names": [
+    "Right apical axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-central-axillary-lymph-node",
+   "name": "Left central axillary lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232576"
+   ],
+   "concept_names": [
+    "Left central axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-central-axillary-lymph-node",
+   "name": "Right central axillary lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232574"
+   ],
+   "concept_names": [
+    "Right central axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-lateral-axillary-lymph-node",
+   "name": "Left lateral axillary lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232564"
+   ],
+   "concept_names": [
+    "Left lateral axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-lateral-axillary-lymph-node",
+   "name": "Right lateral axillary lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232562"
+   ],
+   "concept_names": [
+    "Right lateral axillary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-brachial-lymph-node",
+   "name": "Left brachial lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA275981"
+   ],
+   "concept_names": [
+    "Left brachial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-brachial-lymph-node",
+   "name": "Right brachial lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA275979"
+   ],
+   "concept_names": [
+    "Right brachial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-supratrochlear-lymph-node",
+   "name": "Left supratrochlear lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA234508"
+   ],
+   "concept_names": [
+    "Left supratrochlear lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-supratrochlear-lymph-node",
+   "name": "Right supratrochlear lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA234506"
+   ],
+   "concept_names": [
+    "Right supratrochlear lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.cubital-lymph-node",
+   "name": "Cubital lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA44315"
+   ],
+   "concept_names": [
+    "Cubital lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-paratracheal-lymph-node",
+   "name": "Left paratracheal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5955"
+   ],
+   "concept_names": [
+    "Left paratracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-paratracheal-lymph-node",
+   "name": "Right paratracheal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5954"
+   ],
+   "concept_names": [
+    "Right paratracheal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-tracheobronchial-lymph-node",
+   "name": "Left tracheobronchial lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5952"
+   ],
+   "concept_names": [
+    "Left tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-tracheobronchial-lymph-node",
+   "name": "Right tracheobronchial lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5951"
+   ],
+   "concept_names": [
+    "Right tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-superior-tracheobronchial-lymph-node",
+   "name": "Left superior tracheobronchial lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5961"
+   ],
+   "concept_names": [
+    "Left superior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-superior-tracheobronchial-lymph-node",
+   "name": "Right superior tracheobronchial lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5960"
+   ],
+   "concept_names": [
+    "Right superior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-inferior-tracheobronchial-lymph-node",
+   "name": "Left inferior tracheobronchial lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5964"
+   ],
+   "concept_names": [
+    "Left inferior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-inferior-tracheobronchial-lymph-node",
+   "name": "Right inferior tracheobronchial lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5963"
+   ],
+   "concept_names": [
+    "Right inferior tracheobronchial lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-bronchopulmonary-lymph-node",
+   "name": "Left bronchopulmonary lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5967"
+   ],
+   "concept_names": [
+    "Left bronchopulmonary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-bronchopulmonary-lymph-node",
+   "name": "Right bronchopulmonary lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5966"
+   ],
+   "concept_names": [
+    "Right bronchopulmonary lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.intercostal-lymph-node",
+   "name": "Intercostal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5932"
+   ],
+   "concept_names": [
+    "Intercostal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.diaphragmatic-lymph-node",
+   "name": "Diaphragmatic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12773"
+   ],
+   "concept_names": [
+    "Diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-superior-diaphragmatic-lymph-node",
+   "name": "Left superior diaphragmatic lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232616"
+   ],
+   "concept_names": [
+    "Left superior diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-superior-diaphragmatic-lymph-node",
+   "name": "Right superior diaphragmatic lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232614"
+   ],
+   "concept_names": [
+    "Right superior diaphragmatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.superior-phrenic-lymph-node",
+   "name": "Superior phrenic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA276776"
+   ],
+   "concept_names": [
+    "Superior phrenic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.superior-mediastinal-lymph-node",
+   "name": "Superior mediastinal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA276903"
+   ],
+   "concept_names": [
+    "Superior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-posterior-mediastinal-lymph-node",
+   "name": "Left posterior mediastinal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5949"
+   ],
+   "concept_names": [
+    "Left posterior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-posterior-mediastinal-lymph-node",
+   "name": "Right posterior mediastinal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5948"
+   ],
+   "concept_names": [
+    "Right posterior mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.mediastinal-lymph-node",
+   "name": "Mediastinal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12774"
+   ],
+   "concept_names": [
+    "Mediastinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-esophageal-lymph-node",
+   "name": "Left esophageal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA276764"
+   ],
+   "concept_names": [
+    "Left esophageal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-esophageal-lymph-node",
+   "name": "Right esophageal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA276761"
+   ],
+   "concept_names": [
+    "Right esophageal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.anterior-mediastinal-lymph-node-group",
+   "name": "Anterior mediastinal lymph node group",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA233426"
+   ],
+   "concept_names": [
+    "Anterior mediastinal lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.celiac-lymph-node",
+   "name": "Celiac lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12792"
+   ],
+   "concept_names": [
+    "Celiac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-gastric-lymph-node",
+   "name": "Left gastric lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12797"
+   ],
+   "concept_names": [
+    "Left gastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-gastric-lymph-node",
+   "name": "Right gastric lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277650"
+   ],
+   "concept_names": [
+    "Right gastric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-hepatic-lymph-node",
+   "name": "Left hepatic lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277913"
+   ],
+   "concept_names": [
+    "Left hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-hepatic-lymph-node",
+   "name": "Right hepatic lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277909"
+   ],
+   "concept_names": [
+    "Right hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.common-hepatic-lymph-node",
+   "name": "Common hepatic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277259"
+   ],
+   "concept_names": [
+    "Common hepatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.splenic-lymph-node",
+   "name": "Splenic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA66187"
+   ],
+   "concept_names": [
+    "Splenic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.pancreatic-lymph-node",
+   "name": "Pancreatic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16626"
+   ],
+   "concept_names": [
+    "Pancreatic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.pancreaticoduodenal-lymph-node",
+   "name": "Pancreaticoduodenal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16623"
+   ],
+   "concept_names": [
+    "Pancreaticoduodenal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.cystic-lymph-node",
+   "name": "Cystic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12804"
+   ],
+   "concept_names": [
+    "Cystic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.superior-mesenteric-lymph-node",
+   "name": "Superior mesenteric lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12793"
+   ],
+   "concept_names": [
+    "Superior mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.inferior-mesenteric-lymph-node",
+   "name": "Inferior mesenteric lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12794"
+   ],
+   "concept_names": [
+    "Inferior mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.mesenteric-lymph-node",
+   "name": "Mesenteric lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12795"
+   ],
+   "concept_names": [
+    "Mesenteric lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-colic-lymph-node",
+   "name": "Left colic lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16696"
+   ],
+   "concept_names": [
+    "Left colic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-colic-lymph-node",
+   "name": "Right colic lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16695"
+   ],
+   "concept_names": [
+    "Right colic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.ileocolic-lymph-node",
+   "name": "Ileocolic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16611"
+   ],
+   "concept_names": [
+    "Ileocolic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.appendicular-lymph-node",
+   "name": "Appendicular lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16620"
+   ],
+   "concept_names": [
+    "Appendicular lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.lateral-aortic-lymph-node",
+   "name": "Lateral aortic lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16604"
+   ],
+   "concept_names": [
+    "Lateral aortic lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-lumbar-lymph-node-group",
+   "name": "Left lumbar lymph node group",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277691"
+   ],
+   "concept_names": [
+    "Left lumbar lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-lumbar-lymph-node-group",
+   "name": "Right lumbar lymph node group",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA277689"
+   ],
+   "concept_names": [
+    "Right lumbar lymph node group"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.common-iliac-lymph-node",
+   "name": "Common iliac lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA12806"
+   ],
+   "concept_names": [
+    "Common iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.external-iliac-lymph-node",
+   "name": "External iliac lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16646"
+   ],
+   "concept_names": [
+    "External iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.internal-iliac-lymph-node",
+   "name": "Internal iliac lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16654"
+   ],
+   "concept_names": [
+    "Internal iliac lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.sacral-lymph-node",
+   "name": "Sacral lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16655"
+   ],
+   "concept_names": [
+    "Sacral lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.gluteal-lymph-node",
+   "name": "Gluteal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16657"
+   ],
+   "concept_names": [
+    "Gluteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.inguinal-lymph-node",
+   "name": "Inguinal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA44226"
+   ],
+   "concept_names": [
+    "Inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.superficial-inguinal-lymph-node",
+   "name": "Superficial inguinal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA5036"
+   ],
+   "concept_names": [
+    "Superficial inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.deep-inguinal-lymph-node",
+   "name": "Deep inguinal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA44225"
+   ],
+   "concept_names": [
+    "Deep inguinal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.popliteal-lymph-node",
+   "name": "Popliteal lymph node",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA44227"
+   ],
+   "concept_names": [
+    "Popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-superficial-popliteal-lymph-node",
+   "name": "Left superficial popliteal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232596"
+   ],
+   "concept_names": [
+    "Left superficial popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-superficial-popliteal-lymph-node",
+   "name": "Right superficial popliteal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA232594"
+   ],
+   "concept_names": [
+    "Right superficial popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-deep-popliteal-lymph-node",
+   "name": "Left deep popliteal lymph node",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA275977"
+   ],
+   "concept_names": [
+    "Left deep popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-deep-popliteal-lymph-node",
+   "name": "Right deep popliteal lymph node",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA275975"
+   ],
+   "concept_names": [
+    "Right deep popliteal lymph node"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.tonsil",
+   "name": "Tonsil",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA9609"
+   ],
+   "concept_names": [
+    "Tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-palatine-tonsil",
+   "name": "Left palatine tonsil",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54974"
+   ],
+   "concept_names": [
+    "Left palatine tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-palatine-tonsil",
+   "name": "Right palatine tonsil",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54973"
+   ],
+   "concept_names": [
+    "Right palatine tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.pharyngeal-tonsil",
+   "name": "Pharyngeal tonsil",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54970"
+   ],
+   "concept_names": [
+    "Pharyngeal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-lingual-tonsil",
+   "name": "Left lingual tonsil",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54838"
+   ],
+   "concept_names": [
+    "Left lingual tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-lingual-tonsil",
+   "name": "Right lingual tonsil",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54837"
+   ],
+   "concept_names": [
+    "Right lingual tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.left-tubal-tonsil",
+   "name": "Left tubal tonsil",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54977"
+   ],
+   "concept_names": [
+    "Left tubal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.right-tubal-tonsil",
+   "name": "Right tubal tonsil",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA54976"
+   ],
+   "concept_names": [
+    "Right tubal tonsil"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.aggregated-lymphoid-follicle-of-small-intestine",
+   "name": "Aggregated lymphoid follicle of small intestine",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15054"
+   ],
+   "concept_names": [
+    "Aggregated lymphoid follicle of small intestine"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.bone-marrow",
+   "name": "Bone marrow",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA9608"
+   ],
+   "concept_names": [
+    "Bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.red-bone-marrow",
+   "name": "Red bone marrow",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA74595"
+   ],
+   "concept_names": [
+    "Red bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.yellow-bone-marrow",
+   "name": "Yellow bone marrow",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA74596"
+   ],
+   "concept_names": [
+    "Yellow bone marrow"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.splenic-pulp",
+   "name": "Splenic pulp",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15845"
+   ],
+   "concept_names": [
+    "Splenic pulp"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.red-pulp-of-spleen",
+   "name": "Red pulp of spleen",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15844"
+   ],
+   "concept_names": [
+    "Red pulp of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.white-pulp-of-spleen",
+   "name": "White pulp of spleen",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA62805"
+   ],
+   "concept_names": [
+    "White pulp of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.trabecula-of-spleen",
+   "name": "Trabecula of spleen",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16027"
+   ],
+   "concept_names": [
+    "Trabecula of spleen"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.lobule-of-thymus",
+   "name": "Lobule of thymus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA72215"
+   ],
+   "concept_names": [
+    "Lobule of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.cortex-of-thymus",
+   "name": "Cortex of thymus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA72205"
+   ],
+   "concept_names": [
+    "Cortex of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "lymph.medulla-of-thymus",
+   "name": "Medulla of thymus",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA72206"
+   ],
+   "concept_names": [
+    "Medulla of thymus"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
   }
  ]
 }

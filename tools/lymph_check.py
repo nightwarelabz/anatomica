@@ -16,6 +16,15 @@ drainage pathway's station order as the consulted source gives
 it, and the spleen's splenic-artery / splenic-vein
 cross-references resolving to cardiovascular clinical records.
 
+Milestone 36 scope note: the inventory now also carries the
+FMA-sourced concept records of the second FMA intake (source ==
+"fma-5.1.0": the conducting system, the named node groups, the
+tonsils and MALT, bone marrow, the spleen/thymus interiors).
+The re-derivations below cover the BodyParts3D-derived partition,
+exactly as before; the extension records are verified against
+the FMA itself by tools/fma_lymph_endo_check.py and counted in
+the meta check.
+
 Run: python3 tools/lymph_check.py   (exit 0 = all checks pass)
 """
 import json
@@ -186,7 +195,11 @@ def main():
             "left lobe of thymus", "left", "whole-concept",
             ["FMA71195"], LOBE),
     }
-    got_records = {r["record_id"]: r for r in inv["records"]}
+    # Milestone 36: BP3D partition only (see module docstring)
+    got_records = {r["record_id"]: r for r in inv["records"]
+                   if r.get("source") != "fma-5.1.0"}
+    fma_records = [r for r in inv["records"]
+                   if r.get("source") == "fma-5.1.0"]
     check("record id set matches derivation",
           set(got_records) == set(exp_records),
           f"{sorted(got_records)}")
@@ -202,9 +215,11 @@ def main():
             bad.append(rid)
     check("record fields match derivation", not bad, f"bad={bad}")
     check("meta record count and representations match",
-          meta["record_count"] == len(exp_records)
+          meta["record_count"] == len(inv["records"])
           and meta["record_representations"] ==
-          dict(Counter(v[2] for v in exp_records.values())))
+          dict(Counter(r["representation"] for r in inv["records"]))
+          and len(fma_records) ==
+          meta["fma_extension"]["records_added"])
 
     # dispositions
     claimed = {}
@@ -512,6 +527,7 @@ def main():
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
     import ta2_discipline as _ta2d
     _ta2d.run("lymphatic", "data/lymphatic/lymphatic.json", lambda ok_, label: check(label, ok_))
+    _ta2d.run_fma_inventory_multi("lymphatic", "data/lymphatic/lymphatic-inventory.json", "fma_inventory_lymphatic", "M36", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"lymph_check: {npass}/{len(checks)} checks passed")

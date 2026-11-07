@@ -1,0 +1,1449 @@
+{
+ "meta": {
+  "milestone": "M36",
+  "date": "2026-11-06",
+  "scope": "FMA 5.1.0 concept intake #2: the lymphatic system and the endocrine glands \u2014 the structures Milestone 13 proved absent from BodyParts3D 4.0",
+  "method": "tools/fma_lymph_endo_map.py (frozen targets, mechanical resolution) \u2014 checked by tools/fma_lymph_endo_check.py (independent)",
+  "rule": "lateralised records where the FMA carries both sided classes, one un-sided record otherwise; any FMAID already inventoried anywhere in the Body Model (BP3D-derived or Milestone 33 FMA) is excluded and accounted with its owner",
+  "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)"
+ },
+ "systems": {
+  "lymphatic": {
+   "records_before": 4,
+   "records_after": 135,
+   "records_added": 131,
+   "targets": [
+    {
+     "target": "Lymphatic vessel",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lymphatic-vessel"
+     ],
+     "fmaids": [
+      "FMA30315"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lymphatic capillary",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lymphatic-capillary"
+     ],
+     "fmaids": [
+      "FMA5028"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Thoracic duct",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.thoracic-duct"
+     ],
+     "fmaids": [
+      "FMA5031"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cisterna chyli",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.cisterna-chyli"
+     ],
+     "fmaids": [
+      "FMA5835"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Jugular lymphatic trunk",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-jugular-lymphatic-trunk",
+      "lymph.right-jugular-lymphatic-trunk"
+     ],
+     "fmaids": [
+      "FMA5032",
+      "FMA12251"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Subclavian lymphatic trunk",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-subclavian-lymphatic-trunk",
+      "lymph.right-subclavian-lymphatic-trunk"
+     ],
+     "fmaids": [
+      "FMA5033",
+      "FMA5830"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Bronchomediastinal lymphatic trunk",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-bronchomediastinal-lymphatic-trunk",
+      "lymph.right-bronchomediastinal-lymphatic-trunk"
+     ],
+     "fmaids": [
+      "FMA5834",
+      "FMA5831"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Lumbar lymphatic trunk",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-lumbar-lymphatic-trunk",
+      "lymph.right-lumbar-lymphatic-trunk"
+     ],
+     "fmaids": [
+      "FMA5841",
+      "FMA5840"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Intestinal lymphatic trunk",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-intestinal-lymphatic-trunk",
+      "lymph.right-intestinal-lymphatic-trunk"
+     ],
+     "fmaids": [
+      "FMA235550",
+      "FMA235548"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Right lymphatic duct",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.right-lymphatic-duct"
+     ],
+     "fmaids": [
+      "FMA5832"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lymph node",
+     "subtree": "conducting",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lymph-node"
+     ],
+     "fmaids": [
+      "FMA5034"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Occipital lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-occipital-lymph-node",
+      "lymph.right-occipital-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232554",
+      "FMA232552"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Mastoid lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-mastoid-lymph-node",
+      "lymph.right-mastoid-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232646",
+      "FMA232644"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Parotid lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.parotid-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61216"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superficial parotid lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-superficial-parotid-lymph-node",
+      "lymph.right-superficial-parotid-lymph-node"
+     ],
+     "fmaids": [
+      "FMA77984",
+      "FMA77983"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Deep parotid lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.deep-parotid-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61218"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Facial lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.facial-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61222"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Submandibular lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-submandibular-lymph-node",
+      "lymph.right-submandibular-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232676",
+      "FMA232673"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Submental lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.submental-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61229"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Anterior cervical lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.anterior-cervical-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61230"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lateral cervical lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lateral-cervical-lymph-node"
+     ],
+     "fmaids": [
+      "FMA61232"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Deep lateral cervical lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.deep-lateral-cervical-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12770"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Supraclavicular lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-supraclavicular-lymph-node",
+      "lymph.right-supraclavicular-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232719",
+      "FMA232721"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Retropharyngeal lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-retropharyngeal-lymph-node",
+      "lymph.right-retropharyngeal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA224628",
+      "FMA224626"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Prelaryngeal lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-prelaryngeal-lymph-node",
+      "lymph.right-prelaryngeal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA224636",
+      "FMA224634"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Pretracheal lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-pretracheal-lymph-node",
+      "lymph.right-pretracheal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA224632",
+      "FMA224630"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Jugulodigastric lymph node",
+     "subtree": "nodes-head-neck",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-jugulodigastric-lymph-node",
+      "lymph.right-jugulodigastric-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232701",
+      "FMA232699"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Axillary lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.axillary-lymph-node"
+     ],
+     "fmaids": [
+      "FMA276805"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pectoral axillary lymph node group",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-pectoral-axillary-lymph-node-group",
+      "lymph.right-pectoral-axillary-lymph-node-group"
+     ],
+     "fmaids": [
+      "FMA224536",
+      "FMA224534"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Subscapular lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-subscapular-lymph-node",
+      "lymph.right-subscapular-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232568",
+      "FMA232566"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Apical axillary lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-apical-axillary-lymph-node",
+      "lymph.right-apical-axillary-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232560",
+      "FMA232558"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Central axillary lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-central-axillary-lymph-node",
+      "lymph.right-central-axillary-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232576",
+      "FMA232574"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Lateral axillary lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-lateral-axillary-lymph-node",
+      "lymph.right-lateral-axillary-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232564",
+      "FMA232562"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Brachial lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-brachial-lymph-node",
+      "lymph.right-brachial-lymph-node"
+     ],
+     "fmaids": [
+      "FMA275981",
+      "FMA275979"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Supratrochlear lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-supratrochlear-lymph-node",
+      "lymph.right-supratrochlear-lymph-node"
+     ],
+     "fmaids": [
+      "FMA234508",
+      "FMA234506"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Cubital lymph node",
+     "subtree": "nodes-upper-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.cubital-lymph-node"
+     ],
+     "fmaids": [
+      "FMA44315"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Paratracheal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-paratracheal-lymph-node",
+      "lymph.right-paratracheal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5955",
+      "FMA5954"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tracheobronchial lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-tracheobronchial-lymph-node",
+      "lymph.right-tracheobronchial-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5952",
+      "FMA5951"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Superior tracheobronchial lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-superior-tracheobronchial-lymph-node",
+      "lymph.right-superior-tracheobronchial-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5961",
+      "FMA5960"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Inferior tracheobronchial lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-inferior-tracheobronchial-lymph-node",
+      "lymph.right-inferior-tracheobronchial-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5964",
+      "FMA5963"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Bronchopulmonary lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-bronchopulmonary-lymph-node",
+      "lymph.right-bronchopulmonary-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5967",
+      "FMA5966"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Intercostal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.intercostal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5932"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Diaphragmatic lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.diaphragmatic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12773"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superior diaphragmatic lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-superior-diaphragmatic-lymph-node",
+      "lymph.right-superior-diaphragmatic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232616",
+      "FMA232614"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Superior phrenic lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.superior-phrenic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA276776"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superior mediastinal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.superior-mediastinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA276903"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Posterior mediastinal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-posterior-mediastinal-lymph-node",
+      "lymph.right-posterior-mediastinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5949",
+      "FMA5948"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Mediastinal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.mediastinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12774"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Esophageal lymph node",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-esophageal-lymph-node",
+      "lymph.right-esophageal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA276764",
+      "FMA276761"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Anterior mediastinal lymph node group",
+     "subtree": "nodes-thoracic",
+     "verdict": "resolved",
+     "records": [
+      "lymph.anterior-mediastinal-lymph-node-group"
+     ],
+     "fmaids": [
+      "FMA233426"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Celiac lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.celiac-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12792"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Gastric lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-gastric-lymph-node",
+      "lymph.right-gastric-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12797",
+      "FMA277650"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Hepatic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-hepatic-lymph-node",
+      "lymph.right-hepatic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA277913",
+      "FMA277909"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Common hepatic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.common-hepatic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA277259"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Splenic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.splenic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA66187"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pancreatic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.pancreatic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16626"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pancreaticoduodenal lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.pancreaticoduodenal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16623"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cystic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.cystic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12804"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superior mesenteric lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.superior-mesenteric-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12793"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Inferior mesenteric lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.inferior-mesenteric-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12794"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Mesenteric lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.mesenteric-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12795"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Colic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-colic-lymph-node",
+      "lymph.right-colic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16696",
+      "FMA16695"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Ileocolic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.ileocolic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16611"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Appendicular lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.appendicular-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16620"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lateral aortic lymph node",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lateral-aortic-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16604"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lumbar lymph node group",
+     "subtree": "nodes-abdominal",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-lumbar-lymph-node-group",
+      "lymph.right-lumbar-lymph-node-group"
+     ],
+     "fmaids": [
+      "FMA277691",
+      "FMA277689"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Common iliac lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.common-iliac-lymph-node"
+     ],
+     "fmaids": [
+      "FMA12806"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "External iliac lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.external-iliac-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16646"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Internal iliac lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.internal-iliac-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16654"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Sacral lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.sacral-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16655"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Gluteal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.gluteal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA16657"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Inguinal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.inguinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA44226"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superficial inguinal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.superficial-inguinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA5036"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Deep inguinal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.deep-inguinal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA44225"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Popliteal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.popliteal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA44227"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superficial popliteal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-superficial-popliteal-lymph-node",
+      "lymph.right-superficial-popliteal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA232596",
+      "FMA232594"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Deep popliteal lymph node",
+     "subtree": "nodes-pelvic-lower-limb",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-deep-popliteal-lymph-node",
+      "lymph.right-deep-popliteal-lymph-node"
+     ],
+     "fmaids": [
+      "FMA275977",
+      "FMA275975"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tonsil",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.tonsil"
+     ],
+     "fmaids": [
+      "FMA9609"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Palatine tonsil",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-palatine-tonsil",
+      "lymph.right-palatine-tonsil"
+     ],
+     "fmaids": [
+      "FMA54974",
+      "FMA54973"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Pharyngeal tonsil",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.pharyngeal-tonsil"
+     ],
+     "fmaids": [
+      "FMA54970"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lingual tonsil",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-lingual-tonsil",
+      "lymph.right-lingual-tonsil"
+     ],
+     "fmaids": [
+      "FMA54838",
+      "FMA54837"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Tubal tonsil",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.left-tubal-tonsil",
+      "lymph.right-tubal-tonsil"
+     ],
+     "fmaids": [
+      "FMA54977",
+      "FMA54976"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Aggregated lymphoid follicle of small intestine",
+     "subtree": "tonsils-malt",
+     "verdict": "resolved",
+     "records": [
+      "lymph.aggregated-lymphoid-follicle-of-small-intestine"
+     ],
+     "fmaids": [
+      "FMA15054"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Bone marrow",
+     "subtree": "marrow",
+     "verdict": "resolved",
+     "records": [
+      "lymph.bone-marrow"
+     ],
+     "fmaids": [
+      "FMA9608"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Red bone marrow",
+     "subtree": "marrow",
+     "verdict": "resolved",
+     "records": [
+      "lymph.red-bone-marrow"
+     ],
+     "fmaids": [
+      "FMA74595"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Yellow bone marrow",
+     "subtree": "marrow",
+     "verdict": "resolved",
+     "records": [
+      "lymph.yellow-bone-marrow"
+     ],
+     "fmaids": [
+      "FMA74596"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Splenic pulp",
+     "subtree": "interiors-spleen",
+     "verdict": "resolved",
+     "records": [
+      "lymph.splenic-pulp"
+     ],
+     "fmaids": [
+      "FMA15845"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Red pulp of spleen",
+     "subtree": "interiors-spleen",
+     "verdict": "resolved",
+     "records": [
+      "lymph.red-pulp-of-spleen"
+     ],
+     "fmaids": [
+      "FMA15844"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "White pulp of spleen",
+     "subtree": "interiors-spleen",
+     "verdict": "resolved",
+     "records": [
+      "lymph.white-pulp-of-spleen"
+     ],
+     "fmaids": [
+      "FMA62805"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Trabecula of spleen",
+     "subtree": "interiors-spleen",
+     "verdict": "resolved",
+     "records": [
+      "lymph.trabecula-of-spleen"
+     ],
+     "fmaids": [
+      "FMA16027"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lobule of thymus",
+     "subtree": "interiors-thymus",
+     "verdict": "resolved",
+     "records": [
+      "lymph.lobule-of-thymus"
+     ],
+     "fmaids": [
+      "FMA72215"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Cortex of thymus",
+     "subtree": "interiors-thymus",
+     "verdict": "resolved",
+     "records": [
+      "lymph.cortex-of-thymus"
+     ],
+     "fmaids": [
+      "FMA72205"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Medulla of thymus",
+     "subtree": "interiors-thymus",
+     "verdict": "resolved",
+     "records": [
+      "lymph.medulla-of-thymus"
+     ],
+     "fmaids": [
+      "FMA72206"
+     ],
+     "sided": 0
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Superficial cervical lymph node",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Deep cervical lymph node",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Pancreaticosplenic lymph node",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Splenic hilum",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Thymic corpuscle",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Intestinal trunk",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Lymphatic trunk",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Peyer patch",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Aggregated lymphoid nodule",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "per-level intercostal lymph nodes (First\u2013Eleventh intercostal lymph node classes) and the segmental bronchopulmonary chain classes",
+     "reason": "below the frozen list's granularity: Milestone 13's absence census names node groups and chains, not per-level or per-segment nodes; the generic Intercostal lymph node and Bronchopulmonary lymph node classes are recorded"
+    },
+    {
+     "names": "'Set of \u2026' aggregate classes throughout the lymph node space",
+     "reason": "set/aggregate classes are not records, per the Milestone 9/33 convention"
+    }
+   ]
+  },
+  "endocrine": {
+   "records_before": 3,
+   "records_after": 17,
+   "records_added": 14,
+   "targets": [
+    {
+     "target": "Thyroid gland",
+     "subtree": "thyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.thyroid-gland"
+     ],
+     "fmaids": [
+      "FMA9603"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Lobe of thyroid gland",
+     "subtree": "thyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.left-lobe-of-thyroid-gland",
+      "endo.right-lobe-of-thyroid-gland"
+     ],
+     "fmaids": [
+      "FMA13369",
+      "FMA13368"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Isthmus of thyroid gland",
+     "subtree": "thyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.isthmus-of-thyroid-gland"
+     ],
+     "fmaids": [
+      "FMA49178"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Pyramidal lobe of thyroid gland",
+     "subtree": "thyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.pyramidal-lobe-of-thyroid-gland"
+     ],
+     "fmaids": [
+      "FMA49180"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Parathyroid gland",
+     "subtree": "parathyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.parathyroid-gland"
+     ],
+     "fmaids": [
+      "FMA13890"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Superior parathyroid gland",
+     "subtree": "parathyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.left-superior-parathyroid-gland",
+      "endo.right-superior-parathyroid-gland"
+     ],
+     "fmaids": [
+      "FMA55561",
+      "FMA55560"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Inferior parathyroid gland",
+     "subtree": "parathyroid",
+     "verdict": "resolved",
+     "records": [
+      "endo.left-inferior-parathyroid-gland",
+      "endo.right-inferior-parathyroid-gland"
+     ],
+     "fmaids": [
+      "FMA55563",
+      "FMA55562"
+     ],
+     "sided": 2
+    },
+    {
+     "target": "Pineal body",
+     "subtree": "pineal",
+     "verdict": "excluded",
+     "evidence": "FMA62033 already inventoried (bp3d:nervous:brain.pineal-body, bp3d:nervous:brain.pineal-body)",
+     "records": []
+    },
+    {
+     "target": "Pancreatic islet",
+     "subtree": "islets",
+     "verdict": "resolved",
+     "records": [
+      "endo.pancreatic-islet"
+     ],
+     "fmaids": [
+      "FMA16016"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Paraganglion",
+     "subtree": "paraganglia",
+     "verdict": "resolved",
+     "records": [
+      "endo.paraganglion"
+     ],
+     "fmaids": [
+      "FMA15648"
+     ],
+     "sided": 0
+    },
+    {
+     "target": "Carotid body",
+     "subtree": "paraganglia",
+     "verdict": "resolved",
+     "records": [
+      "endo.left-carotid-body",
+      "endo.right-carotid-body"
+     ],
+     "fmaids": [
+      "FMA50102",
+      "FMA50101"
+     ],
+     "sided": 2
+    }
+   ],
+   "absence_probes": [
+    {
+     "probe": "Endocrine pancreas",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Islet of Langerhans",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Aortic body",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Glomus jugulare",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Jugulotympanic paraganglion",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Parafollicular cell",
+     "preferred_name_hits": 0
+    },
+    {
+     "probe": "Pineal gland",
+     "preferred_name_hits": 0
+    }
+   ],
+   "deferred": [
+    {
+     "names": "Adenohypophysis (FMA74627), Neurohypophysis (FMA74628)",
+     "reason": "interiors of the pituitary, an organ already holding a record; gland interiors of recorded organs are a separate named follow-on class, not part of this whole-gland absence intake"
+    },
+    {
+     "names": "Adrenal cortex (FMA15632), Adrenal medulla (FMA15633), Zona glomerulosa (FMA69225) / fasciculata (FMA69234) / reticularis (FMA69236) of adrenal gland",
+     "reason": "interiors of the adrenals, organs already holding records; same follow-on class as the pituitary interiors"
+    },
+    {
+     "names": "Thyroid follicle (FMA68805)",
+     "reason": "histological unit, below record granularity (the Milestone 9 segment-class convention); the gland and its gross parts are recorded"
+    },
+    {
+     "names": "Accessory thyroid gland (FMA55533), Accessory parathyroid gland (FMA55567)",
+     "reason": "accessory/ectopic variants, not named in Milestone 13's absence census; variants are modelled as variants, not census records"
+    }
+   ]
+  }
+ }
+}

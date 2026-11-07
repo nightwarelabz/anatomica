@@ -23,6 +23,16 @@ pineal record, the islets record's host pointer resolving to
 the digestive module's pancreas records, and the adrenal and
 thyroid records' named cardiovascular records all resolving.
 
+Milestone 36 scope note: the inventory now also carries the
+FMA-sourced concept records of the second FMA intake (source ==
+"fma-5.1.0": the thyroid and parathyroid glands entire, the
+pancreatic islet concept, the paraganglia; the pineal target was
+excluded — FMA62033 is the nervous module's record). The
+re-derivations below cover the BodyParts3D-derived partition,
+exactly as before; the extension records are verified against
+the FMA itself by tools/fma_lymph_endo_check.py and counted in
+the meta check.
+
 Run: python3 tools/endo_check.py   (exit 0 = all checks pass)
 """
 import json
@@ -229,7 +239,11 @@ def main():
             "left adrenal gland", "left", "whole-concept",
             ["FMA15630"], ADRENAL_CLASS),
     }
-    got_records = {r["record_id"]: r for r in inv["records"]}
+    # Milestone 36: BP3D partition only (see module docstring)
+    got_records = {r["record_id"]: r for r in inv["records"]
+                   if r.get("source") != "fma-5.1.0"}
+    fma_records = [r for r in inv["records"]
+                   if r.get("source") == "fma-5.1.0"]
     check("record id set matches derivation",
           set(got_records) == set(exp_records),
           f"{sorted(got_records)}")
@@ -245,9 +259,11 @@ def main():
             bad.append(rid)
     check("record fields match derivation", not bad, f"bad={bad}")
     check("meta record count and representations match",
-          meta["record_count"] == len(exp_records)
+          meta["record_count"] == len(inv["records"])
           and meta["record_representations"] ==
-          dict(Counter(v[2] for v in exp_records.values())))
+          dict(Counter(r["representation"] for r in inv["records"]))
+          and len(fma_records) ==
+          meta["fma_extension"]["records_added"])
 
     # dispositions
     claimed = {}
@@ -613,6 +629,7 @@ def main():
     _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
     import ta2_discipline as _ta2d
     _ta2d.run("endocrine", "data/endocrine/endocrine.json", lambda ok_, label: check(label, ok_))
+    _ta2d.run_fma_inventory_multi("endocrine", "data/endocrine/endocrine-inventory.json", "fma_inventory_endocrine", "M36", lambda ok_, label: check(label, ok_))
 
     npass = sum(1 for _, ok, _ in checks if ok)
     print(f"endo_check: {npass}/{len(checks)} checks passed")

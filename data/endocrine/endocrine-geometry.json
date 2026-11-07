@@ -6,9 +6,9 @@
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
-   "records": 3,
+   "records": 17,
    "records_with_meshes": 3,
-   "records_without_meshes": 0
+   "records_without_meshes": 14
   }
  },
  "records": [
@@ -278,6 +278,440 @@
      1535.54
     ]
    }
+  },
+  {
+   "record_id": "endo.thyroid-gland",
+   "name": "Thyroid gland",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA9603"
+   ],
+   "concept_names": [
+    "Thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.left-lobe-of-thyroid-gland",
+   "name": "Left lobe of thyroid gland",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA13369"
+   ],
+   "concept_names": [
+    "Left lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.right-lobe-of-thyroid-gland",
+   "name": "Right lobe of thyroid gland",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA13368"
+   ],
+   "concept_names": [
+    "Right lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.isthmus-of-thyroid-gland",
+   "name": "Isthmus of thyroid gland",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA49178"
+   ],
+   "concept_names": [
+    "Isthmus of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.pyramidal-lobe-of-thyroid-gland",
+   "name": "Pyramidal lobe of thyroid gland",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA49180"
+   ],
+   "concept_names": [
+    "Pyramidal lobe of thyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.parathyroid-gland",
+   "name": "Parathyroid gland",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA13890"
+   ],
+   "concept_names": [
+    "Parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.left-superior-parathyroid-gland",
+   "name": "Left superior parathyroid gland",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA55561"
+   ],
+   "concept_names": [
+    "Left superior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.right-superior-parathyroid-gland",
+   "name": "Right superior parathyroid gland",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA55560"
+   ],
+   "concept_names": [
+    "Right superior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.left-inferior-parathyroid-gland",
+   "name": "Left inferior parathyroid gland",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA55563"
+   ],
+   "concept_names": [
+    "Left inferior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.right-inferior-parathyroid-gland",
+   "name": "Right inferior parathyroid gland",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA55562"
+   ],
+   "concept_names": [
+    "Right inferior parathyroid gland"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.pancreatic-islet",
+   "name": "Pancreatic islet",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA16016"
+   ],
+   "concept_names": [
+    "Pancreatic islet"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.paraganglion",
+   "name": "Paraganglion",
+   "side": null,
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA15648"
+   ],
+   "concept_names": [
+    "Paraganglion"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.left-carotid-body",
+   "name": "Left carotid body",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA50102"
+   ],
+   "concept_names": [
+    "Left carotid body"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
+  },
+  {
+   "record_id": "endo.right-carotid-body",
+   "name": "Right carotid body",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA50101"
+   ],
+   "concept_names": [
+    "Right carotid body"
+   ],
+   "source": "fma-5.1.0",
+   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 36)",
+   "isa_meshes": [],
+   "partof_meshes": [],
+   "totals": {
+    "isa": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 0
+   },
+   "bbox_isa": null,
+   "bbox_partof": null
   }
  ]
 }
