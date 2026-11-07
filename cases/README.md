@@ -1,4 +1,4 @@
-# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48)
+# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54)
 
 Diagnosis practiced as explicit reasoning (design/07): a staged
 presentation, a differential board the learner must commit numbers
@@ -13,7 +13,7 @@ debrief scored by stated rules.
   or anywhere in ANATOMICA (education-only scope, master plan §8).
 - **Facts are cited; fiction is labelled.** Clinical facts (criteria,
   likelihood ratios, reference ranges, test characteristics) trace
-  to the sources registered in `parameters.json` (C1–C47), consulted
+  to the sources registered in `parameters.json` (C1–C51), consulted
   in-session. The patient's particulars are *case data* and are
   labelled as such wherever they appear. Anything that could not be
   sourced carries a verify flag — never a quietly invented value.
@@ -44,7 +44,7 @@ debrief scored by stated rules.
 
 ## Contents
 
-- `parameters.json` — source register (C1–C47), the workbench's
+- `parameters.json` — source register (C1–C51), the workbench's
   scoring-rule constants (all flagged project conventions), and the
   likelihood-ratio derivations. Extended at Milestone 22 with C14
   (WSES bile-duct-injury guidelines), C15 (MRCP test characteristics),
@@ -84,6 +84,19 @@ debrief scored by stated rules.
   registers carry dated Milestone 48 addenda, including two
   recorded refusals (no Mondo class for community-acquired
   pneumonia; no human class for acute heart failure).
+  Extended at Milestone 54 with C48 (the Fleischner Society 2017
+  incidental-nodule guideline), C49 (the six-ED CTPA over-testing
+  cohort, Acad Radiol 2019), C50 (the 2021 AHA/ACC chest-pain
+  guideline) and C51 (Proulx & Zryd 2009 — the costochondritis
+  review the Mondo refusal turns on), one further LR derivation
+  (the D-dimer negative direction, computed from the C39 pooled
+  pair — deliberately not registered at Milestone 48, registered
+  now because in case 7's patient it is the pathway's operative
+  direction), and dated Milestone 54 addenda to the C10/C11
+  registers, including a third recorded refusal: the only Mondo
+  class the costochondritis search returns is Tietze syndrome
+  (MONDO:0001858), defined by the swellings case 7's patient
+  lacks — refused, and the truth carries Mondo null.
 - `case.ruq-pain.001.json` — the first worked case: acute calculous
   cholecystitis as a staged RUQ-pain presentation, 4 stages, 29
   findings, 9 labs, 8 orderable tests, 7 hypotheses, mechanical
@@ -226,6 +239,54 @@ debrief scored by stated rules.
   pneumonia (coded to pneumonia, MONDO:0005249) and none for
   acute heart failure in humans (coded to heart failure,
   MONDO:0005252), both stated in the hypotheses' notes.
+- `case.pe-ruleout.007.json` — the rule-out case (Milestone 54):
+  the PE pathway case 6 recorded but deliberately did not walk,
+  walked here in full. Two days of localized, palpation-
+  reproducible costochondral chest pain in a 62-year-old woman.
+  4 stages, 26 findings, 4 labs, 6 measurements, 5 orderable
+  tests, 6 hypotheses. The machinery runs the exclusion at every
+  stage: a Wells `score` block COMPLETE at 0.0 from stage 1 (all
+  six objective items assessed zeros — the mirror of case 6's
+  partial 3.0 completing at 6.0; the judgment item excluded with
+  its +3 sensitivity stated), a PERC `score` block counting
+  exactly 1 — the age criterion alone — with its < 15% gestalt
+  precondition stated MET (the deliberate contrast with case 6,
+  where it was stated unmet and the count was 5), and a D-dimer
+  of 560 µg/L FEU sitting 60 µg/L above the fixed 500 cutoff and
+  60 µg/L below the age-adjusted 620 (62 × 10, ADJUST-PE — the
+  age-adjusted reading is the decision, not a refinement). The
+  case carries exactly one likelihood ratio, and it is the
+  pathway's operative one: D-dimer LR− 0.0732, computed from the
+  C39 pooled pair — the negative direction case 6 deliberately
+  never registered. The board runs truth 0.34 → 0.3825 with PE
+  retiring at 0.0099 at stage 2: the PE pathway terminates at
+  stage 2, and stages 3–4 exist to test whether the learner can
+  hold it. The scored error is over-testing, the mirror of the
+  prior cases' missed diagnoses: a CTPA demanded at stage 3 by
+  the patient's husband and the covering colleague classifies
+  non-contributory — the machinery's verdict is the error — and
+  its harms are priced from the consulted cohort (C49: 10 mSv
+  median dose, 24% incidental-findings rate, 14% contrast-
+  induced nephropathy risk as cited there): the one incidental it
+  buys is a 7 mm solid right-upper-lobe nodule, whose
+  consequence — Fleischner 2017 surveillance, CT at 6–12 months
+  (C48) — outlives the encounter. The decisive evidence (pain
+  reproduced exactly on palpation; a mechanical precipitant;
+  swelling absent) carries no LR anywhere, by design. The
+  physiology link records the pinned circulation baseline by
+  data-identity with case 1 and asserts NO respiratory readout
+  (the respiratory surface was under parallel Milestone 53
+  construction; contrast case 6). No imaging link: an
+  `imaging_assessment` records that the series could not have
+  decided either question (no embolus or nodule label in either
+  subject's 104-label set — and the TAP series is not a CTPA in
+  any case), while the 24 rib labels and both series' lungs are
+  in field. No Theatre handoff, stated: the disposition is
+  discharge with safety-netting and a surveillance letter.
+  Ontology carries a recorded refusal: the costochondritis
+  search returns only Tietze syndrome (MONDO:0001858), defined
+  by the swellings this patient lacks (C51) — refused, and the
+  truth hypothesis carries Mondo null with the refusal recorded.
 - `attempts/` — learner attempts (boards + orders per stage). Case
   2's model learner is deliberately imperfect in one documented way:
   it anchors on a retained CBD stone (ERCP ordered as therapy at
@@ -254,11 +315,22 @@ debrief scored by stated rules.
   CTPA and after his own B-line-negative lung ultrasound — ordered
   to confirm the frame — retires it on the board: one scored
   event, a third installation shape (result-installed, after case
-  4's other-clinician and case 5's self-installed anchors).
+  4's other-clinician and case 5's self-installed anchors). Case
+  7's model learner anchors on pulmonary embolism — an anchor
+  installed mid-case by social pressure alone: she releases PE to
+  0.07 when the pathway completes at stage 2, then re-installs it
+  at 0.13 at stage 3 under a husband's "just do the scan, to be
+  safe" demand echoed by the covering colleague — a stage at
+  which no clinical finding of any kind arrives — and orders the
+  CTPA that is the anchor's purchase receipt; she re-walks the
+  pathway and commits the truth at 0.55 at stage 4: one scored
+  event, a fourth installation shape (social pressure, after case
+  4's clinician-frame, case 5's self-installed and case 6's
+  result-installed anchors).
 - `debriefs/` — generated by `tools/case_run.py` (one generic runner
   for every case since Milestone 22); independently recomputed by
   `tools/case_check.py` (parameterised over all cases, with per-case
-  profile sections; 10,298 checks at Milestone 48).
+  profile sections; 11,884 checks at Milestone 54).
 - `fhir/` — FHIR-shaped interchange export of the case (design/07);
   the case JSON is the source of truth and the checker fails the
   build if the export disagrees with it.

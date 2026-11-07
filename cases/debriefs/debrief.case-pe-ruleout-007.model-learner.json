@@ -1,0 +1,908 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "spo2_under_95": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 1
+    },
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE unlikely (two-tier)",
+     "total": 0
+    }
+   },
+   "hypothesis": "hyp.chest-wall-pain",
+   "mondo": null
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.pulmonary-embolism",
+    "learner_probability": 0.13,
+    "ruled_out_at_stage": 2,
+    "stage": 3,
+    "workbench_probability": 0.009883166213613206
+   }
+  ],
+  "attempt_id": "attempt.case-pe-ruleout-007.model-learner",
+  "case_id": "case.pe-ruleout.007",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "excludes must-not-miss hyp.acute-coronary-syndrome (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.ecg",
+    "time_min": 10
+   },
+   {
+    "basis": "excludes must-not-miss hyp.acute-coronary-syndrome (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.troponin",
+    "time_min": 20
+   },
+   {
+    "basis": "hyp.pulmonary-embolism crosses the rule-out line (0.1200 -> 0.0099)",
+    "classification": "discriminating",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.d-dimer",
+    "time_min": 30
+   },
+   {
+    "basis": "excludes must-not-miss hyp.pneumonia (unquantified pair)",
+    "classification": "safety-net",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.bloods",
+    "time_min": 20
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 8,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.ctpa",
+    "time_min": 45
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchor's mechanics are the fourth shape in this module's series. Case 4's was installed by another clinician before the case began; case 5's by the learner's own true history; case 6's by a test result mid-case. This one is installed by SOCIAL PRESSURE: a husband whose brother died of 'a clot' the previous year, asking in his wife's hearing why no scan has been done, and a covering colleague endorsing the demand. Note what the pressure exploits \u2014 not a wrong number but a true asymmetry: the cost of a missed embolism is vivid and narratable, the costs of the scan are statistical and deferred, and 'just to be safe' prices only one side. The consulted cohort prices the other side (C49): a median 10 mSv, contrast, and incidental findings requiring follow-up in 24% of scans \u2014 and this attempt collects all three line items, ending with a 7 mm nodule under two years of surveillance (C48). The recovery is the case's thesis: nothing at stage 4 re-argues the husband down. The discharge is written by re-walking the pathway \u2014 Wells 0.0 complete, PERC precondition met and positive on age alone, D-dimer below the age-adjusted cutoff \u2014 because a completed pathway, unlike a gestalt, can be re-walked in front of a frightened family. The scan decided nothing; the pathway, re-stated, decided everything.",
+   "description": "Stage 1: a defensible board \u2014 chest-wall pain leads (0.30) but embolism is held at 0.16, above the workbench's own 0.12, because a 62-year-old with chest pain and breathlessness deserves the pathway, not a gesture. Stage 2: the pathway completes \u2014 D-dimer below the age-adjusted cutoff, workbench embolism 0.0099, ruled out \u2014 and the learner's board moves the right way (truth 0.38, embolism down to 0.07). Stage 3: no clinical finding of any kind arrives; a family's grief and a colleague's shrug arrive instead, and the learner's embolism probability nearly doubles to 0.13 \u2014 over the anchoring line, against a hypothesis the workbench retired a stage earlier \u2014 and he orders the scan. Stage 4: the scan is negative, the learner commits correctly (truth 0.55, embolism 0.04), and the only new medical fact in the entire attempt is an incidental nodule nobody was looking for.",
+   "reactions": "Nothing the learner ordered at stage 1 was wrong \u2014 the panel is the right panel, and the D-dimer in a PERC-positive, PE-unlikely patient is the pathway's own next step. The failure is at stage 3 and it is not interpretive in the earlier cases' sense: no number misled him. A frightened husband and a passing colleague did, and the learner bought certainty the pathway had already provided \u2014 at the consulted price of radiation, contrast, and a nodule that now follows the patient for two years.",
+   "summary": "Walk the pathway before you price the scan. A completed Wells of 0.0, a PERC that speaks and declines on a birthday, and a D-dimer below its age-adjusted cutoff exclude pulmonary embolism without imaging \u2014 that is what the instruments are for. 'Just to be safe' is not a risk assessment: it counts the miss and not the radiation, the contrast, or the incidental finding that follows the patient home. When the pressure comes \u2014 and it comes from love as often as from error \u2014 the answer is not a stronger opinion; it is the pathway, re-walked out loud."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "spo2_under_95": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 1
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE unlikely (two-tier)",
+      "total": 0
+     }
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.18,
+     "hyp.chest-wall-pain": 0.3,
+     "hyp.other-unspecified": 0.18,
+     "hyp.pneumonia": 0.12,
+     "hyp.pneumothorax": 0.06,
+     "hyp.pulmonary-embolism": 0.16
+    },
+    "learner_brier": 0.5984,
+    "learner_probability_on_truth": 0.3,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.chest-wall-pain",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "spo2_under_95": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 1
+    },
+    "stage": 1,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE unlikely (two-tier)",
+     "total": 0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.14,
+     "hyp.chest-wall-pain": 0.34,
+     "hyp.other-unspecified": 0.28,
+     "hyp.pneumonia": 0.08,
+     "hyp.pneumothorax": 0.04,
+     "hyp.pulmonary-embolism": 0.12
+    },
+    "workbench_brier": 0.556,
+    "workbench_probability_on_truth": 0.34,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.chest-wall-pain"
+   },
+   {
+    "criteria": {
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "spo2_under_95": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 1
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE unlikely (two-tier)",
+      "total": 0
+     }
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.16,
+     "hyp.chest-wall-pain": 0.38,
+     "hyp.other-unspecified": 0.24,
+     "hyp.pneumonia": 0.11,
+     "hyp.pneumothorax": 0.04,
+     "hyp.pulmonary-embolism": 0.07
+    },
+    "learner_brier": 0.4862,
+    "learner_probability_on_truth": 0.38,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.chest-wall-pain",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "spo2_under_95": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 1
+    },
+    "stage": 2,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE unlikely (two-tier)",
+     "total": 0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.1575,
+     "hyp.chest-wall-pain": 0.3825,
+     "hyp.other-unspecified": 0.315,
+     "hyp.pneumonia": 0.09,
+     "hyp.pneumothorax": 0.045,
+     "hyp.pulmonary-embolism": 0.0099
+    },
+    "workbench_brier": 0.5155,
+    "workbench_probability_on_truth": 0.3825,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.chest-wall-pain"
+   },
+   {
+    "criteria": {
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "spo2_under_95": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 1
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE unlikely (two-tier)",
+      "total": 0
+     }
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.15,
+     "hyp.chest-wall-pain": 0.33,
+     "hyp.other-unspecified": 0.25,
+     "hyp.pneumonia": 0.1,
+     "hyp.pneumothorax": 0.04,
+     "hyp.pulmonary-embolism": 0.13
+    },
+    "learner_brier": 0.5624,
+    "learner_probability_on_truth": 0.33,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.chest-wall-pain",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "spo2_under_95": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 1
+    },
+    "stage": 3,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE unlikely (two-tier)",
+     "total": 0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.1575,
+     "hyp.chest-wall-pain": 0.3825,
+     "hyp.other-unspecified": 0.315,
+     "hyp.pneumonia": 0.09,
+     "hyp.pneumothorax": 0.045,
+     "hyp.pulmonary-embolism": 0.0099
+    },
+    "workbench_brier": 0.5155,
+    "workbench_probability_on_truth": 0.3825,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.chest-wall-pain"
+   },
+   {
+    "criteria": {
+     "perc_rule": {
+      "items": {
+       "age_50_or_over": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "exogenous_estrogen": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "pulse_100_or_over": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "spo2_under_95": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "surgery_trauma_4wk": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "unilateral_leg_swelling": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 8,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PERC positive \u2014 PE not excludable by PERC",
+      "total": 1
+     },
+     "wells_score": {
+      "items": {
+       "dvt_signs": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "haemoptysis": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "heart_rate_over_100": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "immobilisation_or_surgery": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "malignancy": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "prior_vte": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 12.5,
+      "not_assessed": [],
+      "partial": false,
+      "status": "PE unlikely (two-tier)",
+      "total": 0
+     }
+    },
+    "learner_board": {
+     "hyp.acute-coronary-syndrome": 0.1,
+     "hyp.chest-wall-pain": 0.55,
+     "hyp.other-unspecified": 0.2,
+     "hyp.pneumonia": 0.08,
+     "hyp.pneumothorax": 0.03,
+     "hyp.pulmonary-embolism": 0.04
+    },
+    "learner_brier": 0.2614,
+    "learner_probability_on_truth": 0.55,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.chest-wall-pain",
+    "perc_rule": {
+     "items": {
+      "age_50_or_over": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "exogenous_estrogen": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "pulse_100_or_over": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "spo2_under_95": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "surgery_trauma_4wk": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "unilateral_leg_swelling": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 8,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PERC positive \u2014 PE not excludable by PERC",
+     "total": 1
+    },
+    "stage": 4,
+    "wells_score": {
+     "items": {
+      "dvt_signs": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "haemoptysis": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "heart_rate_over_100": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "immobilisation_or_surgery": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "malignancy": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "prior_vte": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 12.5,
+     "not_assessed": [],
+     "partial": false,
+     "status": "PE unlikely (two-tier)",
+     "total": 0
+    },
+    "workbench_board": {
+     "hyp.acute-coronary-syndrome": 0.1575,
+     "hyp.chest-wall-pain": 0.3825,
+     "hyp.other-unspecified": 0.315,
+     "hyp.pneumonia": 0.09,
+     "hyp.pneumothorax": 0.045,
+     "hyp.pulmonary-embolism": 0.0099
+    },
+    "workbench_brier": 0.5155,
+    "workbench_probability_on_truth": 0.3825,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.chest-wall-pain"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 15,
+   "total_time_min": 125
+  },
+  "review": {
+   "delphi": "not convened",
+   "note": "Design/07's verification gates require a review block (>= 2 reviewers) before a case counts as library content, and design/10 applies the same dual-source + reviewer discipline project-wide. No reviewers exist for this project. The gate is recorded UNMET with an empty reviewer list, exactly as Milestones 17, 20, 29, 41, 43 and 48 recorded it; the case's content status stays dual-sourced-draft and its scores formative-only. Nothing in this file fills the gate in on paper.",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 no named independent expert reviewers exist for this project"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.pulmonary-embolism": 2
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.5984,
+    "2": 0.4862,
+    "3": 0.5624,
+    "4": 0.2614
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.3,
+    "2": 0.38,
+    "3": 0.33,
+    "4": 0.55
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 0,
+    "discriminating": 1,
+    "non-contributory": 1,
+    "safety-net": 3
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.556,
+    "2": 0.5155,
+    "3": 0.5155,
+    "4": 0.5155
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing, progression, or clinical decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the case model by stated rules (cases/parameters.json); no composite score is computed, because design/07 defines components (Brier-style calibration, anchoring, evidence quality) and no weights \u2014 inventing weights would violate the precision law. Calibration proper needs a case series; seven cases now exist and are still not a calibration series \u2014 the debrief says so."
+  }
+ }
+}
