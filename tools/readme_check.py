@@ -32,7 +32,7 @@ Sections:
       compared; FAIL count must be 0).
   R10 Milestone index: a row for every milestone 1..50 plus the
       Milestone 7 fix, each naming a file that exists; every
-      MILESTONE-*.md in the root has a row.
+      MILESTONE-*.md in the milestones/ folder has a row.
   R11 File index: the README's per-directory file lists vs the
       tracked set regenerated under the documented exclusion rule
       (adopted source binaries, build output, and regenerable
@@ -349,12 +349,13 @@ report(v == npass and nfail == 0, "R9 native verify assertion counts == its prin
 
 # ---------------------------------------------------------------- R10
 disk_ms = sorted(int(re.match(r"MILESTONE-(\d+)\.md", f).group(1))
-                 for f in os.listdir(ROOT) if re.match(r"MILESTONE-\d+\.md", f))
+                 for f in os.listdir(os.path.join(ROOT, "milestones"))
+                 if re.match(r"MILESTONE-\d+\.md", f))
 readme_ms = sorted(int(x) for x in re.findall(r"\| (\d+) \| `MILESTONE-\d+\.md`", README))
 report(readme_ms == disk_ms, "R10 milestone index rows == MILESTONE-*.md on disk",
        f"README rows {len(readme_ms)} vs disk {len(disk_ms)}")
 report("| 7 (fix) | `MILESTONE-7-FIX.md`" in README and
-       os.path.exists(os.path.join(ROOT, "MILESTONE-7-FIX.md")),
+       os.path.exists(os.path.join(ROOT, "milestones", "MILESTONE-7-FIX.md")),
        "R10 Milestone 7 fix row present, file exists")
 
 # ---------------------------------------------------------------- R11
