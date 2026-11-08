@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""ANATOMICA theatre checker (Milestones 17 + 28 + 42 + 44 + 49 + 56) —
-independent validation of the theatre module's six procedures.
+"""ANATOMICA theatre checker (Milestones 17 + 28 + 42 + 44 + 49 + 56 + 62) —
+independent validation of the theatre module's seven procedures.
 
 Recomputes, from the data files alone (never from the Rust code):
   1. procedure census (phases / steps / microsteps / required set)
@@ -19,7 +19,7 @@ Recomputes, from the data files alone (never from the Rust code):
   7. scoring arithmetic in every emitted debrief JSON, recomputed
      from the debrief's own components; verdict/fail consistency;
      engine loss vs event-integral cross-check agreement
-  8. trace-specific expectations for the six procedures (the Stewart-Way
+  8. trace-specific expectations for the seven procedures (the Stewart-Way
      class III injury in chole trace-02, the 67-microstep required
      set in trace-04, the bailout in 05; the cecal injury in appy
      trace-08, the configuration required sets in 06/07/09/10; the
@@ -30,7 +30,11 @@ Recomputes, from the data files alone (never from the Rust code):
      peritoneal closure in 25; the recurrent laryngeal nerve injury
      in thyroid trace-27, the variant and scenario required sets in
      28/29, the computed hypocalcemia in 30, and the absence
-     discipline the thyroid gate resolutions rely on)
+     discipline the thyroid gate resolutions rely on; the
+     perforation in endoscopy trace-32, the scored misclassification
+     and monotherapy rebleedings in 33/34, the Dieulafoy variant
+     sets in 35/36, the computed aspiration in 37, and the absence
+     discipline the endoscopy gate resolutions rely on)
   9. parameter discipline: cited/calibrated parameters name a source
      that exists; verify-flagged parameters are counted and listed
 
@@ -84,6 +88,7 @@ PROCEDURES = [
     ("proc.ulnar-decompression.json", 9),
     ("proc.lap-inguinal-hernia.json", 9),
     ("proc.thyroidectomy.total.json", 9),
+    ("proc.upper-gi-endoscopy.json", 9),
 ]
 
 
@@ -227,7 +232,7 @@ def main():
     for fn in all_names:
         d = load(os.path.join(debriefs_dir, fn))
         debriefs_by_proc.setdefault(d["procedure_id"], []).append((fn, d))
-    ok(len(all_names) == 30, f"thirty debriefs emitted, five per procedure (found {len(all_names)})")
+    ok(len(all_names) == 37, f"thirty-seven debriefs emitted across seven procedures (found {len(all_names)})")
 
     by_trace = {}
     for fname, expected_phases in PROCEDURES:
@@ -529,6 +534,79 @@ def main():
        "trace-30: the only omission is the right parathyroid account, and it is scored")
     ok(t30.get("verdict") == "PASS" and t30.get("management", {}).get("points") == 5,
        "trace-30: a postoperative consequence, managed at dp6 — not a failed attempt")
+
+    # -- upper GI endoscopy (Milestone 62) --
+    # The register's absences, probed against the Body Model data
+    # (all_data_ids was collected for the carpal block above): no
+    # ulcer, Dieulafoy, Mallory-Weiss or varices record exists
+    # anywhere — the gate's lesions are endoscopic findings, not
+    # records — while the organs, the duodenal lumen, the
+    # gastroduodenal artery and the trachea its consequences
+    # resolve onto genuinely do.
+    ok(not any("ulcer" in i.lower() or "dieulafoy" in i.lower()
+               or "mallory" in i.lower() or "varic" in i.lower() for i in all_data_ids),
+       "no ulcer, Dieulafoy, Mallory-Weiss or varices record exists in the Body Model data (the absence notes are honest)")
+    ok("dig.oesophagus" in all_data_ids and "dig.stomach" in all_data_ids
+       and "dig.duodenum" in all_data_ids and "canal.duodenum" in all_data_ids
+       and "artery.gastroduodenal-artery" in all_data_ids
+       and "airway.trachea" in all_data_ids,
+       "oesophagus, stomach, duodenum, gastroduodenal artery and trachea genuinely present (register records resolve)")
+
+    t31 = by_trace.get("trace-31-endo-clean", {})
+    ok(t31.get("checklist", {}).get("pct") == 100.0 and t31.get("checklist", {}).get("required") == 27
+       and t31.get("safety_gate", {}).get("points") == 4,
+       "trace-31: full checklist (27 required) and full gate score")
+    ok(t31.get("process", {}).get("points") == 4,
+       "trace-31: process 4/5 — no prophylaxis act exists in this procedure's consulted pathway (T49, T50), the ceiling is by design")
+    ok(t31.get("errors") == [] and t31.get("complications") == [],
+       "trace-31: the clean attempt carries no errors and computes no complications")
+    t32 = by_trace.get("trace-32-endo-treat-before-classification", {})
+    pf = [c for c in t32.get("complications", []) if c["kind"] == "perforation"]
+    ok(len(pf) == 1 and pf[0]["resolved_structure"] == "canal.duodenum",
+       "trace-32: the blind therapy computes a perforation on the duodenum (a documented record)")
+    ok(t32.get("failed_at_s") == 1080.0, "trace-32: fails at the clip (t=1080s)")
+    ok(t32.get("verdict") == "FAIL" and t32.get("management", {}).get("points") == 5,
+       "trace-32: exemplary management (5/5) does not rescue the verdict")
+    ok(t32.get("checklist", {}).get("missing") == ["m3.2", "m4.1", "m4.2"],
+       "trace-32: the omissions are exactly the classification and the pause pair")
+    t33 = by_trace.get("trace-33-endo-misclassification", {})
+    rb = [c for c in t33.get("complications", []) if c["kind"] == "rebleeding"]
+    ok(len(rb) == 1 and rb[0]["resolved_structure"] == "lesion.peptic-ulcer",
+       "trace-33: the untreated true IIa computes rebleeding on the lesion")
+    ok(any(e["id"] == "err.misclassification" for e in t33.get("errors", []))
+       and any(e["id"] == "err.high-risk-untreated" for e in t33.get("errors", [])),
+       "trace-33: the wrong declaration and the untreated truth are both scored")
+    ok(t33.get("verdict") == "PASS" and t33.get("management", {}).get("points") == 5,
+       "trace-33: a post-procedure consequence, managed at dp4 — not a failed attempt")
+    t34 = by_trace.get("trace-34-endo-epinephrine-monotherapy", {})
+    rb = [c for c in t34.get("complications", []) if c["kind"] == "rebleeding"]
+    ok(len(rb) == 1 and any(e["id"] == "err.epinephrine-monotherapy" for e in t34.get("errors", [])),
+       "trace-34: epinephrine alone on a high-risk lesion computes rebleeding")
+    ok(t34.get("verdict") == "PASS" and t34.get("management", {}).get("points") == 5,
+       "trace-34: scored as the prohibited configuration, managed at dp4 — not a failed attempt")
+    t35 = by_trace.get("trace-35-endo-dieulafoy", {})
+    ok(t35.get("checklist", {}).get("required") == 28 and t35.get("checklist", {}).get("pct") == 100.0
+       and t35.get("verdict") == "PASS" and t35.get("errors") == [],
+       "trace-35: Dieulafoy configuration requires 28 (artery search added) at 100% and passes clean")
+    t36 = by_trace.get("trace-36-endo-dieulafoy-missed", {})
+    hem = [c for c in t36.get("complications", []) if c["kind"] == "hemorrhage"]
+    ok(len(hem) == 1 and hem[0]["resolved_structure"] == "lesion.dieulafoy"
+       and abs(hem[0].get("loss_ml", 0) - 1500.0) < 5.0,
+       "trace-36: the missed lesion's haemorrhage is 300 s at the 5.0 mL/s placeholder rate (1500 mL)")
+    ok(t36.get("failed_at_s") == 1380.0 and t36.get("verdict") == "FAIL",
+       "trace-36: fails at the completion survey (t=1380s)")
+    ok(t36.get("checklist", {}).get("missing") == ["m3.3"]
+       and t36.get("management", {}).get("points") == 5,
+       "trace-36: the only omission is the artery search; exemplary management does not rescue the verdict")
+    t37 = by_trace.get("trace-37-endo-airway-unprotected", {})
+    asp = [c for c in t37.get("complications", []) if c["kind"] == "aspiration"]
+    ok(len(asp) == 1 and asp[0]["resolved_structure"] == "airway.trachea",
+       "trace-37: sedation over the unprotected airway computes aspiration on the trachea")
+    ok(t37.get("checklist", {}).get("required") == 28 and t37.get("checklist", {}).get("pct") == 100.0
+       and any(e["id"] == "err.unprotected-airway" for e in t37.get("errors", [])),
+       "trace-37: the hematemesis configuration requires 28 (airway protection inserted) — performed late, at 100%, with the error standing")
+    ok(t37.get("verdict") == "PASS" and t37.get("management", {}).get("points") == 5,
+       "trace-37: a computed adverse event, recognised and managed — not a failed attempt")
 
     print("\n== 9. parameter discipline ==")
     verify = []

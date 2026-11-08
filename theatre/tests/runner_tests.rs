@@ -188,6 +188,7 @@ fn shipped_traces_meet_their_expectations() {
     let (ulnar, _, _) = load_ulnar();
     let (hernia, _, _) = load_hernia();
     let (thyroid, _, _) = load_thyroid();
+    let (endo, _, _) = load_endo();
     let dir = root().join("traces");
     let mut paths: Vec<PathBuf> = std::fs::read_dir(&dir)
         .unwrap()
@@ -195,7 +196,7 @@ fn shipped_traces_meet_their_expectations() {
         .filter(|p| p.extension().map(|x| x == "json").unwrap_or(false))
         .collect();
     paths.sort();
-    assert_eq!(paths.len(), 30, "thirty shipped traces (five per procedure)");
+    assert_eq!(paths.len(), 37, "thirty-seven shipped traces (five per procedure to Milestone 56; seven for the endoscopy at Milestone 62)");
     for p in &paths {
         let tr = Trace::load(p).unwrap();
         let proc = match tr.procedure.as_deref() {
@@ -204,6 +205,7 @@ fn shipped_traces_meet_their_expectations() {
             Some("proc.ulnar-decompression") => &ulnar,
             Some("proc.lap-inguinal-hernia") => &hernia,
             Some("proc.thyroidectomy.total") => &thyroid,
+            Some("proc.upper-gi-endoscopy") => &endo,
             _ => &chole,
         };
         let d = run_attempt(proc, &tp, &phys, &tr).unwrap();
@@ -1246,6 +1248,14 @@ fn load_thyroid() -> (Procedure, TheatreParams, PhysParams) {
     (proc, tp, phys)
 }
 
+fn load_endo() -> (Procedure, TheatreParams, PhysParams) {
+    let r = root();
+    let proc = Procedure::load(&r.join("procedures/proc.upper-gi-endoscopy.json")).unwrap();
+    let tp = TheatreParams::load(&r.join("parameters.json")).unwrap();
+    let phys = PhysParams::load().unwrap();
+    (proc, tp, phys)
+}
+
 fn thyroid_trace(
     id: &str,
     variant: Option<&str>,
@@ -1571,4 +1581,150 @@ fn thyroid_rln_repair_by_referral_plans_without_control() {
     assert_eq!(mg.control, 0, "referral is not control: the repair microstep was not performed");
     assert_eq!(mg.plan, 1, "immediate referral is a definitive plan");
     assert_eq!(mg.points, 4);
+}
+
+// ---------------------------------------------------------------------------
+// Upper GI endoscopy (Milestone 62)
+// ---------------------------------------------------------------------------
+
+fn endo_trace(
+    id: &str,
+    variant: Option<&str>,
+    severity: Option<&str>,
+    lesion: Option<&str>,
+    actions: Vec<Action>,
+) -> Trace {
+    Trace {
+        id: id.into(),
+        name: id.into(),
+        procedure: Some("proc.upper-gi-endoscopy".into()),
+        case: CaseSpec {
+            variant: variant.map(|s| s.to_string()),
+            severity: severity.map(|s| s.to_string()),
+            lesion: lesion.map(|s| s.to_string()),
+            ..Default::default()
+        },
+        expect_verdict: String::new(),
+        actions,
+    }
+}
+
+fn run_endo(tr: &Trace) -> Debrief {
+    let (proc, tp, phys) = load_endo();
+    run_attempt(&proc, &tp, &phys, tr).unwrap()
+}
+
+fn declare(t: f64, choice: &str) -> Action {
+    Action { id: Some("dp3".into()), choice: Some(choice.into()), ..act(t, "decision") }
+}
+
+/// The gate demonstrated and declared, pause taken: the shared
+/// prefix of the therapy-judgment probes.
+fn endo_gate_prefix(declared: &str) -> Vec<Action> {
+    vec![
+        ms(60.0, "m0.1"),
+        ms(120.0, "m0.2"),
+        ms(180.0, "m1.2"), // crit3: the sedation account
+        ms(240.0, "m3.1"), // crit1: source identified
+        ms(300.0, "m3.2"), // crit2: lesion classified
+        declare(360.0, declared),
+        ms(420.0, "m4.1"), // the pre-therapy pause
+    ]
+}
+
+#[test]
+fn endo_treat_with_classification_undeclared_fails() {
+    // Both demonstrations are made, but no classification is
+    // declared at dp3: there is no record for the therapy to key
+    // on, and the clip resolves as therapy before classification.
+    let mut a = endo_gate_prefix("forrest-iia");
+    a.remove(5); // drop the dp3 declaration
+    a.push(ms(480.0, "m5.3"));
+    let d = run_endo(&endo_trace("probe-endo-undeclared", None, None, Some("duodenal-ulcer:iia"), a));
+    assert_eq!(d.verdict, "FAIL");
+    assert_eq!(d.failed_at_s, Some(480.0));
+    assert!(d.errors.iter().any(|e| e.id == "err.treat-before-classification"));
+    let pf = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "perforation")
+        .expect("blind therapy computes a perforation");
+    assert_eq!(pf.resolved_structure.as_deref(), Some("canal.duodenum"));
+}
+
+#[test]
+fn endo_epinephrine_alone_on_visible_vessel_rebleeds() {
+    let mut a = endo_gate_prefix("forrest-iia");
+    a.push(ms(480.0, "m5.2")); // epinephrine, and nothing else
+    let d = run_endo(&endo_trace("probe-endo-monotherapy", None, None, Some("duodenal-ulcer:iia"), a));
+    assert_eq!(d.verdict, "PASS", "monotherapy is a scored departure, not a failed attempt");
+    assert!(d.errors.iter().any(|e| e.id == "err.epinephrine-monotherapy"));
+    assert!(d.complications.iter().any(|c| c.kind == "rebleeding"));
+}
+
+#[test]
+fn endo_therapy_on_clean_base_is_not_indicated() {
+    let mut a = endo_gate_prefix("forrest-iii");
+    a.push(ms(480.0, "m5.3")); // a clip on a clean-based ulcer
+    let d = run_endo(&endo_trace("probe-endo-low-risk-treated", None, None, Some("duodenal-ulcer:iii"), a));
+    assert_eq!(d.verdict, "PASS");
+    assert!(d.errors.iter().any(|e| e.id == "err.therapy-not-indicated"));
+    assert!(d.complications.is_empty(), "the departure is the exposure itself; nothing is computed");
+}
+
+#[test]
+fn endo_clot_therapy_keys_on_clot_removal() {
+    // Therapy straight onto an adherent clot: the underlying
+    // stigmata were never exposed, and the act is scored.
+    let mut a = endo_gate_prefix("forrest-iib");
+    a.push(ms(480.0, "m5.3"));
+    let d = run_endo(&endo_trace("probe-endo-clot-skipped", None, None, Some("duodenal-ulcer:iib"), a));
+    assert!(d.errors.iter().any(|e| e.id == "err.clot-not-addressed"));
+    // The same therapy after clot removal: no error.
+    let mut a = endo_gate_prefix("forrest-iib");
+    a.push(ms(480.0, "m5.1"));
+    a.push(ms(540.0, "m5.3"));
+    let d = run_endo(&endo_trace("probe-endo-clot-removed", None, None, Some("duodenal-ulcer:iib"), a));
+    assert!(!d.errors.iter().any(|e| e.id == "err.clot-not-addressed"));
+}
+
+#[test]
+fn endo_dieulafoy_without_mechanical_therapy_rebleeds() {
+    let mut a = endo_gate_prefix("dieulafoy-lesion");
+    a.insert(5, ms(350.0, "m3.3")); // the artery search, before the declaration
+    a.push(ms(480.0, "m5.2")); // epinephrine only: suboptimal for this lesion
+    let d = run_endo(&endo_trace(
+        "probe-endo-dieulafoy-monotherapy",
+        Some("variant.dieulafoy-lesion"),
+        None,
+        Some("dieulafoy:gastric"),
+        a,
+    ));
+    assert_eq!(d.verdict, "PASS");
+    assert!(d.errors.iter().any(|e| e.id == "err.substandard-modality"));
+    assert!(d.complications.iter().any(|c| c.kind == "rebleeding"));
+}
+
+#[test]
+fn endo_hematemesis_sedation_before_protection_computes_aspiration() {
+    // The scenario makes airway protection (m1.3) required;
+    // sedation taken before it computes the aspiration, and the
+    // late protection does not un-compute it.
+    let a = vec![ms(60.0, "m0.1"), ms(120.0, "m0.2"), ms(180.0, "m1.2"), ms(240.0, "m1.3")];
+    let d = run_endo(&endo_trace(
+        "probe-endo-airway",
+        None,
+        Some("ongoing-hematemesis"),
+        Some("duodenal-ulcer:iia"),
+        a,
+    ));
+    assert_eq!(d.verdict, "PASS", "aspiration is a computed adverse event, not a failed attempt");
+    assert!(d.errors.iter().any(|e| e.id == "err.unprotected-airway"));
+    let asp = d
+        .complications
+        .iter()
+        .find(|c| c.kind == "aspiration")
+        .expect("sedation over the unprotected airway computes aspiration");
+    assert_eq!(asp.resolved_structure.as_deref(), Some("airway.trachea"));
+    assert_eq!(d.checklist.required, 28, "the scenario inserts m1.3 into the required set");
 }

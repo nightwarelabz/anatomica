@@ -1,0 +1,972 @@
+{
+ "procedure": {
+  "authority_basis": "Authored by cognitive task analysis against the consulted endoscopy literature listed in theatre/parameters.json: the European Society of Gastrointestinal Endoscopy's 2021 nonvariceal upper GI hemorrhage guideline (T49), which supplies the procedure's frame \u2014 hemodynamic assessment and resuscitation first, Glasgow\u2013Blatchford stratification, a restrictive transfusion strategy, early (\u2264 24 h, not \u2264 12 h) endoscopy, the Forrest classification in all peptic ulcer hemorrhage, combination therapy for active bleeding, the epinephrine-monotherapy prohibition, high-dose PPI after hemostasis, no routine second-look endoscopy, and the recurrent-bleeding sequence (repeat endoscopy with a cap-mounted clip considered, then transcatheter embolization, then surgery); the American College of Gastroenterology's 2021 upper GI and ulcer bleeding guideline (T50), concordant on every point the gate turns on \u2014 therapy for spurting, oozing and nonbleeding visible vessels, epinephrine never alone, high-dose PPI for three days, repeat endoscopy preferred over surgery or embolization for rebleeding \u2014 and honestly divergent on two (no recommendation for or against pre-endoscopy PPI; none for or against therapy of an irrigation-resistant adherent clot, where T49 suggests clot removal and treatment of the exposed stigmata: the procedure follows T49 there and records the divergence rather than resolving it by assertion); the Forrest classification with its untreated natural history (T51), which prices the gate's consequences (further bleeding without therapy: Ia/Ib 55%, IIa 43%, IIb 22%, IIc 10%, III 5%); the ASGE adverse-events guideline for EGD (T52), which grounds the procedure's two structural complications (diagnostic perforation \u2264 0.03%, rising with therapy; cardiopulmonary and sedation-related events the largest share of adverse events, aspiration among them); the ASGE sedation and anesthesia guideline (T53), which supplies the airway\u2013sedation account (monitoring set, capnography, rescue capability, anesthesia assistance for high-risk and therapeutic cases); and the Dieulafoy case-series and literature review (T54) for the authored variant. The gate is the specialty's own standard reorganised, not an invention: because the Forrest classification drives therapy \u2014 the same lesion is treated, treated differently, or correctly left alone depending on its stigmata \u2014 identification and classification are demonstrated before any therapy act, exactly as the house's other procedures demonstrate their accounts before any division. A gastric ulcer is not a variant of this procedure: it is the same lesion class under the same Forrest discipline, and the scenario names the site (the case field carries duodenal-ulcer or gastric-ulcer) while the gate stays site-independent. Variceal bleeding is outside the procedure's scope altogether (see the register's scope-exclusion entry): this procedure is authored for nonvariceal bleeding, the scope of its governing guideline (T49).",
+  "decision_points": [
+   {
+    "anchor": "After microstep m0.8 (timing set, before instrumentation).",
+    "choices": [
+     {
+      "effect": "Proceed to sedation, airway and scope passage on the early (\u2264 24 h) pathway.",
+      "id": "proceed-endoscopy",
+      "label": "Proceed with endoscopy",
+      "scoring": "Neutral in itself; the attempt's required set follows the procedure actually performed."
+     },
+     {
+      "effect": "Bailout: stop before instrumentation and transfer \u2014 the correct move when the survey instead finds variceal bleeding (outside this procedure's scope) or when rescue cover is absent.",
+      "id": "abort-refer",
+      "label": "Abort and refer to a centre with interventional endoscopy, TAE and surgical cover",
+      "scoring": "Bailout-positive per design/05: choosing a bailout when findings warrant is scored positively, never as failure."
+     }
+    ],
+    "id": "dp1",
+    "question": "Do the findings, the resuscitation state and the plan permit proceeding to endoscopy?"
+   },
+   {
+    "anchor": "After microstep m1.1 (airway and aspiration-risk assessment).",
+    "choices": [
+     {
+      "effect": "The airway is protected before sedation depth and instrumentation (enacted by m1.3): the plan the ongoing-hematemesis configuration requires.",
+      "id": "ga-endotracheal-intubation",
+      "label": "General anesthesia with endotracheal intubation (protected airway)",
+      "scoring": "The credited plan where aspiration risk is high; in the authored hematemesis scenario it is the only plan under which sedation (m1.2) computes no aspiration."
+     },
+     {
+      "effect": "Sedation to a moderate depth with pulse oximetry, ECG, intermittent blood pressure and capnography available, personnel dedicated to monitoring (T53).",
+      "id": "moderate-sedation-monitored",
+      "label": "Moderate sedation with the full monitoring set",
+      "scoring": "The standard plan for the standard configuration. In the ongoing-hematemesis scenario it leaves the airway unprotected, and sedation performed on it computes aspiration (err.unprotected-airway)."
+     },
+     {
+      "effect": "Bailout: stop and refer to a service with anesthesia cover for a protected-airway procedure.",
+      "id": "abort-refer",
+      "label": "Abort and refer",
+      "scoring": "Bailout-positive per design/05."
+     }
+    ],
+    "id": "dp2",
+    "question": "What is the airway and sedation plan for this patient's aspiration risk?"
+   },
+   {
+    "anchor": "After microstep m3.2 (the lesion classified).",
+    "choices": [
+     {
+      "effect": "Declared class Ia.",
+      "id": "forrest-ia",
+      "label": "Forrest Ia \u2014 active spurting",
+      "scoring": "The declaration is recorded; therapy is scored against the scenario truth, not the declaration \u2014 a declaration in the wrong treatment group scores err.misclassification at scoring."
+     },
+     {
+      "effect": "Declared class Ib.",
+      "id": "forrest-ib",
+      "label": "Forrest Ib \u2014 active oozing",
+      "scoring": "As forrest-ia."
+     },
+     {
+      "effect": "Declared class IIa.",
+      "id": "forrest-iia",
+      "label": "Forrest IIa \u2014 nonbleeding visible vessel",
+      "scoring": "As forrest-ia."
+     },
+     {
+      "effect": "Declared class IIb.",
+      "id": "forrest-iib",
+      "label": "Forrest IIb \u2014 adherent clot",
+      "scoring": "As forrest-ia; a IIb declaration routes therapy through clot removal first (m5.1)."
+     },
+     {
+      "effect": "Declared class IIc.",
+      "id": "forrest-iic",
+      "label": "Forrest IIc \u2014 flat pigmented spot",
+      "scoring": "As forrest-ia; IIc is a low-risk class \u2014 therapy delivered on it scores err.therapy-not-indicated."
+     },
+     {
+      "effect": "Declared class III.",
+      "id": "forrest-iii",
+      "label": "Forrest III \u2014 clean base",
+      "scoring": "As forrest-iic."
+     },
+     {
+      "effect": "Declared lesion: the variant's caliber-persistent artery (available in any configuration; in the standard configuration it is simply a wrong declaration).",
+      "id": "dieulafoy-lesion",
+      "label": "Dieulafoy lesion \u2014 caliber-persistent artery",
+      "scoring": "In the Dieulafoy configuration this is the true declaration, and mechanical therapy on it is the credited treatment (T54)."
+     },
+     {
+      "effect": "Bailout: withdraw and terminate \u2014 the move when the field cannot be made safe for therapy.",
+      "id": "abort-terminate-procedure",
+      "label": "Abort: terminate the procedure before therapy",
+      "scoring": "Bailout-positive per design/05. Therapy attempted after this declaration, with no classification standing, resolves as err.treat-before-classification."
+     }
+    ],
+    "id": "dp3",
+    "question": "The lesion is declared, for the record the therapy keys on:"
+   },
+   {
+    "anchor": "After microstep m7.4 (the rebleeding plan stated).",
+    "choices": [
+     {
+      "effect": "A second endoscopic attempt at hemostasis, a cap-mounted clip considered (T49); the move both guidelines put first (T49; T50).",
+      "id": "repeat-endoscopy",
+      "label": "Repeat endoscopy with endoscopic therapy",
+      "scoring": "The definitive plan (management plan point) for a computed rebleeding or the missed-lesion haemorrhage."
+     },
+     {
+      "effect": "Embolization of the feeding vessel (the gastroduodenal artery for a duodenal lesion) without a second endoscopic attempt.",
+      "id": "tae-first",
+      "label": "Transcatheter angiographic embolization first",
+      "scoring": "No plan point: TAE is the sequence's second step, after a failed repeat endoscopy (T49); taking it first skips the step the specialty puts first."
+     },
+     {
+      "effect": "Operative control without a second endoscopic attempt.",
+      "id": "surgery-first",
+      "label": "Surgery first",
+      "scoring": "No plan point: surgery is indicated when TAE is not locally available or has failed (T49) \u2014 last in the sequence, not first."
+     },
+     {
+      "effect": "Bailout of the intervention pathway: transfusion and monitoring without further hemostasis attempts.",
+      "id": "convert-supportive-only",
+      "label": "Convert to supportive care only",
+      "scoring": "No plan point: declared rebleeding after high-risk stigmata is an intervention problem in the specialty's sequence (T49; T51), and supportive care alone leaves the consulted untreated rates standing."
+     }
+    ],
+    "id": "dp4",
+    "question": "Rebleeding declares clinically after initially successful hemostasis: what is the first move?"
+   }
+  ],
+  "errors": [
+   {
+    "consequence": "Computed by the treat handler's gate resolution: the therapy is applied blind, and the attempt FAILS at the moment of the act, with a perforation computed onto the treated segment \u2014 the adverse event whose risk the adverse-events guideline records rising with therapeutic intervention (T52), taken here on a lesion that was never characterised. Regardless of all other scores (design/05 master rule).",
+    "definition": "Applying endoscopic therapy (injection, clip or thermal) to a lesion whose bleeding source has not been identified and localised (crit1), or whose Forrest classification has not been demonstrated and declared (crit2 / dp3): therapy decided before the classification that exists to decide it.",
+    "id": "err.treat-before-classification",
+    "severity": "critical-fail",
+    "source": "T49"
+   },
+   {
+    "consequence": "Computed by the microstep rules at the completion survey: the unaccounted artery declares itself as a haemorrhage, run through the physiology engine at the verify-flagged placeholder rate until controlled, and the attempt FAILS at that timestamp. The consulted series records that a first endoscopy reaches this diagnosis in 85% of cases (T54) \u2014 the miss is a known failure of the survey, which is why the search is a gate-level act in this configuration and not a courtesy.",
+    "definition": "Completing the survey (m6.2) in the Dieulafoy configuration without the caliber-persistent artery search (m3.3): the lesion was present, findable by its own search, and never accounted for \u2014 the account the gate holds in this configuration was never made.",
+    "id": "err.missed-variant",
+    "severity": "critical-fail",
+    "source": "T54"
+   },
+   {
+    "consequence": "Scored at completion, with the therapy actually delivered then judged against the truth: the misclassification itself is the departure, and its clinical weight is whatever the truth's own rules compute alongside it (rebleeding for an undertreated high-risk lesion; err.therapy-not-indicated for a treated low-risk one). The classification is to be used in all peptic ulcer hemorrhage precisely because therapy keys on it (T49).",
+    "definition": "The classification declared at dp3 differs from the scenario truth in treatment-relevant group (high-risk Ia/Ib/IIa; adherent clot IIb; low-risk IIc/III; the Dieulafoy lesion): the therapy decision was keyed to a class the lesion does not carry.",
+    "id": "err.misclassification",
+    "severity": "major",
+    "source": "T49"
+   },
+   {
+    "consequence": "Rebleeding computed at scoring, resolved onto the lesion: further bleeding without endoscopic therapy runs at 55% for Ia/Ib and 43% for IIa in the consulted tabulation (T51), and a Dieulafoy lesion left untreated is an artery left open (T54). Structural outcome: the rates are proportions of patients, not flows, so no volume is computed. Managed at dp4 by repeat endoscopy. Not a failed attempt: the consequence is post-procedure and the specialty's sequence answers it.",
+    "definition": "A lesion whose true stigmata are high-risk (Forrest Ia, Ib or IIa \u2014 or the Dieulafoy lesion) completes the procedure with no endoscopic therapy delivered: the stigmata both guidelines direct therapy at (T49; T50) were left to their natural history.",
+    "id": "err.high-risk-untreated",
+    "severity": "major",
+    "source": "T51"
+   },
+   {
+    "consequence": "Rebleeding computed at scoring, as for the untreated lesion: injection alone temporises and the vessel reopens \u2014 the consulted Dieulafoy series' recurrence pattern after injection-only therapy is the same shape (T54). Structural outcome, no volume computed (T51). Managed at dp4 by repeat endoscopy.",
+    "definition": "A high-risk lesion (Ia/Ib/IIa) treated with epinephrine injection and no second modality: the one therapy configuration both governing guidelines prohibit by name \u2014 epinephrine is not to be used as endoscopic monotherapy (T49, strong/high; T50, statement 10, strong).",
+    "id": "err.epinephrine-monotherapy",
+    "severity": "major",
+    "source": "T49"
+   },
+   {
+    "consequence": "Rebleeding computed at scoring: in the consulted series, early recurrence followed in two of three patients treated solely with epinephrine injection or argon plasma coagulation, against permanent hemostasis around 90% for mechanical therapy (T54). Structural outcome, no volume computed. Managed at dp4 by repeat endoscopy.",
+    "definition": "A Dieulafoy lesion treated without mechanical therapy: injection and/or thermal modalities delivered, but no clip (or band) occluding the caliber-persistent artery \u2014 the modalities the consulted review records as suboptimal for this lesion, against mechanical therapy as the most effective (T54).",
+    "id": "err.substandard-modality",
+    "severity": "major",
+    "source": "T54"
+   },
+   {
+    "consequence": "No complication is computed: the departure is the exposure itself \u2014 a treated clean base has taken on the therapeutic perforation and sedation burden (T52) for no benefit the specialty recognises. A scored major departure, not a failed attempt.",
+    "definition": "Endoscopic therapy delivered to a lesion whose true stigmata are low-risk (Forrest IIc flat pigmented spot or III clean base): lesions whose rebleeding risk (10% and 5% untreated, T51) the guidelines answer with no therapy at all (T49; T50).",
+    "id": "err.therapy-not-indicated",
+    "severity": "major",
+    "source": "T49"
+   },
+   {
+    "consequence": "No complication is computed by the error itself; it marks therapy applied over an unexamined base \u2014 if the clot hid high-risk stigmata, the truth's own rules (untreated / monotherapy) price what was actually delivered to them.",
+    "definition": "Therapy delivered to a Forrest IIb (adherent clot) lesion without the clot first being addressed \u2014 targeted irrigation and clot removal (m5.1) to expose the underlying stigmata: therapy was applied to a surface whose class underneath was never established (T49). (ACG records no recommendation for or against therapy of an irrigation-resistant clot, T50 \u2014 the divergence is carried in the procedure's authority basis; the scored act is treating through an unexamined clot, on which the classification-first discipline of the gate itself rules.)",
+    "id": "err.clot-not-addressed",
+    "severity": "major",
+    "source": "T49"
+   },
+   {
+    "consequence": "Aspiration computed at the sedation act, resolved onto the trachea: aspiration of gastric blood is a named sedation-related cardiopulmonary adverse event (T52), and cardiopulmonary events are the largest share of this procedure's adverse events. Structural outcome: no volume or gas-exchange trajectory is computed. Not a failed attempt \u2014 the catastrophe this gate's crit3 exists to prevent is priced as the major departure it is, and the airway protection performed late does not un-compute it.",
+    "definition": "Sedation administered (m1.2) in the ongoing-hematemesis configuration before the airway was protected (m1.3 not yet performed): sedation depth was taken over a stomach full of blood with the protective reflexes about to be suppressed and no secured airway (T53; T52).",
+    "id": "err.unprotected-airway",
+    "severity": "major",
+    "source": "T53"
+   },
+   {
+    "consequence": "A process deduction only; no complication is computed.",
+    "definition": "A WHO checklist phase (Sign In, Time Out or Sign Out) was not performed at its integration point.",
+    "id": "err.checklist-omission",
+    "severity": "process",
+    "source": "T6"
+   }
+  ],
+  "id": "proc.upper-gi-endoscopy",
+  "name": "Upper gastrointestinal endoscopy for acute upper GI bleeding (diagnostic and therapeutic)",
+  "phases": [
+   {
+    "id": "phase.0",
+    "name": "Planning, resuscitation and checklist",
+    "steps": [
+     {
+      "id": "step.0.1",
+      "microsteps": [
+       {
+        "id": "m0.1",
+        "instruments": [],
+        "label": "Review the indication and assess hemodynamic status immediately: acute upper gastrointestinal hemorrhage confirmed as the presentation; where hemodynamic instability exists, prompt intravascular volume replacement is begun, initially with crystalloid fluids, before any endoscopy is contemplated (T49, statement 1, strong recommendation)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.2",
+        "instruments": [],
+        "label": "Pre-endoscopy risk stratification with the Glasgow\u2013Blatchford Score: computed from the presentation's clinical and laboratory parameters; a score of 0\u20131 identifies the very-low-risk patient who can be managed as an outpatient, and this admitted bleeding patient is stratified above that line (T49, statement 4 / Main Recommendation 1, strong recommendation)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.3",
+        "instruments": [],
+        "label": "Transfusion strategy set before the procedure: a restrictive red-cell strategy \u2014 transfusion prompted at a hemoglobin threshold of \u2264 7 g/dL with a post-transfusion target of 7\u20139 g/dL, or \u2264 8 g/dL targeting \u2265 10 g/dL where acute or chronic cardiovascular disease stands (T49, statements 2\u20133, strong recommendations)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.4",
+        "instruments": [],
+        "label": "Consent review and team brief: perforation (\u2264 0.03% at diagnostic endoscopy, rising with therapy, T52), sedation-related cardiopulmonary events (T52, T53), the rebleeding rates by Forrest class that the findings may carry (55% Ia/Ib and 43% IIa untreated, T51), and the escalation sequence if hemostasis fails or bleeding recurs \u2014 repeat endoscopy, then transcatheter embolization, then surgery (T49, T50) \u2014 stated aloud",
+        "required": true,
+        "sources": [
+         "T49",
+         "T51",
+         "T52"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.sign-in",
+        "id": "m0.5",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Sign In",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m0.6",
+        "instruments": [],
+        "label": "Antithrombotic and culprit-drug review: antiplatelet and anticoagulant therapy identified with a resumption plan recorded \u2014 anticoagulation resumed as soon as bleeding is controlled, preferably within or soon after 7 days, on thromboembolic risk (T49); any culprit NSAID identified for the cause-directed plan at m7.3",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.time-out",
+        "id": "m0.7",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Time Out",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "anchors_decision": "dp1",
+        "id": "m0.8",
+        "instruments": [],
+        "label": "Timing set: endoscopy is performed early \u2014 within 24 hours of presentation, following hemodynamic resuscitation; urgent (\u2264 12 h) endoscopy is not pursued as a routine, patient outcomes not being improved by it (T49, Main Recommendations 3\u20134; T50)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Planning and checklist"
+     }
+    ]
+   },
+   {
+    "id": "phase.1",
+    "name": "Sedation, airway and scope passage",
+    "steps": [
+     {
+      "id": "step.1.1",
+      "microsteps": [
+       {
+        "anchors_decision": "dp2",
+        "id": "m1.1",
+        "instruments": [],
+        "label": "Airway and aspiration-risk assessment: hematemesis and gastric blood load, consciousness level, comorbidity and airway anatomy assessed, and the sedation plan chosen against that assessment \u2014 the assessment the dp2 decision is taken on (T53)",
+        "required": true,
+        "sources": [
+         "T53"
+        ],
+        "targets": [
+         "airway.trachea"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "demonstrates": "crit3",
+        "id": "m1.2",
+        "instruments": [
+         "inst.sedation-monitor"
+        ],
+        "label": "Sedation or anesthesia administered to the planned depth with the full monitoring set running: pulse oximetry, electrocardiography and intermittent blood pressure measurement, supplemental oxygen, capnography considered and available for deep sedation, and trained personnel dedicated to monitoring who can rescue a patient who becomes unresponsive or unable to protect the airway (T53). This act IS the airway\u2013sedation account (crit3): monitoring demonstrates the account; it does not substitute for the protection the assessed risk demands",
+        "required": true,
+        "sources": [
+         "T53"
+        ],
+        "targets": [
+         "airway.trachea"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m1.3",
+        "instruments": [],
+        "label": "Airway protection: general anesthesia induced and the trachea intubated before instrumentation, securing the airway against aspiration of gastric blood for the therapeutic procedure (T53: anesthesia assistance for high-risk, prolonged and therapeutic cases; T52: aspiration among the sedation-related adverse events). Required in the ongoing-hematemesis configuration, where the scenario inserts it into the attempt's required set; elective elsewhere",
+        "required": false,
+        "sources": [
+         "T52",
+         "T53"
+        ],
+        "targets": [
+         "airway.trachea"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m1.4",
+        "instruments": [
+         "inst.gastroscope",
+         "inst.bite-block"
+        ],
+        "label": "Bite block placed and the gastroscope passed under direct vision through the oesophagus into the stomach: no blind advancement, and no advancement against resistance \u2014 the perforation discipline of the instrument (T52)",
+        "required": true,
+        "sources": [
+         "T52"
+        ],
+        "targets": [
+         "dig.oesophagus",
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Sedation, airway and passage"
+     }
+    ]
+   },
+   {
+    "id": "phase.2",
+    "name": "Systematic survey",
+    "steps": [
+     {
+      "id": "step.2.1",
+      "microsteps": [
+       {
+        "id": "m2.1",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Oesophagus surveyed on passage: varices and a Mallory-Weiss tear sought and excluded by inspection \u2014 both are outside this nonvariceal procedure's remit (varices end it via the dp1 bailout; the tear is a named non-variant), and neither is treated under this gate (T49, scope)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.oesophagus"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m2.2",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Gastric survey: the stomach examined in full, including the retroflexed view of the fundus and cardia; retained blood and clot cleared by irrigation and suction so the mucosa is actually seen \u2014 an unexamined gastric pool is where a proximal lesser-curvature lesion hides (T54)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T54"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m2.3",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Duodenal survey: bulb and second part examined; the posterior bulb wall \u2014 the gastroduodenal artery's territory, and the wall whose ulcer erodes it \u2014 inspected deliberately, not in passing (T49; T51)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "canal.duodenum",
+         "artery.gastroduodenal-artery"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Survey of oesophagus, stomach and duodenum"
+     }
+    ]
+   },
+   {
+    "id": "phase.3",
+    "name": "Lesion identification and classification \u2014 the gate",
+    "steps": [
+     {
+      "id": "step.3.1",
+      "microsteps": [
+       {
+        "demonstrates": "crit1",
+        "id": "m3.1",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Bleeding source identified and localised: the culprit lesion seen and its site recorded \u2014 organ, wall and size \u2014 with the surveyed territory accounted for, so the lesion therapy will address is the lesion that is bleeding (crit1) (T49)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer",
+         "lesion.dieulafoy"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "anchors_decision": "dp3",
+        "demonstrates": "crit2",
+        "id": "m3.2",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Lesion classified by its Forrest stigmata before any therapy: spurting (Ia), oozing (Ib), nonbleeding visible vessel (IIa), adherent clot (IIb), flat pigmented spot (IIc) or clean base (III) \u2014 the classification is to be used in all patients with peptic ulcer hemorrhage, because therapy keys on it (crit2) (T49; T51)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T51"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "demonstrate"
+       },
+       {
+        "id": "m3.3",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Caliber-persistent artery search: the proximal stomach and lesser curvature washed and inspected vessel by vessel for the Dieulafoy configuration \u2014 an isolated protruding artery or adherent thrombus through a minute mucosal defect, in otherwise near-normal mucosa (T54). Required in the Dieulafoy configuration (the variant's required addition); the search is this configuration's crit1 completion",
+        "required": false,
+        "sources": [
+         "T54"
+        ],
+        "targets": [
+         "lesion.dieulafoy",
+         "dig.stomach"
+        ],
+        "verb": "identify"
+       }
+      ],
+      "name": "Identification and classification"
+     }
+    ]
+   },
+   {
+    "id": "phase.4",
+    "name": "Pre-therapy pause and plan",
+    "steps": [
+     {
+      "id": "step.4.1",
+      "microsteps": [
+       {
+        "fulfills": "pre-division-pause",
+        "id": "m4.1",
+        "instruments": [],
+        "label": "Pre-therapy pause: the declared classification is restated aloud and the therapy plan matched to it in the team's hearing \u2014 the modality set the class dictates, epinephrine never standing alone for a high-risk lesion (T49; T50) \u2014 and the rescue pathway (cap-mounted clip or topical hemostatic for refractory bleeding, T49; TAE and surgical cover beyond it) is confirmed available before the first therapy act",
+        "required": true,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m4.2",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Second look at the lesion before therapy: the base washed and the stigmata re-confirmed at close inspection; if washing changes the class \u2014 a clot lifting to show a vessel, a spot washing clean \u2014 the declaration at dp3 is corrected before therapy, never after it (T49; T51)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T51"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Pause and therapy plan"
+     }
+    ]
+   },
+   {
+    "id": "phase.5",
+    "name": "Endoscopic therapy",
+    "steps": [
+     {
+      "id": "step.5.1",
+      "microsteps": [
+       {
+        "id": "m5.1",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Adherent clot addressed first, where present: targeted irrigation and removal of the clot to expose the underlying stigmata, which are then treated on their own class (T49, the IIb recommendation; T50 records no recommendation for or against therapy of an irrigation-resistant clot \u2014 the divergence is carried, and therapy through an unexamined clot is what this act exists to prevent)",
+        "required": false,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "treat"
+       },
+       {
+        "id": "m5.2",
+        "instruments": [
+         "inst.injection-needle"
+        ],
+        "label": "Epinephrine injection: dilute epinephrine injected into and around the lesion for tamponade and vasoconstriction \u2014 a temporising modality that buys the field for definitive therapy and is never the whole of it: epinephrine injection is not used as monotherapy (T49, strong recommendation; T50, statement 10)",
+        "required": false,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "treat"
+       },
+       {
+        "id": "m5.3",
+        "instruments": [
+         "inst.endoscopic-clip"
+        ],
+        "label": "Mechanical therapy: through-the-scope clips applied across the vessel or lesion, occluding it directly \u2014 with epinephrine for the actively bleeding classes (T49, Main Recommendation 5), a definitive modality alone or combined for a visible vessel (T49, Main Recommendation 6; T50), and the effective modality for a Dieulafoy lesion (T54)",
+        "required": false,
+        "sources": [
+         "T49",
+         "T50",
+         "T54"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "treat"
+       },
+       {
+        "id": "m5.4",
+        "instruments": [
+         "inst.heater-probe"
+        ],
+        "label": "Contact thermal therapy: heater-probe or bipolar coaptive coagulation of the vessel \u2014 probe pressure tamponade, then thermal sealing (T49, Main Recommendation 6; T50, statement 8)",
+        "required": false,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "treat"
+       }
+      ],
+      "name": "Therapy, as the classification dictates"
+     }
+    ]
+   },
+   {
+    "id": "phase.6",
+    "name": "Hemostasis confirmation and completion survey",
+    "steps": [
+     {
+      "id": "step.6.1",
+      "microsteps": [
+       {
+        "id": "m6.1",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Hemostasis confirmed: the treated lesion observed under irrigation and over time, dry, with no ongoing bleeding from the treated site before the scope moves on (T49; T50)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m6.2",
+        "instruments": [
+         "inst.gastroscope"
+        ],
+        "label": "Completion survey: the surveyed territory re-examined for a second lesion before withdrawal \u2014 a bleeding admission can hold more than one lesion, and the treated one is not assumed to be the only one; in the Dieulafoy configuration this survey is where the unsearched-for artery declares the miss (T49; T54)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T54"
+        ],
+        "targets": [
+         "dig.stomach",
+         "canal.duodenum"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Confirmation and completion"
+     }
+    ]
+   },
+   {
+    "id": "phase.7",
+    "name": "Post-procedure management",
+    "steps": [
+     {
+      "id": "step.7.1",
+      "microsteps": [
+       {
+        "id": "m7.1",
+        "instruments": [],
+        "label": "High-dose proton pump inhibitor therapy after endoscopic hemostasis: 80 mg intravenous bolus then 8 mg/h infusion for 72 hours (T49); high-dose PPI, continuously or intermittently, for 3 days after successful hemostasis of high-risk stigmata (T50) \u2014 and likewise for adherent-clot stigmata not treated endoscopically (T49)",
+        "required": true,
+        "sources": [
+         "T49",
+         "T50"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.2",
+        "instruments": [],
+        "label": "Monitored setting with rebleeding surveillance: serial observations and hemoglobin through the high-risk rebleeding window, the team knowing the untreated-risk figures the lesion's class carries even after therapy (T51) and the plan at dp4 if bleeding declares",
+        "required": true,
+        "sources": [
+         "T49",
+         "T51"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m7.3",
+        "instruments": [],
+        "label": "Cause-directed plan recorded: the culprit drug stopped where one stands (the NSAID of the index presentation among them), the indication reviewed, and any interrupted antithrombotic therapy's resumption timed on thromboembolic risk (T49)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "anchors_decision": "dp4",
+        "id": "m7.4",
+        "instruments": [],
+        "label": "Rebleeding plan stated and handed over: on clinical evidence of rebleeding \u2014 repeat endoscopy with therapy first, a cap-mounted clip considered; after a failed second attempt, transcatheter embolization; surgery when embolization is unavailable or has failed (T49) \u2014 and NO routine second-look endoscopy is booked: scheduled re-examination without rebleeding is not recommended (T49, Main Recommendation 13)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Post-procedure management"
+     }
+    ]
+   },
+   {
+    "id": "phase.8",
+    "name": "Sign-out and disposition",
+    "steps": [
+     {
+      "id": "step.8.1",
+      "microsteps": [
+       {
+        "id": "m8.1",
+        "instruments": [],
+        "label": "Findings and therapy documented: the lesion, its site, the Forrest class as declared, the modalities delivered, and the hemostasis result \u2014 the record the rebleeding plan and any repeat procedure key on (T49)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "lesion.peptic-ulcer"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "fulfills": "who.sign-out",
+        "id": "m8.2",
+        "instruments": [],
+        "label": "WHO Surgical Safety Checklist: Sign Out",
+        "required": true,
+        "sources": [
+         "T6"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       },
+       {
+        "id": "m8.3",
+        "instruments": [],
+        "label": "Disposition set: monitored admission for treated and high-risk lesions; discharge reserved for the very-low-risk pathway \u2014 Glasgow\u2013Blatchford \u2264 1, or low-risk stigmata with stability \u2014 with the recurrent-bleeding warning given (T49)",
+        "required": true,
+        "sources": [
+         "T49"
+        ],
+        "targets": [
+         "dig.stomach"
+        ],
+        "verb": "inspect"
+       }
+      ],
+      "name": "Sign-out and disposition"
+     }
+    ]
+   }
+  ],
+  "review": {
+   "delphi": "not convened",
+   "recorded_reviewers": [],
+   "required_reviewers": 2,
+   "status": "UNMET \u2014 design/05 and design/10 require at least two named independent expert reviewers with Delphi sign-off before this procedure's content status can rise above dual-sourced-draft. No reviewers exist for this project; the gate is reported as unmet, never satisfied on paper."
+  },
+  "safety_gates": [
+   {
+    "criteria": [
+     {
+      "definition": "The bleeding source is found and localised: the culprit lesion seen, its site recorded (organ, wall, size), and the rest of the surveyed territory accounted for, so that the lesion therapy will address is the lesion that is bleeding. Endoscopy's first task in this guideline frame is diagnosis \u2014 the source identified before any management of it (T49). In the Dieulafoy configuration the account is only complete when the caliber-persistent artery search (m3.3) has been made, because that lesion hides in near-normal mucosa (T54). Demonstrated at m3.1.",
+      "id": "crit1",
+      "name": "Bleeding source identified and localised",
+      "source": "T49"
+     },
+     {
+      "definition": "The identified lesion is classified by its Forrest stigmata \u2014 Ia spurting, Ib oozing, IIa nonbleeding visible vessel, IIb adherent clot, IIc flat pigmented spot, III clean base \u2014 and the classification is declared at dp3 for the record the therapy keys on. The Forrest classification is to be used in all patients with peptic ulcer hemorrhage (T49), because it alone separates the lesions that receive therapy from those that must not, and the modalities each class requires (T49; T50); its strata carry the untreated natural history the consequences are priced from (T51). Demonstrated at m3.2, declared at dp3.",
+      "id": "crit2",
+      "name": "Lesion classified by Forrest stigmata before therapy",
+      "source": "T49"
+     },
+     {
+      "definition": "The airway and sedation account is made before instrumentation: aspiration risk assessed (hematemesis, gastric blood load, consciousness), the sedation plan chosen against that assessment \u2014 protected airway where the risk demands it \u2014 and sedation delivered with the full monitoring set running (pulse oximetry, ECG, intermittent blood pressure, capnography considered for deep sedation) by personnel able to rescue an unresponsive patient (T53). Cardiopulmonary and sedation-related events are the largest share of this procedure's adverse events, aspiration among them (T52). Demonstrated at m1.2; the ongoing-hematemesis configuration additionally requires the protection act itself (m1.3) before sedation.",
+      "id": "crit3",
+      "name": "Airway and sedation account made",
+      "source": "T53"
+     }
+    ],
+    "enforcement": "The engine evaluates the gate at every therapy act (the treat handler, on the divide handlers' pattern): a therapy act taken with crit1 or crit2 undemonstrated, or with no classification declared at dp3, resolves as err.treat-before-classification \u2014 the therapy is applied blind to a lesion whose class was never established, and the attempt FAILS at that timestamp with a perforation computed onto the treated segment (T52: the risk that rises with therapeutic intervention). crit3 is not therapy-blocking: its demonstration is the sedation act itself, and its absence is priced by the safety score and, in the ongoing-hematemesis configuration, by the unprotected-airway rule. After the gate, therapy is judged against the scenario truth at scoring, not against the declaration: a declared class that differs from the truth in treatment-relevant group scores err.misclassification, and the therapy actually delivered is then scored as the truth required \u2014 high-risk stigmata left untreated or treated with epinephrine alone compute rebleeding at the consulted untreated rates (T51), and therapy delivered to a low-risk lesion scores err.therapy-not-indicated. In the Dieulafoy configuration, completing the survey (m6.2) without the caliber-persistent artery search (m3.3) resolves as err.missed-variant: the lesion declares itself as a haemorrhage and the attempt FAILS \u2014 checked in the microstep rules, on the hernia pattern.",
+    "id": "gate.identify-classify-before-therapy",
+    "kind": "safety_gate",
+    "name": "Identification and Forrest classification before therapy",
+    "source": "T49",
+    "statement": "No endoscopic therapy is applied to a bleeding lesion until the bleeding source has been identified and localised (crit1), the lesion has been classified by its Forrest stigmata and the classification declared for the record (crit2), and the airway\u2013sedation account has been made (crit3) \u2014 because in this specialty the classification IS the therapy decision: spurting, oozing and visible-vessel lesions receive endoscopic therapy, an adherent clot is uncovered and its underlying stigmata treated, and a flat spot or clean base receives none (T49; T50). The gate is demonstrated before the first therapy act, and the pre-therapy pause (m4.1) restates the classification and the plan it dictates before that act.",
+    "unlocks": [
+     "step.5.1"
+    ]
+   }
+  ],
+  "scoring": {
+   "components": {
+    "checklist": {
+     "derivation": "Completed required microsteps / required microsteps for the attempt's configuration (the Dieulafoy variant adds m3.3; an ongoing-hematemesis scenario adds m1.3). The therapy microsteps (m5.1\u2013m5.4) are required in NO configuration: whether therapy is owed, and which modalities, is a function of the lesion's true class \u2014 a clean-based ulcer must receive none \u2014 so therapy is judged by the scoring rules against the scenario truth, not by the checklist. Reported as a percentage and as counts.",
+     "max": 100,
+     "unit": "percent"
+    },
+    "management": {
+     "derivation": "Only when a complication was computed; otherwise reported as not applicable. Recognition of the complication (2), definitive control where control applies (1) \u2014 for a running haemorrhage, the bleed controlled; for the structural consequences there is no intra-procedure control act and control rests on the bleeds condition \u2014 escalation (1) and a definitive plan taken at the governing decision point (1): dp4 repeat-endoscopy for a rebleeding or the missed-lesion haemorrhage. A failed attempt can still score 5 of 5 in management; management never rescues the verdict (design/05).",
+     "max": 5,
+     "unit": "points"
+    },
+    "physiology": {
+     "derivation": "Computed from the physiology engine's beat record over the attempt (Milestone 18 engine): time below the MAP threshold, MAP nadir and the compartment-identity blood loss, banded by theatre/parameters.json. This procedure computes one haemorrhage in its authored rules (the missed Dieulafoy lesion, at the verify-flagged placeholder rate); its other consequences are structural, so a clean or structurally-complicated attempt scores on an undisturbed circulation.",
+     "max": 7,
+     "unit": "points"
+    },
+    "process": {
+     "derivation": "WHO Sign In, Time Out and Sign Out (3), prophylaxis in window (1), planning complete (1). No antibiotic prophylaxis act exists in this procedure's consulted management pathway (T49; T50) \u2014 endoscopy for bleeding is a therapeutic procedure on an already-presenting patient, not a prophylaxis operation \u2014 so no microstep carries the prophylaxis marker, the point is structurally unavailable, and the ceiling is 4 of 5 by design (the thyroid pattern).",
+     "max": 5,
+     "unit": "points"
+    },
+    "safety_gate": {
+     "derivation": "Gate criteria demonstrated before the first therapy act (3 of 3: crit1, crit2, crit3) plus the pre-therapy pause performed before that act (1). With no therapy act performed at all (a correctly untreated low-risk lesion), the criteria count reads at completion.",
+     "max": 4,
+     "unit": "points"
+    }
+   },
+   "composite": "No composite score is computed or reported (design/05: no weighting of incommensurable components without validity evidence).",
+   "thresholds": "No pass mark exists for any component; the verdict is governed by the master rule alone \u2014 therapy applied before identification and classification fails the attempt, and no component score can rescue it."
+  },
+  "structures": [
+   {
+    "id": "dig.oesophagus",
+    "kind": "record",
+    "note": "Milestone 14 clinical record for the oesophagus in data/digestive/digestive.json. The scope's passage and the survey's first territory: varices and a Mallory-Weiss tear would declare here or at the cardia, and both are excluded by inspection at m2.1 \u2014 surveyed for, never treated by this nonvariceal procedure (see the register's scope entries).",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "dig.stomach",
+    "kind": "record",
+    "note": "Milestone 14 clinical record for the stomach in data/digestive/digestive.json. The survey's main territory, examined including the retroflexed view of the fundus and cardia (m2.2): the classic Dieulafoy country (proximal stomach, lesser curvature, T54) and the site a gastric-ulcer scenario names.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "dig.duodenum",
+    "kind": "record",
+    "note": "Milestone 14 clinical record for the duodenum in data/digestive/digestive.json. The organ the index lesion most often occupies; its bulb and second part are surveyed at m2.3 and its posterior bulb wall is inspected deliberately, over the gastroduodenal artery's course.",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "canal.duodenum",
+    "kind": "record",
+    "note": "FMA inventory record for the duodenal lumen in data/digestive/digestive-inventory.json. The lumen the scope traverses and treats through; Case #9's imaging link localised its duodenal ulcer to this record on the s0778 series (Milestone 61). A perforation computed by the gate resolution resolves onto this record.",
+    "resolves_to": "data/digestive/digestive-inventory.json"
+   },
+   {
+    "id": "artery.gastroduodenal-artery",
+    "kind": "record",
+    "note": "Clinical record for the gastroduodenal artery in data/cardiovascular/cardiovascular.json. It runs behind the posterior wall of the duodenal bulb: the vessel a posterior bulb ulcer erodes, the anatomical ground of this procedure's rebleeding consequences, and the embolization target if the recurrent-bleeding sequence reaches TAE (T49).",
+    "resolves_to": "data/cardiovascular/cardiovascular.json"
+   },
+   {
+    "id": "airway.trachea",
+    "kind": "record",
+    "note": "Inventory record for the trachea in data/respiratory/respiratory-inventory.json. The airway the sedation account (crit3) protects; the computed aspiration of the unprotected-airway rule resolves onto it, and the endotracheal tube of m1.3 is placed through it.",
+    "resolves_to": "data/respiratory/respiratory-inventory.json"
+   },
+   {
+    "id": "lesion.peptic-ulcer",
+    "kind": "absence",
+    "note": "No peptic ulcer record exists anywhere in the Body Model data (probed across every data file at Milestone 62), and no ulcer label exists in the imaging series either (Milestone 61: the duodenum is a label; the ulcer is not). The ulcer this gate classifies is an endoscopic finding \u2014 identified, localised and Forrest-classified at the scope (m3.1, m3.2) \u2014 not a Body Model record. The register records the absence so that the gate's object is honest: the classification the therapy keys on is made in the procedure, from the stigmata, exactly as the guidelines direct (T49, T51).",
+    "resolves_to": "data/digestive/digestive.json"
+   },
+   {
+    "id": "lesion.dieulafoy",
+    "kind": "absence",
+    "note": "No Dieulafoy lesion record exists anywhere in the Body Model data (probed across every data file at Milestone 62). The variant's lesion is an endoscopic finding defined by the consulted review (T54): a caliber-persistent submucosal artery protruding through a minute mucosal defect, classically in the proximal stomach along the lesser curvature, in otherwise near-normal mucosa \u2014 the configuration that makes it missable at survey, and findable only by the deliberate search (m3.3) the variant requires.",
+    "resolves_to": null
+   },
+   {
+    "id": "lesion.mallory-weiss-tear",
+    "kind": "absence",
+    "note": "No Mallory-Weiss tear record exists in the Body Model data (probed at Milestone 62). Named non-variant: a mucosal laceration at the gastro-oesophageal junction is a distinct lesion class \u2014 neither an ulcer under Forrest discipline nor a vascular malformation \u2014 and it is not authored as a scenario of this procedure in v1. It is surveyed for and excluded at m2.1. No prevalence is asserted for it: none was consulted for this class in-session, and the omission is recorded as a decision, not an oversight.",
+    "resolves_to": null
+   },
+   {
+    "id": "lesion.oesophageal-varices",
+    "kind": "absence",
+    "note": "No varices record exists in the Body Model data (probed at Milestone 62). Scope exclusion, not a variant: variceal hemorrhage is a different guideline family (vasoactive therapy, band ligation, balloon tamponade and TIPS pathways under the variceal guidelines) and this procedure is authored for NONVARICEAL upper GI bleeding \u2014 the stated scope of its governing guideline (T49). Varices found at survey (m2.1) end this procedure's remit: the attempt's correct move is the dp1 abort-and-refer bailout to the variceal pathway, never endotherapy under this gate.",
+    "resolves_to": null
+   }
+  ],
+  "validity": {
+   "consequences": "Scores are formative feedback only; no credentialing or progression decision may rest on them.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Component scores derived from the procedure model and the physiology engine state; arithmetic independently recomputed by tools/theatre_check.py.",
+   "label": "formative-only",
+   "relations": "No known-groups or predictive evidence exists yet; none is claimed.",
+   "response_process": "Scripted traces in v1; observed-performance data do not exist yet."
+  },
+  "variants": [
+   {
+    "gate_modifications": [
+     "The variant changes the gate's object, not its criteria: crit1's account \u2014 the bleeding source identified and localised \u2014 is configuration-independent, but in this configuration the account is only complete when the caliber-persistent artery search (m3.3) has been made, because the lesion's whole danger is that it hides in near-normal mucosa beside an incidental finding that explains nothing.",
+     "The variant adds one required microstep (m3.3, the search). The runner enforces it in the microstep rules: completing the survey (m6.2) in this configuration without m3.3 resolves as err.missed-variant (critical-fail) with the lesion's haemorrhage run through the physiology engine \u2014 on the hernia pattern, in which the variant's own identification act is what the completion needed. Therapy scoring follows the variant's own standard: mechanical occlusion is the effective treatment (T54), so injection and/or thermal therapy without a clip scores err.substandard-modality with rebleeding computed, where the same modalities on an ulcer would be judged by the Forrest rules."
+    ],
+    "id": "variant.dieulafoy-lesion",
+    "name": "Dieulafoy lesion of the proximal stomach (caliber-persistent artery)",
+    "prevalence": "Responsible for roughly 1%\u20136.5% of acute nonvariceal upper GI bleeding across the consulted review's literature (5.8% of nonvariceal upper GI bleeding in its own series) (T54) \u2014 above the variant gate (\u2265 1%) at every point of the range. Classically in the proximal stomach along the lesser curvature; male predominance 2:1 in the review's synthesis, not scored.",
+    "required_additions": [
+     "m3.3"
+    ],
+    "source": "T54",
+    "structure_additions": [
+     "lesion.dieulafoy"
+    ],
+    "trace": "theatre/traces/trace-35-endo-dieulafoy.json"
+   }
+  ]
+ }
+}

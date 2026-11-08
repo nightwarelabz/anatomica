@@ -221,6 +221,19 @@ struct Attempt<'a> {
     /// parathyroid gland the scenario declares devascularised
     /// ("right" | "left") — the autotransplant rules key on it.
     parathyroid_devascularized: Option<String>,
+    /// Upper GI endoscopy (Milestone 62): the scenario's bleeding
+    /// lesion ("<kind>:<class>") — the therapy rules score what
+    /// was delivered against this truth.
+    lesion: Option<String>,
+    /// Upper GI endoscopy (Milestone 62): the Forrest class the
+    /// attempt declared at dp3 — the record the therapy was keyed
+    /// on, held separately from the scenario truth it is scored
+    /// against.
+    declared_class: Option<String>,
+    /// Upper GI endoscopy (Milestone 62): the therapy modalities
+    /// actually delivered ("clot-removal" | "epinephrine" |
+    /// "mechanical" | "thermal"), recorded by the treat handler.
+    endo_modalities: HashSet<String>,
     /// Appendicectomy: the closure method applied at the base
     /// ("endoloop" | "stapler" | "polymeric-clips"), once applied.
     closure_method: Option<String>,
@@ -537,6 +550,7 @@ impl<'a> Attempt<'a> {
         let ulnar = self.proc.id == "proc.ulnar-decompression";
         let hernia = self.proc.id == "proc.lap-inguinal-hernia";
         let thyroid = self.proc.id == "proc.thyroidectomy.total";
+        let endo = self.proc.id == "proc.upper-gi-endoscopy";
         let critical: &[&str] = if appy {
             &["canal.appendix", "artery.appendicular-artery"]
         } else if carpal {
@@ -592,6 +606,13 @@ impl<'a> Attempt<'a> {
             "fixate" if hernia => {
                 self.on_fixate_hernia(t_s, &m, &target);
             }
+            // Milestone 62: therapy is this procedure's gated
+            // verb — an endotherapy act taken before the lesion is
+            // identified and classified resolves exactly as a
+            // division before identification does.
+            "treat" if endo => {
+                self.on_treat_endoscopy(t_s, &m);
+            }
             "close" if appy && target == "canal.appendix" => {
                 let method = match id {
                     "m6.2" => "endoloop",
@@ -617,6 +638,9 @@ impl<'a> Attempt<'a> {
         }
         if thyroid {
             self.thyroid_microstep_rules(t_s, &m);
+        }
+        if endo {
+            self.endoscopy_microstep_rules(t_s, &m);
         }
 
         // Liver-bed dissection with an uncontrolled second arterial
@@ -1658,6 +1682,166 @@ impl<'a> Attempt<'a> {
             self.log(t_s, "control", "recurrent laryngeal nerve repair performed under magnification (m7.3)".into());
         }
     }
+
+    /// Upper GI endoscopy (Milestone 62): the scenario's lesion
+    /// truth, parsed from the case field — (kind, class), e.g.
+    /// ("duodenal-ulcer", "iia") or ("dieulafoy", "gastric").
+    fn endo_truth(&self) -> Option<(String, String)> {
+        let l = self.lesion.as_deref()?;
+        let (kind, cls) = l.split_once(':')?;
+        Some((kind.to_string(), cls.to_string()))
+    }
+
+    /// The treatment-relevant group of a Forrest class: the
+    /// guidelines' own partition — high-risk stigmata that receive
+    /// therapy (Ia/Ib/IIa), the adherent clot (IIb), and the
+    /// low-risk stigmata that receive none (IIc/III) (T49; T50).
+    fn endo_forrest_group(class: &str) -> &'static str {
+        match class {
+            "ia" | "ib" | "iia" => "high",
+            "iib" => "clot",
+            _ => "low",
+        }
+    }
+
+    /// Upper GI endoscopy (Milestone 62): the gate resolution for
+    /// this procedure's gated verb. Therapy applied before the
+    /// lesion is identified (crit1) and classified (crit2), or
+    /// with no classification declared at dp3, is therapy applied
+    /// blind — the classification exists to decide the therapy
+    /// (T49) — and resolves exactly as a division before
+    /// identification does in the house's other procedures: a
+    /// perforation computed onto the treated segment (T52) and
+    /// the attempt FAILS at the act. A gated act that passes the
+    /// gate is recorded by modality; what the delivered modalities
+    /// are worth is judged at scoring, against the scenario truth.
+    fn on_treat_endoscopy(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        if self.first_clipdiv_t.is_none() {
+            self.first_clipdiv_t = Some(t_s);
+        }
+        let modality = match m.id.as_str() {
+            "m5.1" => "clot-removal",
+            "m5.2" => "epinephrine",
+            "m5.3" => "mechanical",
+            "m5.4" => "thermal",
+            _ => "other",
+        };
+        self.endo_modalities.insert(modality.to_string());
+
+        let identified = self.criteria.contains_key("crit1");
+        let classified = self.criteria.contains_key("crit2");
+        let declared = self
+            .declared_class
+            .as_deref()
+            .filter(|c| *c != "abort-terminate-procedure");
+        if identified && classified && declared.is_some() {
+            self.log(
+                t_s,
+                "treat",
+                format!(
+                    "{} applied to the identified, classified lesion (declared {})",
+                    m.id,
+                    declared.unwrap_or_default()
+                ),
+            );
+            return;
+        }
+        let missing = [
+            (!identified).then_some("the bleeding source was not identified and localised (crit1 undemonstrated: microstep m3.1 not performed)"),
+            (!classified).then_some("the lesion was not classified by its Forrest stigmata (crit2 undemonstrated: microstep m3.2 not performed)"),
+            (declared.is_none()).then_some("no classification was declared at dp3 for the record the therapy keys on"),
+        ]
+        .into_iter()
+        .flatten()
+        .collect::<Vec<_>>()
+        .join("; ");
+        self.error(
+            t_s,
+            "err.treat-before-classification",
+            format!(
+                "endoscopic therapy applied ({}) before identification and classification: {}; the Forrest classification is to be used in all patients with peptic ulcer hemorrhage because therapy keys on it (T49)",
+                m.id, missing
+            ),
+        );
+        let segment = match self.endo_truth().map(|(k, _)| k).as_deref() {
+            Some("gastric-ulcer") | Some("dieulafoy") => "dig.stomach",
+            _ => "canal.duodenum",
+        };
+        self.complications.push(Complication {
+            kind: "perforation".to_string(),
+            t_onset_s: t_s,
+            detail: format!(
+                "perforation of the treated segment computed: therapy was applied to a lesion whose class was never established — the adverse event the ASGE guideline records at ≤ 0.03% for diagnostic EGD, its risk rising with therapeutic intervention (T52), taken here blind"
+            ),
+            resolved_structure: Some(segment.to_string()),
+            stewart_way_class: None,
+            recognised: false,
+            controlled_s: None,
+            loss_ml: None,
+        });
+        self.log(t_s, "complication", "perforation computed: therapy applied before identification and classification".into());
+        self.fail(
+            t_s,
+            "endoscopic therapy was applied to a lesion before it was identified and classified (err.treat-before-classification)".into(),
+        );
+    }
+
+    /// Upper GI endoscopy (Milestone 62) microstep rules that are
+    /// not gate resolution: the two scenario computations.
+    /// (a) Sedation administered in the ongoing-hematemesis
+    /// configuration before the airway is protected computes
+    /// aspiration at the sedation act (T52; T53) — performed late,
+    /// the protection does not un-compute it. (b) Completing the
+    /// survey in the Dieulafoy configuration without the
+    /// caliber-persistent artery search lets the unaccounted
+    /// lesion declare itself as a haemorrhage, on the hernia
+    /// pattern: the variant's identification act is what the
+    /// completion needed (T54).
+    fn endoscopy_microstep_rules(&mut self, t_s: f64, m: &crate::model::Microstep) {
+        if m.id == "m1.2"
+            && self.severity.as_deref() == Some("ongoing-hematemesis")
+            && !self.performed.contains_key("m1.3")
+        {
+            self.error(
+                t_s,
+                "err.unprotected-airway",
+                "sedation administered (m1.2) in ongoing hematemesis before the airway was protected (microstep m1.3 not performed): sedation suppresses the protective airway reflexes over a stomach full of blood, and the sedation standard's rescue and anesthesia-assistance provisions exist for exactly this configuration (T53)".into(),
+            );
+            self.complications.push(Complication {
+                kind: "aspiration".to_string(),
+                t_onset_s: t_s,
+                detail: "aspiration of gastric blood computed at the sedation act: a named sedation-related cardiopulmonary adverse event (T52), in the event class that forms the largest share of this procedure's adverse events (structural outcome; no gas-exchange trajectory is computed)".into(),
+                resolved_structure: Some("airway.trachea".to_string()),
+                stewart_way_class: None,
+                recognised: false,
+                controlled_s: None,
+                loss_ml: None,
+            });
+            self.log(t_s, "complication", "aspiration computed: sedation over an unprotected airway in ongoing hematemesis".into());
+        }
+        if m.id == "m6.2"
+            && self.failed.is_none()
+            && self.variant_active("variant.dieulafoy-lesion")
+            && !self.performed.contains_key("m3.3")
+        {
+            self.error(
+                t_s,
+                "err.missed-variant",
+                "completion survey performed (m6.2) in a Dieulafoy field without the caliber-persistent artery search (microstep m3.3 not performed): the lesion was present in the proximal stomach and findable by its own search, and was never accounted for (T54)".into(),
+            );
+            let rate = self.params.get("bleed_rate_dieulafoy_ml_s");
+            self.start_bleed(
+                t_s,
+                "lesion.dieulafoy",
+                rate,
+                format!("haemorrhage from the unaccounted Dieulafoy lesion — the caliber-persistent artery declares itself (rate {rate} mL/s — verify-flagged engineering parameter)"),
+            );
+            self.fail(
+                t_s,
+                "an unaccounted bleeding lesion — the Dieulafoy caliber-persistent artery — declared itself at the completion survey (err.missed-variant)".into(),
+            );
+        }
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -1723,6 +1907,16 @@ pub fn run_attempt(
             _ => {}
         }
     }
+    // Upper GI endoscopy (Milestone 62): a scenario of ongoing
+    // hematemesis makes the airway-protection microstep required
+    // for the attempt — the appendicectomy severity mechanism
+    // applied to the airway pathway (sedation over an unprotected
+    // airway in that configuration computes aspiration, T52/T53).
+    if proc.id == "proc.upper-gi-endoscopy"
+        && trace.case.severity.as_deref() == Some("ongoing-hematemesis")
+    {
+        required.insert("m1.3".to_string());
+    }
 
     // Physiology: settle and set the reflex setpoint from the
     // baseline window, exactly the Milestone 8 case protocol.
@@ -1771,6 +1965,9 @@ pub fn run_attempt(
         base_condition: trace.case.base_condition.clone(),
         defect: trace.case.defect.clone(),
         parathyroid_devascularized: trace.case.parathyroid_devascularized.clone(),
+        lesion: trace.case.lesion.clone(),
+        declared_class: None,
+        endo_modalities: HashSet::new(),
         closure_method: None,
         deferred_criteria: Vec::new(),
         errors: Vec::new(),
@@ -1949,6 +2146,14 @@ fn apply_action(at: &mut Attempt, a: &Action) {
                             at.required.insert(mid.to_string());
                             at.log(t, "config", format!("closure method {c} becomes required for this attempt"));
                         }
+                    }
+                    ("dp3", c) if at.proc.id == "proc.upper-gi-endoscopy" => {
+                        // The classification declaration: the record
+                        // the therapy keys on, held separately from
+                        // the scenario truth the scoring rules judge
+                        // it against (Milestone 62).
+                        at.declared_class = Some(c.to_string());
+                        at.log(t, "config", format!("classification declared for the record the therapy keys on: {c}"));
                     }
                     ("dp2", "ioc") => {
                         for m in ["m5.1", "m5.2", "m5.3", "m5.4", "m5.5", "m5.6", "m5.7", "m5.8", "m5.9", "m5.10"] {
@@ -2675,6 +2880,147 @@ fn score(
         }
     }
 
+    // Upper GI endoscopy (Milestone 62): this procedure's
+    // scoring-time rules — the therapy actually delivered, judged
+    // against the scenario truth. A failed attempt is excluded:
+    // its declared outcome is the perforation, not the therapy
+    // judgment. The declaration is judged first (a wrong class is
+    // a departure in itself), then the delivery is judged as the
+    // truth required — the thyroidectomy's "judged at scoring"
+    // treatment, on the Forrest partition both guidelines use.
+    if proc.id == "proc.upper-gi-endoscopy" && at.failed.is_none() {
+        if let Some((kind, class)) = at.endo_truth() {
+            let truth_group = if kind == "dieulafoy" {
+                "dieulafoy"
+            } else {
+                Attempt::endo_forrest_group(&class)
+            };
+            let declared_group = at.declared_class.as_deref().map(|c| {
+                if c == "dieulafoy-lesion" {
+                    "dieulafoy"
+                } else {
+                    Attempt::endo_forrest_group(c.strip_prefix("forrest-").unwrap_or(c))
+                }
+            });
+            if let Some(dg) = declared_group {
+                if dg != truth_group {
+                    at.errors.push(ErrorEvent {
+                        t_s: end_t,
+                        id: "err.misclassification".to_string(),
+                        detail: format!(
+                            "the classification declared at dp3 ({}) differs from the lesion's true stigmata ({}) in treatment-relevant group: therapy was keyed to a class the lesion does not carry — the Forrest classification is to be used in all peptic ulcer hemorrhage precisely because therapy keys on it (T49)",
+                            at.declared_class.as_deref().unwrap_or_default(),
+                            at.lesion.as_deref().unwrap_or_default()
+                        ),
+                    });
+                }
+            }
+            // The therapy delivered, clot removal aside (it is a
+            // diagnostic exposure act, not a hemostasis modality).
+            let therapy: Vec<&str> = ["epinephrine", "mechanical", "thermal"]
+                .into_iter()
+                .filter(|m| at.endo_modalities.contains(*m))
+                .collect();
+            let lesion_structure = if kind == "dieulafoy" {
+                "lesion.dieulafoy"
+            } else {
+                "lesion.peptic-ulcer"
+            };
+            let rebleed = |at: &mut Attempt, detail: String| {
+                at.complications.push(Complication {
+                    kind: "rebleeding".to_string(),
+                    t_onset_s: end_t,
+                    detail,
+                    resolved_structure: Some(lesion_structure.to_string()),
+                    stewart_way_class: None,
+                    recognised: false,
+                    controlled_s: None,
+                    loss_ml: None,
+                });
+            };
+            match truth_group {
+                "high" => {
+                    if therapy.is_empty() {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.high-risk-untreated".to_string(),
+                            detail: format!(
+                                "the lesion's true stigmata are high-risk ({}) and no endoscopic therapy was delivered: endoscopic therapy is recommended for active spurting, active oozing and nonbleeding visible vessels (T49; T50)",
+                                at.lesion.as_deref().unwrap_or_default()
+                            ),
+                        });
+                        let rate = match class.as_str() {
+                            "iia" => "43%",
+                            _ => "55%",
+                        };
+                        rebleed(
+                            &mut at,
+                            format!(
+                                "rebleeding declared as a post-procedure consequence of the untreated high-risk lesion: further bleeding without endoscopic therapy runs at {rate} for this class in the consulted tabulation (T51) (structural outcome; the rate is a proportion of patients, not a flow, so no volume is computed)"
+                            ),
+                        );
+                    } else if therapy == ["epinephrine"] {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.epinephrine-monotherapy".to_string(),
+                            detail: "the high-risk lesion was treated with epinephrine injection alone: epinephrine is not to be used as endoscopic monotherapy — if used, it is combined with a second hemostasis modality (T49, strong recommendation, high-quality evidence; T50, statement 10)".to_string(),
+                        });
+                        rebleed(
+                            &mut at,
+                            "rebleeding declared as a post-procedure consequence of epinephrine-only therapy: injection temporises and the vessel reopens — the consequence both guidelines' monotherapy prohibition exists to prevent (T49; T50) (structural outcome; no volume is computed)".to_string(),
+                        );
+                    }
+                }
+                "dieulafoy" => {
+                    if therapy.is_empty() {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.high-risk-untreated".to_string(),
+                            detail: "the Dieulafoy lesion was identified and no endoscopic therapy was delivered: endoscopic therapy is the first-choice management of this lesion (T54)".to_string(),
+                        });
+                        rebleed(
+                            &mut at,
+                            "rebleeding declared as a post-procedure consequence of the untreated Dieulafoy lesion: a caliber-persistent submucosal artery left unoccluded (T54) (structural outcome; no volume is computed)".to_string(),
+                        );
+                    } else if !therapy.contains(&"mechanical") {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.substandard-modality".to_string(),
+                            detail: "the Dieulafoy lesion was treated without mechanical therapy: endoscopic band ligation or hemoclipping are the most effective options for this lesion, and epinephrine injection is a suboptimal treatment (T54)".to_string(),
+                        });
+                        rebleed(
+                            &mut at,
+                            "rebleeding declared as a post-procedure consequence of non-mechanical therapy of the Dieulafoy lesion: in the consulted series, early recurrence followed in two of three patients treated solely with epinephrine injection or argon plasma coagulation, against permanent hemostasis around 90% for mechanical therapy (T54) (structural outcome; no volume is computed)".to_string(),
+                        );
+                    }
+                }
+                "clot" => {
+                    if !therapy.is_empty() && !at.endo_modalities.contains("clot-removal") {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.clot-not-addressed".to_string(),
+                            detail: "therapy was delivered to an adherent-clot (Forrest IIb) lesion without the clot first being addressed by targeted irrigation and removal (m5.1 not performed): the underlying stigmata the therapy was priced on were never exposed (T49)".to_string(),
+                        });
+                    }
+                }
+                _ => {
+                    // Low-risk stigmata (IIc/III): no therapy is the
+                    // specialty's answer; any delivered is scored.
+                    if !therapy.is_empty() {
+                        at.errors.push(ErrorEvent {
+                            t_s: end_t,
+                            id: "err.therapy-not-indicated".to_string(),
+                            detail: format!(
+                                "endoscopic therapy was delivered to a lesion whose true stigmata are low-risk ({}): flat pigmented spots and clean bases receive no endoscopic therapy (T49; T50) — their untreated further-bleeding rates are 10% and 5% (T51)",
+                                at.lesion.as_deref().unwrap_or_default()
+                            ),
+                        });
+                    }
+                }
+            }
+        }
+    }
+
     // Management score (only when a complication was computed).
     let management = if at.complications.is_empty() {
         None
@@ -2750,6 +3096,14 @@ fn score(
         let has_ebsln_injury = at.complications.iter().any(|c| c.kind == "external-laryngeal-nerve-injury");
         let has_hypocalcemia = at.complications.iter().any(|c| c.kind == "hypocalcemia");
         let has_neck_hematoma = at.complications.iter().any(|c| c.kind == "neck-hematoma");
+        // Milestone 62 (upper GI endoscopy): a computed rebleeding
+        // or the missed lesion's running haemorrhage takes its
+        // definitive plan at dp4 — repeat endoscopy first, the
+        // sequence both guidelines put first (T49; T50).
+        let has_endo_rebleed = proc.id == "proc.upper-gi-endoscopy"
+            && at.complications.iter().any(|c| {
+                c.kind == "rebleeding" || c.kind == "hemorrhage"
+            });
         let control_pts = if all_bleeds_controlled
             && (!has_bdi || at.drain_placed)
             && (!has_cecal || at.drain_placed)
@@ -2764,6 +3118,7 @@ fn score(
                 d.id == "dp3" || d.id == "dp4" || (proc.id == "proc.appy.lap" && (d.id == "dp2" || d.id == "dp5"))
                     || (proc.id == "proc.lap-inguinal-hernia" && d.id == "dp6")
                     || (proc.id == "proc.thyroidectomy.total" && d.id == "dp6")
+                    || (proc.id == "proc.upper-gi-endoscopy" && d.id == "dp4")
             })
         {
             1
@@ -2888,6 +3243,21 @@ fn score(
             } else {
                 0
             }
+        } else if has_endo_rebleed {
+            // Milestone 62: the rebleeding pathway's definitive
+            // plan is taken at dp4 — repeat endoscopy with therapy
+            // first (T49; T50). TAE-first, surgery-first and
+            // supportive-only take later steps of the sequence
+            // first and earn no plan point.
+            if at
+                .decisions
+                .iter()
+                .any(|d| d.id == "dp4" && d.choice == "repeat-endoscopy")
+            {
+                1
+            } else {
+                0
+            }
         } else if at.infused_ml > 0.0 || loss_engine <= loss_full {
             1
         } else {
@@ -2919,6 +3289,8 @@ fn score(
         build_pearls_hernia(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     } else if proc.id == "proc.thyroidectomy.total" {
         build_pearls_thyroid(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
+    } else if proc.id == "proc.upper-gi-endoscopy" {
+        build_pearls_endoscopy(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     } else {
         build_pearls(&at, &checklist, &safety, &process, &physiology, &management, &verdict)
     };
@@ -3033,6 +3405,130 @@ fn build_pearls(
     }
     if at.errors.iter().any(|e| e.id == "err.uncontrolled-branch") {
         directive.push("A double cystic artery occurs in about 13% of patients (T11): before mobilising the gallbladder, confirm every arterial branch entering it is controlled.".to_string());
+    }
+    if directive.is_empty() {
+        directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());
+    }
+
+    let mut summary = vec![
+        format!("Verdict: {verdict} (formative only — no construct evidence exists for these scores yet)."),
+        format!(
+            "Checklist {:.1}% ({}/{}), safety gate {}/{}, process {}/{}, physiology {}/{}{}.",
+            checklist.pct,
+            checklist.completed,
+            checklist.required,
+            safety.points,
+            safety.max,
+            process.points,
+            process.max,
+            physiology.points,
+            physiology.max,
+            match management {
+                Some(m) => format!(", management {}/{}", m.points, m.max),
+                None => ", management n/a (no complication)".to_string(),
+            }
+        ),
+    ];
+    if let Some((t, r)) = &at.failed {
+        summary.push(format!("Attempt failed at t={t:.0}s: {r}"));
+    }
+    if let Some(first) = delta.first() {
+        summary.push(format!("Next focus: {first}"));
+    }
+
+    Pearls { description, plus, delta, directive, summary }
+}
+
+/// PEARLS debrief for upper GI endoscopy (Milestone 62): same
+/// structure and state-derived discipline as the other builders,
+/// with this procedure's gate (identification and Forrest
+/// classification before therapy), its variant and its guideline
+/// points.
+fn build_pearls_endoscopy(
+    at: &Attempt,
+    checklist: &ChecklistScore,
+    safety: &SafetyScore,
+    process: &ProcessScore,
+    physiology: &PhysiologyScore,
+    management: &Option<ManagementScore>,
+    verdict: &str,
+) -> Pearls {
+    let mut description: Vec<String> = at
+        .log
+        .iter()
+        .filter(|l| ["step", "gate", "error", "complication", "fail", "decision", "control", "recognise", "help"].contains(&l.kind.as_str()))
+        .take(40)
+        .map(|l| format!("[t={:.0}s] {}", l.t_s, l.text))
+        .collect();
+    if description.is_empty() {
+        description.push("no events recorded".to_string());
+    }
+
+    let mut plus: Vec<String> = Vec::new();
+    let mut delta: Vec<String> = Vec::new();
+    let mut directive: Vec<String> = Vec::new();
+
+    if safety.criteria_before_first_clipdiv == 3 && at.first_clipdiv_t.is_some() {
+        plus.push("The gate was demonstrated before the first therapy act — source identified and localised, lesion Forrest-classified and declared, airway–sedation account made: the classification is to be used in all peptic ulcer hemorrhage because therapy keys on it (T49).".to_string());
+    }
+    if safety.pause_before_first_clip && at.first_clipdiv_t.is_some() {
+        plus.push("Pre-therapy pause performed: the declared classification was restated and the modality set matched to it with the team before the first therapy act (T49; T50).".to_string());
+    }
+    if at.performed.contains_key("m3.3") && at.variant_active("variant.dieulafoy-lesion") {
+        plus.push("The Dieulafoy lesion — 1–6.5% of acute nonvariceal upper GI bleeding (T54) — was found by its own discipline: the proximal stomach and lesser curvature searched vessel by vessel for the caliber-persistent artery in near-normal mucosa.".to_string());
+    }
+    if at.endo_modalities.contains("mechanical")
+        && at.variant_active("variant.dieulafoy-lesion")
+        && !at.errors.iter().any(|e| e.id == "err.substandard-modality")
+    {
+        plus.push("The Dieulafoy lesion was treated mechanically — hemoclipping, the modality the consulted review records as most effective for this lesion, with permanent hemostasis around 90% (T54).".to_string());
+    }
+    if at.complications.iter().any(|c| c.kind == "rebleeding" && c.recognised) {
+        plus.push("The rebleeding was recognised and met with the specialty's first move: repeat endoscopy with therapy, ahead of embolization and surgery in the sequence (T49; T50).".to_string());
+    }
+    if process.sign_in && process.time_out && process.sign_out {
+        plus.push("All three WHO checklist phases were completed at their integration points (T6).".to_string());
+    }
+    if physiology.blood_loss_ml > 0.5 && physiology.seconds_below_threshold == 0.0 {
+        plus.push("Haemorrhage was controlled without the mean arterial pressure ever falling below threshold.".to_string());
+    }
+
+    let mut seen_delta: HashSet<String> = HashSet::new();
+    for e in &at.errors {
+        if seen_delta.insert(e.id.clone()) {
+            delta.push(format!("{} — {}", e.id, e.detail));
+        }
+    }
+    if !checklist.missing.is_empty() {
+        delta.push(format!(
+            "required microsteps not performed: {}",
+            checklist.missing.join(", ")
+        ));
+    }
+
+    if at.errors.iter().any(|e| e.id == "err.treat-before-classification") {
+        directive.push("Never treat a lesion you have not classified: identify the source, wash the base, read the stigmata and declare the Forrest class before the first therapy act — the class is the therapy decision (Ia/Ib combination therapy; IIa a definitive modality; IIb uncover, then treat what is exposed; IIc/III none) (T49; T50; T51).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.misclassification") {
+        directive.push("When the washed base disagrees with the first read, re-declare before therapy, not after it: the second look (m4.2) exists because a clot can lift to show a vessel and a spot can wash clean — the declaration the therapy keys on must be the lesion's true class (T49; T51).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.epinephrine-monotherapy") {
+        directive.push("Epinephrine buys the field; it does not close the vessel. If you inject, combine — clip or thermal in the same session: epinephrine monotherapy is the one configuration both guidelines prohibit by name (T49; T50, statement 10).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.high-risk-untreated") {
+        directive.push("A spurting, oozing or visible-vessel lesion left untreated keeps its natural history — 55% (Ia/Ib) and 43% (IIa) further bleeding without therapy (T51). If it cannot be treated, that is a dp1 bailout to a centre with cover, not a quiet completion.".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.substandard-modality") {
+        directive.push("For a Dieulafoy lesion, occlude the artery mechanically — clip or band. Injection and thermal alone are the suboptimal modalities for a caliber-persistent vessel, with early recurrence the recorded pattern (T54).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.therapy-not-indicated") {
+        directive.push("A flat spot (10%) or a clean base (5%) is a discharge-pathway lesion, not a therapy target (T51): treating it buys only the therapeutic risk (T52). The discipline of the gate runs both ways — classify first, then let the class decide, including when the decision is to do nothing.".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.unprotected-airway") {
+        directive.push("In ongoing hematemesis the airway is the first procedure: protect it before sedation depth, because sedation removes the reflexes that are keeping blood out of the trachea, and aspiration is among this procedure's commonest serious adverse events (T52; T53).".to_string());
+    }
+    if at.errors.iter().any(|e| e.id == "err.missed-variant") {
+        directive.push("A survey that found an incidental ulcer has not finished: when the bleeding is unexplained by what you found, search the proximal stomach and lesser curvature for the caliber-persistent artery — the first endoscopy misses this diagnosis in about 15% of cases (T54).".to_string());
     }
     if directive.is_empty() {
         directive.push("Maintain the sequence discipline shown here; the next training increment is speed under the same gate discipline, not a relaxation of it.".to_string());

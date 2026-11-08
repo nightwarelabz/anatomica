@@ -417,6 +417,15 @@ pub struct CaseSpec {
     /// applied to the parathyroid pathway.
     #[serde(default)]
     pub parathyroid_devascularized: Option<String>,
+    /// The bleeding lesion the scenario holds (Milestone 62:
+    /// upper GI endoscopy, "<kind>:<class>" — "duodenal-ulcer:iia",
+    /// "gastric-ulcer:ib", "dieulafoy:gastric"). The endotherapy
+    /// rules score the therapy actually delivered against this
+    /// truth, not against the classification the attempt declares
+    /// at dp3 — the Milestone 28 severity mechanism applied to the
+    /// Forrest pathway.
+    #[serde(default)]
+    pub lesion: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, Deserialize)]
