@@ -42,8 +42,9 @@ Sections:
       local tree, so they cannot be recomputed here.
   R12 Status language: the precise status statements the README is
       required to carry (expert-review gate UNMET, formative-only
-      scores, geometry decision open, DICOM defect found and
-      repaired) are present verbatim.
+      scores, the geometry ruling — Tier B intaken at Milestone 63,
+      Tier C gated, Tier D excluded, deferent-duct meshes claimed —
+      DICOM defect found and repaired) are present verbatim.
 
 Stdlib only (subprocesses use python3 / node / cargo, as the sibling
 checkers do). Exit 0 iff all gated checks pass.
@@ -424,9 +425,11 @@ report(total_stated == total_actual, "R11 stated total == sum of index groups",
 REQUIRED = [
     ("expert-review gate is UNMET", "expert-review gate UNMET"),
     ("formative-only", "formative-only labeling"),
-    ("The geometry decision is open", "geometry decision open"),
+    ("Tier B geometry was intaken at Milestone 63", "Tier B intake at Milestone 63"),
+    ("Tier C remains gated on a validating derivation", "Tier C gated"),
+    ("Tier D is excluded permanently", "Tier D excluded permanently"),
+    ("the deferent-duct meshes are claimed", "deferent-duct meshes claimed"),
     ("found and repaired", "DICOM defect found and repaired"),
-    ("no Z-Anatomy geometry has been intaken", "no Z-Anatomy intake claimed"),
 ]
 for text, label in REQUIRED:
     report(text in FLAT, f"R12 status statement present: {label}", f"“{text}”")

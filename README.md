@@ -164,29 +164,41 @@ is right.
 
 ## Status
 
-**Milestones 1–59 are complete and recorded in `milestones/MILESTONE-1.md`
-through `milestones/MILESTONE-59.md`** (plus the Milestone 7 pick-layer fix). The Body Model
+**Milestones 1–65 are complete and recorded in `milestones/MILESTONE-1.md`
+through `milestones/MILESTONE-65.md`** (plus the Milestone 7 pick-layer fix). The Body Model
 stands at **2,236 inventory records** across all eleven body systems, with
-geometry for 1,545 of them. **691 concept records carry no geometry** (684 of
-them FMA 5.1.0 concept records, the other 7 the six auditory ossicles and the
-coccyx, which no adoptable dataset carries as separate structures). Clinical
+geometry for 1,566 of them. At the close of the concept-intake arc, 691
+records carried no geometry (684 of them FMA 5.1.0 concept records, the
+other 7 the six auditory ossicles and the coccyx, which no adoptable
+dataset carries as separate structures); the Milestone 63 geometry
+intake gave 21 of those records geometry. **670 concept records carry no
+geometry**. Clinical
 coverage is 401 sourced clinical records (Tier A 239 / Tier B 121 / Tier C 41).
 
-**Concepts are complete; geometry is the open question.** The concept gaps
+**Concepts are complete; geometry was ruled on, and the ruled subset
+has been intaken.** The concept gaps
 that the Body Model v1 status once listed — nerves beyond cranial nerves
 II–V1, lymphatic vessels and nodes, thyroid and parathyroid geometry, the
 kidney and urinary interior, the internal female reproductive tract, skin
 layers / nails / glands — were closed as concepts by the FMA 5.1.0 intake
-arc (Milestones 33–38: 684 records intaken, all concept-only). What remains
-open is geometry for those records: a Z-Anatomy geometry audit (Milestone 34)
-cleared provenance for 555 of 587 anatomical objects and validated a
-brain-assembly transform (held-out 0.27 mm), but global registration was
-refuted, and **no Z-Anatomy geometry has been intaken**.
-**The geometry decision is open.** Six named structures have no FMA class at all
+arc (Milestones 33–38: 684 records intaken, all concept-only). Geometry
+for those records was governed by the Z-Anatomy geometry audit
+(Milestone 34), which cleared provenance for 555 of 587 anatomical
+objects and validated a brain-assembly transform (held-out 0.27 mm),
+while global registration was refuted. The geometry ruling is made:
+Tier B geometry was intaken at Milestone 63 under the validated
+brain-assembly transform (236 objects clearing both bars; 19 FMA
+records gained geometry), and the deferent-duct meshes are claimed.
+Tier C remains gated on a validating derivation — its 285 objects
+clear provenance only, and no derivation that places them has yet
+passed the audit's held-out gates. Tier D is excluded permanently:
+its provenance cannot be separated from CC BY-NC-SA material. Six
+named structures have no FMA class at all
 (bulbourethral gland, paraurethral glands, cervical canal, isthmus of
 uterus, keratinocyte, crus of penis) and are recorded as gaps, not
-invented. The deferent-duct meshes exist in BodyParts3D 4.0 (FJ3135/FJ3140)
-but stay deliberately unclaimed until the geometry ruling.
+invented. The deferent-duct meshes exist in BodyParts3D 4.0
+(FJ3135/FJ3140) and were claimed at Milestone 63 for the left and
+right deferent-duct records.
 
 **Expert review is the standing open gate.** For every Theatre procedure and
 every case, the expert-review gate is UNMET: no named independent reviewers
@@ -208,23 +220,23 @@ geometry (CC BY-SA 2.1 Japan governs the mesh headers; CC BY 4.0 per the
 DBCLS release page) and TotalSegmentator v1.0 labels (CC BY 4.0), with
 concepts intaken from FMA 5.1.0 (CC BY 4.0, hash-pinned in the provenance
 ledger). Every record carries its provenance; geometry is packed into one
-merged buffer set per layer (1 draw call per layer) — **8,087,374 triangles**
-(304,367,896 bytes canonical, 123,352,401 bytes as gzip delivery).
+merged buffer set per layer (1 draw call per layer) — **8,285,791 triangles**
+(311,136,996 bytes canonical, 125,760,132 bytes as gzip delivery).
 
 | System | Inventory | With geometry | Clinical |
 |---|---|---|---|
 | skeletal | 206 | 199 | 0 |
 | muscular | 359 | 359 | 127 |
 | cardiovascular | 646 | 646 | 69 |
-| nervous | 419 | 133 | 92 |
+| nervous | 419 | 152 | 92 |
 | respiratory | 83 | 83 | 37 |
 | digestive | 93 | 93 | 31 |
 | urinary | 73 | 6 | 6 |
 | lymphatic | 135 | 4 | 4 |
 | endocrine | 17 | 3 | 6 |
-| reproductive | 146 | 13 | 16 |
+| reproductive | 146 | 15 | 16 |
 | integumentary | 59 | 6 | 13 |
-| **Total** | **2,236** | **1,545** | **401** |
+| **Total** | **2,236** | **1,566** | **401** |
 
 Terminologia Anatomica 2 (TA2) Latin names are resolved for **854 of the
 1,045 records** the TA2 pass covers (361 clinical + 684 FMA concept
@@ -270,22 +282,28 @@ source-to-series alteration.
 
 ### Theatre — the procedure simulator
 
-**6 authored procedures**, 54 phases / 88 steps / 290 microsteps, with
-30 scripted traces and 30 generated debriefs: laparoscopic cholecystectomy
+**7 authored procedures**, 63 phases / 97 steps / 323 microsteps, with
+37 scripted traces and 37 generated debriefs: laparoscopic cholecystectomy
 (Critical View of Safety), laparoscopic appendicectomy (base
 identification), open carpal tunnel release (nerve identification), ulnar
 nerve decompression (nerve protection, transposition), laparoscopic
 inguinal hernia repair (triangle-of-doom / triangle-of-pain gate, two gated
-verbs: divide and fixate), and total thyroidectomy (per-side recurrent
+verbs: divide and fixate), total thyroidectomy (per-side recurrent
 laryngeal nerve identification and parathyroid preservation; nerve
-monitoring is an adjunct and cannot satisfy the gate). The Theatre carries
-**48 sources** (T1–T48; T42–T48 added at Milestone 56 to the T1–T41),
-**17 parameters**, 12 of them verify-flagged, and **33 instruments**. Safety
+monitoring is an adjunct and cannot satisfy the gate), and upper
+gastrointestinal endoscopy (identify-classify-before-therapy gate: the
+bleeding source identified, its Forrest classification demonstrated and
+declared, and the airway–sedation account made, before any therapy;
+therapy first fails the attempt with a computed perforation; the
+Dieulafoy lesion is the authored variant). The Theatre carries
+**54 sources** (T1–T54; T42–T48 added at Milestone 56 and T49–T54 at
+Milestone 62, both to the T1–T41),
+**18 parameters**, 13 of them verify-flagged, and **39 instruments**. Safety
 gates are scored exactly as the specialties define them — dividing an
 unidentified critical structure fails the attempt — and complications are
-computed by the engine against the physiology state. All six procedures
+computed by the engine against the physiology state. All seven procedures
 run on one generalized engine, and the checker family replays every trace
-(theatre_check: 736 checks, 0 failures). Expert review is UNMET for every
+(theatre_check: 872 checks, 0 failures). Expert review is UNMET for every
 procedure (see Status).
 
 ### Cases — the workbench
@@ -316,10 +334,14 @@ values, never re-priced by the later count; Forrest IIa on the
 visible vessel), four likelihood ratios computed as reciprocals of
 one consulted review's figures, and the first physiology link to a
 perturbation arm — the hemorrhage runs, hash-pinned — rather than
-the resting baseline alone. Cases
+the resting baseline alone. Its endoscopy is hash-linked to the
+Theatre in the library's third form (Milestone 64): the case was
+written before the procedure existed, and trace 31 — authored on
+this case's own lesion — returns PASS on the course the case
+records. Cases
 hand off to Theatre procedures where one
 exists, and state the absence where none does. The FHIR-shaped export is
-checked against the case files by the same checker (case_check: 14,919
+checked against the case files by the same checker (case_check: 14,964
 checks passed, 0 failed). Expert review is UNMET for every case (see
 Status).
 
@@ -337,8 +359,8 @@ tree.
 | Check | Result |
 |---|---|
 | `tools/assembly_check_all.py` | ALL GATED CHECKS PASS |
-| `tools/theatre_check.py` | 736 checks, 0 failures |
-| `tools/case_check.py` | 14,919 checks passed, 0 failed |
+| `tools/theatre_check.py` | 872 checks, 0 failures |
+| `tools/case_check.py` | 14,964 checks passed, 0 failed |
 | `tools/imaging_toolkit_check.py` | 84 hard checks PASS, 0 conformance findings standing |
 | `tools/verify_web.js` | ALL CHECKS PASS (W1–W10) |
 | physiology `validate` | ALL HARD GATES PASS |
@@ -424,10 +446,13 @@ every run.
 | 59 | `MILESTONE-59.md` | README final pass: figures and file index brought current through M58 and the landed browser build (web/wasm/cases-harness on main), the merged "How to use" section re-proven byte-identical; readme_check fully green |
 | 60 | `MILESTONE-60.md` | Case #8's physiology link: the case pinned to the calcium–PTH axis's PTH-loss arm — POD2 consonance near-exact (corrected 1.830 against 1.83 mmol/L), the POD1 gap (+0.146) disclosed in-case; correction of record: the arm is secretion capacity 9 percent, not capacity-0 as the M58 dossier's prose stated |
 | 61 | `MILESTONE-61.md` | Case #9: acute upper gastrointestinal bleeding — Glasgow-Blatchford and Forrest blocks, four reciprocal likelihood ratios, the patient-installed anchor (the ninth shape), the first perturbation-arm physiology link; the README drift closed (case_check figure, milestone rows 60–61, file index) |
+| 62 | `MILESTONE-62.md` | Theatre procedure #7: upper gastrointestinal endoscopy — identify-classify-before-therapy gate (source identified, Forrest classification demonstrated and declared, airway–sedation account); therapy before classification is a critical fail with a computed perforation; Dieulafoy variant authored; traces 31–37, all 30 prior debriefs byte-identical |
+| 63 | `MILESTONE-63.md` | Tier B geometry intake under the Milestone 34 audit's validated brain-assembly transform: 19 FMA records gain geometry, and the deferent-duct mesh pair (FJ3135/FJ3140) claimed — records with geometry 1,545 → 1,566, concept-only 691 → 670; atlas packs rebuilt (8,285,791 faces); Tier C gated, Tier D excluded |
+| 64 | `MILESTONE-64.md` | Case #9's Theatre hash-link: the case's endoscopic act pinned to trace 31 (authored on the case's own lesion), debrief SHA-256 recomputed and matched field-by-field, verdict PASS — the loop's third form (case first, procedure after); case_check 14,964; cases #1–#8 byte-identical |
+| 65 | `MILESTONE-65.md` | README reconciliation through M64: the endoscopy, geometry-intake and hash-link figures and indexes brought current; the geometry ruling recorded in the Status section, and the guard's R12 status statements moved to the ruled facts with it; readme_check fully green |
 
 ## File index
-
-All 637 files in this repository, by directory. Adopted source-dataset binaries (meshes, archives, GLBs, segmentation masks) and build output are not tracked in git — see `.gitignore`; their provenance is recorded in `data/sources/*/ledger.json` and `SOURCE.md`. Regenerable artifacts (geometry packs and their gzip variants, DICOM series and web slice bins) are likewise not tracked: they are products of the shipped derivation and packing tools, and their identity is asserted by the checkers.
+All 680 files in this repository, by directory. Adopted source-dataset binaries (meshes, archives, GLBs, segmentation masks) and build output are not tracked in git — see `.gitignore`; their provenance is recorded in `data/sources/*/ledger.json` and `SOURCE.md`. Regenerable artifacts (geometry packs and their gzip variants, DICOM series and web slice bins) are likewise not tracked: they are products of the shipped derivation and packing tools, and their identity is asserted by the checkers.
 
 ### Root — 3 files
 
@@ -477,7 +502,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `cases-harness/RESULTS.md`
 - `cases-harness/run.js`
 
-### `data/` — 87 files
+### `data/` — 91 files
 
 - `data/cardiovascular/cardiovascular.json`
 - `data/cardiovascular/cv-assembled.json`
@@ -557,6 +582,10 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `data/sources/totalsegmentator-1.0/labels.md`
 - `data/sources/totalsegmentator-1.0/ledger-summary.md`
 - `data/sources/totalsegmentator-1.0/ledger.json`
+- `data/sources/z-anatomy-derived/SOURCE.md`
+- `data/sources/z-anatomy-derived/intake-manifest.json`
+- `data/sources/z-anatomy-derived/ledger-summary.md`
+- `data/sources/z-anatomy-derived/ledger.json`
 - `data/sources/z-anatomy-glb/License.txt`
 - `data/sources/z-anatomy-glb/SOURCE.md`
 - `data/sources/z-anatomy-glb/ledger-summary.md`
@@ -634,7 +663,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `film-engine/restore_render_env.sh`
 - `film-engine/scene.py`
 
-### `milestones/` — 66 files
+### `milestones/` — 70 files
 
 - `milestones/MILESTONE-1.md`
 - `milestones/MILESTONE-10.md`
@@ -698,6 +727,10 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `milestones/MILESTONE-6.md`
 - `milestones/MILESTONE-60.md`
 - `milestones/MILESTONE-61.md`
+- `milestones/MILESTONE-62.md`
+- `milestones/MILESTONE-63.md`
+- `milestones/MILESTONE-64.md`
+- `milestones/MILESTONE-65.md`
 - `milestones/MILESTONE-7-FIX.md`
 - `milestones/MILESTONE-7.md`
 - `milestones/MILESTONE-8.md`
@@ -776,7 +809,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `research/round-03-depth-specialization/notes/coverage-log.md`
 - `research/round-03-depth-specialization/report.md`
 
-### `theatre/` — 75 files
+### `theatre/` — 90 files
 
 - `theatre/Cargo.lock`
 - `theatre/Cargo.toml`
@@ -810,6 +843,13 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `theatre/debriefs/trace-28-thyroid-variant-branching.debrief.json`
 - `theatre/debriefs/trace-29-thyroid-parathyroid-devascularized.debrief.json`
 - `theatre/debriefs/trace-30-thyroid-parathyroid-unaccounted.debrief.json`
+- `theatre/debriefs/trace-31-endo-clean.debrief.json`
+- `theatre/debriefs/trace-32-endo-treat-before-classification.debrief.json`
+- `theatre/debriefs/trace-33-endo-misclassification.debrief.json`
+- `theatre/debriefs/trace-34-endo-epinephrine-monotherapy.debrief.json`
+- `theatre/debriefs/trace-35-endo-dieulafoy.debrief.json`
+- `theatre/debriefs/trace-36-endo-dieulafoy-missed.debrief.json`
+- `theatre/debriefs/trace-37-endo-airway-unprotected.debrief.json`
 - `theatre/instruments.json`
 - `theatre/parameters.json`
 - `theatre/procedures/proc.carpal-release.json`
@@ -818,6 +858,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `theatre/procedures/proc.lap-inguinal-hernia.json`
 - `theatre/procedures/proc.thyroidectomy.total.json`
 - `theatre/procedures/proc.ulnar-decompression.json`
+- `theatre/procedures/proc.upper-gi-endoscopy.json`
 - `theatre/src/lib.rs`
 - `theatre/src/main.rs`
 - `theatre/src/model.rs`
@@ -853,8 +894,15 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `theatre/traces/trace-28-thyroid-variant-branching.json`
 - `theatre/traces/trace-29-thyroid-parathyroid-devascularized.json`
 - `theatre/traces/trace-30-thyroid-parathyroid-unaccounted.json`
+- `theatre/traces/trace-31-endo-clean.json`
+- `theatre/traces/trace-32-endo-treat-before-classification.json`
+- `theatre/traces/trace-33-endo-misclassification.json`
+- `theatre/traces/trace-34-endo-epinephrine-monotherapy.json`
+- `theatre/traces/trace-35-endo-dieulafoy.json`
+- `theatre/traces/trace-36-endo-dieulafoy-missed.json`
+- `theatre/traces/trace-37-endo-airway-unprotected.json`
 
-### `tools/` — 93 files
+### `tools/` — 95 files
 
 - `tools/assemble_muscles.py`
 - `tools/assemble_skeleton.py`
@@ -948,9 +996,11 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `tools/zanatomy_clearance.py`
 - `tools/zanatomy_correspond.py`
 - `tools/zanatomy_extract.py`
+- `tools/zanatomy_extract_full.py`
+- `tools/zanatomy_intake.py`
 - `tools/zanatomy_register.py`
 
-### `wasm/` — 88 files
+### `wasm/` — 94 files
 
 - `wasm/Cargo.lock`
 - `wasm/Cargo.toml`
@@ -998,7 +1048,6 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `wasm/harness/out/dump-course.log`
 - `wasm/harness/out/dump-hormones.done`
 - `wasm/harness/out/dump-hormones.log`
-- `wasm/harness/out/dump-respiratory.done`
 - `wasm/harness/out/dump-respiratory.log`
 - `wasm/harness/out/dump-resting.log`
 - `wasm/harness/out/dump-theatre.log`
@@ -1034,6 +1083,13 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `wasm/harness/out/theatre/trace-28-thyroid-variant-branching.json`
 - `wasm/harness/out/theatre/trace-29-thyroid-parathyroid-devascularized.json`
 - `wasm/harness/out/theatre/trace-30-thyroid-parathyroid-unaccounted.json`
+- `wasm/harness/out/theatre/trace-31-endo-clean.json`
+- `wasm/harness/out/theatre/trace-32-endo-treat-before-classification.json`
+- `wasm/harness/out/theatre/trace-33-endo-misclassification.json`
+- `wasm/harness/out/theatre/trace-34-endo-epinephrine-monotherapy.json`
+- `wasm/harness/out/theatre/trace-35-endo-dieulafoy.json`
+- `wasm/harness/out/theatre/trace-36-endo-dieulafoy-missed.json`
+- `wasm/harness/out/theatre/trace-37-endo-airway-unprotected.json`
 - `wasm/harness/out/wasm-course.json`
 - `wasm/harness/out/wasm-hormones.json`
 - `wasm/harness/out/wasm-respiratory.json`
@@ -1041,7 +1097,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `wasm/harness/verify.mjs`
 - `wasm/src/lib.rs`
 
-### `web/` — 67 files
+### `web/` — 79 files
 
 - `web/cases-ui.js`
 - `web/cases.js`
@@ -1051,15 +1107,19 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `web/data/cases/attempts/attempt.case-carpal-tunnel-004.model-learner.json`
 - `web/data/cases/attempts/attempt.case-pe-ruleout-007.model-learner.json`
 - `web/data/cases/attempts/attempt.case-post-op-002.model-learner.json`
+- `web/data/cases/attempts/attempt.case-post-thyroid-hypocalcemia-008.model-learner.json`
 - `web/data/cases/attempts/attempt.case-ruq-pain-001.model-learner.json`
 - `web/data/cases/attempts/attempt.case-ulnar-neuropathy-005.model-learner.json`
+- `web/data/cases/attempts/attempt.case-upper-gi-bleed-009.model-learner.json`
 - `web/data/cases/case.acute-dyspnea.006.json`
 - `web/data/cases/case.appendicitis.003.json`
 - `web/data/cases/case.carpal-tunnel.004.json`
 - `web/data/cases/case.pe-ruleout.007.json`
 - `web/data/cases/case.post-op-jaundice.002.json`
+- `web/data/cases/case.post-thyroid-hypocalcemia.008.json`
 - `web/data/cases/case.ruq-pain.001.json`
 - `web/data/cases/case.ulnar-neuropathy.005.json`
+- `web/data/cases/case.upper-gi-bleed.009.json`
 - `web/data/cases/parameters.json`
 - `web/data/delivery.json`
 - `web/data/manifest.json`
@@ -1070,6 +1130,7 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `web/data/theatre/procedures/proc.lap-inguinal-hernia.json`
 - `web/data/theatre/procedures/proc.thyroidectomy.total.json`
 - `web/data/theatre/procedures/proc.ulnar-decompression.json`
+- `web/data/theatre/procedures/proc.upper-gi-endoscopy.json`
 - `web/data/theatre/traces/trace-01-clean.json`
 - `web/data/theatre/traces/trace-02-divide-before-cvs.json`
 - `web/data/theatre/traces/trace-03-variant-replaced-rha.json`
@@ -1100,6 +1161,13 @@ All 637 files in this repository, by directory. Adopted source-dataset binaries 
 - `web/data/theatre/traces/trace-28-thyroid-variant-branching.json`
 - `web/data/theatre/traces/trace-29-thyroid-parathyroid-devascularized.json`
 - `web/data/theatre/traces/trace-30-thyroid-parathyroid-unaccounted.json`
+- `web/data/theatre/traces/trace-31-endo-clean.json`
+- `web/data/theatre/traces/trace-32-endo-treat-before-classification.json`
+- `web/data/theatre/traces/trace-33-endo-misclassification.json`
+- `web/data/theatre/traces/trace-34-endo-epinephrine-monotherapy.json`
+- `web/data/theatre/traces/trace-35-endo-dieulafoy.json`
+- `web/data/theatre/traces/trace-36-endo-dieulafoy-missed.json`
+- `web/data/theatre/traces/trace-37-endo-airway-unprotected.json`
 - `web/imaging.js`
 - `web/index.html`
 - `web/physio-worker.js`
