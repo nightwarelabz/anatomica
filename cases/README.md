@@ -419,8 +419,13 @@ debrief scored by stated rules.
   and treats the positive H. pylori with documented
   eradication (C69); the endoscopy's combination therapy
   and the 80 mg + 8 mg/h PPI follow C66, concordant with
-  C70. No Theatre handoff exists and the case says so
-  (the Theatre holds no endoscopy procedure). Imaging
+  C70. The Theatre link is the library's third form: no
+  handoff existed at Milestone 61 (the Theatre held no
+  endoscopy procedure, and the case said so); Milestone 62
+  authored proc.upper-gi-endoscopy and Milestone 64 linked
+  the case to its trace-31 attempt — the same IIa bulb
+  ulcer, epinephrine plus clips, PASS 27/27 — re-verified
+  by the checker on every run. Imaging
   link is localisation only: the s0778 duodenum label
   (crosswalk index 10 → `canal.duodenum`; 49 slices,
   15,235 voxels recounted by the checker) — the label set

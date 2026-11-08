@@ -2451,14 +2451,16 @@ def profile_case8(case, ctx, boards, attempt):
 # Case 9 profile (Milestone 61): Blatchford / Forrest arithmetic, the
 # four reciprocal derivations, the patient-installed anchoring event,
 # the hemorrhage-arm physiology link (re-run) + course identity pins,
-# the duodenum recount, the recorded Mondo refusal
+# the duodenum recount, the recorded Mondo refusal; the Theatre
+# hash-link to trace 31 added at Milestone 64
 # =====================================================================
 def profile_case9(case, ctx, boards, attempt):
     print("\n=== case.upper-gi-bleed.009 profile: Blatchford + Forrest "
           "arithmetic / four reciprocal derivations / anchoring "
           "(patient-installed self-diagnosis) / physiology hemorrhage "
           "link (re-run) + course pins / imaging recount / the "
-          "recorded Mondo refusal (M61) ===")
+          "recorded Mondo refusal (M61) / theatre hash-link to "
+          "trace 31 (M64) ===")
     slug = case["id"].replace(".", "-")
     deb = load(os.path.join(
         CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
@@ -2852,16 +2854,110 @@ def profile_case9(case, ctx, boards, attempt):
        "extended_at_milestone 61")
     mgmt = case["management"]
     ok("handoff" not in mgmt
-       and mgmt["theatre_note"].startswith("NO THEATRE HANDOFF")
        and "80 mg" in mgmt["disposition"]
        and "8 mg/h" in mgmt["disposition"]
        and any(o["option"].startswith("Discharge home on antacids")
                for o in mgmt["alternatives_considered"]),
-       "case9: management carries NO handoff (the Theatre holds "
-       "no endoscopy procedure -- stated, not elided), the "
+       "case9: management carries no handoff block, the "
        "high-dose PPI regimen (80 mg + 8 mg/h, C66), and the "
        "refused discharge -- the patient's own plan, refused on "
        "the record")
+
+    # ---- THE LINK: trace 31 re-read, field by field ------------------
+    # (Milestone 64: the loop's third form -- the case named the
+    # missing procedure at Milestone 61, Milestone 62 built it, and
+    # this link closes the record the case's theatre_note kept open.)
+    link = case["theatre_link"]
+    tpath = os.path.join(ROOT, link["debrief_file"])
+    t31 = load(tpath)
+    digest = hashlib.sha256(open(tpath, "rb").read()).hexdigest()
+    mf = link["matched_fields"]
+    ok(digest == link["debrief_sha256"],
+       "case9 LINK: the trace-31 debrief's SHA-256 recomputes to "
+       "the hash the case records")
+    tr31 = load(os.path.join(ROOT, link["trace_file"]))["trace"]
+    ok(tr31["id"] == link["trace_id"] == "trace-31-endo-clean"
+       and tr31["procedure"] == link["procedure_id"]
+       == "proc.upper-gi-endoscopy"
+       and tr31["case"]["lesion"] == link["trace_lesion"]
+       == "duodenal-ulcer:iia",
+       "case9 LINK: the shipped trace file carries the id, the "
+       "procedure and the scenario lesion duodenal-ulcer:iia -- "
+       "the posterior-bulb IIa ulcer this case's stage 3 finds")
+    ok(t31["trace_id"] == link["trace_id"]
+       and t31["procedure_id"] == link["procedure_id"]
+       == "proc.upper-gi-endoscopy",
+       "case9 LINK: trace id and procedure id match the shipped "
+       "debrief")
+    ok(t31["verdict"] == mf["verdict"] == "PASS"
+       and t31["failed_at_s"] is None and mf["failed_at_s"] is None,
+       "case9 LINK: the linked trace PASSED -- the loop's third "
+       "form (case 2's link was a FAIL, case 8's a PASS whose "
+       "priced complication became the case; this procedure did "
+       "not exist when the case was written)")
+    ok(t31["checklist"]["completed"] == mf["checklist_completed"]
+       == 27
+       and t31["checklist"]["required"] == mf["checklist_required"]
+       == 27
+       and t31["checklist"]["missing"] == mf["checklist_missing"]
+       == [],
+       "case9 LINK: checklist 27/27 with nothing missing, matched "
+       "field-by-field")
+    ok(t31["safety_gate"]["points"] == mf["safety_gate_points"] == 4
+       and t31["safety_gate"]["max"] == mf["safety_gate_max"] == 4
+       and t31["safety_gate"]["criteria_before_first_clipdiv"]
+       == mf["gate_criteria_before_first_gated_act"] == 3
+       and t31["safety_gate"]["pause_before_first_clip"]
+       == mf["pause_before_first_gated_act"] is True
+       and t31["process"]["points"] == mf["process_points"] == 4
+       and t31["process"]["max"] == mf["process_max"] == 5,
+       "case9 LINK: safety gate 4/4 (all three criteria "
+       "demonstrated before the first therapy act, the "
+       "pre-therapy pause taken) and process 4/5 -- the "
+       "procedure's designed ceiling, there being no prophylaxis "
+       "act in its pathway -- matched")
+    ok(t31["errors"] == mf["errors"] == []
+       and t31["complications"] == mf["complications"] == []
+       and t31["management"] is None and mf["management"] is None,
+       "case9 LINK: no errors, no complications, and no "
+       "management pathway scored in the debrief -- no rebleeding "
+       "arose to manage, which is this case's course exactly")
+    dp1 = [d for d in t31["decisions"] if d["id"] == "dp1"]
+    dp3 = [d for d in t31["decisions"] if d["id"] == "dp3"]
+    ok(len(dp1) == 1
+       and dp1[0]["choice"] == mf["decision_dp1"]["choice"]
+       == "proceed-endoscopy"
+       and dp1[0]["t_s"] == mf["decision_dp1"]["t_s"] == 540.0
+       and len(dp3) == 1
+       and dp3[0]["choice"] == mf["decision_dp3"]["choice"]
+       == "forrest-iia"
+       and dp3[0]["t_s"] == mf["decision_dp3"]["t_s"] == 1140.0,
+       "case9 LINK: dp1 proceed-endoscopy at t=540 s and dp3 "
+       "forrest-iia at t=1140 s -- the classification declared "
+       "before therapy, as the gate requires")
+    ok(t31["engine_trace_hash"] == mf["engine_trace_hash"]
+       == "0x40534c106d3f1427",
+       "case9 LINK: engine trace hash matched")
+    ok(case["adjudication"]["risk_summary"]["forrest"]["class"]
+       == "IIa"
+       and "posterior wall of the duodenal bulb"
+       in finds["f.endoscopy-ulcer"]["text"]
+       and "epinephrine" in mgmt["endoscopic_therapy"]
+       and "clips" in mgmt["endoscopic_therapy"]
+       and "epinephrine" in finds["f.endoscopy-hemostasis"]["text"]
+       and "clips" in finds["f.endoscopy-hemostasis"]["text"],
+       "case9 LINK: the case's own side of the correspondence -- "
+       "its Forrest class is IIa, its lesion the posterior bulb "
+       "wall, and its recorded therapy the epinephrine-plus-clips "
+       "combination the trace performs")
+    ok(mgmt["theatre_note"].startswith("THEATRE HANDOFF EXISTS")
+       and "Milestone 62" in mgmt["theatre_note"]
+       and "trace-31" in mgmt["theatre_note"]
+       and digest in mgmt["theatre_link_verified"],
+       "case9: management's theatre_note records the closure "
+       "(Milestone 62 built the procedure the Milestone 61 note "
+       "said did not exist) and carries theatre_link_verified "
+       "with the debrief hash")
     ok(case["review"]["required_reviewer_roles"]
        == ["gastroenterologist", "emergency physician"]
        and "PERTURBATION-arm link" in case["validity"]
