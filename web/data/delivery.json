@@ -22,8 +22,8 @@
   "integumentary"
  ],
  "load_order_rationale": "skeletal first (default-visible framing/reference layer), muscular second (completes the default view); remaining systems in manifest order (innermost -> outermost), the default-off occluding integumentary shell last",
- "canonical_total_bytes": 304367896,
- "compressed_total_bytes": 123352401,
+ "canonical_total_bytes": 311136996,
+ "compressed_total_bytes": 125760132,
  "layers": {
   "skeletal": {
    "file": "skeletal.bin",
@@ -51,11 +51,11 @@
   },
   "nervous": {
    "file": "nervous.bin",
-   "bytes": 40059000,
-   "sha256": "c8ff8916a617da9bce00f38202b7d199ab6abba4baaf6d640225a98bee8d3f59",
+   "bytes": 46740940,
+   "sha256": "b4a7d556c9bfc54d3e87516d045719b71c6c0ec71bbf76bb25caf8055199bd2f",
    "compressed_file": "nervous.bin.gz",
-   "compressed_bytes": 16520336,
-   "compressed_sha256": "efc7957ef872814b6b69d689fc05e505b627168485dd11ff20fddb90dc94b7fd"
+   "compressed_bytes": 18893433,
+   "compressed_sha256": "ab3d2086e42a61f7d83b5a87dba0f0286b5b6591206523e6e18fd58050981611"
   },
   "respiratory": {
    "file": "respiratory.bin",
@@ -99,11 +99,11 @@
   },
   "reproductive": {
    "file": "reproductive.bin",
-   "bytes": 511644,
-   "sha256": "1b873af7467b714884df1e1f3ee74562c1d5c3caecb581cf793f4823c2478a36",
+   "bytes": 598804,
+   "sha256": "2bdfaa6f2eda81d6773f517953776308e59c747cbdf385ad10e57816624d7f53",
    "compressed_file": "reproductive.bin.gz",
-   "compressed_bytes": 184609,
-   "compressed_sha256": "91dcc6011018d1de73e7abc0140a2632d270e5e1b7d013810227a21963086a4e"
+   "compressed_bytes": 219243,
+   "compressed_sha256": "1c726abda7a73d8d3f792f1dfa8447a4cb5e98eb47c6197a39f5ca78e210ff86"
   },
   "integumentary": {
    "file": "integumentary.bin",

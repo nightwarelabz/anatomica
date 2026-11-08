@@ -1,18 +1,18 @@
 {
  "meta": {
-  "title": "ANATOMICA reproductive system geometry resolution \u2014 Milestone 14",
+  "title": "ANATOMICA reproductive system geometry resolution — Milestone 14",
   "generated_by": "tools/repro_map.py",
   "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
    "records": 146,
-   "records_with_meshes": 13,
-   "records_without_meshes": 133,
+   "records_with_meshes": 15,
+   "records_without_meshes": 131,
    "by_sex_line": {
     "male": {
      "records": 86,
-     "records_with_meshes": 10
+     "records_with_meshes": 12
     },
     "female": {
      "records": 57,
@@ -25,14 +25,14 @@
    },
    "union_bbox_all_records": {
     "min": [
-     -61.809,
+     -84.0843,
      -200.861,
      689.753
     ],
     "max": [
-     59.9573,
+     102.625,
      -16.9086,
-     828.9
+     860.94
     ]
    }
   },
@@ -1046,7 +1046,7 @@
     "Left ovary"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1078,7 +1078,7 @@
     "Right ovary"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1110,7 +1110,7 @@
     "Follicle of ovary"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1142,7 +1142,7 @@
     "Corpus luteum"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1174,7 +1174,7 @@
     "Corpus albicans"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1206,7 +1206,7 @@
     "Hilum of ovary"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1238,7 +1238,7 @@
     "Left ovarian ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1270,7 +1270,7 @@
     "Right ovarian ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1302,7 +1302,7 @@
     "Suspensory ligament of ovary"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1334,7 +1334,7 @@
     "Left mesovarium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1366,7 +1366,7 @@
     "Right mesovarium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1398,7 +1398,7 @@
     "Left uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1430,7 +1430,7 @@
     "Right uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1462,7 +1462,7 @@
     "Infundibulum of uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1494,7 +1494,7 @@
     "Fimbria of uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1526,7 +1526,7 @@
     "Ampulla of uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1558,7 +1558,7 @@
     "Isthmus of uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1590,7 +1590,7 @@
     "Uterine part of uterine tube"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1622,7 +1622,7 @@
     "Left mesosalpinx"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1654,7 +1654,7 @@
     "Right mesosalpinx"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1686,7 +1686,7 @@
     "Uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1718,7 +1718,7 @@
     "Body of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1750,7 +1750,7 @@
     "Fundus of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1782,7 +1782,7 @@
     "Endometrium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1814,7 +1814,7 @@
     "Myometrium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1846,7 +1846,7 @@
     "Cavity of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1878,7 +1878,7 @@
     "Cervix of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1910,7 +1910,7 @@
     "Supravaginal part of cervix"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1942,7 +1942,7 @@
     "Vaginal part of cervix"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -1974,7 +1974,7 @@
     "Serosa of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2006,7 +2006,7 @@
     "Broad ligament of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2038,7 +2038,7 @@
     "Left round ligament of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2070,7 +2070,7 @@
     "Right round ligament of uterus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2102,7 +2102,7 @@
     "Left mesometrium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2134,7 +2134,7 @@
     "Right mesometrium"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2166,7 +2166,7 @@
     "Left uterosacral ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2198,7 +2198,7 @@
     "Right uterosacral ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2230,7 +2230,7 @@
     "Left cardinal ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2262,7 +2262,7 @@
     "Right cardinal ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2294,7 +2294,7 @@
     "Vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2326,7 +2326,7 @@
     "Fornix of vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2358,7 +2358,7 @@
     "Anterior fornix of vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2390,7 +2390,7 @@
     "Posterior fornix of vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2422,7 +2422,7 @@
     "Hymen of vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2454,7 +2454,7 @@
     "Vulva"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2486,7 +2486,7 @@
     "Clitoris"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2518,7 +2518,7 @@
     "Glans of clitoris"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2550,7 +2550,7 @@
     "Left labium majus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2582,7 +2582,7 @@
     "Right labium majus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2614,7 +2614,7 @@
     "Left labium minus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2646,7 +2646,7 @@
     "Right labium minus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2678,7 +2678,7 @@
     "Vestibule of vagina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2710,7 +2710,7 @@
     "Left greater vestibular gland"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2742,7 +2742,7 @@
     "Right greater vestibular gland"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2774,7 +2774,7 @@
     "Left lesser vestibular gland"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2806,7 +2806,7 @@
     "Right lesser vestibular gland"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2838,7 +2838,7 @@
     "Perineal body"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 37)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 37)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2870,23 +2870,53 @@
     "Left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
-   "isa_meshes": [],
+   "geometry_status": "claimed — BodyParts3D 4.0 carries this concept under the preferred name 'deferent duct' (FJ3135); mesh claimed at Milestone 63 under the Milestone 40 adjudication and the 2026-11-08 geometry ruling",
+   "isa_meshes": [
+    {
+     "fj": "FJ3135",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3135.obj",
+     "vertices": 863,
+     "faces": 1110,
+     "bbox": {
+      "min": [
+       2.55171,
+       -154.805,
+       694.599
+      ],
+      "max": [
+       102.625,
+       -52.5625,
+       857.811
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 863,
+     "faces": 1110
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
     },
-    "combined_files": 0
+    "combined_files": 1
    },
-   "bbox_isa": null,
+   "bbox_isa": {
+    "min": [
+     2.55171,
+     -154.805,
+     694.599
+    ],
+    "max": [
+     102.625,
+     -52.5625,
+     857.811
+    ]
+   },
    "bbox_partof": null
   },
   {
@@ -2902,23 +2932,53 @@
     "Right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
-   "isa_meshes": [],
+   "geometry_status": "claimed — BodyParts3D 4.0 carries this concept under the preferred name 'deferent duct' (FJ3140); mesh claimed at Milestone 63 under the Milestone 40 adjudication and the 2026-11-08 geometry ruling",
+   "isa_meshes": [
+    {
+     "fj": "FJ3140",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3140.obj",
+     "vertices": 787,
+     "faces": 944,
+     "bbox": {
+      "min": [
+       -84.0843,
+       -154.479,
+       694.59
+      ],
+      "max": [
+       -3.89807,
+       -52.9636,
+       860.94
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 787,
+     "faces": 944
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
     },
-    "combined_files": 0
+    "combined_files": 1
    },
-   "bbox_isa": null,
+   "bbox_isa": {
+    "min": [
+     -84.0843,
+     -154.479,
+     694.59
+    ],
+    "max": [
+     -3.89807,
+     -52.9636,
+     860.94
+    ]
+   },
    "bbox_partof": null
   },
   {
@@ -2934,7 +2994,7 @@
     "Left deferent duct proper"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2966,7 +3026,7 @@
     "Right deferent duct proper"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -2998,7 +3058,7 @@
     "Ampulla of left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3030,7 +3090,7 @@
     "Ampulla of right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3062,7 +3122,7 @@
     "Scrotal part of left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3094,7 +3154,7 @@
     "Scrotal part of right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3126,7 +3186,7 @@
     "Funicular part of left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3158,7 +3218,7 @@
     "Funicular part of right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3190,7 +3250,7 @@
     "Inguinal part of left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3222,7 +3282,7 @@
     "Inguinal part of right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3254,7 +3314,7 @@
     "Pelvic part of left deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3286,7 +3346,7 @@
     "Pelvic part of right deferent duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3318,7 +3378,7 @@
     "Left ejaculatory duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3350,7 +3410,7 @@
     "Right ejaculatory duct"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3382,7 +3442,7 @@
     "Efferent ductule"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3414,7 +3474,7 @@
     "Duct of left epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3446,7 +3506,7 @@
     "Duct of right epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3478,7 +3538,7 @@
     "Duct of left seminal vesicle"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3510,7 +3570,7 @@
     "Duct of right seminal vesicle"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3542,7 +3602,7 @@
     "Seminiferous tubule of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3574,7 +3634,7 @@
     "Seminiferous tubule of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3606,7 +3666,7 @@
     "Straight seminiferous tubule of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3638,7 +3698,7 @@
     "Straight seminiferous tubule of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3670,7 +3730,7 @@
     "Left rete testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3702,7 +3762,7 @@
     "Right rete testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3734,7 +3794,7 @@
     "Lobule of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3766,7 +3826,7 @@
     "Lobule of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3798,7 +3858,7 @@
     "Septum of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3830,7 +3890,7 @@
     "Septum of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3862,7 +3922,7 @@
     "Mediastinum of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3894,7 +3954,7 @@
     "Mediastinum of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3926,7 +3986,7 @@
     "Tunica albuginea of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3958,7 +4018,7 @@
     "Tunica albuginea of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -3990,7 +4050,7 @@
     "Tunica vaginalis of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4022,7 +4082,7 @@
     "Tunica vaginalis of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4054,7 +4114,7 @@
     "Visceral layer of tunica vaginalis of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4086,7 +4146,7 @@
     "Visceral layer of tunica vaginalis of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4118,7 +4178,7 @@
     "Parietal layer of tunica vaginalis of left testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4150,7 +4210,7 @@
     "Parietal layer of tunica vaginalis of right testis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4182,7 +4242,7 @@
     "Head of left epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4214,7 +4274,7 @@
     "Head of right epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4246,7 +4306,7 @@
     "Body of left epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4278,7 +4338,7 @@
     "Body of right epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4310,7 +4370,7 @@
     "Tail of left epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4342,7 +4402,7 @@
     "Tail of right epididymis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4374,7 +4434,7 @@
     "Apex of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4406,7 +4466,7 @@
     "Base of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4438,7 +4498,7 @@
     "Left lobe of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4470,7 +4530,7 @@
     "Right lobe of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4502,7 +4562,7 @@
     "Central zone of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4534,7 +4594,7 @@
     "Peripheral zone of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4566,7 +4626,7 @@
     "Transition zone of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4598,7 +4658,7 @@
     "Anterior fibromuscular stroma of prostate"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4630,7 +4690,7 @@
     "Left spermatic cord"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4662,7 +4722,7 @@
     "Right spermatic cord"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4694,7 +4754,7 @@
     "Scrotum"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4726,7 +4786,7 @@
     "Left external spermatic fascia"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4758,7 +4818,7 @@
     "Right external spermatic fascia"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4790,7 +4850,7 @@
     "Left internal spermatic fascia"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4822,7 +4882,7 @@
     "Right internal spermatic fascia"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4854,7 +4914,7 @@
     "Cremasteric fascia"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4886,7 +4946,7 @@
     "Cremasteric muscle"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4918,7 +4978,7 @@
     "Dartos muscle"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4950,7 +5010,7 @@
     "Left pampiniform plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -4982,7 +5042,7 @@
     "Right pampiniform plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5014,7 +5074,7 @@
     "Penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5046,7 +5106,7 @@
     "Root of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5078,7 +5138,7 @@
     "Body of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5110,7 +5170,7 @@
     "Bulb of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5142,7 +5202,7 @@
     "Neck of glans penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5174,7 +5234,7 @@
     "Fascia of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5206,7 +5266,7 @@
     "Prepuce of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5238,7 +5298,7 @@
     "Frenulum of penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -5270,7 +5330,7 @@
     "Corona of glans penis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 38)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 38)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {

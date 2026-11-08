@@ -48,7 +48,13 @@ the concept->mesh derivation from the BP3D element tables —
 is likewise scoped to the BP3D partition (the derivation is
 that partition's defining rule, as in tools/uri_check.py),
 and the FMA entries are asserted mesh-less in the same
-section. Milestone 40: the section also carries the
+section — with one adjudicated exception: Milestone 40 found
+the deferent-duct pair to be the module's only
+inventory<->geometry collision, and Milestone 63 claimed the
+pair (the 2026-11-08 geometry ruling), so the pair's entries
+are asserted to carry exactly their pinned BP3D meshes and
+are re-measured like BP3D entries. Milestone 40: the section
+also carries the
 collision gate — the element-table derivation over
 FMA-partition concepts must be empty except for the
 adjudicated deferent-duct pair (see MILESTONE-40.md).
@@ -136,6 +142,16 @@ TS_TERMS = ("prostate", "seminal", "testis", "ovary", "uterus",
             "uterine", "vagina", "penis", "scrotum", "spermatic",
             "epididym", "perine", "cervix", "vulva", "gonad")
 PERINEAL_FILES = {"FJ1450", "FJ1450M", "FJ2543", "FJ2548"}
+# Milestone 63 adjudication (2026-11-08 geometry ruling): the
+# deferent-duct pair — the Milestone 40 collision — is CLAIMED.
+# These two FMA-partition records, and only these, carry geometry:
+# exactly the pinned BodyParts3D meshes below, re-measured in the
+# geometry section like BP3D-partition entries. Every other FMA
+# record stays mesh-less under the original rule.
+CLAIMED_PAIR = {
+    "repro.left-deferent-duct": {"isa": {"FJ3135"}, "partof": set()},
+    "repro.right-deferent-duct": {"isa": {"FJ3140"}, "partof": set()},
+}
 
 CORE = {
     "pathway.male-reproductive-pathway":
@@ -641,6 +657,7 @@ def main():
     tot = Counter()
     all_meshes = []
     fma_mesh_bad = []
+    claim_bad = []
     collisions = {}
     for rid, gr in geo_rec.items():
         if gr["concept_ids"] != inv_rec[rid]["concept_ids"] or \
@@ -654,14 +671,11 @@ def main():
             # partition's defining rule (cf. the partition
             # scoping of tools/uri_check.py). The derivation
             # over their concepts is still computed, to feed
-            # the Milestone 40 collision gate below.
-            tt = gr.get("totals") or {}
-            if gr["isa_meshes"] or gr["partof_meshes"] or \
-                    gr.get("bbox_isa") is not None or \
-                    gr.get("bbox_partof") is not None or \
-                    (tt.get("isa") or {}).get("files") or \
-                    (tt.get("partof") or {}).get("files"):
-                fma_mesh_bad.append(rid)
+            # the Milestone 40 collision gate below. Sole
+            # exception: the deferent-duct pair, claimed at
+            # Milestone 63 — its entries are validated against
+            # the pinned claim and re-measured exactly like
+            # BP3D-partition entries.
             deriv = {"isa": set(), "partof": set()}
             for tree, elem in (("isa", isa_elem),
                                ("partof", po_elem)):
@@ -669,6 +683,49 @@ def main():
                     deriv[tree] |= elem.get(c, set())
             if deriv["isa"] or deriv["partof"]:
                 collisions[rid] = deriv
+            if rid in CLAIMED_PAIR:
+                exp = CLAIMED_PAIR[rid]
+                if {m["fj"] for m in gr["isa_meshes"]} != exp["isa"] \
+                        or {m["fj"] for m in
+                            gr["partof_meshes"]} != exp["partof"]:
+                    claim_bad.append((rid, "fj set != pinned claim"))
+                for tree, key in (("isa", "isa_meshes"),
+                                  ("partof", "partof_meshes")):
+                    tv = tf = 0
+                    for m in gr[key]:
+                        entries += 1
+                        all_meshes.append(m)
+                        v, f, bb = measure(os.path.join(
+                            ROOT, m["path"]))
+                        if (v, f) != (m["vertices"], m["faces"]) or \
+                                bb != m["bbox"]:
+                            claim_bad.append((rid, m["fj"]))
+                        tv += v
+                        tf += f
+                    t = gr["totals"][tree]
+                    if (t["files"], t["vertices"], t["faces"]) != \
+                            (len(gr[key]), tv, tf):
+                        claim_bad.append((rid, tree + " totals"))
+                    tot[tree + "_v"] += tv
+                    tot[tree + "_f"] += tf
+                    bbk = "bbox_" + tree
+                    if gr[key]:
+                        mn = [min(m["bbox"]["min"][i] for m in gr[key])
+                              for i in range(3)]
+                        mx = [max(m["bbox"]["max"][i] for m in gr[key])
+                              for i in range(3)]
+                        if gr[bbk] != {"min": mn, "max": mx}:
+                            claim_bad.append((rid, bbk))
+                    elif gr[bbk] is not None:
+                        claim_bad.append((rid, bbk + " not null"))
+                continue
+            tt = gr.get("totals") or {}
+            if gr["isa_meshes"] or gr["partof_meshes"] or \
+                    gr.get("bbox_isa") is not None or \
+                    gr.get("bbox_partof") is not None or \
+                    (tt.get("isa") or {}).get("files") or \
+                    (tt.get("partof") or {}).get("files"):
+                fma_mesh_bad.append(rid)
             continue
         for tree, key, elem, d in (
                 ("isa", "isa_meshes", isa_elem, ISA_DIR),
@@ -711,14 +768,16 @@ def main():
     # duct", which Milestone 14's Latin-keyed probes and sweep
     # terms ("ductus deferens" / "vas deferens") never matched,
     # so the line was recorded absent and Milestone 38 intaken
-    # the pair as concept-only FMA records. The records stay
-    # concept-only — upgrading them to geometry-carrying
-    # records is a geometry-intake decision (the Milestone 34
-    # line), not a checker repair. The pair's claimable meshes
-    # are pinned here so that any change to this collision
-    # set — a newly BP3D-carried FMA concept, a changed file
-    # set, or a deliberate re-filing of the pair — fails
-    # loudly instead of drifting. See MILESTONE-40.md.
+    # the pair as concept-only FMA records. Milestone 63
+    # claimed the pair under the 2026-11-08 geometry ruling:
+    # the records now carry exactly the pinned meshes
+    # (validated and re-measured in the loop above). The
+    # collision gate below is unchanged — the derivation over
+    # FMA-partition concepts must still equal exactly this
+    # pinned set, so a newly BP3D-carried FMA concept, a
+    # changed file set, or a drifted claim fails loudly
+    # instead of drifting. See MILESTONE-40.md and
+    # MILESTONE-63.md.
     ADJUDICATED_COLLISIONS = {
         "repro.left-deferent-duct":
             {"isa": {"FJ3135"}, "partof": set()},
@@ -726,19 +785,23 @@ def main():
             {"isa": {"FJ3140"}, "partof": set()},
     }
     check("attribution consistency across all records "
-          "(Milestone 40 gate): the FMA partition is "
-          "mesh-less, and the BP3D element-table derivation "
-          "over FMA-partition concepts is empty except the "
-          "adjudicated deferent-duct pair (FJ3135 / FJ3140)",
+          "(Milestone 40 gate, Milestone 63 claim): the FMA "
+          "partition is mesh-less except the claimed "
+          "deferent-duct pair — shipped exactly {FJ3135} / "
+          "{FJ3140} and re-measured — and the BP3D "
+          "element-table derivation over FMA-partition "
+          "concepts is empty except the adjudicated pair",
           not fma_mesh_bad
+          and not claim_bad
           and collisions == ADJUDICATED_COLLISIONS,
           f"mesh_bad={fma_mesh_bad[:3]} "
+          f"claim_bad={claim_bad[:3]} "
           f"collisions={collisions}")
     cov = geo["meta"]["coverage"]
-    check("geometry coverage meta matches (13/13; male 10/10, "
+    check("geometry coverage meta matches (15/15; male 12/12, "
           "female 1/1, shared 2/2)",
-          cov["records_with_meshes"] == 13
-          and cov["by_sex_line"]["male"]["records_with_meshes"] == 10
+          cov["records_with_meshes"] == 15
+          and cov["by_sex_line"]["male"]["records_with_meshes"] == 12
           and cov["by_sex_line"]["female"]
           ["records_with_meshes"] == 1
           and cov["by_sex_line"]["shared"]

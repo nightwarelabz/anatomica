@@ -1,14 +1,14 @@
 {
  "meta": {
-  "title": "ANATOMICA nervous system geometry resolution \u2014 Milestone 9",
+  "title": "ANATOMICA nervous system geometry resolution — Milestone 9",
   "generated_by": "tools/nerve_map.py",
   "paths": "mesh paths are relative to the project root; meshes are the extracted BP3D 4.0 working copies under work/bp3d/ (sources in data/sources/ stay byte-identical)",
   "units": "source coordinates are millimetres (OBJ headers; verified in Milestone 2)",
   "counting": "vertices = lines starting 'v ', faces = lines starting 'f ', counted by streaming each file; bbox measured from the same vertex stream",
   "coverage": {
    "records": 419,
-   "records_with_meshes": 133,
-   "records_without_meshes": 286
+   "records_with_meshes": 152,
+   "records_without_meshes": 267
   }
  },
  "records": [
@@ -12185,20 +12185,52 @@
     "Left olfactory nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Olfactory nerve (I).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Olfactory_nerve_(I).l",
+     "path": "data/sources/z-anatomy-derived/obj/Olfactory_nerve_(I).l.obj",
+     "vertices": 12006,
+     "faces": 23920,
+     "bbox": {
+      "min": [
+       -0.774662,
+       -159.880437,
+       1523.619189
+      ],
+      "max": [
+       23.42759,
+       -107.085522,
+       1542.088767
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 12006,
+     "faces": 23920
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -0.774662,
+     -159.880437,
+     1523.619189
+    ],
+    "max": [
+     23.42759,
+     -107.085522,
+     1542.088767
+    ]
    }
   },
   {
@@ -12213,20 +12245,52 @@
     "Right olfactory nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Olfactory nerve (I).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Olfactory_nerve_(I).r",
+     "path": "data/sources/z-anatomy-derived/obj/Olfactory_nerve_(I).r.obj",
+     "vertices": 12006,
+     "faces": 23920,
+     "bbox": {
+      "min": [
+       -24.728222,
+       -159.862582,
+       1523.616296
+      ],
+      "max": [
+       -0.541052,
+       -106.930393,
+       1542.088451
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 12006,
+     "faces": 23920
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -24.728222,
+     -159.862582,
+     1523.616296
+    ],
+    "max": [
+     -0.541052,
+     -106.930393,
+     1542.088451
+    ]
    }
   },
   {
@@ -12241,20 +12305,52 @@
     "Left oculomotor nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Oculomotor nerve (III).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Oculomotor_nerve_(III).l",
+     "path": "data/sources/z-anatomy-derived/obj/Oculomotor_nerve_(III).l.obj",
+     "vertices": 3910,
+     "faces": 7792,
+     "bbox": {
+      "min": [
+       -0.379856,
+       -162.630484,
+       1501.129232
+      ],
+      "max": [
+       39.518877,
+       -78.756625,
+       1536.281949
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 3910,
+     "faces": 7792
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -0.379856,
+     -162.630484,
+     1501.129232
+    ],
+    "max": [
+     39.518877,
+     -78.756625,
+     1536.281949
+    ]
    }
   },
   {
@@ -12269,20 +12365,52 @@
     "Right oculomotor nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Oculomotor nerve (III).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Oculomotor_nerve_(III).r",
+     "path": "data/sources/z-anatomy-derived/obj/Oculomotor_nerve_(III).r.obj",
+     "vertices": 3910,
+     "faces": 7792,
+     "bbox": {
+      "min": [
+       -41.071867,
+       -162.521635,
+       1501.10534
+      ],
+      "max": [
+       -0.736459,
+       -78.743893,
+       1536.281108
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 3910,
+     "faces": 7792
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -41.071867,
+     -162.521635,
+     1501.10534
+    ],
+    "max": [
+     -0.736459,
+     -78.743893,
+     1536.281108
+    ]
    }
   },
   {
@@ -12297,20 +12425,52 @@
     "Left trigeminal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Trigeminal nerve (V).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Trigeminal_nerve_(V).l",
+     "path": "data/sources/z-anatomy-derived/obj/Trigeminal_nerve_(V).l.obj",
+     "vertices": 1044,
+     "faces": 2080,
+     "bbox": {
+      "min": [
+       4.154648,
+       -104.479001,
+       1503.46085
+      ],
+      "max": [
+       23.388847,
+       -71.115759,
+       1527.652178
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 1044,
+     "faces": 2080
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     4.154648,
+     -104.479001,
+     1503.46085
+    ],
+    "max": [
+     23.388847,
+     -71.115759,
+     1527.652178
+    ]
    }
   },
   {
@@ -12325,20 +12485,52 @@
     "Right trigeminal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Trigeminal nerve (V).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Trigeminal_nerve_(V).r",
+     "path": "data/sources/z-anatomy-derived/obj/Trigeminal_nerve_(V).r.obj",
+     "vertices": 1044,
+     "faces": 2080,
+     "bbox": {
+      "min": [
+       -24.61591,
+       -104.315136,
+       1503.442752
+      ],
+      "max": [
+       -5.206111,
+       -71.003978,
+       1527.642939
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 1044,
+     "faces": 2080
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -24.61591,
+     -104.315136,
+     1503.442752
+    ],
+    "max": [
+     -5.206111,
+     -71.003978,
+     1527.642939
+    ]
    }
   },
   {
@@ -12353,20 +12545,52 @@
     "Left maxillary nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Maxillary nerve.l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Maxillary_nerve.l",
+     "path": "data/sources/z-anatomy-derived/obj/Maxillary_nerve.l.obj",
+     "vertices": 3506,
+     "faces": 6992,
+     "bbox": {
+      "min": [
+       10.573217,
+       -170.26348,
+       1469.74493
+      ],
+      "max": [
+       33.442851,
+       -90.596703,
+       1527.605068
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 3506,
+     "faces": 6992
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     10.573217,
+     -170.26348,
+     1469.74493
+    ],
+    "max": [
+     33.442851,
+     -90.596703,
+     1527.605068
+    ]
    }
   },
   {
@@ -12381,20 +12605,52 @@
     "Right maxillary nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Maxillary nerve.r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Maxillary_nerve.r",
+     "path": "data/sources/z-anatomy-derived/obj/Maxillary_nerve.r.obj",
+     "vertices": 3506,
+     "faces": 6992,
+     "bbox": {
+      "min": [
+       -35.046387,
+       -170.137454,
+       1469.72279
+      ],
+      "max": [
+       -11.727386,
+       -90.516198,
+       1527.595838
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 3506,
+     "faces": 6992
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -35.046387,
+     -170.137454,
+     1469.72279
+    ],
+    "max": [
+     -11.727386,
+     -90.516198,
+     1527.595838
+    ]
    }
   },
   {
@@ -12409,7 +12665,7 @@
     "Left mandibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12437,7 +12693,7 @@
     "Right mandibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12465,7 +12721,7 @@
     "Left trigeminal ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12493,7 +12749,7 @@
     "Right trigeminal ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12521,20 +12777,52 @@
     "Left abducens nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Abducens nerve (VI).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Abducens_nerve_(VI).l",
+     "path": "data/sources/z-anatomy-derived/obj/Abducens_nerve_(VI).l.obj",
+     "vertices": 2196,
+     "faces": 4384,
+     "bbox": {
+      "min": [
+       0.707216,
+       -136.607594,
+       1501.987153
+      ],
+      "max": [
+       32.805075,
+       -71.915536,
+       1528.156252
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 2196,
+     "faces": 4384
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     0.707216,
+     -136.607594,
+     1501.987153
+    ],
+    "max": [
+     32.805075,
+     -71.915536,
+     1528.156252
+    ]
    }
   },
   {
@@ -12549,20 +12837,52 @@
     "Right abducens nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Abducens nerve (VI).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Abducens_nerve_(VI).r",
+     "path": "data/sources/z-anatomy-derived/obj/Abducens_nerve_(VI).r.obj",
+     "vertices": 2196,
+     "faces": 4384,
+     "bbox": {
+      "min": [
+       -34.274185,
+       -136.376134,
+       1501.984236
+      ],
+      "max": [
+       -1.71734,
+       -71.904401,
+       1528.133448
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 2196,
+     "faces": 4384
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -34.274185,
+     -136.376134,
+     1501.984236
+    ],
+    "max": [
+     -1.71734,
+     -71.904401,
+     1528.133448
+    ]
    }
   },
   {
@@ -12577,20 +12897,52 @@
     "Left facial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Facial nerve (VII).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Facial_nerve_(VII).l",
+     "path": "data/sources/z-anatomy-derived/obj/Facial_nerve_(VII).l.obj",
+     "vertices": 12152,
+     "faces": 24256,
+     "bbox": {
+      "min": [
+       -0.348422,
+       -178.013427,
+       1432.937448
+      ],
+      "max": [
+       66.944998,
+       -70.543461,
+       1552.688767
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 12152,
+     "faces": 24256
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -0.348422,
+     -178.013427,
+     1432.937448
+    ],
+    "max": [
+     66.944998,
+     -70.543461,
+     1552.688767
+    ]
    }
   },
   {
@@ -12605,20 +12957,52 @@
     "Right facial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Facial nerve (VII).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Facial_nerve_(VII).r",
+     "path": "data/sources/z-anatomy-derived/obj/Facial_nerve_(VII).r.obj",
+     "vertices": 12152,
+     "faces": 24256,
+     "bbox": {
+      "min": [
+       -68.291136,
+       -177.83155,
+       1432.900184
+      ],
+      "max": [
+       -0.661793,
+       -70.528778,
+       1552.639982
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 12152,
+     "faces": 24256
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -68.291136,
+     -177.83155,
+     1432.900184
+    ],
+    "max": [
+     -0.661793,
+     -70.528778,
+     1552.639982
+    ]
    }
   },
   {
@@ -12633,20 +13017,52 @@
     "Left vestibulocochlear nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Vestibulocochlear nerve (VIII).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Vestibulocochlear_nerve_(VIII).l",
+     "path": "data/sources/z-anatomy-derived/obj/Vestibulocochlear_nerve_(VIII).l.obj",
+     "vertices": 788,
+     "faces": 1568,
+     "bbox": {
+      "min": [
+       6.867665,
+       -83.623349,
+       1503.435361
+      ],
+      "max": [
+       21.701932,
+       -72.0073,
+       1508.965667
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 788,
+     "faces": 1568
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     6.867665,
+     -83.623349,
+     1503.435361
+    ],
+    "max": [
+     21.701932,
+     -72.0073,
+     1508.965667
+    ]
    }
   },
   {
@@ -12661,20 +13077,52 @@
     "Right vestibulocochlear nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Vestibulocochlear nerve (VIII).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Vestibulocochlear_nerve_(VIII).r",
+     "path": "data/sources/z-anatomy-derived/obj/Vestibulocochlear_nerve_(VIII).r.obj",
+     "vertices": 788,
+     "faces": 1568,
+     "bbox": {
+      "min": [
+       -22.749991,
+       -83.485055,
+       1503.427361
+      ],
+      "max": [
+       -7.913456,
+       -71.936855,
+       1508.949911
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 788,
+     "faces": 1568
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -22.749991,
+     -83.485055,
+     1503.427361
+    ],
+    "max": [
+     -7.913456,
+     -71.936855,
+     1508.949911
+    ]
    }
   },
   {
@@ -12689,20 +13137,52 @@
     "Left glossopharyngeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Glossopharyngeal nerve (IX).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Glossopharyngeal_nerve_(IX).l",
+     "path": "data/sources/z-anatomy-derived/obj/Glossopharyngeal_nerve_(IX).l.obj",
+     "vertices": 5958,
+     "faces": 11888,
+     "bbox": {
+      "min": [
+       1.289958,
+       -123.418455,
+       1351.974611
+      ],
+      "max": [
+       41.469807,
+       -66.848756,
+       1504.104356
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 5958,
+     "faces": 11888
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     1.289958,
+     -123.418455,
+     1351.974611
+    ],
+    "max": [
+     41.469807,
+     -66.848756,
+     1504.104356
+    ]
    }
   },
   {
@@ -12717,20 +13197,52 @@
     "Right glossopharyngeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Glossopharyngeal nerve (IX).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Glossopharyngeal_nerve_(IX).r",
+     "path": "data/sources/z-anatomy-derived/obj/Glossopharyngeal_nerve_(IX).r.obj",
+     "vertices": 5958,
+     "faces": 11888,
+     "bbox": {
+      "min": [
+       -42.437847,
+       -123.316203,
+       1351.942652
+      ],
+      "max": [
+       -2.264861,
+       -66.763019,
+       1504.098886
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 5958,
+     "faces": 11888
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -42.437847,
+     -123.316203,
+     1351.942652
+    ],
+    "max": [
+     -2.264861,
+     -66.763019,
+     1504.098886
+    ]
    }
   },
   {
@@ -12745,7 +13257,7 @@
     "Left vagus nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12773,7 +13285,7 @@
     "Right vagus nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12801,7 +13313,7 @@
     "Left spinal accessory nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12829,7 +13341,7 @@
     "Right spinal accessory nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12857,20 +13369,52 @@
     "Left hypoglossal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Hypoglossal nerve (XII).l' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Hypoglossal_nerve_(XII).l",
+     "path": "data/sources/z-anatomy-derived/obj/Hypoglossal_nerve_(XII).l.obj",
+     "vertices": 7248,
+     "faces": 14464,
+     "bbox": {
+      "min": [
+       1.035531,
+       -144.954358,
+       1434.029406
+      ],
+      "max": [
+       28.264542,
+       -66.826776,
+       1500.530513
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 7248,
+     "faces": 14464
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     1.035531,
+     -144.954358,
+     1434.029406
+    ],
+    "max": [
+     28.264542,
+     -66.826776,
+     1500.530513
+    ]
    }
   },
   {
@@ -12885,20 +13429,52 @@
     "Right hypoglossal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Hypoglossal nerve (XII).r' (curve), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Hypoglossal_nerve_(XII).r",
+     "path": "data/sources/z-anatomy-derived/obj/Hypoglossal_nerve_(XII).r.obj",
+     "vertices": 7248,
+     "faces": 14464,
+     "bbox": {
+      "min": [
+       -29.442698,
+       -144.866594,
+       1434.02022
+      ],
+      "max": [
+       -2.006768,
+       -66.814365,
+       1500.52911
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 7248,
+     "faces": 14464
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -29.442698,
+     -144.866594,
+     1434.02022
+    ],
+    "max": [
+     -2.006768,
+     -66.814365,
+     1500.52911
+    ]
    }
   },
   {
@@ -12913,7 +13489,7 @@
     "Left first cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12941,7 +13517,7 @@
     "Right first cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12969,7 +13545,7 @@
     "Left second cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -12997,7 +13573,7 @@
     "Right second cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13025,7 +13601,7 @@
     "Left third cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13053,7 +13629,7 @@
     "Right third cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13081,7 +13657,7 @@
     "Left fourth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13109,7 +13685,7 @@
     "Right fourth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13137,7 +13713,7 @@
     "Left fifth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13165,7 +13741,7 @@
     "Right fifth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13193,7 +13769,7 @@
     "Left sixth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13221,7 +13797,7 @@
     "Right sixth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13249,7 +13825,7 @@
     "Left seventh cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13277,7 +13853,7 @@
     "Right seventh cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13305,7 +13881,7 @@
     "Left eighth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13333,7 +13909,7 @@
     "Right eighth cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13361,7 +13937,7 @@
     "Left first thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13389,7 +13965,7 @@
     "Right first thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13417,7 +13993,7 @@
     "Left second thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13445,7 +14021,7 @@
     "Right second thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13473,7 +14049,7 @@
     "Left third thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13501,7 +14077,7 @@
     "Right third thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13529,7 +14105,7 @@
     "Left fourth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13557,7 +14133,7 @@
     "Right fourth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13585,7 +14161,7 @@
     "Left fifth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13613,7 +14189,7 @@
     "Right fifth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13641,7 +14217,7 @@
     "Left sixth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13669,7 +14245,7 @@
     "Right sixth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13697,7 +14273,7 @@
     "Left seventh thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13725,7 +14301,7 @@
     "Right seventh thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13753,7 +14329,7 @@
     "Left eighth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13781,7 +14357,7 @@
     "Right eighth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13809,7 +14385,7 @@
     "Left ninth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13837,7 +14413,7 @@
     "Right ninth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13865,7 +14441,7 @@
     "Left tenth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13893,7 +14469,7 @@
     "Right tenth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13921,7 +14497,7 @@
     "Left eleventh thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13949,7 +14525,7 @@
     "Right eleventh thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -13977,7 +14553,7 @@
     "Left twelfth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14005,7 +14581,7 @@
     "Right twelfth thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14033,7 +14609,7 @@
     "Left first lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14061,7 +14637,7 @@
     "Right first lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14089,7 +14665,7 @@
     "Left second lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14117,7 +14693,7 @@
     "Right second lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14145,7 +14721,7 @@
     "Left third lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14173,7 +14749,7 @@
     "Right third lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14201,7 +14777,7 @@
     "Left fourth lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14229,7 +14805,7 @@
     "Right fourth lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14257,7 +14833,7 @@
     "Left fifth lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14285,7 +14861,7 @@
     "Right fifth lumbar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14313,7 +14889,7 @@
     "Left first sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14341,7 +14917,7 @@
     "Right first sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14369,7 +14945,7 @@
     "Left second sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14397,7 +14973,7 @@
     "Right second sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14425,7 +15001,7 @@
     "Left third sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14453,7 +15029,7 @@
     "Right third sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14481,7 +15057,7 @@
     "Left fourth sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14509,7 +15085,7 @@
     "Right fourth sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14537,7 +15113,7 @@
     "Left fifth sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14565,7 +15141,7 @@
     "Right fifth sacral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14593,7 +15169,7 @@
     "Left coccygeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14621,7 +15197,7 @@
     "Right coccygeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14649,7 +15225,7 @@
     "Anterior root of spinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14677,7 +15253,7 @@
     "Posterior root of spinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14705,7 +15281,7 @@
     "Spinal ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14733,7 +15309,7 @@
     "Anterior ramus of spinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14761,7 +15337,7 @@
     "Posterior ramus of spinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14789,7 +15365,7 @@
     "Left first intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14817,7 +15393,7 @@
     "Right first intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14845,7 +15421,7 @@
     "Left second intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14873,7 +15449,7 @@
     "Right second intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14901,7 +15477,7 @@
     "Left third intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14929,7 +15505,7 @@
     "Right third intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14957,7 +15533,7 @@
     "Left fourth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -14985,7 +15561,7 @@
     "Right fourth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15013,7 +15589,7 @@
     "Left fifth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15041,7 +15617,7 @@
     "Right fifth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15069,7 +15645,7 @@
     "Left sixth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15097,7 +15673,7 @@
     "Right sixth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15125,7 +15701,7 @@
     "Left seventh intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15153,7 +15729,7 @@
     "Right seventh intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15181,7 +15757,7 @@
     "Left eighth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15209,7 +15785,7 @@
     "Right eighth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15237,7 +15813,7 @@
     "Left ninth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15265,7 +15841,7 @@
     "Right ninth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15293,7 +15869,7 @@
     "Left tenth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15321,7 +15897,7 @@
     "Right tenth intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15349,7 +15925,7 @@
     "Left eleventh intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15377,7 +15953,7 @@
     "Right eleventh intercostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15405,7 +15981,7 @@
     "Left subcostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15433,7 +16009,7 @@
     "Right subcostal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15461,7 +16037,7 @@
     "Left cervical nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15489,7 +16065,7 @@
     "Right cervical nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15517,7 +16093,7 @@
     "Left brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15545,7 +16121,7 @@
     "Right brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15573,7 +16149,7 @@
     "Left lumbar nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15601,7 +16177,7 @@
     "Right lumbar nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15629,7 +16205,7 @@
     "Left sacral nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15657,7 +16233,7 @@
     "Right sacral nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15685,7 +16261,7 @@
     "Left lumbosacral nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15713,7 +16289,7 @@
     "Right lumbosacral nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15741,7 +16317,7 @@
     "Left coccygeal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15769,7 +16345,7 @@
     "Right coccygeal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15797,7 +16373,7 @@
     "Superior trunk of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15825,7 +16401,7 @@
     "Middle trunk of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15853,7 +16429,7 @@
     "Inferior trunk of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15881,7 +16457,7 @@
     "Superior anterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15909,7 +16485,7 @@
     "Middle anterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15937,7 +16513,7 @@
     "Inferior anterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15965,7 +16541,7 @@
     "Superior posterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -15993,7 +16569,7 @@
     "Middle posterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16021,7 +16597,7 @@
     "Inferior posterior division of brachial plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16049,7 +16625,7 @@
     "Lateral cord of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16077,7 +16653,7 @@
     "Posterior cord of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16105,7 +16681,7 @@
     "Medial cord of brachial nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16133,7 +16709,7 @@
     "Left phrenic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16161,7 +16737,7 @@
     "Right phrenic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16189,7 +16765,7 @@
     "Left great auricular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16217,7 +16793,7 @@
     "Right great auricular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16245,7 +16821,7 @@
     "Left transverse cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16273,7 +16849,7 @@
     "Right transverse cervical nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16301,7 +16877,7 @@
     "Left supraclavicular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16329,7 +16905,7 @@
     "Right supraclavicular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16357,7 +16933,7 @@
     "Left suprascapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16385,7 +16961,7 @@
     "Right suprascapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16413,7 +16989,7 @@
     "Left long thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16441,7 +17017,7 @@
     "Right long thoracic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16469,7 +17045,7 @@
     "Left thoracodorsal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16497,7 +17073,7 @@
     "Right thoracodorsal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16525,7 +17101,7 @@
     "Left lateral pectoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16553,7 +17129,7 @@
     "Right lateral pectoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16581,7 +17157,7 @@
     "Left medial pectoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16609,7 +17185,7 @@
     "Right medial pectoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16637,7 +17213,7 @@
     "Left superior subscapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16665,7 +17241,7 @@
     "Right superior subscapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16693,7 +17269,7 @@
     "Left inferior subscapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16721,7 +17297,7 @@
     "Right inferior subscapular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16749,7 +17325,7 @@
     "Left axillary nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16777,7 +17353,7 @@
     "Right axillary nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16805,7 +17381,7 @@
     "Left musculocutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16833,7 +17409,7 @@
     "Right musculocutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16861,7 +17437,7 @@
     "Left median nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16889,7 +17465,7 @@
     "Right median nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16917,7 +17493,7 @@
     "Left ulnar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16945,7 +17521,7 @@
     "Right ulnar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -16973,7 +17549,7 @@
     "Left radial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17001,7 +17577,7 @@
     "Right radial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17029,7 +17605,7 @@
     "Medial cutaneous nerve of arm"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17057,7 +17633,7 @@
     "Medial cutaneous nerve of forearm"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17085,7 +17661,7 @@
     "Posterior cutaneous nerve of arm"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17113,7 +17689,7 @@
     "Posterior cutaneous nerve of forearm"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17141,7 +17717,7 @@
     "Left iliohypogastric nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17169,7 +17745,7 @@
     "Right iliohypogastric nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17197,7 +17773,7 @@
     "Left ilioinguinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17225,7 +17801,7 @@
     "Right ilioinguinal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17253,7 +17829,7 @@
     "Left genitofemoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17281,7 +17857,7 @@
     "Right genitofemoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17309,7 +17885,7 @@
     "Left femoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17337,7 +17913,7 @@
     "Right femoral nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17365,7 +17941,7 @@
     "Left obturator nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17393,7 +17969,7 @@
     "Right obturator nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17421,7 +17997,7 @@
     "Left superior gluteal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17449,7 +18025,7 @@
     "Right superior gluteal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17477,7 +18053,7 @@
     "Left inferior gluteal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17505,7 +18081,7 @@
     "Right inferior gluteal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17533,7 +18109,7 @@
     "Left sciatic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17561,7 +18137,7 @@
     "Right sciatic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17589,7 +18165,7 @@
     "Left tibial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17617,7 +18193,7 @@
     "Right tibial nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17645,7 +18221,7 @@
     "Left common fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17673,7 +18249,7 @@
     "Right common fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17701,7 +18277,7 @@
     "Left deep fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17729,7 +18305,7 @@
     "Right deep fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17757,7 +18333,7 @@
     "Left superficial fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17785,7 +18361,7 @@
     "Right superficial fibular nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17813,7 +18389,7 @@
     "Left pudendal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17841,7 +18417,7 @@
     "Right pudendal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17869,7 +18445,7 @@
     "Left lateral femoral cutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17897,7 +18473,7 @@
     "Right lateral femoral cutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17925,7 +18501,7 @@
     "Left saphenous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17953,7 +18529,7 @@
     "Right saphenous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -17981,7 +18557,7 @@
     "Left sural nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18009,7 +18585,7 @@
     "Right sural nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18037,7 +18613,7 @@
     "Left medial plantar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18065,7 +18641,7 @@
     "Right medial plantar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18093,7 +18669,7 @@
     "Left lateral plantar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18121,7 +18697,7 @@
     "Right lateral plantar nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18149,7 +18725,7 @@
     "Left anococcygeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18177,7 +18753,7 @@
     "Right anococcygeal nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18205,7 +18781,7 @@
     "Left perforating cutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18233,7 +18809,7 @@
     "Right perforating cutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18261,7 +18837,7 @@
     "Nerve to piriformis"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18289,7 +18865,7 @@
     "Nerve to quadratus femoris"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18317,7 +18893,7 @@
     "Posterior cutaneous nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18345,7 +18921,7 @@
     "Left sympathetic trunk"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18373,7 +18949,7 @@
     "Right sympathetic trunk"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18401,7 +18977,7 @@
     "Left superior cervical ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18429,7 +19005,7 @@
     "Right superior cervical ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18457,7 +19033,7 @@
     "Left middle cervical ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18485,7 +19061,7 @@
     "Right middle cervical ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18513,7 +19089,7 @@
     "Left cervicothoracic ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18541,7 +19117,7 @@
     "Right cervicothoracic ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18569,7 +19145,7 @@
     "Celiac ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18597,7 +19173,7 @@
     "Superior mesenteric ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18625,7 +19201,7 @@
     "Inferior mesenteric ganglion"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18653,7 +19229,7 @@
     "Left greater splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18681,7 +19257,7 @@
     "Right greater splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18709,7 +19285,7 @@
     "Left lesser splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18737,7 +19313,7 @@
     "Right lesser splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18765,7 +19341,7 @@
     "Left least splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18793,7 +19369,7 @@
     "Right least splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18821,7 +19397,7 @@
     "Sacral splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18849,7 +19425,7 @@
     "Pelvic splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18877,7 +19453,7 @@
     "Left first lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18905,7 +19481,7 @@
     "Right first lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18933,7 +19509,7 @@
     "Left second lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18961,7 +19537,7 @@
     "Right second lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -18989,7 +19565,7 @@
     "Left third lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19017,7 +19593,7 @@
     "Right third lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19045,7 +19621,7 @@
     "Left fourth lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19073,7 +19649,7 @@
     "Right fourth lumbar splanchnic nerve"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19101,7 +19677,7 @@
     "Cardiac nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19129,7 +19705,7 @@
     "Celiac nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19157,7 +19733,7 @@
     "Superior hypogastric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19185,7 +19761,7 @@
     "Inferior hypogastric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19213,7 +19789,7 @@
     "Superior mesenteric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19241,7 +19817,7 @@
     "Inferior mesenteric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19269,7 +19845,7 @@
     "Aortic plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19297,7 +19873,7 @@
     "Intermesenteric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19325,7 +19901,7 @@
     "Left renal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19353,7 +19929,7 @@
     "Right renal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19381,7 +19957,7 @@
     "Hepatic nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19409,7 +19985,7 @@
     "Splenic nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19437,7 +20013,7 @@
     "Left pulmonary nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19465,7 +20041,7 @@
     "Right pulmonary nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19493,7 +20069,7 @@
     "Esophageal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19521,7 +20097,7 @@
     "Left pharyngeal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19549,7 +20125,7 @@
     "Right pharyngeal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19577,7 +20153,7 @@
     "Left tympanic plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19605,7 +20181,7 @@
     "Right tympanic plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19633,7 +20209,7 @@
     "Vesical nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19661,7 +20237,7 @@
     "Uterovaginal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19689,7 +20265,7 @@
     "Left prostatic nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19717,7 +20293,7 @@
     "Right prostatic nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19745,7 +20321,7 @@
     "Myenteric nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19773,7 +20349,7 @@
     "Submucosal nerve plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19801,7 +20377,7 @@
     "Enteric plexus"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19829,7 +20405,7 @@
     "Conus medullaris"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19857,7 +20433,7 @@
     "Cauda equina"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19885,7 +20461,7 @@
     "Filum terminale"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19913,7 +20489,7 @@
     "Denticulate ligament"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19941,7 +20517,7 @@
     "Cervical enlargement"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19969,7 +20545,7 @@
     "Lumbar enlargement"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -19997,7 +20573,7 @@
     "Pia mater"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -20025,7 +20601,7 @@
     "Arachnoid mater"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -20053,7 +20629,7 @@
     "Cranial dura mater"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -20081,7 +20657,7 @@
     "Spinal dura mater"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -20109,20 +20685,52 @@
     "Falx cerebri"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
-   "isa_meshes": [],
+   "geometry_status": "derived — Z-Anatomy Tier B intake (Milestone 63): geometry derived from the Z-Anatomy template object 'Falx cerebri' (mesh), placed by the Milestone 34 brain-assembly similarity transform (scale 1030.957; split-half held-out mean 0.274 mm, re-verified at Milestone 63); source license CC BY-SA 4.0 (Z-Anatomy); provenance per object in data/sources/z-anatomy-derived/intake-manifest.json",
+   "isa_meshes": [
+    {
+     "fj": "ZA-Falx_cerebri",
+     "path": "data/sources/z-anatomy-derived/obj/Falx_cerebri.obj",
+     "vertices": 844,
+     "faces": 1675,
+     "bbox": {
+      "min": [
+       -3.78235,
+       -169.521604,
+       1507.687487
+      ],
+      "max": [
+       2.738646,
+       10.992386,
+       1631.556144
+      ]
+     }
+    }
+   ],
    "partof_meshes": [],
    "totals": {
     "isa": {
-     "files": 0,
-     "vertices": 0,
-     "faces": 0
+     "files": 1,
+     "vertices": 844,
+     "faces": 1675
     },
     "partof": {
      "files": 0,
      "vertices": 0,
      "faces": 0
-    }
+    },
+    "combined_files": 1
+   },
+   "bbox_isa": {
+    "min": [
+     -3.78235,
+     -169.521604,
+     1507.687487
+    ],
+    "max": [
+     2.738646,
+     10.992386,
+     1631.556144
+    ]
    }
   },
   {
@@ -20137,7 +20745,7 @@
     "Falx cerebelli"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {
@@ -20165,7 +20773,7 @@
     "Diaphragma sellae"
    ],
    "source": "fma-5.1.0",
-   "geometry_status": "absent \u2014 FMA concept record; the FMA carries no mesh data (Milestone 33)",
+   "geometry_status": "absent — FMA concept record; the FMA carries no mesh data (Milestone 33)",
    "isa_meshes": [],
    "partof_meshes": [],
    "totals": {

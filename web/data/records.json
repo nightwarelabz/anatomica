@@ -48542,6 +48542,665 @@
   },
   {
    "layer": "nervous",
+   "id": "nerve.left-olfactory-nerve",
+   "name": "Left olfactory nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA52593"
+   ],
+   "concept_names": [
+    "Left olfactory nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 133,
+   "bbox_canonical_cm": {
+    "min": [
+     -2.342759,
+     152.3619189,
+     10.7085522
+    ],
+    "max": [
+     0.0774662,
+     154.20887670000002,
+     15.9880437
+    ]
+   },
+   "cross_midline_fraction": 0.0016658337497917708,
+   "clinical_ids": [
+    "major.cn-01-olfactory"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-olfactory-nerve",
+   "name": "Right olfactory nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA52592"
+   ],
+   "concept_names": [
+    "Right olfactory nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 134,
+   "bbox_canonical_cm": {
+    "min": [
+     0.0541052,
+     152.3616296,
+     10.6930393
+    ],
+    "max": [
+     2.4728222,
+     154.20884510000002,
+     15.986258200000002
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-01-olfactory"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-oculomotor-nerve",
+   "name": "Left oculomotor nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50880"
+   ],
+   "concept_names": [
+    "Left oculomotor nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 135,
+   "bbox_canonical_cm": {
+    "min": [
+     -3.9518877000000003,
+     150.1129232,
+     7.875662500000001
+    ],
+    "max": [
+     0.03798560000000001,
+     153.6281949,
+     16.2630484
+    ]
+   },
+   "cross_midline_fraction": 0.014066496163682864,
+   "clinical_ids": [
+    "major.cn-03-oculomotor"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-oculomotor-nerve",
+   "name": "Right oculomotor nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50879"
+   ],
+   "concept_names": [
+    "Right oculomotor nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 136,
+   "bbox_canonical_cm": {
+    "min": [
+     0.0736459,
+     150.110534,
+     7.874389300000001
+    ],
+    "max": [
+     4.1071867,
+     153.6281108,
+     16.2521635
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-03-oculomotor"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-trigeminal-nerve",
+   "name": "Left trigeminal nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50885"
+   ],
+   "concept_names": [
+    "Left trigeminal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 137,
+   "bbox_canonical_cm": {
+    "min": [
+     -2.3388847,
+     150.346085,
+     7.1115759
+    ],
+    "max": [
+     -0.4154648,
+     152.76521780000002,
+     10.4479001
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-05-trigeminal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-trigeminal-nerve",
+   "name": "Right trigeminal nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50884"
+   ],
+   "concept_names": [
+    "Right trigeminal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 138,
+   "bbox_canonical_cm": {
+    "min": [
+     0.5206111,
+     150.3442752,
+     7.1003978000000005
+    ],
+    "max": [
+     2.4615910000000003,
+     152.7642939,
+     10.4315136
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-05-trigeminal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-maxillary-nerve",
+   "name": "Left maxillary nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA52726"
+   ],
+   "concept_names": [
+    "Left maxillary nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 139,
+   "bbox_canonical_cm": {
+    "min": [
+     -3.3442851,
+     146.97449300000002,
+     9.0596703
+    ],
+    "max": [
+     -1.0573217,
+     152.7605068,
+     17.026348
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": []
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-maxillary-nerve",
+   "name": "Right maxillary nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA52725"
+   ],
+   "concept_names": [
+    "Right maxillary nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 140,
+   "bbox_canonical_cm": {
+    "min": [
+     1.1727386,
+     146.97227900000001,
+     9.051619800000001
+    ],
+    "max": [
+     3.5046387000000006,
+     152.7595838,
+     17.0137454
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": []
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-abducens-nerve",
+   "name": "Left abducens nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50887"
+   ],
+   "concept_names": [
+    "Left abducens nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 141,
+   "bbox_canonical_cm": {
+    "min": [
+     -3.2805075000000006,
+     150.1987153,
+     7.191553600000001
+    ],
+    "max": [
+     -0.0707216,
+     152.8156252,
+     13.660759400000002
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-06-abducens"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-abducens-nerve",
+   "name": "Right abducens nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50886"
+   ],
+   "concept_names": [
+    "Right abducens nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 142,
+   "bbox_canonical_cm": {
+    "min": [
+     0.17173400000000003,
+     150.1984236,
+     7.1904401
+    ],
+    "max": [
+     3.4274185000000004,
+     152.8133448,
+     13.637613400000001
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-06-abducens"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-facial-nerve",
+   "name": "Left facial nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50889"
+   ],
+   "concept_names": [
+    "Left facial nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 143,
+   "bbox_canonical_cm": {
+    "min": [
+     -6.6944998,
+     143.29374479999998,
+     7.0543461
+    ],
+    "max": [
+     0.034842200000000004,
+     155.26887670000002,
+     17.801342700000003
+    ]
+   },
+   "cross_midline_fraction": 0.002139565503620803,
+   "clinical_ids": [
+    "major.cn-07-facial"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-facial-nerve",
+   "name": "Right facial nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50888"
+   ],
+   "concept_names": [
+    "Right facial nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 144,
+   "bbox_canonical_cm": {
+    "min": [
+     0.0661793,
+     143.2900184,
+     7.052877800000001
+    ],
+    "max": [
+     6.8291135999999995,
+     155.2639982,
+     17.783155
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-07-facial"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-vestibulocochlear-nerve",
+   "name": "Left vestibulocochlear nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50891"
+   ],
+   "concept_names": [
+    "Left vestibulocochlear nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 145,
+   "bbox_canonical_cm": {
+    "min": [
+     -2.1701932,
+     150.34353610000002,
+     7.20073
+    ],
+    "max": [
+     -0.6867665000000001,
+     150.8965667,
+     8.3623349
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-08-vestibulocochlear"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-vestibulocochlear-nerve",
+   "name": "Right vestibulocochlear nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50890"
+   ],
+   "concept_names": [
+    "Right vestibulocochlear nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 146,
+   "bbox_canonical_cm": {
+    "min": [
+     0.7913456000000001,
+     150.3427361,
+     7.1936855
+    ],
+    "max": [
+     2.2749991,
+     150.8949911,
+     8.3485055
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-08-vestibulocochlear"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-glossopharyngeal-nerve",
+   "name": "Left glossopharyngeal nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50894"
+   ],
+   "concept_names": [
+    "Left glossopharyngeal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 147,
+   "bbox_canonical_cm": {
+    "min": [
+     -4.1469807,
+     135.19746110000003,
+     6.6848756
+    ],
+    "max": [
+     -0.1289958,
+     150.4104356,
+     12.3418455
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-09-glossopharyngeal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-glossopharyngeal-nerve",
+   "name": "Right glossopharyngeal nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50892"
+   ],
+   "concept_names": [
+    "Right glossopharyngeal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 148,
+   "bbox_canonical_cm": {
+    "min": [
+     0.2264861,
+     135.1942652,
+     6.6763019
+    ],
+    "max": [
+     4.2437847,
+     150.40988860000002,
+     12.3316203
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-09-glossopharyngeal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.left-hypoglossal-nerve",
+   "name": "Left hypoglossal nerve",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50903"
+   ],
+   "concept_names": [
+    "Left hypoglossal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 149,
+   "bbox_canonical_cm": {
+    "min": [
+     -2.8264542,
+     143.40294060000002,
+     6.6826776
+    ],
+    "max": [
+     -0.10355310000000001,
+     150.0530513,
+     14.495435800000003
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-12-hypoglossal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.right-hypoglossal-nerve",
+   "name": "Right hypoglossal nerve",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA50901"
+   ],
+   "concept_names": [
+    "Right hypoglossal nerve"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 150,
+   "bbox_canonical_cm": {
+    "min": [
+     0.20067680000000002,
+     143.40202200000002,
+     6.6814365
+    ],
+    "max": [
+     2.9442698000000003,
+     150.052911,
+     14.4866594
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": [
+    "major.cn-12-hypoglossal"
+   ]
+  },
+  {
+   "layer": "nervous",
+   "id": "nerve.falx-cerebri",
+   "name": "Falx cerebri",
+   "side": null,
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA83967"
+   ],
+   "concept_names": [
+    "Falx cerebri"
+   ],
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 151,
+   "bbox_canonical_cm": {
+    "min": [
+     -0.2738646,
+     150.7687487,
+     -1.0992386
+    ],
+    "max": [
+     0.37823500000000004,
+     163.1556144,
+     16.9521604
+    ]
+   },
+   "cross_midline_fraction": null,
+   "clinical_ids": []
+  },
+  {
+   "layer": "nervous",
    "id": "nerve.cn-01-olfactory",
    "name": "Olfactory nerve (CN I)",
    "side": null,
@@ -49035,304 +49694,6 @@
   },
   {
    "layer": "nervous",
-   "id": "nerve.left-olfactory-nerve",
-   "name": "Left olfactory nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Anatomical cluster",
-    "Cell part cluster",
-    "Segment of neural tree organ",
-    "Olfactory nerve",
-    "Left olfactory nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA52593"
-   ],
-   "concept_names": [
-    "Left olfactory nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-01-olfactory"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-olfactory-nerve",
-   "name": "Right olfactory nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Anatomical cluster",
-    "Cell part cluster",
-    "Segment of neural tree organ",
-    "Olfactory nerve",
-    "Right olfactory nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA52592"
-   ],
-   "concept_names": [
-    "Right olfactory nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-01-olfactory"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-oculomotor-nerve",
-   "name": "Left oculomotor nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Oculomotor nerve",
-    "Left oculomotor nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50880"
-   ],
-   "concept_names": [
-    "Left oculomotor nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-03-oculomotor"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-oculomotor-nerve",
-   "name": "Right oculomotor nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Oculomotor nerve",
-    "Right oculomotor nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50879"
-   ],
-   "concept_names": [
-    "Right oculomotor nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-03-oculomotor"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-trigeminal-nerve",
-   "name": "Left trigeminal nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Trigeminal nerve",
-    "Left trigeminal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50885"
-   ],
-   "concept_names": [
-    "Left trigeminal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-05-trigeminal"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-trigeminal-nerve",
-   "name": "Right trigeminal nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Trigeminal nerve",
-    "Right trigeminal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50884"
-   ],
-   "concept_names": [
-    "Right trigeminal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-05-trigeminal"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-maxillary-nerve",
-   "name": "Left maxillary nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Anatomical cluster",
-    "Cell part cluster",
-    "Segment of neural tree organ",
-    "Nerve",
-    "Branch of cranial nerve",
-    "Branch of trigeminal nerve",
-    "Maxillary nerve",
-    "Left maxillary nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA52726"
-   ],
-   "concept_names": [
-    "Left maxillary nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-maxillary-nerve",
-   "name": "Right maxillary nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Anatomical cluster",
-    "Cell part cluster",
-    "Segment of neural tree organ",
-    "Nerve",
-    "Branch of cranial nerve",
-    "Branch of trigeminal nerve",
-    "Maxillary nerve",
-    "Right maxillary nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA52725"
-   ],
-   "concept_names": [
-    "Right maxillary nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
    "id": "nerve.left-mandibular-nerve",
    "name": "Left mandibular nerve",
    "side": "left",
@@ -49475,310 +49836,6 @@
    "bbox_canonical_cm": null,
    "cross_midline_fraction": null,
    "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-abducens-nerve",
-   "name": "Left abducens nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Abducens nerve",
-    "Left abducens nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50887"
-   ],
-   "concept_names": [
-    "Left abducens nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-06-abducens"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-abducens-nerve",
-   "name": "Right abducens nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Abducens nerve",
-    "Right abducens nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50886"
-   ],
-   "concept_names": [
-    "Right abducens nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-06-abducens"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-facial-nerve",
-   "name": "Left facial nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Facial nerve",
-    "Left facial nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50889"
-   ],
-   "concept_names": [
-    "Left facial nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-07-facial"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-facial-nerve",
-   "name": "Right facial nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Facial nerve",
-    "Right facial nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50888"
-   ],
-   "concept_names": [
-    "Right facial nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-07-facial"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-vestibulocochlear-nerve",
-   "name": "Left vestibulocochlear nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Vestibulocochlear nerve",
-    "Left vestibulocochlear nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50891"
-   ],
-   "concept_names": [
-    "Left vestibulocochlear nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-08-vestibulocochlear"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-vestibulocochlear-nerve",
-   "name": "Right vestibulocochlear nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Vestibulocochlear nerve",
-    "Right vestibulocochlear nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50890"
-   ],
-   "concept_names": [
-    "Right vestibulocochlear nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-08-vestibulocochlear"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-glossopharyngeal-nerve",
-   "name": "Left glossopharyngeal nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Glossopharyngeal nerve",
-    "Left glossopharyngeal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50894"
-   ],
-   "concept_names": [
-    "Left glossopharyngeal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-09-glossopharyngeal"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-glossopharyngeal-nerve",
-   "name": "Right glossopharyngeal nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Glossopharyngeal nerve",
-    "Right glossopharyngeal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50892"
-   ],
-   "concept_names": [
-    "Right glossopharyngeal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-09-glossopharyngeal"
-   ],
    "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
   },
   {
@@ -49928,82 +49985,6 @@
    "cross_midline_fraction": null,
    "clinical_ids": [
     "major.cn-11-accessory"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.left-hypoglossal-nerve",
-   "name": "Left hypoglossal nerve",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Hypoglossal nerve",
-    "Left hypoglossal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50903"
-   ],
-   "concept_names": [
-    "Left hypoglossal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-12-hypoglossal"
-   ],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.right-hypoglossal-nerve",
-   "name": "Right hypoglossal nerve",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "peripheral",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Organ",
-    "Solid organ",
-    "Nonparenchymatous organ",
-    "Neural tree organ",
-    "Cranial nerve",
-    "Hypoglossal nerve",
-    "Right hypoglossal nerve"
-   ],
-   "region": "peripheral",
-   "concept_ids": [
-    "FMA50901"
-   ],
-   "concept_names": [
-    "Right hypoglossal nerve"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [
-    "major.cn-12-hypoglossal"
    ],
    "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
   },
@@ -59465,40 +59446,6 @@
    ],
    "concept_names": [
     "Spinal dura mater"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 33)"
-  },
-  {
-   "layer": "nervous",
-   "id": "nerve.falx-cerebri",
-   "name": "Falx cerebri",
-   "side": null,
-   "representation": "fma-concept",
-   "subtree": "meningeal",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Cardinal organ part",
-    "Region of organ component",
-    "Region of dura mater",
-    "Subdivision of cranial dura mater",
-    "Falx cerebri"
-   ],
-   "region": "meningeal",
-   "concept_ids": [
-    "FMA83967"
-   ],
-   "concept_names": [
-    "Falx cerebri"
    ],
    "record_kind": "inventory",
    "has_geometry": false,
@@ -74807,6 +74754,74 @@
   },
   {
    "layer": "reproductive",
+   "id": "repro.left-deferent-duct",
+   "name": "Left deferent duct",
+   "side": "left",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA19236"
+   ],
+   "concept_names": [
+    "Left deferent duct"
+   ],
+   "sex_line": "male",
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 13,
+   "bbox_canonical_cm": {
+    "min": [
+     -10.262500000000001,
+     69.4599,
+     5.2562500000000005
+    ],
+    "max": [
+     -0.255171,
+     85.78110000000001,
+     15.480500000000001
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": []
+  },
+  {
+   "layer": "reproductive",
+   "id": "repro.right-deferent-duct",
+   "name": "Right deferent duct",
+   "side": "right",
+   "representation": "fma-concept",
+   "subtree": null,
+   "group_path": null,
+   "region": null,
+   "concept_ids": [
+    "FMA19235"
+   ],
+   "concept_names": [
+    "Right deferent duct"
+   ],
+   "sex_line": "male",
+   "record_kind": "inventory",
+   "has_geometry": true,
+   "slot": 14,
+   "bbox_canonical_cm": {
+    "min": [
+     0.389807,
+     69.459,
+     5.29636
+    ],
+    "max": [
+     8.408430000000001,
+     86.09400000000001,
+     15.447900000000002
+    ]
+   },
+   "cross_midline_fraction": 0.0,
+   "clinical_ids": []
+  },
+  {
+   "layer": "reproductive",
    "id": "pathway.male-reproductive-pathway",
    "name": "Male reproductive pathway",
    "side": null,
@@ -76918,76 +76933,6 @@
    ],
    "concept_names": [
     "Perineal body"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 37/38)"
-  },
-  {
-   "layer": "reproductive",
-   "id": "repro.left-deferent-duct",
-   "name": "Left deferent duct",
-   "side": "left",
-   "representation": "fma-concept",
-   "subtree": "male-pathway",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Cardinal organ part",
-    "Organ region",
-    "Organ segment",
-    "Duct",
-    "Deferent duct",
-    "Left deferent duct"
-   ],
-   "region": "male-pathway",
-   "concept_ids": [
-    "FMA19236"
-   ],
-   "concept_names": [
-    "Left deferent duct"
-   ],
-   "record_kind": "inventory",
-   "has_geometry": false,
-   "slot": null,
-   "bbox_canonical_cm": null,
-   "cross_midline_fraction": null,
-   "clinical_ids": [],
-   "geometry_note": "concept record from the Foundational Model of Anatomy (FMA) 5.1.0 (CC BY 4.0); the FMA carries no geometry and BodyParts3D 4.0 has no concept for this structure (Milestone 37/38)"
-  },
-  {
-   "layer": "reproductive",
-   "id": "repro.right-deferent-duct",
-   "name": "Right deferent duct",
-   "side": "right",
-   "representation": "fma-concept",
-   "subtree": "male-pathway",
-   "group_path": [
-    "Anatomical entity",
-    "Physical anatomical entity",
-    "Material anatomical entity",
-    "Anatomical structure",
-    "Postnatal anatomical structure",
-    "Cardinal organ part",
-    "Organ region",
-    "Organ segment",
-    "Duct",
-    "Deferent duct",
-    "Right deferent duct"
-   ],
-   "region": "male-pathway",
-   "concept_ids": [
-    "FMA19235"
-   ],
-   "concept_names": [
-    "Right deferent duct"
    ],
    "record_kind": "inventory",
    "has_geometry": false,

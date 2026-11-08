@@ -78,11 +78,14 @@ CENSUS = {
     "skeletal": (206, 199, None),
     "muscular": (359, 359, 127),
     "cardiovascular": (646, 646, 69),
-    "nervous": (419, 133, 92),  # Milestone 33: +286 FMA 5.1.0 concept
+    "nervous": (419, 152, 92),  # Milestone 33: +286 FMA 5.1.0 concept
     # records (geometry-absent); geometry count unchanged.
     # Milestone 39: +40 major-nerve clinical records in a second
     # clinical file (data/nervous/major-nerves.json); inventory and
     # geometry counts unchanged
+    # Milestone 63: 19 of the 286 FMA concept records gained derived
+    # Z-Anatomy Tier B geometry (2026-11-08 ruling); inventory count
+    # unchanged, geometry 133 -> 152
     "respiratory": (83, 83, 37),
     "digestive": (93, 93, 31),
     "urinary": (73, 6, 6),  # Milestone 37: +67 FMA 5.1.0 concept
@@ -91,9 +94,12 @@ CENSUS = {
     # records (geometry-absent); geometry and clinical counts unchanged
     "endocrine": (17, 3, 6),  # Milestone 36: +14 FMA 5.1.0 concept
     # records (geometry-absent); geometry and clinical counts unchanged
-    "reproductive": (146, 13, 16),  # Milestone 37: +57 FMA 5.1.0 concept
+    "reproductive": (146, 15, 16),  # Milestone 37: +57 FMA 5.1.0 concept
     # records (geometry-absent); Milestone 38: +76 more (male);
     # geometry and clinical counts unchanged
+    # Milestone 63: the deferent-duct pair claimed its BodyParts3D
+    # meshes (FJ3135 / FJ3140; Milestone 40 adjudication, 2026-11-08
+    # ruling); inventory count unchanged, geometry 13 -> 15
     "integumentary": (59, 6, 13),  # Milestone 38: +53 FMA 5.1.0 concept
     # records (geometry-absent); geometry and clinical counts unchanged
 }

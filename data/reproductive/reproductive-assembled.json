@@ -15,7 +15,7 @@
    "Ground placement (canonical y=0 at sole) and AP origin registration are NOT applied \u2014 frame conversion only, exactly as Milestone 3.",
    "Per-part pose registration is not performed; boxes are in the source pose."
   ],
-  "records_with_geometry": 13,
+  "records_with_geometry": 15,
   "records_without_geometry": [
    "repro.left-ovary",
    "repro.right-ovary",
@@ -73,18 +73,92 @@
    "repro.right-greater-vestibular-gland",
    "repro.left-lesser-vestibular-gland",
    "repro.right-lesser-vestibular-gland",
-   "repro.perineal-body"
+   "repro.perineal-body",
+   "repro.left-deferent-duct-proper",
+   "repro.right-deferent-duct-proper",
+   "repro.left-ampulla-of-deferent-duct",
+   "repro.right-ampulla-of-deferent-duct",
+   "repro.left-scrotal-part-of-deferent-duct",
+   "repro.right-scrotal-part-of-deferent-duct",
+   "repro.left-funicular-part-of-deferent-duct",
+   "repro.right-funicular-part-of-deferent-duct",
+   "repro.left-inguinal-part-of-deferent-duct",
+   "repro.right-inguinal-part-of-deferent-duct",
+   "repro.left-pelvic-part-of-deferent-duct",
+   "repro.right-pelvic-part-of-deferent-duct",
+   "repro.left-ejaculatory-duct",
+   "repro.right-ejaculatory-duct",
+   "repro.efferent-ductule",
+   "repro.left-duct-of-epididymis",
+   "repro.right-duct-of-epididymis",
+   "repro.left-duct-of-seminal-vesicle",
+   "repro.right-duct-of-seminal-vesicle",
+   "repro.left-seminiferous-tubule-of-testis",
+   "repro.right-seminiferous-tubule-of-testis",
+   "repro.left-straight-seminiferous-tubule-of-testis",
+   "repro.right-straight-seminiferous-tubule-of-testis",
+   "repro.left-rete-testis",
+   "repro.right-rete-testis",
+   "repro.left-lobule-of-testis",
+   "repro.right-lobule-of-testis",
+   "repro.left-septum-of-testis",
+   "repro.right-septum-of-testis",
+   "repro.left-mediastinum-of-testis",
+   "repro.right-mediastinum-of-testis",
+   "repro.left-tunica-albuginea-of-testis",
+   "repro.right-tunica-albuginea-of-testis",
+   "repro.left-tunica-vaginalis-of-testis",
+   "repro.right-tunica-vaginalis-of-testis",
+   "repro.left-visceral-layer-of-tunica-vaginalis-of-testis",
+   "repro.right-visceral-layer-of-tunica-vaginalis-of-testis",
+   "repro.left-parietal-layer-of-tunica-vaginalis-of-testis",
+   "repro.right-parietal-layer-of-tunica-vaginalis-of-testis",
+   "repro.left-head-of-epididymis",
+   "repro.right-head-of-epididymis",
+   "repro.left-body-of-epididymis",
+   "repro.right-body-of-epididymis",
+   "repro.left-tail-of-epididymis",
+   "repro.right-tail-of-epididymis",
+   "repro.apex-of-prostate",
+   "repro.base-of-prostate",
+   "repro.left-lobe-of-prostate",
+   "repro.right-lobe-of-prostate",
+   "repro.central-zone-of-prostate",
+   "repro.peripheral-zone-of-prostate",
+   "repro.transition-zone-of-prostate",
+   "repro.anterior-fibromuscular-stroma-of-prostate",
+   "repro.left-spermatic-cord",
+   "repro.right-spermatic-cord",
+   "repro.scrotum",
+   "repro.left-external-spermatic-fascia",
+   "repro.right-external-spermatic-fascia",
+   "repro.left-internal-spermatic-fascia",
+   "repro.right-internal-spermatic-fascia",
+   "repro.cremasteric-fascia",
+   "repro.cremasteric-muscle",
+   "repro.dartos-muscle",
+   "repro.left-pampiniform-plexus",
+   "repro.right-pampiniform-plexus",
+   "repro.penis",
+   "repro.root-of-penis",
+   "repro.body-of-penis",
+   "repro.bulb-of-penis",
+   "repro.neck-of-glans-penis",
+   "repro.fascia-of-penis",
+   "repro.prepuce-of-penis",
+   "repro.frenulum-of-penis",
+   "repro.corona-of-glans-penis"
   ],
   "deduped_files": [],
   "union_bbox_canonical_cm": {
    "min": [
-    -5.99573,
+    -10.262500000000001,
     68.9753,
     1.69086
    ],
    "max": [
-    6.1809,
-    82.89,
+    8.408430000000001,
+    86.09400000000001,
     20.086100000000002
    ]
   }
@@ -801,6 +875,110 @@
     ]
    },
    "sex_line": "shared"
+  },
+  {
+   "record_id": "repro.left-deferent-duct",
+   "name": "Left deferent duct",
+   "side": "left",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19236"
+   ],
+   "concept_names": [
+    "Left deferent duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3135",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3135.obj",
+     "vertices": 863,
+     "faces": 1110
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 863,
+    "faces": 1110
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 863,
+     "faces": 1110
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     -10.262500000000001,
+     69.4599,
+     5.2562500000000005
+    ],
+    "max": [
+     -0.255171,
+     85.78110000000001,
+     15.480500000000001
+    ]
+   },
+   "sex_line": "male"
+  },
+  {
+   "record_id": "repro.right-deferent-duct",
+   "name": "Right deferent duct",
+   "side": "right",
+   "representation": "fma-concept",
+   "concept_ids": [
+    "FMA19235"
+   ],
+   "concept_names": [
+    "Right deferent duct"
+   ],
+   "source_tree": "isa",
+   "meshes": [
+    {
+     "fj": "FJ3140",
+     "path": "work/bp3d/isa_BP3D_4.0_obj_99/FJ3140.obj",
+     "vertices": 787,
+     "faces": 944
+    }
+   ],
+   "totals": {
+    "files": 1,
+    "vertices": 787,
+    "faces": 944
+   },
+   "source_totals": {
+    "isa": {
+     "files": 1,
+     "vertices": 787,
+     "faces": 944
+    },
+    "partof": {
+     "files": 0,
+     "vertices": 0,
+     "faces": 0
+    },
+    "combined_files": 1
+   },
+   "bbox_canonical_cm": {
+    "min": [
+     0.389807,
+     69.459,
+     5.29636
+    ],
+    "max": [
+     8.408430000000001,
+     86.09400000000001,
+     15.447900000000002
+    ]
+   },
+   "sex_line": "male"
   }
  ]
 }

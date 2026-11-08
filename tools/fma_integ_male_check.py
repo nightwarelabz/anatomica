@@ -44,9 +44,14 @@ Checks:
       records: one geometry entry each, zero meshes,
       geometry_status set, bounding boxes null, sex_line
       (reproductive) / line (integumentary) agreement.
+      Milestone 63 exception: the deferent-duct pair (CLAIMED
+      below) carries exactly its pinned BodyParts3D mesh,
+      re-measured from the OBJ file on disk, bbox_isa set to
+      that mesh's measured bbox, bbox_partof null.
   G2  every Milestone 38 record carries the two Milestone 38
       geometry-absent verify flags and the fma-5.1.0 source
-      tag.
+      tag; the claimed pair carries the pinned Milestone 63
+      claim flag in verify slot 0 instead.
   C1  census arithmetic: meta record_count, representations,
       extension blocks, sex-line / line counts and geometry
       coverage recompute from the records themselves.
@@ -102,6 +107,47 @@ VERIFY_FLAGS = [
     "clinical: no clinical tranche has been authored for FMA-sourced "
     "records; no clinical values are entered",
 ]
+# Milestone 63 adjudication (2026-11-08 geometry ruling; the
+# Milestone 40 collision, claimed): the deferent-duct pair — and
+# only this pair among the Milestone 38 records — now carries
+# geometry. Pinned: the mesh FJ per record and the exact claim
+# flag in verify slot 0 (slot 1 and the ta_name entries are
+# unchanged). G1 re-measures the pinned mesh from disk.
+CLAIMED = {
+    "repro.left-deferent-duct": "FJ3135",
+    "repro.right-deferent-duct": "FJ3140",
+}
+CLAIM_FLAGS = {
+    "repro.left-deferent-duct":
+        "geometry: claimed — BodyParts3D 4.0 mesh FJ3135 claimed "
+        "at Milestone 63 (Milestone 40 adjudication): BP3D "
+        "carries this FMA concept under the preferred name "
+        "'deferent duct'",
+    "repro.right-deferent-duct":
+        "geometry: claimed — BodyParts3D 4.0 mesh FJ3140 claimed "
+        "at Milestone 63 (Milestone 40 adjudication): BP3D "
+        "carries this FMA concept under the preferred name "
+        "'deferent duct'",
+}
+
+
+def measure(path):
+    """(vertices, faces, bbox) streamed from an OBJ file."""
+    v = f = 0
+    mn = [float("inf")] * 3
+    mx = [float("-inf")] * 3
+    with open(path, "rb") as fh:
+        for line in fh:
+            if line[:2] == b"v ":
+                v += 1
+                p = line.split()
+                for i in range(3):
+                    x = float(p[1 + i])
+                    mn[i] = min(mn[i], x)
+                    mx[i] = max(mx[i], x)
+            elif line[:2] == b"f ":
+                f += 1
+    return v, f, {"min": mn, "max": mx}
 SYSTEMS = {
     "integumentary": 6,
     "reproductive": 13,
@@ -255,6 +301,27 @@ def main():
         gbad = []
         for r in ext:
             g = geo_by_id.get(r["record_id"])
+            if r["record_id"] in CLAIMED:
+                # Milestone 63 claimed pair: exactly the pinned
+                # mesh, re-measured from disk; bbox_isa = its
+                # measured bbox; bbox_partof null; sex_line
+                # agreement as for every record here.
+                if g is None or not g.get("geometry_status") \
+                        or g.get("sex_line") != r.get("sex_line") \
+                        or g.get("bbox_partof") is not None \
+                        or len(g["isa_meshes"]) != 1 \
+                        or g["partof_meshes"]:
+                    gbad.append(r["record_id"])
+                    continue
+                m = g["isa_meshes"][0]
+                v, f, bb = measure(os.path.join(ROOT, m["path"]))
+                if m["fj"] != CLAIMED[r["record_id"]] \
+                        or (v, f) != (m["vertices"], m["faces"]) \
+                        or bb != m["bbox"] \
+                        or g.get("bbox_isa") != bb:
+                    gbad.append((r["record_id"],
+                                 "claim re-measure"))
+                continue
             if g is None or g["isa_meshes"] or g["partof_meshes"] \
                     or not g.get("geometry_status") \
                     or g["bbox_isa"] is not None \
@@ -267,12 +334,23 @@ def main():
                     g.get("line") != r.get("line"):
                 gbad.append((r["record_id"], "line"))
         check(not gbad, f"G1 geometry correspondence [{system}] "
-                        f"(all mesh-less)", f"{gbad[:3]}")
+                        f"(mesh-less except the Milestone 63 "
+                        f"claimed pair)", f"{gbad[:3]}")
         vbad = [r["record_id"] for r in ext
-                if r.get("geometry") != "absent"
-                or r.get("verify", [])[:2] != VERIFY_FLAGS
-                or any(not e.startswith("ta_name:")
-                       for e in r.get("verify", [])[2:])]
+                if r["record_id"] not in CLAIMED
+                and (r.get("geometry") != "absent"
+                     or r.get("verify", [])[:2] != VERIFY_FLAGS
+                     or any(not e.startswith("ta_name:")
+                            for e in r.get("verify", [])[2:]))]
+        vbad += [r["record_id"] for r in ext
+                 if r["record_id"] in CLAIMED
+                 and (r.get("geometry") != "bp3d-claimed"
+                      or r.get("verify", [])[:1]
+                      != [CLAIM_FLAGS[r["record_id"]]]
+                      or r.get("verify", [])[1:2]
+                      != VERIFY_FLAGS[1:2]
+                      or any(not e.startswith("ta_name:")
+                             for e in r.get("verify", [])[2:]))]
         check(not vbad, f"G2 verify flags carried [{system}]",
               f"{vbad[:3]}")
 
@@ -299,8 +377,11 @@ def main():
               f"{len(inv['records'])} total = {len(bp3d)} + "
               f"{len(ext_all)} FMA ({len(ext)} of them M38)")
         cov = geo["meta"]["coverage"]
+        n_claimed = sum(1 for r in ext_all
+                        if r["record_id"] in CLAIMED)
         ok = cov["records"] == len(geo["records"]) \
-            and cov["records_without_meshes"] == len(ext_all)
+            and cov["records_without_meshes"] == len(ext_all) \
+            - n_claimed
         lines = {}
         key = "by_line" if system == "integumentary" \
             else "by_sex_line"

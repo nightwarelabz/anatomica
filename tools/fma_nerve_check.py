@@ -26,9 +26,14 @@ Checks:
       ISA/PART-OF parts lists (concepts the release lists outside
       the nervous census — reported, not gated).
   G1  inventory <-> geometry correspondence for extension records:
-      one geometry entry each, zero meshes, geometry_status set.
-  G2  every extension record carries the geometry-absent verify
-      flags and the fma-5.1.0 source tag.
+      one geometry entry each; the 267 un-claimed records carry
+      zero meshes; the 19 records claimed at Milestone 63 (Tier B
+      Z-Anatomy intake, CLAIMED below) carry exactly their pinned
+      derived mesh, re-measured from the OBJ file on disk.
+  G2  every un-claimed extension record carries the
+      geometry-absent verify flags and the fma-5.1.0 source tag;
+      the 19 claimed records carry the Milestone 63 derived-
+      geometry flag instead.
   C1  census arithmetic: meta record_count, representations and
       coverage recompute from the records themselves.
   C2  [REPORT] Milestone 4 C3 continuity, as re-pointed at
@@ -54,6 +59,70 @@ GEO = json.load(open(os.path.join(ROOT, "data", "nervous",
                                   "nervous-geometry.json")))
 LEDGER = json.load(open(os.path.join(SRC, "ledger.json")))
 SOURCE_TAG = "fma-5.1.0"
+
+# Milestone 63 adjudication (2026-11-08 geometry ruling on the
+# Milestone 34 audit): these 19 extension records — and only
+# these — gained geometry, derived from the named Z-Anatomy Tier B
+# template objects under data/sources/z-anatomy-derived/obj/ and
+# placed by the audit's brain-assembly transform. The claim is
+# pinned here: G1 requires the mesh-carrying extension set to
+# equal this set exactly, each entry's fj/path to equal the
+# pinned derivation from the object name, and each entry's
+# counts/bbox to re-measure from the OBJ file on disk. The other
+# 267 extension records remain mesh-less under the original rule.
+CLAIMED = {
+    "nerve.left-abducens-nerve": "Abducens nerve (VI).l",
+    "nerve.right-abducens-nerve": "Abducens nerve (VI).r",
+    "nerve.left-facial-nerve": "Facial nerve (VII).l",
+    "nerve.right-facial-nerve": "Facial nerve (VII).r",
+    "nerve.falx-cerebri": "Falx cerebri",
+    "nerve.left-glossopharyngeal-nerve":
+        "Glossopharyngeal nerve (IX).l",
+    "nerve.right-glossopharyngeal-nerve":
+        "Glossopharyngeal nerve (IX).r",
+    "nerve.left-hypoglossal-nerve": "Hypoglossal nerve (XII).l",
+    "nerve.right-hypoglossal-nerve": "Hypoglossal nerve (XII).r",
+    "nerve.left-maxillary-nerve": "Maxillary nerve.l",
+    "nerve.right-maxillary-nerve": "Maxillary nerve.r",
+    "nerve.left-oculomotor-nerve": "Oculomotor nerve (III).l",
+    "nerve.right-oculomotor-nerve": "Oculomotor nerve (III).r",
+    "nerve.left-olfactory-nerve": "Olfactory nerve (I).l",
+    "nerve.right-olfactory-nerve": "Olfactory nerve (I).r",
+    "nerve.left-trigeminal-nerve": "Trigeminal nerve (V).l",
+    "nerve.right-trigeminal-nerve": "Trigeminal nerve (V).r",
+    "nerve.left-vestibulocochlear-nerve":
+        "Vestibulocochlear nerve (VIII).l",
+    "nerve.right-vestibulocochlear-nerve":
+        "Vestibulocochlear nerve (VIII).r",
+}
+
+
+def claimed_fj(obj_name):
+    return "ZA-" + obj_name.replace("/", "_").replace(" ", "_")
+
+
+def claimed_path(obj_name):
+    return "data/sources/z-anatomy-derived/obj/" + \
+        obj_name.replace("/", "_").replace(" ", "_") + ".obj"
+
+
+def measure(path):
+    """(vertices, faces, bbox) streamed from an OBJ file."""
+    v = f = 0
+    mn = [float("inf")] * 3
+    mx = [float("-inf")] * 3
+    with open(path, "rb") as fh:
+        for line in fh:
+            if line[:2] == b"v ":
+                v += 1
+                p = line.split()
+                for i in range(3):
+                    x = float(p[1 + i])
+                    mn[i] = min(mn[i], x)
+                    mx[i] = max(mx[i], x)
+            elif line[:2] == b"f ":
+                f += 1
+    return v, f, {"min": mn, "max": mx}
 
 FAILS = []
 
@@ -160,16 +229,57 @@ def main():
 
     geo_by_id = {g["record_id"]: g for g in GEO["records"]}
     gbad = [r["record_id"] for r in ext
-            if r["record_id"] not in geo_by_id
-            or geo_by_id[r["record_id"]]["isa_meshes"]
-            or geo_by_id[r["record_id"]]["partof_meshes"]
-            or not geo_by_id[r["record_id"]].get("geometry_status")]
-    check(not gbad, "G1 geometry correspondence (all mesh-less)",
-          f"{gbad[:3]}")
+            if r["record_id"] not in CLAIMED
+            and (r["record_id"] not in geo_by_id
+                 or geo_by_id[r["record_id"]]["isa_meshes"]
+                 or geo_by_id[r["record_id"]]["partof_meshes"]
+                 or not geo_by_id[r["record_id"]].get("geometry_status"))]
+    carriers = {r["record_id"] for r in ext
+                if r["record_id"] in geo_by_id
+                and (geo_by_id[r["record_id"]]["isa_meshes"]
+                     or geo_by_id[r["record_id"]]["partof_meshes"])}
+    cbad = []
+    if carriers != set(CLAIMED):
+        cbad.append(("carrier set", sorted(carriers ^ set(CLAIMED))))
+    for rid, obj in CLAIMED.items():
+        g = geo_by_id.get(rid)
+        if g is None:
+            cbad.append((rid, "no geometry entry"))
+            continue
+        isa = g["isa_meshes"]
+        if len(isa) != 1 or g["partof_meshes"] \
+                or not g.get("geometry_status"):
+            cbad.append((rid, "entry shape"))
+            continue
+        m = isa[0]
+        if m["fj"] != claimed_fj(obj) or m["path"] != claimed_path(obj):
+            cbad.append((rid, "fj/path != pinned claim"))
+            continue
+        v, f, bb = measure(os.path.join(ROOT, m["path"]))
+        t = g["totals"]
+        if (v, f) != (m["vertices"], m["faces"]) or bb != m["bbox"] \
+                or g["bbox_isa"] != bb or g.get("bbox_partof") is not None \
+                or t["isa"] != {"files": 1, "vertices": v, "faces": f} \
+                or t["partof"] != {"files": 0, "vertices": 0,
+                                   "faces": 0} \
+                or t["combined_files"] != 1:
+            cbad.append((rid, "re-measurement mismatch"))
+    check(not gbad and not cbad,
+          "G1 geometry correspondence (267 mesh-less; the 19 "
+          "Milestone 63 Tier B claims pinned and re-measured)",
+          f"meshless_bad={gbad[:3]} claim_bad={cbad[:3]}")
     vbad = [r["record_id"] for r in ext
-            if r.get("geometry") != "absent"
-            or not any(v.startswith("geometry: absent")
-                       for v in r.get("verify", []))]
+            if r["record_id"] not in CLAIMED
+            and (r.get("geometry") != "absent"
+                 or not any(v.startswith("geometry: absent")
+                            for v in r.get("verify", [])))]
+    vbad += [r["record_id"] for r in ext
+             if r["record_id"] in CLAIMED
+             and (r.get("geometry") != "zanatomy-derived"
+                  or not any(v.startswith(
+                      "geometry: derived — Z-Anatomy Tier B intake "
+                      "(Milestone 63)")
+                      for v in r.get("verify", [])))]
     check(not vbad, "G2 verify flags carried", f"{vbad[:3]}")
 
     meta = INV["meta"]
@@ -180,7 +290,9 @@ def main():
           f"{len(INV['records'])} total = {len(bp3d)} + {len(ext)}")
     cov = GEO["meta"]["coverage"]
     check(cov["records"] == len(GEO["records"])
-          and cov["records_without_meshes"] == len(ext),
+          and cov["records_without_meshes"] == len(ext) - len(CLAIMED)
+          and cov["records_with_meshes"] ==
+          cov["records"] - cov["records_without_meshes"],
           "C1 geometry coverage arithmetic", f"{cov}")
 
     try:

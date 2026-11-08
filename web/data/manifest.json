@@ -12119,14 +12119,14 @@
   },
   "nervous": {
    "file": "nervous.bin",
-   "bytes": 40059000,
-   "vertices": 624682,
-   "indices": 3375534,
-   "faces": 1125178,
-   "edges": 1757887,
-   "edge_indices": 3515774,
-   "records": 133,
-   "mesh_files": 273,
+   "bytes": 46740940,
+   "vertices": 723142,
+   "indices": 3964623,
+   "faces": 1321541,
+   "edges": 2052435,
+   "edge_indices": 4104870,
+   "records": 152,
+   "mesh_files": 292,
    "ranges": [
     {
      "slot": 0,
@@ -13457,6 +13457,196 @@
      "index_count": 24090,
      "mesh_files": 4,
      "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 133,
+     "record_id": "nerve.left-olfactory-nerve",
+     "vertex_start": 624682,
+     "vertex_count": 12006,
+     "index_start": 3375534,
+     "index_count": 71760,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0016658337497917708
+    },
+    {
+     "slot": 134,
+     "record_id": "nerve.right-olfactory-nerve",
+     "vertex_start": 636688,
+     "vertex_count": 12006,
+     "index_start": 3447294,
+     "index_count": 71760,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 135,
+     "record_id": "nerve.left-oculomotor-nerve",
+     "vertex_start": 648694,
+     "vertex_count": 3910,
+     "index_start": 3519054,
+     "index_count": 23376,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.014066496163682864
+    },
+    {
+     "slot": 136,
+     "record_id": "nerve.right-oculomotor-nerve",
+     "vertex_start": 652604,
+     "vertex_count": 3910,
+     "index_start": 3542430,
+     "index_count": 23376,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 137,
+     "record_id": "nerve.left-trigeminal-nerve",
+     "vertex_start": 656514,
+     "vertex_count": 1044,
+     "index_start": 3565806,
+     "index_count": 6240,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 138,
+     "record_id": "nerve.right-trigeminal-nerve",
+     "vertex_start": 657558,
+     "vertex_count": 1044,
+     "index_start": 3572046,
+     "index_count": 6240,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 139,
+     "record_id": "nerve.left-maxillary-nerve",
+     "vertex_start": 658602,
+     "vertex_count": 3506,
+     "index_start": 3578286,
+     "index_count": 20976,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 140,
+     "record_id": "nerve.right-maxillary-nerve",
+     "vertex_start": 662108,
+     "vertex_count": 3506,
+     "index_start": 3599262,
+     "index_count": 20976,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 141,
+     "record_id": "nerve.left-abducens-nerve",
+     "vertex_start": 665614,
+     "vertex_count": 2196,
+     "index_start": 3620238,
+     "index_count": 13152,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 142,
+     "record_id": "nerve.right-abducens-nerve",
+     "vertex_start": 667810,
+     "vertex_count": 2196,
+     "index_start": 3633390,
+     "index_count": 13152,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 143,
+     "record_id": "nerve.left-facial-nerve",
+     "vertex_start": 670006,
+     "vertex_count": 12152,
+     "index_start": 3646542,
+     "index_count": 72768,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.002139565503620803
+    },
+    {
+     "slot": 144,
+     "record_id": "nerve.right-facial-nerve",
+     "vertex_start": 682158,
+     "vertex_count": 12152,
+     "index_start": 3719310,
+     "index_count": 72768,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 145,
+     "record_id": "nerve.left-vestibulocochlear-nerve",
+     "vertex_start": 694310,
+     "vertex_count": 788,
+     "index_start": 3792078,
+     "index_count": 4704,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 146,
+     "record_id": "nerve.right-vestibulocochlear-nerve",
+     "vertex_start": 695098,
+     "vertex_count": 788,
+     "index_start": 3796782,
+     "index_count": 4704,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 147,
+     "record_id": "nerve.left-glossopharyngeal-nerve",
+     "vertex_start": 695886,
+     "vertex_count": 5958,
+     "index_start": 3801486,
+     "index_count": 35664,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 148,
+     "record_id": "nerve.right-glossopharyngeal-nerve",
+     "vertex_start": 701844,
+     "vertex_count": 5958,
+     "index_start": 3837150,
+     "index_count": 35664,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 149,
+     "record_id": "nerve.left-hypoglossal-nerve",
+     "vertex_start": 707802,
+     "vertex_count": 7248,
+     "index_start": 3872814,
+     "index_count": 43392,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 150,
+     "record_id": "nerve.right-hypoglossal-nerve",
+     "vertex_start": 715050,
+     "vertex_count": 7248,
+     "index_start": 3916206,
+     "index_count": 43392,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 151,
+     "record_id": "nerve.falx-cerebri",
+     "vertex_start": 722298,
+     "vertex_count": 844,
+     "index_start": 3959598,
+     "index_count": 5025,
+     "mesh_files": 1,
+     "cross_midline_fraction": null
     }
    ],
    "pick_bit": 4,
@@ -15459,14 +15649,14 @@
   },
   "reproductive": {
    "file": "reproductive.bin",
-   "bytes": 511644,
-   "vertices": 10787,
-   "indices": 33078,
-   "faces": 11026,
-   "edges": 20433,
-   "edge_indices": 40866,
-   "records": 13,
-   "mesh_files": 19,
+   "bytes": 598804,
+   "vertices": 12437,
+   "indices": 39240,
+   "faces": 13080,
+   "edges": 24122,
+   "edge_indices": 48244,
+   "records": 15,
+   "mesh_files": 21,
    "ranges": [
     {
      "slot": 0,
@@ -15597,6 +15787,26 @@
      "index_count": 4404,
      "mesh_files": 4,
      "cross_midline_fraction": null
+    },
+    {
+     "slot": 13,
+     "record_id": "repro.left-deferent-duct",
+     "vertex_start": 10787,
+     "vertex_count": 863,
+     "index_start": 33078,
+     "index_count": 3330,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
+    },
+    {
+     "slot": 14,
+     "record_id": "repro.right-deferent-duct",
+     "vertex_start": 11650,
+     "vertex_count": 787,
+     "index_start": 36408,
+     "index_count": 2832,
+     "mesh_files": 1,
+     "cross_midline_fraction": 0.0
     }
    ],
    "pick_bit": 10,

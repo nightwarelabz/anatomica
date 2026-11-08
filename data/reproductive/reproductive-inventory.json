@@ -1,9 +1,9 @@
 {
  "meta": {
-  "title": "ANATOMICA reproductive system inventory \u2014 Milestone 14",
+  "title": "ANATOMICA reproductive system inventory — Milestone 14",
   "generated_by": "tools/repro_map.py",
   "source_tables": "data/sources/bodyparts3d-4.0/ (BP3D 4.0 / FMA concept ids and names as released)",
-  "counting_convention": "One record per lateralised instance (right/left testis, epididymis, seminal vesicle), keyed on its instance concept with the side-stripped class concept carried as class_concept_id; one record for the prostate, keyed on its both-table concept; one record each for the corpus cavernosum, the corpus spongiosum and the glans penis, keyed on their IS-A concepts (the glans carries its zone concept as class_concept_id); one record for the mons pubis, keyed on its PART-OF-only concept; one record for the perineum and one for its anal part, keyed on their PART-OF concepts. The genital system root is a grouping class, censused but not a record. The perineal muscle concepts are cross-references to the muscular module, censused but never records here. Sex line is censused per concept and per record: the female line of the release is exactly one concept (the mons pubis) against fourteen male concepts \u2014 every internal female organ is absent from the release entirely and exists in this module only as sourced clinical records with the absence recorded (the Milestone 9 pattern). The urethra is not in this universe: it is the urinary module's single unsexed record (Milestone 12), cross-referenced, never duplicated.",
+  "counting_convention": "One record per lateralised instance (right/left testis, epididymis, seminal vesicle), keyed on its instance concept with the side-stripped class concept carried as class_concept_id; one record for the prostate, keyed on its both-table concept; one record each for the corpus cavernosum, the corpus spongiosum and the glans penis, keyed on their IS-A concepts (the glans carries its zone concept as class_concept_id); one record for the mons pubis, keyed on its PART-OF-only concept; one record for the perineum and one for its anal part, keyed on their PART-OF concepts. The genital system root is a grouping class, censused but not a record. The perineal muscle concepts are cross-references to the muscular module, censused but never records here. Sex line is censused per concept and per record: the female line of the release is exactly one concept (the mons pubis) against fourteen male concepts — every internal female organ is absent from the release entirely and exists in this module only as sourced clinical records with the absence recorded (the Milestone 9 pattern). The urethra is not in this universe: it is the urinary module's single unsexed record (Milestone 12), cross-referenced, never duplicated.",
   "concept_universe": {
    "total": 21,
    "isa_total": 17,
@@ -88,7 +88,7 @@
     "commissure of fornix of forebrain": "nervous module (see fornix of forebrain)",
     "deep dorsal vein of penis": "cardiovascular module record vein.deep-dorsal-vein-of-penis",
     "dorsal artery of penis": "cardiovascular module class concept, carried there as artery.right-dorsal-artery-of-penis and artery.left-dorsal-artery-of-penis",
-    "fornix of forebrain": "nervous module: a cerebral fornix, not a vaginal fornix \u2014 the vaginal fornix has no concept in the release",
+    "fornix of forebrain": "nervous module: a cerebral fornix, not a vaginal fornix — the vaginal fornix has no concept in the release",
     "fornix of neuraxis": "nervous module (see fornix of forebrain)",
     "left dorsal artery of penis": "cardiovascular module record artery.left-dorsal-artery-of-penis",
     "left fornix of forebrain": "nervous module (see fornix of forebrain)",
@@ -160,13 +160,13 @@
    }
   },
   "totalsegmentator_overlap": {
-   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), NONE names a reproductive structure \u2014 there is no prostate, seminal_vesicle, testis, ovary, uterus or any other reproductive label in the index; the overlap of this module with TS v1 is exactly zero, derived here from the label index by term match and re-derived by the checker",
+   "note": "of the 104 TotalSegmentator v1 labels (Milestone 3 census), NONE names a reproductive structure — there is no prostate, seminal_vesicle, testis, ovary, uterus or any other reproductive label in the index; the overlap of this module with TS v1 is exactly zero, derived here from the label index by term match and re-derived by the checker",
    "labels": [],
    "labels_without_records": [],
    "labels_matched_by_terms": []
   },
   "absences": {
-   "note": "probe-based gap analysis, per sex line: each substring probe was counted over all six BP3D 4.0 release tables (zero hits = the name does not occur in the release); each exact-name probe was tested for a concept of exactly that name in either parts list. Present controls are interleaved in each line to prove the instrument reads the tables. The asymmetry is the finding: the male line's probes find the gonad, its duct's first segment, two of three accessory glands and the erectile tissues present and the duct system absent; the female line's probes find nothing but the control \u2014 the entire internal female tract is absent from the release",
+   "note": "probe-based gap analysis, per sex line: each substring probe was counted over all six BP3D 4.0 release tables (zero hits = the name does not occur in the release); each exact-name probe was tested for a concept of exactly that name in either parts list. Present controls are interleaved in each line to prove the instrument reads the tables. The asymmetry is the finding: the male line's probes find the gonad, its duct's first segment, two of three accessory glands and the erectile tissues present and the duct system absent; the female line's probes find nothing but the control — the entire internal female tract is absent from the release",
    "substring_probes": {
     "male": {
      "absent": [
@@ -1219,7 +1219,7 @@
    "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
    "records_added": 57,
    "geometry_absent": 57,
-   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or kidney-suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36 convention",
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or kidney-suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise — mirroring the Milestone 33/36 convention",
    "accounting": "data/fma-intake-37.json"
   },
   "ta2_pass": {
@@ -1237,8 +1237,8 @@
    "milestone": 38,
    "source": "Foundational Model of Anatomy (FMA) 5.1.0, data/sources/fma-5.1.0/ (CC BY 4.0)",
    "records_added": 76,
-   "geometry_absent": 76,
-   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise \u2014 mirroring the Milestone 33/36/37 convention",
+   "geometry_absent": 74,
+   "counting_convention": "one record per lateralised instance where the FMA carries both sided classes (prefix or suffix naming, IS-A parent-verified); one record keyed on the un-sided class otherwise — mirroring the Milestone 33/36/37 convention",
    "accounting": "data/fma-intake-38.json"
   }
  },
@@ -1894,7 +1894,7 @@
     "zone of cavernous organ",
     "zone of corpus spongiosum of penis"
    ],
-   "note": "IS-A child of FMA20247 'zone of corpus spongiosum of penis', carried as class_concept_id; the zone and the glans resolve to the same single mesh file (FJ3134, IS-A table \u2014 neither concept is carried in PART-OF), so the class carries no geometry beyond this record's"
+   "note": "IS-A child of FMA20247 'zone of corpus spongiosum of penis', carried as class_concept_id; the zone and the glans resolve to the same single mesh file (FJ3134, IS-A table — neither concept is carried in PART-OF), so the class carries no geometry beyond this record's"
   },
   {
    "record_id": "mons-pubis",
@@ -1915,7 +1915,7 @@
     "abdomen",
     "pelvis"
    ],
-   "note": "the only female-named concept in either parts list; the release files it in PART-OF under the pelvis, not under any genital root \u2014 there is no female genital tree in the release to file it under"
+   "note": "the only female-named concept in either parts list; the release files it in PART-OF under the pelvis, not under any genital root — there is no female genital tree in the release to file it under"
   },
   {
    "record_id": "perineum",
@@ -1933,7 +1933,7 @@
     "body proper",
     "trunk"
    ],
-   "note": "PART-OF organ record: the release roots the perineum under the trunk. It carries the same four PART-OF mesh files as its anal part \u2014 exactly the perineal-muscle file set the muscular module carries for the external anal sphincter \u2014 so the release draws the perineum as its sphincter and nothing else (identity gated by the checker)"
+   "note": "PART-OF organ record: the release roots the perineum under the trunk. It carries the same four PART-OF mesh files as its anal part — exactly the perineal-muscle file set the muscular module carries for the external anal sphincter — so the release draws the perineum as its sphincter and nothing else (identity gated by the checker)"
   },
   {
    "record_id": "perineum.anal-part-of-perineum",
@@ -1988,7 +1988,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2027,7 +2027,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2057,9 +2057,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no generic ovarian follicle: only the vesicular stage (3482 folliculi ovarici vesiculosi) among the ovary's terms; the FMA class is the follicle generic, broader than the stage term. (The worksheet's only candidate, 3834 ligamentum proprium ovarii, is the ovarian ligament \u2014 class mismatch.)"
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names no generic ovarian follicle: only the vesicular stage (3482 folliculi ovarici vesiculosi) among the ovary's terms; the FMA class is the follicle generic, broader than the stage term. (The worksheet's only candidate, 3834 ligamentum proprium ovarii, is the ovarian ligament — class mismatch.)"
    ],
    "note": null
   },
@@ -2094,7 +2094,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2130,7 +2130,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2166,7 +2166,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2206,7 +2206,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2246,7 +2246,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2283,7 +2283,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2322,7 +2322,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2361,7 +2361,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2399,7 +2399,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2437,7 +2437,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2475,7 +2475,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2513,7 +2513,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2551,7 +2551,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2589,7 +2589,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2627,7 +2627,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2666,7 +2666,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2705,7 +2705,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2742,7 +2742,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2780,7 +2780,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2818,7 +2818,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2855,7 +2855,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2892,7 +2892,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2927,7 +2927,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -2965,7 +2965,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class name for the cervix"
@@ -3003,7 +3003,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3041,7 +3041,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3080,7 +3080,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's preferred name for the perimetrium"
@@ -3117,7 +3117,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class name for the broad ligament"
@@ -3157,7 +3157,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3197,7 +3197,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3236,7 +3236,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3275,7 +3275,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3317,7 +3317,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3359,7 +3359,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3397,7 +3397,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class name for the transverse cervical (Mackenrodt) ligament"
@@ -3435,7 +3435,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class name for the transverse cervical (Mackenrodt) ligament"
@@ -3472,7 +3472,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3509,7 +3509,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3547,7 +3547,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3585,7 +3585,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3623,7 +3623,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class name for the hymen"
@@ -3662,7 +3662,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3703,7 +3703,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3741,7 +3741,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3783,7 +3783,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3825,7 +3825,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3867,7 +3867,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3909,7 +3909,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3944,7 +3944,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -3984,7 +3984,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "Bartholin's gland"
@@ -4024,7 +4024,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "Bartholin's gland"
@@ -4064,7 +4064,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4104,7 +4104,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4141,7 +4141,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 37)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "boundary call (Milestone 37): a sex-shared midline structure named absent on Milestone 14's shared probe line; recorded under the reproductive module, which owns the perineum records, with sex_line 'shared'"
@@ -4178,12 +4178,12 @@
      "TA2"
     ]
    },
-   "geometry": "absent",
+   "geometry": "bp3d-claimed",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: claimed — BodyParts3D 4.0 mesh FJ3135 claimed at Milestone 63 (Milestone 40 adjudication): BP3D carries this FMA concept under the preferred name 'deferent duct'",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis \u2014 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
+   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis — 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
   },
   {
    "record_id": "repro.right-deferent-duct",
@@ -4217,12 +4217,12 @@
      "TA2"
     ]
    },
-   "geometry": "absent",
+   "geometry": "bp3d-claimed",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: claimed — BodyParts3D 4.0 mesh FJ3140 claimed at Milestone 63 (Milestone 40 adjudication): BP3D carries this FMA concept under the preferred name 'deferent duct'",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis \u2014 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
+   "note": "the FMA's preferred name for the ductus deferens of Milestone 14's gap analysis — 'ductus deferens' and 'vas deferens' are this class's listed synonyms, and no class carries either as its preferred name"
   },
   {
    "record_id": "repro.left-deferent-duct-proper",
@@ -4251,9 +4251,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
    ],
    "note": "the deferent duct's main course segment in the FMA's subdivision of the duct"
   },
@@ -4284,9 +4284,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names no term for the FMA class 'Deferent duct proper': the record's names return no hit anywhere in the table's naming apparatus (preferred terms, synonyms, related terms)."
    ],
    "note": "the deferent duct's main course segment in the FMA's subdivision of the duct"
   },
@@ -4323,7 +4323,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form for the ampulla of ductus deferens"
@@ -4361,7 +4361,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form for the ampulla of ductus deferens"
@@ -4399,10 +4399,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.right-scrotal-part-of-deferent-duct",
@@ -4437,10 +4437,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.left-funicular-part-of-deferent-duct",
@@ -4475,10 +4475,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.right-funicular-part-of-deferent-duct",
@@ -4513,10 +4513,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.left-inguinal-part-of-deferent-duct",
@@ -4551,10 +4551,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.right-inguinal-part-of-deferent-duct",
@@ -4589,10 +4589,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.left-pelvic-part-of-deferent-duct",
@@ -4627,10 +4627,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.right-pelvic-part-of-deferent-duct",
@@ -4665,10 +4665,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "one of the deferent duct's four course segments in the FMA \u2014 the ductus deferens segments of this intake's scope"
+   "note": "one of the deferent duct's four course segments in the FMA — the ductus deferens segments of this intake's scope"
   },
   {
    "record_id": "repro.left-ejaculatory-duct",
@@ -4704,7 +4704,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4743,7 +4743,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4781,7 +4781,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's singular class name for the efferent ductules of Milestone 14's male pathway"
@@ -4820,7 +4820,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4859,7 +4859,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4898,7 +4898,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4937,7 +4937,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -4971,9 +4971,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the seminiferous tubule only as its two kinds, both plural collectives \u2014 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the seminiferous tubule only as its two kinds, both plural collectives — 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
    ],
    "note": "the FMA's name form for the seminiferous tubule (no class is named 'Seminiferous tubule')"
   },
@@ -5006,9 +5006,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the seminiferous tubule only as its two kinds, both plural collectives \u2014 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the seminiferous tubule only as its two kinds, both plural collectives — 3599 tubuli seminiferi contorti and 3600 tubuli seminiferi recti (the straight kind is taken by its own record); neither names the generic class, and no generic term exists in the table (the Milestone 37 ovarian-follicle pattern)."
    ],
    "note": "the FMA's name form for the seminiferous tubule (no class is named 'Seminiferous tubule')"
   },
@@ -5048,7 +5048,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the straight tubules (tubuli recti) of Milestone 14's male pathway, recorded separately because the pathway names them as a station"
@@ -5089,7 +5089,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the straight tubules (tubuli recti) of Milestone 14's male pathway, recorded separately because the pathway names them as a station"
@@ -5127,7 +5127,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5165,7 +5165,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5204,7 +5204,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5243,7 +5243,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5281,7 +5281,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5319,7 +5319,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5357,7 +5357,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form ('Mediastinum testis' names no class)"
@@ -5395,7 +5395,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form ('Mediastinum testis' names no class)"
@@ -5435,7 +5435,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5475,7 +5475,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5515,7 +5515,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form (no class is named 'Tunica vaginalis')"
@@ -5555,7 +5555,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form (no class is named 'Tunica vaginalis')"
@@ -5589,9 +5589,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
    ],
    "note": null
   },
@@ -5624,9 +5624,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
    ],
    "note": null
   },
@@ -5659,9 +5659,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
    ],
    "note": null
   },
@@ -5694,9 +5694,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names the tunica vaginalis whole (3584 tunica vaginalis testis); its layers are not separately named in the served table."
    ],
    "note": null
   },
@@ -5734,7 +5734,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5773,7 +5773,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5812,7 +5812,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5851,7 +5851,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5890,7 +5890,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5929,7 +5929,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -5967,7 +5967,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6005,7 +6005,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6038,9 +6038,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) \u2014 class mismatch."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) — class mismatch."
    ],
    "note": null
   },
@@ -6072,9 +6072,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) \u2014 class mismatch."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 names only the middle lobe (3645 lobus medius prostatae) and the lateral part (3644) of the prostate; the generic lobe and its sided forms have no term. The worksheet's candidates are class-word cores of other prostate structures (commissure, capsule, fascia, veins) — class mismatch."
    ],
    "note": null
   },
@@ -6105,9 +6105,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 TA2 carries 'zona centralis prostatae' only as a related term of 3647 zona glandularum periurethralium prostatae \u2014 the periurethral glandular zone, a neighboring but distinct McNeal zone (the central zone surrounds the ejaculatory ducts; the periurethral glands lie within the transitional zone). The name is in the table's apparatus but is not this record's term, so it is not entered."
+    "ta_name: ambiguous in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — TA2 carries 'zona centralis prostatae' only as a related term of 3647 zona glandularum periurethralium prostatae — the periurethral glandular zone, a neighboring but distinct McNeal zone (the central zone surrounds the ejaculatory ducts; the periurethral glands lie within the transitional zone). The name is in the table's apparatus but is not this record's term, so it is not entered."
    ],
    "note": null
   },
@@ -6144,7 +6144,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6182,7 +6182,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class for the transitional zone of McNeal named in Milestone 14's clinical record"
@@ -6214,9 +6214,9 @@
    "source": "fma-5.1.0",
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered",
-    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 \u2014 No term in TA2's prostate chapter names the anterior fibromuscular stroma (the chapter names the glandular part, its zones and the prostatic ducts)."
+    "ta_name: not found in TA2 (FIPAT 2nd ed., version 2.07) consulted 2026-11-06 — No term in TA2's prostate chapter names the anterior fibromuscular stroma (the chapter names the glandular part, its zones and the prostatic ducts)."
    ],
    "note": "the FMA's spelling ('fibromuscular') of the anterior fibromuscular stroma"
   },
@@ -6253,7 +6253,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6291,7 +6291,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6332,7 +6332,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6373,7 +6373,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6414,7 +6414,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6452,7 +6452,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6490,7 +6490,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6528,7 +6528,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6567,7 +6567,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "boundary: a muscle, recorded here because Milestone 14's male-line census names the cremaster absent and the muscular module carries no cremaster record (verified against its inventory); the FMA's class name for the cremaster"
@@ -6609,7 +6609,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "boundary: the tunica dartos of the scrotum, named absent on Milestone 14's male line; the muscular module carries no dartos record (verified against its inventory)"
@@ -6652,10 +6652,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) \u2014 the Milestone 37 glomerular-arteriole pattern"
+   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) — the Milestone 37 glomerular-arteriole pattern"
   },
   {
    "record_id": "repro.right-pampiniform-plexus",
@@ -6695,10 +6695,10 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
-   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) \u2014 the Milestone 37 glomerular-arteriole pattern"
+   "note": "boundary: a venous plexus, recorded here as a spermatic cord content; the cardiovascular module carries no pampiniform record (verified against its inventory) — the Milestone 37 glomerular-arteriole pattern"
   },
   {
    "record_id": "repro.penis",
@@ -6736,7 +6736,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the organ class itself: Milestone 14 found the penis in the release only as its erectile parts and its cardiovascular vessels, with no organ concept"
@@ -6777,7 +6777,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6818,7 +6818,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6857,7 +6857,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6897,7 +6897,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6935,7 +6935,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": null
@@ -6976,7 +6976,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class for the prepuce (no class is named 'Prepuce')"
@@ -7017,7 +7017,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's class for the frenulum of the prepuce"
@@ -7057,7 +7057,7 @@
    },
    "geometry": "absent",
    "verify": [
-    "geometry: absent \u2014 the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
+    "geometry: absent — the FMA is an ontology and carries no mesh data; this record is concept-only until a geometry source clears the project's license and registration bars (Milestone 38)",
     "clinical: no clinical tranche has been authored for FMA-sourced records; no clinical values are entered"
    ],
    "note": "the FMA's name form for the corona of the glans"

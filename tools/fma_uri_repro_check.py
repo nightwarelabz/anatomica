@@ -82,7 +82,12 @@ extension set is read from data/fma-intake-37.json's
 accounting. The 76 Milestone 38 male records in the same
 inventory are gated by tools/fma_integ_male_check.py; the C1
 census checks here read the combined file (133 FMA records)
-where the arithmetic spans it.
+where the arithmetic spans it. Milestone 63: the C1
+geometry-coverage arithmetic subtracts the two deferent-duct
+records claimed at Milestone 63 (CLAIMED below — Milestone 38
+records, gated in full by tools/fma_integ_male_check.py and
+tools/repro_check.py); this checker's own G1/G2 record sets
+are the Milestone 37 records and are unaffected.
 
 Usage: fma_uri_repro_check.py. Exit 0 iff all gated checks pass.
 Stdlib only.
@@ -110,6 +115,12 @@ SYSTEMS = {
     "urinary": 6,
     "reproductive": 13,
 }
+# Milestone 63 claim (2026-11-08 geometry ruling): these two
+# Milestone 38 records now carry their BodyParts3D meshes
+# (FJ3135 / FJ3140). They sit outside this checker's Milestone
+# 37 record sets, but the combined-file coverage arithmetic
+# below spans them, so they are pinned and subtracted there.
+CLAIMED = {"repro.left-deferent-duct", "repro.right-deferent-duct"}
 PLEXUS = {
     "FMA5906": ("Brachial nerve plexus",
                 ["nerve.left-brachial-nerve-plexus",
@@ -290,7 +301,8 @@ def main():
               f"{len(ext_all)} FMA ({len(ext)} of them M37)")
         cov = geo["meta"]["coverage"]
         ok = cov["records"] == len(geo["records"]) \
-            and cov["records_without_meshes"] == len(ext_all)
+            and cov["records_without_meshes"] == len(ext_all) \
+            - sum(1 for r in ext_all if r["record_id"] in CLAIMED)
         if system == "reproductive":
             from collections import Counter
             lines = {}

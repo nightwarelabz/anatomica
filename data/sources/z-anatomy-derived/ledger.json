@@ -1,0 +1,3555 @@
+{
+ "entries": [
+  {
+   "bytes": 2867,
+   "format": "md",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "SOURCE.md",
+   "sha256": "6c897ea3a0a10a246dd447648e1e21aa1dc65cf9da948a3c33e24e346b9ba888",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 365419,
+   "format": "json",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "intake-manifest.json",
+   "sha256": "d1b37351d3e9c9ec52872dffbb44630515bf85035071a8abf861b689813fc630",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {},
+   "structure_id": null
+  },
+  {
+   "bytes": 145813,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Abducens_nerve_(VI).l.obj",
+   "sha256": "9acc2d025ae2a15d64d7c412a4c894a0d6e21bdf10402fe09101dd0a6a64c09c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 4384,
+    "vertices": 2196
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 148089,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Abducens_nerve_(VI).r.obj",
+   "sha256": "e6511de863a37d4d012ac97f124e2621346ff41d67cec04993fd80d34f3abf6f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 4384,
+    "vertices": 2196
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1486,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Accessory_nucleus_of_oculomotor_nerve.l.obj",
+   "sha256": "7da1f9c7d86127024a1fcfbcf4181bd289722f361b4a1c882876fbbdaeee0c6b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Accessory_nucleus_of_oculomotor_nerve.r.obj",
+   "sha256": "b18b71aadd6ce61e7f96bc18636c97ffa31a7efaa0fdd937ea1a2cfad6fd7329",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11724,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Amygdaloid_body.l.obj",
+   "sha256": "8197f437037c6e4de2964685f2f6fc41ecb94532d96950e69a4d98fa3ca329bc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 384,
+    "vertices": 194
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11915,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Amygdaloid_body.r.obj",
+   "sha256": "4322aa0ed11d03368f42f498cc9ef64311b74255224560acbc6db08264bd687e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 384,
+    "vertices": 194
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_cochlear_nucleus.l.obj",
+   "sha256": "5fcd7619b592d32ddc25702e941fe0b813cfbe392bab16cf1fc2fcea4cd1164d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_cochlear_nucleus.r.obj",
+   "sha256": "63c7f1b0db94a4724fc45201bcb8570970f5e5176cad423007c8f88f7b2b66aa",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16443,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_division_of_mandibular_nerve.l.obj",
+   "sha256": "2fdf36694c2d224712950c82f94eefd95e1bd2fd60a7c7e636a3921e530146bc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 528,
+    "vertices": 266
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16709,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_division_of_mandibular_nerve.r.obj",
+   "sha256": "a7fb1d0844608241fd96a356df20b2c4ff3bcc39ccffee795cb420cf338c60d5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 528,
+    "vertices": 266
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11009,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_occipital_sulcus*.l.obj",
+   "sha256": "c703d40f52e40b55c68dc93b150f063dba44605ce2177565a0e8d58337682da2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 364,
+    "vertices": 184
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11193,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_occipital_sulcus*.r.obj",
+   "sha256": "200abf1536257e86bf213ab71fad8a58ec4bd5e95bb64327470cbb0c007e1649",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 364,
+    "vertices": 184
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 217537,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_quadrangular_lobule.l.obj",
+   "sha256": "50d4d4da8ee56965398f7a91c0be36f80a551a395407bd1595af061d5e857bb0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6520,
+    "vertices": 3270
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 220353,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Anterior_quadrangular_lobule.r.obj",
+   "sha256": "a47a195338cb8ed6b0dcdb028bf31cd62e3e2a7f3e75cb01cee7bcc19cac7a54",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6520,
+    "vertices": 3270
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6105,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Auditory_tube.l.obj",
+   "sha256": "869bcbd8d83836cf497f6c686b5f99928c91595ee24691bc9e797d8ae7e5ead8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 168,
+    "vertices": 116
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6235,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Auditory_tube.r.obj",
+   "sha256": "6506b436c70c903395d28faff685ce57fd4245f9bc9cdf1db43e0a08a47c90fe",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 168,
+    "vertices": 116
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 166942,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Base_of_peduncle.l.obj",
+   "sha256": "257b3254ae357da32b928a67333519a75e26420b12ee6fd162e42af421021943",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5046,
+    "vertices": 2531
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 169605,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Base_of_peduncle.r.obj",
+   "sha256": "8a9c761000d37a4179a339fd442745441a6538aab626f528ed22bd5303b3f291",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5046,
+    "vertices": 2531
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 300189,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Biventral_lobule.l.obj",
+   "sha256": "f217862e3fe5daf291b4a571e5e65c2ccdd92865cdfaa9e852a72d8ad68e6492",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8902,
+    "vertices": 4464
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 304730,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Biventral_lobule.r.obj",
+   "sha256": "943d8f9afab6e241de30aafd4444647110e44c0697e99483a9ef4be725f8a794",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8902,
+    "vertices": 4464
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 75405,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Buccal_nerve.l.obj",
+   "sha256": "2c06a6e2589f82c62de6c9e23f5a4bdc91265d3a88698faa571f67e2ac2e2f02",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2336,
+    "vertices": 1172
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 76577,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Buccal_nerve.r.obj",
+   "sha256": "7646495043c5e6f7c02266f057d7d913d8d754ffa3160972041dbb6db015c267",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2336,
+    "vertices": 1172
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 26580,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Calcarine_sulcus.l.obj",
+   "sha256": "d308e574082bba3b73cd8861fa8ef00d73788a92974795c3228aa66a106df639",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 872,
+    "vertices": 437
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 27031,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Calcarine_sulcus.r.obj",
+   "sha256": "ebda2495ed08833f05866322b0286c32282d1f001b6c04daa71754a75d2179e7",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 872,
+    "vertices": 437
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16102,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Central_canal'.obj",
+   "sha256": "0e3a49be1f16d6cc942003f3353432327861933c05a1ee2404aa3852e8f57832",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 528,
+    "vertices": 266
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 30968,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Central_lobule.obj",
+   "sha256": "f121929e0618d8b3661c55315a2d38fe7416bf200009103205b00130bb8b7bce",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1006,
+    "vertices": 505
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 44884,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Central_sulcus.l.obj",
+   "sha256": "62880aa7211627aa16cc15c820630befad60f67869ed1d320ab524560bfc8516",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1440,
+    "vertices": 722
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 45610,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Central_sulcus.r.obj",
+   "sha256": "f558c81c10716cabb61439a76b97ea7e2765a668f293bc9d1a6c9c2218df62ca",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1440,
+    "vertices": 722
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 48701,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Chorda_tympani.l.obj",
+   "sha256": "a81b0a574ecc975259ffbcb1b3f175db7d3abeb06dc47bb6aa0b282e140e8496",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1552,
+    "vertices": 778
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49464,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Chorda_tympani.r.obj",
+   "sha256": "31a1a9770d8bf957754f1418ceb22100570f0067a34c6e2e9473bf9948344190",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1552,
+    "vertices": 778
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 84321,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Choroid_plexus.l.obj",
+   "sha256": "c8462c1414802de05cccb6cd705166fed3c453ebcb2dec073088a84d4aea8b44",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2647,
+    "vertices": 1324
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 85600,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Choroid_plexus.r.obj",
+   "sha256": "decae73c05bd382f8de4c647dcdd35a75932c5c9cc98fb82f8fb6f73a96da222",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2647,
+    "vertices": 1324
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 8896,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_(Posteroventral_part*).l.obj",
+   "sha256": "ce718962cab218f82bef09ed5568d88454fab3622f0706e6c9eeae8143c5fe3c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 298,
+    "vertices": 153
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 9057,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_(Posteroventral_part*).r.obj",
+   "sha256": "0a6dd875d27499e998cbb1157d8f8c81afcfa1dcdd68ebb2c74762a6ed2666e2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 298,
+    "vertices": 153
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 22712,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Middle_anterior_part).l.obj",
+   "sha256": "bb930084bb4e08c72ca8c6100216ea33adce97540e45226b1f3d4897a536e02e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 736,
+    "vertices": 370
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23080,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Middle_anterior_part).r.obj",
+   "sha256": "6fa9fdb935a92a700500a617752d032dc513d16f3f01281f973c795ff165673a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 736,
+    "vertices": 370
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 18261,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Middle_posterior_part).l.obj",
+   "sha256": "846e29926ccb4410bc38108434fabbc6dbac6585384ddf2462775e0b0390587b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 600,
+    "vertices": 302
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 18555,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Middle_posterior_part).r.obj",
+   "sha256": "34aad0f8a1b71327f95c09b056b1903a5a09ce4498dbffdaa9617f4b1153f897",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 600,
+    "vertices": 302
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 12286,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Posterior_dorsal_part).l.obj",
+   "sha256": "af3c88e549123e49d565bd8f8d3ebf8c8ca8009ab7d13527edccec94c3aa58ce",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 410,
+    "vertices": 207
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 12468,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_gyrus_and_sulcus_(Posterior_dorsal_part).r.obj",
+   "sha256": "c400eb76eb6084fac5ceff383fae7b25dacb35eefc2e78c33422c5e1b1abae72",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 410,
+    "vertices": 207
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16589,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_sulcus_(Marginal_part*).l.obj",
+   "sha256": "686f6ed42ab4da58782b395c9cca4eb344a695e70d5246d5dd72793e56786b71",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 544,
+    "vertices": 274
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16872,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Cingulate_sulcus_(Marginal_part*).r.obj",
+   "sha256": "f5e24cd19dbb981853049e88a97f68551c9d720be147f88f2e08953a790700d8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 544,
+    "vertices": 274
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24836,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Circular_sulcus_of_insula.l.obj",
+   "sha256": "74ec81c181e42c8aab834e8abbfb43fb5a16d0c6391773ebaf1e0d70835829c4",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 798,
+    "vertices": 401
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 25231,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Circular_sulcus_of_insula.r.obj",
+   "sha256": "27a1cb2a9b825cbb45dceb6c57f28f473ff630d636d26b1206d27a5df90f614c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 798,
+    "vertices": 401
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 35573,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Collateral_sulcus.l.obj",
+   "sha256": "969f3d2bb7317cd87dcc4b9ca703fb2274052e3ba668a51c8f5b94c7c836a1b4",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1142,
+    "vertices": 575
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 36153,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Collateral_sulcus.r.obj",
+   "sha256": "eeb281ab95cd761d05730668bba95bd28437bcde7c2cfb26313f208131706d18",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1142,
+    "vertices": 575
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 75144,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Culmen.obj",
+   "sha256": "5854ec7851ae16b5167711f644fadd351949483713309eff590d544382a8ff1c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2378,
+    "vertices": 1194
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 66476,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Declive.obj",
+   "sha256": "3db599a4fab6d9637ef7e1dffd6f28890bacb430a9d44f6800c09f4edb60d5da",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2125,
+    "vertices": 1067
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1291,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Equator_of_eyeball.r.obj",
+   "sha256": "bb6758c579a06689262d14aef31ddf74d668dae500223091b4c82bf39d4acb8a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 0,
+    "vertices": 32
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 218,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/External_axis_of_eyeball.obj",
+   "sha256": "53d8db1c5babfd40730529e988bb4544a32205d724cbb3e2784f72d5b2765f34",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 0,
+    "vertices": 3
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 851047,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Facial_nerve_(VII).l.obj",
+   "sha256": "7b014fc5ac0f3e8b7a8845bb4a4c1471983d29b484c71bdac4fb93da05a3359d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 24256,
+    "vertices": 12152
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 863121,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Facial_nerve_(VII).r.obj",
+   "sha256": "8d701e19a46eba080188a1cb10ad65cf12a4407fd03f159d780623a93a476867",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 24256,
+    "vertices": 12152
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 52095,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Falx_cerebri.obj",
+   "sha256": "a75edff2f97cddf3c960d1b4ace2f615a7aa9ee6406e2db392b246ff5adf330a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1675,
+    "vertices": 844
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 121158,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Flocculus.l.obj",
+   "sha256": "bc7908b7bb815438b26778fe8ca0370b7418c8303f06a652de2c18da19867ecb",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3660,
+    "vertices": 1869
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 123027,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Flocculus.r.obj",
+   "sha256": "d25b9fc323444f22eb1e041750648fe4e15fc68a07df870b4ea2079bd0a04bcb",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3660,
+    "vertices": 1869
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24982,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Folium_of_vermis.obj",
+   "sha256": "0067513f650f12a7d6b71dfb3fe2a7de7fe3d7f963cf9c51677431c16e185d19",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 812,
+    "vertices": 410
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 67573,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Fornix.l.obj",
+   "sha256": "fd363d7d9f4a1070ec0fb428203885f37908dcde521a0b57ee3d12d0b9853b2d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2158,
+    "vertices": 1081
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 68595,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Fornix.r.obj",
+   "sha256": "38f58e9714d7d3dc341c4b9483421c31d0de4f7f2cc1dc823d5024b06a672d03",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2158,
+    "vertices": 1081
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 403074,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Glossopharyngeal_nerve_(IX).l.obj",
+   "sha256": "a9b891b7ea8af8af40e69a141ecb2a889813da9808fde3345f0d152c009033c7",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 11888,
+    "vertices": 5958
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 409250,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Glossopharyngeal_nerve_(IX).r.obj",
+   "sha256": "1140da72ef4e5fafb296e9099c54cfc3498621c38cbd53b445e0908ea0890e4f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 11888,
+    "vertices": 5958
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 233280,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Gracile_lobule.l.obj",
+   "sha256": "3c107237134fe6045aebd8c99704e964aeeeb932d998acf9ff946d8bc03a4874",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6961,
+    "vertices": 3488
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 236849,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Gracile_lobule.r.obj",
+   "sha256": "8f86e61d057f1d27a9a38c0da9c829d5f9ebb1ec5fdee7619d533fa36a4cb518",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6961,
+    "vertices": 3488
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 345126,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Hippocampal_commissure.obj",
+   "sha256": "223f3f724bb6d038d33b656fef50a39e4afaa26c51ab00958edf2b7ebf32e8d6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 10213,
+    "vertices": 5110
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 491872,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Hypoglossal_nerve_(XII).l.obj",
+   "sha256": "24dbc8f329844c396adb0926430e323c2d62335f60e649a782789808a2e61c98",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 14464,
+    "vertices": 7248
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 499804,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Hypoglossal_nerve_(XII).r.obj",
+   "sha256": "a222963595be35aab2b225723f2d6f42e5a2b2f39786e9c8fced20da60e53107",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 14464,
+    "vertices": 7248
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24670,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_frontal_sulcus.l.obj",
+   "sha256": "3361c9cef10bd71fe4b14d456e761d25093ad9ef4a10b50b8683382673feefe7",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 742,
+    "vertices": 413
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 25081,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_frontal_sulcus.r.obj",
+   "sha256": "9e0a831a9dbfa4e79f1d8701876ae477814614f349b71ff1152652003d36a246",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 742,
+    "vertices": 413
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 27565,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_occipital_gyrus_and_sulcus*.l.obj",
+   "sha256": "ff02b3d04b6bd8d879c4e70d93a51c9c7104ea5fa07fbc3d36ed1edac6fc4ed1",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 894,
+    "vertices": 449
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 28007,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_occipital_gyrus_and_sulcus*.r.obj",
+   "sha256": "5a3b7ab41264f78f6ca322ce18f432c0576d8c46629cb0381a28e01a9e21cd93",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 894,
+    "vertices": 449
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_salivatory_nucleus.l.obj",
+   "sha256": "bcbc850bcc7a082a6e51867d4ed2d284e7a5e78c512910bde5613c4be239edf2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_salivatory_nucleus.r.obj",
+   "sha256": "aca1165ffb12debadb1c2537387814db62fb5f6721d7f52bae26901d2a0bf212",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 261032,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_semilunar_lobule.l.obj",
+   "sha256": "7d28b808786cf9830aa23dcc3c07805993a4e337fbb29a0b530031d939000543",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 7787,
+    "vertices": 3901
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 264979,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_semilunar_lobule.r.obj",
+   "sha256": "ae686474c6a45c33a46c4208f1b51d1bb99d5c78971f73069a487395a21ce04d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 7787,
+    "vertices": 3901
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 7305,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_temporal_sulcus.l.obj",
+   "sha256": "32cdfecb73f9976a1db2ef1dc7dc6defacc4be2fcefc8a9e4f12e4750badc724",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 246,
+    "vertices": 125
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 7430,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Inferior_temporal_sulcus.r.obj",
+   "sha256": "82c989bb865fcb6299128cdd610773527eb1c759b6bf8393cccd007919432b66",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 246,
+    "vertices": 125
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 22888,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Insula_(Subcentral_gyrus_and_ant._and_post._sulci*).l.obj",
+   "sha256": "a4644c754eeb5c7b7131e6548346df50f9acd6288023b7036c3257c5052a259f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 740,
+    "vertices": 372
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23256,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Insula_(Subcentral_gyrus_and_ant._and_post._sulci*).r.obj",
+   "sha256": "8535af72e368febe5a5ae71fe309c5e995eb909b199ed0beb7551f200ba355df",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 740,
+    "vertices": 372
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1743,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Interpeduncular_fossa.l.obj",
+   "sha256": "630d88d6eeec0b41fadc2af7d13e93a5b0ba20f0907682268fb8a166266a9a1f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 58,
+    "vertices": 31
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1774,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Interpeduncular_fossa.r.obj",
+   "sha256": "4f7ac423d5d35643720a1caaaf59420e4a0ccddc44abcfb105abbf742df62e08",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 58,
+    "vertices": 31
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 26366,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Intraparietal_sulcus.l.obj",
+   "sha256": "6b077152eeaa0fba39685f57a0bd2958b9ca221038d9a7ddb44ed061e07187ae",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 852,
+    "vertices": 428
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 26794,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Intraparietal_sulcus.r.obj",
+   "sha256": "7838e62b96ba9a7f7249f9be977e8000772ba153b659baf77a437e7fb2f600dc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 852,
+    "vertices": 428
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 57444,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lacrimal_gland.l.obj",
+   "sha256": "d91f5b27359ecc64322ba00db348c587e6fd3dbf811e4e4431314aa6c550112a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1810,
+    "vertices": 907
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 58351,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lacrimal_gland.r.obj",
+   "sha256": "c11aa633c5420d4eddc66c37a9e310c33b9ee8b85868fc05c5a7175e6da7bde5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1810,
+    "vertices": 907
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5169,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-ant-Horizont.l.obj",
+   "sha256": "8edef467a2de962d0b0d70f157142fac3a9668f0a5d35166014252fcde28d79a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 174,
+    "vertices": 89
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5258,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-ant-Horizont.r.obj",
+   "sha256": "5a9502e4fc0ea1e3aea014ce5a8dc1d22f09e762b288f1549000ddf3851575e7",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 174,
+    "vertices": 89
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5750,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-ant-Vertical.l.obj",
+   "sha256": "da1a285187a2b0e31bb1291962b8b3b40613593a7567f4d1b2813162ba710648",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 194,
+    "vertices": 99
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5849,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-ant-Vertical.r.obj",
+   "sha256": "1f109a15e5962a06d8b5c16767cb91d1c785e760ca0de47a5d624903ea08a956",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 194,
+    "vertices": 99
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 14642,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-post.l.obj",
+   "sha256": "ba8c035b5397351820d07212a2ecb81eafb20698f051d0578df7e583886ed008",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 480,
+    "vertices": 242
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 14884,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lat_Fis-post.r.obj",
+   "sha256": "d356b004f429821b9c104812231d64ebbe47243dd3e1719e5e956559d691ed40",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 480,
+    "vertices": 242
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 28043,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lateral_occipitotemporal_gyrus.l.obj",
+   "sha256": "667eb8077000c7103b7c562551a40a8a8663ab68b537392b977578325f6e5e9b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 866,
+    "vertices": 470
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 28513,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lateral_occipitotemporal_gyrus.r.obj",
+   "sha256": "eae0dea9fe0dd5123e6a44f214544b9fe7a539d632f8b49ba5b5c04cd3c317d4",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 866,
+    "vertices": 470
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 67779,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lentiform_nucleus.l.obj",
+   "sha256": "6c06572f4da076146f6eeac0f5116b318b1489080ee8b9be83915e7705ed7f52",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2144,
+    "vertices": 1074
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 68876,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lentiform_nucleus.r.obj",
+   "sha256": "7e901659d5a85e6600fe4241255fd2a131157edf92bdd70adec040efb465e5d0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2144,
+    "vertices": 1074
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 51346,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lingual_gyrus.l.obj",
+   "sha256": "30bd7d560920c33294b131cd604d586f9055f285353de92e44f422c055b77aca",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1658,
+    "vertices": 841
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 52170,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lingual_gyrus.r.obj",
+   "sha256": "a3abeb4bcf6dec4416254c980e960d360c9dc666c6310daf614aa495f4f5290a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1658,
+    "vertices": 841
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 74471,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lingual_nerve.l.obj",
+   "sha256": "797d33f479bfc25f5f6cc5be20ed21a2568c70a3399d1d1103332ae0bee23e4c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2320,
+    "vertices": 1162
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 75743,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lingual_nerve.r.obj",
+   "sha256": "d76cb6c9e7a82b8c6a09d370a9d681d43e772c35a36b7571c5b15ba2f71b7943",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2320,
+    "vertices": 1162
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 32152,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Lingula_of_cerebellum.obj",
+   "sha256": "fb4613466cf84c769cc3d1d9a0fd96e0515ec8895c6257ed2fad2fcd1502355d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1028,
+    "vertices": 530
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6356,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Mamillary_body.l.obj",
+   "sha256": "e7838c930a4fe599bed43d37146365e9a58dfcbe051fef55786f50d9f3f14a10",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 220,
+    "vertices": 112
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6468,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Mamillary_body.r.obj",
+   "sha256": "f6fd687d872afa8bed01d87918f71c80092d1ec8f960c693ddbc02bc6908a557",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 220,
+    "vertices": 112
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 238405,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Maxillary_nerve.l.obj",
+   "sha256": "0a416a8e61433c92a2f1692b69e14333feac282cf1e5e9c8c7ab946e5806213c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6992,
+    "vertices": 3506
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 241911,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Maxillary_nerve.r.obj",
+   "sha256": "be924c2a160c83d6c64d66afd73e9a76622d1cc985acdff4623d5c255debb874",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 6992,
+    "vertices": 3506
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 28393,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Medial_occipitotemporal_gyrus_(Parahippocampal*).l.obj",
+   "sha256": "0cb0c27656b01f93147e4ab896d31458cefbe901bc9f84392386d2dbf6b7a0e1",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 858,
+    "vertices": 477
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 28868,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Medial_occipitotemporal_gyrus_(Parahippocampal*).r.obj",
+   "sha256": "8ed8367ccc268d43418918ca9575123c460fe3a3497c63070a9b58136867b773",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 858,
+    "vertices": 477
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 181372,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Meningeal_branch_of_maxillary_nerve.l.obj",
+   "sha256": "3fa22e707d3ce36016c752d7c4059136ee53d33b85abc1990f3bb0e568368f58",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5424,
+    "vertices": 2718
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 184079,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Meningeal_branch_of_maxillary_nerve.r.obj",
+   "sha256": "6c0cba75a07b2990f06cfb3c8939bee810e666775bf1a895b4da24ee7752135b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5424,
+    "vertices": 2718
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Motor_nucleus_of_facial_nerve.l.obj",
+   "sha256": "3663fc36203386ca347b51c593110c319ed2a5386881a9b388a26218272f9340",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Motor_nucleus_of_facial_nerve.r.obj",
+   "sha256": "51332c7eab351aa8e9c8a7046f2f2989ad7f33dccecc584af5892bcb148a6162",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6481,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Motor_root_of_trigeminal_nerve.l.obj",
+   "sha256": "4da1842273b0e8ca1094f9d3ee4aff87387431d3c248cc2b75ec4811789da30b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 224,
+    "vertices": 114
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6595,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Motor_root_of_trigeminal_nerve.r.obj",
+   "sha256": "15999dd6d7128c882929fec1ebdc78e7bb1f5733785094750295f889968e5069",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 224,
+    "vertices": 114
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 31307,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nodule_of_vermis.obj",
+   "sha256": "b46494f89543c454b132eebb1dd199b2cbf62c06ac1b0ea5e79f361d3b47b2ec",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1012,
+    "vertices": 512
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_ambiguus.l.obj",
+   "sha256": "8846f90e4303381c8145238c2c33d190c5f3a5f936d3c77f4239eebe4365f25c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_ambiguus.r.obj",
+   "sha256": "2d11080ec364f3c6e54d9889ed65f0e7ec423dcdf18ed94a9183a9206f8f8dcb",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_abducens_nerve.l.obj",
+   "sha256": "f3536f90a56ff88fe86def317a5334858caef6c62fb6d788a45bd5fd3eb4b4b3",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_abducens_nerve.r.obj",
+   "sha256": "91552c73400c72903c9b4f3a4ecc3ef79601dab06b6c96ce309e452ad36ffeb3",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 3269,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_accessory_nerve.l.obj",
+   "sha256": "5c37fcbe5c8f02c2753d324d3cb6ed2824b6763b1f605f9260bba2716cc7d8db",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 112,
+    "vertices": 58
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 3327,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_accessory_nerve.r.obj",
+   "sha256": "3142fa3a9adca19af82caf5158bbb62cab8c1e729de5943cc7fa02859f33e528",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 112,
+    "vertices": 58
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1486,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_hypoglossal_nerve.l.obj",
+   "sha256": "8073fbf0eeaaf5e8e46a611189b2c0b12cbd356dac0158a4adfff44dd79a858e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_hypoglossal_nerve.r.obj",
+   "sha256": "ddc08a3dc704a28bf154918e14736a591cf49c69a7e61963988294840cb8efc5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_oculomotor_nerve.l.obj",
+   "sha256": "600d0d1882ee8eb88e6c9f246d0a3fe5cdef7f63daa1e000f47e246dd9c72c62",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_oculomotor_nerve.r.obj",
+   "sha256": "8af06f5ae12b8acfeeeacfef9b0e9c032a0160cc87cf540927c30dc14a0d9e23",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 277,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_solitary_tract.l.obj",
+   "sha256": "4174916da59181b8ee21effffef1aecdb91b3b3d5a065a4ddf24dda5487b1629",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 0,
+    "vertices": 5
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 282,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_solitary_tract.r.obj",
+   "sha256": "ceeff0b4f8c53e58d4449d1a65ab1dc458872e9d3126fac2385c307edf51a365",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 0,
+    "vertices": 5
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1486,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_trochlear_nerve.l.obj",
+   "sha256": "76e4f6bbceef888f71c2d56e74ebd3a77a24c73bc464b67677b796ae6f6f8bbd",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Nucleus_of_trochlear_nerve.r.obj",
+   "sha256": "61bc690d4b9eb594edbc3aec4c1d03974848fbe102156461db760cb391a4319f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 14856,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Occipitotemporal_sulcus_(Lateral_part*).l.obj",
+   "sha256": "61c2f29759f0ca322e6da7407225656bf3479cc9c9f79d680057e0545eb7b3bf",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 487,
+    "vertices": 245
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 15101,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Occipitotemporal_sulcus_(Lateral_part*).r.obj",
+   "sha256": "77d3d42e6bfa8c1307a682e64e6cca6e0b304e6fa67a1ea4cbc5083dac565920",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 487,
+    "vertices": 245
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 264096,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Oculomotor_nerve_(III).l.obj",
+   "sha256": "dbbe628bf366250ce56a4772646b3aee13e23f188ab4e9329afc6c6a4812f5e2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 7792,
+    "vertices": 3910
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 267975,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Oculomotor_nerve_(III).r.obj",
+   "sha256": "69bf39875e0d2e0b9262d68efafb07d39cf4fd97a23356c63c9dc2ef55356ef9",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 7792,
+    "vertices": 3910
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 832642,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olfactory_nerve_(I).l.obj",
+   "sha256": "37cca542ecdb2474eb390232febbe13c15972d27327cd44cf9332642b6946ee5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 23920,
+    "vertices": 12006
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 844663,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olfactory_nerve_(I).r.obj",
+   "sha256": "89d35d2c2f074b7251be5a656628a27bd1a322813dfe685f7504ed720bc2ddec",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 23920,
+    "vertices": 12006
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16973,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olfactory_sulcus.l.obj",
+   "sha256": "88201371554b7ce70a544f8dfb4e062d2fa6c799d3e351877ebf1ebcf7feac9d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 548,
+    "vertices": 275
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17277,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olfactory_sulcus.r.obj",
+   "sha256": "2a5c3c4b86fec122cd211e4b317f60c358b47eadc56b0877c25bff5bb978fd9e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 548,
+    "vertices": 275
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 29394,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olive.l.obj",
+   "sha256": "f45e5b38a0d96bff394555d89c955cdead6b890208748707c8dfd004061f0f48",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 960,
+    "vertices": 482
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 29925,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Olive.r.obj",
+   "sha256": "f570972b2fa22d39915be1a44607166f10080d977590a7aee4faac0b669eddf6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 960,
+    "vertices": 482
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23163,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Opercular_part_of_inferior_frontal_gyrus.l.obj",
+   "sha256": "e8db266fcabb75a055da7de93e2277ec2b9f8b499381690fcc0f0ab174c40a92",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 740,
+    "vertices": 372
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23529,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Opercular_part_of_inferior_frontal_gyrus.r.obj",
+   "sha256": "78d2bcd41b18dfe50bdb80f49e4667d63cd4c0b345a1e1c0a04219ba34a4d29b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 740,
+    "vertices": 372
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 48894,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Optic_nerve_(II).l.obj",
+   "sha256": "96224cc272e2b04abd2238962ad55fbbb100a11f7bc37400ba7ab32f6f9c04f0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1552,
+    "vertices": 778
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49670,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Optic_nerve_(II).r.obj",
+   "sha256": "8e7f5c664974b03991b31d621b0830493d65a6cce145701753c62a19d2db6fc8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1552,
+    "vertices": 778
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 47783,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_gyri.l.obj",
+   "sha256": "53c3967d704a5b943693275f44d5638c80a703bc9e5377fd8cdfa0e67d2ebd7a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1512,
+    "vertices": 756
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 48566,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_gyri.r.obj",
+   "sha256": "fd138496930cb71b253c017f577e42442fe4442387ab3921bbe8d0086772861c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1512,
+    "vertices": 756
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5522,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_part_of__inferior_frontal_gyrus.l.obj",
+   "sha256": "d2a980b93bd094e1cb02238c48a8ea8ca4f16a0732b6337d5e681d0e37417247",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 186,
+    "vertices": 95
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5617,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_part_of__inferior_frontal_gyrus.r.obj",
+   "sha256": "515dc87855ef241a8e0c800794921ddca906676c194504bdc5cc817851f80a76",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 186,
+    "vertices": 95
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23916,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_sulci_(H-shaped_orbital_sulci*).l.obj",
+   "sha256": "ade4b5a71160fd1ad55d9beb8bacd9de2062a0bd2a78d8be77e7ac9047d511ee",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 762,
+    "vertices": 383
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24299,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_sulci_(H-shaped_orbital_sulci*).r.obj",
+   "sha256": "9206b5af8e532f4a8e09828cf8434f1037340e94ee4d4dab1b9eedbb20347954",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 762,
+    "vertices": 383
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5943,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_sulci_(Lateral_Orbital_sulcus*).l.obj",
+   "sha256": "a3b6373f68270ced6c39540acecc87d7a701f79979f0b20efc03c02d8f4e3eac",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 200,
+    "vertices": 102
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6045,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Orbital_sulci_(Lateral_Orbital_sulcus*).r.obj",
+   "sha256": "0194f19a3b7c04d75f3f7574b6617af51726df635ab0260313882a203fd04413",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 200,
+    "vertices": 102
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 22923,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Paracentral_gyrus_and_sulcus*.l.obj",
+   "sha256": "99dab1af163771482596f86327dc6cfaa1d96d9f9509c00fe5399e131eb3d10c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 746,
+    "vertices": 377
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23327,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Paracentral_gyrus_and_sulcus*.r.obj",
+   "sha256": "0fa04b712ac877b326b1ac2af31ba21a3dd645c7987ef691e1059f0173ca99e3",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 746,
+    "vertices": 377
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 20987,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Paracentral_sulcus.l.obj",
+   "sha256": "fa054ba425c5faaf70125f730a8a42849bce5717a471e3546384ff473ef3e39d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 668,
+    "vertices": 338
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 21325,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Paracentral_sulcus.r.obj",
+   "sha256": "1f689bd9620200bcb8b043f583953712fdc9a501a95211e9fb5b37cd40267f5d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 668,
+    "vertices": 338
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 51071,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Parieto-occipital_sulcus.l.obj",
+   "sha256": "896644f1c91f902a74d9bbfbb6866580eb546b63c5929dd3c58712a78c9cf974",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1636,
+    "vertices": 824
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 51915,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Parieto-occipital_sulcus.r.obj",
+   "sha256": "68700ffba58100c326f049480cc322b1f7ee51b2049f97fae0b968b51ac43f26",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1636,
+    "vertices": 824
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 76128,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Peduncle_of_flocculus.l.obj",
+   "sha256": "680a58b1f48938ae21da3fd535c6993074060c8f4b6546243adbf814690b3545",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2368,
+    "vertices": 1216
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 77371,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Peduncle_of_flocculus.r.obj",
+   "sha256": "cd24fe0f1acf339a7f3163a476037cd28ac7275ebc9fc243c6dace7e14382db7",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2368,
+    "vertices": 1216
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 36918,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Postcentral_sulcus.l.obj",
+   "sha256": "142064ab670ed3f903d5e8ed8a32e685e07b41377defcfaedf37f6d5138f3e64",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1189,
+    "vertices": 595
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 37513,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Postcentral_sulcus.r.obj",
+   "sha256": "d2e655991eadf11860b4d5ecba6f96ed1115189b1eb30b61410e19c862e20fe0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1189,
+    "vertices": 595
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6521,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_cochlear_nucleus.l.obj",
+   "sha256": "ffcf0487a759b0d20860eb18823d6cf7cdec2abdfb56ad6910d0f96f7794bc9d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 224,
+    "vertices": 114
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6689,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_cochlear_nucleus.r.obj",
+   "sha256": "e9b996db4985c7c296bb62e4986ba873260358da521655122539715fd28f39f2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 224,
+    "vertices": 114
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24635,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_division_of_mandibular_nerve.l.obj",
+   "sha256": "6b34e1447bf5d9a8ba248b2abbb419121ce9a95091987f16cd5ed78434420aa6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 784,
+    "vertices": 394
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 25029,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_division_of_mandibular_nerve.r.obj",
+   "sha256": "fa2c37209320eb0f12d352ab1ffa0413ba213bb13bacfde4b14754a546c06412",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 784,
+    "vertices": 394
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_nucleus_of_vagus_nerve.l.obj",
+   "sha256": "e769850141e5ea32e3a32b2d782c485aa531fcd86c6e0a4f1b2ae9acd2981f4f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_nucleus_of_vagus_nerve.r.obj",
+   "sha256": "d24cabd08db9ed416d833b944dde6356e10dbb8f2dc99a33742ed2ae5961c394",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 118080,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_quadrangular_lobule.l.obj",
+   "sha256": "675b5d910b177e0a741e45fd49f0e2daafbd314e9a62c006cc86d37ad9171adc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3618,
+    "vertices": 1816
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 119538,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_quadrangular_lobule.r.obj",
+   "sha256": "cc912dfe93429598dc51ec5b6d992a848224550bfef8a7bb6e04995f2ca0286c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3618,
+    "vertices": 1816
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 50741,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_segment_of_eyeball.l.obj",
+   "sha256": "fbc532b8056667f698e6344b07aded1b41cb1e07267c4b6d1b236e1627155184",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1600,
+    "vertices": 802
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 51543,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Posterior_segment_of_eyeball.r.obj",
+   "sha256": "4b751a4a42351629703b5ffd9fc2a1d0756d0f0a01c02ff80dadeaf71836077a",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1600,
+    "vertices": 802
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17427,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precentral_sulcus_(Superior_part)*.l.obj",
+   "sha256": "6df39263bbb4257443a04ea00cf14d721a39339e81ce06f3d180600253d84625",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 568,
+    "vertices": 286
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17714,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precentral_sulcus_(Superior_part)*.r.obj",
+   "sha256": "fb41e665c3487a669d4c87c12b1736bf2c3c40c8101f3377b3359b3b39776f00",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 568,
+    "vertices": 286
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24304,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precentral_sulcus_(inferior_part)*.l.obj",
+   "sha256": "0e40081fa1ba932fa436d7eb35d746f3370c296421d5dca67d656debe0fef599",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 780,
+    "vertices": 391
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 24689,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precentral_sulcus_(inferior_part)*.r.obj",
+   "sha256": "474a937f3703142357f92006161cf7f5beacc1c74b576bf935b487f053abb496",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 780,
+    "vertices": 391
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 39881,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precuneus.l.obj",
+   "sha256": "c6b0484b708cb460b390baa306b1edacd74ea0818a79091dd7a31a47fff630a9",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1300,
+    "vertices": 652
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 40521,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Precuneus.r.obj",
+   "sha256": "e86b32f69490c518490f25702f8470d54759d50cd9c3a4afd3ca52ff7e4cb9e9",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1300,
+    "vertices": 652
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 29323,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Pyramid_of_medulla_oblongata.l.obj",
+   "sha256": "dbcc9116df8c60048ec0fa122f5abb935f717dfd239ebb315f836662d99882dc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 960,
+    "vertices": 482
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 29783,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Pyramid_of_medulla_oblongata.r.obj",
+   "sha256": "97016e231907a4fbe62fdcfef8f226ffa6d4e84ce35ef3c7b878421715cd4776",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 960,
+    "vertices": 482
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 36479,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Pyramis_of_vermis.obj",
+   "sha256": "8bcc5bd4327acfc9d373283be7d136cead905faa52f53b1ca24c1a4c20ee407f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1182,
+    "vertices": 593
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 4603,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Red_nucleus.l.obj",
+   "sha256": "ffd1734b68b904a5f830abbcb083b2358e79d55ec5feb7cbe32228e8d987b247",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 160,
+    "vertices": 82
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 4685,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Red_nucleus.r.obj",
+   "sha256": "8278f8f17f66dbf4219f632f55887019e5013f1112b3320767e86d2b8e321766",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 160,
+    "vertices": 82
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 48949,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Retina.l.obj",
+   "sha256": "635ecb69443a8b19a23cef51020e756d1fcf2135f70709ad69160686758e1f8e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1544,
+    "vertices": 774
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49723,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Retina.r.obj",
+   "sha256": "32dd706e885fa2470ed06d568b55f9a8c0041cf38b6c63a8d128934503712a1c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1544,
+    "vertices": 774
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 20359,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Sensory_root_of_trigeminal_nerve.l.obj",
+   "sha256": "ab1b094a970c202a0d93f0ea9cb9f1a34a9122429306ee25a9174333db237138",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 672,
+    "vertices": 338
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 20697,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Sensory_root_of_trigeminal_nerve.r.obj",
+   "sha256": "268ec41d34c171c4045a855f9652080257d425f355d9114906ea03108f63f0a0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 672,
+    "vertices": 338
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17071,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Septal_nuclei.obj",
+   "sha256": "d054d5fad5f66a8e9e954c61e61404fa087fcfa11853d2e88bc70616d774797d",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 548,
+    "vertices": 278
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 75596,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Septum_pellucidum.obj",
+   "sha256": "2c9b46c557bbdb45aa899642369fff23bb6fe6b5ff25d2ea289995dc2a3b81a8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2388,
+    "vertices": 1187
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 15557,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Straight_gyrus_(Gyrus_rectus).l.obj",
+   "sha256": "ee604eb018bf6a8270ae0a355fdd62f52cbbbc90277b0f7c7639fee44d1826d1",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 508,
+    "vertices": 256
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 15833,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Straight_gyrus_(Gyrus_rectus).r.obj",
+   "sha256": "8ac97db5200f2d12c1c840b1d86b18f6cab568499e3cd78c18176d21d193d38b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 508,
+    "vertices": 256
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 25684,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Stria_medullaris_thalami.l.obj",
+   "sha256": "1c40ec5a0a5c1dad1679768e684b6cf1bf3569f2099a986c1373772a34b82982",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 842,
+    "vertices": 423
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 26107,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Stria_medullaris_thalami.r.obj",
+   "sha256": "4af43e91ff013ad83c0d31baac3dba218973229bc7454702045386ecdab97bd4",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 842,
+    "vertices": 423
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 23534,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Stria_terminalis.r.obj",
+   "sha256": "ce8ce51bc1c23b0e7c8e730946f1790807de5a9f95ad9d2e41372ee0ed53129c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 746,
+    "vertices": 381
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16988,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Subparietal_sulcus.l.obj",
+   "sha256": "a42bc431297a79425b4ed4d49804ae28c515ba47c158181c5b5e28d66ef29746",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 561,
+    "vertices": 283
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17278,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Subparietal_sulcus.r.obj",
+   "sha256": "e111e2ff0537b4bebb812046991d131c8cd66a24fe8a3585c2f4ebc2a68c3fd0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 561,
+    "vertices": 283
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 10874,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Sulcus_interm_prim-Jensen.l.obj",
+   "sha256": "dde143a480988c5c4b1fc79c5113b9911a144c87ae79d1c117653ca93724fefc",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 360,
+    "vertices": 182
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11056,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Sulcus_interm_prim-Jensen.r.obj",
+   "sha256": "e8b076138f6753092e93112f6f9cc8d76030c69e06007d98fa137bf40fbf94d6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 360,
+    "vertices": 182
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 286243,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_cerebellar_peduncle.l.obj",
+   "sha256": "5250a0158e413d420b25aba5a696136056605a92ff841aa43de8c70f7e391650",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8474,
+    "vertices": 4344
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 290796,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_cerebellar_peduncle.r.obj",
+   "sha256": "554ee9fd717389f6c10d9050343df80ecc50fa39b61554549ee70451704e9326",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8474,
+    "vertices": 4344
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 40583,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_frontal_sulcus.l.obj",
+   "sha256": "41a92fca185d75385643c9ef3322a08d2b4276cb09b7e02280e414723ae77bf6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1290,
+    "vertices": 647
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 41231,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_frontal_sulcus.r.obj",
+   "sha256": "2283bd95e2b0769db6a03b30250bc4c33f4bb7849de14cc57b35fe6e3d19eb89",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1290,
+    "vertices": 647
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1477,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_salivatory_nucleus.l.obj",
+   "sha256": "214ef1c3b641a39969f1ac56cc122b6ac7959066deae2e1b0bb0b7c80257b234",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 1503,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_salivatory_nucleus.r.obj",
+   "sha256": "b1d10d61354ad88aff3375455c81cdc2f7d393d715bc32a6f4317d9fbdf09032",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 48,
+    "vertices": 26
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 292707,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_semilunar_lobule.l.obj",
+   "sha256": "dc1add43f189bf8d2d1711b371fc02c049c0ca3e23f1ed55006199b8a313e147",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8688,
+    "vertices": 4368
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 297087,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_semilunar_lobule.r.obj",
+   "sha256": "6e37ae01d6c155c83e67994ace598738ed8419f34fb6146cb04ec923a0f83208",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 8688,
+    "vertices": 4368
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 33474,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_temporal_gyrus_(Lateral_part).l.obj",
+   "sha256": "135c93bd01ab5d515bc074b88f35561b69eaecc14b1d01cea5c71f78e446e040",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1072,
+    "vertices": 538
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 34011,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_temporal_gyrus_(Lateral_part).r.obj",
+   "sha256": "ac190125fca26c5972bede732a4f402e2f3715f57517c4d12fd452217e3cd540",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1072,
+    "vertices": 538
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 75409,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_temporal_sulcus.l.obj",
+   "sha256": "563d52d06a5dd6bf60f902dc5e9f994d074151a726d6ec16aabfcc2981760af5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2374,
+    "vertices": 1189
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 76595,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Superior_temporal_sulcus.r.obj",
+   "sha256": "4522cc22342636911856dcbf195a94706ea4349e1467bd676001cc4df57636e3",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2374,
+    "vertices": 1189
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 186174,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Suspensory_ligament_of_eyeball.l.obj",
+   "sha256": "35c13abc02804aaed0cda486bc17f3158e1e61a285eb439b156abc976c527a74",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5502,
+    "vertices": 2755
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 188929,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Suspensory_ligament_of_eyeball.r.obj",
+   "sha256": "b72289030f91c3d0aed6724bc241f2534e587cfdc3bb26f10b195e314eab31df",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 5502,
+    "vertices": 2755
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17041,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Temporal_plane.l.obj",
+   "sha256": "aee21756005a518434946206b80c82ab4cc5871c8b4c8d251cfd1df82f8b1b49",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 556,
+    "vertices": 280
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 17321,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Temporal_plane.r.obj",
+   "sha256": "a0ba9bba43e62e6e16eb80f6bb0ce1a44fba63afab684848422a4dc4f1c109e6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 556,
+    "vertices": 280
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16700,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Temporal_pole.l.obj",
+   "sha256": "d444d46e883c372d861fe388ebde4dc0d7e50ee150043fa2ea187fcb35beb306",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 523,
+    "vertices": 274
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 16973,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Temporal_pole.r.obj",
+   "sha256": "fb4ab67c453e91f1b7271207861be6ee7d088e967cf68ccdbe9ae4dfad6f628c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 523,
+    "vertices": 274
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 118180,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Tonsil_of_cerebellum.l.obj",
+   "sha256": "dcc049d5d4c6202f7eeeaf28789995feb03ea244ffbcb36b0717a7a5808f703f",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3638,
+    "vertices": 1821
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 120076,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Tonsil_of_cerebellum.r.obj",
+   "sha256": "60cb9bf64e81fce628f91832abdec38c386fb76eedd23909a0909733905cfa90",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3638,
+    "vertices": 1821
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 6913,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Transverse_temporal_gyri.l.obj",
+   "sha256": "708526a7795aa54568aaf91efe70506908a9618d7c38bab9fd2938e3f60fe54c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 234,
+    "vertices": 119
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 7032,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Transverse_temporal_gyri.r.obj",
+   "sha256": "1ec68ba4e4068342c9ad022cbe1663abcbc456a006662221f261d9353818d6f5",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 234,
+    "vertices": 119
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 15662,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Triangular_part_of_inferior_frontal_gyrus.l.obj",
+   "sha256": "16d4c99e63e1f97f7298e91ac189dfc32fce81daaa9eb062d43558bf3c28de96",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 504,
+    "vertices": 254
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 15916,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Triangular_part_of_inferior_frontal_gyrus.r.obj",
+   "sha256": "3d2312e65b90fffe8a562131efca89c99661217dca088cb699786e3d778bc4c8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 504,
+    "vertices": 254
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 65703,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Trigeminal_nerve_(V).l.obj",
+   "sha256": "1b75c00fa6fd486ebdcdbedcdc144983e707427c174a1530c6b843144c2ef8d0",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2080,
+    "vertices": 1044
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 66763,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Trigeminal_nerve_(V).r.obj",
+   "sha256": "47c1ba8eec1aa0e0e4aca990a4efbf49e165bfc29b959161fb2ca7e4e2afde84",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2080,
+    "vertices": 1044
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 109024,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Trochlear_nerve_(IV).l.obj",
+   "sha256": "2c2ff3ed5696b9afa3a576626e3a443289d51c4a60b472ea95c0a4f3b1ca1377",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3344,
+    "vertices": 1674
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 110522,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Trochlear_nerve_(IV).r.obj",
+   "sha256": "c8fa28c8503ed83dff1798c9c1c99fbb4a343c31d2b78a216d6c454f970e865b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3344,
+    "vertices": 1674
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 36328,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Tuber_of_vermis.obj",
+   "sha256": "43115b73298b3e9c08c3943ffcd2c941c0407d36e189e211485ca4a326bf0cff",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1178,
+    "vertices": 591
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49053,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Tympanic_membrane.l.obj",
+   "sha256": "9fe14c9300cccf2e871814d7a902d1074474335d82600c5e8e0a4d60eacade5b",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1572,
+    "vertices": 788
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49841,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Tympanic_membrane.r.obj",
+   "sha256": "ee9f8f569004e89b8ac96bcff3d9dfdf8df2de5f58697aedc98e6d686f34d578",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1572,
+    "vertices": 788
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 69143,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Uvula_of_vermis.obj",
+   "sha256": "a0a8c860db9a899e16d516529feaf04331694fb1c5bda9d389b260703fac6de8",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 2176,
+    "vertices": 1118
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 137301,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibular_nerve.l.obj",
+   "sha256": "c7eb03db978545db57bedb925d18ee6bd53258bb98ce52d63a4bc223ff329a02",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 4160,
+    "vertices": 2088
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 139389,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibular_nerve.r.obj",
+   "sha256": "daa6ed599930db0b40752a953a86e5c153c8322ab8f6202f849841cabeed377c",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 4160,
+    "vertices": 2088
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11177,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibular_nuclei.l.obj",
+   "sha256": "39b137e860a9fd2e854ec20dc451708a6fe545887a4109fd74bb3d3ab3c3ae7e",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 376,
+    "vertices": 190
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 11367,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibular_nuclei.r.obj",
+   "sha256": "bf8390dc74c08a8a0c6cfe75a796f06388d04a7018f53f89f1d7c6b2f76ec618",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 376,
+    "vertices": 190
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 48596,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibulocochlear_nerve_(VIII).l.obj",
+   "sha256": "92eb87028d9f8122e55519a9d4ed8610915fdcdc06c7d55a46939d6f2e7a2072",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1568,
+    "vertices": 788
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 49602,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Vestibulocochlear_nerve_(VIII).r.obj",
+   "sha256": "c49ce850a5c1d06134ddc74c6bd9eaf325219763927e8739c8d7ae850cec95ce",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 1568,
+    "vertices": 788
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 101519,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Wing_of_central_lobule.l.obj",
+   "sha256": "0045a0df7363fa376b8c1e4cced32c4be11c3d7d4845b753367fefbbddb811e2",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3144,
+    "vertices": 1585
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 103183,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/Wing_of_central_lobule.r.obj",
+   "sha256": "f25f77e41f8e896e2cc9ab7ca30cb87b2a3f5c693bfc73fbee396eeb21e16bf6",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 3144,
+    "vertices": 1585
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5660,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/_Posterior_transverse_collateral_sulcus.l.obj",
+   "sha256": "831069a1a8f7bc0f5d0cfc8297e9c656a8ffeacd161eb5547896f6258aeb76f4",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 184,
+    "vertices": 102
+   },
+   "structure_id": null
+  },
+  {
+   "bytes": 5762,
+   "format": "obj",
+   "license": "CC-BY-SA-4.0",
+   "license_evidence": null,
+   "path": "obj/_Posterior_transverse_collateral_sulcus.r.obj",
+   "sha256": "279d266d1487a69f5035e7b016542c0ec40eabb65d47d67e61621b83c446eb60",
+   "source": "Z-Anatomy (Models-of-human-anatomy) Tier B derived geometry, Milestone 63 intake; upstream archive sha256 e029688545627bd0214b269e1063143abb580aad72b2c2445d6d8a9a0d9da736",
+   "source_version": "Milestone 63 (audit: Milestone 34)",
+   "stats": {
+    "faces": 184,
+    "vertices": 102
+   },
+   "structure_id": null
+  }
+ ],
+ "generated": "2026-11-08T18:59:06.879536+00:00",
+ "root": "/home/hatch/workspace/anatomica-project/data/sources/z-anatomy-derived"
+}
