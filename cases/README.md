@@ -1,4 +1,4 @@
-# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54 + 57 + 61)
+# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54 + 57 + 61 + 66)
 
 Diagnosis practiced as explicit reasoning (design/07): a staged
 presentation, a differential board the learner must commit numbers
@@ -13,7 +13,7 @@ debrief scored by stated rules.
   or anywhere in ANATOMICA (education-only scope, master plan §8).
 - **Facts are cited; fiction is labelled.** Clinical facts (criteria,
   likelihood ratios, reference ranges, test characteristics) trace
-  to the sources registered in `parameters.json` (C1–C70), consulted
+  to the sources registered in `parameters.json` (C1–C77), consulted
   in-session. The patient's particulars are *case data* and are
   labelled as such wherever they appear. Anything that could not be
   sourced carries a verify flag — never a quietly invented value.
@@ -44,7 +44,7 @@ debrief scored by stated rules.
 
 ## Contents
 
-- `parameters.json` — source register (C1–C70), the workbench's
+- `parameters.json` — source register (C1–C77), the workbench's
   scoring-rule constants (all flagged project conventions), and the
   likelihood-ratio derivations. Extended at Milestone 22 with C14
   (WSES bile-duct-injury guidelines), C15 (MRCP test characteristics),
@@ -147,6 +147,35 @@ debrief scored by stated rules.
   diverticulitis), and a recorded rejection (HP:0002321
   resolves to vertigo, not this patient's presyncopal
   lightheadedness).
+  Extended at Milestone 66 with C71 (Fanaroff 2015 — the
+  Rational Clinical Examination for acute coronary syndrome:
+  radiation to both arms LR 2.6, ST-segment depression
+  LR 5.3, and the prior ABNORMAL stress test priced at
+  LR 3.1 with no ratio offered for a prior normal one),
+  C72 (Six 2008 — the HEART score's item table, its counted
+  risk-factor list, its AccuTroponin I threshold of 0.04,
+  and its band risks of 2.5% / 20.3% / 72.7%), C73 (Backus
+  2013 — the prospective HEART validation: six-week MACE
+  1.7% / 16.6% / 50.1%), C74 (Al-Saleh 2014 — the
+  conventional troponin meta-analysis: summary sensitivity
+  0.72, specificity 0.95 at presentation), C75 (the Fourth
+  Universal Definition of Myocardial Infarction, 2018),
+  C76 (the 2021 AHA/ACC chest-pain guideline, consulted
+  through its official slide set and pocket guide) and C77
+  (the MedlinePlus troponin page — the kinetics and the
+  non-MI causes of elevation), THREE further LR
+  derivations (the two C71 ratios cited as published; the
+  troponin ratio computed from C74's summary pair,
+  0.72 / 0.05 = 14.4), and dated Milestone 66 addenda to
+  the C10/C11 registers: acute myocardial infarction
+  (MONDO:0004781) and gastroesophageal reflux disease
+  (MONDO:0007186) verified, three HPO terms verified
+  (hyperhidrosis, ST segment depression, nausea) with a
+  fourth (ST segment elevation) asserted as an explicit
+  absence, and two recorded refusals (no NSTEMI class was
+  returned — the truth is coded to the general infarction
+  class; no general aortic-dissection class exists — only
+  familial and syndromic classes, refused).
 - `case.ruq-pain.001.json` — the first worked case: acute calculous
   cholecystitis as a staged RUQ-pain presentation, 4 stages, 29
   findings, 9 labs, 8 orderable tests, 7 hypotheses, mechanical
@@ -432,6 +461,52 @@ debrief scored by stated rules.
   holds no ulcer, and could not. Ontology: five Mondo
   classes verified; the lower-source hypothesis carries
   Mondo null with a fourth recorded refusal.
+- `case.recurrent-chest-pain.010.json` — the second-presentation
+  case (Milestone 66): a 58-year-old man whose central chest
+  pain was worked up negatively six weeks ago — serial
+  troponins negative, ECG normal, stress test negative,
+  discharged as non-cardiac pain, likely reflux — and who
+  returns with the same pain, a new ST-depression, and a
+  troponin that rises 0.34 → 1.72 ng/mL. 4 stages, 22
+  findings, 2 labs, 6 measurements, 4 orderable tests, 6
+  hypotheses. The HEART score block (C72) is evaluated
+  stage by stage: a partial 6 at stage 1 (the troponin
+  item unmeasured — a floor that already excludes the
+  discharge band) completing at 8 on the FIRST troponin,
+  and never re-priced by the repeat under the
+  admission-values discipline (checker-proven: the item's
+  atoms reference the first sample only). Three likelihood
+  ratios: radiation to both arms (2.6) and ST depression
+  (5.3) cited from the Rational Clinical Examination
+  (C71), and the first troponin (14.4) computed from the
+  conventional-assay meta-analysis's summary pair (C74).
+  The prior negative workup itself carries NO ratio — C71
+  prices a prior ABNORMAL stress test at 3.1 and offers
+  none for a normal one — and neither do the rising repeat
+  (definitional under the Fourth Universal Definition,
+  C75) nor the angiogram (direct inspection: 90% proximal
+  LAD stenosis with thrombus; stent placed). The board
+  runs truth 0.8552 at stage 1 and 0.9884 from stage 2;
+  the recurrence frame is ruled out at stage 2 (0.0043).
+  The physiology link is the pinned resting baseline by
+  identity, with the gap stated in the link: the engine
+  has no ischemic myocardium, no plaque and no troponin
+  state, and no neighbouring arm is borrowed. The imaging
+  link is localisation only: the s0778 heart_myocardium
+  label (crosswalk index 24 → `heart`; 53 slices, 48,784
+  voxels recounted by the checker) — the 104-label set
+  holds no plaque, thrombus or stenosis label, and the
+  link says so. No Theatre handoff, stated: the Theatre's
+  seven procedures contain no coronary intervention, and
+  the absence is recorded as a named gap for a future
+  milestone, as case 9 recorded endoscopy. Ontology:
+  MONDO:0004781 for the truth, with the unreturned
+  NSTEMI class recorded as a specificity refusal (the
+  qualifier rides in prose), MONDO:0007186 for the
+  anchor's named disease, and a fifth recorded refusal —
+  no general aortic-dissection class exists in OLS, only
+  familial and syndromic ones, so the dissection
+  hypothesis carries Mondo null.
 - `attempts/` — learner attempts (boards + orders per stage). Case
   2's model learner is deliberately imperfect in one documented way:
   it anchors on a retained CBD stone (ERCP ordered as therapy at
@@ -491,11 +566,29 @@ debrief scored by stated rules.
   and the ninth anchoring shape in the library
   (patient-installed self-diagnosis), and the library's
   first under-triage error — the mirror of case 7's
-  over-testing.
+  over-testing. Case 10's model learner anchors on the
+  prior episode's non-cardiac conclusion — an anchor
+  installed neither by a person nor by this encounter, but
+  by a PRIOR NEGATIVE WORKUP: real tests, correctly
+  performed and correctly read six weeks ago, whose true
+  episode-indexed findings he reads as a patient-indexed
+  immunity. He sees the new ECG and leads with the truth
+  anyway; the anchor's work is done at stage 2, when the
+  first troponin (0.34) rules the recurrence out on the
+  workbench (0.0043) and he instead re-describes the
+  troponin inside the frame — a leak, a demand effect —
+  and raises the frame to 0.22, because a frame with
+  evidence behind it can always re-interpret one result.
+  The repeat he orders to watch the level fall returns
+  five times higher and breaks the frame at stage 3: one
+  scored event, a seventh installation shape and the
+  tenth anchoring shape in the library
+  (evidence-of-absence), and the library's second
+  under-triage error.
 - `debriefs/` — generated by `tools/case_run.py` (one generic runner
   for every case since Milestone 22); independently recomputed by
   `tools/case_check.py` (parameterised over all cases, with per-case
-  profile sections; 14,919 checks at Milestone 61).
+  profile sections; 16,136 checks at Milestone 66).
 - `fhir/` — FHIR-shaped interchange export of the case (design/07);
   the case JSON is the source of truth and the checker fails the
   build if the export disagrees with it.

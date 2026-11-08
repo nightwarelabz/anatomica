@@ -1,0 +1,497 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "heart_score": {
+     "items": {
+      "heart.age": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.ecg": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.history": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.risk-factors": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.troponin": {
+       "points": 2,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk (HEART 7-10)",
+     "total": 8
+    }
+   },
+   "hypothesis": "hyp.acs-nstemi",
+   "mondo": "MONDO:0004781"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.noncardiac-recurrence",
+    "learner_probability": 0.22,
+    "ruled_out_at_stage": 2,
+    "stage": 2,
+    "workbench_probability": 0.004316814323854051
+   }
+  ],
+  "attempt_id": "attempt.case-recurrent-chest-pain-010.model-learner",
+  "case_id": "case.recurrent-chest-pain.010",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "leading hypothesis posterior moves 0.8552 -> 0.9884",
+    "classification": "discriminating",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.troponin-i",
+    "time_min": 20
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 1,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.troponin-i-repeat",
+    "time_min": 15
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 8,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.coronary-angiography",
+    "time_min": 90
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchoring shape here is new to this library, and its distinctness is structural, not decorative. The anchor is installed by a PRIOR NEGATIVE WORKUP \u2014 an evidence-of-absence anchor. Compare the nine shapes before it. It is not pattern-completion (#1): no gestalt is matched; a documented test result is quoted. It is not the treatability anchor (#2): nothing about the frame promises an easier treatment \u2014 discharge on the old diagnosis is not a therapy. It is not the feared-outcome anchor (#3): the frame does not protect the learner from a dreaded diagnosis; if anything it exposes him to the most dangerous miss in the building. It is not the clinician-frame (#4): no colleague's spoken label is inherited \u2014 the installer is the record of the patient's OWN prior encounter, the same institution's own discharge conclusion, with data attached; a frame from a colleague can be discounted as opinion, and this one cannot, because it is not opinion. It is not the self-installed exposure (#5): the learner did not create the premise by his own earlier act in this encounter. It is not the result-installed value (#6): that anchor is a result arriving mid-case and bending the board around itself; this anchor is a result that arrived six weeks BEFORE the case begins and is re-imported into it. It is not social pressure (#7): the patient repeats the conclusion, but the pressure is documentary, not interpersonal \u2014 the learner would hold the frame if the patient never spoke. It is not premature closure by inheritance (#8), its nearest neighbour, and the distinction is the case's teaching point: the inherited frame of Case #8 was an INTERPRETATION passed along with no test behind it, which collapsed at the first measurement that touched it. This frame has real tests behind it \u2014 performed correctly, read correctly \u2014 and that is exactly why it survives first contact with contradictory data: at stage 2 the learner does not ignore the troponin, he re-interprets it, an option an evidence-backed frame always has and an interpretation-only frame does not. And it is not installed by the patient himself (#9): the patient quotes the conclusion, but he did not coin it and could not have; it was issued to him, with tests attached, by the institution. The error itself is a scope error: a negative workup is episode-indexed \u2014 no necrosis THEN, no flow-limiting stenosis under stress THEN \u2014 and the anchor reads it as patient-indexed immunity. Plaque rupture is precisely the event a stress test cannot exclude, occurring at lesions it cannot see; the consulted literature even prices the asymmetry, valuing a prior ABNORMAL stress test at LR 3.1 while offering no ratio at all for a prior normal one (C71). The debrief lesson generalises past cardiology: every negative result in every chart has an index date and a scope, and 'already ruled out' is a sentence that should be illegal without both.",
+   "description": "A 58-year-old man re-presents six weeks after a negative chest-pain workup (serial troponins negative, ECG normal, stress test negative; discharged as non-cardiac pain, likely reflux). Today's presentation carries new ST-segment depression and, in sequence, a first troponin of 0.34 ng/mL and a repeat of 1.72. The workbench board prices the priced evidence mechanically: 0.8552 on the truth at stage 1, 0.9884 from stage 2. The recurrence hypothesis \u2014 the claim that this episode is the prior one recurring and the coronary question closed \u2014 is ruled out by the workbench at stage 2 (0.0043), the moment the first troponin lands. The HEART score runs 6 (partial, troponin unmeasured) at stage 1 and completes at 8 at stage 2, never re-pricing the repeat. The learner holds the recurrence at 0.22 at stage 2, after its rule-out \u2014 the case's single anchoring event \u2014 re-describes the troponin inside the frame, then abandons the frame at stage 3 when the five-fold rise assembles the Universal Definition under him. Angiography: 90% proximal LAD stenosis with thrombus; stent placed.",
+   "reactions": "The discomfort in this case is not the discomfort of a missed sign \u2014 every sign was seen, priced, and written down. It is the discomfort of watching good evidence do a bad job: a competent negative workup, quoted one episode too far. The learner's respect for prior testing, which is ordinarily a virtue and usually protects patients from redundant workups, is the precise mechanism of the error. That is what makes the case worth debriefing: the failure feels, from inside, like diligence.",
+   "summary": "One anchoring event, at stage 2, on the recurrence hypothesis: ruled out by the workbench at 0.0043, held by the learner at 0.22, defended by re-describing a troponin as a leak. The instruments each did their own job \u2014 the board priced, the score stratified, the definition diagnosed, the angiogram showed \u2014 and the failure lived entirely in the space between an old true finding and its new false scope. Final board: truth at 0.99, the frame retired by anatomy, and a discharge summary of six weeks ago annotated with the only correction it ever needed: correct \u2014 then."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "heart_score": {
+      "items": {
+       "heart.age": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.ecg": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.history": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.risk-factors": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.troponin": {
+        "points": 0,
+        "state": "unknown"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [
+       "heart.troponin"
+      ],
+      "partial": true,
+      "status": "moderate risk (HEART 4-6)",
+      "total": 6
+     }
+    },
+    "heart_score": {
+     "items": {
+      "heart.age": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.ecg": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.history": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.risk-factors": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.troponin": {
+       "points": 0,
+       "state": "unknown"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [
+      "heart.troponin"
+     ],
+     "partial": true,
+     "status": "moderate risk (HEART 4-6)",
+     "total": 6
+    },
+    "learner_board": {
+     "hyp.acs-nstemi": 0.62,
+     "hyp.aortic-dissection": 0.03,
+     "hyp.noncardiac-recurrence": 0.13,
+     "hyp.other-unspecified": 0.12,
+     "hyp.pe": 0.05,
+     "hyp.pneumonia": 0.05
+    },
+    "learner_brier": 0.1816,
+    "learner_probability_on_truth": 0.62,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acs-nstemi",
+    "stage": 1,
+    "workbench_board": {
+     "hyp.acs-nstemi": 0.8552,
+     "hyp.aortic-dissection": 0.0083,
+     "hyp.noncardiac-recurrence": 0.0538,
+     "hyp.other-unspecified": 0.0414,
+     "hyp.pe": 0.0165,
+     "hyp.pneumonia": 0.0248
+    },
+    "workbench_brier": 0.0265,
+    "workbench_probability_on_truth": 0.8552,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acs-nstemi"
+   },
+   {
+    "criteria": {
+     "heart_score": {
+      "items": {
+       "heart.age": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.ecg": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.history": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.risk-factors": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.troponin": {
+        "points": 2,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk (HEART 7-10)",
+      "total": 8
+     }
+    },
+    "heart_score": {
+     "items": {
+      "heart.age": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.ecg": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.history": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.risk-factors": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.troponin": {
+       "points": 2,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk (HEART 7-10)",
+     "total": 8
+    },
+    "learner_board": {
+     "hyp.acs-nstemi": 0.74,
+     "hyp.aortic-dissection": 0.0,
+     "hyp.noncardiac-recurrence": 0.22,
+     "hyp.other-unspecified": 0.02,
+     "hyp.pe": 0.01,
+     "hyp.pneumonia": 0.01
+    },
+    "learner_brier": 0.1166,
+    "learner_probability_on_truth": 0.74,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acs-nstemi",
+    "stage": 2,
+    "workbench_board": {
+     "hyp.acs-nstemi": 0.9884,
+     "hyp.aortic-dissection": 0.0007,
+     "hyp.noncardiac-recurrence": 0.0043,
+     "hyp.other-unspecified": 0.0033,
+     "hyp.pe": 0.0013,
+     "hyp.pneumonia": 0.002
+    },
+    "workbench_brier": 0.0002,
+    "workbench_probability_on_truth": 0.9884,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acs-nstemi"
+   },
+   {
+    "criteria": {
+     "heart_score": {
+      "items": {
+       "heart.age": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.ecg": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.history": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.risk-factors": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.troponin": {
+        "points": 2,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk (HEART 7-10)",
+      "total": 8
+     }
+    },
+    "heart_score": {
+     "items": {
+      "heart.age": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.ecg": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.history": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.risk-factors": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.troponin": {
+       "points": 2,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk (HEART 7-10)",
+     "total": 8
+    },
+    "learner_board": {
+     "hyp.acs-nstemi": 0.93,
+     "hyp.aortic-dissection": 0.0,
+     "hyp.noncardiac-recurrence": 0.04,
+     "hyp.other-unspecified": 0.02,
+     "hyp.pe": 0.005,
+     "hyp.pneumonia": 0.005
+    },
+    "learner_brier": 0.0069,
+    "learner_probability_on_truth": 0.93,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acs-nstemi",
+    "stage": 3,
+    "workbench_board": {
+     "hyp.acs-nstemi": 0.9884,
+     "hyp.aortic-dissection": 0.0007,
+     "hyp.noncardiac-recurrence": 0.0043,
+     "hyp.other-unspecified": 0.0033,
+     "hyp.pe": 0.0013,
+     "hyp.pneumonia": 0.002
+    },
+    "workbench_brier": 0.0002,
+    "workbench_probability_on_truth": 0.9884,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acs-nstemi"
+   },
+   {
+    "criteria": {
+     "heart_score": {
+      "items": {
+       "heart.age": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.ecg": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.history": {
+        "points": 2,
+        "state": "satisfied"
+       },
+       "heart.risk-factors": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "heart.troponin": {
+        "points": 2,
+        "state": "satisfied"
+       }
+      },
+      "max_total": 10,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk (HEART 7-10)",
+      "total": 8
+     }
+    },
+    "heart_score": {
+     "items": {
+      "heart.age": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.ecg": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.history": {
+       "points": 2,
+       "state": "satisfied"
+      },
+      "heart.risk-factors": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "heart.troponin": {
+       "points": 2,
+       "state": "satisfied"
+      }
+     },
+     "max_total": 10,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk (HEART 7-10)",
+     "total": 8
+    },
+    "learner_board": {
+     "hyp.acs-nstemi": 0.99,
+     "hyp.aortic-dissection": 0.0,
+     "hyp.noncardiac-recurrence": 0.002,
+     "hyp.other-unspecified": 0.005,
+     "hyp.pe": 0.002,
+     "hyp.pneumonia": 0.001
+    },
+    "learner_brier": 0.0001,
+    "learner_probability_on_truth": 0.99,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.acs-nstemi",
+    "stage": 4,
+    "workbench_board": {
+     "hyp.acs-nstemi": 0.9884,
+     "hyp.aortic-dissection": 0.0007,
+     "hyp.noncardiac-recurrence": 0.0043,
+     "hyp.other-unspecified": 0.0033,
+     "hyp.pe": 0.0013,
+     "hyp.pneumonia": 0.002
+    },
+    "workbench_brier": 0.0002,
+    "workbench_probability_on_truth": 0.9884,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.acs-nstemi"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 10,
+   "total_time_min": 125
+  },
+  "review": {
+   "delphi_status": "not convened",
+   "expert_review_gate": "UNMET",
+   "note": "The expert-review gate for this case is UNMET, exactly as Milestones 17, 20, 29, 41, 43, 48, 54, 57 and 61 recorded it for the procedures and cases before it: no named clinician reviewers are recorded for this case, none are fabricated, and every clinical assertion in it is a dual-sourced draft pending the two-reviewer Delphi the master plan requires (P10). Its scores are formative only.",
+   "recorded_reviewers": [],
+   "required_reviewer_roles": [
+    "cardiologist",
+    "emergency physician"
+   ],
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.aortic-dissection": 1,
+   "hyp.noncardiac-recurrence": 2,
+   "hyp.other-unspecified": 2,
+   "hyp.pe": 1,
+   "hyp.pneumonia": 2
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.1816,
+    "2": 0.1166,
+    "3": 0.0069,
+    "4": 0.0001
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.62,
+    "2": 0.74,
+    "3": 0.93,
+    "4": 0.99
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 0,
+    "discriminating": 1,
+    "non-contributory": 2,
+    "safety-net": 0
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.0265,
+    "2": 0.0002,
+    "3": 0.0002,
+    "4": 0.0002
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Formative use only: the case teaches a reasoning failure \u2014 the conversion of an episode-indexed negative workup into a patient-indexed immunity \u2014 and its scores (the HEART block, the boards, the Brier tallies) are instruments for that teaching, not assessments of any clinician and not guidance for any real patient. The anchoring event is a property of the scripted model learner, authored to make the failure legible at the exact stage the arithmetic exposes it.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Every quantitative clinical assertion traces to the register: the two history/ECG likelihood ratios to the Rational Clinical Examination (C71), cited as published; the troponin ratio to the conventional-assay meta-analysis (C74), computed from its summary sensitivity and specificity with the derivation in the register; the HEART block's items, bands and disposition actions to its derivation paper (C72), with its outcome risks seconded by the prospective validation (C73); the diagnostic criteria to the Fourth Universal Definition (C75); the high-risk pathway and the angiography indication to the 2021 chest-pain guideline (C76), consulted through its official slide set and pocket guide; the troponin kinetics and the non-MI causes of elevation to MedlinePlus (C77). The ontology identifiers were resolved against EBI OLS in-session, including two recorded refusals (the dissection hypothesis's Mondo; the unreturned NSTEMI class). The workbench recomputes every stage board from priors and ratios alone, classifies every model-learner order from the revealed evidence, and evaluates the declared block mechanically; the anchoring tally is computed, not asserted. Two scope notes are carried on the record rather than smoothed: the troponin ratio's source target is adjudicated MI, applied here to the ACS hypothesis; and the case's assay is the conventional one the HEART item was defined on, against the current guideline's high-sensitivity preference (C76) \u2014 the substitution the literature has made is recorded, and the case's internal consistency is kept instead of an anachronism in either direction."
+  }
+ }
+}

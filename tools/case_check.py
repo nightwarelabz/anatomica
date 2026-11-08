@@ -60,7 +60,13 @@ the four reciprocal likelihood-ratio derivations, the
 patient-installed anchoring event, the physiology hemorrhage
 arms — the fast arm re-run and hash-pinned, the course arm
 pinned by dossier identity — the duodenum imaging recount, and
-the recorded Mondo refusal for the lower-source hypothesis).
+the recorded Mondo refusal for the lower-source hypothesis), and
+case 10 (Milestone 66: the HEART score's stage-by-stage
+arithmetic including its stage-1 partial and its
+admission-values discipline, the three priced ratios (two
+cited, one computed), the evidence-of-absence anchoring
+event, the heart_myocardium recount, the stated physiology
+and Theatre gaps, and the two recorded ontology refusals).
 
 Usage: python3 tools/case_check.py
 """
@@ -2365,9 +2371,9 @@ def profile_case8(case, ctx, boards, attempt):
        "resolves onto")
     regs = {s["id"] for s in PARAMS["sources"]}
     ok(all(f"C{n}" in regs for n in range(52, 63))
-       and PARAMS["extended_at_milestone"] == 61,
+       and PARAMS["extended_at_milestone"] == 66,
        "case8: the register carries C52-C62 and "
-       "extended_at_milestone 61 (bumped by Milestone 61; "
+       "extended_at_milestone 66 (bumped by Milestone 66; "
        "this profile asserts the register's current extent, "
        "not its own milestone)")
 
@@ -2849,9 +2855,9 @@ def profile_case9(case, ctx, boards, attempt):
        "data/digestive/digestive.json")
     regs = {s["id"] for s in PARAMS["sources"]}
     ok(all(f"C{n}" in regs for n in range(63, 71))
-       and PARAMS["extended_at_milestone"] == 61,
+       and PARAMS["extended_at_milestone"] == 66,
        "case9: the register carries C63-C70 and "
-       "extended_at_milestone 61")
+       "extended_at_milestone 66")
     mgmt = case["management"]
     ok("handoff" not in mgmt
        and "80 mg" in mgmt["disposition"]
@@ -2967,6 +2973,324 @@ def profile_case9(case, ctx, boards, attempt):
        "perturbation-arm physiology link")
 
 
+def profile_case10(case, ctx, boards, attempt):
+    print("\n=== case.recurrent-chest-pain.010 profile: HEART "
+          "arithmetic + admission-values discipline / three priced "
+          "ratios (two cited, one computed) / anchoring (the "
+          "evidence-of-absence anchor: a prior negative workup) / "
+          "stated physiology + theatre gaps / imaging recount / the "
+          "two recorded ontology refusals (M66) ===")
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    TRUTH = "hyp.acs-nstemi"
+    ANCH = "hyp.noncardiac-recurrence"
+    labs = {l["id"]: l for l in case["labs"]}
+    finds = {f["id"]: f for f in case["findings"]}
+
+    ok(len(case["findings"]) == 22 and len(case["labs"]) == 2
+       and len(case["measurements"]) == 6
+       and len(case["available_tests"]) == 4
+       and len(case["hypotheses"]) == 6,
+       "case10: 22 findings / 2 labs / 6 measurements / 4 orderable "
+       "tests / 6 hypotheses")
+    lrs = {f["id"]: f["lr"] for f in case["findings"] if f.get("lr")}
+    ok(set(lrs) == {"f.pain-radiation-both-arms", "f.ecg-st-depression",
+                    "f.troponin-elevated-first"}
+       and lrs["f.pain-radiation-both-arms"]["lr_plus"] == 2.6
+       and lrs["f.pain-radiation-both-arms"]["status"] == "cited"
+       and lrs["f.ecg-st-depression"]["lr_plus"] == 5.3
+       and lrs["f.ecg-st-depression"]["status"] == "cited"
+       and lrs["f.troponin-elevated-first"]["lr_plus"] == 14.4
+       and lrs["f.troponin-elevated-first"]["status"] == "computed"
+       and all(v["for_hypothesis"] == TRUTH for v in lrs.values()),
+       "case10: exactly THREE likelihood ratios, all on the truth -- "
+       "radiation to both arms 2.6 and ST depression 5.3 cited from "
+       "the Rational Clinical Examination (C71), and the first "
+       "troponin's 14.4 computed from the conventional-assay "
+       "meta-analysis (C74)")
+    ok(all("lr" not in finds[i] for i in (
+        "f.prior-negative-workup", "f.troponin-rising",
+        "f.angiography-culprit", "f.diaphoresis", "f.nausea",
+        "f.pain-at-rest-prolonged", "f.no-consolidation")),
+       "case10: the prior negative workup (the anchor's exhibit -- "
+       "C71 prices a prior ABNORMAL stress test and offers no ratio "
+       "for a normal one), the rising repeat troponin (definitional "
+       "under C75, not evidence), the angiogram (direct inspection), "
+       "the diaphoresis, the nausea, the rest onset and the clear "
+       "film carry NO LR -- none is invented for them")
+    der = {d["finding"]: d for d in PARAMS["lr_derivations"]
+           if d["finding"] in lrs}
+    ok(len(der) == 3
+       and der["f.pain-radiation-both-arms"]["status"] == "cited"
+       and "2.6" in der["f.pain-radiation-both-arms"]["derivation"]
+       and der["f.ecg-st-depression"]["status"] == "cited"
+       and "5.3" in der["f.ecg-st-depression"]["derivation"]
+       and der["f.troponin-elevated-first"]["status"] == "computed"
+       and all(t in der["f.troponin-elevated-first"]["derivation"]
+               for t in ("0.72", "0.95", "14.4")),
+       "case10: the three derivations are registered once each -- "
+       "the two cited ratios with their consulted figures, and the "
+       "computed troponin ratio with its arithmetic in the prose "
+       "(0.72 / (1 - 0.95) = 14.4)")
+
+    # ---- case arithmetic ---------------------------------------------
+    ok(abs(labs["lab.troponin-i-first"]["value"]
+           / labs["lab.troponin-i-first"]["reference_range"]["high"]
+           - 8.5) < 1e-9
+       and labs["lab.troponin-i-first"]["value"] > 2 * 0.04,
+       "case10: the first troponin re-derives from the case's own "
+       "lab -- 0.34 / 0.04 = 8.5 times the limit, above the HEART "
+       "item's twice-the-limit tier boundary (C72)")
+    ok(abs(labs["lab.troponin-i-repeat"]["value"]
+           / labs["lab.troponin-i-first"]["value"] - 5.0588) < 0.001
+       and labs["lab.troponin-i-repeat"]["value"]
+       > 5 * labs["lab.troponin-i-first"]["value"],
+       "case10: the repeat troponin is a five-fold rise on the "
+       "first (1.72 / 0.34 = 5.06) -- the Universal Definition's "
+       "rise pattern (C75), computed from the case's own two labs")
+    ok(abs(boards[1][TRUTH] - 4.134 / 4.834) < 1e-9
+       and abs(boards[1][ANCH] - 0.26 / 4.834) < 1e-9
+       and boards[1][ANCH] >= 0.02,
+       "case10: the stage-1 board re-derives -- truth 0.30 x 2.6 x "
+       "5.3 = 4.134 over a 4.834 total (0.8552), and the anchor "
+       "still stands at 0.0538, NOT yet ruled out: the priced "
+       "history and ECG alone do not kill the frame")
+    ok(abs(boards[2][ANCH] - 0.26 / 60.2296) < 1e-9
+       and boards[2][ANCH] < 0.02
+       and abs(boards[2][TRUTH] - 59.5296 / 60.2296) < 1e-9,
+       "case10: the first troponin rules the anchor out at stage 2 "
+       "-- 0.26 over a 60.2296 total = 0.0043, with the truth at "
+       "0.9884; the rule-out timing is the case's hinge and it is "
+       "arithmetic, not narrative")
+    ok(deb["ruled_out_by_workbench"]["hyp.pe"] == 1
+       and deb["ruled_out_by_workbench"]["hyp.aortic-dissection"] == 1
+       and deb["ruled_out_by_workbench"][ANCH] == 2
+       and deb["ruled_out_by_workbench"]["hyp.pneumonia"] == 2,
+       "case10: rule-out stages -- embolism and dissection at stage "
+       "1 on the priced evidence, the anchor and pneumonia at "
+       "stage 2")
+
+    # ---- the anchoring event ------------------------------------------
+    ev = deb["anchoring_events"]
+    ok(len(ev) == 1 and ev[0]["hypothesis"] == ANCH
+       and ev[0]["stage"] == 2 and ev[0]["ruled_out_at_stage"] == 2
+       and ev[0]["learner_probability"] == 0.22
+       and abs(ev[0]["workbench_probability"] - 0.26 / 60.2296) < 1e-9,
+       "case10: exactly ONE anchoring event -- stage 2, the "
+       "recurrence hypothesis, held by the learner at 0.22 against "
+       "a workbench 0.0043: the evidence-of-absence anchor, "
+       "installed by the prior negative workup, absorbing the "
+       "first troponin as a 'leak'")
+
+    # ---- HEART block, stage by stage ----------------------------------
+    hs = [ps["heart_score"] for ps in deb["per_stage"]]
+    ok([h["total"] for h in hs] == [6, 8, 8, 8]
+       and hs[0]["partial"] is True
+       and hs[0]["not_assessed"] == ["heart.troponin"]
+       and hs[0]["status"] == "moderate risk (HEART 4-6)"
+       and all(h["status"] == "high risk (HEART 7-10)" for h in hs[1:])
+       and all(h["partial"] is False for h in hs[1:]),
+       "case10: HEART totals by stage -- 6 PARTIAL at stage 1 "
+       "(troponin unmeasured, the total a floor that already "
+       "excludes the discharge band), then 8 complete from stage "
+       "2, in the high band both consulted cohorts price (C72, "
+       "C73)")
+    pts = hs[1]["items"]
+    ok(pts["heart.history"]["points"] == 2
+       and pts["heart.ecg"]["points"] == 2
+       and pts["heart.age"]["points"] == 1
+       and pts["heart.risk-factors"]["points"] == 1
+       and pts["heart.troponin"]["points"] == 2,
+       "case10: the completed score's composition -- history 2 "
+       "(highly suspicious, C72) + ECG 2 (significant ST "
+       "depression) + age 1 (58 years) + risk factors 1 (exactly "
+       "two of Six's counted list) + troponin 2 (above twice the "
+       "limit) = 8")
+    block = next(b for b in case["criteria_blocks"]
+                 if b["id"] == "heart_score")
+    trop_item = next(i for i in block["items"]
+                     if i["id"] == "heart.troponin")
+    atom_labs = {a.get("lab_id") for t in trop_item["tiers"]
+                 for a in t["evidence"]}
+    ok(atom_labs == {"lab.troponin-i-first"}
+       and all(hs[s]["items"]["heart.troponin"]["points"] == 2
+               for s in (1, 2, 3)),
+       "case10: ADMISSION-VALUES DISCIPLINE -- the troponin item's "
+       "atoms reference the FIRST troponin only, at every tier; "
+       "the stage-3 repeat (1.72 ng/mL) exists in the case and "
+       "never re-enters the block, whose total holds at 8 through "
+       "stages 3 and 4")
+
+    # ---- orders ---------------------------------------------------------
+    ok([a["orders"] for a in attempt["stages"]]
+       == [["test.troponin-i"], ["test.troponin-i-repeat"],
+           ["test.coronary-angiography"], []]
+       and [o["classification"] for o in deb["orders"]]
+       == ["discriminating", "non-contributory", "non-contributory"]
+       and deb["resource_tally"]["total_cost_units"] == 10
+       and deb["resource_tally"]["total_time_min"] == 125
+       and all(o["test_id"] != "test.chest-xray"
+               for o in deb["orders"]),
+       "case10: three orders placed -- the first troponin "
+       "DISCRIMINATING (it moves the leader and crosses the "
+       "anchor over the rule-out line); the repeat troponin and "
+       "the angiogram NON-CONTRIBUTORY in the workbench's "
+       "taxonomy, which prices board and criteria movement only: "
+       "the definitional rise and the direct inspection move "
+       "neither, and the case records the taxonomy's limit "
+       "rather than disguising it. The chest radiograph stays "
+       "on the menu un-ordered. Tally 10 units / 125 min "
+       "(verify-flagged)")
+
+    # ---- ontology, records, register ------------------------------------
+    gt = case["ground_truth"]
+    hyps10 = {h["id"]: h for h in case["hypotheses"]}
+    ok(gt["mondo"] == case["adjudication"]["mondo"] == "MONDO:0004781"
+       and hyps10[TRUTH]["mondo"] == "MONDO:0004781"
+       and hyps10[ANCH]["mondo"] == "MONDO:0007186",
+       "case10: MONDO:0004781 (acute myocardial infarction) "
+       "everywhere the truth is coded; the anchor carries "
+       "MONDO:0007186 -- the disease the prior discharge named, "
+       "the claim built on it being what the case refutes")
+    ok(hyps10["hyp.aortic-dissection"]["mondo"] is None
+       and "REFUSAL RECORDED" in hyps10["hyp.aortic-dissection"]
+       ["mondo_note"]
+       and "MONDO:0019625" in hyps10["hyp.aortic-dissection"]
+       ["mondo_note"]
+       and hyps10["hyp.other-unspecified"]["mondo"] is None
+       and "SPECIFICITY NOTE RECORDED" in hyps10[TRUTH]["mondo_note"]
+       and "returned no class" in hyps10[TRUTH]["mondo_note"],
+       "case10: the two refusals stand on the record -- no "
+       "general aortic-dissection class exists in OLS (only the "
+       "familial MONDO:0019625 and the syndromic MONDO:0022470, "
+       "neither his), so dissection is Mondo null; and no "
+       "NSTEMI class was returned, so the truth is coded to the "
+       "general infarction class with the qualifier in prose. "
+       "The residual bucket is null by design")
+    invs = {}
+    for f in ("data/cardiovascular/cv-inventory.json",
+              "data/respiratory/respiratory-inventory.json",
+              "data/digestive/digestive.json"):
+        d = load(os.path.join(ROOT, f))
+        invs[f] = {r.get("record_id") or r.get("id")
+                   for r in d["records"]}
+    ok(all(r["id"] in invs[r["file"]]
+           for h in case["hypotheses"] for r in h["body_records"])
+       and "heart" in invs["data/cardiovascular/cv-inventory.json"]
+       and "artery.trunk-of-anterior-interventricular-branch-of-"
+           "left-coronary-artery" in
+           invs["data/cardiovascular/cv-inventory.json"],
+       "case10: every hypothesis's Body Model record exists in "
+       "the file its entry names -- including the LAD trunk "
+       "record, the angiogram's culprit vessel")
+    regs = {s["id"] for s in PARAMS["sources"]}
+    ok(all(f"C{n}" in regs for n in range(71, 78))
+       and PARAMS["extended_at_milestone"] == 66,
+       "case10: the register carries C71-C77 and "
+       "extended_at_milestone 66")
+
+    # ---- physiology link: identity + the stated absence -----------------
+    pl = case["physiology_link"]
+    ok(pl["command"] == "cd physiology && cargo run --release "
+       "-- run resting"
+       and pl["baseline_recorded_outputs"] == {
+           "cardiac_output_l_min": 4.21, "cvp_mmhg": 4.38,
+           "diastolic_bp_mmhg": 62.7, "heart_rate_per_min": 63.3,
+           "map_mmhg": 73.1, "stroke_volume_lv_ml": 66.6,
+           "systolic_bp_mmhg": 97.7}
+       and "0x6369b10e9a71c872" in pl["gap_statement"]
+       and "no troponin state" in pl["gap_statement"],
+       "case10: the physiology link is the pinned resting "
+       "baseline -- the same seven outputs and hash cases 1-9 "
+       "record -- with its gap stated in the link itself: no "
+       "ischemic myocardium, no plaque, no troponin state, and "
+       "no neighbouring arm borrowed and renamed")
+
+    # ---- imaging link: the myocardium recount ---------------------------
+    import numpy as np
+    link = case["imaging_link"]
+    bindir = os.path.join(ROOT, "web", "data", "imaging", "s0778")
+    counts = []
+    for i in range(431):
+        arr = np.fromfile(os.path.join(bindir, f"lbl-{i:04d}.bin"),
+                          dtype=np.uint8)
+        counts.append(int((arr == 24).sum()))
+    present = [i for i, c in enumerate(counts) if c > 0]
+    ok([present[0], present[-1]]
+       == link["measures"]["slice_files_0based"] == [255, 307]
+       and len(present) == link["measures"]["slices_with_label"] == 53,
+       f"case10: heart_myocardium slices recounted "
+       f"{present[0]}..{present[-1]} (0-based files), 53 slices "
+       f"carry the label")
+    ok(sum(counts) == 48784
+       == link["label"]["hu_statistics_from_crosswalk"]["voxels"],
+       "case10: total heart_myocardium voxels recounted: 48,784 "
+       "-- equal to the crosswalk's voxel count for the label")
+    mx = max(range(431), key=lambda i: counts[i])
+    ok(mx == link["measures"]["max_cross_section"]["file_index_0based"]
+       == 262 and counts[mx]
+       == link["measures"]["max_cross_section"]["voxels"] == 1381,
+       f"case10: max cross-section recounted: file {mx}, "
+       f"{counts[mx]} voxels")
+    ok(abs(sum(counts) * 3.375 / 1000
+           - link["measures"]["volume_ml_computed"]) < 0.005,
+       "case10: volume arithmetic 48,784 x 3.375 mm3 = 164.65 mL")
+    cw = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                           "crosswalk.json"))
+    hm = next(l for l in cw["labels"] if l["label"] == "heart_myocardium")
+    hu = link["label"]["hu_statistics_from_crosswalk"]
+    ok(hm["record_ids"] == ["heart"] and hm["index"] == 24
+       and all(hm["hu"][k] == hu[k]
+               for k in ("mean", "median", "p5", "p95", "min", "max")),
+       "case10: crosswalk maps label 24 (heart_myocardium) to "
+       "record heart, and the case's HU statistics equal the "
+       "crosswalk values")
+    series = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                               "series.json"))
+    z0 = series["geometry"]["ipp_first_slice_lps_mm"][2]
+    ok(abs((z0 + 255 * 1.5) - link["measures"]["z_range_lps_mm"][0])
+       < 0.01
+       and abs((z0 + 307 * 1.5) - link["measures"]["z_range_lps_mm"][1])
+       < 0.01,
+       "case10: slice z-arithmetic reproduces the crosswalk bbox "
+       "(1626.42..1704.42 mm)")
+    ok(not any(any(s in l["label"] for s in
+                   ("plaque", "thrombus", "stenos"))
+               for l in cw["labels"])
+       and "coronary plaque" in link["plaque_label_absence"]
+       ["absent_concepts"][0]
+       and len(cw["labels"]) == 104,
+       "case10: the 104-label set holds NO plaque, thrombus or "
+       "stenosis label, as the case's absence block states -- "
+       "the link is the muscle's localisation, and the lesion "
+       "is the angiogram's finding")
+
+    # ---- theatre: the stated gap -----------------------------------------
+    mgmt = case["management"]
+    ok("theatre_link" not in case and "handoff" not in mgmt
+       and all(pid in mgmt["theatre_link_verified"] for pid in (
+           "proc.chole.lap", "proc.appy.lap", "proc.carpal-release",
+           "proc.ulnar-decompression", "proc.lap-inguinal-hernia",
+           "proc.thyroidectomy.total", "proc.upper-gi-endoscopy"))
+       and "no coronary" in mgmt["theatre_link_verified"],
+       "case10: NO theatre handoff exists and none is claimed "
+       "-- the verified-absence text names all seven shipped "
+       "procedures and records that none is a coronary "
+       "intervention; the case carries no theatre_link key, "
+       "and the gap is named for a future milestone as Case "
+       "#9 named endoscopy")
+    ok(case["review"]["required_reviewer_roles"]
+       == ["cardiologist", "emergency physician"]
+       and "episode-indexed negative workup"
+       in case["validity"]["consequences"],
+       "case10: the review gate names its two unmet roles "
+       "(cardiologist, emergency physician), and the validity "
+       "statement names the failure the case teaches -- an "
+       "episode-indexed negative workup read as patient-indexed "
+       "immunity")
+
+
 def main():
     attempts = {}
     for p in glob.glob(os.path.join(CASES, "attempts", "*.json")):
@@ -3015,6 +3339,10 @@ def main():
         c, ctx, boards = profiles["case.upper-gi-bleed.009"]
         profile_case9(c, ctx, boards,
                       attempts["case.upper-gi-bleed.009"])
+    if "case.recurrent-chest-pain.010" in profiles:
+        c, ctx, boards = profiles["case.recurrent-chest-pain.010"]
+        profile_case10(c, ctx, boards,
+                       attempts["case.recurrent-chest-pain.010"])
 
     print(f"\n{'ALL CHECKS PASS' if FAIL == 0 else 'FAILURES PRESENT'}: "
           f"{PASS} passed, {FAIL} failed")
