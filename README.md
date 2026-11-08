@@ -290,8 +290,8 @@ procedure (see Status).
 
 ### Cases — the workbench
 
-**8 cases** in the library, staged history → examination → tests → board,
-with a source register (62 sources, C1–C62), guideline criteria evaluated
+**9 cases** in the library, staged history → examination → tests → board,
+with a source register (70 sources, C1–C70), guideline criteria evaluated
 mechanically from the staged evidence, likelihood ratios only where sourced,
 and exactly one scored anchoring event per model-learner attempt. Case #2 is
 case #1's patient on postoperative day 4 after the Theatre's failed
@@ -308,10 +308,18 @@ hypocalcemia after the passed thyroidectomy whose parathyroid criterion
 went unaccounted — hash-linked to the Theatre debrief, with Trousseau's
 sign registered at the conservative end (LR+ 23.5) and the anchor an
 inherited anxiety/hyperventilation attribution, a real mechanism that
-cannot lower a total calcium. Cases
+cannot lower a total calcium. Case #9 is the bleeding case — a
+71-year-old whose own "gastritis" diagnosis, carried untested across
+two winters, concealed a bleeding duodenal ulcer: the library's first
+score-and-classification pair (Glasgow-Blatchford 6 on admission
+values, never re-priced by the later count; Forrest IIa on the
+visible vessel), four likelihood ratios computed as reciprocals of
+one consulted review's figures, and the first physiology link to a
+perturbation arm — the hemorrhage runs, hash-pinned — rather than
+the resting baseline alone. Cases
 hand off to Theatre procedures where one
 exists, and state the absence where none does. The FHIR-shaped export is
-checked against the case files by the same checker (case_check: 13,135
+checked against the case files by the same checker (case_check: 14,919
 checks passed, 0 failed). Expert review is UNMET for every case (see
 Status).
 
@@ -330,7 +338,7 @@ tree.
 |---|---|
 | `tools/assembly_check_all.py` | ALL GATED CHECKS PASS |
 | `tools/theatre_check.py` | 736 checks, 0 failures |
-| `tools/case_check.py` | 13,135 checks passed, 0 failed |
+| `tools/case_check.py` | 14,919 checks passed, 0 failed |
 | `tools/imaging_toolkit_check.py` | 84 hard checks PASS, 0 conformance findings standing |
 | `tools/verify_web.js` | ALL CHECKS PASS (W1–W10) |
 | physiology `validate` | ALL HARD GATES PASS |
@@ -414,10 +422,12 @@ every run.
 | 57 | `MILESTONE-57.md` | Case #8: post-thyroidectomy hypocalcemia — the trace-30 patient on postoperative day 1, hash-linked to the Theatre debrief; Trousseau LR+ 23.5 registered at the conservative end; the anchor an inherited anxiety/hyperventilation attribution |
 | 58 | `MILESTONE-58.md` | Physiology: the calcium–PTH axis — PTH secretion on the Brown four-parameter sigmoid, renal/bone/gut limbs; resting ionized calcium and PTH inside cited normals, the PTH-loss arm reproducing Case #8's postoperative-day-2 values; resting circulation baseline bit-identical |
 | 59 | `MILESTONE-59.md` | README final pass: figures and file index brought current through M58 and the landed browser build (web/wasm/cases-harness on main), the merged "How to use" section re-proven byte-identical; readme_check fully green |
+| 60 | `MILESTONE-60.md` | Case #8's physiology link: the case pinned to the calcium–PTH axis's PTH-loss arm — POD2 consonance near-exact (corrected 1.830 against 1.83 mmol/L), the POD1 gap (+0.146) disclosed in-case; correction of record: the arm is secretion capacity 9 percent, not capacity-0 as the M58 dossier's prose stated |
+| 61 | `MILESTONE-61.md` | Case #9: acute upper gastrointestinal bleeding — Glasgow-Blatchford and Forrest blocks, four reciprocal likelihood ratios, the patient-installed anchor (the ninth shape), the first perturbation-arm physiology link; the README drift closed (case_check figure, milestone rows 60–61, file index) |
 
 ## File index
 
-All 632 files in this repository, by directory. Adopted source-dataset binaries (meshes, archives, GLBs, segmentation masks) and build output are not tracked in git — see `.gitignore`; their provenance is recorded in `data/sources/*/ledger.json` and `SOURCE.md`. Regenerable artifacts (geometry packs and their gzip variants, DICOM series and web slice bins) are likewise not tracked: they are products of the shipped derivation and packing tools, and their identity is asserted by the checkers.
+All 637 files in this repository, by directory. Adopted source-dataset binaries (meshes, archives, GLBs, segmentation masks) and build output are not tracked in git — see `.gitignore`; their provenance is recorded in `data/sources/*/ledger.json` and `SOURCE.md`. Regenerable artifacts (geometry packs and their gzip variants, DICOM series and web slice bins) are likewise not tracked: they are products of the shipped derivation and packing tools, and their identity is asserted by the checkers.
 
 ### Root — 3 files
 
@@ -429,7 +439,7 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 
 - `assets/anatomica-hero.jpg`
 
-### `cases/` — 27 files
+### `cases/` — 30 files
 
 - `cases/README.md`
 - `cases/attempts/attempt.case-acute-dyspnea-006.model-learner.json`
@@ -440,6 +450,7 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 - `cases/attempts/attempt.case-post-thyroid-hypocalcemia-008.model-learner.json`
 - `cases/attempts/attempt.case-ruq-pain-001.model-learner.json`
 - `cases/attempts/attempt.case-ulnar-neuropathy-005.model-learner.json`
+- `cases/attempts/attempt.case-upper-gi-bleed-009.model-learner.json`
 - `cases/case.acute-dyspnea.006.json`
 - `cases/case.appendicitis.003.json`
 - `cases/case.carpal-tunnel.004.json`
@@ -448,6 +459,7 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 - `cases/case.post-thyroid-hypocalcemia.008.json`
 - `cases/case.ruq-pain.001.json`
 - `cases/case.ulnar-neuropathy.005.json`
+- `cases/case.upper-gi-bleed.009.json`
 - `cases/debriefs/debrief.case-acute-dyspnea-006.model-learner.json`
 - `cases/debriefs/debrief.case-appendicitis-003.model-learner.json`
 - `cases/debriefs/debrief.case-carpal-tunnel-004.model-learner.json`
@@ -456,6 +468,7 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 - `cases/debriefs/debrief.case-post-thyroid-hypocalcemia-008.model-learner.json`
 - `cases/debriefs/debrief.case-ruq-pain-001.model-learner.json`
 - `cases/debriefs/debrief.case-ulnar-neuropathy-005.model-learner.json`
+- `cases/debriefs/debrief.case-upper-gi-bleed-009.model-learner.json`
 - `cases/fhir/case.ruq-pain.001.bundle.json`
 - `cases/parameters.json`
 
@@ -621,7 +634,7 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 - `film-engine/restore_render_env.sh`
 - `film-engine/scene.py`
 
-### `milestones/` — 64 files
+### `milestones/` — 66 files
 
 - `milestones/MILESTONE-1.md`
 - `milestones/MILESTONE-10.md`
@@ -683,6 +696,8 @@ All 632 files in this repository, by directory. Adopted source-dataset binaries 
 - `milestones/MILESTONE-58.md`
 - `milestones/MILESTONE-59.md`
 - `milestones/MILESTONE-6.md`
+- `milestones/MILESTONE-60.md`
+- `milestones/MILESTONE-61.md`
 - `milestones/MILESTONE-7-FIX.md`
 - `milestones/MILESTONE-7.md`
 - `milestones/MILESTONE-8.md`

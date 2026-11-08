@@ -1,4 +1,4 @@
-# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54 + 57)
+# cases/ — the Case Workbench module (Milestones 20 + 22 + 29 + 41 + 43 + 48 + 54 + 57 + 61)
 
 Diagnosis practiced as explicit reasoning (design/07): a staged
 presentation, a differential board the learner must commit numbers
@@ -13,7 +13,7 @@ debrief scored by stated rules.
   or anywhere in ANATOMICA (education-only scope, master plan §8).
 - **Facts are cited; fiction is labelled.** Clinical facts (criteria,
   likelihood ratios, reference ranges, test characteristics) trace
-  to the sources registered in `parameters.json` (C1–C62), consulted
+  to the sources registered in `parameters.json` (C1–C70), consulted
   in-session. The patient's particulars are *case data* and are
   labelled as such wherever they appear. Anything that could not be
   sourced carries a verify flag — never a quietly invented value.
@@ -44,7 +44,7 @@ debrief scored by stated rules.
 
 ## Contents
 
-- `parameters.json` — source register (C1–C62), the workbench's
+- `parameters.json` — source register (C1–C70), the workbench's
   scoring-rule constants (all flagged project conventions), and the
   likelihood-ratio derivations. Extended at Milestone 22 with C14
   (WSES bile-duct-injury guidelines), C15 (MRCP test characteristics),
@@ -121,6 +121,32 @@ debrief scored by stated rules.
   two recorded rejections (MONDO:0002945 resolves to a
   basal-cell carcinoma class; HP:0003473 to fatigable
   weakness, not tetany).
+  Extended at Milestone 61 with C63 (Blatchford 2000 — the
+  Glasgow-Blatchford score's item table and its validation
+  finding), C64 (Srygley 2012 — the Rational Clinical
+  Examination for upper gastrointestinal bleeding: melenic
+  stool on examination LR 25, the urea:creatinine ratio
+  summary LR 7.5, and the severe-bleeding pair, tachycardia
+  4.9 and hemoglobin below 8 at 4.5–6.2), C65 (Villanueva
+  2013 — the restrictive transfusion threshold), C66 (the
+  ESGE 2021 nonvariceal upper-GI hemorrhage guideline),
+  C67/C68 (the MedlinePlus hemoglobin and creatinine ranges)
+  and C69/C70 (the ACG ulcer-bleeding guidelines of 2012 and
+  2021 — a second guideline voice, concordant with C66),
+  FOUR further LR derivations, every one a computed
+  reciprocal of a C64 figure (the Milestone 54 D-dimer
+  pattern in a new register: reciprocals, because the
+  consulted ratios price the upper source and the severity
+  the anchor denies, and the machinery enters them against
+  the hypotheses they retire), and dated Milestone 61
+  addenda to the C10/C11 registers: five Mondo classes
+  verified (duodenal ulcer, MONDO:0005412, at the head), a
+  fourth recorded refusal (no Mondo class for a
+  lower-gastrointestinal bleeding source — the hypothesis
+  names a location, not a disease, and was not coded to
+  diverticulitis), and a recorded rejection (HP:0002321
+  resolves to vertigo, not this patient's presyncopal
+  lightheadedness).
 - `case.ruq-pain.001.json` — the first worked case: acute calculous
   cholecystitis as a staged RUQ-pain presentation, 4 stages, 29
   findings, 9 labs, 8 orderable tests, 7 hypotheses, mechanical
@@ -356,6 +382,51 @@ debrief scored by stated rules.
   104-label set contains a thyroid or parathyroid label.
   Ontology: MONDO:0001220 verified for the truth; the
   postoperative subclass refused, as none exists.
+- `case.upper-gi-bleed.009.json` — the bleeding case
+  (Milestone 61): a 71-year-old with two days of melena who
+  arrives carrying his own diagnosis — "gastritis", twice
+  self-proven across two winters, never once investigated.
+  4 stages, 31 findings, 6 labs, 11 measurements, 6
+  orderable tests, 6 hypotheses. The library's first SCORE
+  block and first CLASSIFICATION block in one case: the
+  Glasgow-Blatchford score (C63), computed stage by stage —
+  a partial 2 at stage 1 (the two blood items unmeasured,
+  flagged partial by the machinery) completing at 6 on
+  admission values, and never re-priced by the stage-3
+  count — and the Forrest classification (C66), pending
+  until the endoscopy exists, then IIa on the visible
+  vessel. Four likelihood ratios, every one a computed
+  reciprocal of a Rational Clinical Examination figure
+  (C64): the examination melena (0.04) and the
+  urea:creatinine ratio (0.1333) retire the lower source;
+  the severity pair — tachycardia (0.2041) and hemoglobin
+  below 8 (0.2222, the conservative end) — retire the
+  anchor, which is defined by its severity claim because
+  that is the claim the patient actually makes. The first
+  hemoglobin (13.9, in range) carries no ratio and excludes
+  nothing: the physiology link is the library's first
+  PERTURBATION-arm link — the baseline by identity with
+  case 1, the 750 mL hemorrhage arm re-run and hash-pinned
+  by the checker (its post window prices the compensation
+  pattern), and the course arm's hematocrit lag (0.432 at
+  +1 min, 0.399 at +60 min on 408.04 mL of refill) pinned
+  by dossier identity — whole blood leaves at its own
+  concentration, so the count cannot fall until refill
+  dilutes what remains. The transfusion question is
+  answered against Villanueva's restrictive threshold
+  (C65): nadir 7.6, no transfusion, 7.7 untransfused at
+  24 hours. Management stops the ibuprofen permanently
+  and treats the positive H. pylori with documented
+  eradication (C69); the endoscopy's combination therapy
+  and the 80 mg + 8 mg/h PPI follow C66, concordant with
+  C70. No Theatre handoff exists and the case says so
+  (the Theatre holds no endoscopy procedure). Imaging
+  link is localisation only: the s0778 duodenum label
+  (crosswalk index 10 → `canal.duodenum`; 49 slices,
+  15,235 voxels recounted by the checker) — the label set
+  holds no ulcer, and could not. Ontology: five Mondo
+  classes verified; the lower-source hypothesis carries
+  Mondo null with a fourth recorded refusal.
 - `attempts/` — learner attempts (boards + orders per stage). Case
   2's model learner is deliberately imperfect in one documented way:
   it anchors on a retained CBD stone (ERCP ordered as therapy at
@@ -402,11 +473,24 @@ debrief scored by stated rules.
   truth's 0.30), still holds it at 0.26 at stage 2 after
   eliciting Trousseau's sign with her own hands, and releases
   it only when the calcium panel returns — one scored event, a
-  fifth installation shape (premature closure).
+  fifth installation shape (premature closure). Case 9's model
+  learner anchors on gastritis — an anchor installed by the
+  PATIENT: the historian himself supplies the benign
+  diagnosis, confidently, from two winters of untested
+  experience, in the first minute, and the learner adopts it
+  as his stage-1 lead (0.36 against the truth's 0.30), keeps
+  a hand on it through a reassuring first hemoglobin, and
+  still holds it at 0.16 at stage 3 — the stage the severity
+  arithmetic retires it — because the man in the bed still
+  believes it: one scored event, a sixth installation shape
+  and the ninth anchoring shape in the library
+  (patient-installed self-diagnosis), and the library's
+  first under-triage error — the mirror of case 7's
+  over-testing.
 - `debriefs/` — generated by `tools/case_run.py` (one generic runner
   for every case since Milestone 22); independently recomputed by
   `tools/case_check.py` (parameterised over all cases, with per-case
-  profile sections; 13,135 checks at Milestone 57).
+  profile sections; 14,919 checks at Milestone 61).
 - `fhir/` — FHIR-shaped interchange export of the case (design/07);
   the case JSON is the source of truth and the checker fails the
   build if the export disagrees with it.

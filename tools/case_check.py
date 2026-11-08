@@ -53,7 +53,14 @@ verification: the trace-30 Theatre debrief is re-read, its
 SHA-256 recomputed, and every matched field compared
 field-by-field — this time against a PASSED trace whose one
 unmet criterion, the right parathyroid account, computed
-the case).
+the case), and case 9 (Milestone 61: the Glasgow-Blatchford
+score's stage-by-stage arithmetic including its stage-1 partial
+and its admission-values discipline, the Forrest classification,
+the four reciprocal likelihood-ratio derivations, the
+patient-installed anchoring event, the physiology hemorrhage
+arms — the fast arm re-run and hash-pinned, the course arm
+pinned by dossier identity — the duodenum imaging recount, and
+the recorded Mondo refusal for the lower-source hypothesis).
 
 Usage: python3 tools/case_check.py
 """
@@ -2352,9 +2359,11 @@ def profile_case8(case, ctx, boards, attempt):
        "resolves onto")
     regs = {s["id"] for s in PARAMS["sources"]}
     ok(all(f"C{n}" in regs for n in range(52, 63))
-       and PARAMS["extended_at_milestone"] == 57,
+       and PARAMS["extended_at_milestone"] == 61,
        "case8: the register carries C52-C62 and "
-       "extended_at_milestone 57")
+       "extended_at_milestone 61 (bumped by Milestone 61; "
+       "this profile asserts the register's current extent, "
+       "not its own milestone)")
 
     # ---- THE LOOP: trace 30 re-read, field by field -------------------
     link = case["theatre_link"]
@@ -2432,6 +2441,430 @@ def profile_case8(case, ctx, boards, attempt):
        "hash), not a handoff -- the link is history and protocol, "
        "verified")
 
+# =====================================================================
+# Case 9 profile (Milestone 61): Blatchford / Forrest arithmetic, the
+# four reciprocal derivations, the patient-installed anchoring event,
+# the hemorrhage-arm physiology link (re-run) + course identity pins,
+# the duodenum recount, the recorded Mondo refusal
+# =====================================================================
+def profile_case9(case, ctx, boards, attempt):
+    print("\n=== case.upper-gi-bleed.009 profile: Blatchford + Forrest "
+          "arithmetic / four reciprocal derivations / anchoring "
+          "(patient-installed self-diagnosis) / physiology hemorrhage "
+          "link (re-run) + course pins / imaging recount / the "
+          "recorded Mondo refusal (M61) ===")
+    slug = case["id"].replace(".", "-")
+    deb = load(os.path.join(
+        CASES, "debriefs", f"debrief.{slug}.model-learner.json"))["debrief"]
+    TRUTH = "hyp.duodenal-ulcer"
+    ANCH = "hyp.gastritis-erosions"
+    LOWER = "hyp.lower-gi-source"
+    labs = {l["id"]: l for l in case["labs"]}
+    finds = {f["id"]: f for f in case["findings"]}
+    meas = {m["id"]: m for m in case["measurements"]}
+
+    ok(len(case["findings"]) == 31 and len(case["labs"]) == 6
+       and len(case["measurements"]) == 11
+       and len(case["available_tests"]) == 6
+       and len(case["hypotheses"]) == 6,
+       "case9: 31 findings / 6 labs / 11 measurements / 6 orderable "
+       "tests / 6 hypotheses")
+    lrs = {f["id"]: f["lr"] for f in case["findings"] if f.get("lr")}
+    ok(set(lrs) == {"f.melena-on-examination", "f.bun-cr-ratio-elevated",
+                    "f.tachycardia", "f.hemoglobin-below-8"}
+       and lrs["f.melena-on-examination"]["lr_minus"] == 0.04
+       and lrs["f.bun-cr-ratio-elevated"]["lr_minus"] == 0.1333
+       and lrs["f.tachycardia"]["lr_minus"] == 0.2041
+       and lrs["f.hemoglobin-below-8"]["lr_minus"] == 0.2222
+       and all(v["status"] == "computed" and v["source"] == "C64"
+               for v in lrs.values()),
+       "case9: exactly FOUR likelihood ratios, every one computed "
+       "from the Rational Clinical Examination (C64) in reciprocal "
+       "form -- melena-on-examination 0.04, ratio 0.1333, tachycardia "
+       "0.2041, hemoglobin-below-8 0.2222")
+    ok(all("lr" not in finds[i] for i in (
+        "f.melena-reported", "f.hemoglobin-preserved", "f.hematemesis",
+        "f.orthostatic-drop", "f.nsaid-use", "f.epigastric-burning",
+        "f.endoscopy-ulcer", "f.endoscopy-survey-clear")),
+       "case9: the reported melena (subsumed by the examination "
+       "finding), the preserved first hemoglobin, the hematemesis, "
+       "the orthostatic drop, the NSAID history, the pain and both "
+       "endoscopy findings carry NO LR -- unquantified in the "
+       "consulted sources, and none is invented")
+    der = {d["finding"]: d for d in PARAMS["lr_derivations"]
+           if d["finding"] in lrs}
+    ok(len(der) == 4
+       and der["f.melena-on-examination"]["target_hypothesis"] == LOWER
+       and all(t in der["f.melena-on-examination"]["derivation"]
+               for t in ("25", "0.04"))
+       and der["f.bun-cr-ratio-elevated"]["target_hypothesis"] == LOWER
+       and all(t in der["f.bun-cr-ratio-elevated"]["derivation"]
+               for t in ("7.5", "0.1333"))
+       and der["f.tachycardia"]["target_hypothesis"] == ANCH
+       and all(t in der["f.tachycardia"]["derivation"]
+               for t in ("4.9", "0.2041"))
+       and der["f.hemoglobin-below-8"]["target_hypothesis"] == ANCH
+       and all(t in der["f.hemoglobin-below-8"]["derivation"]
+               for t in ("4.5", "6.2", "0.2222")),
+       "case9: the four derivations are registered once each, with "
+       "their consulted figures and reciprocals in the prose (25 -> "
+       "0.04; 7.5 -> 0.1333; 4.9 -> 0.2041; the conservative 4.5 of "
+       "4.5-6.2 -> 0.2222)")
+
+    # ---- case arithmetic ---------------------------------------------
+    ok(abs(labs["lab.bun"]["value"] / labs["lab.creatinine"]["value"]
+           - 33.0) < 1e-9
+       and labs["lab.bun"]["value"] / labs["lab.creatinine"]["value"]
+       > 30,
+       "case9: the urea:creatinine ratio re-derives from the case's "
+       "own labs -- 33 / 1.0 = 33, above C64's priced threshold of 30")
+    ok(meas["meas.sbp-arrival"]["value"]
+       - meas["meas.sbp-standing"]["value"] == 20
+       and meas["meas.pulse-standing"]["value"]
+       - meas["meas.pulse-arrival"]["value"] == 24,
+       "case9: the orthostatic pair re-derives -- systolic -20 mmHg, "
+       "pulse +24 on standing (the finding the frame never performs)")
+    ok(labs["lab.hemoglobin"]["value"] == 13.9
+       and labs["lab.hemoglobin"]["reference_range"]["low"] == 13.8
+       and labs["lab.hemoglobin-repeat"]["value"] == 7.6
+       and labs["lab.hemoglobin-post"]["value"] == 7.7,
+       "case9: the hemoglobin course -- 13.9 (inside C67's male "
+       "range: the preserved, lagging first count), 7.6 at "
+       "deterioration, 7.7 untransfused at 24 hours")
+
+    # ---- Glasgow-Blatchford, stage by stage ---------------------------
+    gbs = [b for b in case["criteria_blocks"]
+           if b["id"] == "glasgow_blatchford"][0]
+    evs = {s: ctx.block_eval(gbs, s) for s in (1, 2, 3, 4)}
+    ok(evs[1]["total"] == 2 and evs[1]["partial"] is True
+       and evs[1]["not_assessed"] == ["gbs.bun", "gbs.hemoglobin"]
+       and evs[1]["status"]
+       == "below the high-risk band on the assessed items",
+       "case9: stage-1 Blatchford is a PARTIAL 2 -- pulse (1) + "
+       "melena (1) assessed, the two blood items not yet assessed, "
+       "and the machinery flags it partial rather than letting it "
+       "be quoted as a total")
+    ok(all(evs[s]["total"] == 6 and evs[s]["partial"] is False
+           and evs[s]["status"]
+           == "high risk of needing intervention (GBS 6 or more)"
+           for s in (2, 3, 4)),
+       "case9: the completed Blatchford is 6 from stage 2 on -- "
+       "Blatchford's band in which over half the validation group "
+       "needed an intervention or died (C63)")
+    pts = {k: v["points"] for k, v in evs[2]["items"].items()}
+    ok(pts == {"gbs.bun": 4, "gbs.hemoglobin": 0, "gbs.sbp": 0,
+               "gbs.pulse": 1, "gbs.melena": 1, "gbs.syncope": 0,
+               "gbs.hepatic_disease": 0, "gbs.cardiac_failure": 0},
+       "case9: the score's composition -- BUN 33 takes 4, pulse 102 "
+       "takes 1, melena takes 1; the preserved hemoglobin, the "
+       "pressure and the three absences take 0")
+    ok(evs[3]["items"]["gbs.hemoglobin"]["points"] == 0
+       and evs[4]["items"]["gbs.hemoglobin"]["points"] == 0,
+       "case9: ADMISSION discipline -- the stage-3 count of 7.6 "
+       "never re-enters the hemoglobin item (it would score 6 and "
+       "take the total to 12); the score prices the admission, as "
+       "validated, and the deterioration is carried by the Forrest "
+       "block and the board")
+    ok([s["glasgow_blatchford"]["total"] for s in deb["per_stage"]]
+       == [2, 6, 6, 6],
+       "case9: the shipped debrief's Blatchford totals agree "
+       "stage by stage")
+
+    # ---- Forrest classification ---------------------------------------
+    fb = [b for b in case["criteria_blocks"]
+          if b["id"] == "forrest_classification"][0]
+    fev = {s: ctx.block_eval(fb, s) for s in (1, 2, 3, 4)}
+    ok(all(fev[s]["status"]
+           == "not yet classifiable - endoscopy has not been performed"
+           and fev[s]["result"] is None for s in (1, 2)),
+       "case9: Forrest is pending at stages 1-2 -- no class is "
+       "reached before the endoscopy exists")
+    ok(all(fev[s]["status"] == "classified"
+           and fev[s]["result"]["forrest_class"] == "IIa"
+           and fev[s]["rule_index"] == 1 for s in (3, 4))
+       and fev[3]["inputs"]["forrest.visible_vessel"] is True
+       and all(fev[3]["inputs"][k] is False for k in (
+           "forrest.active_bleeding", "forrest.adherent_clot",
+           "forrest.flat_spot", "forrest.clean_base")),
+       "case9: Forrest IIa from stage 3 -- the visible-vessel rule "
+       "(index 1) fires on its own input, the other four stigmata "
+       "recorded absent as findings, not defaulted")
+    ok(case["adjudication"]["risk_summary"]["forrest"]["class"]
+       == "IIa"
+       and deb["per_stage"][2]["forrest_classification"]["result"]
+       ["forrest_class"] == "IIa",
+       "case9: the adjudication and the shipped debrief agree on "
+       "Forrest IIa")
+    ts = case["adjudication"]["risk_summary"]["transfusion"]
+    ok(ts["nadir_g_dl"] == labs["lab.hemoglobin-repeat"]["value"] == 7.6
+       and ts["restrictive_threshold_g_dl"] == 7.0
+       and labs["lab.hemoglobin-post"]["value"] > 7.0,
+       "case9: the transfusion arithmetic -- nadir 7.6 against the "
+       "restrictive threshold 7.0 (C65): no transfusion, and the "
+       "untransfused 24-hour count (7.7) is the recorded outcome")
+
+    # ---- trajectories and the anchoring event --------------------------
+    ok([round(boards[s][TRUTH], 4) for s in (1, 2, 3, 4)]
+       == [0.5016, 0.5047, 0.5376, 0.5376]
+       and [round(boards[s][ANCH], 4) for s in (1, 2, 3, 4)]
+       == [0.0783, 0.0788, 0.0186, 0.0186]
+       and [round(boards[s][LOWER], 4) for s in (1, 2, 3, 4)]
+       == [0.0071, 0.0009, 0.0010, 0.0010],
+       "case9: workbench trajectories -- truth 0.5016 -> 0.5376; "
+       "the anchor priced under the line twice over (0.0783 on the "
+       "tachycardia at stage 1, 0.0186 ruled out at stage 3 on the "
+       "fallen count); the lower source 0.0071, ruled out at "
+       "stage 1 on the examination melena")
+    ok(deb["ruled_out_by_workbench"] == {ANCH: 3, LOWER: 1},
+       "case9: rule-out timing -- lower source at stage 1, the "
+       "anchor at stage 3, nothing else ever")
+    ok([s["workbench_brier"] for s in deb["per_stage"]]
+       == [0.3121, 0.3097, 0.2802, 0.2802]
+       and [s["learner_brier"] for s in deb["per_stage"]]
+       == [0.6488, 0.544, 0.3314, 0.0586],
+       "case9: Brier trajectories -- workbench 0.3121 -> 0.2802; "
+       "learner 0.6488 -> 0.544 -> 0.3314 -> 0.0586 (the learner "
+       "pays for the frame at stages 1-2, then converges)")
+    anch = deb["anchoring_events"]
+    ok(len(anch) == 1 and anch[0]["stage"] == 3
+       and anch[0]["hypothesis"] == ANCH
+       and anch[0]["learner_probability"] == 0.16,
+       "case9: exactly ONE anchoring event -- (stage 3, "
+       "gastritis-erosions) held at 0.16 at the stage the "
+       "workbench retired it: the patient-installed self-diagnosis, "
+       "the ninth anchoring shape in the module's series -- "
+       "the sixth of its installation series")
+    lb = [s["board"] for s in attempt["stages"]]
+    ok(lb[0][ANCH] == 0.36 and lb[0][TRUTH] == 0.30
+       and all(b[LOWER] < 0.10 for b in lb),
+       "case9: the learner's stage-1 board LEADS with the patient's "
+       "own diagnosis (0.36) over the truth (0.30) -- the frame was "
+       "adopted in the first minute, from the historian's mouth; "
+       "and the ruled-out lower source is never held at anchor "
+       "level, so no second event hides in the attempt")
+    ok("installed by the PATIENT" in attempt["debrief_text"]["analysis"],
+       "case9: the attempt's own analysis names the installer -- "
+       "the patient, distinct from cases 1-8's clinicians, results, "
+       "notes, pressures and patterns")
+
+    # ---- order classifications and tally -------------------------------
+    cls = {o["test_id"]: o["classification"] for o in deb["orders"]}
+    ok(cls == {"test.admission-bloods": "criteria-completing",
+               "test.orthostatic-vitals": "non-contributory",
+               "test.upper-endoscopy": "criteria-completing",
+               "test.serial-cbc": "discriminating",
+               "test.interval-reassessment": "non-contributory",
+               "test.post-endoscopy-review": "non-contributory"},
+       "case9: order classifications -- the bloods complete the "
+       "Blatchford, the endoscopy completes the Forrest, the serial "
+       "count is DISCRIMINATING (its below-8 finding crosses the "
+       "anchor over the line), and the orthostatics, the "
+       "reassessment and the review are non-contributory in the "
+       "machinery's terms -- the case owns that the two bedside "
+       "orders did clinical work the classification cannot price")
+    ok(deb["resource_tally"]["total_time_min"] == 120
+       and deb["resource_tally"]["total_cost_units"] == 13,
+       "case9: resource tally 120 min / 13 units")
+    oe = [o for o in deb["orders"]
+          if o["test_id"] == "test.upper-endoscopy"][0]
+    ok(oe["placed_at_stage"] == 2 and oe["results_stage"] == 3,
+       "case9: the endoscopy is BOOKED at stage 2 (early, inside "
+       "24 h, C66) and lands at stage 3, expedited by the "
+       "in-hospital hematemesis")
+    commit = attempt["stages"][-1]["commit"]
+    ok(commit["diagnosis_hypothesis"] == TRUTH
+       and "C65" in commit["management"]
+       and "buprofen stopped" in commit["management"],
+       "case9: attempt commit matches adjudication and carries "
+       "the restrictive threshold and the stopped NSAID")
+
+    # ---- physiology link: baseline identity + the hemorrhage arms ------
+    c1 = load(os.path.join(CASES, "case.ruq-pain.001.json"))["case"]
+    pl = case["physiology_link"]
+    ok(pl["baseline_trace_hash"]
+       == c1["physiology_link"]["trace_hash"] == "0x6369b10e9a71c872"
+       and pl["baseline_recorded_outputs"]
+       == c1["physiology_link"]["baseline_recorded_outputs"],
+       "case9: physiology baseline link by data-identity with "
+       "case 1 (the pinned hash, the same seven resting outputs) "
+       "-- the library's resting link, unchanged")
+    import re as _re
+    try:
+        env = dict(os.environ)
+        env["PATH"] = os.path.expanduser("~/.cargo/bin") + ":" + env["PATH"]
+        r = subprocess.run(["cargo", "run", "--release", "--quiet", "--",
+                            "run", "hemorrhage"],
+                           cwd=os.path.join(ROOT, "physiology"),
+                           capture_output=True, text=True, timeout=900,
+                           env=env)
+        m = _re.search(r"trace hash: (0x[0-9a-f]+)", r.stdout)
+        ok(m is not None and m.group(1)
+           == pl["hemorrhage_trace_hash"] == "0xbc683bf2721147ae",
+           f"case9: the hemorrhage arm's trace hash REPRODUCES on "
+           f"re-run ({m.group(1) if m else 'none'}) -- the first "
+           "perturbation-arm hash a case pins by re-running it")
+        mb = _re.search(
+            r"baseline: beats=\d+ HR=[\d.]+ bpm  BP=[\d.]+/[\d.]+ mmHg  "
+            r"MAP=([\d.]+)", r.stdout)
+        post = _re.search(
+            r"post\s+: beats=\d+ HR=([\d.]+) bpm  BP=([\d.]+)/([\d.]+) "
+            r"mmHg  MAP=([\d.]+).*?CO=([\d.]+) L/min  SVlv=([\d.]+) "
+            r"mL.*?CVP=([\d.]+) mmHg", r.stdout)
+        ho = pl["hemorrhage_recorded_outputs"]
+        got = {"post_heart_rate_per_min": float(post.group(1)),
+               "post_systolic_bp_mmhg": float(post.group(2)),
+               "post_diastolic_bp_mmhg": float(post.group(3)),
+               "post_map_mmhg": float(post.group(4)),
+               "post_cardiac_output_l_min": float(post.group(5)),
+               "post_stroke_volume_ml": float(post.group(6)),
+               "post_cvp_mmhg": float(post.group(7))}
+        ok(abs(float(mb.group(1)) - ho["baseline_map_mmhg"]) < 0.051
+           and all(abs(got[k] - ho[k]) < 0.051 for k in got)
+           and abs((ho["post_systolic_bp_mmhg"]
+                    - ho["post_diastolic_bp_mmhg"])
+                   - ho["post_pulse_pressure_mmhg"]) < 0.15,
+           f"case9: the arm's post window reproduces the recorded "
+           f"outputs -- MAP defended 72.9 -> 68.9 while stroke "
+           f"volume falls to 33.9 mL and the pulse pressure narrows "
+           f"to 23.2 mmHg ({got})")
+    except Exception as e:  # pragma: no cover
+        ok(False, f"case9: hemorrhage re-run failed: {e}")
+    doss26 = open(os.path.join(ROOT, "milestones", "MILESTONE-26.md"),
+                  encoding="utf-8").read()
+    doss30 = open(os.path.join(ROOT, "milestones", "MILESTONE-30.md"),
+                  encoding="utf-8").read()
+    doss61 = open(os.path.join(ROOT, "milestones", "MILESTONE-61.md"),
+                  encoding="utf-8").read()
+    co = pl["course_recorded_outputs"]
+    ok(co["hematocrit_at_1_min"] == 0.432
+       and co["hematocrit_at_60_min"] == 0.399
+       and "0.432" in doss26 and "0.399" in doss26,
+       "case9: the course arm's hematocrit marks are pinned by "
+       "identity with the Milestone 26 dossier's printed course "
+       "table -- 0.432 at +1 min (whole blood leaves at its own "
+       "concentration: the lag that protects no one), 0.399 at "
+       "+60 min")
+    ok(pl["course_trace_hash"] == "0xaf89c09ff6c631f9"
+       and "0xaf89c09ff6c631f9" in doss30
+       and co["net_refill_ml_at_60_min"] == 408.04
+       and "408.04" in doss61,
+       "case9: the course trace hash is pinned by identity with "
+       "the Milestone 30 dossier, and the 60-minute net refill "
+       "(408.04 mL) is the figure the Milestone 61 dossier records "
+       "from measuring the run -- the course command takes about "
+       "a minute, so the workbench pins it by these identities "
+       "rather than re-running it")
+
+    # ---- imaging link: the duodenum recount ----------------------------
+    import numpy as np
+    link = case["imaging_link"]
+    bindir = os.path.join(ROOT, "web", "data", "imaging", "s0778")
+    counts = []
+    for i in range(431):
+        arr = np.fromfile(os.path.join(bindir, f"lbl-{i:04d}.bin"),
+                          dtype=np.uint8)
+        counts.append(int((arr == 10).sum()))
+    present = [i for i, c in enumerate(counts) if c > 0]
+    ok([present[0], present[-1]]
+       == link["measures"]["slice_files_0based"] == [166, 214]
+       and len(present) == link["measures"]["slices_with_label"] == 49,
+       f"case9: duodenum slices recounted {present[0]}..{present[-1]} "
+       "(0-based files), 49 slices carry the label")
+    ok(sum(counts) == 15235
+       == link["label"]["hu_statistics_from_crosswalk"]["voxels"],
+       "case9: total duodenum voxels recounted: 15,235 -- equal to "
+       "the crosswalk's voxel count for the label")
+    mx = max(range(431), key=lambda i: counts[i])
+    ok(mx == link["measures"]["max_cross_section"]["file_index_0based"]
+       == 176 and counts[mx]
+       == link["measures"]["max_cross_section"]["voxels"] == 515,
+       f"case9: max cross-section recounted: file {mx}, "
+       f"{counts[mx]} voxels")
+    ok(abs(sum(counts) * 3.375 / 1000
+           - link["measures"]["volume_ml_computed"]) < 0.005,
+       "case9: volume arithmetic 15,235 x 3.375 mm3 = 51.42 mL")
+    cw = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                           "crosswalk.json"))
+    du = next(l for l in cw["labels"] if l["label"] == "duodenum")
+    hu = link["label"]["hu_statistics_from_crosswalk"]
+    ok(du["record_ids"] == ["canal.duodenum"] and du["index"] == 10
+       and all(du["hu"][k] == hu[k]
+               for k in ("mean", "median", "p5", "p95", "min", "max")),
+       "case9: crosswalk maps label 10 (duodenum) to record "
+       "canal.duodenum, and the case's HU statistics equal the "
+       "crosswalk values")
+    series = load(os.path.join(ROOT, "data", "imaging", "s0778",
+                               "series.json"))
+    z0 = series["geometry"]["ipp_first_slice_lps_mm"][2]
+    ok(abs((z0 + 166 * 1.5) - link["measures"]["z_range_lps_mm"][0])
+       < 0.01
+       and abs((z0 + 214 * 1.5) - link["measures"]["z_range_lps_mm"][1])
+       < 0.01,
+       "case9: slice z-arithmetic reproduces the crosswalk bbox "
+       "(1492.92..1564.92 mm)")
+    ok(not any("ulcer" in l["label"] or "erosion" in l["label"]
+               for l in cw["labels"])
+       and "ulcer" in link["ulcer_label_absence"]["absent_concepts"][0],
+       "case9: the label set holds NO ulcer or erosion label, as "
+       "the case's absence block states -- the link is the organ's "
+       "localisation, and the lesion is the endoscopy's finding")
+
+    # ---- ontology, records, register, management ------------------------
+    gt = case["ground_truth"]
+    hyps9 = {h["id"]: h for h in case["hypotheses"]}
+    ok(gt["mondo"] == case["adjudication"]["mondo"] == "MONDO:0005412"
+       and hyps9[TRUTH]["mondo"] == "MONDO:0005412",
+       "case9: MONDO:0005412 (duodenal ulcer) everywhere the truth "
+       "is coded")
+    ok(hyps9[LOWER]["mondo"] is None
+       and "REFUSAL RECORDED" in hyps9[LOWER]["mondo_note"]
+       and "diverticulitis" in hyps9[LOWER]["mondo_note"],
+       "case9: the lower-source hypothesis carries Mondo null WITH "
+       "the recorded refusal -- two OLS searches returned no "
+       "class, and the hypothesis was not coded to diverticulitis, "
+       "a disease the patient does not have")
+    ok(set(gt["hpo"]) == {"HP:0002249", "HP:0002248", "HP:0001649",
+                          "HP:0001278"}
+       and "HP:0002321" not in gt["hpo"]
+       and "HP:0002321" in SOURCES["C11"]["consulted"],
+       "case9: ground-truth phenotypes are melena, hematemesis, "
+       "tachycardia and orthostatic hypotension; the candidate "
+       "lightheadedness term HP:0002321 was checked, resolved to "
+       "vertigo, and NOT used -- the refusal is on the C11 record")
+    dig = load(os.path.join(ROOT, "data", "digestive", "digestive.json"))
+    dids = {r["id"] for r in dig["records"]}
+    ok(all(r in dids for r in ("dig.duodenum", "dig.stomach",
+                               "dig.oesophagus", "dig.sigmoid-colon"))
+       and all(rec in dids for h in case["hypotheses"]
+               for rec in h["body_records"]),
+       "case9: every hypothesis's Body Model record exists in "
+       "data/digestive/digestive.json")
+    regs = {s["id"] for s in PARAMS["sources"]}
+    ok(all(f"C{n}" in regs for n in range(63, 71))
+       and PARAMS["extended_at_milestone"] == 61,
+       "case9: the register carries C63-C70 and "
+       "extended_at_milestone 61")
+    mgmt = case["management"]
+    ok("handoff" not in mgmt
+       and mgmt["theatre_note"].startswith("NO THEATRE HANDOFF")
+       and "80 mg" in mgmt["disposition"]
+       and "8 mg/h" in mgmt["disposition"]
+       and any(o["option"].startswith("Discharge home on antacids")
+               for o in mgmt["alternatives_considered"]),
+       "case9: management carries NO handoff (the Theatre holds "
+       "no endoscopy procedure -- stated, not elided), the "
+       "high-dose PPI regimen (80 mg + 8 mg/h, C66), and the "
+       "refused discharge -- the patient's own plan, refused on "
+       "the record")
+    ok(case["review"]["required_reviewer_roles"]
+       == ["gastroenterologist", "emergency physician"]
+       and "PERTURBATION-arm link" in case["validity"]
+       ["internal_structure"],
+       "case9: the review gate names its two unmet roles, and the "
+       "validity statement records the library's first "
+       "perturbation-arm physiology link")
+
+
 def main():
     attempts = {}
     for p in glob.glob(os.path.join(CASES, "attempts", "*.json")):
@@ -2476,6 +2909,10 @@ def main():
         c, ctx, boards = profiles["case.post-thyroid-hypocalcemia.008"]
         profile_case8(c, ctx, boards,
                       attempts["case.post-thyroid-hypocalcemia.008"])
+    if "case.upper-gi-bleed.009" in profiles:
+        c, ctx, boards = profiles["case.upper-gi-bleed.009"]
+        profile_case9(c, ctx, boards,
+                      attempts["case.upper-gi-bleed.009"])
 
     print(f"\n{'ALL CHECKS PASS' if FAIL == 0 else 'FAILURES PRESENT'}: "
           f"{PASS} passed, {FAIL} failed")

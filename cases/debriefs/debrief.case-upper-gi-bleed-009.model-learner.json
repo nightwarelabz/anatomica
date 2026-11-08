@@ -1,0 +1,754 @@
+{
+ "debrief": {
+  "adjudicated_diagnosis": {
+   "criteria_final": {
+    "forrest_classification": {
+     "inputs": {
+      "forrest.active_bleeding": false,
+      "forrest.adherent_clot": false,
+      "forrest.clean_base": false,
+      "forrest.flat_spot": false,
+      "forrest.visible_vessel": true
+     },
+     "result": {
+      "forrest_class": "IIa",
+      "label": "non-bleeding visible vessel - high-risk stigmata: endoscopic hemostasis (thermal, mechanical or sclerosant, alone or combined with epinephrine) (C66)"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "glasgow_blatchford": {
+     "items": {
+      "gbs.bun": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "gbs.cardiac_failure": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.hemoglobin": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.hepatic_disease": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.melena": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.pulse": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.sbp": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.syncope": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 23,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk of needing intervention (GBS 6 or more)",
+     "total": 6
+    }
+   },
+   "hypothesis": "hyp.duodenal-ulcer",
+   "mondo": "MONDO:0005412"
+  },
+  "anchoring_events": [
+   {
+    "hypothesis": "hyp.gastritis-erosions",
+    "learner_probability": 0.16,
+    "ruled_out_at_stage": 3,
+    "stage": 3,
+    "workbench_probability": 0.01864434734953641
+   }
+  ],
+  "attempt_id": "attempt.case-upper-gi-bleed-009.model-learner",
+  "case_id": "case.upper-gi-bleed.009",
+  "generated_by": "tools/case_run.py (Milestone 20 machinery, generalised at Milestone 22)",
+  "orders": [
+   {
+    "basis": "settles guideline item(s): glasgow_blatchford.gbs.bun, glasgow_blatchford.gbs.hemoglobin",
+    "classification": "criteria-completing",
+    "cost_units": 2,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.admission-bloods",
+    "time_min": 20
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 1,
+    "placed_at_stage": 1,
+    "results_stage": 2,
+    "test_id": "test.orthostatic-vitals",
+    "time_min": 10
+   },
+   {
+    "basis": "settles guideline item(s): forrest_classification.forrest.active_bleeding, forrest_classification.forrest.adherent_clot, forrest_classification.forrest.clean_base, forrest_classification.forrest.flat_spot, forrest_classification.forrest.visible_vessel",
+    "classification": "criteria-completing",
+    "cost_units": 6,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.upper-endoscopy",
+    "time_min": 45
+   },
+   {
+    "basis": "hyp.gastritis-erosions crosses the rule-out line (0.0788 -> 0.0186)",
+    "classification": "discriminating",
+    "cost_units": 1,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.serial-cbc",
+    "time_min": 15
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 1,
+    "placed_at_stage": 2,
+    "results_stage": 3,
+    "test_id": "test.interval-reassessment",
+    "time_min": 10
+   },
+   {
+    "basis": "no posterior, criteria, or safety-net effect",
+    "classification": "non-contributory",
+    "cost_units": 2,
+    "placed_at_stage": 3,
+    "results_stage": 4,
+    "test_id": "test.post-endoscopy-review",
+    "time_min": 20
+   }
+  ],
+  "pearls": {
+   "analysis": "The anchoring shape is new to the library, and the dossier (Milestone 61) argues it in full: the anchor is installed by the PATIENT - the historian himself, at presentation, supplying the BENIGN diagnosis with the authority of lived experience. Case 4's frame was installed by another clinician; case 5's by the learner's own inference; case 6's by a laboratory value; case 7's pressure arrived socially, carrying demands but no diagnosis; case 8's frame was inherited from a note written in another context; cases 1-3 completed patterns, chased the treatable, and held the feared. None of those sources is the patient. Here the error's direction is also the mirror of case 7: there, pressure produced over-testing; here, confidence produces under-triage - a discharge that had to be refused. The case's second lesson is mechanistic: the normal first hemoglobin, disarmed by the physiology engine's refill arithmetic, and a partially-computed risk score that must never be quoted as a total.",
+   "description": "A 71-year-old with two days of melena arrives carrying his own diagnosis - gastritis, twice self-proven - and the learner adopts it as the leading hypothesis at stage 1. The examination melena prices the source as upper (LR 25); the tachycardia prices severity against the frame; the urea ratio finishes the source question; the first hemoglobin, normal at 13.9, sedates the board through stage 2; the orthostatics and a completed Blatchford of 6 force the admission anyway. At stage 3 the bleed declares (hematemesis), the count lands at 7.6, the severity ratio rules the frame out - and the learner holds it at 0.16, the case's single scored anchoring event. The endoscopy then shows the truth and an empty stomach in the same pass.",
+   "reactions": "The learner did almost everything: bloods, standing test, admission against the patient's wishes, early scope, serial counts. And still the board carried the patient's own word one stage past its arithmetic death. The case is built to show that anchoring does not need a careless clinician - it needs a confident historian and a normal number.",
+   "summary": "Take the history; do not take the diagnosis with it. A patient's confidence is data about the patient, not about the lesion - especially when the label was never tested. In a bleeding patient, a normal first hemoglobin is a lagging indicator with a physics the engine can show you; a risk score with unmeasured items is a floor; and when the arithmetic retires a frame, let it go in the same stage - the endoscopy will not wait for your board to catch up, and neither will the bleed."
+  },
+  "per_stage": [
+   {
+    "criteria": {
+     "forrest_classification": {
+      "inputs": {
+       "forrest.active_bleeding": "unknown",
+       "forrest.adherent_clot": "unknown",
+       "forrest.clean_base": "unknown",
+       "forrest.flat_spot": "unknown",
+       "forrest.visible_vessel": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable - endoscopy has not been performed"
+     },
+     "glasgow_blatchford": {
+      "items": {
+       "gbs.bun": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "gbs.cardiac_failure": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.hemoglobin": {
+        "points": 0,
+        "state": "unknown"
+       },
+       "gbs.hepatic_disease": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.melena": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.pulse": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.sbp": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.syncope": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 23,
+      "not_assessed": [
+       "gbs.bun",
+       "gbs.hemoglobin"
+      ],
+      "partial": true,
+      "status": "below the high-risk band on the assessed items",
+      "total": 2
+     }
+    },
+    "forrest_classification": {
+     "inputs": {
+      "forrest.active_bleeding": "unknown",
+      "forrest.adherent_clot": "unknown",
+      "forrest.clean_base": "unknown",
+      "forrest.flat_spot": "unknown",
+      "forrest.visible_vessel": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable - endoscopy has not been performed"
+    },
+    "glasgow_blatchford": {
+     "items": {
+      "gbs.bun": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "gbs.cardiac_failure": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.hemoglobin": {
+       "points": 0,
+       "state": "unknown"
+      },
+      "gbs.hepatic_disease": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.melena": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.pulse": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.sbp": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.syncope": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 23,
+     "not_assessed": [
+      "gbs.bun",
+      "gbs.hemoglobin"
+     ],
+     "partial": true,
+     "status": "below the high-risk band on the assessed items",
+     "total": 2
+    },
+    "learner_board": {
+     "hyp.duodenal-ulcer": 0.3,
+     "hyp.esophageal-varices": 0.08,
+     "hyp.gastric-malignancy": 0.1,
+     "hyp.gastritis-erosions": 0.36,
+     "hyp.lower-gi-source": 0.08,
+     "hyp.mallory-weiss": 0.08
+    },
+    "learner_brier": 0.6488,
+    "learner_probability_on_truth": 0.3,
+    "learner_rank_of_truth": 2,
+    "learner_top": "hyp.gastritis-erosions",
+    "stage": 1,
+    "workbench_board": {
+     "hyp.duodenal-ulcer": 0.5016,
+     "hyp.esophageal-varices": 0.1475,
+     "hyp.gastric-malignancy": 0.1475,
+     "hyp.gastritis-erosions": 0.0783,
+     "hyp.lower-gi-source": 0.0071,
+     "hyp.mallory-weiss": 0.118
+    },
+    "workbench_brier": 0.3121,
+    "workbench_probability_on_truth": 0.5016,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.duodenal-ulcer"
+   },
+   {
+    "criteria": {
+     "forrest_classification": {
+      "inputs": {
+       "forrest.active_bleeding": "unknown",
+       "forrest.adherent_clot": "unknown",
+       "forrest.clean_base": "unknown",
+       "forrest.flat_spot": "unknown",
+       "forrest.visible_vessel": "unknown"
+      },
+      "result": null,
+      "rule_index": null,
+      "status": "not yet classifiable - endoscopy has not been performed"
+     },
+     "glasgow_blatchford": {
+      "items": {
+       "gbs.bun": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "gbs.cardiac_failure": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.hemoglobin": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.hepatic_disease": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.melena": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.pulse": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.sbp": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.syncope": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 23,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk of needing intervention (GBS 6 or more)",
+      "total": 6
+     }
+    },
+    "forrest_classification": {
+     "inputs": {
+      "forrest.active_bleeding": "unknown",
+      "forrest.adherent_clot": "unknown",
+      "forrest.clean_base": "unknown",
+      "forrest.flat_spot": "unknown",
+      "forrest.visible_vessel": "unknown"
+     },
+     "result": null,
+     "rule_index": null,
+     "status": "not yet classifiable - endoscopy has not been performed"
+    },
+    "glasgow_blatchford": {
+     "items": {
+      "gbs.bun": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "gbs.cardiac_failure": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.hemoglobin": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.hepatic_disease": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.melena": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.pulse": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.sbp": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.syncope": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 23,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk of needing intervention (GBS 6 or more)",
+     "total": 6
+    },
+    "learner_board": {
+     "hyp.duodenal-ulcer": 0.35,
+     "hyp.esophageal-varices": 0.08,
+     "hyp.gastric-malignancy": 0.11,
+     "hyp.gastritis-erosions": 0.3,
+     "hyp.lower-gi-source": 0.09,
+     "hyp.mallory-weiss": 0.07
+    },
+    "learner_brier": 0.544,
+    "learner_probability_on_truth": 0.35,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.duodenal-ulcer",
+    "stage": 2,
+    "workbench_board": {
+     "hyp.duodenal-ulcer": 0.5047,
+     "hyp.esophageal-varices": 0.1484,
+     "hyp.gastric-malignancy": 0.1484,
+     "hyp.gastritis-erosions": 0.0788,
+     "hyp.lower-gi-source": 0.0009,
+     "hyp.mallory-weiss": 0.1187
+    },
+    "workbench_brier": 0.3097,
+    "workbench_probability_on_truth": 0.5047,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.duodenal-ulcer"
+   },
+   {
+    "criteria": {
+     "forrest_classification": {
+      "inputs": {
+       "forrest.active_bleeding": false,
+       "forrest.adherent_clot": false,
+       "forrest.clean_base": false,
+       "forrest.flat_spot": false,
+       "forrest.visible_vessel": true
+      },
+      "result": {
+       "forrest_class": "IIa",
+       "label": "non-bleeding visible vessel - high-risk stigmata: endoscopic hemostasis (thermal, mechanical or sclerosant, alone or combined with epinephrine) (C66)"
+      },
+      "rule_index": 1,
+      "status": "classified"
+     },
+     "glasgow_blatchford": {
+      "items": {
+       "gbs.bun": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "gbs.cardiac_failure": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.hemoglobin": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.hepatic_disease": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.melena": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.pulse": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.sbp": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.syncope": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 23,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk of needing intervention (GBS 6 or more)",
+      "total": 6
+     }
+    },
+    "forrest_classification": {
+     "inputs": {
+      "forrest.active_bleeding": false,
+      "forrest.adherent_clot": false,
+      "forrest.clean_base": false,
+      "forrest.flat_spot": false,
+      "forrest.visible_vessel": true
+     },
+     "result": {
+      "forrest_class": "IIa",
+      "label": "non-bleeding visible vessel - high-risk stigmata: endoscopic hemostasis (thermal, mechanical or sclerosant, alone or combined with epinephrine) (C66)"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "glasgow_blatchford": {
+     "items": {
+      "gbs.bun": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "gbs.cardiac_failure": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.hemoglobin": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.hepatic_disease": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.melena": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.pulse": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.sbp": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.syncope": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 23,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk of needing intervention (GBS 6 or more)",
+     "total": 6
+    },
+    "learner_board": {
+     "hyp.duodenal-ulcer": 0.48,
+     "hyp.esophageal-varices": 0.1,
+     "hyp.gastric-malignancy": 0.13,
+     "hyp.gastritis-erosions": 0.16,
+     "hyp.lower-gi-source": 0.07,
+     "hyp.mallory-weiss": 0.06
+    },
+    "learner_brier": 0.3314,
+    "learner_probability_on_truth": 0.48,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.duodenal-ulcer",
+    "stage": 3,
+    "workbench_board": {
+     "hyp.duodenal-ulcer": 0.5376,
+     "hyp.esophageal-varices": 0.1581,
+     "hyp.gastric-malignancy": 0.1581,
+     "hyp.gastritis-erosions": 0.0186,
+     "hyp.lower-gi-source": 0.001,
+     "hyp.mallory-weiss": 0.1265
+    },
+    "workbench_brier": 0.2802,
+    "workbench_probability_on_truth": 0.5376,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.duodenal-ulcer"
+   },
+   {
+    "criteria": {
+     "forrest_classification": {
+      "inputs": {
+       "forrest.active_bleeding": false,
+       "forrest.adherent_clot": false,
+       "forrest.clean_base": false,
+       "forrest.flat_spot": false,
+       "forrest.visible_vessel": true
+      },
+      "result": {
+       "forrest_class": "IIa",
+       "label": "non-bleeding visible vessel - high-risk stigmata: endoscopic hemostasis (thermal, mechanical or sclerosant, alone or combined with epinephrine) (C66)"
+      },
+      "rule_index": 1,
+      "status": "classified"
+     },
+     "glasgow_blatchford": {
+      "items": {
+       "gbs.bun": {
+        "points": 4,
+        "state": "satisfied"
+       },
+       "gbs.cardiac_failure": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.hemoglobin": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.hepatic_disease": {
+        "points": 0,
+        "state": "unsatisfied"
+       },
+       "gbs.melena": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.pulse": {
+        "points": 1,
+        "state": "satisfied"
+       },
+       "gbs.sbp": {
+        "points": 0,
+        "state": "satisfied"
+       },
+       "gbs.syncope": {
+        "points": 0,
+        "state": "unsatisfied"
+       }
+      },
+      "max_total": 23,
+      "not_assessed": [],
+      "partial": false,
+      "status": "high risk of needing intervention (GBS 6 or more)",
+      "total": 6
+     }
+    },
+    "forrest_classification": {
+     "inputs": {
+      "forrest.active_bleeding": false,
+      "forrest.adherent_clot": false,
+      "forrest.clean_base": false,
+      "forrest.flat_spot": false,
+      "forrest.visible_vessel": true
+     },
+     "result": {
+      "forrest_class": "IIa",
+      "label": "non-bleeding visible vessel - high-risk stigmata: endoscopic hemostasis (thermal, mechanical or sclerosant, alone or combined with epinephrine) (C66)"
+     },
+     "rule_index": 1,
+     "status": "classified"
+    },
+    "glasgow_blatchford": {
+     "items": {
+      "gbs.bun": {
+       "points": 4,
+       "state": "satisfied"
+      },
+      "gbs.cardiac_failure": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.hemoglobin": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.hepatic_disease": {
+       "points": 0,
+       "state": "unsatisfied"
+      },
+      "gbs.melena": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.pulse": {
+       "points": 1,
+       "state": "satisfied"
+      },
+      "gbs.sbp": {
+       "points": 0,
+       "state": "satisfied"
+      },
+      "gbs.syncope": {
+       "points": 0,
+       "state": "unsatisfied"
+      }
+     },
+     "max_total": 23,
+     "not_assessed": [],
+     "partial": false,
+     "status": "high risk of needing intervention (GBS 6 or more)",
+     "total": 6
+    },
+    "learner_board": {
+     "hyp.duodenal-ulcer": 0.78,
+     "hyp.esophageal-varices": 0.05,
+     "hyp.gastric-malignancy": 0.06,
+     "hyp.gastritis-erosions": 0.04,
+     "hyp.lower-gi-source": 0.04,
+     "hyp.mallory-weiss": 0.03
+    },
+    "learner_brier": 0.0586,
+    "learner_probability_on_truth": 0.78,
+    "learner_rank_of_truth": 1,
+    "learner_top": "hyp.duodenal-ulcer",
+    "stage": 4,
+    "workbench_board": {
+     "hyp.duodenal-ulcer": 0.5376,
+     "hyp.esophageal-varices": 0.1581,
+     "hyp.gastric-malignancy": 0.1581,
+     "hyp.gastritis-erosions": 0.0186,
+     "hyp.lower-gi-source": 0.001,
+     "hyp.mallory-weiss": 0.1265
+    },
+    "workbench_brier": 0.2802,
+    "workbench_probability_on_truth": 0.5376,
+    "workbench_rank_of_truth": 1,
+    "workbench_top": "hyp.duodenal-ulcer"
+   }
+  ],
+  "resource_tally": {
+   "status": "verify \u2014 case-author accounting placeholders (design/07 requires tests to carry cost and time; no prices were consulted)",
+   "total_cost_units": 13,
+   "total_time_min": 120
+  },
+  "review": {
+   "delphi_status": "not convened",
+   "expert_review_gate": "UNMET",
+   "note": "The expert-review gate for this case is UNMET, exactly as Milestones 17, 20, 29, 41, 43, 48, 54 and 57 recorded it for the procedures and cases before it: no named clinician reviewers are recorded for this case, none are fabricated, and every clinical assertion in it is a dual-sourced draft pending the two-reviewer Delphi the master plan requires (P10). Its scores are formative only.",
+   "recorded_reviewers": [],
+   "required_reviewer_roles": [
+    "gastroenterologist",
+    "emergency physician"
+   ],
+   "status": "UNMET"
+  },
+  "ruled_out_by_workbench": {
+   "hyp.gastritis-erosions": 3,
+   "hyp.lower-gi-source": 1
+  },
+  "scoring_components": {
+   "anchoring_event_count": 1,
+   "learner_brier_by_stage": {
+    "1": 0.6488,
+    "2": 0.544,
+    "3": 0.3314,
+    "4": 0.0586
+   },
+   "learner_probability_on_truth_by_stage": {
+    "1": 0.3,
+    "2": 0.35,
+    "3": 0.48,
+    "4": 0.78
+   },
+   "note": "Components only. Design/07 defines Brier-style calibration scoring, anchoring, and evidence quality, and no weights; no composite is computed.",
+   "order_class_counts": {
+    "criteria-completing": 2,
+    "discriminating": 1,
+    "non-contributory": 3,
+    "safety-net": 0
+   },
+   "workbench_brier_by_stage": {
+    "1": 0.3121,
+    "2": 0.3097,
+    "3": 0.2802,
+    "4": 0.2802
+   }
+  },
+  "structure": "PEARLS (design/07 step 6; Eppich & Cheng 2015, as cited by Milestone 17's T10)",
+  "validity": {
+   "consequences": "Formative only. The case trains three refusals: refusing a diagnosis because of who supplied it and how confidently; refusing a normal first hemoglobin as a closing argument in a bleeding patient; and refusing to discharge on a partially-computed score quoted as a total. It must not be used summatively until the expert-review gate is met.",
+   "content": "dual-sourced-draft",
+   "internal_structure": "Every quantitative clinical assertion traces to the register: the Blatchford bands and the intervention-risk reading to C63; every likelihood ratio to the Rational Clinical Examination (C64) in computed reciprocal form, derived in the register; the transfusion threshold to C65; the endoscopy timing, Forrest therapy mapping and high-dose PPI regimen to C66, concordant with C70; the hemoglobin and creatinine ranges to C67/C68, the urea range to C47; the H. pylori and NSAID management to C69. The ontology identifiers were resolved against EBI OLS in-session, including one recorded refusal (the lower-source hypothesis's Mondo). The workbench recomputes every stage board from priors and ratios alone, classifies every model-learner order from the revealed evidence, and evaluates both declared blocks mechanically; the anchoring tally is computed, not asserted. The one number a reader is invited to distrust - the first hemoglobin - is neutralised by mechanism (the physiology course arm), not by a counter-assertion. The case adds four likelihood ratios, every one a computed reciprocal of a consulted figure and registered with its derivation; two declared criteria blocks (a score and a classification, the library's first of each kind); and the library's first physiology PERTURBATION-arm link (cases 1-8 link the resting baseline; this case links the hemorrhage arms and pins the fast one by re-running it). Nine cases now exist and are still not a calibration series; priors remain flagged placeholders throughout. Relations: GBS 6 against the disposition the patient proposed; a Blatchford item (hemoglobin) whose zero is explained by the engine's refill lag; the Forrest class against the therapy actually delivered; the transfusion threshold against the untransfused outcome; the physiology post-window pattern against the arrival vitals - pattern, with the coincidence boundary stated."
+  }
+ }
+}
